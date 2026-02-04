@@ -1,0 +1,50 @@
+publiccodeYmlVersion: 0.5.0
+name: Reftree
+applicationSuite: javascript
+url: https://github.com/unige/reftree
+platforms:
+  - windows
+developmentStatus: stable
+softwareType: standalone/web
+description:
+  en:
+    localisedName: RefTree
+    shortDescription: RefTree per il real estate management
+    longDescription: RefTree is an advanced digital platform for integrated real
+      estate management. It centralizes data, documents, maintenance, and
+      operational flows in a single digital environment, increasing
+      profitability and efficiency of management processes.
+    documentation: https://ww.idearespa.eu
+    features:
+      - technical
+      - administrative
+      - contractual
+      - maintenance
+      - fiscal
+  it-IT:
+    localisedName: RefTree
+    shortDescription: RefTree per la gestione del patrimonio immobiliare
+    longDescription: RefTree  piattaforma digitale avanzata per la gestione
+      integrata del patrimonio immobiliare (Real Estate Management). Consente di
+      centralizzare dati, documenti, manutenzioni e flussi operativi in un unico
+      ambiente digitale, aumentando la redditività e l'efficienza dei processi
+      di gestione
+    documentation: https://www.idearespa.eu
+    features:
+      - gestione tecnica
+      - gestione amministrativa
+      - gestione contrattuale
+      - gestione manutenzione
+      - gestione fiscale
+legal:
+  license: LGPL-3.0-only
+maintenance:
+  type: internal
+  contacts:
+    - name: Claudio Marcopoli
+      email: claudio.marcopoli@idearespa.eu
+      phone: "3356909178"
+localisation:
+  localisationReady: true
+  availableLanguages:
+    - it-IT
