@@ -1,0 +1,41 @@
+﻿<div class='row'>
+    <div ng-show="t.wsStatus" class='{{ t.wsClass }}'><div id='weekselector' /></div>
+    <div class='{{ t.spClass }}'>
+        <div>
+            <span ng-show="t.showSpreadSheet" style='cursor:pointer;' ng-click='t.calOffset(-1);' class='fa fa-arrow-left' />
+            <span ng-show="t.showSpreadSheet" style='cursor:pointer;margin-left:5px;' ng-click='t.calOffset(1);' class='fa fa-arrow-right' /><span ng-show="t.showSpreadSheet" style='margin-left:10px;' id='curdate'></span>
+            <span ng-show="t.showSpreadSheet" style='margin-left:25px;'>
+                <button ng-click='t.toggleWeekSelector();' class='k-button k-button-icontext'>
+                    <span class='k-icon k-i-calendar'></span>
+                </button>
+            </span>
+            <div ng-show="t.showSpreadSheet" style='float:right;margin-left:2px;'>
+                <button ng-click='t.calOffset(0);' class='k-button k-button-icontext' title='reload spreadsheet data'>
+                    <span class='k-icon k-i-refresh'></span>
+                </button>
+            </div>
+            <div ng-show="t.showSpreadSheet" style='float:right;'>
+                <button id="btnsave" ng-click='t.save();' class='k-button k-button-icontext {{t.btnClass}}'>{{ t.lang.save }}</button>
+            </div>
+            <div style='float:right;'>
+                <button id="btnhide" ng-click='t.toggle();' class='k-button k-button-icontext ' title='show/hide spreadsheet'>{{ t.lang.toggleSpreadsheet }}</button>
+            </div>
+
+            <div style='float:right;' ng-if="t.showPages && t.showNext()">
+                <button id="but-next-ssh" ng-click='t.setPage(1);' class='k-button k-button-icontext ' title='Successivo'>Pagina successiva</button>
+            </div>
+            <div style='float:right;' ng-if="t.showPages && t.showPrev() ">
+                <button id="but-previous-ssh" ng-click='t.setPage(-1);' class='k-button k-button-icontext ' title='Precedente'>Pagina precedente</button>
+            </div>
+            <span style='float: right;margin-right: 25px;margin-top:5px;' ng-if="t.showPages">
+                {{t.showingElements()}}
+            </span>
+        </div>
+        <div ng-show="t.showSpreadSheet" id='{{ t.selector.substring(1,t.selector.length) }}' style='margin-top:25px;width:100%;' />
+    </div>
+</div>
+<style>
+    .redbutton {
+        background-color:red;
+    }
+</style>

@@ -1,0 +1,19 @@
+﻿<li element="mm.element" id="m{{item.ITEM_ID}}" ready="mm.ready" count="mm.count" ng-repeat="item in mm.menu" ng-class="mm.addLiClass(item)" aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a  ng-init="item.islast ? mm.ready = true : mm.ready = false;" ng-if="item.Children.length>0" href="javascript:;" class="m-menu__link m-menu__toggle">
+        <i class="m-menu__link-icon flaticon-layers"></i><span class="m-menu__link-text">{{item.ITEM_LABEL}}</span><i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+   <!-- <a  code="{{item.ITEM_LABEL_ORIG}}" funcid="{{item.ITEM_FUNCTIONID}}" data-guid="{{item.ITEM_GUID}}" data-item-checksum="{{item.ITEM_CHECKSUM}}" ng-init="item.islast ? mm.ready = true : mm.ready = false;" ng-if="item.Children.length == 0"  href="{{ mm.buildHref(item) }}" class="m-menu__link ">-->
+    <a ng-click="mm.activateMenu(item)" code="{{item.ITEM_LABEL_ORIG}}" funcid="{{item.ITEM_FUNCTIONID}}" data-guid="{{item.ITEM_GUID}}" data-item-checksum="{{item.ITEM_CHECKSUM}}" ng-init="item.islast ? mm.ready = true : mm.ready = false;" ng-if="item.Children.length == 0"  class="m-menu__link">
+         <i ng-class="mm.getIconClass(item)">
+            <span></span>
+        </i>
+        <span class="m-menu__link-text">{{item.ITEM_LABEL}}</span>
+    </a>
+    <div ng-if="item.Children.length>0" class="m-menu__submenu " m-hidden-height="840" style="">
+        <span class="m-menu__arrow"></span>
+        <ul class="m-menu__subnav">
+            <metronic-menu element="mm.element"  ready="mm.ready" menu="item.Children">
+            </metronic-menu>
+        </ul>
+    </div>
+</li>

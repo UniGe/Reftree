@@ -1,0 +1,104 @@
+﻿<div class="panel with-nav-tabs panel-default">
+    <div id="TabList" class="panel-heading">
+        <ul ng-init="" class="nav nav-tabs">
+            <li class="active">
+                <a href="#tab1default" data-toggle="tab">Dati generali</a>
+            </li>
+            <li ng-click="loadContent.two = true">
+                <a href="#tab2default" data-toggle="tab">Grafici</a>
+            </li>
+
+            <!--<li ng-click="loadContent.four = true"><a href="#tab4default" data-toggle="tab">Consistenza</a></li>
+            <li ng-click="loadContent.five = true"><a href="#tab5default" data-toggle="tab">Documenti</a></li> -->
+        </ul>
+    </div>
+
+    <div class="panel-body">
+        <div class="tab-content">
+
+            <div class="tab-pane fade active in" id="tab1default">
+
+                <div class="row">
+                    <div class="col-md-12 add-to-pdf">
+                        <magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true" formname="FORM_STAMAN" hidetabs="true" itemsperrow=2></magic-form-sp>
+                    </div>
+                </div>
+                <div class="row" style="height:10px;"></div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <magic-grid id="parent" gridname="RF_VI_ELEFAC_WEIGHT_AVERAGE" filterpk="AS_ASSET_ID"></magic-grid>
+                    </div>
+
+                </div>
+                <div class="row" style="height:10px;"></div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <magic-grid id="parent" gridname="RF_VI_ELEFAC_elem_facility" filterpk="AS_ASSET_ID"></magic-grid>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <a href="http://ref2space.idearespa.com/download/Nota%20Operativa%20Stato%20Manutentivo.docx">Manuale stato manutentivo</a>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tab2default">
+                <div ng-if="loadContent.two">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div id="TempChild5" style="width: 50%; margin: 0 auto;">
+                                <magic-chart-gauge chartguid="9ADDC965-6D34-4661-B056-963044B9B9EC" />
+                                <div style="background-color:black;color:white;width:100px;">SMAN1</div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div id="TempChild6" style="width: 50%; margin: 0 auto;">
+                                <magic-chart-gauge chartguid="523C971D-EFF7-422A-8C8E-324D5148D56D" />
+                                <div style="background-color:black;color:white;width:100px;">SMAN2</div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div id="TempChild6" style="width: 50%; margin: 0 auto;">
+                                <magic-chart-gauge chartguid="929DC675-D89B-4DAE-8EBC-619ADA678704" />
+                                <div style="background-color:black;color:white;width:100px;">SMAN3</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="TempChild6" style="width: 15%; margin: 0 auto;">
+                                <magic-chart-gauge chartguid="C86511FC-928B-4E09-9BD5-6B8D62700075" />
+                                <div style="background-color:black;color:white;width:100px;">SMAN</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <style media="screen" type="text/css">
+        /*
+.k-tabstrip .k-content.k-state-active {
+    background-color: #fff;
+    color: #fff;
+    margin: auto;
+}	
+.tab-pane.ng-scope.active.k-content.k-state-active {
+    border-color: #fff !important;
+}
+
+ng-form.ng-pristine.ng-valid.ng-isolate-scope.k-widget.k-header.k-floatwrap.k-tabstrip-top {
+    background-color: #fff !important;
+}
+
+*/
+    </style>

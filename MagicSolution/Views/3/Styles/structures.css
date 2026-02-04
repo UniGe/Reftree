@@ -1,0 +1,25 @@
+﻿#initialidiv {
+    padding:5px;
+    border: 1px solid #94c0d2;
+    background-color: #daecf4;
+    background-image: none,linear-gradient(to bottom,rgba(255,255,255,.45) 0,rgba(255,255,255,.0) 100%);
+  background-position: 50% 50%;
+}
+.panel
+{
+    margin-top: 20px;
+}
+
+.bootstrap-tagsinput {
+    background-color:whitesmoke;
+}
+
+.bootstrap-tagsinput .k-autocomplete {
+    width:165px;
+}
+
+div#initialidiv #getstructdata {
+    margin-top:5px;
+}
+
+

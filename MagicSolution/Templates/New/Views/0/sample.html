@@ -1,0 +1,67 @@
+﻿<h2>{{ cd.options.curreDateTime }}</h2>
+<button ng-click="cd.options.refreshDateTime();">Refresh (extension)</button>
+<div class="panel with-nav-tabs panel-default">
+    <div class="panel-heading">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1default" data-toggle="tab">Una griglia...</a></li>
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown">Sintesi <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#tab2default" data-toggle="tab">Griglia e Charts...</a></li>
+                    <li><a href="#tab3default" data-toggle="tab">Google map e Forms</a></li>
+                    <li><a href="#tab4default" data-toggle="tab">Magic Form</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="panel-body">
+        <div class="tab-content">
+            <div style="text-align: right; padding: 10px">
+                <div class="btn btn-default" onclick="setSizeToA4($(this).closest('.tab-content').find('.tab-pane.fade.active.in'), 'p')"><i class="fa fa-file-o" aria-hidden="true"></i></div>
+                <div class="btn btn-default" onclick="setSizeToA4($(this).closest('.tab-content').find('.tab-pane.fade.active.in'), 'l')"><i class="fa fa-file-o fa-rotate-90" aria-hidden="true"></i></div>
+                <div class="btn btn-default" onclick="setInitialWidth($(this).closest('.tab-content').find('.tab-pane.fade.active.in'))"><i class="fa fa-undo" aria-hidden="true"></i></div>
+                <div class="btn btn-default" onclick="createPdfFromHtml($(this).closest('.tab-content').find('.tab-pane.fade.active.in'), null, getOrientation($(this).closest('.tab-content').find('.tab-pane.fade.active.in')))"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
+            </div>
+            <div class="tab-pane fade active in" id="tab1default"><div class="row"><div class="col-md-12"><magic-grid gridname="Table_fileupl_prova" /></div></div></div>
+            <div class="tab-pane fade" id="tab2default">
+                <magic-chart chartguid="6E15B086-EF3B-4E4F-AFD0-9E537B84BD0A" />
+                <magic-form-sp storedprocedure="CUSTOM.GetFormValues" isreadonly=true formname="MY_FORM"></magic-form-sp>
+                <div class="row">
+                    <magic-chart-gauge chartguid="AA9D6694-6884-4684-A494-28CEC35BA0D4" />
+                    <div style="background-color:black;color:white;width:100px;">ANNO X-1</div>
+                    <div style="background-color:#ff0000;color:white;width:100px;">ANNO X</div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tab3default">
+                <div class="row">
+                    <div class="col-md-6">
+                        <magic-form-sp storedprocedure="CUSTOM.GetFormValues" formname="MY_FORM" model="cd.options.MY_FORM_MODEL"></magic-form-sp>
+                        <button ng-click="cd.options.submitForm('MY_FORM_MODEL','dbo.provaSP');">SUBMIT</button>
+                    </div>
+                    <div class="col-md-6" id="thebeautifulmap"></div>
+                </div>
+            </div>
+            <div class="tab-pane fade add-to-pdf" id="tab4default">
+                <magic-form model="cd.formData" table-name="Table_fileupl_prova" options="{ itemsPerRow: 2, readonly: true }"></magic-form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    //sample when launched by toolbar button after selecting 1 row
+    if ($("#datahidden").length) {
+        $("#wndmodalContainer").addClass("modal-wide");
+        var data = $("#datahidden").data("itemInfo");
+        $("#thebeautifulmap").append('<div><iframe width="600" height="150" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=' + window.mapAK + '&q=' + data.address + '" ></iframe></div>\
+			                        <div><iframe width="600" height="150" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/streetview?key=' + window.mapAK + '&location=' + data.latitude + ',' + data.longitude + '&heading=210&pitch=10&fov=35" ></iframe></div>');
+        $("#tab2default").append('<img src="https://maps.googleapis.com/maps/api/staticmap?center=47.5952,-122.3316&zoom=16&size=640x400&path=weight:3%7Ccolor:blue%7Cenc:{coaHnetiVjM??_SkM??~R&key=' + window.mapAK + '" />');
+    }
+    else  //sample when launched in function...
+        $("#thebeautifulmap").append('<div><iframe\
+                                        width="600"\
+                                        height="450"\
+                                        frameborder="0" style="border:0"\
+                                        src="https://www.google.com/maps/embed/v1/place?key=' + window.mapAK + '&q=Space+Needle,Seattle+WA" allowfullscreen>\
+                                      </iframe></div>');
+</script>

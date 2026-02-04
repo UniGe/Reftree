@@ -1,0 +1,56 @@
+﻿<div>
+    <div
+         ng-click="q.closeDrop()"
+    >
+        <div class="btn btn-success"
+             ng-click="q.sendQuery()"><i class="fa fa-exclamation" aria-hidden="true"></i></div>
+        <div class="btn btn-success"
+             ng-click="q.hasError()"><i class="fa fa-check" aria-hidden="true"></i></div>
+        <div class="btn btn-success"
+             ng-click="q.saveExpression()"><i class="fa fa-floppy-o" aria-hidden="true"></i></div>
+        <div class="btn btn-success"
+             ng-click="q.getSavedExpressions(); q.showSavedExpressions = !q.showSavedExpressions"><i class="fa fa-folder-open-o" aria-hidden="true"></i></div>
+    </div>
+    <div style="height: 10px"></div>
+    <div ng-if="q.showSavedExpressions"
+         class="row">
+        <div ng-repeat="expression in q.savedExpressions">
+            <div class="animate-user col-md-2"
+                 style="margin-top: 10px">
+                <div class="btn btn-warning"
+                     style="width: 100%"
+                     ng-click="q.setExpression(expression)">
+                    {{expression.name}}
+                    <i class="fa fa-trash pull-right"
+                       ng-click="q.deleteExpression($index); $event.stopPropagation();"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="height: 10px"></div>
+    <div>
+        <div id="query-language-tags-container" contenteditable="true" spellcheck="false" style="min-height:132px; background-color: white; padding: 5px 10px; color: black; border: 2px solid #4593e2"></div>
+    </div>
+    <div style="height: 10px"></div>
+    <div
+         ng-repeat="link in q.links"
+    >
+        <div
+             class="btn btn-warning"
+             ng-click="q.goTo(link)"
+             ng-bind="link.linkLabel"
+        ></div>
+    </div>
+    <div style="height: 10px"></div>
+    <div id="query-result-grid"></div>
+</div>
+<style>
+    #query-language-tags-container .btn {
+        margin: 5px 0px;
+    }
+    .dropdown-query-language ul a:hover,
+    .dropdown-query-language ul li.super-active a {
+        color: white;
+        background-color: #2a6496;
+    }
+</style>

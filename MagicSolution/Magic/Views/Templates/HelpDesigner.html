@@ -1,0 +1,106 @@
+﻿<div id="help-main-tab" class="col-md-12">
+
+    <ul>
+        <li class="k-state-active">Help Modal</li>
+        <li>Tooltips</li>
+    </ul>
+
+    <div class="row">
+
+        <span style="margin-bottom: 10px" class="btn btn-default" ng-click="h.newModalEditor()"><i class="fa fa-plus"></i> New</span>
+        <div id="help-modal-editor-container" class="col-md-6">
+
+            <form id="modal-help-form">
+                <fieldset>
+                    <legend>Basic Help</legend>
+
+                    <label>Description</label>
+                    <input required style="width:100%" type="text" placeholder="Description" ng-model="h.modalHelp.description">
+                    <span class="help-block">Put an expressive description here.</span>
+
+                    <span ng-if="h.modalHelp.languages.length === 0 || h.modalHelp.languages[h.modalHelp.languages.length-1].language"
+                          class="btn btn-default" ng-click="h.addModalLanguage()"><i class="fa fa-plus"></i> Add language</span>
+                    <div ng-repeat="value in h.modalHelp.languages track by value.language">
+
+                        <span style="margin: 10px 0px" class="btn btn-danger" ng-click="h.removeModalLanguage($index)"><i class="fa fa-minus"></i> Remove language</span>
+                        <label>Language</label>
+                        <input required style="width:100%" type="text" placeholder="Language" ng-model="h.modalHelp.languages[$index].language">
+
+                        <label>Title</label>
+                        <input style="width:100%" type="text" placeholder="Title" ng-model="h.modalHelp.languages[$index].title">
+
+                        <label>HTML</label>
+                        <textarea style="width:100%" ng-model="h.modalHelp.languages[$index].html" rows="4"></textarea>
+
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Files</legend>
+
+                    <span ng-if="h.modalHelp.files.length === 0 || h.modalHelp.files[h.modalHelp.files.length-1].title"
+                          class="btn btn-default" ng-click="h.addModalFile()"><i class="fa fa-plus"></i> Add file</span>
+                    <div ng-repeat="value in h.modalHelp.files track by value.title">
+
+                        <span style="margin: 10px 0px" class="btn btn-danger" ng-click="h.removeModalFile($index)"><i class="fa fa-minus"></i> Remove file</span>
+
+                        <input type="file" upload-field form-container="h.modalHelpForm" on-change="h.fileAdded" on-change-data="$index" kendo-file-options="h.getFileOptions($index)" />
+
+                        <label>Language</label>
+                        <input style="width:100%" type="text" placeholder="Language" ng-model="h.modalHelp.files[$index].language">
+
+                        <label>Title</label>
+                        <input required style="width:100%" type="text" placeholder="Title" ng-model="h.modalHelp.files[$index].title">
+
+                    </div>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Targeted objects</legend>
+
+                    <search-drop sd-values="h.allTargetObjects"
+                                 sd-value="ID"
+                                 sd-label="description"
+                                 sd-onselect="h.targetSelected(objectValue)"
+                                 sd-placeholder="target object"
+                                 sd-max-drop-height="250px">
+                    </search-drop>
+
+                    <div ng-repeat="value in h.modalHelp.targets track by value.joinedID">
+                        <div class="btn-group" style="margin-top: 10px">
+                            <span class="btn btn-default" ng-bind="value.description" type="submit"></span>
+                            <span class="btn btn-danger" ng-click="h.removeTarget($index)"><i class="fa fa-minus"></i></span>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+
+            <div style="margin-top:10px">
+                <button class='save-button btn btn-success' ng-disabled="h.isSavingModal" ng-click="h.saveModalHelpObject()"><i class='fa fa-floppy-o'></i> Save</button>
+                <button class='delete-button btn btn-danger' ng-disabled="h.isSavingModal" ng-click="h.deleteHelpObject(h.modalHelp.ID)"><i class='fa fa-trash-o'></i> Delete</button>
+            </div>
+
+        </div>
+        <div id="help-moda-objects-container" class="col-md-6">
+            <h5>Available help definitions</h5>
+            <div id="magic-modal-help-grid"></div>
+            <h5>Targeted objects</h5>
+            <div id="magic-help-targets-grid"></div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <span style="margin-bottom: 10px" class="btn btn-default" ng-click="h.newEditor()"><i class="fa fa-plus"></i> New</span>
+        <div id="help-editor-container" class="col-md-6"></div>
+        <div id="help-objects-container" class="col-md-6">
+            <h5>Available help definitions</h5>
+            <div id="magic-help-grid"></div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,50 @@
+﻿<div>
+    <div class="k-filter-help-text">{{ mvcf.options.messages.info }}</div>
+    <table>
+        <tr class="row-{{$index}}" ng-repeat="filter in mvcf.filters track by $index">
+            <td class="field">
+                <select style="width:100%; min-width: 100px;" kendo-drop-down-list ng-change="mvcf.filters[$index].value = ''" ng-model="filter.field" k-data-text-field="'text'" k-data-value-field="'value'" k-data-source="mvcf.options.columnFields"></select>
+            </td>
+            <td class="operator">
+                <div ng-if="mvcf.options.filterColumns[filter.field].operators">
+                    <select style="width:100%; min-width: 130px;" kendo-drop-down-list ng-model="filter.operator" k-data-text-field="'text'" k-data-value-field="'value'" k-data-source="mvcf.options.filterColumns[filter.field].operators"></select>
+                </div>
+            </td>
+            <td class="value" ng-switch="mvcf.options.filterColumns[filter.field].values">
+                <div ng-show="filter.operator != 'isnull' && filter.operator != 'isnotnull' || mvcf.options.filterColumns[filter.field].operators.indexOf('isnull') != -1">
+                    <div ng-switch-when="undefined" ng-switch="mvcf.options.filterColumns[filter.field].role">
+                        <div ng-switch-when="number">
+                            <input kendo-numeric-text-box ng-model="filter.value" style="width:100%; min-height: 25px; min-width: 100px;" type="text" />
+                        </div>
+                        <div ng-switch-when="datepicker">
+                            <input kendo-date-picker ng-model="filter.formatedValue" k-ng-model="filter.value" style="width:100%; min-height: 25px; min-width: 100px;" type="text" />
+                        </div>
+                        <div ng-switch-when="datetimepicker">
+                            <input kendo-date-time-picker ng-model="filter.formatedValue" k-ng-model="filter.value" style="width:100%; min-height: 25px; min-width: 100px;" type="text" />
+                        </div>
+                        <div style="padding: 0 10px;" ng-switch-when="checkbox">
+                            <label><input type="radio" ng-model="filter.value" value="true">{{ mvcf.options.messages.isTrue }}</label>
+                            <label><input type="radio" ng-model="filter.value" value="false">{{ mvcf.options.messages.isFalse }}</label>
+                        </div>
+                        <input ng-switch-default ng-model="filter.value" style="width:auto;" class="k-textbox" type="text" />
+                    </div>
+                    <div ng-switch-default>
+                        <select kendo-drop-down-list ng-model="filter.value" style="width:auto;" k-data-text-field="'text'" k-data-value-field="'value'" k-data-source="mvcf.options.filterColumns[filter.field].values">
+                            <option value="">{{ mvcf.options.messages.selectValue }}</option>
+                        </select>
+                    </div>
+                </div>
+            </td>
+            <td class="logic" ng-switch="$last">
+                <button style="width:auto; margin: 3px 0 0;" ng-switch-when="true" ng-click="mvcf.addFilterRow()" class="k-button k-primary"><span class="fa fa-plus"></span></button>
+                <div ng-switch-default>
+                    <select style="width:auto;" kendo-drop-down-list ng-model="filter.logic" k-data-text-field="'text'" k-data-value-field="'value'" k-data-source="mvcf.options.logics"></select>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <button ng-click="mvcf.submitFilters()" class="k-button k-primary">{{ mvcf.options.messages.filter }}</button>
+        <button ng-click="mvcf.resetFilters(this)" class="k-button">{{ mvcf.options.messages.clear }}</button>
+    </div>
+</div>

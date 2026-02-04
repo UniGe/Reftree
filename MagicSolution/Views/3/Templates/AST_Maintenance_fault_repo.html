@@ -1,0 +1,109 @@
+﻿<ul class="list-group">
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-md-2"><h5>Codice:</h5></div><div class="col-md-10"><span id="FP_TFAULT_CODE"></span></div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-md-2"><h5>Nome degrado:</h5></div><div class="col-md-10"><span id="FP_TFAULT_NAME"></span></div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-md-2"><h5>Descrizione:</h5></div><div class="col-md-10"><span id="FP_TFAULT_DESCRIPTION"></span></div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-md-2"><h5>Fonte:</h5></div><div class="col-md-10"><span id="FP_SRCFLT_DESCRIPTION"></span></div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-md-2">
+                <h5>Materiali:</h5>
+            </div>
+            <div class="col-md-10">
+                <div id="listViewmat">
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-md-2">
+                <h5>Cause tipiche:</h5>
+            </div>
+            <div class="col-md-10">
+                <div id="listViewcauses">
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <h5 style="margin-left:15px;">Esempi da norme o da casi studio:</h5>
+            <div id="listView"></div>
+            <div id="pager" class="k-pager-wrap"></div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <h5 style="margin-left:15px;">Esempi da bibliografia:</h5>
+            <div id="listView2"></div>
+            <div id="pager2" class="k-pager-wrap"></div>
+        </div>
+    </li>
+</ul>
+<script type="text/x-kendo-template" id="template">
+    <div class="product">
+        <img width="100" height="100" src="#= FP_DFAULT_FILE #" alt="#: FP_DFAULT_DESCRIPTION # image" />
+        <h3>#:FP_DFAULT_DESCRIPTION#</h3>
+    </div>
+</script>
+<script type="text/x-kendo-template" id="mattemplate">
+    <div>
+        <div><h5>#:FP_ELEMAT_DESCRIPTION#</h5></div>
+        <!--<div><img height="10" src="#= Checked ?  'Magic/Styles/Images/okbutton.png' : '/Magic/Styles/Images/cross.png' #" /></div>-->
+    </div>
+</script>
+<script type="text/x-kendo-template" id="cautemplate">
+    <div>
+        <div><h5>#:FP_CAUFAU_DESCRIPTION#</h5></div>
+    </div>
+</script>
+
+<style>
+    .modal-body .k-widget {
+        width: auto;
+    }
+
+    .product {
+        float: left;
+        position: relative;
+        width: 105px;
+        margin: 0 2px;
+        padding: 0;
+    }
+
+        .product h3 {
+            margin: 0;
+            padding: 3px 5px 0 0;
+            max-width: 96px;
+            overflow: hidden;
+            line-height: 1.1em;
+            font-size: .9em;
+            font-weight: normal;
+            text-transform: uppercase;
+            color: #999;
+        }
+
+    .k-listview:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+</style>

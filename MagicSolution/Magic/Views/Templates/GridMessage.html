@@ -1,0 +1,45 @@
+﻿<div id="win___" kendo-window k-options="gm.kwoptions">
+    <div class="k-edit-field" style="margin-bottom:20px;"><span ng-repeat="bod in gm.boDescriptions" class="label label-info">{{ bod }}</span></div>
+    <form name="messageContent" ng-submit="gm.submit(messageContent)">
+        <!--<div class="k-edit-label">
+        <label for="title_">{{ gm.translate('title') }}</label>
+    </div>
+    <div class="k-edit-field">
+        <input style="width:100%;" ng-model="gm.title" id="title_" name="title_" class="k-input k-textbox" required />
+    </div>-->
+        <div class="k-edit-label">
+            <label for="message_">{{ gm.translate('selectUsers') }}</label>
+        </div>
+        <div class="k-edit-field">
+            <select kendo-multi-select="gm.kmultiselect" k-options="gm.selectOptions" k-ng-model="gm.selectedUserIds"></select>
+        </div>
+        <div class="k-edit-label">
+            <label for="message_">{{ gm.translate('message') }}</label>
+        </div>
+        <div class="k-edit-field">
+            <textarea style="width:100%;" ng-model="gm.message" id="message_" name="message_" rows="5" class="k-input k-textbox" required></textarea>
+        </div>
+        <div class="k-edit-label">
+            <label for="message_tags___">{{ gm.translate('tags') }}</label>
+        </div>
+        <div class="k-edit-field">
+            <input ng-model="gm.tags" type="text" name="message_tags" id="message_tags___" class="k-input" />
+        </div>
+        <div class="k-edit-label">
+            <label for="grid_message_attachment">{{ gm.translate('attachments')}}</label>
+        </div>
+        <div class="k-edit-field">
+            <input name="grid_message_attachment" id="grid_message_attachment_filepicker"
+                   type="file"
+                   data-admin-upload="true"
+                   data-multiple="true"
+                   accept="" />
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="k-edit-buttons k-state-default text-right">
+            <button class="k-button k-button-icontext k-primary" type="submit"><span class="k-icon k-update"></span>{{ gm.translate('save')  }}</button>
+        </div>
+
+    </form>
+</div>

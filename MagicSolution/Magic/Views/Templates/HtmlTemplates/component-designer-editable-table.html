@@ -1,0 +1,157 @@
+﻿<h2 id="editableTableTitle">Overwrite Configuration</h2>
+<div id="editableTable" class="table-responsive tableFixHead">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Label</th>
+                <th>Position</th>
+                <th>Width</th>
+                <th>Visible</th>
+                <th>Sortable</th>
+                <th>Filterable</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="col in cd.current.grid.Columns" ng-show="col.IsMatch">
+                <td>{{col.ColumnName}}</td>
+                <td>
+                    <div class="dropdown">
+                        <div class="dropdown-toggle" style="max-width:inherit;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <input class="text-input" type="text" ng-model="col.Columns_label" />
+                            <!--<i title="Translations" class="fa fa-globe" ></i>-->
+                            <i ng-show="!col.HasTranslations" title="Translations" class="dropdown-toggle fa fa-globe" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></i>
+                            <i ng-show="col.HasTranslations" title="Translations" class="dropdown-toggle fa fa-globe globe-painted" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></i>
+                        </div> 
+                        <ul class="dropdown-menu click-popup">
+                            <li class="click-popup"><span class="flag-icon flag-icon-it"></span><input class="translation-input" type="text" ng-model="col.Translations['it-IT']" /></li>
+                            <li class="click-popup"><span class="flag-icon flag-icon-de"></span><input class="translation-input" type="text" ng-model="col.Translations['de-DE']" /></li>
+                            <li class="click-popup"><span class="flag-icon flag-icon-gb"></span><input class="translation-input" type="text" ng-model="col.Translations['en-GB']" /></li>
+                            <li ng-repeat="(culture,translation) in col.Translations" ng-if="culture != 'it-IT' && culture != 'de-DE' && culture != 'en-GB'">
+                                <span>{{culture}}</span>
+                                <input class="translation-input" type="text" ng-model="translation" />
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+                <td><input class="number-input" type="number" ng-model="col.NewOrdinalPosition" /></td>
+                <td><input class="number-input" type="number" ng-model="col.Columns_width" /></td>
+                <td>
+                    <!-- VISIBLE -->
+                    <input class="toggle" type="checkbox" ng-model="col.Columns_visibleingrid">
+                </td>
+                <td>
+                    <!-- SORTABLE -->
+                    <input class="toggle" type="checkbox" ng-model="col.Columns_isSortable">
+                </td>
+                <td>
+                    <!-- FILTERABLE -->
+                    <input class="toggle" type="checkbox" ng-model="col.Columns_isFilterable">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- TABLE-styles -->
+<style>
+    .text-input {
+        max-width: 100px;
+    }
+
+    .number-input {
+        max-width: 50px;
+    }
+
+    .dropdown-toggle:hover {
+        cursor: pointer;
+    }
+
+    .tableFixHead {
+        overflow-y: auto;        
+    }
+
+        .tableFixHead thead th {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+    /* Just common table stuff. Really. Not kidding lel. */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px 16px;
+    }
+
+    th {
+        background: #eee;
+    }
+
+    html {
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+        font-size: 100%;
+    }
+</style>
+<!-- SWITCH-TOGGLE-styles -->
+<style>
+    .toggle {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 62px;
+        height: 32px;
+        display: inline-block;
+        position: relative;
+        border-radius: 50px;
+        overflow: hidden;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        background-color: #e94847;
+        transition: background-color ease 0.3s;
+    }
+
+        .toggle:before {
+            content: "yes no";
+            display: block;
+            position: absolute;
+            z-index: 2;
+            width: 28px;
+            height: 28px;
+            background: #fff;
+            left: 2px;
+            top: 2px;
+            border-radius: 50%;
+            font: 10px/28px Helvetica;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-indent: -22px;
+            word-spacing: 37px;
+            color: #fff;
+            text-shadow: -1px -1px rgba(0,0,0,0.15);
+            white-space: nowrap;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
+        }
+
+        .toggle:checked {
+            background-color: #0090d9;
+        }
+
+            .toggle:checked:before {
+                left: 32px;
+            }
+
+        .toggle:focus {
+            outline: 0;
+        }
+
+        .toggle:active {
+            outline: 0;
+        }
+</style>
+

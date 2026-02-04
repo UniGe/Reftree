@@ -1,0 +1,1996 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MagicDB" Class="MagicDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=10.8.1.27;Initial Catalog=MagicDB;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MagicDBConnectionString7" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Magic_ColumnLabels" Member="Magic_ColumnLabels">
+    <Type Name="Magic_ColumnLabels">
+      <Column Name="ColumnLabelID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Magic_Column_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MagicGrid_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MagicCulture_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ColumnLabel" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Magic_Cultures_Magic_ColumnLabels" Member="Magic_Cultures" ThisKey="MagicCulture_ID" OtherKey="Magic_CultureID" Type="Magic_Cultures" IsForeignKey="true" />
+      <Association Name="Magic_Columns_Magic_ColumnLabels" Member="Magic_Columns" ThisKey="Magic_Column_ID" OtherKey="MagicColumnID" Type="Magic_Columns" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Magic_Grids_Magic_ColumnLabels" Member="Magic_Grids" ThisKey="MagicGrid_ID" OtherKey="MagicGridID" Type="Magic_Grids" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Cultures" Member="Magic_Cultures">
+    <Type Name="Magic_Cultures">
+      <Column Name="Magic_CultureID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Magic_CultureLanguage" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Magic_CultureCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Magic_ISO639x" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Magic_LanguageDescription" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Magic_Language" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Association Name="Magic_Cultures_Magic_ColumnLabels" Member="Magic_ColumnLabels" ThisKey="Magic_CultureID" OtherKey="MagicCulture_ID" Type="Magic_ColumnLabels" />
+      <Association Name="Magic_Cultures_Magic_Messages" Member="Magic_Messages" ThisKey="Magic_CultureID" OtherKey="Magic_Culture_ID" Type="Magic_Messages" />
+      <Association Name="Magic_Cultures_Magic_TemplateGroupLabels" Member="Magic_TemplateGroupLabels" ThisKey="Magic_CultureID" OtherKey="MagicCulture_ID" Type="Magic_TemplateGroupLabels" />
+      <Association Name="Magic_Cultures_Magic_ManagedCultures" Member="Magic_ManagedCultures" ThisKey="Magic_CultureID" OtherKey="Magic_CultureID" Type="Magic_ManagedCultures" />
+      <Association Name="Magic_Cultures_Magic_TemplateScriptsBuffer" Member="Magic_TemplateScriptsBuffer" ThisKey="Magic_CultureID" OtherKey="Magic_Culture_ID" Type="Magic_TemplateScriptsBuffer" />
+      <Association Name="Magic_Cultures_Magic_TemplateTabGroupLabels" Member="Magic_TemplateTabGroupLabels" ThisKey="Magic_CultureID" OtherKey="MagicCulture_ID" Type="Magic_TemplateTabGroupLabels" />
+      <Association Name="Magic_Cultures_Magic_HtmlTemplates" Member="Magic_HtmlTemplates" ThisKey="Magic_CultureID" OtherKey="Culture_ID" Type="Magic_HtmlTemplates" />
+      <Association Name="Magic_Cultures_Magic_Labels" Member="Magic_Labels" ThisKey="Magic_CultureID" OtherKey="Culture_ID" Type="Magic_Labels" />
+      <Association Name="Magic_Cultures_Magic_DocumentFillFiles" Member="Magic_DocumentFillFiles" ThisKey="Magic_CultureID" OtherKey="Culture_ID" Type="Magic_DocumentFillFiles" />
+      <Association Name="Magic_Cultures_Magic_Mmb_ModuleLabel" Member="Magic_Mmb_ModuleLabels" ThisKey="Magic_CultureID" OtherKey="Magic_Culture_ID" Type="Magic_Mmb_ModuleLabel" />
+      <Association Name="Magic_Cultures_Magic_Mmb_MenuLabel" Member="Magic_Mmb_MenuLabels" ThisKey="Magic_CultureID" OtherKey="Magic_Culture_ID" Type="Magic_Mmb_MenuLabel" />
+      <Association Name="Magic_Cultures_Magic_FunctionsLabel" Member="Magic_FunctionsLabels" ThisKey="Magic_CultureID" OtherKey="Magic_Culture_ID" Type="Magic_FunctionsLabel" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_FunctionsDataSource" Member="Magic_FunctionsDataSource">
+    <Type Name="Magic_FunctionsDataSource">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MagicFunction_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicDataSource_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Magic_Functions_Magic_FunctionsDataSource" Member="Magic_Functions" ThisKey="MagicFunction_ID" OtherKey="FunctionID" Type="Magic_Functions" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Magic_DataSource_Magic_FunctionsDataSource" Member="Magic_DataSource" ThisKey="MagicDataSource_ID" OtherKey="MagicDataSourceID" Type="Magic_DataSource" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Messages" Member="Magic_Messages">
+    <Type Name="Magic_Messages">
+      <Column Name="Magic_MessageID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Magic_Culture_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Magic_MessageContent" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="Magic_MessageSeverity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Magic_MessageCode" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Magic_MessageState" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Magic_Cultures_Magic_Messages" Member="Magic_Cultures" ThisKey="Magic_Culture_ID" OtherKey="Magic_CultureID" Type="Magic_Cultures" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Mmb_Profiles" Member="Magic_Mmb_Profiles">
+    <Type Name="Magic_Mmb_Profiles">
+      <Column Name="ProfileID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProfileName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileExecRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileUpdateRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileDeleteRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileExportRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileScheduleRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Magic_Mmb_Profiles_Magic_Mmb_UsersProfiles" Member="Magic_Mmb_UsersProfiles" ThisKey="ProfileID" OtherKey="Profile_ID" Type="Magic_Mmb_UsersProfiles" />
+      <Association Name="Magic_Mmb_Profiles_Magic_Mmb_ProfilesModules" Member="Magic_Mmb_ProfilesModules" ThisKey="ProfileID" OtherKey="Profile_ID" Type="Magic_Mmb_ProfilesModules" />
+      <Association Name="Magic_Mmb_Profiles_Magic_Mmb_ProfilesGridExcptn" Member="Magic_Mmb_ProfilesGridExcptns" ThisKey="ProfileID" OtherKey="Profile_ID" Type="Magic_Mmb_ProfilesGridExcptn" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Mmb_UserGroupVisibilityUsers" Member="Magic_Mmb_UserGroupVisibilityUsers">
+    <Type Name="Magic_Mmb_UserGroupVisibilityUsers">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserGroupVisibility_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="User_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Magic_Mmb_UserGroupVisibility_Magic_Mmb_UserGroupVisibilityUsers" Member="Magic_Mmb_UserGroupVisibility" ThisKey="UserGroupVisibility_ID" OtherKey="ID" Type="Magic_Mmb_UserGroupVisibility" IsForeignKey="true" />
+      <Association Name="Magic_Mmb_Users_Magic_Mmb_UserGroupVisibilityUsers" Member="Magic_Mmb_Users" ThisKey="User_ID" OtherKey="UserID" Type="Magic_Mmb_Users" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Mmb_UsersFunctionsOverrideRights" Member="Magic_Mmb_UsersFunctionsOverrideRights">
+    <Type Name="Magic_Mmb_UsersFunctionsOverrideRights">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="User_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Function_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserFunctionExecRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserFunctionUpdateRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserFunctionDeleteRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserFunctionExportRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Magic_Mmb_Users_Magic_Mmb_UsersFunctionsOverrideRights" Member="Magic_Mmb_Users" ThisKey="User_ID" OtherKey="UserID" Type="Magic_Mmb_Users" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Magic_Functions_Magic_Mmb_UsersFunctionsOverrideRights" Member="Magic_Functions" ThisKey="Function_ID" OtherKey="FunctionID" Type="Magic_Functions" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Mmb_UsersPreferredFunctions" Member="Magic_Mmb_UsersPreferredFunctions">
+    <Type Name="Magic_Mmb_UsersPreferredFunctions">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="User_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Function_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Magic_Mmb_Users_Magic_Mmb_UsersPreferredFunctions" Member="Magic_Mmb_Users" ThisKey="User_ID" OtherKey="UserID" Type="Magic_Mmb_Users" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Magic_Functions_Magic_Mmb_UsersPreferredFunctions" Member="Magic_Functions" ThisKey="Function_ID" OtherKey="FunctionID" Type="Magic_Functions" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_TemplateDetailsFunctionOverrides" Member="Magic_TemplateDetailsFunctionOverrides">
+    <Type Name="Magic_TemplateDetailsFunctionOverrides">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MagicTemplateDetail_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Function_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsvisibleforFunction" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MagicTemplateDataRole_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Magic_TemplateDetails_Magic_TemplateDetailsFunctionOverrides" Member="Magic_TemplateDetails" ThisKey="MagicTemplateDetail_ID" OtherKey="MagicTemplateDetailID" Type="Magic_TemplateDetails" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Magic_TemplateDataRoles_Magic_TemplateDetailsFunctionOverrides" Member="Magic_TemplateDataRoles" ThisKey="MagicTemplateDataRole_ID" OtherKey="MagicTemplateDataRoleID" Type="Magic_TemplateDataRoles" IsForeignKey="true" />
+      <Association Name="Magic_Functions_Magic_TemplateDetailsFunctionOverrides" Member="Magic_Functions" ThisKey="Function_ID" OtherKey="FunctionID" Type="Magic_Functions" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_TemplateGroupContent" Member="Magic_TemplateGroupContent">
+    <Type Name="Magic_TemplateGroupContent">
+      <Column Name="MagicTemplateGroupContentID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MagicTemplateGroupContentType" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="Magic_TemplateGroupContent_Magic_TemplateGroups" Member="Magic_TemplateGroups" ThisKey="MagicTemplateGroupContentID" OtherKey="MagicTemplateGroupContent_ID" Type="Magic_TemplateGroups" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_TemplateGroupLabels" Member="Magic_TemplateGroupLabels">
+    <Type Name="Magic_TemplateGroupLabels">
+      <Column Name="TemplateGroupLabelID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MagicTemplateGroup_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MagicTemplate_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MagicTemplateGroupLabel" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MagicCulture_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Magic_Cultures_Magic_TemplateGroupLabels" Member="Magic_Cultures" ThisKey="MagicCulture_ID" OtherKey="Magic_CultureID" Type="Magic_Cultures" IsForeignKey="true" />
+      <Association Name="Magic_Templates_Magic_TemplateGroupLabels" Member="Magic_Templates" ThisKey="MagicTemplate_ID" OtherKey="MagicTemplateID" Type="Magic_Templates" IsForeignKey="true" />
+      <Association Name="Magic_TemplateGroups_Magic_TemplateGroupLabels" Member="Magic_TemplateGroups" ThisKey="MagicTemplateGroup_ID" OtherKey="MagicTemplateGroupID" Type="Magic_TemplateGroups" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_TemplateGroupsFunctionOverrides" Member="Magic_TemplateGroupsFunctionOverrides">
+    <Type Name="Magic_TemplateGroupsFunctionOverrides">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MagicTemplateGroup_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Function_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsvisibleforFunction" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Magic_Functions_Magic_TemplateGroupsFunctionOverrides" Member="Magic_Functions" ThisKey="Function_ID" OtherKey="FunctionID" Type="Magic_Functions" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Magic_TemplateGroups_Magic_TemplateGroupsFunctionOverrides" Member="Magic_TemplateGroups" ThisKey="MagicTemplateGroup_ID" OtherKey="MagicTemplateGroupID" Type="Magic_TemplateGroups" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_TemplateLayouts" Member="Magic_TemplateLayouts">
+    <Type Name="Magic_TemplateLayouts">
+      <Column Name="MagicTemplateLayoutID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Layout" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Magic_TemplateLayouts_Magic_Templates" Member="Magic_Templates" ThisKey="MagicTemplateLayoutID" OtherKey="MagicTemplateLayout_ID" Type="Magic_Templates" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_TemplateTypes" Member="Magic_TemplateTypes">
+    <Type Name="Magic_TemplateTypes">
+      <Column Name="MagicTemplateTypeID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MagicTemplateType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MagicTemplateGridAttribute" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Magic_TemplateTypes_Magic_Templates" Member="Magic_Templates" ThisKey="MagicTemplateTypeID" OtherKey="MagicTemplateType_ID" Type="Magic_Templates" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Magic_ColumnGridName" Member="v_Magic_ColumnGridName">
+    <Type Name="v_Magic_ColumnGridName">
+      <Column Name="MagicGridName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MagicGridID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ColumnName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="MagicColumnID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Magic_Mmb_MenuFunctions" Member="v_Magic_Mmb_MenuFunctions">
+    <Type Name="v_Magic_Mmb_MenuFunctions">
+      <Column Name="MenuID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Module_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MenuIsParent" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MenuParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MenuLabel" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MenuOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MenuImg" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FunctionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Magic_Mmb_UserModulesRights" Member="v_Magic_Mmb_UserModulesRights">
+    <Type Name="v_Magic_Mmb_UserModulesRights">
+      <Column Name="User_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleImg" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProfileExecRightsC" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileUpdateRightsC" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileDeleteRightsC" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileExportRightsC" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Magic_Mmb_UserPreferredFunctions" Member="v_Magic_Mmb_UserPreferredFunctions">
+    <Type Name="v_Magic_Mmb_UserPreferredFunctions">
+      <Column Name="User_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FunctionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FunctionName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FunctionBaseUrl" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="FunctionQsParameters" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="MenuImg" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Magic_Mmb_UsersProfiles" Member="v_Magic_Mmb_UsersProfiles">
+    <Type Name="v_Magic_Mmb_UsersProfiles">
+      <Column Name="Checked" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(320) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_FileTypeUpload" Member="Magic_FileTypeUpload">
+    <Type Name="Magic_FileTypeUpload">
+      <Column Name="MagicFileTypeUploadID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MagicUploadExtensions" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="AdminAreaSavePath" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ApplicationSavePath" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Magic_Functions_Templates" Member="v_Magic_Functions_Templates">
+    <Type Name="v_Magic_Functions_Templates">
+      <Column Name="FunctionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FunctionBaseUrl" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="FunctionQsParameters" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FunctionName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MagicTemplateType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MagicTemplateName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MagicTemplateScript" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MagicTemplateID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Layout" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ManualInsertion" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Magic_Mmb_UserFunctionRights" Member="v_Magic_Mmb_UserFunctionRights">
+    <Type Name="v_Magic_Mmb_UserFunctionRights">
+      <Column Name="User_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleImg" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProfileExecRightsC" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileUpdateRightsC" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileDeleteRightsC" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileExportRightsC" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MenuID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MenuIsParent" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MenuParentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MenuParentLabel" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MenuLabel" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MenuOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FunctionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FunctionName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FunctionJsScript" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="FunctionQsParameters" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FunctionDescription" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FunctionHelp" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ParentOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MenuSection" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FunctionBaseUrl" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MenuImg" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Preferred" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ModuleOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_ManagedCultures" Member="Magic_ManagedCultures">
+    <Type Name="Magic_ManagedCultures">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Magic_CultureID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Magic_Cultures_Magic_ManagedCultures" Member="Magic_Cultures" ThisKey="Magic_CultureID" OtherKey="Magic_CultureID" Type="Magic_Cultures" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Magic_FunctionLabels" Member="v_Magic_FunctionLabels">
+    <Type Name="v_Magic_FunctionLabels">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FunctionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FunctionName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FunctionDescription" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FunctionHelp" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FunctionCultureID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FunctionNameTrans" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="FunctionDescriptionTrans" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FunctionHelpTrans" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Tables" Member="Magic_Tables">
+    <Type Name="Magic_Tables">
+      <Column Name="TABLE_CATALOG" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="TABLE_NAME" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="TABLE_SCHEMA" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="TABLE_TYPE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="pagingcolumn" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="visibilityfield" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="MAIN_TABLE" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="DATA_TYPE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Checked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="GenerateFunction" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Calendar_Relations" Member="Magic_Calendar_Relations">
+    <Type Name="Magic_Calendar_Relations">
+      <Column Name="RelationsID" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Calendar_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserGroupVisibility_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AttendeeUser_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Magic_Mmb_UserGroupVisibility_Magic_Calendar_Relations" Member="Magic_Mmb_UserGroupVisibility" ThisKey="UserGroupVisibility_ID" OtherKey="ID" Type="Magic_Mmb_UserGroupVisibility" IsForeignKey="true" />
+      <Association Name="Magic_Mmb_Users_Magic_Calendar_Relations" Member="Magic_Mmb_Users" ThisKey="AttendeeUser_ID" OtherKey="UserID" Type="Magic_Mmb_Users" IsForeignKey="true" />
+      <Association Name="Magic_Calendar_Magic_Calendar_Relations" Member="Magic_Calendar" ThisKey="Calendar_ID" OtherKey="taskId" Type="Magic_Calendar" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Magic_CalendarHistory" Member="v_Magic_CalendarHistory">
+    <Type Name="v_Magic_CalendarHistory">
+      <Column Name="TipoEvento" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Task" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="DescrizioneTask" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Da" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="A" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AssegnatoA" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Mmb_UserGroupVisibility" Member="Magic_Mmb_UserGroupVisibility">
+    <Type Name="Magic_Mmb_UserGroupVisibility">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Codice" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Descrizione" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DataInserimento" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AssignedGroupCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ParentGroup_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Network_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BusinessObject_ID" Type="System.Int32" CanBeNull="true" />
+      <Column Name="BusinessObjectType" Type="System.String" CanBeNull="true" />
+      <Association Name="Magic_Mmb_UserGroupVisibility_Magic_Mmb_UserGroupVisibilityUsers" Member="Magic_Mmb_UserGroupVisibilityUsers" ThisKey="ID" OtherKey="UserGroupVisibility_ID" Type="Magic_Mmb_UserGroupVisibilityUsers" />
+      <Association Name="Magic_Mmb_UserGroupVisibility_Magic_Calendar_Relations" Member="Magic_Calendar_Relations" ThisKey="ID" OtherKey="UserGroupVisibility_ID" Type="Magic_Calendar_Relations" />
+      <Association Name="Magic_Mmb_UserGroupVisibility_Magic_Mmb_UserGroupVisibility" Member="Magic_Mmb_UserGroupVisibility2" ThisKey="ID" OtherKey="ParentGroup_ID" Type="Magic_Mmb_UserGroupVisibility" />
+      <Association Name="Magic_Mmb_UserGroupVisibility_Magic_Mmb_UserGroupVisibility" Member="Magic_Mmb_UserGroupVisibility1" ThisKey="ParentGroup_ID" OtherKey="ID" Type="Magic_Mmb_UserGroupVisibility" IsForeignKey="true" />
+      <Association Name="Magic_Mmb_UserGroupNetwork_Magic_Mmb_UserGroupVisibility" Member="Magic_Mmb_UserGroupNetwork" ThisKey="Network_ID" OtherKey="ID" Type="Magic_Mmb_UserGroupNetwork" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_BusinessObject" Member="Magic_BusinessObject">
+    <Type Name="Magic_BusinessObject" Id="ID1">
+      <Column Name="BusinessObject_ID" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="BusinessObjectType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BusinessObjectDescription" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Mmb_UserGroupNetwork" Member="Magic_Mmb_UserGroupNetwork">
+    <Type Name="Magic_Mmb_UserGroupNetwork">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="InsertionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BusinessObject_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BusinessObjectType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Magic_Mmb_UserGroupNetwork_Magic_Mmb_UserGroupVisibility" Member="Magic_Mmb_UserGroupVisibility" ThisKey="ID" OtherKey="Network_ID" Type="Magic_Mmb_UserGroupVisibility" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Calendar_TaskStatus" Member="Magic_Calendar_TaskStatus">
+    <Type Name="Magic_Calendar_TaskStatus">
+      <Column Name="taskStatusID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Color" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" CanBeNull="true" />
+      <Association Name="Magic_Calendar_TaskStatus_Magic_Calendar" Member="Magic_Calendar" ThisKey="taskStatusID" OtherKey="TaskStatusId" Type="Magic_Calendar" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_EntitiesVsbltyRules" Member="Magic_EntitiesVsbltyRules">
+    <Type Name="Magic_EntitiesVsbltyRules">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Magic_Entity" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Magic_VsbltyRule_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Magic_VsbltyRules_Magic_EntitiesVsbltyRules" Member="Magic_VsbltyRules" ThisKey="Magic_VsbltyRule_ID" OtherKey="ID" Type="Magic_VsbltyRules" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_FunctionsTemplates" Member="Magic_FunctionsTemplates">
+    <Type Name="Magic_FunctionsTemplates">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MagicFunction_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicTemplate_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicGrid_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ManualInsertion" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="HasOverrides" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Magic_Functions_Magic_FunctionsTemplates" Member="Magic_Functions" ThisKey="MagicFunction_ID" OtherKey="FunctionID" Type="Magic_Functions" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Magic_Templates_Magic_FunctionsTemplates" Member="Magic_Templates" ThisKey="MagicTemplate_ID" OtherKey="MagicTemplateID" Type="Magic_Templates" IsForeignKey="true" />
+      <Association Name="Magic_Grids_Magic_FunctionsTemplates" Member="Magic_Grids" ThisKey="MagicGrid_ID" OtherKey="MagicGridID" Type="Magic_Grids" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_GridsCmdLocations" Member="Magic_GridsCmdLocations">
+    <Type Name="Magic_GridsCmdLocations">
+      <Column Name="LocationID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LocationType" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Magic_GridsCmdLocations_Magic_GridsCommands" Member="Magic_GridsCommands" ThisKey="LocationID" OtherKey="Location_ID" Type="Magic_GridsCommands" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_DocumentRepositoryType" Member="Magic_DocumentRepositoryType">
+    <Type Name="Magic_DocumentRepositoryType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_VsbltyRules" Member="Magic_VsbltyRules">
+    <Type Name="Magic_VsbltyRules">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Magic_VsbltyRule" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="sqlcommForDropDownList" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="sqlcommCascDropDownList" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="isdefault" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Magic_VsbltyRules_Magic_EntitiesVsbltyRules" Member="Magic_EntitiesVsbltyRules" ThisKey="ID" OtherKey="Magic_VsbltyRule_ID" Type="Magic_EntitiesVsbltyRules" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Mmb_Users" Member="Magic_Mmb_Users">
+    <Type Name="Magic_Mmb_Users">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CreationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(320) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ApplicationName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(320) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PasswordQuestion" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PasswordAnswer" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="IsApproved" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastActivityDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastPasswordChangedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsOnline" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsLockedOut" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LastLockedOutDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FailedPasswordAttemptCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FailedPasswordAttemptWindowStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FailedPasswordAnswerAttemptCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FailedPasswordAnswerAttemptWindowStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="UserImg" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Magic_Mmb_Users_Magic_Mmb_UserGroupVisibilityUsers" Member="Magic_Mmb_UserGroupVisibilityUsers" ThisKey="UserID" OtherKey="User_ID" Type="Magic_Mmb_UserGroupVisibilityUsers" />
+      <Association Name="Magic_Mmb_Users_Magic_Mmb_UsersFunctionsOverrideRights" Member="Magic_Mmb_UsersFunctionsOverrideRights" ThisKey="UserID" OtherKey="User_ID" Type="Magic_Mmb_UsersFunctionsOverrideRights" />
+      <Association Name="Magic_Mmb_Users_Magic_Mmb_UsersPreferredFunctions" Member="Magic_Mmb_UsersPreferredFunctions" ThisKey="UserID" OtherKey="User_ID" Type="Magic_Mmb_UsersPreferredFunctions" />
+      <Association Name="Magic_Mmb_Users_Magic_Calendar_Relations" Member="Magic_Calendar_Relations" ThisKey="UserID" OtherKey="AttendeeUser_ID" Type="Magic_Calendar_Relations" />
+      <Association Name="Magic_Mmb_Users_Magic_Mmb_UsersProfiles" Member="Magic_Mmb_UsersProfiles" ThisKey="UserID" OtherKey="User_ID" Type="Magic_Mmb_UsersProfiles" />
+      <Association Name="Magic_Mmb_Users_Magic_Calendar_Notifications" Member="Magic_Calendar_Notifications" ThisKey="UserID" OtherKey="user_id" Type="Magic_Calendar_Notifications" />
+      <Association Name="Magic_Mmb_Users_Magic_Mmb_UsersExternalApiAuthorizations" Member="Magic_Mmb_UsersExternalApiAuthorizations" ThisKey="UserID" OtherKey="user_id" Type="Magic_Mmb_UsersExternalApiAuthorizations" />
+      <Association Name="Magic_Mmb_Users_Magic_DocumentFillSessions" Member="Magic_DocumentFillSessions" ThisKey="UserID" OtherKey="User_ID" Type="Magic_DocumentFillSessions" />
+      <Association Name="Magic_Mmb_Users_Magic_DashboardCharts" Member="Magic_DashboardCharts" ThisKey="UserID" OtherKey="User_ID" Type="Magic_DashboardCharts" />
+      <Association Name="Magic_Mmb_Users_Magic_Mmb_UsersOAuth" Member="Magic_Mmb_UsersOAuth" ThisKey="UserID" OtherKey="User_Id" Type="Magic_Mmb_UsersOAuth" />
+      <Association Name="Magic_Mmb_Users_Magic_Mmb_Users_Extensions" Member="Magic_Mmb_Users_Extensions" ThisKey="UserID" OtherKey="UserID" Type="Magic_Mmb_Users_Extensions" Cardinality="One" />
+      <Association Name="Magic_Mmb_Users_Magic_Calendar" Member="Magic_Calendar" ThisKey="UserID" OtherKey="creatorId" Type="Magic_Calendar" />
+      <Association Name="Magic_Mmb_Users_Magic_Calendar1" Member="Magic_Calendar1" ThisKey="UserID" OtherKey="ownerId" Type="Magic_Calendar" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_ColumnsFunctionOverrides" Member="Magic_ColumnsFunctionOverrides">
+    <Type Name="Magic_ColumnsFunctionOverrides">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Column_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Function_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="isVisible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isFilterable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isSortable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isEditable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Magic_Columns_Magic_ColumnsFunctionOverrides" Member="Magic_Columns" ThisKey="Column_ID" OtherKey="MagicColumnID" Type="Magic_Columns" IsForeignKey="true" />
+      <Association Name="Magic_Functions_Magic_ColumnsFunctionOverrides" Member="Magic_Functions" ThisKey="Function_ID" OtherKey="FunctionID" Type="Magic_Functions" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_AppLayersTypes" Member="Magic_AppLayersTypes">
+    <Type Name="Magic_AppLayersTypes">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="Magic_AppLayersTypes_Magic_ApplicationLayers" Member="Magic_ApplicationLayers" ThisKey="ID" OtherKey="LayerType_ID" Type="Magic_ApplicationLayers" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_TemplateDetails" Member="Magic_TemplateDetails">
+    <Type Name="Magic_TemplateDetails">
+      <Column Name="MagicTemplateDetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MagicTemplate_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MagicTemplateGroup_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrdinalPosition" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MagicDataRole_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicNullOptionLabel" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MagicDataSourceValueField" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MagicDataSourceTextField" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MagicDataSource" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MagicDataSourceType_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicDataSourceSchema" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Detailisvisible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DetailInheritsFromColumn_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DetailonchangeFunctionName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DetailDOMID" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DetailInheritsFromGroup_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SearchGrid_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SearchGridDescColumn_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CascadeColumn_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CascadeFilterCol_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Magic_TemplateDetails_Magic_TemplateDetailsFunctionOverrides" Member="Magic_TemplateDetailsFunctionOverrides" ThisKey="MagicTemplateDetailID" OtherKey="MagicTemplateDetail_ID" Type="Magic_TemplateDetailsFunctionOverrides" />
+      <Association Name="Magic_TemplateDataRoles_Magic_TemplateDetails" Member="Magic_TemplateDataRoles" ThisKey="MagicDataRole_ID" OtherKey="MagicTemplateDataRoleID" Type="Magic_TemplateDataRoles" IsForeignKey="true" />
+      <Association Name="Magic_Columns_Magic_TemplateDetails" Member="Magic_Columns" ThisKey="DetailInheritsFromColumn_ID" OtherKey="MagicColumnID" Type="Magic_Columns" IsForeignKey="true" />
+      <Association Name="Magic_Columns_Magic_TemplateDetails1" Member="Magic_Columns1" ThisKey="SearchGridDescColumn_ID" OtherKey="MagicColumnID" Type="Magic_Columns" IsForeignKey="true" />
+      <Association Name="Magic_Columns_Magic_TemplateDetails2" Member="Magic_Columns2" ThisKey="CascadeColumn_ID" OtherKey="MagicColumnID" Type="Magic_Columns" IsForeignKey="true" />
+      <Association Name="Magic_Columns_Magic_TemplateDetails3" Member="Magic_Columns3" ThisKey="CascadeFilterCol_ID" OtherKey="MagicColumnID" Type="Magic_Columns" IsForeignKey="true" />
+      <Association Name="Magic_Templates_Magic_TemplateDetails" Member="Magic_Templates" ThisKey="MagicTemplate_ID" OtherKey="MagicTemplateID" Type="Magic_Templates" IsForeignKey="true" />
+      <Association Name="Magic_Grids_Magic_TemplateDetails" Member="Magic_Grids" ThisKey="SearchGrid_ID" OtherKey="MagicGridID" Type="Magic_Grids" IsForeignKey="true" />
+      <Association Name="Magic_TemplateGroups_Magic_TemplateDetails" Member="Magic_TemplateGroups" ThisKey="MagicTemplateGroup_ID" OtherKey="MagicTemplateGroupID" Type="Magic_TemplateGroups" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Magic_TemplateGroups_Magic_TemplateDetails1" Member="Magic_TemplateGroups1" ThisKey="DetailInheritsFromGroup_ID" OtherKey="MagicTemplateGroupID" Type="Magic_TemplateGroups" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_FunctionTrees" Member="Magic_FunctionTrees">
+    <Type Name="Magic_FunctionTrees">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MagicTree_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MagicFunction_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Magic_Trees_Magic_FunctionTrees" Member="Magic_Trees" ThisKey="MagicTree_ID" OtherKey="ID" Type="Magic_Trees" IsForeignKey="true" />
+      <Association Name="Magic_Functions_Magic_FunctionTrees" Member="Magic_Functions" ThisKey="MagicFunction_ID" OtherKey="FunctionID" Type="Magic_Functions" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Trees" Member="Magic_Trees">
+    <Type Name="Magic_Trees">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MagicTreeName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MagicTreeDescription" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="StartExpanded" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TreeContainerCssClass" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="MagicDataSource_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NodesItemTemplate" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DraggableNodes" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="OnDragStartJSFunction" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OnDragEndJSFunction" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OnSelectNodeJSFunction" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="InsertionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreationUser_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdateUser_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromTable" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Magic_Trees_Magic_FunctionTrees" Member="Magic_FunctionTrees" ThisKey="ID" OtherKey="MagicTree_ID" Type="Magic_FunctionTrees" />
+      <Association Name="Magic_DataSource_Magic_Trees" Member="Magic_DataSource" ThisKey="MagicDataSource_ID" OtherKey="MagicDataSourceID" Type="Magic_DataSource" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_TemplateGrpGridRelType" Member="Magic_TemplateGrpGridRelType">
+    <Type Name="Magic_TemplateGrpGridRelType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="Magic_TemplateGrpGridRelType_Magic_TemplateGroups" Member="Magic_TemplateGroups" ThisKey="ID" OtherKey="BindedGridRelType_ID" Type="Magic_TemplateGroups" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_CalendarLocations" Member="Magic_CalendarLocations">
+    <Type Name="Magic_CalendarLocations">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Color" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Magic_CalendarLocations_Magic_Calendar" Member="Magic_Calendar" ThisKey="ID" OtherKey="location_ID" Type="Magic_Calendar" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_GridsCmdDataFormatType" Member="Magic_GridsCmdDataFormatType">
+    <Type Name="Magic_GridsCmdDataFormatType">
+      <Column Name="FormatID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FormatType" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Magic_GridsCmdDataFormatType_Magic_GridsCommands" Member="Magic_GridsCommands" ThisKey="FormatID" OtherKey="DataFormatType_ID" Type="Magic_GridsCommands" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Mmb_Modules" Member="Magic_Mmb_Modules">
+    <Type Name="Magic_Mmb_Modules">
+      <Column Name="ModuleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Module_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModuleName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleImg" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModuleOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="MenuLoaderSP" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ProfilationType_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SystemModule" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Magic_Mmb_Modules_Magic_Mmb_UsersProfiles" Member="Magic_Mmb_UsersProfiles" ThisKey="ModuleID" OtherKey="DefaultModule_ID" Type="Magic_Mmb_UsersProfiles" />
+      <Association Name="Magic_Mmb_Modules_Magic_Mmb_ProfilesModules" Member="Magic_Mmb_ProfilesModules" ThisKey="ModuleID" OtherKey="Module_ID" Type="Magic_Mmb_ProfilesModules" />
+      <Association Name="Magic_Mmb_Modules_Magic_Mmb_Menus" Member="Magic_Mmb_Menus" ThisKey="ModuleID" OtherKey="Module_ID" Type="Magic_Mmb_Menus" />
+      <Association Name="Magic_Mmb_Modules_Magic_Mmb_ModuleLabel" Member="Magic_Mmb_ModuleLabels" ThisKey="ModuleID" OtherKey="Module_ID" Type="Magic_Mmb_ModuleLabel" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_CalendarSourceObjects" Member="Magic_CalendarSourceObjects">
+    <Type Name="Magic_CalendarSourceObjects">
+      <Column Name="SourceObject_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ObjectDescription" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FunctionIDQuery" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="UpdateQuery" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="DeleteQuery" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Association Name="Magic_CalendarSourceObjects_Magic_Calendar" Member="Magic_Calendar" ThisKey="SourceObject_ID" OtherKey="LinkedSourceObject_ID" Type="Magic_Calendar" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Mmb_UsersProfiles" Member="Magic_Mmb_UsersProfiles">
+    <Type Name="Magic_Mmb_UsersProfiles">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="User_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Profile_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DefaultModule_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProfileOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Magic_Mmb_Modules_Magic_Mmb_UsersProfiles" Member="Magic_Mmb_Modules" ThisKey="DefaultModule_ID" OtherKey="ModuleID" Type="Magic_Mmb_Modules" IsForeignKey="true" DeleteRule="SET NULL" />
+      <Association Name="Magic_Mmb_Profiles_Magic_Mmb_UsersProfiles" Member="Magic_Mmb_Profiles" ThisKey="Profile_ID" OtherKey="ProfileID" Type="Magic_Mmb_Profiles" IsForeignKey="true" />
+      <Association Name="Magic_Mmb_Users_Magic_Mmb_UsersProfiles" Member="Magic_Mmb_Users" ThisKey="User_ID" OtherKey="UserID" Type="Magic_Mmb_Users" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Magic_UserCrossProfiles" Member="v_Magic_UserCrossProfiles">
+    <Type Name="v_Magic_UserCrossProfiles">
+      <Column Name="viewID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ProfileID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileName" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ischecked" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DefaultModule_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProfileOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Magic_Mmb_Profiles_Modules_View" Member="v_Magic_Mmb_Profiles_Modules_View">
+    <Type Name="v_Magic_Mmb_Profiles_Modules_View">
+      <Column Name="Checked" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileName" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ModuleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InheritedRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ExecRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DeleteRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ExportRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="isDefaultModule" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Mmb_ProfilesModules" Member="Magic_Mmb_ProfilesModules">
+    <Type Name="Magic_Mmb_ProfilesModules">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Profile_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Module_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileInheritedRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileModuleExecRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileModuleUpdateRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileModuleDeleteRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileModuleExportRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="isDefaultModule" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Magic_Mmb_Modules_Magic_Mmb_ProfilesModules" Member="Magic_Mmb_Modules" ThisKey="Module_ID" OtherKey="ModuleID" Type="Magic_Mmb_Modules" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Magic_Mmb_Profiles_Magic_Mmb_ProfilesModules" Member="Magic_Mmb_Profiles" ThisKey="Profile_ID" OtherKey="ProfileID" Type="Magic_Mmb_Profiles" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_ApplicationLayers" Member="Magic_ApplicationLayers">
+    <Type Name="Magic_ApplicationLayers">
+      <Column Name="LayerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LayerCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LayerDescription" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="LayerType_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentLayer_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Magic_ApplicationLayers_Magic_Columns" Member="Magic_Columns" ThisKey="LayerID" OtherKey="Layer_ID" Type="Magic_Columns" />
+      <Association Name="Magic_ApplicationLayers_Magic_Functions" Member="Magic_Functions" ThisKey="LayerID" OtherKey="Layer_ID" Type="Magic_Functions" />
+      <Association Name="Magic_ApplicationLayers_Magic_DataSource" Member="Magic_DataSource" ThisKey="LayerID" OtherKey="Layer_ID" Type="Magic_DataSource" />
+      <Association Name="Magic_ApplicationLayers_Magic_Mmb_ModuleLabel" Member="Magic_Mmb_ModuleLabels" ThisKey="LayerID" OtherKey="Layer_ID" Type="Magic_Mmb_ModuleLabel" />
+      <Association Name="Magic_ApplicationLayers_Magic_Mmb_MenuLabel" Member="Magic_Mmb_MenuLabels" ThisKey="LayerID" OtherKey="Layer_ID" Type="Magic_Mmb_MenuLabel" />
+      <Association Name="Magic_ApplicationLayers_Magic_FunctionsLabel" Member="Magic_FunctionsLabels" ThisKey="LayerID" OtherKey="Layer_ID" Type="Magic_FunctionsLabel" />
+      <Association Name="Magic_AppLayersTypes_Magic_ApplicationLayers" Member="Magic_AppLayersTypes" ThisKey="LayerType_ID" OtherKey="ID" Type="Magic_AppLayersTypes" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Calendar_Notifications" Member="Magic_Calendar_Notifications">
+    <Type Name="Magic_Calendar_Notifications">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="calendar_task_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="notify_at" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="notify_via" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="notified" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="unit" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="value" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="send_attempts" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Magic_Mmb_Users_Magic_Calendar_Notifications" Member="Magic_Mmb_Users" ThisKey="user_id" OtherKey="UserID" Type="Magic_Mmb_Users" IsForeignKey="true" />
+      <Association Name="Magic_Calendar_Magic_Calendar_Notifications" Member="Magic_Calendar" ThisKey="calendar_task_id" OtherKey="taskId" Type="Magic_Calendar" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_TemplateScriptsBuffer" Member="Magic_TemplateScriptsBuffer">
+    <Type Name="Magic_TemplateScriptsBuffer">
+      <Column Name="ScriptID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Magic_Culture_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Magic_Script" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Magic_Template_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Magic_Grid_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Magic_Function_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Magic_Layer_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Magic_Cultures_Magic_TemplateScriptsBuffer" Member="Magic_Cultures" ThisKey="Magic_Culture_ID" OtherKey="Magic_CultureID" Type="Magic_Cultures" IsForeignKey="true" />
+      <Association Name="Magic_Functions_Magic_TemplateScriptsBuffer" Member="Magic_Functions" ThisKey="Magic_Function_ID" OtherKey="FunctionID" Type="Magic_Functions" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Magic_Templates_Magic_TemplateScriptsBuffer" Member="Magic_Templates" ThisKey="Magic_Template_ID" OtherKey="MagicTemplateID" Type="Magic_Templates" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Magic_Grids_Magic_TemplateScriptsBuffer" Member="Magic_Grids" ThisKey="Magic_Grid_ID" OtherKey="MagicGridID" Type="Magic_Grids" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_TemplateDataRoles" Member="Magic_TemplateDataRoles">
+    <Type Name="Magic_TemplateDataRoles">
+      <Column Name="MagicTemplateDataRoleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MagicTemplateDataRole" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Magic_TemplateDataRoles_Magic_TemplateDetailsFunctionOverrides" Member="Magic_TemplateDetailsFunctionOverrides" ThisKey="MagicTemplateDataRoleID" OtherKey="MagicTemplateDataRole_ID" Type="Magic_TemplateDetailsFunctionOverrides" />
+      <Association Name="Magic_TemplateDataRoles_Magic_TemplateDetails" Member="Magic_TemplateDetails" ThisKey="MagicTemplateDataRoleID" OtherKey="MagicDataRole_ID" Type="Magic_TemplateDetails" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Columns" Member="Magic_Columns">
+    <Type Name="Magic_Columns">
+      <Column Name="MagicColumnID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MagicGrid_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ColumnName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="DataType" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="StringLength" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NumericPrecision" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NumericPrecisionRadix" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DatetimePrecision" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Isprimary" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FK_Column" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="PK_Table" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="PK_Column" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Schema_editable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Schema_type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Schema_nullable" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Schema_validation" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Schema_defaultvalue" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Schema_fulldefinition" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Columns_visibleingrid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Columns_OrdinalPosition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Columns_template" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Columns_EditorFunction" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Columns_label" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Columns_width" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Schema_Numeric_min" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Schema_Numeric_max" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Schema_Numeric_step" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Schema_Format" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Schema_required" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Schema_attributes" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Layer_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LayerSourceEntityName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Columns_isFilterable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Columns_isSortable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ContainerColumn_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UploadAllowedFileExtensions" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Upload_SavePath" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Upload_Multi" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Magic_Columns_Magic_ColumnLabels" Member="Magic_ColumnLabels" ThisKey="MagicColumnID" OtherKey="Magic_Column_ID" Type="Magic_ColumnLabels" />
+      <Association Name="Magic_Columns_Magic_ColumnsFunctionOverrides" Member="Magic_ColumnsFunctionOverrides" ThisKey="MagicColumnID" OtherKey="Column_ID" Type="Magic_ColumnsFunctionOverrides" />
+      <Association Name="Magic_Columns_Magic_TemplateDetails" Member="Magic_TemplateDetails" ThisKey="MagicColumnID" OtherKey="DetailInheritsFromColumn_ID" Type="Magic_TemplateDetails" />
+      <Association Name="Magic_Columns_Magic_TemplateDetails1" Member="Magic_TemplateDetails1" ThisKey="MagicColumnID" OtherKey="SearchGridDescColumn_ID" Type="Magic_TemplateDetails" />
+      <Association Name="Magic_Columns_Magic_TemplateDetails2" Member="Magic_TemplateDetails2" ThisKey="MagicColumnID" OtherKey="CascadeColumn_ID" Type="Magic_TemplateDetails" />
+      <Association Name="Magic_Columns_Magic_TemplateDetails3" Member="Magic_TemplateDetails3" ThisKey="MagicColumnID" OtherKey="CascadeFilterCol_ID" Type="Magic_TemplateDetails" />
+      <Association Name="Magic_Columns_Magic_Columns" Member="Magic_Columns2" ThisKey="MagicColumnID" OtherKey="ContainerColumn_ID" Type="Magic_Columns" />
+      <Association Name="Magic_ApplicationLayers_Magic_Columns" Member="Magic_ApplicationLayers" ThisKey="Layer_ID" OtherKey="LayerID" Type="Magic_ApplicationLayers" IsForeignKey="true" />
+      <Association Name="Magic_Columns_Magic_Columns" Member="Magic_Columns1" ThisKey="ContainerColumn_ID" OtherKey="MagicColumnID" Type="Magic_Columns" IsForeignKey="true" />
+      <Association Name="Magic_Grids_Magic_Columns" Member="Magic_Grids" ThisKey="MagicGrid_ID" OtherKey="MagicGridID" Type="Magic_Grids" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Functions" Member="Magic_Functions">
+    <Type Name="Magic_Functions">
+      <Column Name="FunctionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FunctionName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FunctionBaseUrl" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="FunctionJsScript" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="FunctionQsParameters" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FunctionDescription" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FunctionHelp" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="isSystemFunction" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="FromClass" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="FromTable" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Layer_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="FunctionJSDeps" Type="System.String" CanBeNull="true" />
+      <Column Name="HelpGUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="Magic_Functions_Magic_FunctionsDataSource" Member="Magic_FunctionsDataSource" ThisKey="FunctionID" OtherKey="MagicFunction_ID" Type="Magic_FunctionsDataSource" />
+      <Association Name="Magic_Functions_Magic_Mmb_UsersFunctionsOverrideRights" Member="Magic_Mmb_UsersFunctionsOverrideRights" ThisKey="FunctionID" OtherKey="Function_ID" Type="Magic_Mmb_UsersFunctionsOverrideRights" />
+      <Association Name="Magic_Functions_Magic_Mmb_UsersPreferredFunctions" Member="Magic_Mmb_UsersPreferredFunctions" ThisKey="FunctionID" OtherKey="Function_ID" Type="Magic_Mmb_UsersPreferredFunctions" />
+      <Association Name="Magic_Functions_Magic_TemplateDetailsFunctionOverrides" Member="Magic_TemplateDetailsFunctionOverrides" ThisKey="FunctionID" OtherKey="Function_ID" Type="Magic_TemplateDetailsFunctionOverrides" />
+      <Association Name="Magic_Functions_Magic_TemplateGroupsFunctionOverrides" Member="Magic_TemplateGroupsFunctionOverrides" ThisKey="FunctionID" OtherKey="Function_ID" Type="Magic_TemplateGroupsFunctionOverrides" />
+      <Association Name="Magic_Functions_Magic_FunctionsTemplates" Member="Magic_FunctionsTemplates" ThisKey="FunctionID" OtherKey="MagicFunction_ID" Type="Magic_FunctionsTemplates" />
+      <Association Name="Magic_Functions_Magic_ColumnsFunctionOverrides" Member="Magic_ColumnsFunctionOverrides" ThisKey="FunctionID" OtherKey="Function_ID" Type="Magic_ColumnsFunctionOverrides" />
+      <Association Name="Magic_Functions_Magic_FunctionTrees" Member="Magic_FunctionTrees" ThisKey="FunctionID" OtherKey="MagicFunction_ID" Type="Magic_FunctionTrees" />
+      <Association Name="Magic_Functions_Magic_TemplateScriptsBuffer" Member="Magic_TemplateScriptsBuffer" ThisKey="FunctionID" OtherKey="Magic_Function_ID" Type="Magic_TemplateScriptsBuffer" />
+      <Association Name="Magic_Functions_Magic_Mmb_FunctionsMenus" Member="Magic_Mmb_FunctionsMenus" ThisKey="FunctionID" OtherKey="FunctionID" Type="Magic_Mmb_FunctionsMenus" />
+      <Association Name="Magic_Functions_Magic_GridsCommands" Member="Magic_GridsCommands" ThisKey="FunctionID" OtherKey="MagicFunction_ID" Type="Magic_GridsCommands" />
+      <Association Name="Magic_Functions_Magic_FunctionsGrids" Member="Magic_FunctionsGrids" ThisKey="FunctionID" OtherKey="MagicFunction_ID" Type="Magic_FunctionsGrids" />
+      <Association Name="Magic_Functions_Magic_FunctionsLabel" Member="Magic_FunctionsLabels" ThisKey="FunctionID" OtherKey="Function_ID" Type="Magic_FunctionsLabel" />
+      <Association Name="Magic_ApplicationLayers_Magic_Functions" Member="Magic_ApplicationLayers" ThisKey="Layer_ID" OtherKey="LayerID" Type="Magic_ApplicationLayers" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Templates" Member="Magic_Templates">
+    <Type Name="Magic_Templates">
+      <Column Name="MagicTemplateID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MagicTemplateName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="MagicTemplateScript" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MagicTemplateLayout_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicTemplateType_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BaseGrid_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BaseCUDTable" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FromClass" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="fromTable" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="isSystemTemplate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="GUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="Magic_Templates_Magic_TemplateGroupLabels" Member="Magic_TemplateGroupLabels" ThisKey="MagicTemplateID" OtherKey="MagicTemplate_ID" Type="Magic_TemplateGroupLabels" />
+      <Association Name="Magic_Templates_Magic_FunctionsTemplates" Member="Magic_FunctionsTemplates" ThisKey="MagicTemplateID" OtherKey="MagicTemplate_ID" Type="Magic_FunctionsTemplates" />
+      <Association Name="Magic_Templates_Magic_TemplateDetails" Member="Magic_TemplateDetails" ThisKey="MagicTemplateID" OtherKey="MagicTemplate_ID" Type="Magic_TemplateDetails" />
+      <Association Name="Magic_Templates_Magic_TemplateScriptsBuffer" Member="Magic_TemplateScriptsBuffer" ThisKey="MagicTemplateID" OtherKey="Magic_Template_ID" Type="Magic_TemplateScriptsBuffer" />
+      <Association Name="Magic_Templates_Magic_TemplateGroups" Member="Magic_TemplateGroups" ThisKey="MagicTemplateID" OtherKey="MagicTemplate_ID" Type="Magic_TemplateGroups" />
+      <Association Name="Magic_Templates_Magic_TemplateTabGroupLabels" Member="Magic_TemplateTabGroupLabels" ThisKey="MagicTemplateID" OtherKey="MagicTemplate_ID" Type="Magic_TemplateTabGroupLabels" />
+      <Association Name="Magic_TemplateLayouts_Magic_Templates" Member="Magic_TemplateLayouts" ThisKey="MagicTemplateLayout_ID" OtherKey="MagicTemplateLayoutID" Type="Magic_TemplateLayouts" IsForeignKey="true" />
+      <Association Name="Magic_TemplateTypes_Magic_Templates" Member="Magic_TemplateTypes" ThisKey="MagicTemplateType_ID" OtherKey="MagicTemplateTypeID" Type="Magic_TemplateTypes" IsForeignKey="true" />
+      <Association Name="Magic_Grids_Magic_Templates" Member="Magic_Grids" ThisKey="BaseGrid_ID" OtherKey="MagicGridID" Type="Magic_Grids" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Eve_Interval" Member="Magic_Eve_Intervals">
+    <Type Name="Magic_Eve_Interval">
+      <Column Name="IntervalID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IntervalinSeconds" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DayofWeek" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="Month" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Association Name="Magic_Eve_Interval_Magic_Eve_PlannedEvent" Member="Magic_Eve_PlannedEvents" ThisKey="IntervalID" OtherKey="IntevalID" Type="Magic_Eve_PlannedEvent" />
+    </Type>
+  </Table>
+  <Table Name="DEPLOY.Magic_Deploys" Member="Magic_Deploys">
+    <Type Name="Magic_Deploy">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SourceDBConnection" Type="System.String" DbType="VarChar(4000)" CanBeNull="true" />
+      <Column Name="DestinationDBConnection" Type="System.String" DbType="VarChar(4000)" CanBeNull="true" />
+      <Column Name="Destination_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CopyStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CopyEnd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CopyStatus" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Error" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MFVersion" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Magic_Deploy_Destinations_Magic_Deploy" Member="Magic_Deploy_Destinations" ThisKey="Destination_ID" OtherKey="ID" Type="Magic_Deploy_Destinations" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Eve_ActionType" Member="Magic_Eve_ActionTypes">
+    <Type Name="Magic_Eve_ActionType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Magic_Eve_ActionType_Magic_Eve_Event" Member="Magic_Eve_Events" ThisKey="ID" OtherKey="EventActionID" Type="Magic_Eve_Event" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Eve_Track" Member="Magic_Eve_Tracks">
+    <Type Name="Magic_Eve_Track">
+      <Column Name="TrackID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PlannedEventID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tsExecutionStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="tsExecutionEnd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AlertMessage" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DbMessage" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Magic_Eve_PlannedEvent_Magic_Eve_Track" Member="Magic_Eve_PlannedEvent" ThisKey="PlannedEventID" OtherKey="IDPlannedEvent" Type="Magic_Eve_PlannedEvent" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Eve_Event" Member="Magic_Eve_Events">
+    <Type Name="Magic_Eve_Event">
+      <Column Name="EventID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EventActionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EventScriptTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ScriptName" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="SystemMessageID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Magic_Eve_Event_Magic_Eve_PlannedEvent" Member="Magic_Eve_PlannedEvents" ThisKey="EventID" OtherKey="EventID" Type="Magic_Eve_PlannedEvent" />
+      <Association Name="Magic_Eve_ActionType_Magic_Eve_Event" Member="Magic_Eve_ActionType" ThisKey="EventActionID" OtherKey="ID" Type="Magic_Eve_ActionType" IsForeignKey="true" />
+      <Association Name="Magic_Eve_ScriptType_Magic_Eve_Event" Member="Magic_Eve_ScriptType" ThisKey="EventScriptTypeID" OtherKey="ID" Type="Magic_Eve_ScriptType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Eve_PlannedEvent" Member="Magic_Eve_PlannedEvents">
+    <Type Name="Magic_Eve_PlannedEvent">
+      <Column Name="IDPlannedEvent" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EventID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IntevalID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tsStartExecution" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="tsNextExecution" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="tsLastExecution" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastExecutionMessage" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Magic_Eve_PlannedEvent_Magic_Eve_Track" Member="Magic_Eve_Tracks" ThisKey="IDPlannedEvent" OtherKey="PlannedEventID" Type="Magic_Eve_Track" />
+      <Association Name="Magic_Eve_Event_Magic_Eve_PlannedEvent" Member="Magic_Eve_Event" ThisKey="EventID" OtherKey="EventID" Type="Magic_Eve_Event" IsForeignKey="true" />
+      <Association Name="Magic_Eve_Interval_Magic_Eve_PlannedEvent" Member="Magic_Eve_Interval" ThisKey="IntevalID" OtherKey="IntervalID" Type="Magic_Eve_Interval" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Eve_ScriptType" Member="Magic_Eve_ScriptTypes">
+    <Type Name="Magic_Eve_ScriptType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Magic_Eve_ScriptType_Magic_Eve_Event" Member="Magic_Eve_Events" ThisKey="ID" OtherKey="EventScriptTypeID" Type="Magic_Eve_Event" />
+    </Type>
+  </Table>
+  <Table Name="DEPLOY.Magic_Deploy_Destinations" Member="Magic_Deploy_Destinations">
+    <Type Name="Magic_Deploy_Destinations">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DestinationName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DestinationDBConnection" Type="System.String" DbType="VarChar(4000) NOT NULL" CanBeNull="false" />
+      <Column Name="DestinationMongoDBConnectionString" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="DestinationApplicationName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DestinationMongoDBName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="Magic_Deploy_Destinations_Magic_Deploy" Member="Magic_Deploy" ThisKey="ID" OtherKey="Destination_ID" Type="Magic_Deploy" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Mmb_Menus" Member="Magic_Mmb_Menus">
+    <Type Name="Magic_Mmb_Menus">
+      <Column Name="MenuID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Module_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MenuIsParent" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MenuParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MenuLabel" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MenuOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MenuImg" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="Magic_Mmb_Menus_Magic_Mmb_Menus" Member="Magic_Mmb_Menus2" ThisKey="MenuID" OtherKey="MenuParentID" Type="Magic_Mmb_Menus" />
+      <Association Name="Magic_Mmb_Menus_Magic_Mmb_FunctionsMenus" Member="Magic_Mmb_FunctionsMenus" ThisKey="MenuID" OtherKey="MenuID" Type="Magic_Mmb_FunctionsMenus" />
+      <Association Name="Magic_Mmb_Menus_Magic_Mmb_MenuLabel" Member="Magic_Mmb_MenuLabels" ThisKey="MenuID" OtherKey="Menu_ID" Type="Magic_Mmb_MenuLabel" />
+      <Association Name="Magic_Mmb_Menus_Magic_Mmb_Menus" Member="Magic_Mmb_Menus1" ThisKey="MenuParentID" OtherKey="MenuID" Type="Magic_Mmb_Menus" IsForeignKey="true" />
+      <Association Name="Magic_Mmb_Modules_Magic_Mmb_Menus" Member="Magic_Mmb_Modules" ThisKey="Module_ID" OtherKey="ModuleID" Type="Magic_Mmb_Modules" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Mmb_FunctionsMenus" Member="Magic_Mmb_FunctionsMenus">
+    <Type Name="Magic_Mmb_FunctionsMenus">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MenuID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FunctionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FunctionGUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="Magic_Functions_Magic_Mmb_FunctionsMenus" Member="Magic_Functions" ThisKey="FunctionID" OtherKey="FunctionID" Type="Magic_Functions" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Magic_Mmb_Menus_Magic_Mmb_FunctionsMenus" Member="Magic_Mmb_Menus" ThisKey="MenuID" OtherKey="MenuID" Type="Magic_Mmb_Menus" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Mmb_ProfilesGridExcptns" Member="Magic_Mmb_ProfilesGridExcptns">
+    <Type Name="Magic_Mmb_ProfilesGridExcptn">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Profile_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MagicGrid_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="isVisible" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileExecRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileUpdateRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileDeleteRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileExportRights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="GridGUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="Magic_Mmb_Profiles_Magic_Mmb_ProfilesGridExcptn" Member="Magic_Mmb_Profiles" ThisKey="Profile_ID" OtherKey="ProfileID" Type="Magic_Mmb_Profiles" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Magic_Grids_Magic_Mmb_ProfilesGridExcptn" Member="Magic_Grids" ThisKey="MagicGrid_ID" OtherKey="MagicGridID" Type="Magic_Grids" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Magic_Grids" Member="v_Magic_Grids">
+    <Type Name="v_Magic_Grids">
+      <Column Name="MagicGridID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MagicGridName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MagicGridEntity" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MagicGridModel" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MagicGridColumns" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MagicGridTransport" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MagicGridColumnsCommand" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Sortable" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Groupable" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Editable" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Exportable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Toolbar" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ObjRead" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ObjUpdate" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ObjCreate" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ObjDestroy" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ObjParameterMap" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ObjComplete" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Filter" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="OrderByFieldName" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="DetailTemplate" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="EditableTemplate" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DetailInitJSFunction" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="EditJSFunction" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="MagicDataSource_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomJSONParam" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="FromClass" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="FromTable" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="isSystemGrid" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EditTemplate_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NavigationTemplate_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EditFormColumnNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Selectable" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PageSize" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ShowHistory" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="QueryForActions" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MasterEntityName" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="DocRepositoryBOType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MagicGridExtension" Type="System.String" CanBeNull="true" />
+      <Column Name="HelpGUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_GridsCommands" Member="Magic_GridsCommands">
+    <Type Name="Magic_GridsCommands">
+      <Column Name="MagicCommandID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MagicFunction_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicGrid_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DomID" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Class" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Location_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ClickJSFunction" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="JSONPayload" Type="System.String" DbType="VarChar(4000)" CanBeNull="true" />
+      <Column Name="StoredProcedure" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="DataFormatType_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OrdinalPosition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CmdGroup_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Magic_Functions_Magic_GridsCommands" Member="Magic_Functions" ThisKey="MagicFunction_ID" OtherKey="FunctionID" Type="Magic_Functions" IsForeignKey="true" />
+      <Association Name="Magic_GridsCmdDataFormatType_Magic_GridsCommands" Member="Magic_GridsCmdDataFormatType" ThisKey="DataFormatType_ID" OtherKey="FormatID" Type="Magic_GridsCmdDataFormatType" IsForeignKey="true" />
+      <Association Name="Magic_GridsCmdLocations_Magic_GridsCommands" Member="Magic_GridsCmdLocations" ThisKey="Location_ID" OtherKey="LocationID" Type="Magic_GridsCmdLocations" IsForeignKey="true" />
+      <Association Name="Magic_GridsCmdGroups_Magic_GridsCommands" Member="Magic_GridsCmdGroups" ThisKey="CmdGroup_ID" OtherKey="MagicCmdGroupID" Type="Magic_GridsCmdGroups" IsForeignKey="true" />
+      <Association Name="Magic_Grids_Magic_GridsCommands" Member="Magic_Grids" ThisKey="MagicGrid_ID" OtherKey="MagicGridID" Type="Magic_Grids" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_GridsCmdGroups" Member="Magic_GridsCmdGroups">
+    <Type Name="Magic_GridsCmdGroups">
+      <Column Name="MagicCmdGroupID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="IconSpan" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="OrdinalPosition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicGrid_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Magic_GridsCmdGroups_Magic_GridsCommands" Member="Magic_GridsCommands" ThisKey="MagicCmdGroupID" OtherKey="CmdGroup_ID" Type="Magic_GridsCommands" />
+      <Association Name="Magic_Grids_Magic_GridsCmdGroups" Member="Magic_Grids" ThisKey="MagicGrid_ID" OtherKey="MagicGridID" Type="Magic_Grids" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Mmb_UsersExternalApiAuthorizations" Member="Magic_Mmb_UsersExternalApiAuthorizations">
+    <Type Name="Magic_Mmb_UsersExternalApiAuthorizations">
+      <Column Name="token" Type="System.String" DbType="VarChar(111) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="expires" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="redirect" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="scope" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="Magic_Mmb_Users_Magic_Mmb_UsersExternalApiAuthorizations" Member="Magic_Mmb_Users" ThisKey="user_id" OtherKey="UserID" Type="Magic_Mmb_Users" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Magic_UserGroupVisibility" Member="v_Magic_UserGroupVisibility">
+    <Type Name="v_Magic_UserGroupVisibility">
+      <Column Name="selected" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Codice" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Descrizione" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DataInserimento" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AssignedGroupCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ParentGroup_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Network_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BusinessObject_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BusinessObjectType_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Magic_Mmb_UserExtended" Member="v_Magic_Mmb_UserExtended">
+    <Type Name="v_Magic_Mmb_UserExtended">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CreationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(320) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ApplicationName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(320) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PasswordQuestion" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PasswordAnswer" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="IsApproved" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastActivityDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastPasswordChangedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsOnline" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsLockedOut" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LastLockedOutDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FailedPasswordAttemptCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FailedPasswordAttemptWindowStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FailedPasswordAnswerAttemptCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FailedPasswordAnswerAttemptWindowStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="UserImg" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Culture_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatorUserGroupVisibility_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserSymbolImg" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PersonalWebSite" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Mobile" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Telephone" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CompanyWebSite" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CompanyInfo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MailProtocol" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="MailServerURL" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="MailPort" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="MailSSL" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MailPassword" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="SMTPServerURL" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SMTPPort" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SMTPSSL" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SMTPPassword" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="GoogleCalendarEmail" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="UserDescription" Type="System.String" DbType="NVarChar(209) NOT NULL" CanBeNull="false" />
+      <Column Name="SMTPAccountName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="MailAccountName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Grids" Member="Magic_Grids">
+    <Type Name="Magic_Grids">
+      <Column Name="MagicGridID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MagicDataSource_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicGridName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MagicGridEntity" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MagicGridModel" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MagicGridColumns" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MagicGridTransport" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MagicGridColumnsCommand" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Selectable" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Sortable" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Groupable" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Editable" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Exportable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Toolbar" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="DetailTemplate" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="EditableTemplate" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DetailInitJSFunction" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="EditJSFunction" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="EditFormColumnNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromClass" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="FromTable" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="isSystemGrid" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PageSize" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="FullExport" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MagicGridExtension" Type="System.String" CanBeNull="true" />
+      <Column Name="HelpGUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="Magic_Grids_Magic_ColumnLabels" Member="Magic_ColumnLabels" ThisKey="MagicGridID" OtherKey="MagicGrid_ID" Type="Magic_ColumnLabels" />
+      <Association Name="Magic_Grids_Magic_FunctionsTemplates" Member="Magic_FunctionsTemplates" ThisKey="MagicGridID" OtherKey="MagicGrid_ID" Type="Magic_FunctionsTemplates" />
+      <Association Name="Magic_Grids_Magic_TemplateDetails" Member="Magic_TemplateDetails" ThisKey="MagicGridID" OtherKey="SearchGrid_ID" Type="Magic_TemplateDetails" />
+      <Association Name="Magic_Grids_Magic_TemplateScriptsBuffer" Member="Magic_TemplateScriptsBuffer" ThisKey="MagicGridID" OtherKey="Magic_Grid_ID" Type="Magic_TemplateScriptsBuffer" />
+      <Association Name="Magic_Grids_Magic_Columns" Member="Magic_Columns" ThisKey="MagicGridID" OtherKey="MagicGrid_ID" Type="Magic_Columns" />
+      <Association Name="Magic_Grids_Magic_Templates" Member="Magic_Templates" ThisKey="MagicGridID" OtherKey="BaseGrid_ID" Type="Magic_Templates" />
+      <Association Name="Magic_Grids_Magic_Mmb_ProfilesGridExcptn" Member="Magic_Mmb_ProfilesGridExcptn" ThisKey="MagicGridID" OtherKey="MagicGrid_ID" Type="Magic_Mmb_ProfilesGridExcptn" />
+      <Association Name="Magic_Grids_Magic_GridsCommands" Member="Magic_GridsCommands" ThisKey="MagicGridID" OtherKey="MagicGrid_ID" Type="Magic_GridsCommands" />
+      <Association Name="Magic_Grids_Magic_GridsCmdGroups" Member="Magic_GridsCmdGroups" ThisKey="MagicGridID" OtherKey="MagicGrid_ID" Type="Magic_GridsCmdGroups" />
+      <Association Name="Magic_Grids_Magic_DataSource" Member="Magic_DataSource1" ThisKey="MagicGridID" OtherKey="CoreGrid_ID" Type="Magic_DataSource" />
+      <Association Name="Magic_Grids_Magic_TemplateGroups" Member="Magic_TemplateGroups" ThisKey="MagicGridID" OtherKey="BindedGrid_ID" Type="Magic_TemplateGroups" />
+      <Association Name="Magic_Grids_Magic_FunctionsGrids" Member="Magic_FunctionsGrids" ThisKey="MagicGridID" OtherKey="MagicGrid_ID" Type="Magic_FunctionsGrids" />
+      <Association Name="Magic_DataSource_Magic_Grids" Member="Magic_DataSource" ThisKey="MagicDataSource_ID" OtherKey="MagicDataSourceID" Type="Magic_DataSource" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_DataSource" Member="Magic_DataSource">
+    <Type Name="Magic_DataSource">
+      <Column Name="MagicDataSourceID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ObjRead" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ObjUpdate" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ObjCreate" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ObjDestroy" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ObjParameterMap" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ObjComplete" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Filter" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="OrderByFieldName" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="CustomJSONParam" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Layer_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CoreGrid_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Magic_DataSource_Magic_FunctionsDataSource" Member="Magic_FunctionsDataSource" ThisKey="MagicDataSourceID" OtherKey="MagicDataSource_ID" Type="Magic_FunctionsDataSource" />
+      <Association Name="Magic_DataSource_Magic_Trees" Member="Magic_Trees" ThisKey="MagicDataSourceID" OtherKey="MagicDataSource_ID" Type="Magic_Trees" />
+      <Association Name="Magic_DataSource_Magic_Grids" Member="Magic_Grids" ThisKey="MagicDataSourceID" OtherKey="MagicDataSource_ID" Type="Magic_Grids" />
+      <Association Name="Magic_DataSource_Magic_TemplateGroups" Member="Magic_TemplateGroups" ThisKey="MagicDataSourceID" OtherKey="ExtMagicDataSource_ID" Type="Magic_TemplateGroups" />
+      <Association Name="Magic_DataSource_Magic_FunctionsGrids" Member="Magic_FunctionsGrids" ThisKey="MagicDataSourceID" OtherKey="MagicDataSource_ID" Type="Magic_FunctionsGrids" />
+      <Association Name="Magic_ApplicationLayers_Magic_DataSource" Member="Magic_ApplicationLayers" ThisKey="Layer_ID" OtherKey="LayerID" Type="Magic_ApplicationLayers" IsForeignKey="true" />
+      <Association Name="Magic_Grids_Magic_DataSource" Member="Magic_Grids1" ThisKey="CoreGrid_ID" OtherKey="MagicGridID" Type="Magic_Grids" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_TemplateTabGroups" Member="Magic_TemplateTabGroups">
+    <Type Name="Magic_TemplateTabGroups">
+      <Column Name="MagicTemplateTabGroupID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MagicTemplate_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicTemplateTabGroupLabel" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Color" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OrdinalPosition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="Magic_TemplateTabGroups_Magic_TemplateGroups" Member="Magic_TemplateGroups" ThisKey="MagicTemplateTabGroupID" OtherKey="MagicTemplateTabGroup_ID" Type="Magic_TemplateGroups" />
+      <Association Name="Magic_TemplateTabGroups_Magic_TemplateTabGroupLabels" Member="Magic_TemplateTabGroupLabels" ThisKey="MagicTemplateTabGroupID" OtherKey="MagicTemplateTabGroup_ID" Type="Magic_TemplateTabGroupLabels" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_TemplateGroups" Member="Magic_TemplateGroups">
+    <Type Name="Magic_TemplateGroups">
+      <Column Name="MagicTemplateGroupID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MagicTemplate_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicTemplateTabGroup_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicTemplateGroupLabel" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OrdinalPosition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicTemplateGroupContent_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicTemplateGroupClass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MagicTemplateGroupDOMID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Groupisvisible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BindedGrid_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BindedGridFilter" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="BindedGridRelType_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BindedGridHideFilterCol" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ExtMagicDataSource_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TemplateToAppendName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="IsVisibleInPopUp" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="GUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="Magic_TemplateGroups_Magic_TemplateGroupLabels" Member="Magic_TemplateGroupLabels" ThisKey="MagicTemplateGroupID" OtherKey="MagicTemplateGroup_ID" Type="Magic_TemplateGroupLabels" />
+      <Association Name="Magic_TemplateGroups_Magic_TemplateGroupsFunctionOverrides" Member="Magic_TemplateGroupsFunctionOverrides" ThisKey="MagicTemplateGroupID" OtherKey="MagicTemplateGroup_ID" Type="Magic_TemplateGroupsFunctionOverrides" />
+      <Association Name="Magic_TemplateGroups_Magic_TemplateDetails" Member="Magic_TemplateDetails" ThisKey="MagicTemplateGroupID" OtherKey="MagicTemplateGroup_ID" Type="Magic_TemplateDetails" />
+      <Association Name="Magic_TemplateGroups_Magic_TemplateDetails1" Member="Magic_TemplateDetails1" ThisKey="MagicTemplateGroupID" OtherKey="DetailInheritsFromGroup_ID" Type="Magic_TemplateDetails" />
+      <Association Name="Magic_DataSource_Magic_TemplateGroups" Member="Magic_DataSource" ThisKey="ExtMagicDataSource_ID" OtherKey="MagicDataSourceID" Type="Magic_DataSource" IsForeignKey="true" />
+      <Association Name="Magic_Grids_Magic_TemplateGroups" Member="Magic_Grids" ThisKey="BindedGrid_ID" OtherKey="MagicGridID" Type="Magic_Grids" IsForeignKey="true" />
+      <Association Name="Magic_TemplateGrpGridRelType_Magic_TemplateGroups" Member="Magic_TemplateGrpGridRelType" ThisKey="BindedGridRelType_ID" OtherKey="ID" Type="Magic_TemplateGrpGridRelType" IsForeignKey="true" />
+      <Association Name="Magic_Templates_Magic_TemplateGroups" Member="Magic_Templates" ThisKey="MagicTemplate_ID" OtherKey="MagicTemplateID" Type="Magic_Templates" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Magic_TemplateGroupContent_Magic_TemplateGroups" Member="Magic_TemplateGroupContent" ThisKey="MagicTemplateGroupContent_ID" OtherKey="MagicTemplateGroupContentID" Type="Magic_TemplateGroupContent" IsForeignKey="true" />
+      <Association Name="Magic_TemplateTabGroups_Magic_TemplateGroups" Member="Magic_TemplateTabGroups" ThisKey="MagicTemplateTabGroup_ID" OtherKey="MagicTemplateTabGroupID" Type="Magic_TemplateTabGroups" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Magic_TemplateDetails" Member="v_Magic_TemplateDetails">
+    <Type Name="v_Magic_TemplateDetails">
+      <Column Name="MagicTemplateDetailID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MagicTemplate_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MagicTemplateGroup_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrdinalPosition" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MagicDataRole_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicNullOptionLabel" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MagicDataSourceValueField" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MagicDataSourceTextField" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MagicDataSource" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MagicDataSourceType_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicDataSourceSchema" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Detailisvisible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DetailInheritsFromColumn_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DetailonchangeFunctionName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DetailDOMID" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DetailInheritsFromGroup_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SearchGrid_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SearchGridDescColumn_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CascadeColumn_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CascadeFilterCol_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicTemplateType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MagicTemplateGroupClass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MagicTemplateGroupLabel" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ColumnName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Columns_label" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MagicGridName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SearchGridName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SearchGridDescColName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="MagicTemplateTabGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicTemplateTabGroupLabel" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="TemplateTabGroupColor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TemplateTabGroupOrdinal" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_TemplateTabGroupLabels" Member="Magic_TemplateTabGroupLabels">
+    <Type Name="Magic_TemplateTabGroupLabels">
+      <Column Name="TemplateTabGroupLabelID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MagicTemplateTabGroup_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MagicTemplate_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MagicTemplateTabGroupLabel" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MagicCulture_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Magic_Cultures_Magic_TemplateTabGroupLabels" Member="Magic_Cultures" ThisKey="MagicCulture_ID" OtherKey="Magic_CultureID" Type="Magic_Cultures" IsForeignKey="true" />
+      <Association Name="Magic_TemplateTabGroups_Magic_TemplateTabGroupLabels" Member="Magic_TemplateTabGroups" ThisKey="MagicTemplateTabGroup_ID" OtherKey="MagicTemplateTabGroupID" Type="Magic_TemplateTabGroups" IsForeignKey="true" />
+      <Association Name="Magic_Templates_Magic_TemplateTabGroupLabels" Member="Magic_Templates" ThisKey="MagicTemplate_ID" OtherKey="MagicTemplateID" Type="Magic_Templates" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Magic_Grid_NavigationTabs" Member="v_Magic_Grid_NavigationTabs">
+    <Type Name="v_Magic_Grid_NavigationTabs">
+      <Column Name="MagicTemplateGroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MagicTemplate_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicTemplateGroupLabel" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OrdinalPosition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicTemplateGroupContent_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicTemplateGroupClass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MagicTemplateGroupDOMID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Groupisvisible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BindedGrid_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BindedGridFilter" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="BindedGridHideFilterCol" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BindedGridRelType_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtMagicDataSource_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TemplateToAppendName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MagicGridID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsVisibleInPopUp" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MagicTemplateTabGroup_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_DocumentFillSessions" Member="Magic_DocumentFillSessions">
+    <Type Name="Magic_DocumentFillSessions">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InputData" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="User_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Magic_DocumentFillSessions_Magic_DocumentFillFiles" Member="Magic_DocumentFillFiles" ThisKey="ID" OtherKey="DocumentFillSession_ID" Type="Magic_DocumentFillFiles" />
+      <Association Name="Magic_Mmb_Users_Magic_DocumentFillSessions" Member="Magic_Mmb_Users" ThisKey="User_ID" OtherKey="UserID" Type="Magic_Mmb_Users" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_HtmlTemplates" Member="Magic_HtmlTemplates">
+    <Type Name="Magic_HtmlTemplates">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HtmlUrl" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="HtmlContent" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Culture_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Magic_Cultures_Magic_HtmlTemplates" Member="Magic_Cultures" ThisKey="Culture_ID" OtherKey="Magic_CultureID" Type="Magic_Cultures" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Labels" Member="Magic_Labels">
+    <Type Name="Magic_Labels">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Label" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Culture_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Label_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Magic_Cultures_Magic_Labels" Member="Magic_Cultures" ThisKey="Culture_ID" OtherKey="Magic_CultureID" Type="Magic_Cultures" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_FunctionsGrids" Member="Magic_FunctionsGrids">
+    <Type Name="Magic_FunctionsGrids">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MagicFunction_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EditTemplateOverride" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DetailTemplateOverride" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="MagicGrid_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicDataSource_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sortable" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Groupable" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CommandColumn" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Toolbar" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="FunctionGridTitle" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="Editable" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="AppendToDiv" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="isRoot" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="OrdinalPosition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Magic_DataSource_Magic_FunctionsGrids" Member="Magic_DataSource" ThisKey="MagicDataSource_ID" OtherKey="MagicDataSourceID" Type="Magic_DataSource" IsForeignKey="true" />
+      <Association Name="Magic_Functions_Magic_FunctionsGrids" Member="Magic_Functions" ThisKey="MagicFunction_ID" OtherKey="FunctionID" Type="Magic_Functions" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Magic_Grids_Magic_FunctionsGrids" Member="Magic_Grids" ThisKey="MagicGrid_ID" OtherKey="MagicGridID" Type="Magic_Grids" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_DashboardCharts" Member="Magic_DashboardCharts">
+    <Type Name="Magic_DashboardCharts">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ChartType_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AggregationDim" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="AnalysisType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="GraphRowNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="IconClass" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="AggregationDimensionIsDate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="User_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PartialLabels" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="YAxisMeasurementUnit" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Function_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FunctionGUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="FunctionFilter" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ChartExtension" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Magic_Mmb_Users_Magic_DashboardCharts" Member="Magic_Mmb_Users" ThisKey="User_ID" OtherKey="UserID" Type="Magic_Mmb_Users" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Magic_Mmb_GridColumns" Member="v_Magic_Mmb_GridColumns">
+    <Type Name="v_Magic_Mmb_GridColumns">
+      <Column Name="MagicGridName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MagicGridEntity" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MagicGridColumnsCommand" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ColumnName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="DataType" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="StringLength" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NumericPrecision" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NumericPrecisionRadix" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DatetimePrecision" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Isprimary" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FK_Column" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="PK_Table" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="PK_Column" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Schema_editable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Schema_type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Schema_nullable" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Schema_validation" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Schema_defaultvalue" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Schema_fulldefinition" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Columns_visibleingrid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Columns_isFilterable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Columns_isSortable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Columns_template" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Columns_label" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Columns_width" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Schema_Numeric_min" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Schema_Numeric_max" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Schema_Numeric_step" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Schema_required" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Schema_Format" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Schema_attributes" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Columns_OrdinalPosition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Layer_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContainerColumn_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContainerColumnName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Columns_EditorFunction" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="UploadAllowedFileExtensions" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Upload_SavePath" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Upload_Multi" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MagicTemplateDataRole" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MagicDataSourceValueField" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MagicDataSourceTextField" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MagicDataSource" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MagicDataSourceType_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicDataSourceSchema" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SearchGridName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SearchGridColumnDesc" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Cascade_ColumnName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Cascade_FilterColumnName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Mmb_UsersOAuth" Member="Magic_Mmb_UsersOAuth">
+    <Type Name="Magic_Mmb_UsersOAuth">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="User_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProviderName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserSocialId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserSocialEmail" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Magic_Mmb_Users_Magic_Mmb_UsersOAuth" Member="Magic_Mmb_Users" ThisKey="User_Id" OtherKey="UserID" Type="Magic_Mmb_Users" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_DocumentFillFiles" Member="Magic_DocumentFillFiles">
+    <Type Name="Magic_DocumentFillFiles">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FilePath" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="DocumentFillSession_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Culture_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Magic_Cultures_Magic_DocumentFillFiles" Member="Magic_Cultures" ThisKey="Culture_ID" OtherKey="Magic_CultureID" Type="Magic_Cultures" IsForeignKey="true" />
+      <Association Name="Magic_DocumentFillSessions_Magic_DocumentFillFiles" Member="Magic_DocumentFillSessions" ThisKey="DocumentFillSession_ID" OtherKey="ID" Type="Magic_DocumentFillSessions" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Mmb_Users_Extensions" Member="Magic_Mmb_Users_Extensions">
+    <Type Name="Magic_Mmb_Users_Extensions">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Culture_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatorUserGroupVisibility_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserSymbolImg" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PersonalWebSite" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Mobile" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Telephone" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CompanyWebSite" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CompanyInfo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CssColor" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MailProtocol" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="MailPassword" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="MailServerURL" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="MailPort" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="MailSSL" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SMTPServerURL" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SMTPPassword" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="SMTPSSL" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SMTPPort" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="GoogleCalendarEmail" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="GoogleCalendarId" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="GoogleCalendarToken" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="DefaultUserGroupVisibility_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TwoFactorAuthCode" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="SMTPAccountName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="MailAccountName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="Magic_Mmb_Users_Magic_Mmb_Users_Extensions" Member="Magic_Mmb_Users" ThisKey="UserID" OtherKey="UserID" Type="Magic_Mmb_Users" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_DocumentRepository" Member="Magic_DocumentRepository">
+    <Type Name="Magic_DocumentRepository">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BusinessObjectType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BusinessObject_ID" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="DocumentJSONTags" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="DocumentFile" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DocumentType_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatorUser_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserGroupVisibility_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InsertionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Transmitted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TransmissionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TransmissionMode" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TransmissionReceiptReceived" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Invalid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DueDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsPublic" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Calendar" Member="Magic_Calendar">
+    <Type Name="Magic_Calendar">
+      <Column Name="taskId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="start" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="[end]" Member="end" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="startTimezone" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="endTimezone" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="location_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="recurrenceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="recurrenceRule" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="recurrenceException" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="creatorId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ownerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="isAllDay" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="taskType_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LinkedModelActivity_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="taskActivityCompleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LinkedModelWorkflow_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LinkedActualWorkflow_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BusinessObject_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BusinessObjectType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BusinessObjectDescription" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="TaskStatusId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LinkedSourceObject_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LinkedSourceObjectEntity_ID" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Editable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LinkedActualActivity_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Alert" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AlertSent" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AlertLastDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Virtual" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="percentComplete" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="longitude" Type="System.Decimal" DbType="Decimal(11,8)" CanBeNull="true" />
+      <Column Name="latitude" Type="System.Decimal" DbType="Decimal(10,8)" CanBeNull="true" />
+      <Column Name="GoogleEventId" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Association Name="Magic_Calendar_Magic_Calendar_Relations" Member="Magic_Calendar_Relations" ThisKey="taskId" OtherKey="Calendar_ID" Type="Magic_Calendar_Relations" />
+      <Association Name="Magic_Calendar_Magic_Calendar_Notifications" Member="Magic_Calendar_Notifications" ThisKey="taskId" OtherKey="calendar_task_id" Type="Magic_Calendar_Notifications" />
+      <Association Name="Magic_Calendar_Magic_Calendar_Google_UpdateQueue" Member="Magic_Calendar_Google_UpdateQueue" ThisKey="taskId" OtherKey="magic_calendar_id" Type="Magic_Calendar_Google_UpdateQueue" />
+      <Association Name="Magic_Calendar_TaskStatus_Magic_Calendar" Member="Magic_Calendar_TaskStatus" ThisKey="TaskStatusId" OtherKey="taskStatusID" Type="Magic_Calendar_TaskStatus" IsForeignKey="true" />
+      <Association Name="Magic_CalendarLocations_Magic_Calendar" Member="Magic_CalendarLocations" ThisKey="location_ID" OtherKey="ID" Type="Magic_CalendarLocations" IsForeignKey="true" />
+      <Association Name="Magic_CalendarSourceObjects_Magic_Calendar" Member="Magic_CalendarSourceObjects" ThisKey="LinkedSourceObject_ID" OtherKey="SourceObject_ID" Type="Magic_CalendarSourceObjects" IsForeignKey="true" />
+      <Association Name="Magic_Mmb_Users_Magic_Calendar" Member="Magic_Mmb_Users" ThisKey="creatorId" OtherKey="UserID" Type="Magic_Mmb_Users" IsForeignKey="true" />
+      <Association Name="Magic_Mmb_Users_Magic_Calendar1" Member="Magic_Mmb_Users1" ThisKey="ownerId" OtherKey="UserID" Type="Magic_Mmb_Users" IsForeignKey="true" />
+      <Association Name="Magic_Calendar_TaskTypes_Magic_Calendar" Member="Magic_Calendar_TaskTypes" ThisKey="taskType_ID" OtherKey="taskTypeID" Type="Magic_Calendar_TaskTypes" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Calendar_TaskTypes" Member="Magic_Calendar_TaskTypes">
+    <Type Name="Magic_Calendar_TaskTypes">
+      <Column Name="taskTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Color" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Magic_Calendar_TaskTypes_Magic_Calendar" Member="Magic_Calendar" ThisKey="taskTypeID" OtherKey="taskType_ID" Type="Magic_Calendar" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Calendar_Google_UpdateQueue" Member="Magic_Calendar_Google_UpdateQueue">
+    <Type Name="Magic_Calendar_Google_UpdateQueue">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="magic_calendar_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="got_pushed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="prevOwnerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="syncDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="creationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="is_in_process" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="google_event_id" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Association Name="Magic_Calendar_Magic_Calendar_Google_UpdateQueue" Member="Magic_Calendar" ThisKey="magic_calendar_id" OtherKey="taskId" Type="Magic_Calendar" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Magic_Grids" Member="v_Magic_Grids1">
+    <Type Name="v_Magic_Grid">
+      <Column Name="MagicGridID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MagicGridName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MagicGridEntity" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MagicGridModel" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MagicGridColumns" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MagicGridTransport" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MagicGridColumnsCommand" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Sortable" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Groupable" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Editable" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Exportable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Toolbar" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ObjRead" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ObjUpdate" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ObjCreate" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ObjDestroy" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ObjParameterMap" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ObjComplete" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Filter" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="OrderByFieldName" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="DetailTemplate" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="EditableTemplate" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DetailInitJSFunction" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="EditJSFunction" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="MagicDataSource_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomJSONParam" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="FromClass" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="FromTable" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="isSystemGrid" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EditTemplate_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NavigationTemplate_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EditFormColumnNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Selectable" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PageSize" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="HelpGUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ShowHistory" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="QueryForActions" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MasterEntityName" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="DocRepositoryBOType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MagicGridExtension" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Mmb_ModuleLabels" Member="Magic_Mmb_ModuleLabels">
+    <Type Name="Magic_Mmb_ModuleLabel">
+      <Column Name="ModuleLabel_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Module_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Magic_Culture_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleLabel" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Layer_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Magic_ApplicationLayers_Magic_Mmb_ModuleLabel" Member="Magic_ApplicationLayers" ThisKey="Layer_ID" OtherKey="LayerID" Type="Magic_ApplicationLayers" IsForeignKey="true" />
+      <Association Name="Magic_Cultures_Magic_Mmb_ModuleLabel" Member="Magic_Cultures" ThisKey="Magic_Culture_ID" OtherKey="Magic_CultureID" Type="Magic_Cultures" IsForeignKey="true" />
+      <Association Name="Magic_Mmb_Modules_Magic_Mmb_ModuleLabel" Member="Magic_Mmb_Modules" ThisKey="Module_ID" OtherKey="ModuleID" Type="Magic_Mmb_Modules" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_Mmb_MenuLabels" Member="Magic_Mmb_MenuLabels">
+    <Type Name="Magic_Mmb_MenuLabel">
+      <Column Name="MenuLabelID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Menu_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Magic_Culture_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MenuLabel" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Layer_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Magic_ApplicationLayers_Magic_Mmb_MenuLabel" Member="Magic_ApplicationLayers" ThisKey="Layer_ID" OtherKey="LayerID" Type="Magic_ApplicationLayers" IsForeignKey="true" />
+      <Association Name="Magic_Cultures_Magic_Mmb_MenuLabel" Member="Magic_Cultures" ThisKey="Magic_Culture_ID" OtherKey="Magic_CultureID" Type="Magic_Cultures" IsForeignKey="true" />
+      <Association Name="Magic_Mmb_Menus_Magic_Mmb_MenuLabel" Member="Magic_Mmb_Menus" ThisKey="Menu_ID" OtherKey="MenuID" Type="Magic_Mmb_Menus" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Magic_UIComponentsLabels" Member="v_Magic_UIComponentsLabels">
+    <Type Name="v_Magic_UIComponentsLabel">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ContainerType" Type="System.String" DbType="VarChar(17) NOT NULL" CanBeNull="false" />
+      <Column Name="Container" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="ObjectType" Type="System.String" DbType="VarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="defaultlabel" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Magic_CultureID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="translation" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Layer_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Label_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Magic_FunctionsLabels" Member="Magic_FunctionsLabels">
+    <Type Name="Magic_FunctionsLabel">
+      <Column Name="FunctionLabel_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Function_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Magic_Culture_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FunctionDescription" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="FunctionHelp" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FunctionName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Layer_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Magic_ApplicationLayers_Magic_FunctionsLabel" Member="Magic_ApplicationLayers" ThisKey="Layer_ID" OtherKey="LayerID" Type="Magic_ApplicationLayers" IsForeignKey="true" />
+      <Association Name="Magic_Cultures_Magic_FunctionsLabel" Member="Magic_Cultures" ThisKey="Magic_Culture_ID" OtherKey="Magic_CultureID" Type="Magic_Cultures" IsForeignKey="true" />
+      <Association Name="Magic_Functions_Magic_FunctionsLabel" Member="Magic_Functions" ThisKey="Function_ID" OtherKey="FunctionID" Type="Magic_Functions" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.BuildHelper" Method="BuildHelper" IsComposable="true">
+    <Parameter Name="entity" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="gencol" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="genpopup" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="gennavigation" Type="System.Boolean" DbType="Bit" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.Utils_ordinacolonne" Method="Utils_ordinacolonne">
+    <ElementType Name="Utils_ordinacolonneResult">
+      <Column Name="Columns_OrdinalPosition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MagicColumnID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MagicGrid_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ColumnName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="DataType" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="StringLength" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NumericPrecision" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NumericPrecisionRadix" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DatetimePrecision" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Isprimary" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FK_Column" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="PK_Table" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="PK_Column" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Schema_editable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Schema_type" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="Schema_nullable" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Schema_validation" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Schema_defaultvalue" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Schema_fulldefinition" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Columns_visibleingrid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Columns_OrdinalPosition1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Columns_template" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Columns_label" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Columns_width" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Schema_Numeric_min" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Schema_Numeric_max" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Schema_Numeric_step" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Schema_Format" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Schema_required" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Schema_attributes" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.BuildMagicGrids" Method="BuildMagicGrids">
+    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="VarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.BuildModelClassConstructor" Method="BuildModelClassConstructor">
+    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="VarChar(100)" />
+    <ElementType Name="BuildModelClassConstructorResult">
+      <Column Name="" Member="Column1" Type="System.String" DbType="NVarChar(279)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.BuildModelClassPoperties" Method="BuildModelClassPoperties">
+    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="VarChar(100)" />
+    <ElementType Name="BuildModelClassPopertiesResult">
+      <Column Name="" Member="Column1" Type="System.String" DbType="NVarChar(276)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.BuildUIModelView" Method="BuildUIModelView">
+    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="VarChar(100)" />
+    <ElementType Name="BuildUIModelViewResult">
+      <Column Name="COLUMN_NAME" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="typeval" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="nullable" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="requiredval" Type="System.String" DbType="NVarChar(180)" CanBeNull="true" />
+      <Column Name="template" Type="System.String" DbType="NVarChar(213)" CanBeNull="true" />
+      <Column Name="formatval" Type="System.String" DbType="VarChar(16)" CanBeNull="true" />
+      <Column Name="isprimary" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FK_Column" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="PK_Table" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="PK_Column" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Mmb_MenuFunctions_Save" Method="Mmb_MenuFunctions_Save">
+    <Parameter Name="JSON" Parameter="jSON" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ACTION" Parameter="aCTION" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="ModificationUserID" Parameter="modificationUserID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="IsTableFiltered" Parameter="isTableFiltered" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="Mmb_MenuFunctions_SaveResult">
+      <Column Name="insID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Mmb_Profiles_Modules_Save" Method="Mmb_Profiles_Modules_Save">
+    <Parameter Name="Json" Parameter="json" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="output" Type="System.String" DbType="VarChar(1000)" Direction="InOut" />
+    <Parameter Name="new_id" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Mmb_Profiles_Modules_View" Method="Mmb_Profiles_Modules_View">
+    <Parameter Name="ProfileID" Parameter="profileID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Mmb_Profiles_Modules_ViewResult">
+      <Column Name="Checked" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProfileID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProfileName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModuleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModuleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="InheritedRights" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ExecRights" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UpdateRights" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DeleteRights" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ExportRights" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Mmb_Profiles_Users_Save" Method="Mmb_Profiles_Users_Save">
+    <Parameter Name="Json" Parameter="json" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="output" Type="System.String" DbType="VarChar(1000)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ServerSideCheck" Method="ServerSideCheck">
+    <Parameter Name="entityname" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="cultureID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="JSON" Parameter="jSON" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="usergroupvisibilityID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ServerSideCheckResult">
+      <Column Name="" Member="Column1" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fnParseStringTSQL" Method="fnParseStringTSQL" IsComposable="true">
+    <Parameter Name="string" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="separator" Type="System.Char" DbType="NChar(1)" />
+    <Parameter Name="innerseparator" Type="System.Char" DbType="NChar(1)" />
+    <ElementType Name="fnParseStringTSQLResult">
+      <Column Name="string" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="string2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.USF_FILLER" Method="USF_FILLER" IsComposable="true">
+    <Parameter Name="valore" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="lunghezza" Type="System.Int32" DbType="Int" />
+    <Parameter Name="car" Type="System.Char" DbType="Char(1)" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.IsUserPreferred" Method="IsUserPreferred" IsComposable="true">
+    <Parameter Name="idUser" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idFunction" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.parseJSON" Method="parseJSON" IsComposable="true">
+    <Parameter Name="JSON" Parameter="jSON" Type="System.String" DbType="NVarChar(MAX)" />
+    <ElementType Name="parseJSONResult">
+      <Column Name="element_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="parent_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Object_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NAME" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="StringValue" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ValueType" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.USF_CHKNULL_BIT" Method="USF_CHKNULL_BIT" IsComposable="true">
+    <Parameter Name="valore" Type="System.String" DbType="VarChar(256)" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.USF_CHKNULL_STR" Method="USF_CHKNULL_STR" IsComposable="true">
+    <Parameter Name="valore" Type="System.String" DbType="VarChar(8000)" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.MagicServerSideCheck" Method="MagicServerSideCheck">
+    <Parameter Name="entityname" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="cultureID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="JSON" Parameter="jSON" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="usergroupvisibilityID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="MagicServerSideCheckResult">
+      <Column Name="" Member="Column1" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Magic_GetForeignKeyDependencies" Method="Magic_GetForeignKeyDependencies">
+    <Parameter Name="constraintname" Type="System.String" DbType="VarChar(200)" />
+    <ElementType Name="Magic_GetForeignKeyDependenciesResult">
+      <Column Name="Referencing_Table" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="FK_Column" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="PK_Table" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="PK_Column" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Constraint_Name" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Description_Column" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Mmb_Profiles_Users_View" Method="Mmb_Profiles_Users_View">
+    <Parameter Name="ProfileID" Parameter="profileID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Mmb_Profiles_Users_ViewResult">
+      <Column Name="Checked" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProfileID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProfileName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTables" Method="GetTables">
+    <Parameter Name="visibilityfied" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="GetTablesResult">
+      <Column Name="TABLE_CATALOG" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="TABLE_NAME" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="TABLE_SCHEMA" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="TABLE_TYPE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="pagingcolumn" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="visibilityfield" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="MAIN_TABLE" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="DATA_TYPE" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Magic_GetAllBusinessUnitsOwners" Method="Magic_GetAllBusinessUnitsOwners">
+    <Parameter Name="userid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BunitID" Parameter="bunitID" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="dbo.Magic_UpdateCalendarBODescription" Method="Magic_UpdateCalendarBODescription">
+    <Parameter Name="BoType" Parameter="boType" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="idUser" Type="System.Int32" DbType="Int" />
+    <Parameter Name="taskId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Magic_UpdateCalendarBODescriptionResult">
+      <Column Name="BusinessObjectDescription" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.RefreshMagicGrids" Method="RefreshMagicGrids">
+    <Parameter Name="GridName" Parameter="gridName" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Schema" Parameter="schema" Type="System.String" DbType="VarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ExecuteJSONCRUD" Method="ExecuteJSONCRUD">
+    <Parameter Name="JSON" Parameter="jSON" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ACTION" Parameter="aCTION" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="ModificationUserGroupID" Parameter="modificationUserGroupID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="IsTableFiltered" Parameter="isTableFiltered" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="ExecuteJSONCRUDResult">
+      <Column Name="modID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Magic_RefreshLayerOverrides" Method="Magic_RefreshLayerOverrides">
+    <Parameter Name="BaseGridID" Parameter="baseGridID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="targetEntity" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="targetLayerID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="targetSchema" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="useGenController" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.RefreshMagicTemplates" Method="RefreshMagicTemplates">
+    <Parameter Name="templateid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="templatelayoutid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="templatetypeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="refgridid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="schema" Type="System.String" DbType="VarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Magic_SqlDoc_sp" Method="Magic_SqlDoc_sp">
+    <Parameter Name="xmlinput" Type="System.Xml.Linq.XElement" DbType="Xml" />
+    <Parameter Name="action" Type="System.String" DbType="VarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Magic_v_SqlDoc" Method="Magic_v_SqlDoc" IsComposable="true">
+    <Parameter Name="schema" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="Magic_v_SqlDocResult">
+      <Column Name="schemaname" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="tablename" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="tabletype" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="creator" Type="System.Object" DbType="Variant" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="creationdate" Type="System.Object" DbType="Variant" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="value" Type="System.Object" DbType="Variant" CanBeNull="true" UpdateCheck="Never" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Magic_SqlDoc_Columns_sp" Method="Magic_SqlDoc_Columns_sp">
+    <Parameter Name="xmlinput" Type="System.Xml.Linq.XElement" DbType="Xml" />
+    <Parameter Name="action" Type="System.String" DbType="VarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Magic_v_SqlDoc_columns" Method="Magic_v_SqlDoc_columns" IsComposable="true">
+    <Parameter Name="schema" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="tablename" Type="System.String" DbType="VarChar(100)" />
+    <ElementType Name="Magic_v_SqlDoc_columnsResult">
+      <Column Name="schemaname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="tablename" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="objtype" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="objname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="value" Type="System.Object" DbType="Variant" CanBeNull="true" UpdateCheck="Never" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Magic_GetDbSchema" Method="Magic_GetDbSchema">
+    <ElementType Name="Magic_GetDbSchemaResult">
+      <Column Name="SCHEMA_NAME" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getManagedCultures" Method="getManagedCultures" IsComposable="true">
+    <Parameter Name="isSystem" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="getManagedCulturesResult">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ContainerType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Container" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ObjectType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ObjectID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="defaultlabel" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Magic_CultureID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="translation" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.BuildStandardPageDB" Method="BuildStandardPageDB">
+    <Parameter Name="GridName" Parameter="gridName" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="MainTable" Parameter="mainTable" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Schema" Parameter="schema" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="generatefunction" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="isSystem" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Magic_GetModMenuLabels" Method="Magic_GetModMenuLabels" IsComposable="true">
+    <Parameter Name="isSystem" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="Magic_GetModMenuLabelsResult">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ContainerType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Container" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ObjectType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ObjectID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="defaultlabel" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Magic_CultureID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="translation" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Layer_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Label_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getManagedCulturesFunctions" Method="getManagedCulturesFunctions" IsComposable="true">
+    <Parameter Name="isSystemFunction" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="getManagedCulturesFunctionsResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FunctionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FunctionName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FunctionDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FunctionHelp" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FunctionCultureID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FunctionNameTrans" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FunctionDescriptionTrans" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FunctionHelpTrans" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Layer_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Label_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

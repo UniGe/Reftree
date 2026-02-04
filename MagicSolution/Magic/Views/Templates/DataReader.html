@@ -1,0 +1,50 @@
+﻿<style>
+    .data-reader > .list > div {
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .data-reader .list input {
+        margin-bottom: 10px;
+    }
+
+    .data-reader .list .list {
+        padding: 5px;
+        border-bottom: 1px solid black;
+    }
+
+    .data-reader .list .list:hover,
+    .data-reader .list div.selected .list {
+        background-color: #dbdddd;
+    }
+
+    .reader-content .keep-ratio-wrapper {
+        width: 100%;
+        display: inline-block;
+        position: relative;
+    }
+
+    .reader-content .keep-ratio-wrapper:after {
+        padding-top: 56.25%;
+        /* 16:9 ratio */
+        display: block;
+        content: '';
+    }
+    .reader-content .keep-ratio {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+    }
+
+</style>
+
+<div class="row data-reader">
+    <div ng-class="'col-md-' + drc.listClass()" class="list">
+        <input type="text" ng-model="drc.filterValue" ng-change="drc.filterList()" ng-if="drc.filterKeys" class="form-control" placeholder="{{drc.localization.filter}}" />
+        <div ng-repeat="object in drc.getListData()" ng-bind-html="drc.getListHtml(object)" ng-click="drc.setCurrentObject(object)" class="{{drc.currentObject.$$hashKey == object.$$hashKey ? 'selected' : '' }}">
+        </div>
+    </div>
+    <div ng-class="'col-md-' + drc.editorClass()" ng-bind-html="drc.getContentHtml()" class="reader-content"></div>
+</div>

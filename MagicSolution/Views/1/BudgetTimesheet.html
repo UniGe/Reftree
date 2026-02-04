@@ -1,0 +1,14 @@
+﻿<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse1" class="collapsed">Press to hide/show form</a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse">
+            <magic-form model="cd.model" table-name="Form_Budget"></magic-form>
+        </div>
+    </div>
+</div>
+<magic-timesheet name="SpreadSheet_budget_timesheet" period="year" range="{data:{columns:[2,13],from:-999999999999999, to:999999999999999,message:'mustbeanumber'}}" projectid="cd.model.Project_ID">
+</magic-timesheet> 

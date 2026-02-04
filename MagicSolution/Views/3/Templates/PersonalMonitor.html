@@ -1,0 +1,16 @@
+﻿<div id="tabstrip" style='background-color: transparent; border: none;' ng-if="pmc.tabdata" kendo-tab-strip>
+    <ul>
+        <li ng-class="{'k-state-active': $first}" ng-repeat="tab in pmc.tabdata|groupBy:'PP_CLAPRO_ID'" ng-bind="tab[0].PP_CLAPRO_DESCRIPTION" ng-style="{'background-color': tab[0].PP_CLAPRO_COLOUR}"></li>
+    </ul>
+    <div class="tab tab_{{$index}}" ng-repeat="tab in pmc.tabdata|groupBy:'PP_CLAPRO_ID'" ng-style="{'background-color': tab[0].PP_CLAPRO_COLOUR}">
+        <div class="subarea" ng-repeat="subarea in tab|groupBy:'PP_PROTYP_ID'">
+            <span class="spans" ng-style="{'background-color': tab[0].PP_CLAPRO_COLOUR}" ng-bind="subarea[0].PP_PROTYP_DESCRIPTION"></span>
+            <select ng-model="pmc.PP_PROBUT_ID" kendo-drop-down-list k-options="pmc.dropDownOptions" k-data-source="btn" ng-repeat="btn in subarea|groupBy:'PP_PROPER_ID'"></select>
+        </div>
+    </div>
+</div>
+<form ng-show="!pmc.gridOptions.dataSource" ng-if="pmc.selected" name="form" ng-submit="pmc.submitForm(form)">
+    <magic-form table-name="{{pmc.selected.PP_PROBUT_ID}}" model="pmc.formData" options="{ itemsPerRow: 2 , source: 'core.PP_V_PROINP_INPUT_FIELDS' }"></magic-form>
+    <button class="btn btn-primary" ng-bind="pmc.lang.send"></button>
+</form>
+<div ng-if="pmc.gridOptions.dataSource" kendo-grid options="pmc.gridOptions"></div>

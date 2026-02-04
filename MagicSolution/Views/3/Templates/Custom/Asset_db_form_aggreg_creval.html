@@ -1,0 +1,221 @@
+﻿<style>
+
+#exTab3 .nav-pills > li > a {
+  border-radius: 4px 4px 0 0 ;
+}
+
+#exTab3 .tab-content {
+  color : white;
+  background-color: #428bca;
+  padding : 5px 15px;
+}
+
+</style>
+
+ 
+ 
+
+<div id="exTab3" class="container">
+	<ul class="nav nav-pills">
+		<li class="active">
+			<a href="#tab1default" data-toggle="tab">Anagrafica</a>
+		</li>
+		<li
+        ng-init="loadContent = {}"
+        class="dropdown">
+			<a href="#" data-toggle="dropdown">Identificativi catastali 
+				<span class="caret"></span>
+			</a>
+			<ul class="dropdown-menu" role="menu">
+				<li ng-click="loadContent.two = true">
+					<a href="#tab2default" data-toggle="tab">Urbano</a>
+				</li>
+				<li ng-click="loadContent.three = true">
+					<a href="#tab3default" data-toggle="tab">Terreni</a>
+				</li>
+			</ul>
+		</li>
+		<li ng-click="loadContent.four = true">
+			<a href="#tab4default" data-toggle="tab">Utilizzo</a>
+		</li>
+		<li ng-click="loadContent.five = true">
+			<a href="#tab5default" data-toggle="tab">CDC</a>
+		</li>
+		<li ng-click="loadContent.six = true">
+			<a href="#AggregSuperfici" data-toggle="tab">Superfici</a>
+		</li>
+	</ul>
+</div>
+<div class="panel-body">
+	<div class="tab-content">
+		<div class="tab-pane fade active in" id="tab1default">
+			<div class="row">
+				<div class="panel-group_r3" id="div-DG">
+					<div class="panel panel-primary_r3" id="primary-DG">
+						<div class="panel-heading_r3" id="heading-DG">
+							<h3 class="panel-title_r3" id="title-DG">
+								<a data-toggle="collapse" data-parent="#Group2" href="#collapse-DG">
+									<b>Dati generali</b>
+								</a>
+							</h3>
+						</div>
+						<div id="collapse-DG" class="panel-collapse in">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-12">
+										<magic-form-sp ng-if="t.selectedNode.TEMP_OBJ_TYPE=='AGG'" storedprocedure="config.USP_GET_FormData" isreadonly="true" formname="UNIGE_ASSET_FORM_AGGREG"  hidetabs="true" itemsperrow = 2></magic-form-sp>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br />
+				<div class="panel-group_r3" id="div-indiri">
+					<div class="panel panel-primary_r3" id="primary-indiri">
+						<div class="panel-heading_r3" id="heading-indiri">
+							<h3 class="panel-title_r3" id="title-indiri">
+								<a data-toggle="collapse" data-parent="#Group2" href="#collapse-indiri">
+									<b>Altri indirizzi</b>
+								</a>
+							</h3>
+						</div>
+						<div id="collapse-indiri" class="panel-collapse in">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-12"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane fade" id="tab2default">
+			<div ng-if="loadContent.two">
+				<div class="panel-group_r3" id="div-urbano">
+					<div class="panel panel-primary_r3" id="primary-urbano">
+						<div class="panel-heading_r3" id="heading-urbano">
+							<h3 class="panel-title_r3" id="title-urbano">
+								<a data-toggle="collapse" data-parent="#Group2" href="#collapse-urbano">
+									<b>Urbano</b>
+								</a>
+							</h3>
+						</div>
+						<div id="collapse-urbano" class="panel-collapse in">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-12">
+										<magic-grid gridname="AS_V_ASSET_idecat_sintesi" filterpk="AS_ASSET_ID"></magic-grid>
+										<br />
+										<magic-grid gridname="AS_VI_IDECAT_PER_ASSET_nceu" filterpk="AS_ASSET_ID"></magic-grid>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane fade" id="tab3default">
+			<div ng-if="loadContent.two">
+				<div class="panel-group_r3" id="div-terreni">
+					<div class="panel panel-primary_r3" id="primary-terreni">
+						<div class="panel-heading_r3" id="heading-terreni">
+							<h3 class="panel-title_r3" id="title-terreni">
+								<a data-toggle="collapse" data-parent="#Group2" href="#collapse-terreni">
+									<b>Terreni</b>
+								</a>
+							</h3>
+						</div>
+						<div id="collapse-terreni" class="panel-collapse in">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-12">
+										<magic-grid gridname="AS_VI_IDECAT_PER_ASSET_nct_GROUP" filterpk="AS_ASSET_ID"></magic-grid>
+										<br />
+										<magic-grid gridname="AS_VI_IDECAT_PER_ASSET_nct" filterpk="AS_ASSET_ID"></magic-grid>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane fade" id="tab4default">
+			<div ng-if="loadContent.four">
+				<div class="row">
+					<div class="col-md-12">
+						<magic-grid gridname="AS_CV_VI_ASSUTI_L" filterpk="AS_ASSUTI_AS_ASSET_ID"></magic-grid>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane fade" id="tab5default">
+			<div ng-if="loadContent.five">
+				<div class="row">
+					<div class="col-md-6">
+						<magic-grid gridname="DO_VI_ALL_DOCUME_SCH_GRP" filterpk="AS_ASSET_ID"></magic-grid>
+					</div>
+				</div>
+				<br/>
+				<div class="row">
+					<magic-grid gridname="DO_VI_ALL_DOCUME_SCH" filterpk="AS_ASSET_ID"></magic-grid>
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane fade" id="AggregSuperfici">
+			<div ng-if="loadContent.six">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel-group_r3" id="div-supe-tot">
+							<div class="panel panel-primary_r3" id="primary-supe-tot">
+								<div class="panel-heading_r3" id="heading-supe-tot">
+									<h3 class="panel-title_r3" id="title-supe-tot">
+										<a data-toggle="collapse" data-parent="#Group2" href="#collapse-supe-tot">
+											<b>Totale superfici</b>
+										</a>
+									</h3>
+								</div>
+								<div id="collapse-supe-tot" class="panel-collapse in">
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-md-12">
+												 <magic-grid-sp storedprocedure="core.AS_CV_SP_DIMENS_ALL" gridname={{t.selectedNode.TREE_ID}}  options="{resizable:true,sortable:true}"></magic-grid-sp>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br />
+						<div class="panel-group_r3" id="div-supe-anal">
+							<div class="panel panel-primary_r3" id="primary-supe-anal">
+								<div class="panel-heading_r3" id="heading-supe-anal">
+									<h3 class="panel-title_r3" id="title-supe-anal">
+										<a data-toggle="collapse" data-parent="#Group2" href="#collapse-supe-anal">
+											<b>Dettaglio superfici</b>
+										</a>
+									</h3>
+								</div>
+								<div id="collapse-supe-anal" class="panel-collapse in">
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-md-12">												
+                                                    <magic-grid-sp storedprocedure="core.AS_CV_SP_DIMENS_DETT"  options="{groupable:true,resizable:true,sortable:true }"></magic-grid-sp>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+ 
+
+ 

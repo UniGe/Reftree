@@ -1,0 +1,9 @@
+﻿<div class="row">
+    <ng-form>
+        <magic-form model="irs.formModel" id="reminderModel" table-name="V_T_InvoiceReminder"></magic-form>
+    </ng-form>
+</div>
+<div class="row" style="height:20px;"></div>
+<div class="row">
+    <magic-grid id="grid0" gridname="V_InvoiceRemindersSent" filter="irs.initialFilter" kendo-grid-instance="ir.kendoGridInstance"></magic-grid>
+</div>

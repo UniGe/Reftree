@@ -1,0 +1,44 @@
+﻿<div ng-switch="c.action">
+    <div ng-switch-default>
+        <div class="form-inline row">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label class="form-label-stripped" ng-bind="c.lang.project"></label>
+                </div>
+                <div class="form-group">
+                    <select class="form-control" ng-change="c.saveProjectInSession()"
+                            ng-model="c.checkInData.project"
+                            ng-options="d.PROGET_ID as d.PROGET_DESCRIZIONE for d in c.projectData | unique: 'PROGET_ID'"></select>
+
+                </div>
+                <div class="form-group" style="margin-left:10px;">
+                    <label class="form-label-stripped" ng-bind="c.lang.venue"></label>
+                </div>
+                <div class="form-group">
+                    <select class="form-control" ng-change="c.saveProjectInSession()"
+                            ng-model="c.checkInData.venue"
+                            ng-options="d.ANASED_ID as d.ANASED_DESCRIZIONE for d in c.projectData | filter: {PROGET_ID: c.checkInData.project} | unique: 'ANASED_ID'"></select>
+                </div>
+                <!--<div class="form-group" style="margin-left:10px;">
+                    <label class=" form-label-stripped" ng-bind="c.lang.room">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <select class="form-control" ng-change="c.saveProjectInSession()"
+                            ng-model="c.checkInData.room"
+                            ng-options="d.SPASED_ID as d.SPASED_DESCRIZIONE for d in c.projectData | filter: {ANASED_ID: c.checkInData.venue}"></select>
+                </div>-->
+                <div class="form-group" style="margin-left:20px;">
+                    <button class="btn btn-primary" ng-bind="c.lang.refresh" ng-click="c.refreshGrid()"></button>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group" style="float:right;">
+                    <span class="label label-info" ng-bind="c.lastUpdate"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div id="grid"></div>

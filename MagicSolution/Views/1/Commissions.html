@@ -1,0 +1,26 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-2  col-md-2 col-lg-2">
+        <label for='fromPicker'>{{ cd.translate("FromDate") }}</label>
+        <input style="width:100%" id="fromPicker" kendo-date-picker
+               k-ng-model="cd.options.mDateFrom"
+               k-options="{start: 'month',depth: 'month',value: cd.options.dateFrom() , format:'dd/MM/yyyy' }"
+               k-on-change="cd.options.onChange($event)" />
+    </div>
+    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+        <label for='toPicker'>{{ cd.translate("ToDate") }}</label>
+        <input style="width:100%" id="toPicker" kendo-date-picker
+               k-ng-model="cd.options.mDateTo"
+               k-options="{start: 'month',depth: 'month',value: cd.options.dateTo() , format:'dd/MM/yyyy' }"
+               k-on-change="cd.options.onChange($event)" />
+    </div>
+    <div class="col-xs-12 col-sm-2  col-md-2 col-lg-2">
+        <label for='AgentPicker'>{{ cd.translate("Agent") }}</label>
+        <input style="width:100% " id="agent" type="text"
+               ng-model="cd.options.agent"
+               ng-change="cd.options.onChange()" />
+    </div>
+</div>
+<div class="row" style="height:20px;"></div>
+<div class="row">
+    <magic-grid id="grid0" gridname="V_Commissions" filter="cd.options.initialFilter" kendo-grid-instance="cd.options.kendoGridInstance"></magic-grid>
+</div>

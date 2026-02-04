@@ -1,0 +1,75 @@
+﻿<style>
+    .card.card-body {
+        margin-bottom: 20px;
+    }
+
+    button.btn.btn-primary {
+        background-color: #4593E2;
+    }
+
+        button.btn.btn-primary:hover {
+            background-color: #2179D3;
+        }
+
+        button.btn.btn-primary.ng-binding:hover {
+            background-color: #2179D3;
+        }
+</style>
+<script>
+    $('.collapse').on('shown.bs.collapse', function (e) {
+        var $id = $(this).attr('id');
+        var $card = $(this).find('.card');
+
+        $(this).siblings().not('#gridProfessionHR').removeClass('in').addClass('collapse');
+        $('#buttonContainer').find('button').removeAttr('style');
+
+        $('html,body').animate({
+            scrollTop: $card.offset().top - 20
+        }, 500);
+
+        $('#buttonContainer').find('[aria-controls=' + $id + ']').css('background-color', '#536f9d');
+    });
+
+    $('.collapse').on('hide.bs.collapse', function (e) {
+        var $id = $(this).attr('id');
+        $('#buttonContainer').find('[aria-controls=' + $id + ']').removeAttr('style');
+    });
+</script>
+
+<div id="buttonContainer">
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#gridCompetences" aria-expanded="false" aria-controls="gridCompetences">
+        {{ cd.translate("Competences")}}
+    </button>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#gridKnowledge" aria-expanded="false" aria-controls="gridKnowledge">
+        {{ cd.translate("Knowledge")}}
+    </button>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#gridAbility" aria-expanded="false" aria-controls="gridAbility">
+        {{ cd.translate("Skills")}}
+    </button>
+</div>
+<div id="gridContainer">
+    <div class="in" id="gridProfessionHR">
+        <div class="card card-body">
+            <h3>{{ cd.translate("CompetenceStandard")}}</h3>
+            <magic-grid gridname="V_Profession_HR" filter="cd.options.initialFilter" kendo-grid-instance="cd.options.kendoGridInstance"></magic-grid>
+        </div>
+    </div>
+    <div class="collapse" id="gridCompetences">
+        <div class="card card-body">
+            <h3>{{ cd.translate("Competences")}}</h3>
+            <magic-grid gridname="Competence" filter="cd.options.initialFilter" kendo-grid-instance="cd.options.kendoGridInstance"></magic-grid>
+        </div>
+    </div>
+    <div class="collapse" id="gridKnowledge">
+        <div class="card card-body">
+            <h3>{{ cd.translate("Knowledge")}}</h3>
+            <magic-grid gridname="Knowledge" filter="cd.options.initialFilter" kendo-grid-instance="cd.options.kendoGridInstance"></magic-grid>
+        </div>
+    </div>
+    <div class="collapse" id="gridAbility">
+        <div class="card card-body">
+            <h3>{{ cd.translate("Skills")}}</h3>
+            <magic-grid gridname="Ability" filter="cd.options.initialFilter" kendo-grid-instance="cd.options.kendoGridInstance"></magic-grid>
+        </div>
+    </div>
+</div>

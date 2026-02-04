@@ -1,0 +1,614 @@
+﻿<div class="panel with-nav-tabs panel-default">
+    <div id="TabList" class="panel-heading">
+        <ul ng-init="" class="nav nav-tabs">
+            <!--<li class="active">
+                <a href="#tab1default" data-toggle="tab">Scheda immobile</a>
+            </li>-->
+            <!--Prova dropdown con tab-->
+            <li ng-init="loadContent = {}" class="dropdown">
+                <a href="#" data-toggle="dropdown">Dati generali
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="#tab1default" data-toggle="tab">Identificazione</a>
+                    </li>
+                    <li ng-click="loadContent.seven = true">
+                        <a href="#tab7default" data-toggle="tab">Dimensioni</a>
+                    </li>
+                    <li ng-click="loadContent.eight = true">
+                        <a href="#tab8default" data-toggle="tab">Proprietà</a>
+                    </li>
+                    <li ng-click="loadContent.nine = true">
+                        <a href="#tab9default" data-toggle="tab">Uso e disponibilità</a>
+                    </li>
+                    <li ng-click="loadContent.ten = true">
+                        <a href="#tab10default" data-toggle="tab">Referenti</a>
+                    </li>
+                </ul>
+            </li>
+            <li ng-init="loadContent = {}" class="dropdown">
+                <a href="#" data-toggle="dropdown">Catasto
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li ng-click="loadContent.two = true">
+                        <a href="#tab2default" data-toggle="tab">Urbano</a>
+                    </li>
+                    <li ng-click="loadContent.three = true">
+                        <a href="#tab3default" data-toggle="tab">Terreni</a>
+                    </li>
+                </ul>
+            </li>
+            <li ng-click="loadContent.five = true">
+                <a href="#tab5default" data-toggle="tab">Documenti</a>
+            </li>
+            <li ng-click="loadContent.eleven = true" ng-show="foc.options.fl_inter" id="pippo">
+                <a href="#tab11default" data-toggle="tab">Interoperabilità</a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="panel-body">
+        <div class="tab-content">
+            <!--RICONTROLLA-->
+            <div class="tab-pane fade active in" id="tab1default">
+                <div class="row">
+                    <div id="mf_carousel" style="height:400px;">
+                    </div>
+                </div>
+                <div class="row" style="height:5px;">
+                    <div class="col-md-6 add-to-pdf">
+                        <magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true" formname="MY_FORM"
+                            hidetabs="true" itemsperrow=2></magic-form-sp>
+                        <magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true" formname="MY_FORM1"
+                            hidetabs="true" itemsperrow=1></magic-form-sp>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-6" id="thebeautifulmap"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Nuovo tab+scheda Dimensioni -->
+            <div class="tab-pane fade" id="tab7default">
+                <div ng-if="loadContent.seven">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <magic-grid gridname="CEI_SCHEDIMM_DIMENS" filterpk="AS_ASSET_ID"></magic-grid>
+                        </div>
+                        <div class="col-md-6">
+                            <magic-chart chartguid="76C48C46-FB32-4079-8FEB-6F321F544EF5" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Nuovo tab+scheda Proprietà -->
+            <div class="tab-pane fade" id="tab8default">
+                <div ng-if="loadContent.eight">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <magic-grid gridname="AS_VI_IDEPRO_FOR_ASSET" filterpk="AS_ASSET_ID"></magic-grid>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Nuovo tab+scheda Uso e disponibiiltà -->
+            <div class="tab-pane fade" id="tab9default">
+                <div ng-if="loadContent.nine">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <magic-grid gridname="CEI_SCHEDIMM_ASSUTI" filterpk="AS_ASSUTI_AS_ASSET_ID"></magic-grid>
+                        </div>
+                        <div class="col-md-6">
+                            <magic-chart chartguid="76F79330-019A-4620-9657-909FB2A68BC5" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Nuovo tab+scheda Referenti -->
+            <div class="tab-pane fade" id="tab10default">
+                <div ng-if="loadContent.ten">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- <magic-grid gridname="AS_VI_ASSET_REFASS_MC" filterpk="AS_ASSET_ID"></magic-grid> -->
+                            <magic-grid gridname="CEI_SCHEDIMM_REFERE" filterpk="AS_ASSET_ID"></magic-grid>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="tab-pane fade" id="tab2default">
+                <div ng-if="loadContent.two">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!--<magic-grid gridname="AS_V_ASSET_idecat_sintesi" filterpk="AS_ASSET_ID"></magic-grid>-->
+                            <magic-grid gridname="AS_V_ASSET_IDECAT_F_GROUP" filterpk="AS_CATCAT_ID"></magic-grid>
+                        </div>
+                        <div class="col-md-6">
+                            <!--<magic-chart chartid="1016" />-->
+                            <magic-chart chartguid="57E76B1E-BE25-4073-BC85-E237D9A4A609" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <magic-grid gridname="AS_V_ASSET_IDECAT_F" filterpk="AS_ASSET_ID">></magic-grid>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tab3default">
+                <div ng-if="loadContent.three">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <magic-grid gridname="AS_V_ASSET_IDECAT_T_GROUP" filterpk="AS_ASSET_ID"></magic-grid>
+                            <!--<magic-grid gridname="AS_VI_IDECAT_PER_ASSET_nct_GROUP" filterpk="AS_ASSET_ID"></magic-grid>-->
+                        </div>
+                        <div class="col-md-6">
+                            <!--<magic-chart chartid="1019" />-->
+                            <magic-chart chartguid="B95DFE14-BACE-46F3-AFC5-B9BB593887D6" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <magic-grid gridname="AS_V_ASSET_IDECAT_T" filterpk="AS_ASSET_ID"></magic-grid>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tab5default">
+                <div ng-if="loadContent.five">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <magic-grid gridname="DO_VI_ALL_DOCUME_SCH_GRP" filterpk="as_asset_id"></magic-grid>
+                        </div>
+                        <div class="col-md-6">
+                            <magic-chart chartid="1021" />
+                        </div>
+                    </div>
+                    <h4 style="padding-top: 2em;">Seleziona fascicolo</h4>
+                    <select kendo-drop-down-list k-data-text-field="'descr'" k-data-value-field="'ID'"
+                        k-data-source='[{ "ID":0,"descr":"Tutti i documenti"},{ "ID":8,"descr":"Fascicolo fabbricato"},{"ID":9,"descr":"Scheda immobile"},{"ID":10,"descr":"Vincoli"}]'
+                        onchange="change(this)" id="Drop1" style="width: 30%"></select>
+                    <div class="row">
+                        <br />
+                        <magic-grid gridname="DO_VI_ALL_DOCUME_MONITOR_CEI" filterpk="AS_ASSET_ID"></magic-grid>
+                    </div>
+                    <div class="row">
+                        <br />
+                        <h4 style="padding-top: 2em;">Classi documenti mancanti per completare i fascicoli</h4>
+                        <magic-grid gridname="VI_DOSSIE_MISSING_CLADOC" filterpk="AS_ASSET_ID"></magic-grid>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tab11default">
+                <div ng-if="loadContent.eleven">
+                    <div class="row">
+                        <div class="col-md-12" id="linkgis"></div>
+                        <!-- <a id="linkWebgisEr" href="javascript:void(0);" onclick="openInNewTab(event);" class="webgis"
+                            target="_blank" title="Vai su webGIS">
+                            <img src="/Views/Images/webgis-er_box.png" alt=" WebGIS Patrimonio culturale"> - WebGIS
+                            Patrimonio culturale</div> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<style media="screen" type="text/css">
+    .carousel {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        height: 400px;
+        perspective: 500px;
+        transform-style: preserve-3d;
+        transform-origin: 0% 50%;
+    }
+
+    .carousel.carousel-slider {
+        top: 0;
+        left: 0;
+        height: 0;
+    }
+
+    .carousel.carousel-slider .carousel-fixed-item {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 20px;
+        z-index: 1;
+    }
+
+    .carousel.carousel-slider .carousel-fixed-item.with-indicators {
+        bottom: 68px;
+    }
+
+    .carousel.carousel-slider .carousel-item {
+        width: 100%;
+        height: 100%;
+        min-height: 400px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .carousel.carousel-slider .carousel-item h2 {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 32px;
+    }
+
+    .carousel.carousel-slider .carousel-item p {
+        font-size: 15px;
+    }
+
+    .carousel .carousel-item {
+        display: none;
+        width: 200px;
+        height: 400px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .carousel .carousel-item img {
+        width: 100%;
+    }
+
+    .carousel .indicators {
+        position: absolute;
+        text-align: center;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0;
+    }
+
+    .carousel .indicators .indicator-item {
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+        height: 8px;
+        width: 8px;
+        margin: 24px 4px;
+        background-color: rgba(255, 255, 255, 0.5);
+        transition: background-color .3s;
+        border-radius: 50%;
+    }
+
+    .carousel .indicators .indicator-item.active {
+        background-color: #fff;
+    }
+
+    .materialboxed {
+        display: block;
+        cursor: zoom-in;
+        position: relative;
+        transition: opacity .4s;
+    }
+
+    .materialboxed:hover {
+        will-change: left, top, width, height;
+    }
+
+    .materialboxed:hover:not(.active) {
+        opacity: .8;
+    }
+
+    .materialboxed.active {
+        cursor: zoom-out;
+    }
+
+    #materialbox-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #292929;
+        z-index: 1000;
+        will-change: opacity;
+    }
+
+    .materialbox-caption {
+        position: fixed;
+        display: none;
+        color: #fff;
+        line-height: 50px;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        padding: 0% 15%;
+        height: 50px;
+        z-index: 1000;
+        -webkit-font-smoothing: antialiased;
+    }
+</style>
+
+<script>
+
+
+    $("#wndmodalContainer").addClass("modal-wide");
+    var data = $("#appcontainer").data("customItemInfo");
+
+    console.log("passo");
+    var webGisHtml="";
+    //interoperabilità
+    $.ajax({ //#mfapireplaced
+        type: "POST",
+        url: "/api/MF_API/GetIdCeiVir",
+        data: JSON.stringify({ AS_ASSET_CODE: "" + data.AS_ASSET_CODE }),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        error: function (err) { console.log("ERROR", err) },
+    }).then(function (res1) {
+        var data = res1.Data[0].Table;
+        if (data.length) {            
+            for (var i = 0; i < data.length; i++) {
+                    webGisHtml += '<br><br><a id="linkWebgisEr" href="javascript:void(0);" onclick="openInNewTab(event,' + res1[i].ID_WEBGIS_ER + ');" class="webgis"' +
+                ' target="_blank" title="Vai su webGIS">' +
+                '<img src="/Views/Images/webgis-er_box.png" alt=" WebGIS Patrimonio culturale"> - WebGIS' +
+                ' Patrimonio culturale</div><br><br>';
+                }
+        }         
+    })
+
+    $.ajax({ //#mfapireplaced
+        type: "POST",
+        url: "/api/MF_API/GetIdCeiVir",
+        data: JSON.stringify({ AS_ASSET_CODE: "" + data.AS_ASSET_CODE }),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        error: function (err) { console.log("ERROR", err) },
+    }).then(function (res1) {
+        var data = res1.Data[0].Table;
+        if (data.length) {            
+            for (var p = 0; p < data.length; p++) {
+                    webGisHtml += '<br><br><a id="linkWebgisEr" href="javascript:void(0);" onclick="openWir(event,' + res1[p].ID_VIR + ');" class="webgis"' +
+                ' target="_blank" title="Vai su VIR">' +
+                '<img src="/Views/Images/vir_box.png" alt=" Vir Vincoli in rete"> - VIR ' +
+                ' Vincoli in rete</div><br><br>';
+                }
+        }         
+    })
+
+    $("#pippo").on("click", function (e) {
+        $("#linkWebgisEr").remove();
+        window.setTimeout(function () {
+            $("#linkgis").append(webGisHtml);
+        }, 500);
+    });
+
+    // function webFun(){
+
+    //     $("#linkgis").append(webGisHtml); 
+    // }
+    function openWir(e,id){
+        e.preventDefault();
+     //var publicVir="http://vincoliinrete.beniculturali.it/VincoliInRete/vir/bene/dettagliobene" + id;
+     window.open("http://vincoliinrete.beniculturali.it/VincoliInRete/vir/bene/dettagliobene" + id);
+    }
+
+    function openInNewTab(e, id) {
+        e.preventDefault();
+
+        var publicUrlWebgisEr = "https://www.patrimonioculturale-er.it/webgis/?id=" + id;
+        $.ajax({
+            type: "get",
+            url: "https://www.patrimonioculturale-er.it/webgis/getC.php",
+            crossDomain: true,
+            async: true,
+            xhrFields: {
+                withCredentials: true
+            }
+        }).done(function (response) {
+            if (response !== "0") {
+                window.open(publicUrlWebgisEr + "&s=" + response);
+            }
+            else {
+                window.open(publicUrlWebgisEr);
+            }
+        }).fail(function (status) {
+            window.open(publicUrlWebgisEr);
+        });
+
+    }
+
+    function setLinkWebgisEr() {
+        $("#linkWebgisEr").on("click", function (e) {
+            e.preventDefault();
+            var win = window.open('');
+            window.open = function (url) {
+                win.location = url;
+                win.focus();
+            }
+            //var publicUrlWebgisEr = $("#publicUrlWebgisEr").val();
+            var publicUrlWebgisEr = "https://www.patrimonioculturale-er.it/webgis/?id=" + data.as_asset_code;
+            $.ajax({
+                type: "get",
+                url: "https://www.patrimonioculturale-er.it/webgis/getC.php",
+                crossDomain: true,
+                async: true,
+                xhrFields: {
+                    withCredentials: true
+                }
+            }).done(function (response) {
+                if (response !== "0") {
+                    window.open(publicUrlWebgisEr + "&s=" + response);
+                }
+                else {
+                    window.open(publicUrlWebgisEr);
+                }
+            }).fail(function (status) {
+                window.open(publicUrlWebgisEr);
+            });
+        });
+    }
+
+    // $(function()
+    // {
+    //    setLinkWebgisEr();
+    // });
+	
+	debugger;
+
+
+    $("#thebeautifulmap").append(
+        '<div><iframe width="600" height="210" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCcOKGhVcgm8EIErOotXKvPaI41oHEb2HM&q=' +
+        data.AS_ASSET_ADDRESS +
+        '" ></iframe></div><div><iframe width="600" height="220" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/streetview?key=AIzaSyCcOKGhVcgm8EIErOotXKvPaI41oHEb2HM&location=' +
+        data.latitude + ',' + data.longitude + '&heading=200&pitch=0&fov=100" ></iframe></div>');
+    //carosello immagini...
+    var $content = $("#mf_carousel");
+    //must be on first tab...
+	
+	if (data.latitude==null && data.longitude==null)
+	$("#mf_carousel").remove();
+	
+    $.ajax({    //#mfapireplaced
+        type: "POST",
+        url: "/api/AS_V_ASSET_assetgroups/GetAsAssetImages",
+        data: JSON.stringify({ AS_ASSET_ID: "" + data.AS_ASSET_ID }),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        error: function (err) { console.log("ERROR while getting AsAssetImages", err) },
+    })
+    .then(function (res1) {
+	if (res1.Data.length) {
+        var data = res1.Data[0].Table;
+        
+            var docids = [];
+            $.each(data, function (index, value) {
+                if (docids.indexOf(value.DO_DOCUME_ID) == -1)
+                    docids.push(value.DO_DOCUME_ID)
+            });
+            $.get("/api/Documentale/GetDocumentPaths?documentIDs=" + docids.join())
+                .then(function (res) {
+                    if (res) {
+                        res = JSON.parse(res);
+                        if (res.length) {
+                            var imgs = [];
+                            $.each(data, function (j, v) {
+                                if (j < 10) {
+                                    $.each(res, function (k, val) {
+                                        if (val.DO_DOCUME_ID == v.DO_DOCUME_ID)
+                                            path = val.path;
+                                    });
+                                    imgs.push({
+                                        src: "/api/MAGIC_SAVEFILE/GetFile?path=" +
+                                            path + "\\" + JSON.parse(v.DO_DOCVER_LINK_FILE)[
+                                                0].name,
+                                        height: "350px"
+                                    });
+                                }
+                            });
+                            MaterializeAddCarouselTo$el($content, "asset-gallery", imgs);
+                        } else
+
+                            $content.html();
+
+                    }
+
+
+                });
+        } else
+            // remove crousel ...
+            $("#mf_carousel").remove();
+    });
+        
+    function MaterializeAddCarouselTo$el($el, carouselID, arrayOfImgObjects) {
+        $el.html(largeSpinnerHTML);
+        return $.get("/Views/3/Templates/Materialize-carousel.html")
+            .then(function (HTML) {
+                HTML = HTML.format(carouselID);
+                var itemsHTML = "",
+                    indicatorsHTML = "",
+                    style = "";
+                $.each(arrayOfImgObjects, function (k, v) {
+                    style = "";
+                    if (v.width != undefined) {
+                        style += 'width:' + v.width + ' !important;';
+                    }
+                    if (v.height != undefined) {
+                        style += 'height:' + v.height + ' !important';
+                    }
+                    itemsHTML += '<a class="carousel-item" href="' + v.src + '" target="_blank"><img src="' +
+                        v.src + '"></a>'
+                    //itemsHTML +=   '<a class="carousel-item" ><img class="materialboxed" src="' + v.src + '"></a>'
+                });
+
+                var $html = $(HTML);
+
+                $el.html($html);
+                $("#at123").append(itemsHTML);
+
+
+                //inizializzo il componente caricando prima il js
+
+                $.getScript('Views/3/Js/carousel.js', function () {
+                    $(document).ready(function () {
+                        $('.carousel').carousel({
+                            padding: 80,
+                            shift: 10
+                        });
+                    });
+                })
+
+
+
+            });
+    }
+</script>
+
+
+
+<script>
+    function change(e) {
+        var kgrid = $('div[gridname="DO_VI_ALL_DOCUME_MONITOR_CEI"]').data("kendoGrid");
+        var Option = $("#Drop1").find("option[selected*='selected']").val();
+        var FilterDef = data.AS_ASSET_ID;
+        var filter;
+        //var filterfield = JSON.parse('{"logic": "and", "filters" :[{"field":"DO_DOSSIE_ID","operator": "eq", "value": "' + Option + '" },{"field":"AS_ASSET_ID","operator": "eq", "value": "' + data.AS_ASSET_ID + '" }]}');
+        if (Option != 0)
+            filter = {
+                field: "DO_DOSSIE_ID",
+                operator: "eq",
+                value: Option,
+                type: "angulardrop"
+            };
+        else
+            filter = {
+                field: "AS_ASSET_ID",
+                operator: "eq",
+                value: FilterDef,
+                type: "angulardrop"
+            };
+        var currentfilter = kgrid.dataSource.filter();
+        currentfilter = combineDataSourceFilters(currentfilter, filter);
+        console.log(currentfilter);
+        kgrid.dataSource.filter(currentfilter);
+    }
+
+
+    // var data = $("#appcontainer").data("customItemInfo");
+    $('#LinkScheda').text(data.Denominazione_principale);
+    //Title and href scheda A 
+
+
+
+    //close all panel (button scheda a)
+    $('.closeall').click(function () {
+        $('.panel-collapse.in').collapse('hide');
+        $('.panel-collapsed.in').collapse('hide');
+
+    });
+
+    // open all panel (scheda a)
+    $('.openall').click(function () {
+        $('.panel-collapse:not(".in")').collapse('show');
+        $('.panel-collapsed:not(".in")').collapse('show');
+    });
+</script>

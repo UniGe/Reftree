@@ -1,0 +1,36 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+        <label for='toPicker'>{{ cd.translate("Year") }}</label>
+        <select kendo-drop-down-list="cd.options.yearDropDown"
+                k-data-source="cd.options.years"
+                k-data-text-field="'Year'"
+                k-data-value-field="'Year'"
+                style="width: 100%"></select>
+        <br /><br />
+
+        <label for='toPicker'>{{ cd.translate("Month") }}</label>
+        <select kendo-drop-down-list="cd.options.monthsDropDown"
+                k-data-source="cd.options.month"
+                k-data-text-field="'Description'"
+                k-data-value-field="'ID'"
+                style="width: 100%"></select>
+        <br /><br />
+        <label for='toPicker'>{{ cd.translate("ActivityGroup") }}</label>
+        <select kendo-drop-down-list="cd.options.actGroupDropDown"
+                k-data-source="cd.options.actGroup"
+                k-data-text-field="'Description'"
+                k-data-value-field="'ID'"
+                style="width: 100%"></select>
+        <br /><br /><br /><br />
+        <table>
+            <tr>
+                <td>
+                    <button style="margin-left:15px;" class="btn btn-primary" ng-click="cd.options.sendInvitation()">Invia mail per disponibilità </button>
+                </td>
+                <td>
+                    <button style="margin-left:15px;" class="btn btn-primary" ng-click="cd.options.sendCalendar()"> Invia calendari </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

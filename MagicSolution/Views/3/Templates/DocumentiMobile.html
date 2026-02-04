@@ -1,0 +1,14 @@
+﻿<div>
+    <div
+         ng-if="dm.shallLoadMap"
+         ng-show="dm.view == 'map'">
+        <asset-map model="dm.asset" onselect-asset="dm.setAsset(assets)" grid="dm.gridInstance"></asset-map>
+    </div>
+    <div
+         ng-show="dm.view == 'grid'">
+        <p style="text-align: right;">
+            <button style="padding: 5px 13px 5px; position: relative; z-index: 10; font-weight: bold;" class="k-button" ng-click="dm.showMap()">{{ dm.getObjectText('showMap') }}</button>
+        </p>
+        <div ng-if="!$.isEmptyObject(dm.gridObject)" kendo-grid="dm.gridInstance" k-options="dm.gridObject" gridname="{{ dm.gridObject.gridcode }}"></div>
+    </div>
+</div>

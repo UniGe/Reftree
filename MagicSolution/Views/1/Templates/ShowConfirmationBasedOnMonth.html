@@ -1,0 +1,23 @@
+﻿<div id="scc_wndmodalContainer" ng-init="scbom.showModal()" class="modal fade" aria-hidden="true" style="display: none;">
+
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div>
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<h4 class="modal-title">{{scbom.Title}}</h4>
+				</div>
+				<div id="qb_contentofmodal" class="modal-body">
+					<div class="row">
+						{{scbom.DescriptionText}}
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button id="qb_executesave" class="btn btn-primary" aria-label="save" ng-click="scbom.save()">
+						Salva
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

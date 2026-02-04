@@ -1,0 +1,231 @@
+<style>
+    .bim-control-buttons-title {
+        background-color: #0d6a92;
+        height: 18px;
+        margin-bottom: 2px;
+        text-align: center;
+    }
+
+    .span-title-bim {
+        /*display: inline-block;*/
+        margin: 10px 10px 0 0;
+        padding: 5px 10px;
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    #containerDwg {
+        width: 99%;
+        display: inline-flex;
+        margin: 0 auto;
+    }
+
+    #dwgContainer input[type="color"] {
+        max-width: 17px;
+        min-width: 17px;
+        min-height: 20px;
+        background-color: transparent;
+        margin-left: 5px;
+        margin-top: -3px;
+        border: none;
+        background: none;
+        border-radius: 10px;
+        padding: 0;
+    }
+
+    #dwgContainer table {
+       width:100%;
+        
+    }
+
+    #dwgContainer dxf-viewer {
+        display: table;
+        margin: 0 auto;
+    }
+
+    .tblInfo {
+        overflow: auto;
+        height: 50%;
+        max-height: 50%;
+    }
+
+        .tblInfo td {
+            /*border-style: solid;
+            border-width:1px;*/
+        }
+
+        .tdTblInfo {
+            text-align:center;
+
+        }
+
+    .divDxf {
+        
+       
+    }
+
+    #main_content {
+        height: 100%;
+        position: relative;
+    }
+
+    #containerMainDwg {
+        margin: 0 auto;
+        padding: 10px;
+        position: relative;
+        width: 60%;
+    }
+
+    .fileR3 {
+        /*display: block;
+        height: 600px;
+        max-height: 600px;*/
+    }
+
+</style>
+
+<div ng-if="false" id="tblContainer" class="rfdwg-container-tablet">
+    <div class="rfdwg-side-menu">
+        <div class="rfdwg-side-menu__nav">
+
+            <div class="rfdwg-side-menu__item panel">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <a id="menu-link-themati" data-toggle="collapse" data-parent="#rfdwg-leftnav" href="#themati" class="rfdwg-side-menu__section collapsed" aria-expanded="false">
+                            <div>
+                                <!--<svg class="gx-icon gx-side-menu__icon">
+                    <use xlink:href="/assets/common/2023030210/svg/icons-set/gx-icons-sprite.svg#clienti_icon"></use>
+                </svg>-->
+                                <span class="gx-copy-small">
+                                    tipsas
+                                </span>
+                            </div>
+                            <div>
+                                <!--<svg class="gx-icon gx-side-menu__toggleIcon">
+                    <use xlink:href="/assets/common/2023030210/svg/icons-set/gx-icons-sprite.svg#angle-right_icon"></use>
+                </svg>-->
+                            </div>
+                        </a>
+                    </div>
+                    <ul id="clienti" class="panel-collapse gx-side-menu__subSection collapse" aria-expanded="true" style="">
+                        <li data-subsection="" class="">
+                            <div id="treeRefTree">
+
+                            </div>
+                        </li>
+                        
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div id="content-wrapper" class=""></div>
+</div>
+
+<div ng-if="true" id="dwgContainer">
+    <div id="main_content" ng-if="h.selectedFiles.length === 1">
+        <div id="containerMainDwg">
+            <!--<div class="panel-group" id="dxf-tree-accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#dxf-tree-accordion" href="#dxf-tree-one">
+                              
+                              piano
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="dxf-tree-one" class="panel-collapse collapse in">
+                        <div class="panel-body" style="overflow:auto;">
+                             
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+
+
+                <div class="fileR3" ng-init="h.init" ng-repeat="file in h.selectedFiles track by file.name"
+                     ng-class="h.getViewerContainerClass()"
+                     onresize="h.triggerWindowResize()">
+                    <!--mode="{{ h.mode === 'webgl' ? 'webgl' : 'svg' }}"-->
+                    <p style="text-align: center; font-size:14px; margin: 5px; font-weight: bold;">{{ file.name}}</p>
+
+                    <div class="divDxf">
+                        <dxf-viewer file-name="file.name"
+                                    fill-polylines="file.polylines"
+                                    mode="{{ h.mode === 'webgl' ? 'webgl' : 'svg' }}"
+                                    style="display:block; margin: 5px;"
+                                    ng-style="h.mode === 'webgl' ? { height: '90%' } : {}"
+                                    path-file-cad="h.rootForDxf"
+                                    multi-action="false"
+                                    layer-import-order="h.layerImportOrder"
+                                    >
+                        </dxf-viewer>
+                    </div>
+                    <div class="tblInfo">
+                        <table ng-if="true">
+                            <tr ng-repeat="row in file.rowGrid">
+                                <td>
+                                    <div>{{row.tooltip}}</div>
+                                </td>
+
+                                <td class="tdTblInfo">
+                                    <input class="colorR3" type="color" ng-change="h.onChangeColor(this)" ng-model="row.color" ng-value="row.color" disabled="disabled" />
+                                </td>
+                                <td class="tdTblInfo">
+
+                                    <input class="" type="checkbox" ng-model="row.checked" ng-value="row.checked" ng-change="h.onChangeChecked(this)" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div id="containerDwg" ng-if="h.selectedFiles.length > 1">
+        <div class="fileR3" ng-init="h.init" ng-repeat="file in h.selectedFiles track by file.name"
+             ng-class="h.getViewerContainerClass()"
+             onresize="h.triggerWindowResize()">
+            <!--mode="{{ h.mode === 'webgl' ? 'webgl' : 'svg' }}"-->
+            <p style="text-align: center; font-size:14px; margin: 5px; font-weight: bold;">{{ file.name}}</p>
+
+            <div class="divDxf">
+                <dxf-viewer file-name="file.name"
+                            fill-polylines="file.polylines"
+                            mode="{{ h.mode === 'webgl' ? 'webgl' : 'svg' }}"
+                            style="display:block; margin: 5px;"
+                            ng-style="h.mode === 'webgl' ? { height: '90%' } : {}"
+                            path-file-cad="h.rootForDxf"
+                            multi-action="false"
+                            layer-import-order="h.layerImportOrder"
+                            >
+                </dxf-viewer>
+            </div>
+            <div  class="tblInfo">
+                <table ng-if="true">
+                    <tr ng-repeat="row in file.rowGrid">
+                        <td>
+                            <div>{{row.tooltip}}</div>
+                        </td>
+                        <td>
+                            <input class="colorR3 tdTblInfo" type="color" ng-change="h.onChangeColor(this)" ng-model="row.color" ng-value="row.color" disabled="disabled" />
+                        </td>
+                        <td>
+                            
+                            <input class="tdTblInfo" type="checkbox" ng-model="row.checked" ng-value="row.checked" ng-change="h.onChangeChecked(this)" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+  

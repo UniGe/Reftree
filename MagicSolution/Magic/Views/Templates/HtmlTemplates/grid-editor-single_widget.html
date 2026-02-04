@@ -1,0 +1,178 @@
+﻿<div ng-if="widget.contentType =='MAGIC-WIDGET-GROUP'" ng-include="ge.groupWidgetTemplateUrl">
+
+</div>
+<div ng-if="widget.contentType =='MAGIC-TABSTRIP'" ng-include="ge.tabstripWidgetTemplateUrl">
+
+</div>
+
+
+<div ng-if="widget.contentType != 'MAGIC-WIDGET-GROUP' && widget.contentType != 'MAGIC-TABSTRIP'" gridstack-item-content class="grid-stack-item-content card">
+    <!-- SHOW if !group !tabstrip-->
+    <div class="card-header">
+        MAGIC-WIDGET  {{widget.titles.en}}
+        <a ng-click="ge.removeWidget(widget,tab)" ng-hide="widget.id == 'mainForm' || (widget.contentType == 'MAGIC-FORM' && widget.contentObjectPath == ge.EditPageLayout.Grid)" class="pull-right pointer" title="ge.text.deleteWidget"><i class="fa fa-remove"></i></a>
+        <div ng-show="false">
+            <a ng-click="ge.ungroupWidget(widget,tab)" ng-if="widget.isGroupWidget" class="pull-right pointer" style="margin-right:2%;" title="ge.text.ungroupWidget"><i class="fa fa-object-ungroup"></i></a>
+        </div>
+    </div>
+
+    <div class="card-body text-dark">
+        <div class="form-group row">
+            <!-- contentTYPE selector-->
+            <label class="col-md-12">
+                {{ ge.text.selectContentType }}
+                <select ng-if="widget.id != 'mainForm' && widget.id != 'mainFormGroup'" style="width: 100%;" required="required" ng-change="ge.onContentTypeSelected(widget, tab)"
+                        kendo-drop-down-list ng-model="widget.contentType" k-data-source="ge.contentTypeOptions"></select>
+
+                <select ng-if="widget.id == 'mainForm' || widget.id == 'mainFormGroup'" style="width: 100%;" disabled="disabled" required="required" title="Content type of main form cannot be changed!"
+                        kendo-drop-down-list ng-model="widget.contentType" k-data-source="ge.contentTypeOptions"></select>
+            </label>
+
+            <!-- contentOBJECT selector [CHARTS] (no gauge) -->
+            <label ng-show="widget.contentType == 'MAGIC-CHART'" class="col-md-12">
+                {{ ge.text.selectContentObject }}
+                <select style="width: 100%;" required="required" k-data-value-field="'GUID'" kendo-drop-down-list
+                        ng-model="widget.contentObjectPath" ng-change="ge.onWidgetModified(widget, tab)"
+                        k-data-source="ge.chartOptions" k-options="ge.chartDropdownDataStructure"></select>
+            </label>
+
+            <!-- contentOBJECT selector [CHARTS] (gauge) -->
+            <label ng-show="widget.contentType == 'MAGIC-CHART-GAUGE'" class="col-md-12">
+                {{ ge.text.selectContentObject }}
+                <select style="width: 100%;" required="required" k-data-value-field="'GUID'" kendo-drop-down-list
+                        ng-model="widget.contentObjectPath" ng-change="ge.onWidgetModified(widget, tab)"
+                        k-data-source="ge.gaugeOptions" k-options="ge.chartDropdownDataStructure"></select>
+            </label>
+
+            <!-- contentOBJECT selector [INDICATORS] -->
+            <label ng-show="widget.contentType == 'MAGIC-INDICATOR'" class="col-md-12">
+                {{ ge.text.selectContentObject }}
+                <select style="width: 100%;" required="required" k-data-value-field="'Code'" kendo-drop-down-list
+                        ng-model="widget.contentObjectPath" ng-change="ge.onWidgetModified(widget, tab)"
+                        k-data-source="ge.indicatorOptions" k-options="ge.indicatorDropdownDataStructure"></select>
+            </label>
+
+            <!-- contentOBJECT selector [CUSTOM-HTML] -->
+            <label ng-show="widget.contentType == 'CUSTOM-HTML'" class="col-md-12">
+                {{ ge.text.selectContentObject }}
+                <select style="width: 100%;" required="required" k-data-value-field="'ID'" kendo-drop-down-list
+                        ng-model="widget.contentObjectPath" ng-change="ge.onWidgetModified(widget, tab)"
+                        k-data-source="ge.customHtmlOptions" k-options="ge.customHTMLDropdownDataStructure"></select>
+            </label>
+
+            <!-- contentOBJECT selector [GRIDS]-->
+            <label ng-show="widget.contentType == 'MAGIC-FORM' || widget.contentType == 'MAGIC-GRID'" class="col-md-12">
+                {{ ge.text.selectContentObject }}
+                <select style="width: 100%;" required="required" k-data-value-field="'Description'" kendo-drop-down-list
+                        ng-model="widget.contentObjectPath" k-data-source="ge.gridOptions"
+                        k-options="ge.dropdownDataStructure" ng-change="ge.onWidgetModified(widget, tab)"></select>
+            </label>
+
+            <!-- date-filters for carousels and sliders -->
+            <label ng-show="widget.contentType == 'MAGIC-IMAGE-CAROUSEL' || widget.contentType == 'MAGIC-IMAGE-SLIDER'" class="col-md-12">
+                {{ ge.text.setDateFilter }}
+                <input ng-model="widget.dateFilterActive" ng-change="ge.onTransparencyStatusSelected(widget, tab)" type="checkbox">
+                <textarea ng-disabled="!widget.dateFilterActive" ng-model="widget.dateFilterColumn" class="form-control rounded-0" rows="1"
+                          placeholder="{{ge.text.dateFilterFieldPlaceholder}}" ng-change="ge.onWidgetModified(widget, tab)"></textarea>
+            </label>
+
+            <!-- numOfFormColumns -->
+            <label ng-show="widget.contentType == 'MAGIC-FORM' || widget.contentType == 'MAGIC-FORM-SP'" class="col-md-12">
+                {{ ge.text.selectNumOfFormColums }}
+                <select style="width: 100%;" kendo-drop-down-list
+                        ng-model="widget.numOfFormColumns" k-data-source="ge.numOfFormColumnsOptions"
+                        ng-change="ge.onWidgetModified(widget, tab)"></select>
+            </label>
+            <div class="col-md-12">
+
+                <label ng-show="widget.contentType == 'MAGIC-FORM' || widget.contentType == 'MAGIC-FORM-SP'">
+                    {{ ge.text.selectHideTabs}}
+                    <input ng-model="widget.hideTabs" ng-change="ge.onWidgetModified(widget, tab)" type="checkbox">
+                </label>
+
+                <label ng-show="widget.parentId == 'mainFormGroup' || (widget.contentType == 'MAGIC-FORM' && widget.id == 'mainFormGroup') || widget.id == 'mainForm'">
+                    <span>{{ge.text.selectStandardActions}}</span>
+                    <input ng-model="widget.showStandardActions" ng-change="ge.onWidgetModified(widget, tab)" type="checkbox" />
+
+                    <span style="padding-left:10px;">{{ge.text.selectCustomActions}}</span>
+                    <input ng-model="widget.showCustomActions" ng-change="ge.onWidgetModified(widget, tab)" type="checkbox" />
+
+                </label>
+
+                <label>
+                    {{ge.text.panelTransparentText }}
+                    <input ng-model="widget.panelTransparent" ng-change="ge.onTransparencyStatusSelected(widget, tab)" type="checkbox">
+                </label>
+
+
+            </div>
+
+
+            <!-- STORED-PROCEDURE input-->
+            <label ng-show="widget.contentType == 'MAGIC-GRID-SP' || widget.contentType == 'MAGIC-FORM-SP'" class="col-md-12">
+                {{ge.text.storedProcedureHeading}}
+                <textarea ng-model="widget.SPpath" class="form-control rounded-0" rows="1"
+                          placeholder="{{ge.text.storedProcedurePlaceholder1}}" ng-change="ge.onWidgetModified(widget, tab)"></textarea>
+
+                <textarea ng-show="widget.contentType == 'MAGIC-GRID-SP' || widget.contentType == 'MAGIC-GANTT'" ng-model="widget.SSPpath" class="form-control rounded-0" rows="1"
+                          placeholder="{{ge.text.storedProcedurePlaceholder2}}" ng-change="ge.onWidgetModified(widget, tab)"></textarea>
+
+                <textarea ng-show="widget.contentType != 'MAGIC-GANTT'" ng-model="widget.SPgridname" class="form-control rounded-0" rows="1"
+                          placeholder="{{ widget.contentType != 'MAGIC-FORM-SP' ?  ge.text.storedProcedurePlaceholder3 : ge.text.storedProcedurePlaceholder4 }}" ng-change="ge.onWidgetModified(widget, tab)"></textarea>
+
+            </label>
+
+            <!-- MAGIC-GANTT toolbar config (json) CURRENTLY UNUSED-->
+            <!--<label ng-show="widget.contentType == 'MAGIC-GANTT'" class="col-md-12">
+        ge.text.toolbarConfig
+        <textarea ng-model="widget.toolbarConfig" class="form-control rounded-0" rows="1"
+                  placeholder="ge.text.toolbarConfigPlaceholder" ng-change="ge.onWidgetModified(widget, tab)"></textarea>
+    </label>-->
+            <!-- GOOGLE-MAPS storedProcedure input-->
+            <label ng-show="widget.contentType == 'GOOGLE-MAP' || widget.contentType == 'MAGIC-IMAGE-SLIDER' || widget.contentType == 'MAGIC-IMAGE-CAROUSEL'" class="col-md-12">
+                {{ge.text.storedProcedureHeading}}
+                <textarea ng-model="widget.SPpath" class="form-control rounded-0" rows="1"
+                          placeholder="{{ge.text.storedProcedurePlaceholder1}}" ng-change="ge.onWidgetModified(widget, tab)"></textarea>
+            </label>
+
+            <!-- INDICATOR storedProcedure input
+    <label ng-show="widget.contentType == 'MAGIC-INDICATOR'" class="col-md-12">
+        ge.text.storedProcedureHeading
+        <textarea ng-model="widget.objectLoadSP" class="form-control rounded-0" rows="1"
+                  placeholder="object load SP" ng-change="ge.onWidgetModified(widget, tab)"></textarea>
+        <textarea ng-model="widget.subValuesLoadSP" class="form-control rounded-0" rows="1"
+                  placeholder="subvalues load SP" ng-change="ge.onWidgetModified(widget, tab)"></textarea>
+    </label>-->
+
+
+
+            <label class="col-md-12" name="filter">
+                {{ge.text.filterHeading}}
+                <textarea ng-model="widget.filter" ng-focus="ge.onJsonInputFocus($event)" ng-change="ge.validateJsonInput(widget, widget.filter, 'filter',tab)" class="form-control rounded-0" rows="{{ge.text.numOfTextareaLines}}"
+                          placeholder="{{ ge.text.filterPlaceholderLine1 }} &#10;{{ ge.text.filterPlaceholderLine2 }} &#10;{{ ge.text.filterPlaceholderLine3 }}"></textarea>
+            </label>
+
+            <label class="col-md-12">
+                {{ge.text.widgetTitle}}
+                <div class="input-group">
+                    <span class="input-group-addon" title="{{ge.text.englishDescription}}"><span class="flag-icon flag-icon-gb"></span></span>
+                    <input type="text" class="form-control" placeholder="en-GB" ng-model="widget.titles.en" ng-change="ge.onWidgetModified(widget, tab)">
+                    <span class="input-group-addon" title="{{ge.text.italianDescription}}"><span class="flag-icon flag-icon-it"></span></span>
+                    <input type="text" class="form-control" placeholder="it-IT" ng-model="widget.titles.it" ng-change="ge.onWidgetModified(widget, tab)">
+                    <span class="input-group-addon" title="{{ge.text.germanDescription}}"><span class="flag-icon flag-icon-de"></span></span>
+                    <input type="text" class="form-control" placeholder="de-DE" ng-model="widget.titles.de" ng-change="ge.onWidgetModified(widget, tab)">
+                </div>
+            </label>
+            <!--id="title_en" id="title_it" id="title_de"-->
+
+            <label class="col-md-12" name="additionalCSS">
+                {{ge.text.additionalCSSHeading}}
+                <textarea ng-model="widget.additionalCSS" ng-focus="ge.onJsonInputFocus($event)" ng-change="ge.validateJsonInput(widget, widget.additionalCSS, 'css',tab)" class="form-control rounded-0" rows="{{ge.text.numOfTextareaLines}}"
+                          placeholder="{{ ge.text.additionalCSSPlaceholderLine1 }} &#10;{{ ge.text.additionalCSSPlaceholderLine2 }} &#10;{{ ge.text.additionalCSSPlaceholderLine3 }}"></textarea>
+            </label>
+
+
+
+        </div>
+    </div>
+</div>

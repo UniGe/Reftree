@@ -1,0 +1,43 @@
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+		
+		<link rel="stylesheet" href="../bootstrap/3.0.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../js/jq/jqueryui/1.10.1/themes/smoothness/jquery-ui.css"/>
+		
+		<link rel="stylesheet" href="../css/plani3d-maps.min.css" type="text/css">
+		
+		<script type="text/javascript" src="../js/require.js"></script>
+		
+		<title>Nuova selezione - Plani3D Maps 2.0</title>
+	</head>
+	<body>
+		<div><!-- se questo manca, la selezione ha un offset --></div>
+		
+		<div id="p3dt-map" class="p3dt-map"></div>
+		<script>
+			function externalSelectFunction(features) {
+				alert(features);
+			}
+			require(["config.js"], function () {
+				require(["plani3d-maps", "ol", "proj"], function (plani3d, ol, proj4) {
+					var p3dmaps = new plani3d.Maps({
+						ol: ol,
+						proj4: proj4,
+						server: 'showcase.alysso.it',
+						maps: 'tn2',
+						layers: ['v_CAT', 'RV', 'OSM'],
+						imgpath: '/views/3/'
+					});
+					
+					p3dmaps.init().then(function () {
+						p3dmaps.zoomToExtent(1237766, 5791005, 1238334, 5791285);
+						p3dmaps.createSelection(null, 'v_CAT', true, externalSelectFunction);
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

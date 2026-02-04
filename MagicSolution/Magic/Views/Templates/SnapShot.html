@@ -1,0 +1,46 @@
+﻿<style scoped>
+    table.snapshot th ,table.snapshot td {
+      border: 1px solid grey;
+      border-collapse: collapse;
+      padding: 2px;
+      white-space:nowrap;
+      background-color:white;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4  col-md-3 col-lg-2">
+            <label for='fromPicker'>{{ ss.translate("from") }}</label>
+            <input style="width:100%" id="fromPicker" kendo-date-picker
+                   k-ng-model="ss.mDateFrom"
+                   k-options="{  value: ss.dateFrom() }"
+                   />
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+            <label for='toPicker'>{{ ss.translate("to") }}</label>
+            <input style="width:100%" id="toPicker" kendo-date-picker
+                   k-ng-model="ss.mDateTo"
+                   k-options="{  value: ss.dateTo() }"
+                   />
+        </div>
+        <div style="margin-top:20px;" class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+            <button class='btn btn-primary' type='button' ng-click='ss.load()'><span class="glyphicon glyphicon-search"></span></button>
+        </div>
+    </div>
+    <div class="row" style="height:10px;"></div>
+    <div id="grid-is-loading-spinner" ng-if="ss.spin" class="pull-left" style="display:inline-block;"><p class="text-center"><i class="fa  fa-4x fa-spinner fa-spin"></i></p></div>
+    <div style="overflow:auto">
+        <table class="snapshot table-hover" style="max-width:initial;">
+            <tr>
+                <th ng-repeat="snapHeader in ss.headerObj">{{ $index ? snapHeader.replace('T',' ') : snapHeader }}</th>
+            </tr>
+            <tr ng-repeat="(field,value) in ss.tableObj">
+                <td><b>{{ value.label }}</b></td>
+                <td title="{{ dat ? dat.text.toString() + '&#13;' +  dat.name : '' }}" ng-repeat="dat in value.data">
+                    <div style="background-color:{{ (value.data[$index].text != value.data[$index+1].text) ? 'yellow' : 'transparent' }}" ng-if="ss.checkBool(dat.text)"><input disabled type="checkbox" ng-model="dat.text" /></div>
+                    <div style="background-color:{{ (value.data[$index].text != value.data[$index+1].text) ? 'yellow' : 'transparent' }}" ng-if="!ss.checkBool(dat.text)"> {{ dat.text ? dat.text.toString() : "" }}</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

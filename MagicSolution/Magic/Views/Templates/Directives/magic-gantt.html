@@ -1,0 +1,58 @@
+﻿<div>
+    <!--<div class="row">
+        <div class="col-md-2">
+                <label for="dfrom" ng-bind="magicLabels.dstartf"></label>
+                <input id="dfrom" kendo-date-time-picker k-on-change="applyFilterLoadGantt()" k-ng-model="magicDateFilter.filters[0].value" style="min-height: 25px;" type="text" />
+        
+        </div>
+        <div class="col-md-2" style="margin-left:50px;">
+                <label for="dto" ng-bind="magicLabels.dendf"></label>
+                <input id="dto" kendo-date-time-picker k-on-change="applyFilterLoadGantt()" k-ng-model="magicDateFilter.filters[1].value" style="min-height: 25px;" type="text" />
+        </div>
+    </div>-->
+    <div ng-show="showTree" style="height:10px;"></div>
+    <div class="row">
+        <button ng-show="showTree" class="k-button k-button-icontext" style="margin-left:15px;" ng-click="showHideTree()">
+            <span class="k-icon k-i-funnel"></span>
+        </button>
+        <button ng-show="showTree" class="k-button k-button-icontext" ng-click="refreshTree(magicDateFilter.filters[0].value,magicDateFilter.filters[1].value)">
+            <span class="k-icon k-i-refresh"></span>
+        </button>
+    </div>
+    <div class="row" style="height:10px"></div>
+    <div class="row">
+        <div class="{{ treeDivClass }}">
+            <div id="gantttree" ng-show="treeStatus">
+                <div class="input-group" style="margin-bottom:5px;">
+                    <span class="input-group-addon">
+                        <i class="k-icon k-i-search"></i>
+                    </span>
+                    <span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr;">
+                        <input type="text" class="form-control tt-hint" disabled="" autocomplete="off" spellcheck="false" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background-attachment: scroll; background-clip: border-box; background-color: rgb(255, 255, 255); background-image: none; background-origin: padding-box; background-size: auto; background-position: 0% 0%; background-repeat: repeat repeat;">
+                        <input ng-keyup="treeSettings.treeSearch();" type="text" id="gantttreesearch" name="treesearch" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;">
+                        <pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
+                        <span class="tt-dropdown-menu" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;">
+                            <div class="tt-dataset-0"></div>
+                        </span>
+                    </span>
+                </div>
+                <div kendo-tree-view="tree"
+                     k-data-source="magicTreeData"
+                     k-on-change="selectedItem = dataItem"
+                     k-checkboxes="treeSettings.checkBoxes"
+                     k-data-text-field="treeSettings.dataTextField"
+                     k-check="treeSettings.check">
+                </div>
+            </div>
+        </div>
+        <div class="{{ ganttDivClass }}">
+            <div kendo-gantt="kendoGantt" k-options="magicGanttOptions"></div>
+        </div>
+    </div>
+    <style>
+        .k-gantt .k-grid-header .k-header {
+         overflow: hidden!important; 
+         white-space: nowrap!important; 
+        }
+    </style>
+</div>

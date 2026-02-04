@@ -1,0 +1,57 @@
+﻿<nav class="navbar navbar-default">
+    <style scoped>
+        .dropdown-submenu {
+          position: relative;
+        }
+
+        .dropdown-submenu .dropdown-menu {
+          top: 0;
+          left: 100%;
+          margin-top: -1px;
+        }
+    </style>
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li ng-repeat="btngroup in c.btngroups track by btngroup.id" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        {{btngroup.grouplabel}}<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ng-class="{'dropdown-submenu':btn.hasChildren , '':!btn.hasChildren}" ng-style="{'background-color':btn.color}" ng-repeat="btn in btngroup.btns track by btn.id">
+                            <a ng-if="!btn.hasChildren" href="#" ng-click="c.dispatch(btn)" ng-bind="btn.btnlabel"></a>
+                            <a ng-if="btn.hasChildren" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                {{btn.btnlabel}}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li ng-style="{'background-color':btn_.color}" ng-repeat="btn_ in btn.btns track by btn_.id">
+                                    <a href="#" ng-click="c.dispatch(btn_)" ng-bind="btn_.btnlabel"></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<form name="form" ng-submit="c.form.setGridFilter(form,c.form.Operator)" ng-show="c.showForm">
+    <label class="control-label" for="operator">{{ c.translate('operator') }}</label>
+    <select name="operator" id="operator" ng-model="c.form.Operator">
+        <option value="AND">AND</option>
+        <option value="OR">OR</option>
+    </select>
+    <div class="row" style="height:10px;"></div>
+    <!--<magic-form-sp useasfilter="true" model="gdv.treeFilters.Values" storedprocedure="config.USP_GET_FormData" isreadonly="false" formname="{{ c.form.formName }}" itemsperrow=2 hidetabs="true" options='{ "kendoStyle":false }'
+                   ng-if="gdv.formName">
+    </magic-form-sp>-->
+    <magic-form-sp useasfilter="true" model="c.form.filter" storedprocedure="{{ c.form.loadSp }}" isreadonly="false" formname="{{ c.form.formName }}" itemsperrow=2 hidetabs="true" options='{ "kendoStyle":false }'
+                   ng-if="c.form.formName">
+    </magic-form-sp>
+    <input class="btn btn-success" type="submit" value="{{ c.translate('Applyfilter') }}" />
+</form>
+<div id="pivot__area"></div>
+<div id="excel__area"></div>
+<div id="gridsp__area"></div>

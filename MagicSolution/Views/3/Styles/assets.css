@@ -1,0 +1,43 @@
+﻿ .assetcomposer-section:after
+{
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.k-treeview .k-image
+{
+  height: 25px;
+  width: 25px;
+}
+
+        
+.tipsas, .tipimp {
+  
+  float: left;
+  position: relative;
+  margin: 0 5px;
+  border: solid 1px #94C0D2;
+  border-radius: 7px;
+  padding: 1px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  width: 30%;
+  background-color: rgba(218, 236, 244, 0.51);
+}
+
+  
+
+.tipimp, .tipsas:hover
+{
+  cursor: pointer;
+}
+
+#derivativeasset.k-grid
+{
+    width: 98%;
+    padding: 2px;
+}
+

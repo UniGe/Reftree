@@ -1,0 +1,52 @@
+﻿<style>
+    .titles {
+        text-align: left;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .panel-heading {
+        height: 50px;
+    }
+</style>
+<div class="panel-heading ">
+    <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                <b>  {{ cd.translate("ActiveResources")}} </b>
+        </a>
+    </h4>
+</div>
+<div id="collapseOne" class="panel-collapse collapse">
+    <div class="panel-body">
+        <div id="grid0"></div>
+        <magic-grid id="grid0" gridname="Person_RES_Active" filter="cd.options.initialFilter" kendo-grid-instance="cd.options.kendoGridInstance"></magic-grid>
+    </div>
+</div>
+<div class="panel-heading">
+    <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                <b>  {{ cd.translate("InactiveResources")}} </b>
+        </a>
+    </h4>
+</div>
+
+<div id="collapseTwo" class="panel-collapse collapse">
+    <div class="panel-body">
+        <div id="grid0"></div>
+        <magic-grid id="grid1" gridname="Person_RES_Inactive" filter="cd.options.initialFilter" kendo-grid-instance="cd.options.kendoGridInstance"></magic-grid>
+    </div>
+</div>
+<div class="panel-heading">
+    <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                <b>  {{ cd.translate("DiscardedResources")}} </b>
+        </a>
+    </h4>
+</div>
+<div id="collapseThree" class="panel-collapse collapse">
+    <div class="panel-body">
+        <div id="grid0"></div>
+        <magic-grid id="grid2" gridname="Person_RES_Discarded" filter="cd.options.initialFilter" kendo-grid-instance="cd.options.kendoGridInstance"></magic-grid>
+    </div>
+</div>
+

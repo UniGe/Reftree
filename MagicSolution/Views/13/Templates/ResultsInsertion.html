@@ -1,0 +1,57 @@
+﻿<style>
+	.treeForScheduler {
+		height: 727px;
+		font-size: 11px;
+	}
+</style>
+
+<div class="row" ng-if="ri.dataReady">
+	<div class="col-xs-12 col-sm-3">
+		<label for='comitatoPicker'>Comitato</label>
+		<select class="form-control"
+			ng-model="ri.filter.comitato"
+			ng-change="ri.onChangeComitato()"
+		ng-options="p.ID as p.Description for p in ri.comitati " id="comitatoselect"></select>
+	</div>
+	<div class="col-xs-12 col-sm-3">
+		<label for='campionatoPicker'>Campionato</label>
+		<select class="form-control"
+			ng-model="ri.filter.campionato"
+			ng-change="ri.onChangeCampionato()"
+		ng-options="p.ID as p.Description for p in ri.campionati "></select>
+	</div>
+	<div class="col-xs-12 col-sm-2 ">
+		<label for='fromPicker'>Data</label>
+		<input style="width:100%" id="fromPicker" kendo-date-picker
+			   k-ng-model="ri.filter.fromDate"
+			   k-options="{start: 'month',depth: 'month', format:'dd/MM/yyyy' }" />
+	</div>
+	
+	<br/>
+	<div class="col-xs-12 col-sm-2">
+		<label for='toPicker'></label>
+		<label for='toPicker'></label>
+
+		<button style="width:100%" class="btn btn-default" id="searchButton"
+				k-ng-model="cd.options.searchButton"
+				ng-click="ri.searchDayMatches()"
+				ng-show="ri.filter.campionato!=0 && ri.filter.campionato!=null">
+			Ricerca
+		</button>
+	</div>
+	<div class="col-xs-12 col-sm-2"></div>
+</div>
+<div class="row" ng-if="ri.treeReady">
+	<div class="col col-md-3">
+		<div  id="ktview" kendo-tree-view="ri.modelTree"
+			 k-data-source="ri.treeDs"
+			 k-on-select="ri.selectTreeItem(kendoEvent)">
+			<span k-template>
+				{{dataItem.text}}
+			</span>
+		</div>
+	</div>
+	<div class="col col-md-9">
+		<magic-grid id="grid0" gridname="Risultati" filter="ri.initialFilter" kendo-grid-instance="cd.options.kendoGridInstance"></magic-grid>
+	</div>
+</div>

@@ -1,0 +1,205 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Http;
+using System.Net;
+using System.Net.Http;
+using AttributeRouting.Web.Http;
+using System.Linq.Dynamic;
+using System.Configuration;
+using MagicFramework;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
+using System.Reflection;
+using System.Data.SqlClient;
+using System.Data;
+
+namespace {1}.Controllers
+{{
+    public class {0}Controller :ApiController
+    {{
+      
+      // the linq to sql context that provides the data access layer
+      private {2}.{3} _context = new {2}.{3}();
+      
+      //get all elements of an entity
+	[HttpGet]
+        public List<{2}.{0}> GetAll()
+        {{
+            string wherecondition = "1=1";
+			// select from the database, skipping and taking the correct amount
+            var resdb = (from e in _context.{5}
+                          .Where(wherecondition)
+			              select e).ToList();
+            return resdb;
+        }}
+	
+	//get a single object 
+	[HttpGet]
+        public List<{2}.{0}> Get({6} id)
+        {{
+            var resobj = (from e in _context.{5}.Where(x=> x.{4} == id)
+                          select e).ToList();
+            return resobj;
+        }}
+        //The grid will call this method in read mode
+     
+      [HttpPost]
+      public MagicFramework.Models.Response Select(MagicFramework.Models.Request request)
+      {{
+           
+          MagicFramework.Helpers.RequestParser rp = new MagicFramework.Helpers.RequestParser(request);
+          string order = "{4}";
+          String wherecondition = "1=1";
+          if (request.filter!=null)
+              wherecondition = rp.BuildWhereCondition(typeof({2}.{0}));
+          //manage data visibility for the userID in the session           
+           if (request.sort != null && request.sort.Count > 0)
+              order = rp.BuildOrderCondition();
+       
+          var dbres= (from e in _context.{5}
+                                            .Where(wherecondition)
+                                            .OrderBy(order.ToString())
+                                            .Skip(request.skip)
+                                            .Take(request.take)                                            
+                            select e).ToArray();                       
+           return new MagicFramework.Models.Response(dbres, _context.{5}.Where(wherecondition).Count());
+     
+      }}
+          //The grid will call this method in update mode
+      [HttpPost]
+      public HttpResponseMessage PostU({6} id,dynamic data)
+      {{         
+          // create a response message to send back
+          var response = new HttpResponseMessage();
+        
+                try
+              {{
+
+			 	// calling the dbo.ServerSideCheck SP to verify data integrity and consistency
+                SqlCommand cmd = new SqlCommand();
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlDirectConnection"].ConnectionString);
+                cmd.CommandText = "dbo.ServerSideCheck";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("entityname", "{5}"));
+                cmd.Parameters.Add(new SqlParameter("cultureID", MagicFramework.Helpers.SessionHandler.UserCulture));
+                cmd.Parameters.Add(new SqlParameter("JSON", data.ToString().Replace("'", "''")));
+                cmd.Parameters.Add(new SqlParameter("action", "UPDATE"));
+                cmd.Connection = conn;
+                cmd.Connection.Open();
+                cmd.ExecuteReader();
+                cmd.Connection.Close();
+
+			  //Deserialize the JSON (string) into an object
+				System.Web.Script.Serialization.JavaScriptSerializer jss = new System.Web.Script.Serialization.JavaScriptSerializer();
+				  {2}.{0} inputdata = jss.Deserialize<{2}.{0}>(data.ToString());
+                  // select the item from the database where the id
+                  var entityupdate = (from e in _context.{5}
+                                      where e.{4} == id
+                                      select e).FirstOrDefault();
+                  
+                  if (entityupdate != null)
+                  {{
+					 foreach (PropertyInfo f in typeof({2}.{0}).GetProperties())
+					{{
+							entityupdate.GetType().GetProperty(f.Name).SetValue(entityupdate, inputdata.GetType().GetProperty(f.Name).GetValue(inputdata));
+				    }}
+					_context.SaveChanges();
+                  }}
+                  else
+                  {{
+                       response.StatusCode = HttpStatusCode.InternalServerError;
+                      response.Content = new StringContent(string.Format("The item with id {{0}} was not found in the database", id.ToString()));
+                  }}
+              }}
+              catch (Exception ex)
+              {{
+                   response.StatusCode = HttpStatusCode.InternalServerError;
+                  response.Content = new StringContent(string.Format("The database updated failed: {{0}}", ex.Message));
+              }}
+       
+          // return the HTTP Response.
+          return response;
+      }}
+      //The grid will call this method in insert mode
+   
+      [HttpPost]
+      public MagicFramework.Models.Response PostI(dynamic data)
+      {{
+           try
+          {{
+				System.Web.Script.Serialization.JavaScriptSerializer jss = new System.Web.Script.Serialization.JavaScriptSerializer();
+				{2}.{0} inputdata = jss.Deserialize<{2}.{0}>(data.ToString());
+               
+				                 
+				// calling the dbo.ServerSideCheck SP to verify data integrity and consistency
+                SqlCommand cmd = new SqlCommand();
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlDirectConnection"].ConnectionString);
+                cmd.CommandText = "dbo.ServerSideCheck";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("entityname", "{5}"));
+                cmd.Parameters.Add(new SqlParameter("cultureID", MagicFramework.Helpers.SessionHandler.UserCulture));
+                cmd.Parameters.Add(new SqlParameter("JSON", data.ToString().Replace("'", "''")));
+                cmd.Parameters.Add(new SqlParameter("action", "INSERT"));
+                cmd.Connection = conn;
+                cmd.Connection.Open();
+                cmd.ExecuteReader();
+                cmd.Connection.Close();
+							    
+				  {2}.{0} datatoinsert = new {2}.{0}();
+				   foreach (PropertyInfo f in typeof({2}.{0}).GetProperties())
+					{{
+							datatoinsert.GetType().GetProperty(f.Name).SetValue(datatoinsert, inputdata.GetType().GetProperty(f.Name).GetValue(inputdata));
+				    }}
+				  _context.{5}.Add(datatoinsert);
+				  _context.SaveChanges();
+				  {6} id = datatoinsert.{4};		
+                  var dbres  = (from e in _context.{5}
+                                                   .Where("{4} == "+ id.ToString())
+                                 select e).ToArray();  
+        
+      
+        return new MagicFramework.Models.Response(dbres, dbres.Length);
+		}}
+		catch (Exception ex) {{
+					return new MagicFramework.Models.Response(ex.Message);
+		}}
+ 
+      }}
+     
+       [HttpPost]
+      public HttpResponseMessage PostD({6} id)
+      {{
+          // create a response message to send back
+          var response = new HttpResponseMessage();
+          try
+          {{
+              // select the item from the database where the id
+              var entitytodestroy = (from e in _context.{5}
+                                     where e.{4} == id
+                                     select e).FirstOrDefault();
+              if (entitytodestroy != null)
+              {{
+                  _context.{5}.Remove(entitytodestroy);
+                  _context.SaveChanges();
+                  response.StatusCode = HttpStatusCode.OK;
+              }}
+              else
+              {{
+                  response.StatusCode = HttpStatusCode.InternalServerError;
+                  response.Content = new StringContent(string.Format("The item with id {{0}} in {5} was not found in the database", id.ToString()));
+              }}
+          }}
+          catch (Exception ex)
+          {{
+              response.StatusCode = HttpStatusCode.InternalServerError;
+              response.Content = new StringContent(string.Format("{5}:The database delete failed with message -{{0}}", ex.Message));
+          }}
+          // return the HTTP Response.
+          return response;
+      }}
+                
+    }}
+}}

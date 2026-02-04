@@ -1,0 +1,60 @@
+﻿<form  name="form" ng-submit="c.importXML(form)">
+    <div>
+        <div class="form-inline row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="form-label-stripped" ng-bind="c.lang.appare"></label>
+                </div>
+                <div class="form-group">
+                    <select class="form-control"
+                            ng-init="c.ImportData.appareData = c.appareData[0].XM_XMLMOD_US_APPARE_ID"
+                            ng-model=" c.ImportData.appareData"
+                            ng-options="d.XM_XMLMOD_US_APPARE_ID as d.US_APPARE_DESCRIPTION for d in c.appareData  | unique: 'XM_XMLMOD_US_APPARE_ID'"></select>
+
+                </div>
+                <div class="form-group">
+                    <label class="form-label-stripped" ng-bind="c.lang.modxml"></label>
+                </div>
+                <div class="form-group" ng-class="{'has-error': !c.ImportData.modxml_id }">
+                    <select class="form-control"
+                            ng-model=" c.ImportData.modxml_id"
+                            ng-options="d.XM_XMLMOD_ID as d.XM_XMLMOD_DESCRIPTION for d in c.appareData  | filter: {XM_XMLMOD_US_APPARE_ID: c.ImportData.appareData} track by d.XM_XMLMOD_ID" required></select>
+                </div>
+                <div class="form-group" style="margin-left:10px;">
+                    <label class=" form-label-stripped" ng-bind="c.lang.simulation">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox"
+                           ng-model="c.ImportData.simulation" ng-init="c.ImportData.simulation=true"></input>
+                </div>
+                <div class="form-group" style="margin-left:10px;">
+                    <label class="form-label-stripped" ng-bind="c.lang.upload">
+                    </label>
+                </div>
+                <div class="form-group" ng-class="{'has-error': c.uploadError }">
+                    <input type="file" id="xmlupload"
+                           ng-model="c.ImportData.files"
+                           accept=".xml,.pdf"
+                           ng-init="c.initUpload()"></input>
+                    <div style="margin: 0;" class="help-block" ng-show="c.uploadError" ng-bind="c.lang.uploadErrorMsg"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ng-form>
+                    <magic-form table-name="{{c.ImportData.modxml_id}}" model="c.ImportData" options="{ itemsPerRow: 2 , source: 'core.XM_V_INPFIE_INPUT_FIELDS' }"></magic-form>
+                </ng-form>
+                <div style="height: 10px;"></div>
+            </div>
+        </div>
+        <br />
+        <div>
+            <button class="btn btn-primary" ng-bind="c.lang.xmlimport"></button>
+        </div>
+    </div>
+</form>
+<br>
+<div id="gridcontainer">
+</div>

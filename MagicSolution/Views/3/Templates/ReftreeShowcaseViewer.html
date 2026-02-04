@@ -1,0 +1,760 @@
+﻿<style>
+     @media screen and (min-width: 768px) {
+         .modal-dialog {
+             width: 60%;
+         }
+     }
+
+     @media screen and (min-width: 48em) {
+         .titleBlock {
+             align-items: flex-start;
+         }
+     }
+
+     @media screen and (min-width: 48em) {
+         .rf-titleBlock .rf-location {
+             display: inline;
+         }
+
+         .rf-titleBlock_link {
+             display: block;
+         }
+     }
+
+     @media screen and (min-width: 48em) {
+         .rf-tabMedia .rf-list__item {
+             /*width: 20%;*/
+             padding: calc(2.4rem / 2) 0.8rem;
+         }
+     }
+
+     #tblContainerAll {
+         padding-left: 10%;
+         padding-right: 10%;
+         display: block;
+         background-color: white;
+     }
+
+     #tlbContainer {
+         height: 25px;
+         margin: 5px;
+     }
+
+     .rf-slider-detail-picture {
+         overflow: auto;
+         height: 500%;
+     }
+
+     .rf-slider-detail-floor-plans {
+         overflow: auto;
+         margin: 3%;
+         border: 1px solid #d5d7dd;
+         height: 550px;
+         padding: 15px;
+     }
+
+     .rf-slider-detail-map {
+         overflow: auto;
+         margin: 3%;
+         border: 1px solid #d5d7dd;
+         height: 500px;
+     }
+
+     .rf-list-detail-documents {
+         overflow: auto;
+         border: 1px solid #d5d7dd;
+         margin: 1%;
+         padding: 6px;
+     }
+
+     .rf-detail-video {
+         overflow: auto;
+         margin: 1%;
+         border: 1px solid #d5d7dd;
+         padding: 6px;
+     }
+
+     .sectionTitle_container {
+         letter-spacing: -.5px;
+         display: flex;
+         position: relative;
+         align-items: baseline;
+         justify-content: space-between;
+         margin-top: 1.8rem;
+         margin-bottom: 1.6rem;
+         padding-bottom: 0.8rem;
+         border-bottom: 1px solid #d5d7dd;
+     }
+
+     .sectionTitle_anchor {
+         top: -6.8rem;
+         font-weight: bold;
+     }
+
+     .features_list {
+         display: flex;
+         flex-wrap: wrap;
+     }
+
+     .features_title {
+         /*font-size: 1.4rem;
+    font-weight: 400;
+    color: #373c47;*/
+         flex-grow: 1;
+         min-width: 40%;
+         padding-right: 0.6rem;
+         padding-bottom: 0.8rem;
+         line-height: 1.4rem;
+         text-transform: uppercase;
+         font-weight: 100;
+     }
+
+     .features_value:not(:last-child) {
+         padding-bottom: 0.6rem;
+     }
+
+     .features_value {
+         color: #60687a;
+         position: relative;
+         flex-grow: 2;
+         min-width: 60%;
+         padding-right: 5px;
+         font-weight: 600;
+     }
+
+     .rf-titleBlock {
+         /*font-size: 1.4rem;
+    font-weight: 400;
+    display: table-row;
+    margin-top: 3.2rem;
+    line-height: 1.2;
+    overflow: hidden;*/
+         font-size: 1rem;
+         font-weight: 400;
+         display: flex;
+         align-items: flex-start;
+         margin-top: 1.2rem;
+         line-height: 1.2;
+         overflow: hidden;
+     }
+
+     .rf-titleBlock_content {
+         /*margin-top: calc(-0.4rem / 2);*/
+         padding-bottom: 20px
+     }
+
+     .rf-titleBlock_title {
+         font-size: 12px;
+         font-weight: 600;
+         line-height: 1.2;
+         letter-spacing: -.5px;
+         display: block;
+         margin: 0;
+         padding: 0;
+         font-size: 1rem;
+         text-align: left;
+     }
+
+     .rf-titleBlock_link {
+         display: block;
+     }
+
+     .rf-figure {
+         display: flex;
+         position: relative;
+         justify-content: center;
+         width: 100%;
+         -webkit-user-select: none;
+         -moz-user-select: none;
+         user-select: none;
+     }
+
+     .rf-figure-detail {
+         display: flex;
+         position: relative;
+         justify-content: center;
+         width: 100%;
+         -webkit-user-select: none;
+         -moz-user-select: none;
+         user-select: none;
+     }
+
+     .rf-figure_content {
+         overflow: hidden;
+     }
+
+     .rf-figure_image {
+         position: relative;
+         width: 100%;
+         text-align: center;
+     }
+
+     .rf-figure_image-detail {
+         position: relative;
+         width: 100%;
+         text-align: center;
+     }
+
+     .rf-ratio--wide {
+         aspect-ratio: 16/9;
+         width: 70% !important;
+     }
+
+     .rf-ratio {
+         display: block;
+         position: relative;
+         width: 35%;
+     }
+
+     .rf-ratio--wide:before {
+         padding-top: calc(100%/(16/9));
+     }
+     /*.rf-ratio:before {
+    content: "";
+    display: block;
+    pointer-events: none;
+    contain: strict;
+    }*/
+     .rf-map {
+         padding-right: 10px;
+         font-size: 1.8rem;
+         padding-left: 10px;
+     }
+
+     .rf-readAll--lessContent {
+         max-height: 7.2rem;
+     }
+
+     .rf-readAll {
+         transition: max-height .15s ease;
+         color: #60687a;
+         line-height: 1.5;
+         overflow: hidden;
+     }
+
+     .ul-transaction {
+         display: flex;
+         align-items: stretch;
+         overflow: hidden;
+         max-width: calc(100% + 0.8rem);
+         padding-inline-start: 0px;
+         /*font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.5;*/
+     }
+
+     .li-transaction {
+         display: inline-flex;
+         flex: 0 1 auto;
+         flex-direction: column;
+         justify-content: center;
+         padding: 0 0.8rem;
+         padding-right: 4px;
+     }
+
+     .li-transaction-main {
+         font-size: 1.4rem;
+         line-height: 1;
+         display: inline-flex;
+         flex: 0 1 auto;
+         flex-direction: column;
+         justify-content: center;
+         padding: 0 0.8rem;
+         padding-right: 4px;
+     }
+
+     .li-transaction:before, .li-transaction:after {
+         box-sizing: border-box;
+         background-repeat: no-repeat;
+         text-decoration: inherit;
+         vertical-align: inherit;
+     }
+
+     .li-transaction:not(:first-child) {
+         display: inline-flex;
+         flex: 0 1 auto;
+         flex-direction: column;
+         justify-content: center;
+         padding: 0 0.8rem;
+         border-left-style: solid;
+         border-left-color: gray;
+         border-left-width: 0.5px;
+     }
+
+     .li-transaction a {
+         display: block;
+         color: white;
+         text-align: center;
+         padding: 16px;
+         text-decoration: none;
+     }
+
+     .rf-button {
+         box-sizing: border-box;
+         border: none;
+         cursor: pointer;
+         -webkit-user-select: none;
+         -moz-user-select: none;
+         user-select: none;
+         -webkit-appearance: none;
+         -moz-appearance: none;
+         min-width: 4rem;
+         height: 4rem;
+         padding: 0.4rem 1.6rem;
+         font-size: 1.4rem;
+         font-weight: 600;
+         line-height: 1.1428571429;
+         text-transform: uppercase;
+         display: inline-flex;
+         position: relative;
+         align-items: center;
+         justify-content: center;
+         border-radius: 0.4rem;
+         overflow: hidden;
+         vertical-align: middle;
+         background-color: #fff;
+     }
+
+     .rf-button__iconText {
+         align-self: center;
+         padding-left: 0.8rem;
+         font-size: 12px;
+     }
+
+     .rf-button--link, a.rf-button--link {
+         color: #2b6482;
+     }
+
+     .rf-button, a.rf-button {
+         color: #2b6482;
+     }
+</style>
+<style>
+    .slider-container {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0px;
+        text-align: center;
+        overflow: hidden;
+        /*display: table-row;*/
+        width: 100%;
+    }
+
+        .slider-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            width: 100%;
+            height: auto;
+        }
+
+    .image-container {
+        position: relative;
+        -webkit-transition: left 2s;
+        -moz-transition: left 2s;
+        -o-transition: left 2s;
+        transition: left 2s;
+        height: 400px;
+    }
+
+    .rf-list {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        /*display: block;*/
+        overflow: hidden;
+    }
+
+    .rf-list--arrow, .rf-list--pipe {
+        margin-left: -0.8rem;
+    }
+
+    .rf-list--arrow, .rf-list--comma, .rf-list--inline, .rf-list--pipe {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-top: 25px;
+    }
+
+        .rf-list--arrow > .rf-list__item, .rf-list--pipe > .rf-list__item {
+            padding: 0 0.8rem;
+        }
+
+    .rf-list__item {
+        position: relative;
+        padding-bottom: 0.8rem;
+        list-style: none;
+    }
+
+    .rf-list__link {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+    }
+
+    .rf-list--arrow > .rf-list__item:first-child:before, .rf-list--pipe > .rf-list__item:first-child:before {
+        content: none;
+    }
+
+    .rf-list--pipe .in-feat__item:before {
+        opacity: .3;
+    }
+
+    .rf-list--arrow > .rf-list__item:before, .rf-list--pipe > .rf-list__item:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        height: calc(100% - 0.5em);
+        margin: auto;
+        border-left: 1px solid;
+    }
+
+    .rf-feat__mainProperty .rf-feat__data {
+        font-weight: 600;
+    }
+
+    .rf-feat__data, .rf-feat__item:after {
+        font-size: 1.2rem;
+        line-height: 1.333333;
+    }
+
+    .rf-feat__data {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        min-width: 100%;
+        min-height: 1.6rem;
+    }
+
+    .rf-tabMedia {
+        position: relative;
+        align-items: stretch;
+        /*padding-top: 1.6rem;*/
+        color: #d5d7dd;
+        overflow: visible;
+        overflow: initial;
+    }
+
+    .rf-tabMedia__link {
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        text-transform: capitalize;
+    }
+
+    .rf-tabMedia .rf-list__item {
+        flex: 0 0 auto;
+        text-align: center;
+        cursor: pointer;
+        max-height: none;
+        /*margin: auto auto 2.4rem;*/
+        padding-top: 0.4rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 1px solid #d5d7dd;
+        overflow: hidden;
+    }
+
+    .button-container {
+        position: relative;
+        top: 120%;
+        padding-top: 20px;
+    }
+
+        .button-container a {
+            font-size: 17px;
+        }
+</style>
+<div id="tlbContainer">
+    <button title=""
+            type="button"
+            ng-class="rsv.ContainerAll['all'] ? 'btn btn-danger pull-right' : 'btn btn-succes pull-right'"
+            ng-click="cancel()">
+        <i ng-class="rsv.ContainerAll['all'] ? 'fa fa-times' : 'fa fa-arrow-left'"
+           aria-hidden="true"></i>
+    </button>
+    <button ng-if="!rsv.ContainerAll['all'] && !rsv.ContainerAll['warning']" title=""
+            type="button"
+            class="btn btn-succes pull-right"
+            ng-click="rsv.onDownload()">
+        <i class="fa fa-download"
+           aria-hidden="true"></i>
+    </button>
+</div>
+<div id="tblContainerAll">
+    <div ng-repeat="asset in rsv.assets">
+        <div ng-if="rsv.ContainerAll['all']">
+            <!--picture-->
+            <div class="rf-slider-detail-picture" style="background-image:{{rsv.backGroubndSlider}}">
+                <slider images="asset.pictures" asset="asset" rsv="rsv"></slider>
+            </div>
+            <!--Title-->
+            <div class="rf-titleBlock">
+                <a class="rf-figure_content rf-ratio_img" href="#mappa">
+                    <div class="rf-map">
+                        <i class="fa fa-globe"></i>
+                    </div>
+                </a>
+                <div class="rf-titleBlock_content">
+                    <h1 class="rf-titleBlock_title">{{asset['thoroughfare']}}</h1>
+                    <a href="#mappa" class="rf-titleBlock_link">
+                        <span class="">{{asset['city']}}</span>
+                        <span class="">{{asset['thoroughfare']}}</span>
+                    </a>
+                </div>
+            </div>
+            <!--Title-->
+            <div ng-repeat="section in asset.sections | orderBy:'ordine'" ng-class="">
+                <ul ng-if="!sec.options.hide && sec.options.header" ng-class="sec.options.label_class" ng-repeat="sec in section | orderBy:'sec.options.ordine'" arial-lable="section.label">
+                    <li ng-if="key !='options'" ng-repeat="(key, value) in sec | orderBy:'ordine'" ng-class="value.label_class">
+                        {{value.valore}}
+                        <span>{{value.label}}</span>
+                    </li>
+                </ul>
+            </div>
+            <!--Descrizione-->
+            <div class="sectionTitle_container">
+                <span class="sectionTitle_anchor">{{rsv.getLabels('Descrizione')}}</span>
+            </div>
+            <p class="description_title">{{asset['descriptions-title']}}</p>
+            <div id="txtDescriptions" ng-class="rsv.classReadAll['descriptions-content'] ? 'rf-readAll' : 'rf-readAll rf-readAll--lessContent'">
+                <p ng-bind-html="asset['descriptions-content']"></p>
+            </div>
+            <button ng-if="asset['descriptions-content'] != null" ng-click="rsv.classReadAll['descriptions-content'] = !rsv.classReadAll['descriptions-content']" class="rf-button rf-button--link rf-button--centered in-readAll__action">
+                <i ng-class="rsv.classReadAll['descriptions-content'] ? 'fa fa-chevron-up' : 'fa fa-chevron-down'"></i>
+                <span class="rf-button__iconText">
+                    {{rsv.getLabels('readAll')}}
+                </span>
+            </button>
+            <div ng-repeat="section in asset.sections | orderBy:'ordine'" ng-class="">
+                <div ng-if="!sec.options.hide && !sec.options.header" ng-class="sec.options.label_class" ng-repeat="sec in section | orderBy:'sec.options.ordine'" arial-lable="section.label">
+                    <div ng-if="sec.options.label != '' && !sec.options.hide" ng-class="sec.options.container_class">
+                        <span class="sectionTitle_anchor">{{rsv.getLabels(sec.options.label)}}</span>
+                    </div>
+                    <div ng-if="key !='options'" ng-repeat="(key, value) in sec | orderBy:'ordine'" class="features_list">
+                        <div ng-class="value.label_class">{{rsv.getLabels(value.label)}}</div>
+                        <div ng-class="value.value_class">{{value.valore}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!--planimetria-->
+            <div ng-if="asset.floorPlans.length > 0" class="sectionTitle_container">
+                <span class="sectionTitle_anchor">{{rsv.getLabels('planimetria')}}</span>
+            </div>
+            <div ng-if="asset.floorPlans.length > 0" class="rf-slider-detail-floor-plans">
+                <slider images="asset.floorPlans"></slider>
+            </div>
+            <!--google maps-->
+            <div ng-if="asset.mapMarkers.length > 0" class="sectionTitle_container">
+                <a href="#tlbContainer">
+                    <span class="sectionTitle_anchor">
+                        {{rsv.getLabels('mappa')}}
+                        <i class="fa fa-chevron-up" title="{{rsv.getLabels('Top')}}"></i>
+                    </span>
+                </a>
+            </div>
+            <div ng-if="asset.mapMarkers.length > 0" id="mappa" class="rf-slider-detail-map">
+                <easy-map markers="asset.mapMarkers"></easy-map>
+            </div>
+            <!--documenti-->
+            <div id="documenti" ng-if="asset.documents.length > 0" class="sectionTitle_container">
+                <a href="#tlbContainer">
+                    <span class="sectionTitle_anchor">
+                        {{rsv.getLabels('apriDocumenti')}}
+                        <i class="fa fa-chevron-up" title="{{rsv.getLabels('Top')}}"></i>
+                    </span>
+                </a>
+                <button title=""
+                        type="button"
+                        class="btn btn-succes pull-right btn-toolbar-cad-rf"
+                        ng-click="rsv.onDownloadObj(asset.documents)">
+                    <i class="fa fa-download"
+                       aria-hidden="true"></i>
+                    <span class="span-title-button-cad"></span>
+                </button>
+            </div>
+            <div ng-if="asset.documents.length > 0" class="rf-list-detail-documents" ng-repeat="document in asset.documents  | orderBy:'position'">
+                <div class="rf-img-label">
+                    <a href="{{document.urlReftree}}" download>{{document.picture}}</a>
+                </div>
+            </div>
+            <!--video-->
+            <div id="video" ng-if="asset.videos.length > 0" class="sectionTitle_container">
+                <a href="#tlbContainer">
+                    <span class="sectionTitle_anchor">
+                        {{rsv.getLabels('apriVideo')}}
+                        <i class="fa fa-chevron-up" title="{{rsv.getLabels('Top')}}"></i>
+                    </span>
+                </a>
+                <button title=""
+                        type="button"
+                        class="btn btn-succes pull-right btn-toolbar-cad-rf"
+                        ng-click="rsv.onDownloadObj(asset.videos)">
+                    <i class="fa fa-download"
+                       aria-hidden="true"></i>
+                    <span class="span-title-button-cad"></span>
+                </button>
+            </div>
+            <div ng-if="asset.videos.length > 0" class="rf-detail-video" ng-repeat="video in asset.videos  | orderBy:'position'">
+                <div class="rf-img-label">
+                    <a href="{{video.urlReftree}}" download>{{video.picture}}</a>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+
+
+        <style>
+            .ul-detail-pictures {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: baseline;
+            }
+
+            .li-detail-pictures {
+                width: 200px;
+                height: auto;
+                line-height: 4rem;
+            }
+
+            .div-img-container-pictures {
+                position: relative;
+            }
+
+            .rf-img-picture-detail {
+                width: 100%;
+                height: auto;
+            }
+
+            .rf-floo-plans-detail {
+                overflow: auto;
+                margin: 7%;
+                border: 1px solid #d5d7dd;
+            }
+
+            .rf-img {
+                height: 100% !important;
+                width: 100% !important;
+                object-fit: contain !important;
+            }
+
+            .rf-img-label {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+
+                .rf-img-label a {
+                    padding-top: 15px;
+                }
+        </style>
+        <!--picture gallery-->
+        <ul ng-if="rsv.ContainerAll['pictures']" class="ul-detail-pictures">
+            <li ng-if="rsv.ContainerAll['pictures']" class="li-detail-pictures" ng-repeat="image in asset.pictures  | orderBy:'position'">
+                <div class="div-img-container-pictures">
+                    <img id="slider-image-{{image.position}}" class="rf-img-picture-detail" ng-src="{{image.urlReftree}}" title="{{image.picture}}" />
+                </div>
+                <a href="{{image.urlReftree}}" download>{{image.picture}}</a>
+            </li>
+        </ul>
+        <!--floor plans gallery-->
+        <div ng-if="rsv.ContainerAll['floorPlans']" class="panel-body rf-floo-plans-detail" ng-repeat="image in asset.floorPlans  | orderBy:'position'">
+            <img id="slider-image-{{image.position}}" class="rf-img" ng-src="{{image.urlReftree}}" title="{{image.picture}}" />
+            <div class="rf-img-label">
+                <a href="{{image.urlReftree}}" download>{{image.picture}}</a>
+            </div>
+        </div>
+        <div ng-if="rsv.ContainerAll['videos']" class="rf-detail-video" ng-repeat="video in asset.videos  | orderBy:'position'">
+            <div class="rf-img-label">
+                <a href="{{video.urlReftree}}" download>{{video.picture}}</a>
+            </div>
+        </div>
+        <div ng-if="rsv.ContainerAll['documents']" class="rf-floo-plans-detail-documents" ng-repeat="document in asset.documents  | orderBy:'position'">
+            <div class="rf-img-label">
+                <a href="{{document.urlReftree}}" download>{{document.picture}}</a>
+            </div>
+        </div>
+        <!--<div ng-if="rsv.ContainerAll['documents']"  >
+           <div class="rf-img-label">
+               <a href="{{document.urlReftree}}" download>{{document.picture}}</a>
+           </div>
+           </div>-->
+        <div ng-if="rsv.ContainerAll['warning']" class="panel-body rf-floo-plans-detail">
+            <ul>
+                <li ng-repeat="war in asset.warnings">
+                    {{war}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script type="text/ng-template" id="templateurl.html">
+    <div>
+        <div class="slider-container">
+            <div class="image-container" ng-repeat="image in images  | orderBy:'position'" ng-show="image.visible">
+                <img id="slider-image-{{image.position}}" ng-src="{{image.urlReftree}}" class="" title="{{image.picture}}" />
+            </div>
+        </div>
+
+        <ul class="rf-list rf-list--pipe rf-tabMedia">
+            <li ng-if="asset.pictures.length > 0" class="rf-list__item rf-tabMedia__item--photo" ng-click="rsv.onChangePage('pictures',asset)">
+                <a id="plan-tab-photo" role="button" title="{{rsv.getLabels('apriFoto')}}" class="rf-tabMedia__link rf-list__link">
+                    <span>{{asset.pictures.length}}</span>
+                    <span>{{rsv.getLabels('Foto')}}</span>
+                </a>
+            </li>
+            <li ng-if="asset.floorPlans.length > 0" class="rf-list__item rf-tabMedia__item--photo" ng-click="rsv.onChangePage('floorPlans',asset)">
+                <a id="plan-tab-floor-plans" role="button" title="{{rsv.getLabels('apriPlanimetrie')}}" class="rf-tabMedia__link rf-list__link">
+                    <span ng-if="asset.floorPlans.length > 1">{{asset.floorPlans.length}}</span>
+                    <span ng-if="asset.floorPlans.length > 1">{{rsv.getLabels('Planimetrie')}}</span>
+                    <span ng-if="asset.floorPlans.length ==1">{{rsv.getLabels('planimetria')}}</span>
+                </a>
+            </li>
+            <!--<li ng-if="asset.videos.length > 0" class="rf-list__item rf-tabMedia__item--photo" ng-click="rsv.onChangePage('videos',asset)">
+                <a id="plan-tab" role="button" title="{{rsv.getLabels('apriVideo')}}" class="rf-tabMedia__link rf-list__link">
+                    <span>{{asset.videos.length}}</span>
+                    <span>{{rsv.getLabels('Video')}}</span>
+                </a>
+            </li>-->
+            <li ng-if="asset.videos.length > 0" class="rf-list__item rf-tabMedia__item--photo">
+                <a id="plan-tab-videos" role="button" title="{{rsv.getLabels('apriVideo')}}" class="rf-tabMedia__link rf-list__link" href="#video">
+                    <span>{{asset.videos.length}}</span>
+                    <span>{{rsv.getLabels('Video')}}</span>
+                </a>
+            </li>
+            <!--<li ng-if="asset.documents.length > 0" class="rf-list__item rf-tabMedia__item--photo" ng-click="rsv.onChangePage('documents',asset)">
+                <a id="plan-tab" role="button" title="{{rsv.getLabels('apriDocumenti')}}" class="rf-tabMedia__link rf-list__link">
+                    <span> {{asset.documents.length}}</span>
+                    <span>{{rsv.getLabels('Documenti')}}</span>
+                </a>
+            </li>-->
+            <li ng-if="asset.documents.length > 0" class="rf-list__item rf-tabMedia__item--photo">
+                <a id="plan-tab-document" role="button" title="{{rsv.getLabels('apriDocumenti')}}" class="rf-tabMedia__link rf-list__link" href="#documenti">
+                    <span> {{asset.documents.length}}</span>
+                    <span>{{rsv.getLabels('Documenti')}}</span>
+                </a>
+            </li>
+            <li ng-if="asset['link_video'] != null" class="rf-list__item rf-tabMedia__item--photo">
+                <a id="plan-tab-link-video" target="_blank" role="button" title="{{rsv.getLabels('apriVideo')}}" class="rf-tabMedia__link rf-list__link" href="{{asset['link_video']}}">
+                    <span>link video</span>
+                </a>
+            </li>
+            <li ng-if="asset.warnings.length > 0" class="rf-list__item rf-tabMedia__item--photo" ng-click="rsv.onChangePage('warning')">
+                <a id="plan-tab-warning" role="button" title="{{rsv.getLabels('apriWarning')}}" class="rf-tabMedia__link rf-list__link">
+                    <span>warning</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="button-container" ng-if="images.length > 1">
+            <a class="pull-left" href="" ng-click="prev()">&#10094;</a>
+            <a class="pull-right" href="" ng-click="next()">&#10095;</a>
+        </div>
+
+
+    </div>
+
+</script>

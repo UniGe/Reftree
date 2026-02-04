@@ -1,0 +1,183 @@
+﻿<style>
+    .page-content {
+        margin: 0px !important;
+    }
+
+    #spanbig {
+        display: none;
+    }
+
+    #thisGridIsFiltered {
+        display: none;
+    }
+
+    #ifmobile__ {
+        display: none;
+    }
+
+    .page-title {
+        display: none;
+    }
+
+    #splitterContainer {
+        width: 100%;
+        height: 80vh;
+    }
+
+        #splitterContainer .col-md-6 {
+            width: 48%;
+        }
+
+    #toolBimContainer li {
+        list-style: none;
+    }
+
+    #toolBimContainer a {
+        cursor: pointer;
+    }
+
+    #vertical {
+        margin: 0 auto;
+        height: 100%;
+    }
+
+    .spanFileMenu {
+        margin-left: 10px;
+    }
+
+    .cad-control-buttons-title {
+        background-color: #0d6a92;
+        height: 18px;
+        margin-bottom: 2px;
+        text-align: center;
+    }
+
+    .span-title-cad {
+        /*display: inline-block;*/
+        margin: 10px 10px 0 0;
+        padding: 5px 10px;
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+    }
+</style>
+
+
+<div id="toolbar-container" class="cad-control-buttons-title">
+    <span class="span-title-cad">prova</span>
+</div>
+
+<div id="toolBimContainer">
+    <ul class="nav nav-pills">
+        <li class="pull-right">
+            <a ng-click="rbv.closeViewer($event)">{{rbv.getLabels('close')}}</a>
+        </li>
+        <li class="pull-left">
+            <a ng-if="!rbv.showMenuDocument" ng-click="rbv.selectedProject = {}">{{rbv.getLabels('back')}}</a>
+        </li>
+    </ul>
+</div>
+
+
+<div ng-if="rbv.showMenuDocument" id="tblContainer">
+    <div id="listDocument" class="pull-center" ng-init="rbv.selectedProject = {}">
+
+        <div style="max-width:25%;"></div>
+        <div style="max-width:50%;">
+            <div class="panel-group" id="project-accordion">
+                <div ng-repeat="project in rbv.reftreeProjects track by project.idReftree" class="panel">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a ng-click="rbv.currProject = project" data-toggle="collapse" class="collapsed" data-parent="#project-accordion" href="#project-accordion-{{project.idReftree}}">
+                                {{project.description}}
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="project-accordion-{{project.idReftree}}" class="panel-collapse collapse" style="padding-top:5px;">
+                        <div class="panel-body" ng-repeat="file in project.models">
+                            <i ng-click="rbv.selectedProject = project" class="fa fa-folder-open"></i>
+                            <span class="spanFileMenu">{{file.name}}</span>
+                        </div>
+                        <div style="margin:10px; max-width:200px;">
+                            <i class="fa fa-folder-open pull-right" ng-click="rbv.selectedProject = project"></i>
+                            <!--<button ng-click="rbv.selectedProject = project" class="btn btn-primary pull-right" title="{{rgv.getLabels('visualizza')}}" type="button" data-toggle="dropdown">
+                        <i class="fa fa-folder-open"></i>
+
+                    </button>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="max-width:25%;"></div>
+        
+    </div>
+</div>
+
+
+<div ng-if="!rbv.showMenuDocument" id="splitterContainer">
+    <div kendo-splitter
+         id="vertical"
+         k-orientation="'vertical'"
+         k-panes="[{resizable: true, collapsible: true,size: '60%'}, {collapsed:true ,resizable: true , collapsible: true,size: '40%'}]"
+         style="width:100%"
+         k-on-resize="rbv.triggerWindowResize()">
+
+        <div id="top-pane">
+            <div kendo-splitter
+                 id="horizontal"
+                 style="height: 100%; width: 100%;"
+                 k-on-resize="rbv.triggerWindowResize()"
+                 k-panes="[{resizable:true,collapsible:true,size:'25%'}, {resizable:true,collapsible:true,size:'50%'}, {collapsed:true,resizable:true,collapsible:true,size:'25%'}]"
+                 k-orientation="'horizontal'">
+
+                <div id="left-pane">                    
+                    <div ng-show="!rbv.showMenuDocument" style="height:100%" id="modelContainer">
+
+                        <div style="margin:10px;" ng-if="modelBim.start" ng-repeat="modelBim in rbv.selectedProject.modelBim |  orderBy:'name'">
+                            <tree-bim-r3 maxlevels="1"
+                                         id="reftreeModel_{{modelBim.id}}"
+                                         click="rbv.onNodeClick(modelBim,node)"
+                                         class="treeBim"
+                                         model="modelBim.elements"
+                                         db-click="rbv.onNodeDbClick(modelBim,node);"
+                                         change="rbv.onCheckChange(modelBim,node);"
+                                         show-hide-node="rbv.onHideShowNode(modelBim,node);"
+                                         show-hide="rbv.onAddRemoveNode(modelBim,node)"
+                                         model-reftree="model">
+                            </tree-bim-r3>
+                        </div>
+                    </div>
+                </div>
+
+                <div  id="center-pane">
+                    <div id="forgeViewer"></div>
+                </div>
+
+                <div id="right-pane">
+                    <div kendo-splitter
+                         id="vertical2"
+                         k-orientation="'vertical'"
+                         k-panes="[{resizable: true, collapsible: true}, {resizable: true , collapsible: true }]"
+                         style="width:100%"
+                         k-on-resize="rbv.triggerWindowResize()">
+
+                        <div id="top-pane2">
+                        </div>
+                        <div id="bottom-pane2">
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div id="bottom-pane">
+            <p>bottom</p>
+        </div>
+
+    </div>
+
+
+</div>

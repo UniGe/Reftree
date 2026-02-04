@@ -1,0 +1,1453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 27.125, 98.875" name="MagicDB">
+  <DataContextMoniker Name="/MagicDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="c1ea9e0f-fc23-4dd7-bf19-fbfb75f2d4cc" absoluteBounds="15, 31.625, 2, 1.7708968091756105">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_ColumnLabels" />
+      <nestedChildShapes>
+        <elementListCompartment Id="306302f7-60e0-419a-9735-0339bef79717" absoluteBounds="15.015000000596046, 32.08500000089407, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="90a01338-3057-4e5d-833c-c6b02c63e086" absoluteBounds="3.5, 29.5, 2, 1.9631982427090406">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Cultures" />
+      <nestedChildShapes>
+        <elementListCompartment Id="27c498ff-87ed-4cb6-a4cd-6d30ae126163" absoluteBounds="3.5150000005960464, 29.96000000089407, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e0f09ad2-98dc-499f-b144-162e32c65bda" absoluteBounds="9, 45.625, 2, 1.3862939458340406">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_FunctionsDataSource" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f9c0e441-d1ab-49e4-afdd-0c832f562776" absoluteBounds="9.0150000005960464, 46.08500000089407, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7d4891ea-add6-44e3-9ff0-2e921649ff63" absoluteBounds="6.25, 38.75, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Messages" />
+      <nestedChildShapes>
+        <elementListCompartment Id="10f5b77c-3762-4d67-bef2-54d0cb80725b" absoluteBounds="6.2650000000000006, 39.210000000000008, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="32fdaba7-8c7f-4b17-9ad1-e1ffad631cff" absoluteBounds="12, 20.75, 2, 2.1554996744791879">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Mmb_Profiles" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cc575cd9-b61b-49e5-aede-49c74d53505c" absoluteBounds="12.015, 21.210000000000008, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="771a252f-ebb8-4d23-a09d-da60efc1940f" absoluteBounds="12, 63.625, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Mmb_UserGroupVisibilityUsers" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2ddebc0d-4316-451d-b9b7-290da1696fe7" absoluteBounds="12.015, 64.085000000000008, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c623ffc1-d790-4167-859f-760eff789b15" absoluteBounds="10.75, 58.625, 2, 2.1554996744791595">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Mmb_UsersFunctionsOverrideRights" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e69df0bd-8cbf-43b0-ab61-ceed0785b147" absoluteBounds="10.765000000596046, 59.08500000089407, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="766991e0-ab92-4dbb-976a-d8c84ecde013" absoluteBounds="12, 51.625, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Mmb_UsersPreferredFunctions" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5bd3f67f-2511-4744-9a33-9f8e83f6f12e" absoluteBounds="12.015, 52.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="de6e56b0-19c0-4d52-a819-27234ae6d637" absoluteBounds="14.75, 44.25, 2, 1.7708968091756105">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_TemplateDetailsFunctionOverrides" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6133eb90-2abd-41ba-8833-92acb9758855" absoluteBounds="14.765000000596046, 44.71000000089407, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="37a7f702-6c18-4a49-aecb-d3db64808210" absoluteBounds="15.75, 21, 2, 1.1939925123006105">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_TemplateGroupContent" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aa5f831b-a1f7-405e-8814-243909a27ec6" absoluteBounds="15.765000000596046, 21.46000000089407, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="af37afb5-5421-4d14-90d5-575b12bf6195" absoluteBounds="17.5, 24.875, 2, 1.7708968098958451">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_TemplateGroupLabels" />
+      <nestedChildShapes>
+        <elementListCompartment Id="34a4fda8-0994-4c09-a7bb-38a88003b072" absoluteBounds="17.515, 25.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2f9d83cf-5b32-44b0-ab5c-7bd6c0c883e7" absoluteBounds="15, 55.5, 2, 1.5785953776041737">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_TemplateGroupsFunctionOverrides" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d0f1915e-13d2-4a23-a02e-2ec74ebb00e0" absoluteBounds="15.015, 55.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0425585f-0ad6-4582-85f6-1114b117e27c" absoluteBounds="9, 15.125, 2, 1.1939925123006105">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_TemplateLayouts" />
+      <nestedChildShapes>
+        <elementListCompartment Id="483750cd-852f-4b0d-9c32-eb19c4ed2128" absoluteBounds="9.0150000005960464, 15.58500000089407, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9bb4efaa-af45-4875-8826-888bde53d3b3" absoluteBounds="9, 12, 2, 1.3862939458340406">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_TemplateTypes" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dccbbbae-75ca-4e92-8c77-50bc695e4ed7" absoluteBounds="9.0150000005960464, 12.46000000089407, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 30.9390283203125); (5.90104166666667 : 30.9390283203125 : JumpStart); (6.06770833333333 : 30.9390283203125 : JumpEnd); (8.60416666666667 : 30.9390283203125 : JumpStart); (8.77083333333333 : 30.9390283203125 : JumpEnd); (10.0416666666667 : 30.9390283203125 : JumpStart); (10.2083333333333 : 30.9390283203125 : JumpEnd); (11.1026282051282 : 30.9390283203125 : JumpStart); (11.4583333333333 : 30.9390283203125 : JumpEnd); (11.5416666666667 : 30.9390283203125 : JumpStart); (11.7083333333333 : 30.9390283203125 : JumpEnd); (13.7760416666667 : 30.9390283203125 : JumpStart); (13.9427083333333 : 30.9390283203125 : JumpEnd); (14.0416666666667 : 30.9390283203125 : JumpStart); (14.2083333333333 : 30.9390283203125 : JumpEnd); (16 : 30.9390283203125); (16 : 31.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Cultures/Magic_Cultures_Magic_ColumnLabels" />
+      <nodes>
+        <classShapeMoniker Id="90a01338-3057-4e5d-833c-c6b02c63e086" />
+        <classShapeMoniker Id="c1ea9e0f-fc23-4dd7-bf19-fbfb75f2d4cc" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 29.897170106025); (5.9610401122556 : 31.4777648084805 : JumpStart); (6.0077098877444 : 31.6377639017079 : JumpEnd); (6.125 : 32.0398723628885); (6.125 : 39.7315991210938); (6.25 : 39.7315991210938)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Cultures/Magic_Cultures_Magic_Messages" />
+      <nodes>
+        <classShapeMoniker Id="90a01338-3057-4e5d-833c-c6b02c63e086" />
+        <classShapeMoniker Id="7d4891ea-add6-44e3-9ff0-2e921649ff63" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 30.3213093489583); (5.90104166666667 : 30.3213093489583 : JumpStart); (6.06770833333333 : 30.3213093489583 : JumpEnd); (8.60416666666667 : 30.3213093489583 : JumpStart); (8.77083333333333 : 30.3213093489583 : JumpEnd); (8.875 : 30.3213093489583); (8.875 : 24.5); (11.125 : 24.5); (11.125 : 27.4247054036458); (11.1666666666667 : 27.4247054036458 : JumpStart); (11.4583333333333 : 27.4247054036458 : JumpEnd); (11.5416666666667 : 27.4247054036458 : JumpStart); (11.7083333333333 : 27.4247054036458 : JumpEnd); (13.884358974359 : 27.4247054036458 : JumpStart); (14.1802574102563 : 27.4247054036458 : JumpEnd); (14.375 : 27.4247054036458); (14.375 : 25.7708968098958); (14.5416691666667 : 25.7708968098958 : JumpStart); (14.7083358333333 : 25.7708968098958 : JumpEnd); (17 : 25.7708968098958); (17 : 26.8958968098958); (17.1979166666667 : 26.8958968098958 : JumpStart); (17.3645833333333 : 26.8958968098958 : JumpEnd); (18.5 : 26.8958968098958); (18.5 : 26.6458968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Cultures/Magic_Cultures_Magic_TemplateGroupLabels" />
+      <nodes>
+        <classShapeMoniker Id="90a01338-3057-4e5d-833c-c6b02c63e086" />
+        <classShapeMoniker Id="af37afb5-5421-4d14-90d5-575b12bf6195" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="e1052629-74f2-4fa0-891b-9642bdf56352" absoluteBounds="6.75, 8.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/MagicDBDataContext/v_Magic_ColumnGridName" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8e15aa61-15bf-45cd-aa57-d1535ce231f8" absoluteBounds="6.7650000000000006, 9.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9d7c6f17-2876-455a-85f2-bcacb886044e" absoluteBounds="9.75, 8.75, 3.125, 2.5401025390625023">
+      <DataClassMoniker Name="/MagicDBDataContext/v_Magic_Mmb_MenuFunctions" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a8f3d241-f26a-42b1-9b71-823cba9e0e13" absoluteBounds="9.765, 9.21, 3.0949999999999998, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="77b70927-1f3c-46e9-bbf2-ba0d3911f2d9" absoluteBounds="11.75, 0.75, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/MagicDBDataContext/v_Magic_Mmb_UserModulesRights" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e79a20b7-1c47-445f-8553-8eea22fbeadf" absoluteBounds="11.765, 1.2100000000000009, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="71659f3d-24d8-46b1-8e11-208ddfbaa6a9" absoluteBounds="0.75, 11.75, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/MagicDBDataContext/v_Magic_Mmb_UserPreferredFunctions" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ba317ded-5aaf-40e6-aee4-f1296b368e54" absoluteBounds="0.76500000000000057, 12.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cbf19263-4cf3-4151-a1ef-08230a8e7989" absoluteBounds="3.75, 11.75, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/MagicDBDataContext/v_Magic_Mmb_UsersProfiles" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d8de3023-55ba-421b-aa8c-fda12f286b7a" absoluteBounds="3.7650000000000006, 12.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b066d915-e883-4c4c-85a7-77f8f952e7c9" absoluteBounds="12.75, 4.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_FileTypeUpload" />
+      <nestedChildShapes>
+        <elementListCompartment Id="094457a5-1773-490a-b17c-84211c7a1b1c" absoluteBounds="12.765, 5.2100000000000009, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3f32f045-e9da-4fe6-af7b-8b2c0a3198b5" absoluteBounds="11.75, 12.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/MagicDBDataContext/v_Magic_Functions_Templates" />
+      <nestedChildShapes>
+        <elementListCompartment Id="af8260b2-e143-496b-85a6-ee211202263b" absoluteBounds="11.765, 13.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7277ef14-b834-439f-a77c-0f3f4fdbb3a8" absoluteBounds="14.75, 7.75, 2, 6.1938297526041595">
+      <DataClassMoniker Name="/MagicDBDataContext/v_Magic_Mmb_UserFunctionRights" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c071336d-aa22-48ab-bdaf-84cbd163d5ff" absoluteBounds="14.765, 8.21, 1.9700000000000002, 5.6338297526041661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ce70f6c0-4fdd-40dc-ac6e-41588f93bb59" absoluteBounds="6.25, 26.125, 2, 1.1939925130208167">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_ManagedCultures" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9518af30-0393-4e12-8c45-e7cbc3a9655d" absoluteBounds="6.2650000000000006, 26.585000000000008, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.34375 : 29.5); (5.34375 : 27.2636946614583); (5.36979416666667 : 27.2636946614583 : JumpStart); (5.53646083333333 : 27.2636946614583 : JumpEnd); (6.25 : 27.2636946614583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Cultures/Magic_Cultures_Magic_ManagedCultures" />
+      <nodes>
+        <classShapeMoniker Id="90a01338-3057-4e5d-833c-c6b02c63e086" />
+        <classShapeMoniker Id="ce70f6c0-4fdd-40dc-ac6e-41588f93bb59" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="b2ea8736-bae5-4209-8586-3be299f7bcfe" absoluteBounds="14.75, 0.75, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/MagicDBDataContext/v_Magic_FunctionLabels" />
+      <nestedChildShapes>
+        <elementListCompartment Id="32680173-bbea-40ad-9452-1d057dab3971" absoluteBounds="14.765, 1.2100000000000009, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9cd9f234-ed0d-4958-bd0a-b4fb43a5a1ee" absoluteBounds="14.75, 14.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Tables" />
+      <nestedChildShapes>
+        <elementListCompartment Id="410da1a7-a91d-4942-bc07-03a7ccae5bad" absoluteBounds="14.765, 15.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6d67f895-d0f7-4bfd-b283-d324763038ce" absoluteBounds="12, 69.5, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Calendar_Relations" />
+      <nestedChildShapes>
+        <elementListCompartment Id="92b5b43f-973f-46d8-b2aa-864ac71180f4" absoluteBounds="12.015000000596046, 69.96000000089407, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="51bdc36d-7581-4481-b41e-88c003fe27bb" absoluteBounds="0.75, 15.75, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/MagicDBDataContext/v_Magic_CalendarHistory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="26790eaa-4e65-4046-a7c0-669a304af908" absoluteBounds="0.76500000000000057, 16.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0b04a4cf-d5f9-4cb8-a408-fc1d8d8b2899" absoluteBounds="8.125, 74.125, 3.125, 2.5401025395840406">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Mmb_UserGroupVisibility" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2fb650fa-23df-4343-a1d5-84de96e695e5" absoluteBounds="8.1400000005960464, 74.58500000089407, 3.0949999999999998, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.65625 : 74.125); (8.65625 : 63.96875); (10.0885396666667 : 63.96875 : JumpStart); (10.2552063333333 : 63.96875 : JumpEnd); (11.0729166666667 : 63.96875 : JumpStart); (11.2395833333333 : 63.96875 : JumpEnd); (11.2916666666667 : 63.96875 : JumpStart); (11.4583333333333 : 63.96875 : JumpEnd); (11.6666666666667 : 63.96875 : JumpStart); (11.8333333333333 : 63.96875 : JumpEnd); (12 : 63.96875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_UserGroupVisibility/Magic_Mmb_UserGroupVisibility_Magic_Mmb_UserGroupVisibilityUsers" />
+      <nodes>
+        <classShapeMoniker Id="0b04a4cf-d5f9-4cb8-a408-fc1d8d8b2899" />
+        <classShapeMoniker Id="771a252f-ebb8-4d23-a09d-da60efc1940f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.9531275 : 74.125); (8.9531275 : 70.6626611328125); (12 : 70.6626611328125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_UserGroupVisibility/Magic_Mmb_UserGroupVisibility_Magic_Calendar_Relations" />
+      <nodes>
+        <classShapeMoniker Id="0b04a4cf-d5f9-4cb8-a408-fc1d8d8b2899" />
+        <classShapeMoniker Id="6d67f895-d0f7-4bfd-b283-d324763038ce" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.22372473333174 : 76.665102539584); (9.22372473333174 : 76.915102539584); (10.1733598031763 : 76.915102539584); (10.1733598031763 : 76.665102539584)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_UserGroupVisibility/Magic_Mmb_UserGroupVisibility_Magic_Mmb_UserGroupVisibility" />
+      <nodes>
+        <classShapeMoniker Id="0b04a4cf-d5f9-4cb8-a408-fc1d8d8b2899" />
+        <classShapeMoniker Id="0b04a4cf-d5f9-4cb8-a408-fc1d8d8b2899" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="1b6f0e2b-beee-4c9a-ab69-d53b6cbd323c" absoluteBounds="3.75, 15.75, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_BusinessObject" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c6ae0688-966b-4cde-84f4-3ee34ef6d9d3" absoluteBounds="3.7650000000000006, 16.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="964284db-897e-4bfb-974d-85b354b18df8" absoluteBounds="5.375, 74.375, 2, 1.9631982427090406">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Mmb_UserGroupNetwork" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cb2dcacf-5fe1-45cc-b1e4-73c9d6d9b906" absoluteBounds="5.3900000005960464, 74.83500000089407, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.375 : 75.3565991213545); (8.125 : 75.3565991213545)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_UserGroupNetwork/Magic_Mmb_UserGroupNetwork_Magic_Mmb_UserGroupVisibility" />
+      <nodes>
+        <classShapeMoniker Id="964284db-897e-4bfb-974d-85b354b18df8" />
+        <classShapeMoniker Id="0b04a4cf-d5f9-4cb8-a408-fc1d8d8b2899" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="f8e67d43-f53c-412a-840a-ac4917bc4af8" absoluteBounds="12.25, 38.5, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Calendar_TaskStatus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bb7ba633-997d-4b58-b895-37fad8098ccc" absoluteBounds="12.265, 38.960000000000008, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="685d0428-ee6e-47ac-8282-23d7ed5ff98a" absoluteBounds="3.5, 9.125, 2, 1.3862939458340406">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_EntitiesVsbltyRules" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cbb1b211-2626-4a3d-a25a-08de1412da1e" absoluteBounds="3.5150000005960464, 9.58500000089407, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="667e988c-9d5f-40d6-b91d-123e8e7d50bd" absoluteBounds="9, 55.375, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_FunctionsTemplates" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0c846a9c-acab-478f-bde5-1f5e8d7982f3" absoluteBounds="9.015, 55.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f66dfb41-d514-4a18-a1e3-81ee4d6b8ad9" absoluteBounds="9.25, 71.75, 2, 1.1939925123006105">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_GridsCmdLocations" />
+      <nestedChildShapes>
+        <elementListCompartment Id="beca74f0-6a53-425f-8f2c-172b3ab88641" absoluteBounds="9.2650000005960464, 72.21000000089407, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d6ed4bf6-2eeb-414c-a0a8-147a12627298" absoluteBounds="15.75, 4.75, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_DocumentRepositoryType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6d669670-522b-4e25-9c58-8f8f5e309e3c" absoluteBounds="15.765, 5.2100000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c87c42bf-fdd1-46fd-8a12-93b0d7054051" absoluteBounds="0.75, 8.875, 2, 1.7708968091756105">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_VsbltyRules" />
+      <nestedChildShapes>
+        <elementListCompartment Id="38136e50-5de0-4e74-a6b6-a97bb72acb84" absoluteBounds="0.76500000059604645, 9.33500000089407, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 9.81814697291702); (3.5 : 9.81814697291702)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_VsbltyRules/Magic_VsbltyRules_Magic_EntitiesVsbltyRules" />
+      <nodes>
+        <classShapeMoniker Id="c87c42bf-fdd1-46fd-8a12-93b0d7054051" />
+        <classShapeMoniker Id="685d0428-ee6e-47ac-8282-23d7ed5ff98a" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="14a127f0-b6a3-40bb-a8ea-c6536807b521" absoluteBounds="9.25, 64.375, 2, 5.8092268880208451">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Mmb_Users" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1c9147d0-a13f-4b94-9762-2b08814eee62" absoluteBounds="9.2650000005960464, 64.83500000089407, 1.9700000000000002, 5.249226888020833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11.25 : 64.6931469726563); (11.2916666666667 : 64.6931469726563 : JumpStart); (11.4583333333333 : 64.6931469726563 : JumpEnd); (11.6666666666667 : 64.6931469726563 : JumpStart); (11.8333333333333 : 64.6931469726563 : JumpEnd); (12 : 64.6931469726563)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Users/Magic_Mmb_Users_Magic_Mmb_UserGroupVisibilityUsers" />
+      <nodes>
+        <classShapeMoniker Id="14a127f0-b6a3-40bb-a8ea-c6536807b521" />
+        <classShapeMoniker Id="771a252f-ebb8-4d23-a09d-da60efc1940f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.15625 : 64.375); (11.15625 : 60.7804996744792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Users/Magic_Mmb_Users_Magic_Mmb_UsersFunctionsOverrideRights" />
+      <nodes>
+        <classShapeMoniker Id="14a127f0-b6a3-40bb-a8ea-c6536807b521" />
+        <classShapeMoniker Id="c623ffc1-d790-4167-859f-760eff789b15" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.171873 : 64.375); (10.171873 : 63.3285953775048); (11.0729166666667 : 63.3285953775048 : JumpStart); (11.2395833333333 : 63.3285953775048 : JumpEnd); (11.2916666666667 : 63.3285953775048 : JumpStart); (11.4583333333333 : 63.3285953775048 : JumpEnd); (11.5 : 63.3285953775048); (11.5 : 61.0304996744792); (11.2395833333333 : 61.0304996744792 : JumpStart); (11.0729166666667 : 61.0304996744792 : JumpEnd); (10.5 : 61.0304996744792); (10.5 : 57.5881982421875); (11.25 : 57.5881982421875); (11.25 : 52.3181469726563); (11.3541666666667 : 52.3181469726563 : JumpStart); (11.5833333333333 : 52.3181469726563 : JumpEnd); (11.6041666666667 : 52.3181469726563 : JumpStart); (11.7708333333333 : 52.3181469726563 : JumpEnd); (11.7916666666667 : 52.3181469726563 : JumpStart); (11.9583333333333 : 52.3181469726563 : JumpEnd); (12 : 52.3181469726563)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Users/Magic_Mmb_Users_Magic_Mmb_UsersPreferredFunctions" />
+      <nodes>
+        <classShapeMoniker Id="14a127f0-b6a3-40bb-a8ea-c6536807b521" />
+        <classShapeMoniker Id="766991e0-ab92-4dbb-976a-d8c84ecde013" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 69.8421134440104); (11.2916666666667 : 69.8421134440104 : JumpStart); (11.4583333333333 : 69.8421134440104 : JumpEnd); (11.7337311135411 : 69.8421134440104 : JumpStart); (11.9003977802078 : 69.8421134440104 : JumpEnd); (12 : 69.8421134440104)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Users/Magic_Mmb_Users_Magic_Calendar_Relations" />
+      <nodes>
+        <classShapeMoniker Id="14a127f0-b6a3-40bb-a8ea-c6536807b521" />
+        <classShapeMoniker Id="6d67f895-d0f7-4bfd-b283-d324763038ce" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="b368e003-1fcc-4eb8-a656-87c0e14ed89f" absoluteBounds="12, 41, 2.75, 2.1554996743798256">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_ColumnsFunctionOverrides" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c6008b08-0a66-4cb0-99b3-bd2d93bbaee3" absoluteBounds="12.015000000596046, 41.46000000089407, 2.7199999999999998, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6e9ec79b-6b18-4af1-b865-aa4eb591bb0e" absoluteBounds="0.75, 35.375, 2, 1.3862939458340406">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_AppLayersTypes" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dd8356d4-ca7e-48cb-800d-787974323a96" absoluteBounds="0.76500000059604645, 35.83500000089407, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bd3a114e-02b8-41e0-a2ed-fe43750bcce6" absoluteBounds="12, 32.125, 2, 4.6554182935506105">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_TemplateDetails" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cfb122ef-d9dc-4096-a922-66579459dd39" absoluteBounds="12.015000000596046, 32.58500000089407, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(14 : 34.1979484045878); (14.875 : 34.1979484045878); (14.875 : 44.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_TemplateDetails/Magic_TemplateDetails_Magic_TemplateDetailsFunctionOverrides" />
+      <nodes>
+        <classShapeMoniker Id="bd3a114e-02b8-41e0-a2ed-fe43750bcce6" />
+        <classShapeMoniker Id="de6e56b0-19c0-4d52-a819-27234ae6d637" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="608a7399-7b51-4a86-b593-32b73075d2b6" absoluteBounds="9, 52.625, 2, 1.3862939458340406">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_FunctionTrees" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8ded31d1-4562-48f0-a81b-157920e82ea2" absoluteBounds="9.0150000005960464, 53.08500000089407, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="502f134e-6b04-4d18-b046-3175abb3b133" absoluteBounds="9, 19.5, 2, 3.8862125650048256">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Trees" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0cc4663c-bcb8-4752-9822-256b3a9be69f" absoluteBounds="9.0150000005960464, 19.96000000089407, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(10 : 23.3862125650048); (10 : 24.25); (11.1666666666667 : 24.25 : JumpStart); (11.3333333333333 : 24.25 : JumpEnd); (11.4375 : 24.25); (11.4375 : 53.318146972917); (11.2083345833333 : 53.318146972917 : JumpStart); (11.0416679166667 : 53.318146972917 : JumpEnd); (11 : 53.318146972917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Trees/Magic_Trees_Magic_FunctionTrees" />
+      <nodes>
+        <classShapeMoniker Id="502f134e-6b04-4d18-b046-3175abb3b133" />
+        <classShapeMoniker Id="608a7399-7b51-4a86-b593-32b73075d2b6" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="c9f3c5d5-f5f5-43d3-bd10-092f2690fc0c" absoluteBounds="15.75, 37.625, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_TemplateGrpGridRelType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="67be4649-230d-46d1-90aa-31c9ebcd4bd5" absoluteBounds="15.765, 38.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="64290438-d1b1-4855-aa25-33b3672e2fc3" absoluteBounds="12.25, 74.25, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_CalendarLocations" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7cdff69f-ebd6-4bc9-8de5-714c996be731" absoluteBounds="12.265, 74.710000000000008, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="87b82325-97ea-45e9-b569-df50036f6afb" absoluteBounds="9.25, 42.75, 2, 1.1939925123006105">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_GridsCmdDataFormatType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7f3a99a0-4f1d-4049-86ed-14608e77e3d1" absoluteBounds="9.2650000005960464, 43.21000000089407, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="748a07b3-0028-4cfe-b241-0a48dc32d6a0" absoluteBounds="3.5, 38.125, 2, 2.5401025395840406">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Mmb_Modules" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2e1df2a0-9c57-4e2b-88be-d7d88568e7ec" absoluteBounds="3.5150000005960464, 38.58500000089407, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c743f86d-9a8b-4542-8c37-bdfb180b5368" absoluteBounds="12.25, 96.875, 2, 1.7708968098958451">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_CalendarSourceObjects" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4a5cdd8c-e58c-421d-a0da-12bddce6f1a7" absoluteBounds="12.265, 97.335000000000008, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="765b1551-ee99-4ee4-8ec1-19d87524e66e" absoluteBounds="15.75, 41.625, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Mmb_UsersProfiles" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7b7da2f5-0035-406b-92dc-98338d8048ec" absoluteBounds="15.765, 42.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 39.395051269792); (5.75 : 39.395051269792); (5.75 : 40.9631982421875); (11.75 : 40.9631982421875); (11.75 : 40.75); (14.4479166666667 : 40.75 : JumpStart); (14.6145833333333 : 40.75 : JumpEnd); (14.7916666666667 : 40.75 : JumpStart); (14.9583333333333 : 40.75 : JumpEnd); (16.75 : 40.75); (16.75 : 41.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Modules/Magic_Mmb_Modules_Magic_Mmb_UsersProfiles" />
+      <nodes>
+        <classShapeMoniker Id="748a07b3-0028-4cfe-b241-0a48dc32d6a0" />
+        <classShapeMoniker Id="765b1551-ee99-4ee4-8ec1-19d87524e66e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(13 : 22.9054996744792); (13 : 24); (13.2916661666667 : 24 : JumpStart); (13.4583328333333 : 24 : JumpEnd); (13.8229166666667 : 24 : JumpStart); (13.9895833333333 : 24 : JumpEnd); (14.25 : 24); (14.25 : 38.25); (14.4479166666667 : 38.25 : JumpStart); (14.6145833333333 : 38.25 : JumpEnd); (14.7916666666667 : 38.25 : JumpStart); (14.9583333333333 : 38.25 : JumpEnd); (15.25 : 38.25); (15.25 : 42.5104484049479); (15.75 : 42.5104484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Profiles/Magic_Mmb_Profiles_Magic_Mmb_UsersProfiles" />
+      <nodes>
+        <classShapeMoniker Id="32fdaba7-8c7f-4b17-9ad1-e1ffad631cff" />
+        <classShapeMoniker Id="765b1551-ee99-4ee4-8ec1-19d87524e66e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 67.2796134440104); (11.75 : 67.2796134440104); (11.75 : 62.4054996744792); (16 : 62.4054996744792); (16 : 59.7035953776042); (17.25 : 59.7035953776042); (17.25 : 43.7708968098958); (16.75 : 43.7708968098958); (16.75 : 43.3958968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Users/Magic_Mmb_Users_Magic_Mmb_UsersProfiles" />
+      <nodes>
+        <classShapeMoniker Id="14a127f0-b6a3-40bb-a8ea-c6536807b521" />
+        <classShapeMoniker Id="765b1551-ee99-4ee4-8ec1-19d87524e66e" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="f5bbae2a-6aa6-46e2-9ce6-cfd132bcefb6" absoluteBounds="17.75, 0.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/MagicDBDataContext/v_Magic_UserCrossProfiles" />
+      <nestedChildShapes>
+        <elementListCompartment Id="405d8109-bbff-4e29-a93e-5cbf25313216" absoluteBounds="17.765, 1.2100000000000009, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6184a982-0a2a-40ac-9b0c-384a3e7a5e4c" absoluteBounds="17.75, 7.75, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/MagicDBDataContext/v_Magic_Mmb_Profiles_Modules_View" />
+      <nestedChildShapes>
+        <elementListCompartment Id="835044c9-2383-4a30-8c70-881ab718d078" absoluteBounds="17.765, 8.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8d825ebe-7682-4e83-af8b-551a0ad26cb5" absoluteBounds="18.75, 34.375, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Mmb_ProfilesModules" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1500975d-46ae-4235-ad2e-a2f22043de8c" absoluteBounds="18.765, 34.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 38.728773634896); (5.75 : 38.728773634896); (5.75 : 38.5); (5.85416666666667 : 38.5 : JumpStart); (6.02083333333333 : 38.5 : JumpEnd); (6.10416666666667 : 38.5 : JumpStart); (6.27083333333333 : 38.5 : JumpEnd); (8.82291666666667 : 38.5 : JumpStart); (8.98958333333333 : 38.5 : JumpEnd); (9 : 38.5); (9 : 40.3668440748006); (9.04166666666667 : 40.3668440748006 : JumpStart); (9.20833333333333 : 40.3668440748006 : JumpEnd); (11.2916666666667 : 40.3668440748006 : JumpStart); (11.4583333333333 : 40.3668440748006 : JumpEnd); (11.6041666666667 : 40.3668440748006 : JumpStart); (11.7708333333333 : 40.3668440748006 : JumpEnd); (11.8541666666667 : 40.3668440748006 : JumpStart); (12.0208333333333 : 40.3668440748006 : JumpEnd); (14.4479166666667 : 40.3668440748006 : JumpStart); (14.6145833333333 : 40.3668440748006 : JumpEnd); (14.7916666666667 : 40.3668440748006 : JumpStart); (14.9583333333333 : 40.3668440748006 : JumpEnd); (17.9479166666667 : 40.3668440748006 : JumpStart); (18.1145833333333 : 40.3668440748006 : JumpEnd); (18.5104166666667 : 40.3668440748006 : JumpStart); (18.6770833333333 : 40.3668440748006 : JumpEnd); (19.75 : 40.3668440748006); (19.75 : 36.9151025390625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Modules/Magic_Mmb_Modules_Magic_Mmb_ProfilesModules" />
+      <nodes>
+        <classShapeMoniker Id="748a07b3-0028-4cfe-b241-0a48dc32d6a0" />
+        <classShapeMoniker Id="8d825ebe-7682-4e83-af8b-551a0ad26cb5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(14 : 21.8277498372396); (15.5 : 21.8277498372396); (15.5 : 22.9630354817708); (17.1979166666667 : 22.9630354817708 : JumpStart); (17.3645833333333 : 22.9630354817708 : JumpEnd); (20.75 : 22.9630354817708); (20.75 : 34); (19.75 : 34); (19.75 : 34.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Profiles/Magic_Mmb_Profiles_Magic_Mmb_ProfilesModules" />
+      <nodes>
+        <classShapeMoniker Id="32fdaba7-8c7f-4b17-9ad1-e1ffad631cff" />
+        <classShapeMoniker Id="8d825ebe-7682-4e83-af8b-551a0ad26cb5" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="88dd487e-1f15-4972-8f6b-3c081be59247" absoluteBounds="3.5, 35.25, 2, 1.7708968091756105">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_ApplicationLayers" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4be225c9-f2c4-4722-b198-6dc07470d2d7" absoluteBounds="3.5150000005960464, 35.71000000089407, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 36.068146972917); (3.19791666666667 : 36.068146972917 : JumpStart); (3.36458333333333 : 36.068146972917 : JumpEnd); (3.5 : 36.068146972917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_AppLayersTypes/Magic_AppLayersTypes_Magic_ApplicationLayers" />
+      <nodes>
+        <classShapeMoniker Id="6e9ec79b-6b18-4af1-b865-aa4eb591bb0e" />
+        <classShapeMoniker Id="88dd487e-1f15-4972-8f6b-3c081be59247" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="6f5414b9-59a0-4418-a810-e516b33887fb" absoluteBounds="12, 66.125, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Calendar_Notifications" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0270c1d9-068d-4a8a-b1f3-764a79b6e1d7" absoluteBounds="12.015000000596046, 66.58500000089407, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11.25 : 67.3950512695313); (11.2916666666667 : 67.3950512695313 : JumpStart); (11.5887952217019 : 67.3950512695313 : JumpEnd); (12 : 67.3950512695313)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Users/Magic_Mmb_Users_Magic_Calendar_Notifications" />
+      <nodes>
+        <classShapeMoniker Id="14a127f0-b6a3-40bb-a8ea-c6536807b521" />
+        <classShapeMoniker Id="6f5414b9-59a0-4418-a810-e516b33887fb" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="4285847f-f706-4bdb-a7a7-55ec25be6ceb" absoluteBounds="9, 49.125, 2, 2.3478011060506105">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_TemplateScriptsBuffer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="099aa181-504a-44e6-aa73-7f331a12b9c8" absoluteBounds="9.0150000005960464, 49.58500000089407, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 30.468007748905); (5.95649225185479 : 31.753693101546 : JumpStart); (6.01225774814521 : 31.9107535586995 : JumpEnd); (6.03125 : 31.9642441928212); (6.03125 : 50.2989005530253); (6.10416666666667 : 50.2989005530253 : JumpStart); (6.27083333333333 : 50.2989005530253 : JumpEnd); (6.63541416666667 : 50.2989005530253 : JumpStart); (6.80208083333333 : 50.2989005530253 : JumpEnd); (7.16666666666667 : 50.2989005530253 : JumpStart); (7.33333333333333 : 50.2989005530253 : JumpEnd); (7.43229291666667 : 50.2989005530253 : JumpStart); (7.59895958333333 : 50.2989005530253 : JumpEnd); (8.09635829166667 : 50.2989005530253 : JumpStart); (8.26302495833333 : 50.2989005530253 : JumpEnd); (9 : 50.2989005530253)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Cultures/Magic_Cultures_Magic_TemplateScriptsBuffer" />
+      <nodes>
+        <classShapeMoniker Id="90a01338-3057-4e5d-833c-c6b02c63e086" />
+        <classShapeMoniker Id="4285847f-f706-4bdb-a7a7-55ec25be6ceb" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="587c8c65-f64f-422d-a86f-9c561827b0a5" absoluteBounds="9.25, 17.375, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_TemplateDataRoles" />
+      <nestedChildShapes>
+        <elementListCompartment Id="896ac121-787f-4b3b-903d-a13ae8c176af" absoluteBounds="9.265, 17.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(10.25 : 18.5689925130208); (10.25 : 19.25); (11.375 : 19.25); (11.375 : 44.125); (11.6041666666667 : 44.125 : JumpStart); (11.7708333333333 : 44.125 : JumpEnd); (14.375 : 44.125); (14.375 : 45.1354484045878); (14.75 : 45.1354484045878)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_TemplateDataRoles/Magic_TemplateDataRoles_Magic_TemplateDetailsFunctionOverrides" />
+      <nodes>
+        <classShapeMoniker Id="587c8c65-f64f-422d-a86f-9c561827b0a5" />
+        <classShapeMoniker Id="de6e56b0-19c0-4d52-a819-27234ae6d637" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.781252 : 18.5689925130208); (10.781252 : 19); (11.625 : 19); (11.625 : 34.4527091467753); (12 : 34.4527091467753)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_TemplateDataRoles/Magic_TemplateDataRoles_Magic_TemplateDetails" />
+      <nodes>
+        <classShapeMoniker Id="587c8c65-f64f-422d-a86f-9c561827b0a5" />
+        <classShapeMoniker Id="bd3a114e-02b8-41e0-a2ed-fe43750bcce6" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="f993ed5c-e813-4ba3-b24b-f0d3044618ef" absoluteBounds="9.25, 32, 2, 8.11684407480061">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Columns" />
+      <nestedChildShapes>
+        <elementListCompartment Id="80698a92-de54-412e-b6e8-ae3548e6d26e" absoluteBounds="9.2650000005960464, 32.46000000089407, 1.9700000000000002, 7.556844075520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11.25 : 32.03125); (11.2916666666667 : 32.03125 : JumpStart); (11.4583333333333 : 32.03125 : JumpEnd); (11.5416666666667 : 32.03125 : JumpStart); (11.7708333333333 : 32.03125 : JumpEnd); (13.7760416666667 : 32.03125 : JumpStart); (13.9427083333333 : 32.03125 : JumpEnd); (14.0104166666667 : 32.03125 : JumpStart); (14.1770833333333 : 32.03125 : JumpEnd); (15 : 32.03125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Columns/Magic_Columns_Magic_ColumnLabels" />
+      <nodes>
+        <classShapeMoniker Id="f993ed5c-e813-4ba3-b24b-f0d3044618ef" />
+        <classShapeMoniker Id="c1ea9e0f-fc23-4dd7-bf19-fbfb75f2d4cc" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 37.5464591467753); (14.53125 : 37.5464591467753); (14.53125 : 41)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Columns/Magic_Columns_Magic_ColumnsFunctionOverrides" />
+      <nodes>
+        <classShapeMoniker Id="f993ed5c-e813-4ba3-b24b-f0d3044618ef" />
+        <classShapeMoniker Id="b368e003-1fcc-4eb8-a656-87c0e14ed89f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 33.2263545733877); (11.5416666666667 : 33.2263545733877 : JumpStart); (11.7083333333333 : 33.2263545733877 : JumpEnd); (12 : 33.2263545733877)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Columns/Magic_Columns_Magic_TemplateDetails" />
+      <nodes>
+        <classShapeMoniker Id="f993ed5c-e813-4ba3-b24b-f0d3044618ef" />
+        <classShapeMoniker Id="bd3a114e-02b8-41e0-a2ed-fe43750bcce6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 35.679063720163); (12 : 35.679063720163)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Columns/Magic_Columns_Magic_TemplateDetails1" />
+      <nodes>
+        <classShapeMoniker Id="f993ed5c-e813-4ba3-b24b-f0d3044618ef" />
+        <classShapeMoniker Id="bd3a114e-02b8-41e0-a2ed-fe43750bcce6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 33.8395318600815); (11.2916666666667 : 33.8395318600815 : JumpStart); (11.4583333333333 : 33.8395318600815 : JumpEnd); (11.5416666666667 : 33.8395318600815 : JumpStart); (11.7708333333333 : 33.8395318600815 : JumpEnd); (12 : 33.8395318600815)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Columns/Magic_Columns_Magic_TemplateDetails2" />
+      <nodes>
+        <classShapeMoniker Id="f993ed5c-e813-4ba3-b24b-f0d3044618ef" />
+        <classShapeMoniker Id="bd3a114e-02b8-41e0-a2ed-fe43750bcce6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 35.0658864334691); (11.2916666666667 : 35.0658864334691 : JumpStart); (11.4583333333333 : 35.0658864334691 : JumpEnd); (11.6041666666667 : 35.0658864334691 : JumpStart); (11.7708333333333 : 35.0658864334691 : JumpEnd); (12 : 35.0658864334691)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Columns/Magic_Columns_Magic_TemplateDetails3" />
+      <nodes>
+        <classShapeMoniker Id="f993ed5c-e813-4ba3-b24b-f0d3044618ef" />
+        <classShapeMoniker Id="bd3a114e-02b8-41e0-a2ed-fe43750bcce6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5 : 35.25); (4.5 : 33.6979484049479); (4.94791866666667 : 33.6979484049479 : JumpStart); (5.11458533333333 : 33.6979484049479 : JumpEnd); (5.85416666666667 : 33.6979484049479 : JumpStart); (6.06770833333333 : 33.6979484049479 : JumpEnd); (8.60416666666667 : 33.6979484049479 : JumpStart); (8.77083333333333 : 33.6979484049479 : JumpEnd); (9.25 : 33.6979484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_ApplicationLayers/Magic_ApplicationLayers_Magic_Columns" />
+      <nodes>
+        <classShapeMoniker Id="88dd487e-1f15-4972-8f6b-3c081be59247" />
+        <classShapeMoniker Id="f993ed5c-e813-4ba3-b24b-f0d3044618ef" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.95923076923077 : 40.1168440748006); (9.95923076923077 : 40.6168440748006); (10.5546153846154 : 40.6168440748006); (10.5546153846154 : 40.1168440748006)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Columns/Magic_Columns_Magic_Columns" />
+      <nodes>
+        <classShapeMoniker Id="f993ed5c-e813-4ba3-b24b-f0d3044618ef" />
+        <classShapeMoniker Id="f993ed5c-e813-4ba3-b24b-f0d3044618ef" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="9f0e0334-07d4-40ed-aaee-42311a1d9658" absoluteBounds="6.25, 54.625, 2, 3.5016097005208451">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Functions" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8c14fb48-9cea-46f7-9c2d-4337269f2397" absoluteBounds="6.2650000005960464, 55.08500000089407, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.25 : 54.625); (7.25 : 46.318146972917); (7.43229291666667 : 46.318146972917 : JumpStart); (7.59895958333333 : 46.318146972917 : JumpEnd); (8.09635829166667 : 46.318146972917 : JumpStart); (8.26302495833333 : 46.318146972917 : JumpEnd); (9 : 46.318146972917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Functions/Magic_Functions_Magic_FunctionsDataSource" />
+      <nodes>
+        <classShapeMoniker Id="9f0e0334-07d4-40ed-aaee-42311a1d9658" />
+        <classShapeMoniker Id="e0f09ad2-98dc-499f-b144-162e32c65bda" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 58.0617089843253); (10.4166666666667 : 58.0617089843253 : JumpStart); (10.5833333333333 : 58.0617089843253 : JumpEnd); (11.71875 : 58.0617089843253); (11.71875 : 58.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Functions/Magic_Functions_Magic_Mmb_UsersFunctionsOverrideRights" />
+      <nodes>
+        <classShapeMoniker Id="9f0e0334-07d4-40ed-aaee-42311a1d9658" />
+        <classShapeMoniker Id="c623ffc1-d790-4167-859f-760eff789b15" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.7812525 : 54.625); (7.7812525 : 52.0937505); (11.6041666666667 : 52.0937505 : JumpStart); (11.7708333333333 : 52.0937505 : JumpEnd); (12 : 52.0937505)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Functions/Magic_Functions_Magic_Mmb_UsersPreferredFunctions" />
+      <nodes>
+        <classShapeMoniker Id="9f0e0334-07d4-40ed-aaee-42311a1d9658" />
+        <classShapeMoniker Id="766991e0-ab92-4dbb-976a-d8c84ecde013" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.7187475 : 54.625); (6.7187475 : 44.28125); (8.82291666666667 : 44.28125 : JumpStart); (8.98958333333333 : 44.28125 : JumpEnd); (11.6041666666667 : 44.28125 : JumpStart); (11.7708333333333 : 44.28125 : JumpEnd); (12.9166666666667 : 44.28125 : JumpStart); (13.0833333333333 : 44.28125 : JumpEnd); (14.2916666666667 : 44.28125 : JumpStart); (14.4583333333333 : 44.28125 : JumpEnd); (14.75 : 44.28125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Functions/Magic_Functions_Magic_TemplateDetailsFunctionOverrides" />
+      <nodes>
+        <classShapeMoniker Id="9f0e0334-07d4-40ed-aaee-42311a1d9658" />
+        <classShapeMoniker Id="de6e56b0-19c0-4d52-a819-27234ae6d637" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.04687825 : 54.625); (8.04687825 : 54.375); (8.09635829166667 : 54.375 : JumpStart); (8.26302495833333 : 54.375 : JumpEnd); (11.0416679166667 : 54.375 : JumpStart); (11.2083345833333 : 54.375 : JumpEnd); (11.4166666666667 : 54.375 : JumpStart); (11.5833333333333 : 54.375 : JumpEnd); (11.7005118205129 : 54.375 : JumpStart); (11.9583333333333 : 54.375 : JumpEnd); (14.625 : 54.375); (14.625 : 56.2892976888021); (15 : 56.2892976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Functions/Magic_Functions_Magic_TemplateGroupsFunctionOverrides" />
+      <nodes>
+        <classShapeMoniker Id="9f0e0334-07d4-40ed-aaee-42311a1d9658" />
+        <classShapeMoniker Id="2f9d83cf-5b32-44b0-ab5c-7bd6c0c883e7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 55.8129024251302); (9 : 55.8129024251302)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Functions/Magic_Functions_Magic_FunctionsTemplates" />
+      <nodes>
+        <classShapeMoniker Id="9f0e0334-07d4-40ed-aaee-42311a1d9658" />
+        <classShapeMoniker Id="667e988c-9d5f-40d6-b91d-123e8e7d50bd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.51562625 : 54.625); (7.51562625 : 41.84375); (8.82291666666667 : 41.84375 : JumpStart); (8.98958333333333 : 41.84375 : JumpEnd); (11.2916666666667 : 41.84375 : JumpStart); (11.4583333333333 : 41.84375 : JumpEnd); (11.6041666666667 : 41.84375 : JumpStart); (11.8958333333333 : 41.84375 : JumpEnd); (12 : 41.84375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Functions/Magic_Functions_Magic_ColumnsFunctionOverrides" />
+      <nodes>
+        <classShapeMoniker Id="9f0e0334-07d4-40ed-aaee-42311a1d9658" />
+        <classShapeMoniker Id="b368e003-1fcc-4eb8-a656-87c0e14ed89f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.98437375 : 54.625); (6.98437375 : 53.349399472917); (7.69791916666667 : 53.349399472917 : JumpStart); (7.86458583333333 : 53.349399472917 : JumpEnd); (9 : 53.349399472917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Functions/Magic_Functions_Magic_FunctionTrees" />
+      <nodes>
+        <classShapeMoniker Id="9f0e0334-07d4-40ed-aaee-42311a1d9658" />
+        <classShapeMoniker Id="608a7399-7b51-4a86-b593-32b73075d2b6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.45312125 : 54.625); (6.45312125 : 50.917103329538); (9 : 50.917103329538)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Functions/Magic_Functions_Magic_TemplateScriptsBuffer" />
+      <nodes>
+        <classShapeMoniker Id="9f0e0334-07d4-40ed-aaee-42311a1d9658" />
+        <classShapeMoniker Id="4285847f-f706-4bdb-a7a7-55ec25be6ceb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 36.9595955350118); (5.9375 : 37.3970955350118); (5.9375 : 56.3758048502604); (6.25 : 56.3758048502604)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_ApplicationLayers/Magic_ApplicationLayers_Magic_Functions" />
+      <nodes>
+        <classShapeMoniker Id="88dd487e-1f15-4972-8f6b-3c081be59247" />
+        <classShapeMoniker Id="9f0e0334-07d4-40ed-aaee-42311a1d9658" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="a6c54bfb-5b4f-4189-ae64-c8fcf02a17f7" absoluteBounds="11.75, 24.25, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Templates" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ce9ed236-8eb8-4ebe-aa67-9eedfe5ca945" absoluteBounds="11.765, 24.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(13.75 : 26.005224202474); (17.1979166666667 : 26.005224202474 : JumpStart); (17.3645833333333 : 26.005224202474 : JumpEnd); (17.5 : 26.005224202474)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Templates/Magic_Templates_Magic_TemplateGroupLabels" />
+      <nodes>
+        <classShapeMoniker Id="a6c54bfb-5b4f-4189-ae64-c8fcf02a17f7" />
+        <classShapeMoniker Id="af37afb5-5421-4d14-90d5-575b12bf6195" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(12.75 : 27.1747054036458); (12.75 : 28.5); (11.7083333333333 : 28.5 : JumpStart); (11.5416666666667 : 28.5 : JumpEnd); (11.5 : 28.5); (11.5 : 56.3565991210938); (11 : 56.3565991210938)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Templates/Magic_Templates_Magic_FunctionsTemplates" />
+      <nodes>
+        <classShapeMoniker Id="a6c54bfb-5b4f-4189-ae64-c8fcf02a17f7" />
+        <classShapeMoniker Id="667e988c-9d5f-40d6-b91d-123e8e7d50bd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(13.7176923076923 : 27.1747054036458); (14.125 : 27.5820130959535); (14.125 : 31.625); (14.5 : 31.625); (14 : 32.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Templates/Magic_Templates_Magic_TemplateDetails" />
+      <nodes>
+        <classShapeMoniker Id="a6c54bfb-5b4f-4189-ae64-c8fcf02a17f7" />
+        <classShapeMoniker Id="bd3a114e-02b8-41e0-a2ed-fe43750bcce6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(12.218748 : 27.1747054036458); (12.218748 : 28.25); (11.5625 : 28.25); (11.5625 : 50.2989005530253); (11.2083345833333 : 50.2989005530253 : JumpStart); (11.0416679166667 : 50.2989005530253 : JumpEnd); (11 : 50.2989005530253)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Templates/Magic_Templates_Magic_TemplateScriptsBuffer" />
+      <nodes>
+        <classShapeMoniker Id="a6c54bfb-5b4f-4189-ae64-c8fcf02a17f7" />
+        <classShapeMoniker Id="4285847f-f706-4bdb-a7a7-55ec25be6ceb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 15.7219962561503); (11.4166666666667 : 15.7219962561503 : JumpStart); (11.5833333333333 : 15.7219962561503 : JumpEnd); (11.75 : 15.7219962561503); (11.75 : 23.875); (12.3750005 : 23.875); (12.3750005 : 24.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_TemplateLayouts/Magic_TemplateLayouts_Magic_Templates" />
+      <nodes>
+        <classShapeMoniker Id="0425585f-0ad6-4582-85f6-1114b117e27c" />
+        <classShapeMoniker Id="a6c54bfb-5b4f-4189-ae64-c8fcf02a17f7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 12.693146972917); (11.5 : 12.693146972917); (11.5 : 23.625); (11.5416666666667 : 23.625 : JumpStart); (11.7083333333333 : 23.625 : JumpEnd); (13.3749995 : 23.625); (13.3749995 : 24.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_TemplateTypes/Magic_TemplateTypes_Magic_Templates" />
+      <nodes>
+        <classShapeMoniker Id="9bb4efaa-af45-4875-8826-888bde53d3b3" />
+        <classShapeMoniker Id="a6c54bfb-5b4f-4189-ae64-c8fcf02a17f7" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="55c86596-40d6-4ee9-8266-a6222bd47e50" absoluteBounds="3.5, 5.25, 2, 1.7708968091756105">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Eve_Interval" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2eb6630d-57bb-49f0-baf4-4cbeef1dc73e" absoluteBounds="3.5150000005960464, 5.71000000089407, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="202dc57d-73c4-4d02-ad1d-b52f083ba87e" absoluteBounds="9.5, 5, 2, 2.5401025395840406">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Deploy" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8df637b7-334b-4544-94c5-35c4047fa333" absoluteBounds="9.5150000005960464, 5.46000000089407, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="57fc3720-1150-497b-af11-42b78e98b693" absoluteBounds="0.75, 1.375, 2, 1.3862939458340406">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Eve_ActionType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5aa1be80-b207-493c-b9be-f1bea441c612" absoluteBounds="0.76500000059604645, 1.8350000008940697, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dbe9cb61-d4f0-4013-aa17-f241cec4ae5f" absoluteBounds="9, 1.125, 2, 1.9631982427090406">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Eve_Track" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e3dd24f8-328f-472e-b345-acb4a4c20367" absoluteBounds="9.0150000005960464, 1.5850000008940697, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bb8bcd29-6203-43c2-8181-8355ff155272" absoluteBounds="3.5, 1.125, 2, 1.9631982427090406">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Eve_Event" />
+      <nestedChildShapes>
+        <elementListCompartment Id="727fc253-40ad-4849-800c-9705a212e607" absoluteBounds="3.5150000005960464, 1.5850000008940697, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="395ebf75-39de-49fa-9fb6-178a272b2ff6" absoluteBounds="6.25, 1, 2, 2.3478011060506105">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Eve_PlannedEvent" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3ab9c829-8ee0-4e10-928d-c811804862cc" absoluteBounds="6.2650000005960464, 1.4600000008940697, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3ca9b59f-1215-4c77-94f5-f5fef02d197c" absoluteBounds="0.75, 5.375, 2, 1.3862939458340406">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Eve_ScriptType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cf57c855-535b-4d50-889b-79dc45754a16" absoluteBounds="0.76500000059604645, 5.83500000089407, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 2.06814697291702); (3.5 : 2.06814697291702)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Eve_ActionType/Magic_Eve_ActionType_Magic_Eve_Event" />
+      <nodes>
+        <classShapeMoniker Id="57fc3720-1150-497b-af11-42b78e98b693" />
+        <classShapeMoniker Id="bb8bcd29-6203-43c2-8181-8355ff155272" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 2.10659912135452); (9 : 2.10659912135452)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Eve_PlannedEvent/Magic_Eve_PlannedEvent_Magic_Eve_Track" />
+      <nodes>
+        <classShapeMoniker Id="395ebf75-39de-49fa-9fb6-178a272b2ff6" />
+        <classShapeMoniker Id="dbe9cb61-d4f0-4013-aa17-f241cec4ae5f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 2.10659912135452); (6.25 : 2.10659912135452)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Eve_Event/Magic_Eve_Event_Magic_Eve_PlannedEvent" />
+      <nodes>
+        <classShapeMoniker Id="bb8bcd29-6203-43c2-8181-8355ff155272" />
+        <classShapeMoniker Id="395ebf75-39de-49fa-9fb6-178a272b2ff6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 5.25); (5.875 : 4.875); (5.875 : 2.75845211370257); (6.25 : 2.75845211370257)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Eve_Interval/Magic_Eve_Interval_Magic_Eve_PlannedEvent" />
+      <nodes>
+        <classShapeMoniker Id="55c86596-40d6-4ee9-8266-a6222bd47e50" />
+        <classShapeMoniker Id="395ebf75-39de-49fa-9fb6-178a272b2ff6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 5.375); (3.125 : 5); (3.125 : 2.60942460781303); (3.5 : 2.60942460781303)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Eve_ScriptType/Magic_Eve_ScriptType_Magic_Eve_Event" />
+      <nodes>
+        <classShapeMoniker Id="3ca9b59f-1215-4c77-94f5-f5fef02d197c" />
+        <classShapeMoniker Id="bb8bcd29-6203-43c2-8181-8355ff155272" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="5cd135b4-2bd7-4084-a8bd-cdcaee8356dd" absoluteBounds="6.75, 5.25, 2, 1.9631982427090406">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Deploy_Destinations" />
+      <nestedChildShapes>
+        <elementListCompartment Id="875c6144-c1ff-4c2b-9d9c-7489a5bea454" absoluteBounds="6.7650000005960464, 5.71000000089407, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.75 : 6.23159912135452); (9.5 : 6.23159912135452)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Deploy_Destinations/Magic_Deploy_Destinations_Magic_Deploy" />
+      <nodes>
+        <classShapeMoniker Id="5cd135b4-2bd7-4084-a8bd-cdcaee8356dd" />
+        <classShapeMoniker Id="202dc57d-73c4-4d02-ad1d-b52f083ba87e" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="7543df95-3f1f-431f-80e8-1cede3a2f5c2" absoluteBounds="6.25, 61.125, 2, 2.3478011060506105">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Mmb_Menus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="40b82160-a7ae-49e2-aeae-bca23f474536" absoluteBounds="6.2650000005960464, 61.58500000089407, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.95923076923077 : 63.4728011060506); (6.95923076923077 : 63.7228011060506); (7.55461538461539 : 63.7228011060506); (7.55461538461539 : 63.4728011060506)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Menus/Magic_Mmb_Menus_Magic_Mmb_Menus" />
+      <nodes>
+        <classShapeMoniker Id="7543df95-3f1f-431f-80e8-1cede3a2f5c2" />
+        <classShapeMoniker Id="7543df95-3f1f-431f-80e8-1cede3a2f5c2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5 : 40.665102539584); (4.5 : 62.2989005530253); (6.25 : 62.2989005530253)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Modules/Magic_Mmb_Modules_Magic_Mmb_Menus" />
+      <nodes>
+        <classShapeMoniker Id="748a07b3-0028-4cfe-b241-0a48dc32d6a0" />
+        <classShapeMoniker Id="7543df95-3f1f-431f-80e8-1cede3a2f5c2" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="8d34844c-b56e-4e8f-bb01-ea63390043de" absoluteBounds="9, 61.5, 2, 1.5785953775048256">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Mmb_FunctionsMenus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b7ffc655-e6a7-478a-a737-298afdd1c219" absoluteBounds="9.0150000005960464, 61.96000000089407, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.25 : 58.0296856235978); (8.8125 : 58.5921856235978); (8.8125 : 62.2892976887524); (9 : 62.2892976887524)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Functions/Magic_Functions_Magic_Mmb_FunctionsMenus" />
+      <nodes>
+        <classShapeMoniker Id="9f0e0334-07d4-40ed-aaee-42311a1d9658" />
+        <classShapeMoniker Id="8d34844c-b56e-4e8f-bb01-ea63390043de" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 61.8321488443762); (8.72916666666667 : 61.8321488443762 : JumpStart); (8.89583333333333 : 61.8321488443762 : JumpEnd); (9 : 61.8321488443762)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Menus/Magic_Mmb_Menus_Magic_Mmb_FunctionsMenus" />
+      <nodes>
+        <classShapeMoniker Id="7543df95-3f1f-431f-80e8-1cede3a2f5c2" />
+        <classShapeMoniker Id="8d34844c-b56e-4e8f-bb01-ea63390043de" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="8063f567-5c32-41fe-9571-aacbde603198" absoluteBounds="14.75, 26.5, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Mmb_ProfilesGridExcptn" />
+      <nestedChildShapes>
+        <elementListCompartment Id="96350000-fcc9-4a4d-84b3-b5ff90c9af1f" absoluteBounds="14.765, 26.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(13.90625 : 22.9054996744792); (13.90625 : 27.8373527018229); (14.0416666666667 : 27.8373527018229 : JumpStart); (14.2708333333333 : 27.8373527018229 : JumpEnd); (14.5104166666667 : 27.8373527018229 : JumpStart); (14.7083358333333 : 27.8373527018229 : JumpEnd); (14.75 : 27.8373527018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Profiles/Magic_Mmb_Profiles_Magic_Mmb_ProfilesGridExcptn" />
+      <nodes>
+        <classShapeMoniker Id="32fdaba7-8c7f-4b17-9ad1-e1ffad631cff" />
+        <classShapeMoniker Id="8063f567-5c32-41fe-9571-aacbde603198" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="ad4b63bc-d23c-4624-96d1-dbacc3aaad1b" absoluteBounds="0.75, 18.75, 2, 8.8860498046875023">
+      <DataClassMoniker Name="/MagicDBDataContext/v_Magic_Grids" />
+      <nestedChildShapes>
+        <elementListCompartment Id="170c41f4-caf5-4581-b958-e0a0c324abf9" absoluteBounds="0.76500000000000057, 19.21, 1.9700000000000002, 8.3260498046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="aa6ff948-b9ce-43b3-bc79-0dfb370908c6" absoluteBounds="12, 54.625, 2, 3.3093082681298256">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_GridsCommands" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ceca65ae-6d86-4e7b-af86-a0517edff716" absoluteBounds="12.015000000596046, 55.08500000089407, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.25 : 54.96875); (8.72916666666667 : 54.96875 : JumpStart); (8.89583333333333 : 54.96875 : JumpEnd); (11.0416679166667 : 54.96875 : JumpStart); (11.3333333333333 : 54.96875 : JumpEnd); (11.4166666666667 : 54.96875 : JumpStart); (11.5833333333333 : 54.96875 : JumpEnd); (12 : 54.96875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Functions/Magic_Functions_Magic_GridsCommands" />
+      <nodes>
+        <classShapeMoniker Id="9f0e0334-07d4-40ed-aaee-42311a1d9658" />
+        <classShapeMoniker Id="aa6ff948-b9ce-43b3-bc79-0dfb370908c6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.12500125 : 43.9439925123006); (11.12500125 : 55.4908000605469); (12 : 55.4908000605469)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_GridsCmdDataFormatType/Magic_GridsCmdDataFormatType_Magic_GridsCommands" />
+      <nodes>
+        <classShapeMoniker Id="87b82325-97ea-45e9-b569-df50036f6afb" />
+        <classShapeMoniker Id="aa6ff948-b9ce-43b3-bc79-0dfb370908c6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 72.3469962561503); (11.375 : 72.3469962561503); (11.375 : 61.2804996744792); (13.4062495 : 61.2804996744792); (13.4062495 : 57.9343082681298)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_GridsCmdLocations/Magic_GridsCmdLocations_Magic_GridsCommands" />
+      <nodes>
+        <classShapeMoniker Id="f66dfb41-d514-4a18-a1e3-81ee4d6b8ad9" />
+        <classShapeMoniker Id="aa6ff948-b9ce-43b3-bc79-0dfb370908c6" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="261b9081-3f16-4f76-aa04-b436bcf8885a" absoluteBounds="11.75, 28.75, 2, 1.9631982427090406">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_GridsCmdGroups" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f19fd101-5607-43ef-8dd0-00bf343e14a7" absoluteBounds="11.765000000596046, 29.21000000089407, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11.7515091524944 : 30.713198242709); (11.6839255650989 : 30.7807818301045 : JumpStart); (11.5660744349011 : 30.8986329603023 : JumpEnd); (11.4339255650989 : 31.0307818301045 : JumpStart); (11.3160744349011 : 31.1486329603023 : JumpEnd); (11.3089255650989 : 31.1557818301045 : JumpStart); (11.1910744349011 : 31.2736329603023 : JumpEnd); (11.1265091524944 : 31.338198242709); (11.1666666666667 : 31.338198242709 : JumpStart); (11.4583333333333 : 31.338198242709 : JumpEnd); (11.5416666666667 : 31.338198242709 : JumpStart); (11.7708333333333 : 31.338198242709 : JumpEnd); (11.875 : 31.338198242709); (11.875 : 54.5323076923077); (12 : 55.5142859449868)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_GridsCmdGroups/Magic_GridsCmdGroups_Magic_GridsCommands" />
+      <nodes>
+        <classShapeMoniker Id="261b9081-3f16-4f76-aa04-b436bcf8885a" />
+        <classShapeMoniker Id="aa6ff948-b9ce-43b3-bc79-0dfb370908c6" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="f0760364-a105-4019-9c96-424e5a0fd934" absoluteBounds="12, 86.625, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Mmb_UsersExternalApiAuthorizations" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2a648098-1d30-435a-b254-e2c5801723af" absoluteBounds="12.015, 87.085000000000008, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11.2469230769231 : 70.1842268880208); (11.71875 : 70.6560538110978); (11.71875 : 87.6065991210938); (12 : 87.6065991210938)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Users/Magic_Mmb_Users_Magic_Mmb_UsersExternalApiAuthorizations" />
+      <nodes>
+        <classShapeMoniker Id="14a127f0-b6a3-40bb-a8ea-c6536807b521" />
+        <classShapeMoniker Id="f0760364-a105-4019-9c96-424e5a0fd934" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="ad112676-c0f2-4ae6-95ca-d813aad00c16" absoluteBounds="17.75, 11.75, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/MagicDBDataContext/v_Magic_UserGroupVisibility" />
+      <nestedChildShapes>
+        <elementListCompartment Id="091faad8-2b1a-4cb1-936f-bf1230448019" absoluteBounds="17.765, 12.21, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="81e4b561-1a37-4df9-890c-3f371f89eaaa" absoluteBounds="20.75, 0.75, 2, 10.039858398437502">
+      <DataClassMoniker Name="/MagicDBDataContext/v_Magic_Mmb_UserExtended" />
+      <nestedChildShapes>
+        <elementListCompartment Id="73573e18-883d-4a1b-9c24-eafd5d62f7e8" absoluteBounds="20.765, 1.2100000000000009, 1.9700000000000002, 9.4798583984375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a856f042-4d4e-473e-87c5-870756ce54ff" absoluteBounds="9, 24.75, 2, 6.0015283203125023">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Grids" />
+      <nestedChildShapes>
+        <elementListCompartment Id="27f1acfc-1718-4589-b3c6-8d9f3ac2be5e" absoluteBounds="9.0150000005960464, 25.21000000089407, 1.9700000000000002, 5.4415283203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(9.09375 : 30.7515283203125); (9.09375 : 31.84375); (9.10416666666667 : 31.84375 : JumpStart); (9.27083333333333 : 31.84375 : JumpEnd); (10.0416666666667 : 31.84375 : JumpStart); (10.2083333333333 : 31.84375 : JumpEnd); (11.2916666666667 : 31.84375 : JumpStart); (11.4583333333333 : 31.84375 : JumpEnd); (11.5416666666667 : 31.84375 : JumpStart); (11.7708333333333 : 31.84375 : JumpEnd); (11.8541666666667 : 31.84375 : JumpStart); (12.0208333333333 : 31.84375 : JumpEnd); (13.7760416666667 : 31.84375 : JumpStart); (13.9427083333333 : 31.84375 : JumpEnd); (14.1979166666667 : 31.84375 : JumpStart); (14.3645833333333 : 31.84375 : JumpEnd); (14.5416691666667 : 31.84375 : JumpStart); (14.7083358333333 : 31.84375 : JumpEnd); (15 : 31.84375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Grids/Magic_Grids_Magic_ColumnLabels" />
+      <nodes>
+        <classShapeMoniker Id="a856f042-4d4e-473e-87c5-870756ce54ff" />
+        <classShapeMoniker Id="c1ea9e0f-fc23-4dd7-bf19-fbfb75f2d4cc" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9 : 30.7022975510817); (8.8125 : 30.8897975510817); (8.8125 : 55.185990847506); (9.00150915249399 : 55.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Grids/Magic_Grids_Magic_FunctionsTemplates" />
+      <nodes>
+        <classShapeMoniker Id="a856f042-4d4e-473e-87c5-870756ce54ff" />
+        <classShapeMoniker Id="667e988c-9d5f-40d6-b91d-123e8e7d50bd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 28.0436763509115); (11.1666666666667 : 28.0436763509115 : JumpStart); (11.3333333333333 : 28.0436763509115 : JumpEnd); (11.5416666666667 : 28.0436763509115 : JumpStart); (11.7083333333333 : 28.0436763509115 : JumpEnd); (13.859375 : 28.0436763509115); (13.859375 : 32.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Grids/Magic_Grids_Magic_TemplateDetails" />
+      <nodes>
+        <classShapeMoniker Id="a856f042-4d4e-473e-87c5-870756ce54ff" />
+        <classShapeMoniker Id="bd3a114e-02b8-41e0-a2ed-fe43750bcce6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9 : 30.7515283203125); (8.75 : 31.0015283203125); (8.75 : 48.875); (9 : 49.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Grids/Magic_Grids_Magic_TemplateScriptsBuffer" />
+      <nodes>
+        <classShapeMoniker Id="a856f042-4d4e-473e-87c5-870756ce54ff" />
+        <classShapeMoniker Id="4285847f-f706-4bdb-a7a7-55ec25be6ceb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.125 : 30.7515283203125); (10.125 : 32)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Grids/Magic_Grids_Magic_Columns" />
+      <nodes>
+        <classShapeMoniker Id="a856f042-4d4e-473e-87c5-870756ce54ff" />
+        <classShapeMoniker Id="f993ed5c-e813-4ba3-b24b-f0d3044618ef" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 25.9623527018229); (11.1666666666667 : 25.9623527018229 : JumpStart); (11.3333333333333 : 25.9623527018229 : JumpEnd); (11.5416666666667 : 25.9623527018229 : JumpStart); (11.7083333333333 : 25.9623527018229 : JumpEnd); (11.75 : 25.9623527018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Grids/Magic_Grids_Magic_Templates" />
+      <nodes>
+        <classShapeMoniker Id="a856f042-4d4e-473e-87c5-870756ce54ff" />
+        <classShapeMoniker Id="a6c54bfb-5b4f-4189-ae64-c8fcf02a17f7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 27.6310290527344); (11.1666666666667 : 27.6310290527344 : JumpStart); (11.3333333333333 : 27.6310290527344 : JumpEnd); (11.5416666666667 : 27.6310290527344 : JumpStart); (11.7083333333333 : 27.6310290527344 : JumpEnd); (14.1041666666667 : 27.6310290527344 : JumpStart); (14.2708333333333 : 27.6310290527344 : JumpEnd); (14.75 : 27.6310290527344)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Grids/Magic_Grids_Magic_Mmb_ProfilesGridExcptn" />
+      <nodes>
+        <classShapeMoniker Id="a856f042-4d4e-473e-87c5-870756ce54ff" />
+        <classShapeMoniker Id="8063f567-5c32-41fe-9571-aacbde603198" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.9984615384615 : 30.7515283203125); (11.1910744349011 : 30.9441412167521 : JumpStart); (11.3089255650989 : 31.0619923469499 : JumpEnd); (11.4047115384615 : 31.1577783203125); (11.6875 : 31.1577783203125); (11.6875 : 54.2786548461538); (12.0338451538462 : 54.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Grids/Magic_Grids_Magic_GridsCommands" />
+      <nodes>
+        <classShapeMoniker Id="a856f042-4d4e-473e-87c5-870756ce54ff" />
+        <classShapeMoniker Id="aa6ff948-b9ce-43b3-bc79-0dfb370908c6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 29.7315991213545); (11.1666666666667 : 29.7315991213545 : JumpStart); (11.4583333333333 : 29.7315991213545 : JumpEnd); (11.5416666666667 : 29.7315991213545 : JumpStart); (11.7083333333333 : 29.7315991213545 : JumpEnd); (11.75 : 29.7315991213545)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Grids/Magic_Grids_Magic_GridsCmdGroups" />
+      <nodes>
+        <classShapeMoniker Id="a856f042-4d4e-473e-87c5-870756ce54ff" />
+        <classShapeMoniker Id="261b9081-3f16-4f76-aa04-b436bcf8885a" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="bc61cfa6-da40-4bc3-bbd0-cfe6164d03c3" absoluteBounds="6.25, 34.375, 2, 3.3093082681298256">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_DataSource" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1a87dc5b-0da1-474a-9372-3aa020f0d00e" absoluteBounds="6.2650000005960464, 34.83500000089407, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.25 : 37.6519995758221); (8.90625 : 38.3082495758221); (8.90625 : 45.9403214864585); (9 : 45.9403214864585)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_DataSource/Magic_DataSource_Magic_FunctionsDataSource" />
+      <nodes>
+        <classShapeMoniker Id="bc61cfa6-da40-4bc3-bbd0-cfe6164d03c3" />
+        <classShapeMoniker Id="e0f09ad2-98dc-499f-b144-162e32c65bda" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.20951723076923 : 34.375); (7.20951723076923 : 34); (9.1875 : 34); (9.1875 : 31.625); (11.25 : 31.625); (11.25 : 21.4431062825024); (11 : 21.4431062825024)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_DataSource/Magic_DataSource_Magic_Trees" />
+      <nodes>
+        <classShapeMoniker Id="bc61cfa6-da40-4bc3-bbd0-cfe6164d03c3" />
+        <classShapeMoniker Id="502f134e-6b04-4d18-b046-3175abb3b133" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 34.454999); (8.6875 : 34.017499); (8.6875 : 28.2085820164764); (9 : 28.2085820164764)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_DataSource/Magic_DataSource_Magic_Grids" />
+      <nodes>
+        <classShapeMoniker Id="bc61cfa6-da40-4bc3-bbd0-cfe6164d03c3" />
+        <classShapeMoniker Id="a856f042-4d4e-473e-87c5-870756ce54ff" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 36.0735452675059); (6.25 : 36.0735452675059)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_ApplicationLayers/Magic_ApplicationLayers_Magic_DataSource" />
+      <nodes>
+        <classShapeMoniker Id="88dd487e-1f15-4972-8f6b-3c081be59247" />
+        <classShapeMoniker Id="bc61cfa6-da40-4bc3-bbd0-cfe6164d03c3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.06461438461539 : 30.7515283203125); (9.06461438461539 : 36.0458069802188); (8.25 : 36.0458069802188)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Grids/Magic_Grids_Magic_DataSource" />
+      <nodes>
+        <classShapeMoniker Id="a856f042-4d4e-473e-87c5-870756ce54ff" />
+        <classShapeMoniker Id="bc61cfa6-da40-4bc3-bbd0-cfe6164d03c3" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="ea56a5d6-54f2-44ac-99fb-41e7c4c493e1" absoluteBounds="15.75, 35, 2, 1.9631982427090406">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_TemplateTabGroups" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b9e9c084-a290-4404-91e1-d1105db20f5c" absoluteBounds="15.765000000596046, 35.46000000089407, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="90ead4c8-03e0-4df8-8fea-14d4cd01af74" absoluteBounds="18.5, 29, 2, 4.0785139973958273">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_TemplateGroups" />
+      <nestedChildShapes>
+        <elementListCompartment Id="40438ca9-3a95-4191-b434-9f215033f260" absoluteBounds="18.515, 29.46, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(19 : 29); (19 : 26.6458968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_TemplateGroups/Magic_TemplateGroups_Magic_TemplateGroupLabels" />
+      <nodes>
+        <classShapeMoniker Id="90ead4c8-03e0-4df8-8fea-14d4cd01af74" />
+        <classShapeMoniker Id="af37afb5-5421-4d14-90d5-575b12bf6195" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(18.59375 : 33.0785139973958); (18.59375 : 56.2892976888021); (18.1145833333333 : 56.2892976888021 : JumpStart); (17.9479166666667 : 56.2892976888021 : JumpEnd); (17.3333333333333 : 56.2892976888021 : JumpStart); (17.1666666666667 : 56.2892976888021 : JumpEnd); (17 : 56.2892976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_TemplateGroups/Magic_TemplateGroups_Magic_TemplateGroupsFunctionOverrides" />
+      <nodes>
+        <classShapeMoniker Id="90ead4c8-03e0-4df8-8fea-14d4cd01af74" />
+        <classShapeMoniker Id="2f9d83cf-5b32-44b0-ab5c-7bd6c0c883e7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(18.5624975 : 33.0785139973958); (18.5624975 : 33.7291984045878); (14 : 33.7291984045878)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_TemplateGroups/Magic_TemplateGroups_Magic_TemplateDetails" />
+      <nodes>
+        <classShapeMoniker Id="90ead4c8-03e0-4df8-8fea-14d4cd01af74" />
+        <classShapeMoniker Id="bd3a114e-02b8-41e0-a2ed-fe43750bcce6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(18.6250025 : 33.0785139973958); (18.6250025 : 33.5625451068817); (14 : 33.5625451068817)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_TemplateGroups/Magic_TemplateGroups_Magic_TemplateDetails1" />
+      <nodes>
+        <classShapeMoniker Id="90ead4c8-03e0-4df8-8fea-14d4cd01af74" />
+        <classShapeMoniker Id="bd3a114e-02b8-41e0-a2ed-fe43750bcce6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.23153846153846 : 34.375); (8.62857443490112 : 33.9779640266374 : JumpStart); (8.87142556509888 : 33.7351128964396 : JumpEnd); (8.90625 : 33.7002884615385); (8.90625 : 31.4503491213545); (8.98128105128206 : 31.4503491213545 : JumpStart); (9.17708333333333 : 31.4503491213545 : JumpEnd); (10.0416666666667 : 31.4503491213545 : JumpStart); (10.2083333333333 : 31.4503491213545 : JumpEnd); (11.1666666666667 : 31.4503491213545 : JumpStart); (11.7708333333333 : 31.4503491213545 : JumpEnd); (11.7916666666667 : 31.4503491213545 : JumpStart); (12.0208333333333 : 31.4503491213545 : JumpEnd); (13.7760416666667 : 31.4503491213545 : JumpStart); (13.9427083333333 : 31.4503491213545 : JumpEnd); (14.0416666666667 : 31.4503491213545 : JumpStart); (14.3333333333333 : 31.4503491213545 : JumpEnd); (14.5416691666667 : 31.4503491213545 : JumpStart); (14.7083358333333 : 31.4503491213545 : JumpEnd); (15.9166666666667 : 31.4503491213545 : JumpStart); (16.0833333333333 : 31.4503491213545 : JumpEnd); (17.4322916666667 : 31.4503491213545 : JumpStart); (17.5989583333333 : 31.4503491213545 : JumpEnd); (17.9479166666667 : 31.4503491213545 : JumpStart); (18.1145833333333 : 31.4503491213545 : JumpEnd); (18.5 : 31.4503491213545)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_DataSource/Magic_DataSource_Magic_TemplateGroups" />
+      <nodes>
+        <classShapeMoniker Id="bc61cfa6-da40-4bc3-bbd0-cfe6164d03c3" />
+        <classShapeMoniker Id="90ead4c8-03e0-4df8-8fea-14d4cd01af74" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.1250025 : 30.7515283203125); (9.1250025 : 31.2323632815108); (10.0416666666667 : 31.2323632815108 : JumpStart); (10.2083333333333 : 31.2323632815108 : JumpEnd); (11.1666666666667 : 31.2323632815108 : JumpStart); (11.4583333333333 : 31.2323632815108 : JumpEnd); (11.5416666666667 : 31.2323632815108 : JumpStart); (11.7083333333333 : 31.2323632815108 : JumpEnd); (11.8541666666667 : 31.2323632815108 : JumpStart); (12.0208333333333 : 31.2323632815108 : JumpEnd); (13.7760416666667 : 31.2323632815108 : JumpStart); (13.9427083333333 : 31.2323632815108 : JumpEnd); (14.0416666666667 : 31.2323632815108 : JumpStart); (14.2083333333333 : 31.2323632815108 : JumpEnd); (14.5416691666667 : 31.2323632815108 : JumpStart); (14.7083358333333 : 31.2323632815108 : JumpEnd); (15.9166666666667 : 31.2323632815108 : JumpStart); (16.0833333333333 : 31.2323632815108 : JumpEnd); (17.9479166666667 : 31.2323632815108 : JumpStart); (18.1145833333333 : 31.2323632815108 : JumpEnd); (18.5 : 31.2323632815108)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Grids/Magic_Grids_Magic_TemplateGroups" />
+      <nodes>
+        <classShapeMoniker Id="a856f042-4d4e-473e-87c5-870756ce54ff" />
+        <classShapeMoniker Id="90ead4c8-03e0-4df8-8fea-14d4cd01af74" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(17.75 : 38.3181469726563); (17.9479166666667 : 38.3181469726563 : JumpStart); (18.1145833333333 : 38.3181469726563 : JumpEnd); (18.53124875 : 38.3181469726563); (18.53124875 : 33.0785139973958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_TemplateGrpGridRelType/Magic_TemplateGrpGridRelType_Magic_TemplateGroups" />
+      <nodes>
+        <classShapeMoniker Id="c9f3c5d5-f5f5-43d3-bd10-092f2690fc0c" />
+        <classShapeMoniker Id="90ead4c8-03e0-4df8-8fea-14d4cd01af74" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(13.75 : 27.0777813267228); (14.1875 : 27.5152813267228); (14.1875 : 30.0516833496094); (18.5 : 30.0516833496094)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Templates/Magic_Templates_Magic_TemplateGroups" />
+      <nodes>
+        <classShapeMoniker Id="a6c54bfb-5b4f-4189-ae64-c8fcf02a17f7" />
+        <classShapeMoniker Id="90ead4c8-03e0-4df8-8fea-14d4cd01af74" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(17.28125 : 22.1939925123006); (17.28125 : 29.5458904443359); (18.5 : 29.5458904443359)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_TemplateGroupContent/Magic_TemplateGroupContent_Magic_TemplateGroups" />
+      <nodes>
+        <classShapeMoniker Id="37a7f702-6c18-4a49-aecb-d3db64808210" />
+        <classShapeMoniker Id="90ead4c8-03e0-4df8-8fea-14d4cd01af74" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(17.515625 : 35); (17.515625 : 30.5574762548828); (18.5 : 30.5574762548828)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_TemplateTabGroups/Magic_TemplateTabGroups_Magic_TemplateGroups" />
+      <nodes>
+        <classShapeMoniker Id="ea56a5d6-54f2-44ac-99fb-41e7c4c493e1" />
+        <classShapeMoniker Id="90ead4c8-03e0-4df8-8fea-14d4cd01af74" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="23eb27c6-b706-4be7-b4df-bc008feaa421" absoluteBounds="18.75, 15.75, 2, 6.9630354817708309">
+      <DataClassMoniker Name="/MagicDBDataContext/v_Magic_TemplateDetails" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fdabee13-a50a-42c5-b3a1-f6250ead4934" absoluteBounds="18.765, 16.21, 1.9700000000000002, 6.403035481770833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0f1e4fd4-6b81-49c4-8d9f-501f2a6e2a3b" absoluteBounds="14.5, 23.875, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_TemplateTabGroupLabels" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b0227c3b-2d90-480a-897c-aa18d2467b05" absoluteBounds="14.515, 24.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 30.9390283203125); (5.58390606227001 : 30.9390283203125 : JumpStart); (5.75057272893667 : 30.9390283203125 : JumpEnd); (5.90104166666667 : 30.9390283203125 : JumpStart); (6.06770833333333 : 30.9390283203125 : JumpEnd); (8.60416666666667 : 30.9390283203125 : JumpStart); (8.77083333333333 : 30.9390283203125 : JumpEnd); (9.01041666666667 : 30.9390283203125 : JumpStart); (9.20833583333333 : 30.9390283203125 : JumpEnd); (10.0416666666667 : 30.9390283203125 : JumpStart); (10.2083333333333 : 30.9390283203125 : JumpEnd); (11.1026282051282 : 30.9390283203125 : JumpStart); (11.4583333333333 : 30.9390283203125 : JumpEnd); (11.5416666666667 : 30.9390283203125 : JumpStart); (11.7083333333333 : 30.9390283203125 : JumpEnd); (13.7760416666667 : 30.9390283203125 : JumpStart); (13.9427083333333 : 30.9390283203125 : JumpEnd); (14.0416666666667 : 30.9390283203125 : JumpStart); (14.2083333333333 : 30.9390283203125 : JumpEnd); (14.59375 : 30.9390283203125); (14.59375 : 25.6458968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Cultures/Magic_Cultures_Magic_TemplateTabGroupLabels" />
+      <nodes>
+        <classShapeMoniker Id="90a01338-3057-4e5d-833c-c6b02c63e086" />
+        <classShapeMoniker Id="0f1e4fd4-6b81-49c4-8d9f-501f2a6e2a3b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(15.75 : 35.9815991213545); (14.9583333333333 : 35.9815991213545 : JumpStart); (14.7916666666667 : 35.9815991213545 : JumpEnd); (14.6250025 : 35.9815991213545); (14.6250025 : 25.6458968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_TemplateTabGroups/Magic_TemplateTabGroups_Magic_TemplateTabGroupLabels" />
+      <nodes>
+        <classShapeMoniker Id="ea56a5d6-54f2-44ac-99fb-41e7c4c493e1" />
+        <classShapeMoniker Id="0f1e4fd4-6b81-49c4-8d9f-501f2a6e2a3b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(13.75 : 24.9479484049479); (14.5 : 24.9479484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Templates/Magic_Templates_Magic_TemplateTabGroupLabels" />
+      <nodes>
+        <classShapeMoniker Id="a6c54bfb-5b4f-4189-ae64-c8fcf02a17f7" />
+        <classShapeMoniker Id="0f1e4fd4-6b81-49c4-8d9f-501f2a6e2a3b" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="601b0985-d716-4fd9-9e3e-14dd9361a778" absoluteBounds="21.75, 11.75, 2.75, 4.0785139973958309">
+      <DataClassMoniker Name="/MagicDBDataContext/v_Magic_Grid_NavigationTabs" />
+      <nestedChildShapes>
+        <elementListCompartment Id="556747a2-eaf4-4517-8489-8aca85cbe8ea" absoluteBounds="21.765, 12.21, 2.7199999999999998, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c8558b58-b9f9-4bef-b5c6-983687dbd2f0" absoluteBounds="12, 84.125, 2, 1.7708968098958451">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_DocumentFillSessions" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9f4822a3-3946-40b9-99dc-92e8d3e62cf4" absoluteBounds="12.015, 84.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11.2484615384615 : 70.1842268880208); (11.3160744349011 : 70.2518397844604 : JumpStart); (11.4339255650989 : 70.3696909146582 : JumpEnd); (11.875 : 70.8107653495593); (11.875 : 85.0104484049479); (12 : 85.0104484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Users/Magic_Mmb_Users_Magic_DocumentFillSessions" />
+      <nodes>
+        <classShapeMoniker Id="14a127f0-b6a3-40bb-a8ea-c6536807b521" />
+        <classShapeMoniker Id="c8558b58-b9f9-4bef-b5c6-983687dbd2f0" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="57f02294-efa4-46a9-8658-3bd95b1bcb97" absoluteBounds="6.25, 28.125, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_HtmlTemplates" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aad19fb1-9a50-405d-b37c-9f45e0b8876e" absoluteBounds="6.2650000000000006, 28.584999999999994, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.9687475 : 29.5); (3.9687475 : 28.7812475); (5.26041666666667 : 28.7812475 : JumpStart); (5.53646083333333 : 28.7812475 : JumpEnd); (5.90104166666667 : 28.7812475 : JumpStart); (6.06770833333333 : 28.7812475 : JumpEnd); (6.25 : 28.7812475)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Cultures/Magic_Cultures_Magic_HtmlTemplates" />
+      <nodes>
+        <classShapeMoniker Id="90a01338-3057-4e5d-833c-c6b02c63e086" />
+        <classShapeMoniker Id="57f02294-efa4-46a9-8658-3bd95b1bcb97" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="d5ef647f-0e8b-4195-b6bf-893857da9046" absoluteBounds="6.25, 23.375, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Labels" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8eb71d69-8b21-433e-b78d-d1aecbf1aaf6" absoluteBounds="6.2650000000000006, 23.834999999999994, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.4531275 : 29.5); (5.4531275 : 24.1642976888021); (6.25 : 24.1642976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Cultures/Magic_Cultures_Magic_Labels" />
+      <nodes>
+        <classShapeMoniker Id="90a01338-3057-4e5d-833c-c6b02c63e086" />
+        <classShapeMoniker Id="d5ef647f-0e8b-4195-b6bf-893857da9046" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="1a45e7a0-e7c3-4381-823c-9b0f12cad36b" absoluteBounds="12, 44.375, 2, 3.6939111328125023">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_FunctionsGrids" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b57cb55f-1d72-46bd-b2a9-ef960b2556f7" absoluteBounds="12.015000000596046, 44.83500000089407, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.25 : 36.8489032780205); (9.125 : 36.8489032780205); (9.125 : 41.125); (11.2916666666667 : 41.125 : JumpStart); (11.4583333333333 : 41.125 : JumpEnd); (11.6041666666667 : 41.125 : JumpStart); (11.7708333333333 : 41.125 : JumpEnd); (11.8125 : 41.125); (11.8125 : 44); (11.8541666666667 : 44 : JumpStart); (12.0208333333333 : 44 : JumpEnd); (13 : 44); (13 : 44.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_DataSource/Magic_DataSource_Magic_FunctionsGrids" />
+      <nodes>
+        <classShapeMoniker Id="bc61cfa6-da40-4bc3-bbd0-cfe6164d03c3" />
+        <classShapeMoniker Id="1a45e7a0-e7c3-4381-823c-9b0f12cad36b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.179691625 : 54.625); (8.179691625 : 44.96875); (8.82291666666667 : 44.96875 : JumpStart); (8.98958333333333 : 44.96875 : JumpEnd); (11.6041666666667 : 44.96875 : JumpStart); (11.7708333333333 : 44.96875 : JumpEnd); (12 : 44.96875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Functions/Magic_Functions_Magic_FunctionsGrids" />
+      <nodes>
+        <classShapeMoniker Id="9f0e0334-07d4-40ed-aaee-42311a1d9658" />
+        <classShapeMoniker Id="1a45e7a0-e7c3-4381-823c-9b0f12cad36b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 30.7161427049279); (11.1910744349011 : 30.907217139829 : JumpStart); (11.3089255650989 : 31.0250682700268 : JumpEnd); (11.3478856153846 : 31.0640283203125); (11.5416666666667 : 31.0640283203125 : JumpStart); (11.7083333333333 : 31.0640283203125 : JumpEnd); (11.9375 : 31.0640283203125); (11.9375 : 44.3125); (12 : 44.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Grids/Magic_Grids_Magic_FunctionsGrids" />
+      <nodes>
+        <classShapeMoniker Id="a856f042-4d4e-473e-87c5-870756ce54ff" />
+        <classShapeMoniker Id="1a45e7a0-e7c3-4381-823c-9b0f12cad36b" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="b453a2fe-0736-4add-b868-0c4782eaa373" absoluteBounds="12, 77, 2, 3.8862125651041595">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_DashboardCharts" />
+      <nestedChildShapes>
+        <elementListCompartment Id="95113a8e-fe11-4093-8e3c-4e46ccc5283a" absoluteBounds="12.015, 77.460000000000008, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11.25 : 67.3659092422877); (12.03125 : 70.7773989649439); (12.03125 : 78.9431062825521); (12 : 78.9431062825521)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Users/Magic_Mmb_Users_Magic_DashboardCharts" />
+      <nodes>
+        <classShapeMoniker Id="14a127f0-b6a3-40bb-a8ea-c6536807b521" />
+        <classShapeMoniker Id="b453a2fe-0736-4add-b868-0c4782eaa373" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="5440d875-023f-4961-bf67-731449178bb6" absoluteBounds="21.75, 16.75, 2, 10.232159830729167">
+      <DataClassMoniker Name="/MagicDBDataContext/v_Magic_Mmb_GridColumns" />
+      <nestedChildShapes>
+        <elementListCompartment Id="abd6bc34-9daf-4dcf-8c11-b6faf2948ef1" absoluteBounds="21.765, 17.21, 1.9700000000000002, 9.6721598307291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0c2fbd7b-b4fa-4b48-9ccd-16c6e50511ca" absoluteBounds="12, 81.625, 2, 1.7708968098958451">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Mmb_UsersOAuth" />
+      <nestedChildShapes>
+        <elementListCompartment Id="10731662-4695-450e-a3b7-353289fae5e8" absoluteBounds="12.015, 82.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11.25 : 66.3735075620994); (12.34375 : 70.7472066572516); (12.34375 : 82.5104484049479); (12 : 82.5104484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Users/Magic_Mmb_Users_Magic_Mmb_UsersOAuth" />
+      <nodes>
+        <classShapeMoniker Id="14a127f0-b6a3-40bb-a8ea-c6536807b521" />
+        <classShapeMoniker Id="0c2fbd7b-b4fa-4b48-9ccd-16c6e50511ca" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="7252eb16-24ea-46eb-9a63-7e51761e3b5f" absoluteBounds="14.75, 57.875, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_DocumentFillFiles" />
+      <nestedChildShapes>
+        <elementListCompartment Id="502eacb3-5c29-4708-bf67-660c778c4a82" absoluteBounds="14.765, 58.334999999999994, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.031252 : 31.463198242709); (5.031252 : 35); (5.625 : 35); (5.625 : 58.375); (6.10416666666667 : 58.375 : JumpStart); (6.27083333333333 : 58.375 : JumpEnd); (8.51198104306887 : 58.375 : JumpStart); (8.67864770973553 : 58.375 : JumpEnd); (13.3229161666667 : 58.375 : JumpStart); (13.4895828333333 : 58.375 : JumpEnd); (14.375 : 58.375); (14.375 : 58.6642976888021); (14.75 : 58.6642976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Cultures/Magic_Cultures_Magic_DocumentFillFiles" />
+      <nodes>
+        <classShapeMoniker Id="90a01338-3057-4e5d-833c-c6b02c63e086" />
+        <classShapeMoniker Id="7252eb16-24ea-46eb-9a63-7e51761e3b5f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(14 : 85.0104484049479); (14.84375 : 85.0104484049479); (14.84375 : 59.4535953776042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_DocumentFillSessions/Magic_DocumentFillSessions_Magic_DocumentFillFiles" />
+      <nodes>
+        <classShapeMoniker Id="c8558b58-b9f9-4bef-b5c6-983687dbd2f0" />
+        <classShapeMoniker Id="7252eb16-24ea-46eb-9a63-7e51761e3b5f" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="667c64be-ef80-4197-98c1-52d695e28d6f" absoluteBounds="12, 89.375, 2, 6.1938297526041595">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Mmb_Users_Extensions" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ccca8270-07bd-4975-950e-e92c134211b1" absoluteBounds="12.015, 89.835, 1.9700000000000002, 5.6338297526041661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11.1838461538462 : 70.1842268880208); (11.3160744349011 : 70.3164551690758 : JumpStart); (11.4339255650989 : 70.4343062992735 : JumpEnd); (11.625 : 70.6253807341747); (11.625 : 92.4719148763021); (12 : 92.4719148763021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Users/Magic_Mmb_Users_Magic_Mmb_Users_Extensions" />
+      <nodes>
+        <classShapeMoniker Id="14a127f0-b6a3-40bb-a8ea-c6536807b521" />
+        <classShapeMoniker Id="667c64be-ef80-4197-98c1-52d695e28d6f" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="bb5793c0-b924-4fa6-919a-2446ea406837" absoluteBounds="3.75, 18.75, 2, 3.8862125651041666">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_DocumentRepository" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f0d33f7c-166e-4294-a28d-882d891fe0ed" absoluteBounds="3.7650000000000006, 19.21, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7999b7ae-1d07-451d-a45d-903fae9ba1b3" absoluteBounds="15, 63.375, 2, 7.9245426432291595">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Calendar" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0e5cb8bb-0688-4513-8fe2-18cb4f38adc6" absoluteBounds="15.015, 63.835, 1.9700000000000002, 7.3645426432291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(15 : 70.2892976888021); (14.9270833333333 : 70.2892976888021 : JumpStart); (14.7604166666667 : 70.2892976888021 : JumpEnd); (14.2395833333333 : 70.2892976888021 : JumpStart); (14.0729166666667 : 70.2892976888021 : JumpEnd); (14 : 70.2892976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Calendar/Magic_Calendar_Magic_Calendar_Relations" />
+      <nodes>
+        <classShapeMoniker Id="7999b7ae-1d07-451d-a45d-903fae9ba1b3" />
+        <classShapeMoniker Id="6d67f895-d0f7-4bfd-b283-d324763038ce" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(15 : 67.3950512695313); (14.9270833333333 : 67.3950512695313 : JumpStart); (14.7604166666667 : 67.3950512695313 : JumpEnd); (14 : 67.3950512695313)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Calendar/Magic_Calendar_Magic_Calendar_Notifications" />
+      <nodes>
+        <classShapeMoniker Id="7999b7ae-1d07-451d-a45d-903fae9ba1b3" />
+        <classShapeMoniker Id="6f5414b9-59a0-4418-a810-e516b33887fb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(13.25 : 40.0785953776042); (13.25 : 40.875); (14.4479166666667 : 40.875 : JumpStart); (14.6145833333333 : 40.875 : JumpEnd); (14.7916666666667 : 40.875 : JumpStart); (14.9583333333333 : 40.875 : JumpEnd); (15 : 40.875); (15 : 43.75); (14.9583333333333 : 43.75 : JumpStart); (14.7916666666667 : 43.75 : JumpEnd); (14.5 : 43.75); (14.5 : 67.3372713216146); (14.7604166666667 : 67.3372713216146 : JumpStart); (14.9270833333333 : 67.3372713216146 : JumpEnd); (15 : 67.3372713216146)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Calendar_TaskStatus/Magic_Calendar_TaskStatus_Magic_Calendar" />
+      <nodes>
+        <classShapeMoniker Id="f8e67d43-f53c-412a-840a-ac4917bc4af8" />
+        <classShapeMoniker Id="7999b7ae-1d07-451d-a45d-903fae9ba1b3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(14.25 : 75.0392976888021); (14.7604166666667 : 75.0392976888021 : JumpStart); (14.9270833333333 : 75.0392976888021 : JumpEnd); (16 : 75.0392976888021); (16 : 71.2995426432292)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_CalendarLocations/Magic_CalendarLocations_Magic_Calendar" />
+      <nodes>
+        <classShapeMoniker Id="64290438-d1b1-4855-aa25-33b3672e2fc3" />
+        <classShapeMoniker Id="7999b7ae-1d07-451d-a45d-903fae9ba1b3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(14.25 : 97.7604484049479); (15.4687475 : 97.7604484049479); (15.4687475 : 71.2995426432292)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_CalendarSourceObjects/Magic_CalendarSourceObjects_Magic_Calendar" />
+      <nodes>
+        <classShapeMoniker Id="c743f86d-9a8b-4542-8c37-bdfb180b5368" />
+        <classShapeMoniker Id="7999b7ae-1d07-451d-a45d-903fae9ba1b3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 69.0825512695313); (15 : 69.0825512695313)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Users/Magic_Mmb_Users_Magic_Calendar" />
+      <nodes>
+        <classShapeMoniker Id="14a127f0-b6a3-40bb-a8ea-c6536807b521" />
+        <classShapeMoniker Id="7999b7ae-1d07-451d-a45d-903fae9ba1b3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 65.7706368173828); (11.6666666666667 : 65.7706368173828 : JumpStart); (11.8333333333333 : 65.7706368173828 : JumpEnd); (15 : 65.7706368173828)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Users/Magic_Mmb_Users_Magic_Calendar1" />
+      <nodes>
+        <classShapeMoniker Id="14a127f0-b6a3-40bb-a8ea-c6536807b521" />
+        <classShapeMoniker Id="7999b7ae-1d07-451d-a45d-903fae9ba1b3" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="7006a745-9ca9-48d2-a6ed-bb78c4100964" absoluteBounds="12.25, 72, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Calendar_TaskTypes" />
+      <nestedChildShapes>
+        <elementListCompartment Id="278b916a-b2e1-4fcd-baac-47f2bdaab953" absoluteBounds="12.265, 72.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(14.15625 : 72); (14.15625 : 67.3372713216146); (15 : 67.3372713216146)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Calendar_TaskTypes/Magic_Calendar_TaskTypes_Magic_Calendar" />
+      <nodes>
+        <classShapeMoniker Id="7006a745-9ca9-48d2-a6ed-bb78c4100964" />
+        <classShapeMoniker Id="7999b7ae-1d07-451d-a45d-903fae9ba1b3" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="9bf4c696-f2de-4b9a-9e70-4b72e45bce5a" absoluteBounds="17.75, 66.125, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Calendar_Google_UpdateQueue" />
+      <nestedChildShapes>
+        <elementListCompartment Id="80067870-6a19-4957-bc4d-459942049fe8" absoluteBounds="17.765, 66.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(17 : 67.3950512695313); (17.75 : 67.3950512695313)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Calendar/Magic_Calendar_Magic_Calendar_Google_UpdateQueue" />
+      <nodes>
+        <classShapeMoniker Id="7999b7ae-1d07-451d-a45d-903fae9ba1b3" />
+        <classShapeMoniker Id="9bf4c696-f2de-4b9a-9e70-4b72e45bce5a" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="30ee1b3f-32bd-45af-b275-f09185ad2236" absoluteBounds="23.75, 0.75, 2, 8.8860498046875023">
+      <DataClassMoniker Name="/MagicDBDataContext/v_Magic_Grid" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0dae5eee-ac4a-4739-855a-72d86b4d5458" absoluteBounds="23.765, 1.2100000000000009, 1.9700000000000002, 8.3260498046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="883e8a61-3afb-4e8d-a5db-b54cc4c8f6fb" absoluteBounds="6.25, 31.25, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Mmb_ModuleLabel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2f992d9f-210f-4cc4-b759-ca285e561182" absoluteBounds="6.2650000000000006, 31.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 35.3112992741638); (5.9375 : 34.8737992741638); (5.9375 : 32.1354484049479); (6.25 : 32.1354484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_ApplicationLayers/Magic_ApplicationLayers_Magic_Mmb_ModuleLabel" />
+      <nodes>
+        <classShapeMoniker Id="88dd487e-1f15-4972-8f6b-3c081be59247" />
+        <classShapeMoniker Id="883e8a61-3afb-4e8d-a5db-b54cc4c8f6fb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5 : 31.463198242709); (4.5 : 32.6094251074219); (5.85416666666667 : 32.6094251074219 : JumpStart); (6.06770833333333 : 32.6094251074219 : JumpEnd); (6.25 : 32.6094251074219)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Cultures/Magic_Cultures_Magic_Mmb_ModuleLabel" />
+      <nodes>
+        <classShapeMoniker Id="90a01338-3057-4e5d-833c-c6b02c63e086" />
+        <classShapeMoniker Id="883e8a61-3afb-4e8d-a5db-b54cc4c8f6fb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 38.1557682307692); (5.56607443490112 : 38.0896937958681 : JumpStart); (5.68392556509888 : 37.9718426656703 : JumpEnd); (5.90625 : 37.7495182307692); (5.90625 : 31.661472202474); (5.93129197531536 : 31.661472202474 : JumpStart); (6.09795864198202 : 31.661472202474 : JumpEnd); (6.25 : 31.661472202474)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Modules/Magic_Mmb_Modules_Magic_Mmb_ModuleLabel" />
+      <nodes>
+        <classShapeMoniker Id="748a07b3-0028-4cfe-b241-0a48dc32d6a0" />
+        <classShapeMoniker Id="883e8a61-3afb-4e8d-a5db-b54cc4c8f6fb" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="ffd717a7-848d-4e21-9444-844e9daf963e" absoluteBounds="3.125, 25.375, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_Mmb_MenuLabel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="41f4c9ae-b034-4af6-a961-ceede8404fa7" absoluteBounds="3.1399999999999997, 25.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 35.2649835114623); (5.984375 : 34.7806085114623); (5.984375 : 27.5208968098958); (5.5 : 27.5208968098958); (5.125 : 27.1458968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_ApplicationLayers/Magic_ApplicationLayers_Magic_Mmb_MenuLabel" />
+      <nodes>
+        <classShapeMoniker Id="88dd487e-1f15-4972-8f6b-3c081be59247" />
+        <classShapeMoniker Id="ffd717a7-848d-4e21-9444-844e9daf963e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.57812125 : 29.5); (4.57812125 : 27.1458968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Cultures/Magic_Cultures_Magic_Mmb_MenuLabel" />
+      <nodes>
+        <classShapeMoniker Id="90a01338-3057-4e5d-833c-c6b02c63e086" />
+        <classShapeMoniker Id="ffd717a7-848d-4e21-9444-844e9daf963e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.25 : 61.6806977765126); (4.58333333333333 : 61.6806977765126 : JumpStart); (4.41666666666667 : 61.6806977765126 : JumpEnd); (3.28125 : 61.6806977765126); (3.28125 : 27.1458968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Mmb_Menus/Magic_Mmb_Menus_Magic_Mmb_MenuLabel" />
+      <nodes>
+        <classShapeMoniker Id="7543df95-3f1f-431f-80e8-1cede3a2f5c2" />
+        <classShapeMoniker Id="ffd717a7-848d-4e21-9444-844e9daf963e" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="ee711c64-42d3-4787-be07-773c48ce2d7c" absoluteBounds="24.875, 16.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/MagicDBDataContext/v_Magic_UIComponentsLabel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6603d58b-fba2-4ed9-94aa-a59bd3104578" absoluteBounds="24.89, 17.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5ffb2d4d-def2-4174-b38c-6d1d9220b3c1" absoluteBounds="16.25, 60, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/MagicDBDataContext/Magic_FunctionsLabel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="757ed53f-179c-4a17-a92c-e66a8b784fd8" absoluteBounds="16.265, 60.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.5 : 37.0208968091756); (4.5 : 37.875); (6.1875 : 37.875); (6.1875 : 60.625); (10.25 : 60.625); (10.25 : 61.1554996744792); (15.9166666666667 : 61.1554996744792 : JumpStart); (16.0833333333333 : 61.1554996744792 : JumpEnd); (16.25 : 61.1554996744792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_ApplicationLayers/Magic_ApplicationLayers_Magic_FunctionsLabel" />
+      <nodes>
+        <classShapeMoniker Id="88dd487e-1f15-4972-8f6b-3c081be59247" />
+        <classShapeMoniker Id="5ffb2d4d-def2-4174-b38c-6d1d9220b3c1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 31.1109033203125); (5.90104166666667 : 31.1109033203125 : JumpStart); (6.06770833333333 : 31.1109033203125 : JumpEnd); (8.60416666666667 : 31.1109033203125 : JumpStart); (8.77083333333333 : 31.1109033203125 : JumpEnd); (10.0416666666667 : 31.1109033203125 : JumpStart); (10.2083333333333 : 31.1109033203125 : JumpEnd); (11.1666666666667 : 31.1109033203125 : JumpStart); (11.3333333333333 : 31.1109033203125 : JumpEnd); (11.5416666666667 : 31.1109033203125 : JumpStart); (11.7083333333333 : 31.1109033203125 : JumpEnd); (18.03125 : 31.1109033203125); (18.03125 : 60)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Cultures/Magic_Cultures_Magic_FunctionsLabel" />
+      <nodes>
+        <classShapeMoniker Id="90a01338-3057-4e5d-833c-c6b02c63e086" />
+        <classShapeMoniker Id="5ffb2d4d-def2-4174-b38c-6d1d9220b3c1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.21769230769231 : 58.1266097005208); (8.625 : 58.5339173928285); (8.625 : 60.9367496744792); (8.72916666666667 : 60.9367496744792 : JumpStart); (8.89583333333333 : 60.9367496744792 : JumpEnd); (10.1666666666667 : 60.9367496744792 : JumpStart); (10.3333333333333 : 60.9367496744792 : JumpEnd); (11.0729166666667 : 60.9367496744792 : JumpStart); (11.2395833333333 : 60.9367496744792 : JumpEnd); (13.3229161666667 : 60.9367496744792 : JumpStart); (13.4895828333333 : 60.9367496744792 : JumpEnd); (14.7604166666667 : 60.9367496744792 : JumpStart); (14.9270833333333 : 60.9367496744792 : JumpEnd); (15.9166666666667 : 60.9367496744792 : JumpStart); (16.0833333333333 : 60.9367496744792 : JumpEnd); (16.25 : 60.9367496744792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MagicDBDataContext/Magic_Functions/Magic_Functions_Magic_FunctionsLabel" />
+      <nodes>
+        <classShapeMoniker Id="9f0e0334-07d4-40ed-aaee-42311a1d9658" />
+        <classShapeMoniker Id="5ffb2d4d-def2-4174-b38c-6d1d9220b3c1" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

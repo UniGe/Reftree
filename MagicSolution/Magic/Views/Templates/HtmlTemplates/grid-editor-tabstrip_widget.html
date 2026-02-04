@@ -1,0 +1,139 @@
+﻿
+<div gridstack-item-content class="grid-stack-item-content" style="padding-left:10px;">
+
+    <div class="card-header">
+        {{widget.contentType}}
+        <a class="pull-right pointer"><i ng-click="ge.removeWidget(widget,tab)" class="fa fa-remove"></i></a>
+    </div>
+    <!-- add sub tabs-->
+    <div class="row">
+        <label class="col-md-12">
+            {{ ge.text.selectContentType }}
+            <select style="width: 100%;" required="required" ng-change="ge.onContentTypeSelected(widget, tab)"
+                    kendo-drop-down-list ng-model="widget.contentType" k-data-source="ge.contentTypeOptions"></select>
+
+        </label>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-1">
+            <button class="btn btn-primary" type="button" ng-click="ge.addTabToTabstrip(widget,tab, $event)" title="{{ge.text.addTab}}">
+                <i class="fa fa-tag"></i>
+                <i class="fa fa-plus"></i>
+            </button>
+        </div>
+        <div class="col-md-11">            
+            <div class="input-group">
+                <span class="input-group-addon" title="{{ge.text.englishDescription}}"><span class="flag-icon flag-icon-gb"></span></span>
+                <input id="title_en" type="text" class="form-control" placeholder="en-GB" ng-model="widget.titles.en">
+                <span class="input-group-addon" title="{{ge.text.italianDescription}}"><span class="flag-icon flag-icon-it"></span></span>
+                <input id="title_it" type="text" class="form-control" placeholder="it-IT" ng-model="widget.titles.it">
+                <span class="input-group-addon" title="{{ge.text.germanDescription}}"><span class="flag-icon flag-icon-de"></span></span>
+                <input id="title_de" type="text" class="form-control" placeholder="de-DE" ng-model="widget.titles.de">
+            </div>
+        </div>
+
+    </div>
+     
+    <ul class="nav nav-tabs">
+        <li ng-repeat="tabstripTab in widget.tabs" data-ng-class="{'active' : tabstripTab.isActive }">         
+            <a ng-click="ge.onTabstripTabSelected(tabstripTab, widget.tabs)" data-toggle="tab" href="#{{'subtab_' + tabstripTab.id}}">
+                <div class="tab-title-container">
+                    <input type="text" ng-model="tabstripTab.title" class="tab-input main-title" placeholder="Main Title" />
+                    <span class="language-icon" ng-click="tabstripTab.showLanguages = !tabstripTab.showLanguages; $event.preventDefault(); $event.stopPropagation();">
+                        <i class="fa fa-language"></i>
+                    </span>
+                </div>
+                <div ng-show="tabstripTab.showLanguages" class="language-inputs">
+                    <div class="tab-title-container">
+                        <span class="flag-icon flag-icon-gb"></span>
+                        <input type="text" ng-model="tabstripTab.titles.en" class="tab-input" placeholder="en-GB" ng-click="$event.preventDefault();$event.stopPropagation();" ng-change="ge.onTabstripTabTitleChanged()" />
+                    </div>
+                    <div class="tab-title-container">
+                        <span class="flag-icon flag-icon-it"></span>
+                        <input type="text" ng-model="tabstripTab.titles.it" class="tab-input" placeholder="it-IT" ng-click="$event.preventDefault();$event.stopPropagation();" ng-change="ge.onTabstripTabTitleChanged()" />
+                    </div>
+                    <div class="tab-title-container">
+                        <span class="flag-icon flag-icon-de"></span>
+                        <input type="text" ng-model="tabstripTab.titles.de" class="tab-input" placeholder="de-DE" ng-click="$event.preventDefault();$event.stopPropagation();" ng-change="ge.onTabstripTabTitleChanged()" />
+                    </div>
+                </div>
+                <span ng-click="ge.removeTabFromTabstrip(widget, tabstripTab, tab); $event.stopPropagation();" class="fa fa-remove pointer" title="{{ge.text.deleteTab}}"></span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div ng-repeat="tabstripTab in widget.tabs" id="{{'subtab_' + tabstripTab.id}}"
+             ng-if="ge.loadTsTabContent[tabstripTab.id]"
+             class="tab-pane fade in" data-ng-class="{'active' : tabstripTab.isActive }">
+
+            <button class="btn btn-primary" type="button" title="{{ge.text.addWidget}}" ng-click="ge.addWidgetToTabstrip(widget, tabstripTab)">
+                <i class="fa fa-plus"></i>
+            </button>
+
+            <div gridstack id="tabStripstack{{widgetLayout}}{{tab.id}}" class="grid-stack"
+                 on-drag-stop="ge.onGridstackChanged(event, items)" on-resize-stop="ge.onGridstackChanged(event, items)">
+
+                <div gridstack-item class="grid-stack-item" ng-repeat="widget in tabstripTab.tabWidgets" id="{{widgetLayout}}_{{tabstrip.id}}_{{widget.id}}"
+                     data-gs-no-resize="false" gs-item-x="widget.x" gs-item-y="widget.y" gs-item-width="widget.width"
+                     gs-item-height="widget.height" ng-include="ge.widgetTemplateUrl">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .tab-title-container {
+        display: inline-block;
+        text-align: center;
+        margin: 0 5px;
+    }
+
+    .flag-icon {
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .tab-input {
+        width: 100px;
+        border: 1px solid #ccc;
+        padding: 5px;
+        border-radius: 4px;
+        outline: none;
+    }
+
+        .tab-input:focus {
+            border-color: #007bff;
+        }
+
+    .main-title {
+        width: 150px;
+        font-weight: bold;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .fa-remove {
+        margin-left: 5px;
+    }
+
+    .language-icon {
+        cursor: pointer;
+        margin-left: 5px;
+    }
+
+    .language-inputs {
+        position: absolute;
+        background: white;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 4px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        z-index: 1000;
+        margin-top: 5px;
+    }
+</style>

@@ -1,0 +1,207 @@
+﻿<style>
+    .helpdesk-custom-style-descr {
+        font-size: 18px;
+        color: rgb(0, 0, 0);
+        border: solid 3px;
+        padding: 0px 30px 0px 30px;
+    }
+
+    /*
+d_ele.css('font-size', '18px');
+		d_ele.css('color', 'rgb(0,0,0)');
+        d_ele.css('border', 'solid 3px');
+        d_ele.css('padding-left', '30px');
+        d_ele.css('padding-right', '30px');
+*/
+</style>
+<div class="pannel with-nav-tabs pannel-default">
+    <!--Pannel Heading-->
+    <div id="TabList" class="pannel-heading">
+        <ul ng-init="" class="nav nav-tabs">
+            <li class="active">
+                <a href="#tab1default" data-toggle="tab">Dettagli</a>
+            </li>
+            <li ng-click="loadContent.two = true">
+                <a href="#tab2default" data-toggle="tab">Documenti</a>
+            </li>
+
+            <!--ActionButtons-->
+            <li class="pull-right">
+                <div class="btn-group btnClass" role="group" id="btnAction">
+                    <!-- <button id="act1" type="button" class="btn btn-primary" aria-label="act1">act1</button>
+                    <button id="act2" type="button" class="btn btn-primary" aria-label="act2">act2</button> -->
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!--Pannel Contents-->
+    <div class="panel-body">
+        <div class="tab-content">
+
+            <!--Tab: Dettagli-->
+            <div class="tab-pane fade active in" id="tab1default">
+                <!--Titolo (id_Richiesta - desc_Gruppo)-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 id="requestTitle"></h1>
+                    </div>
+                </div>
+                <!--Dati richiesta-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true" formname="SG_RICHIESTE_ASSEGNATE" hidetabs="true"
+                            itemsperrow="2"></magic-form-sp>
+                    </div>
+                </div>
+                <!--Descrizione problema-->
+                <div class="row">
+                    <div class="col-md-12" id="requestDescr" class="helpdesk-custom-style-descr">
+                        <!--<span id="requestDescr"></span>-->
+                    </div>
+                </div>
+            </div>
+
+            <!--Tab:Documenti-->
+            <div class="tab-pane fade" id="tab2default">
+                <div ng-if="loadContent.two">
+                    <!--Documenti allegati-->
+                    <div class="row">
+                        <h3>Documenti allegati</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <magic-grid gridname="SG_VI_REQDOC_REQUES" filterpk="SG_REQUES_ID"></magic-grid>
+                        </div>
+                    </div>
+
+                    <!--Descrizione normalizzata-->
+                    <div class="row">
+                        <h3>Descrizione normalizzata</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 helpdesk-custom-style-descr" id="requestDescr_nm">
+                            <!--Richiesta normalizzata-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<script>
+    $(function () {
+        var data = $("#appcontainer").data("customItemInfo");
+        var title = data.SG_REQUES_ID + ' - ' + data.US_GROUPS_DESCRIPTION;
+        var descr = data.SG_REQUES_DESCRIPTION;
+        var descr_nm = data.SG_REQUES_DESCRIPTION_NM;
+
+        //Imposto il titolo
+        var t_ele = $('#requestTitle')
+        t_ele.html('<b>' + title + '</b>');
+
+        t_ele.css("text-align", "center");
+        t_ele.css("margin", "50px");
+
+        //Imposto la descrizione
+        var d_ele = $('#requestDescr')
+        d_ele.html(descr);
+
+        //Imposto la descrizione normalizzata
+        var d_ele_nm = $('#requestDescr_nm')
+        d_ele_nm.html(descr_nm);
+
+        d_ele.css('font-size', '18px');
+        d_ele.css('color', 'rgb(0,0,0)');
+        d_ele.css('border', 'solid 3px');
+        d_ele.css('padding-left', '30px');
+        d_ele.css('padding-right', '30px');
+        //style="font-size: 20px;border: solid 3px;/* text-align: center; */padding-left: 30px;padding-right: 30px;
+
+        getHelpDeskActions(data);
+    });
+
+    function getHelpDeskActions(data) {
+        let requestData = {
+            entityname :    'core.'+data.gridName, //'core.SG_VI_REQUES_L_USER_ASS',                    //Rendere parametrico...
+            id : data.id,
+            pk : 'SG_REQUES_ID',
+            queryType : 'stageactions',
+            functionGUID : null,
+            gridName : data.gridName,
+            masterEntityName : 'core.'+data.gridName, //'core.SG_VI_REQUES_L_USER_ASS',             //Rendere parametrico...
+            itemid : data.id,
+            type : 'A',
+            ugvi : 1
+        };
+
+        requireConfigAndMore(["MagicSDK"], function (MF) {
+            MF.api.get({
+                storedProcedureName: "core.usp_ev_get_action_constraint",
+                data: requestData, // an object to pass into tag p of stored procedure
+            }).then(function (result) {
+                    console.log('List of Actions: ',result);
+                if (result.length) {
+                    // handle result here
+                    let btn_template = '<button id="#ID#" type="button" class="btn btn-primary" onclick="excuteCommand(this)" aria-label="#TEXT#">#TEXT#</button>'
+                    result[0].forEach((element, i) => {
+                        let tmp =  btn_template;
+                        tmp = tmp.replace(/#ID#/g , 'ACT_'+i);
+                        tmp = tmp.replace(/#TEXT#/g , element.EV_ACTION_DESCRIPTION);
+
+                        $('#btnAction').append(tmp);
+                        $('#ACT_'+i).data('action-data', element);
+
+                    });
+                }
+            }, function (error) {
+                // handle error here
+                console.error('Error: ', error);
+            });
+        });
+    }
+
+    function excuteCommand(e){
+        var data = $("#appcontainer").data("customItemInfo");
+        var actionData = $(e).data('action-data');
+
+        var jsonpayload = JSON.parse('{ "actiontype": "'+ actionData.EV_ACTTYP_CODE +'", "actionfilter":'+ actionData.EV_ACTION_FILTER +', "actioncommand": "' + actionData.EV_ACTION_COMMAND + '" }');
+
+        jsonpayload.rowData = data;
+        var selector = (e.currentTarget ? e.currentTarget : e);
+        jsonpayload.jqgrid = $(selector).closest(".k-grid");
+        jsonpayload.jrow = $(selector).closest(".k-grid tr");
+
+        if (!jsonpayload.actiontype || !jsonpayload.actioncommand)
+            console.log("actioncommand or actiontype not provided");
+        dispatchAction(e, jsonpayload);
+    }
+
+// // //------------------------------------------
+//     function richieIntegra(e) {
+
+//         console.log("passsooo form");
+
+//         var gridcode = 'BCE_VI_RICHIE_INTEGRA';
+
+//         var jsonpayload = JSON.parse('{ "actiontype": "NEWGD", "actionfilter":{ "logic": "and", "filters" :[ { "field": "BCE_INVASS_ID", "operator": "eq", "value": "' + data.BCE_INVASS_ID + '"}, { "field": "BCE_INVASS_AS_ASSET_ID", "operator": "eq", "value": "' + data.AS_ASSET_ID + '" }]}, "actioncommand": "' + gridcode + '" }');
+
+//         jsonpayload.rowData = data;
+//         var selector = (e.currentTarget ? e.currentTarget : e);
+//         jsonpayload.jqgrid = $(selector).closest(".k-grid");
+//         jsonpayload.jrow = $(selector).closest(".k-grid tr");
+
+
+//         if (!jsonpayload.actiontype || !jsonpayload.actioncommand)
+//             console.log("actioncommand or actiontype not provided");
+//         dispatchAction(e, jsonpayload);
+
+
+//         }
+
+
+
+</script>

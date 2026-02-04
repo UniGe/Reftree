@@ -1,0 +1,155 @@
+﻿<style>
+        /*div.wndmodalContainer > div.modal-dialog-r3 {
+      width: 1000px !important;
+    }*/
+
+
+    .iframePageTitle {
+    }
+    .nobr {
+        white-space: nowrap;
+    }
+
+        .tree-view-wrapper, .tree-view-wrapper ul {
+            list-style: none;
+        }
+
+        .show-hide, .edit {
+            cursor: pointer;
+        }
+
+        .tree-checkbox {
+            margin: 6px !important;
+        }
+
+        .edit {
+            /*margin-right: 6px !important;*/
+            padding-left: 10px;
+            font-size: 12px;
+        }
+
+            .edit i {
+                color: #D77105;
+                font-size: 12px;
+            }
+
+        .hide {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .column {
+            float: left;
+            width: 3%;
+            padding: 5px;
+        }
+
+        .column_text {
+            float: left;
+            width: 90%;
+            padding: 5px;
+        }
+        /* Clear floats after the columns */
+
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+
+        /**/
+
+        /**/
+</style>
+
+
+<div id="containerModalR3">
+    <div style="height: 36px; padding: 2px; padding-right: 18px;">
+        <a style="margin:3px;" ng-show="!!tfep.dwgConfig" class="k-button pull-right" title="Refresh" data-role="tooltip" href="javascript:void(0)" ng-click="tfep.refreshTree()"><span class="k-icon k-i-refresh"></span></a>
+        <a style="margin:3px;" ng-show="!!tfep.dwgConfig" class="k-button pull-right" title="2D viewer html" data-role="tooltip" href="javascript:void(0)" ng-click="tfep.openViewCad()"><span class="fa fa-building"></span></a>
+        <a style="margin:3px;" class="k-button pull-right" data-role="tooltip" href="javascript:void(0)" ng-click="tfep.openMaps()"><span class="fa fa-globe"></span></a>
+        <!--<a class="k-button pull-right" title="Action" data-role="tooltip" href="javascript:void(0)" ng-click="tfep.refreshDetail()"><span class="glyphicon glyphicon-th-list"></span></a>-->
+    </div>
+
+    <div class="panel-group_r3" id="group-filtri-1">
+        <div class="panel panel-primary_r3" id="primary-filtri-1">
+            <div class="panel-heading_r3" id="heading-filtri-1">
+                <div style"padding-top: 2px">
+                    <!--<a  class="k-button pull-right"  data-role="tooltip" href="javascript:void(0)" ng-click="tfep.bMapsVisible=!tfep.bMapsVisible"><span class="fa fa-globe"></span></a>-->
+                </div>
+                <!--<div style"padding-top: 2px" >
+                                   <a  class="k-button pull-right"  data-role="tooltip" href="javascript:void(0)" ng-click="tfep.bTreeVisible=!tfep.bTreeVisible"><span class="fa fa-globe"></span></a>
+                              </div>-->
+                <h3 class="panel-title_r3" id="title-filtri-1">
+                    <a data-toggle="collapse" data-parent="#Group2" href="#collapse-filtri-1">
+                        <i class="more-less more-less-r3 glyphicon glyphicon-minus"></i>
+                        <strong>Filtri</strong>
+                    </a>
+                </h3>
+            </div>
+            <div id="collapse-filtri-1" class="panel-collapse in">
+                <div class="panel-body">
+                    <div class="row">
+                        <magic-grid ng-show="false" gridname="{{tfep.dwgConfig.gridName}}" filter="tfep.filterGridDwg"></magic-grid>
+                    </div>
+                    <div class="row">
+                        <div ng-show="true" id="treeRefTree" class="scrollable-tree-r3 treeview-r3-container" data-always-visible="1" data-rail-visible="0">
+                            <!-- <tree-view-r3 search="tfep.findFilter()" change="tfep.onCheckChange(node)" selected-node="tfep.selectedNode" id="treeAsset" click="tfep.onTreeClick(node)" b-filter-tree="true" model="tfep.treeDataSp" model-drop="tfep.filterDropDown" source="$parentfep.$parentfep.tfep.treeDataSp"></tree-view-r3>-->
+                        </div>
+                        <div ng-show="tfep.bMapsVisible" id="modal-body" style="height:350px;">
+                            <easy-map map-options="{zoom:20}" markers="tfep.mapMarkers"></easy-map>
+                        </div>
+
+                        <!--<div ng-class="tfep.bMapsVisible ? 'col-md-6' : 'col-md-12'">
+                           <br>
+
+                        </div>
+                        <div ng-class="tfep.bTreeVisible ? 'col-md-6' : 'col-md-12'">
+                           <br>
+
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div class="panel-group_r3" id="group-filtri">
+        <div class="panel panel-primary_r3" id="primary-filtri">
+            <div class="panel-heading_r3" id="heading-filtri">
+                <h3 class="panel-title_r3" id="title-filtri">
+                    <a data-toggle="collapse" data-parent="#Group2" href="#collapse-filtri">
+                        <i class="more-less more-less-r3 glyphicon glyphicon-minus"></i>
+                        <b>{{tfep.selectedNode.TREE_LABEL}}</b>
+                    </a>
+                </h3>
+            </div>
+            <div id="collapse-filtri" class="panel-collapse in">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="templateFormContainer" ng-init="tfep.init">
+                            </div>
+                            <div id="editPageIframe" ng-show="tfep.iframeVisible">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+
+
+</div>
+<div id="default-tree"></div>
+

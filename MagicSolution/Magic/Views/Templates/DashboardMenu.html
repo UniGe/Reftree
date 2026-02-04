@@ -1,0 +1,284 @@
+﻿<div class="row" ng-if="dm.isReady">
+    <div ng-repeat="area in dm.applicationAreas">
+
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" ng-if="!area.IsHidden">
+
+            <div class="box" ng-style="{ 'border-color': area.Color }">
+                <h3 ng-click="dm.toggleModule(area)"
+                    ng-mouseenter="dm.mouseEnterModule(area)"
+                    ng-mouseleave="dm.mouseLeaveModule(area)"
+                    class="underline module-toggle">
+                    {{area.Description}}
+                </h3>
+                <i ng-show="area.isInitializing"
+                   class="fa fa-spinner fa-spin">
+                </i>
+                <i ng-click="dm.toggleModule(area)"
+                   ng-mouseenter="dm.mouseEnterModule(area)"
+                   ng-mouseleave="dm.mouseLeaveModule(area)"
+                   style="float: right;" class="fa fa-bars fa-3x">
+                </i>
+
+                <ul ng-if="area.isExpanded" class="menu-list">
+                    <li ng-repeat="menuItem in area.menuItems" class="menu-list-item first-level">
+
+                        <h5 ng-if="!menuItem.children.length && menuItem.href"
+                            ng-click="dm.toggleExpanded(menuItem); $event.stopPropagation();">
+                            <a class="btn menu-btn over-under"
+                               href="{{menuItem.href}}"
+                               ng-style="{ 'background': area.Color }">
+                                <i ng-class="menuItem.ITEM_ICON"></i>
+                                <span class="lbl">{{menuItem.ITEM_LABEL}}</span>
+                            </a>
+                        </h5>
+
+
+                        <div class="wrapper">
+                            <h5 ng-if="menuItem.children.length"
+                                ng-click="dm.toggleExpanded(menuItem); $event.stopPropagation();"
+                                class="underline">
+                                <i ng-class="menuItem.ITEM_ICON"></i>
+                                <span class="lbl">{{menuItem.ITEM_LABEL}}</span>
+                            </h5>
+                        </div>
+
+                        <ul ng-if="menuItem.children"
+                            ng-show="menuItem.isExpanded"
+                            class="menu-list">
+                            <li ng-repeat="child in menuItem.children"
+                                class="menu-list-item second-level">
+
+                                <div ng-if="!child.children.length && child.href">
+                                    <a class="btn menu-btn over-under"
+                                       href="{{child.href}}"
+                                       ng-style="{ 'background': area.Color }">
+                                        <i ng-class="child.ITEM_ICON"></i>
+                                        <span class="lbl">{{child.ITEM_LABEL}}</span>
+                                    </a>
+                                </div>
+
+                                <h5 ng-if="child.children.length"
+                                    ng-click="dm.toggleExpanded(child); $event.stopPropagation();"
+                                    class="underline">
+                                    <i ng-class="child.ITEM_ICON"></i>
+                                    <span class="lbl">{{child.ITEM_LABEL}}</span>
+                                </h5>
+                                <div class="box-one"
+                                     ng-show="child.isExpanded">
+                                    <ul ng-if="child.children"
+                                        class="menu-list">
+                                        <li ng-repeat="grandchild in child.children"
+                                            class="menu-list-item third-level">
+
+                                            <h5 ng-if="!grandchild.children.length && grandchild.href">
+                                                <a class="btn menu-btn over-under"
+                                                   href="{{grandchild.href}}"
+                                                   ng-style="{ 'background': area.Color }">
+                                                    <i ng-class="grandchild.ITEM_ICON"></i>
+                                                    <span class="lbl">{{grandchild.ITEM_LABEL}}</span>
+                                                </a>
+                                            </h5>
+
+                                            <h5 ng-if="grandchild.children.length"
+                                                ng-click="dm.toggleExpanded(grandchild); $event.stopPropagation();">
+                                                <i ng-class="grandchild.ITEM_ICON"></i>
+                                                <span class="lbl">{{grandchild.ITEM_LABEL}}</span>
+                                            </h5>
+
+                                            <ul ng-if="grandchild.children && grandchild.children.length"
+                                                ng-show="grandchild.isExpanded"
+                                                class="menu-list">
+                                                <li ng-repeat="grandgrandchild in grandchild.children"
+                                                    class="menu-list-item fourth-level">
+                                                    {{grandgrandchild}}
+                                                </li>
+                                            </ul>
+
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </li>
+                        </ul>
+
+
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="clearfix visible-xs" ng-if="($index + 1) % 1 == 0"></div>
+        <div class="clearfix visible-sm" ng-if="($index + 1) % 2 == 0"></div>
+        <div class="clearfix visible-md" ng-if="($index + 1) % 3 == 0"></div>
+        <div class="clearfix visible-lg" ng-if="($index + 1) % 3 == 0"></div>
+
+
+    </div>
+</div>
+
+
+
+<style>
+    .lbl {
+        word-break: break-all;
+        overflow-wrap: break-word;
+        white-space: pre;
+    }
+
+  .wrapper {
+    width: 100%; 
+    margin: 10px;
+  }
+
+  .menu-list {
+      list-style: none;
+      margin-top: 20px;
+  }
+
+  .menu-list-item {
+    margin-bottom: 15px;
+    border-radius: 5px;
+  }
+
+  h2,h3,h5,h6,h7:hover {
+    cursor: pointer;
+  }
+
+  .dashboard-menu-container {
+      margin: 15px;
+  }
+
+  :root {
+      --red: hsl(0, 78%, 62%);
+      --cyan: hsl(180, 62%, 55%);
+      --orange: hsl(34, 97%, 64%);
+      --blue: hsl(212, 86%, 64%);
+      --varyDarkBlue: hsl(234, 12%, 34%);
+      --grayishBlue: hsl(229, 6%, 66%);
+      --veryLightGray: hsl(0, 0%, 98%);
+      --black: #1B1E24;
+      --weight1: 200;
+      --weight2: 400;
+      --weight3: 600;
+  }
+
+  .attribution {
+      font-size: 11px;
+      text-align: center;
+  }
+
+      .attribution a {
+          color: hsl(228, 45%, 44%);
+      } 
+  
+  .box p {
+      color: var(--grayishBlue);
+  }
+
+  .box {
+      border-radius: 5px;
+      box-shadow: 0px 30px 40px -20px var(--grayishBlue);
+      padding: 30px;
+      margin: 20px;
+      border-top: 3px solid;
+  }
+
+</style>
+
+<style> 
+    .underline {
+        display: inline;
+        position: relative;
+        overflow: hidden;
+    }
+    .underline:after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        right: 0;
+        width: 0;
+        bottom: -5px;
+        background: #000;
+        height: 2px;
+        transition-property: width;
+        transition-duration: 0.4s;
+        transition-timing-function: ease;
+    }
+    .underline:hover:after,
+    .underline:focus:after,
+    .underline:active:after {
+        left: 0;
+        right: auto;
+        width: 100%;
+    }
+</style>
+
+<style>
+    
+a {
+  box-sizing: inherit;
+  transition-property: all;
+  transition-duration: 0.6s;
+  transition-timing-function: ease;  
+}
+
+.menu-btn {
+  background: #0090d9;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 35px;
+  max-width: 90%;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.menu-btn:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
+.over-under {
+  letter-spacing: 0;
+}
+
+.over-under:hover,
+.over-under:active {
+  letter-spacing: 1px;
+}
+
+.over-under:after,
+.over-under:before {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  border: 1px solid rgba(255, 255, 255, 0);
+  bottom: 0px;
+  content: " ";
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  transition: all 280ms ease-in-out;
+  width: 0;
+}
+
+.over-under:hover:after,
+.over-under:hover:before {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  border-color: #fff;
+  transition: width 350ms ease-in-out;
+  width: 70%;
+}
+
+.over-under:hover:before {
+  bottom: auto;
+  top: 0;
+  width: 70%;
+}
+
+</style>

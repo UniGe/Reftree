@@ -1,0 +1,880 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MagicDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Magic_MailAccounts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="from_name" Type="nvarchar" MaxLength="500" />
+          <Property Name="password" Type="nvarchar" MaxLength="1000" />
+          <Property Name="port" Type="int" Nullable="false" />
+          <Property Name="tls_or_ssl" Type="bit" Nullable="false" />
+          <Property Name="uri" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+          <Property Name="is_pec" Type="bit" Nullable="false" />
+          <Property Name="smtp_account_name" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Magic_MailQueue">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="system_messages_id" Type="int" />
+          <Property Name="edited_messages_id" Type="int" />
+          <Property Name="taglist" Type="nvarchar(max)" />
+          <Property Name="mail_account_id" Type="int" />
+          <Property Name="error_messages" Type="nvarchar(max)" />
+          <Property Name="created" Type="datetime" />
+          <Property Name="send_attempts" Type="int" Nullable="false" />
+          <Property Name="note" Type="nvarchar(max)" />
+          <Property Name="error_counter" Type="int" Nullable="false" />
+          <Property Name="send_time" Type="datetime" />
+          <Property Name="last_attempt" Type="datetime" />
+          <Property Name="send_to" Type="nvarchar" MaxLength="2000" Nullable="false" />
+          <Property Name="reply_to" Type="nvarchar(max)" />
+          <Property Name="is_in_process" Type="bit" />
+        </EntityType>
+        <EntityType Name="Magic_Mmb_PendingRegistrations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="token" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="completed_registration" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Magic_NotificationProviders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="Server_url" Type="nvarchar" MaxLength="500" />
+          <Property Name="Credential_user" Type="nvarchar" MaxLength="100" />
+          <Property Name="Credential_pwd" Type="nvarchar" MaxLength="1000" />
+          <Property Name="License_key" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Magic_NotificationQueue">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creationDate" Type="datetime" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="notificationType_ID" Type="int" Nullable="false" />
+          <Property Name="notified" Type="bit" Nullable="false" />
+          <Property Name="notified_at" Type="datetime" />
+          <Property Name="send_attempts" Type="int" Nullable="false" />
+          <Property Name="last_attempt" Type="datetime" />
+          <Property Name="message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="error" Type="nvarchar(max)" />
+          <Property Name="provider_ID" Type="int" />
+          <Property Name="mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="readByUser" Type="bit" Nullable="false" />
+          <Property Name="notes" Type="nvarchar(max)" />
+          <Property Name="DocumentRepository_ID" Type="int" />
+          <Property Name="function_link" Type="varchar(max)" />
+          <Property Name="function_filter" Type="varchar(max)" />
+          <Property Name="can_reply" Type="bit" Nullable="false" />
+          <Property Name="sender_user_id" Type="int" />
+          <Property Name="display_modal_unread" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Magic_NotificationTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Magic_SystemEditedMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrigMessage_ID" Type="int" />
+          <Property Name="User_ID" Type="int" />
+          <Property Name="Code" Type="nvarchar" MaxLength="6" />
+          <Property Name="From" Type="nvarchar" MaxLength="100" />
+          <Property Name="To" Type="nvarchar" MaxLength="2000" />
+          <Property Name="cc" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ccn" Type="nvarchar(max)" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Body" Type="nvarchar(max)" />
+          <Property Name="IsHtml" Type="bit" Nullable="false" />
+          <Property Name="CultureId" Type="int" />
+          <Property Name="Attachments" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="BO_ID" Type="varchar" MaxLength="50" />
+          <Property Name="BOType" Type="nvarchar" MaxLength="50" />
+          <Property Name="attachJSON" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="Magic_SystemMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="6" />
+          <Property Name="From" Type="nvarchar" MaxLength="100" />
+          <Property Name="To" Type="nvarchar" MaxLength="2000" />
+          <Property Name="cc" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ccn" Type="nvarchar(max)" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Body" Type="nvarchar(max)" />
+          <Property Name="IsHtml" Type="bit" Nullable="false" />
+          <Property Name="CultureId" Type="int" />
+          <Property Name="Attachments" Type="nvarchar" MaxLength="4000" />
+          <Property Name="MailAccounts_ID" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedUser_ID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MagicDB.dbo.V_Magic_NotificationQueue' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_Magic_NotificationQueue">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="creationDate" />
+            <PropertyRef Name="notificationType_ID" />
+            <PropertyRef Name="notified" />
+            <PropertyRef Name="send_attempts" />
+            <PropertyRef Name="message" />
+            <PropertyRef Name="readByUser" />
+            <PropertyRef Name="can_reply" />
+            <PropertyRef Name="display_modal_unread" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="creationDate" Type="datetime" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="notificationType_ID" Type="int" Nullable="false" />
+          <Property Name="notificationType" Type="nvarchar" MaxLength="50" />
+          <Property Name="notified" Type="bit" Nullable="false" />
+          <Property Name="notified_at" Type="datetime" />
+          <Property Name="send_attempts" Type="int" Nullable="false" />
+          <Property Name="last_attempt" Type="datetime" />
+          <Property Name="message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="error" Type="nvarchar(max)" />
+          <Property Name="provider_ID" Type="int" />
+          <Property Name="mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="providercode" Type="nvarchar" MaxLength="50" />
+          <Property Name="providerdescription" Type="nvarchar" MaxLength="200" />
+          <Property Name="Server_url" Type="nvarchar" MaxLength="500" />
+          <Property Name="Credential_user" Type="nvarchar" MaxLength="100" />
+          <Property Name="Credential_pwd" Type="nvarchar" MaxLength="1000" />
+          <Property Name="License_key" Type="nvarchar(max)" />
+          <Property Name="readByUser" Type="bit" Nullable="false" />
+          <Property Name="can_reply" Type="bit" Nullable="false" />
+          <Property Name="DocumentRepository_ID" Type="int" />
+          <Property Name="function_filter" Type="varchar(max)" />
+          <Property Name="function_link" Type="varchar(max)" />
+          <Property Name="sender_user_id" Type="int" />
+          <Property Name="tags" Type="nvarchar" MaxLength="1000" />
+          <Property Name="sender_user" Type="nvarchar" MaxLength="153" />
+          <Property Name="ThreadMembers" Type="varchar(max)" />
+          <Property Name="display_modal_unread" Type="bit" Nullable="false" />
+          <Property Name="isAnError" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Magic_MailQueue_Magic_MailAccounts">
+          <End Role="Magic_MailAccounts" Type="Self.Magic_MailAccounts" Multiplicity="0..1" />
+          <End Role="Magic_MailQueue" Type="Self.Magic_MailQueue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_MailAccounts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Magic_MailQueue">
+              <PropertyRef Name="mail_account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_MailQueue_Magic_SystemEditedMessages">
+          <End Role="Magic_SystemEditedMessages" Type="Self.Magic_SystemEditedMessages" Multiplicity="0..1" />
+          <End Role="Magic_MailQueue" Type="Self.Magic_MailQueue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_SystemEditedMessages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Magic_MailQueue">
+              <PropertyRef Name="edited_messages_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_MailQueue_Magic_SystemMessages">
+          <End Role="Magic_SystemMessages" Type="Self.Magic_SystemMessages" Multiplicity="0..1" />
+          <End Role="Magic_MailQueue" Type="Self.Magic_MailQueue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_SystemMessages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Magic_MailQueue">
+              <PropertyRef Name="system_messages_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_NotificationsQueue_Magic_NotificationProviders">
+          <End Role="Magic_NotificationProviders" Type="Self.Magic_NotificationProviders" Multiplicity="0..1" />
+          <End Role="Magic_NotificationQueue" Type="Self.Magic_NotificationQueue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_NotificationProviders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Magic_NotificationQueue">
+              <PropertyRef Name="provider_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_NotificationsQueue_Magic_NotificationTypes">
+          <End Role="Magic_NotificationTypes" Type="Self.Magic_NotificationTypes" Multiplicity="1" />
+          <End Role="Magic_NotificationQueue" Type="Self.Magic_NotificationQueue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_NotificationTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Magic_NotificationQueue">
+              <PropertyRef Name="notificationType_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_SystemEditedMessages_Magic_SystemMessages">
+          <End Role="Magic_SystemMessages" Type="Self.Magic_SystemMessages" Multiplicity="0..1" />
+          <End Role="Magic_SystemEditedMessages" Type="Self.Magic_SystemEditedMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_SystemMessages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Magic_SystemEditedMessages">
+              <PropertyRef Name="OrigMessage_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_SystemMessages_Magic_MailAccounts">
+          <End Role="Magic_MailAccounts" Type="Self.Magic_MailAccounts" Multiplicity="0..1" />
+          <End Role="Magic_SystemMessages" Type="Self.Magic_SystemMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_MailAccounts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Magic_SystemMessages">
+              <PropertyRef Name="MailAccounts_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Magic_Mmb_UserRegistration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="xmlInput" Type="xml" Mode="In" />
+          <Parameter Name="registered" Type="bit" Mode="InOut" />
+          <Parameter Name="message" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="MagicDBModelStoreContainer">
+          <EntitySet Name="Magic_MailAccounts" EntityType="Self.Magic_MailAccounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Magic_MailQueue" EntityType="Self.Magic_MailQueue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Magic_Mmb_PendingRegistrations" EntityType="Self.Magic_Mmb_PendingRegistrations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Magic_NotificationProviders" EntityType="Self.Magic_NotificationProviders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Magic_NotificationQueue" EntityType="Self.Magic_NotificationQueue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Magic_NotificationTypes" EntityType="Self.Magic_NotificationTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Magic_SystemEditedMessages" EntityType="Self.Magic_SystemEditedMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Magic_SystemMessages" EntityType="Self.Magic_SystemMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="V_Magic_NotificationQueue" EntityType="Self.V_Magic_NotificationQueue" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_Magic_NotificationQueue].[id] AS [id], 
+    [V_Magic_NotificationQueue].[creationDate] AS [creationDate], 
+    [V_Magic_NotificationQueue].[user_id] AS [user_id], 
+    [V_Magic_NotificationQueue].[Username] AS [Username], 
+    [V_Magic_NotificationQueue].[notificationType_ID] AS [notificationType_ID], 
+    [V_Magic_NotificationQueue].[notificationType] AS [notificationType], 
+    [V_Magic_NotificationQueue].[notified] AS [notified], 
+    [V_Magic_NotificationQueue].[notified_at] AS [notified_at], 
+    [V_Magic_NotificationQueue].[send_attempts] AS [send_attempts], 
+    [V_Magic_NotificationQueue].[last_attempt] AS [last_attempt], 
+    [V_Magic_NotificationQueue].[message] AS [message], 
+    [V_Magic_NotificationQueue].[error] AS [error], 
+    [V_Magic_NotificationQueue].[provider_ID] AS [provider_ID], 
+    [V_Magic_NotificationQueue].[mobile] AS [mobile], 
+    [V_Magic_NotificationQueue].[providercode] AS [providercode], 
+    [V_Magic_NotificationQueue].[providerdescription] AS [providerdescription], 
+    [V_Magic_NotificationQueue].[Server_url] AS [Server_url], 
+    [V_Magic_NotificationQueue].[Credential_user] AS [Credential_user], 
+    [V_Magic_NotificationQueue].[Credential_pwd] AS [Credential_pwd], 
+    [V_Magic_NotificationQueue].[License_key] AS [License_key], 
+    [V_Magic_NotificationQueue].[readByUser] AS [readByUser], 
+    [V_Magic_NotificationQueue].[can_reply] AS [can_reply], 
+    [V_Magic_NotificationQueue].[DocumentRepository_ID] AS [DocumentRepository_ID], 
+    [V_Magic_NotificationQueue].[function_filter] AS [function_filter], 
+    [V_Magic_NotificationQueue].[function_link] AS [function_link], 
+    [V_Magic_NotificationQueue].[sender_user_id] AS [sender_user_id], 
+    [V_Magic_NotificationQueue].[tags] AS [tags], 
+    [V_Magic_NotificationQueue].[sender_user] AS [sender_user], 
+    [V_Magic_NotificationQueue].[ThreadMembers] AS [ThreadMembers], 
+    [V_Magic_NotificationQueue].[display_modal_unread] AS [display_modal_unread], 
+    [V_Magic_NotificationQueue].[isAnError] AS [isAnError]
+    FROM [dbo].[V_Magic_NotificationQueue] AS [V_Magic_NotificationQueue]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Magic_MailQueue_Magic_MailAccounts" Association="Self.FK_Magic_MailQueue_Magic_MailAccounts">
+            <End Role="Magic_MailAccounts" EntitySet="Magic_MailAccounts" />
+            <End Role="Magic_MailQueue" EntitySet="Magic_MailQueue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_MailQueue_Magic_SystemEditedMessages" Association="Self.FK_Magic_MailQueue_Magic_SystemEditedMessages">
+            <End Role="Magic_SystemEditedMessages" EntitySet="Magic_SystemEditedMessages" />
+            <End Role="Magic_MailQueue" EntitySet="Magic_MailQueue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_MailQueue_Magic_SystemMessages" Association="Self.FK_Magic_MailQueue_Magic_SystemMessages">
+            <End Role="Magic_SystemMessages" EntitySet="Magic_SystemMessages" />
+            <End Role="Magic_MailQueue" EntitySet="Magic_MailQueue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_NotificationsQueue_Magic_NotificationProviders" Association="Self.FK_Magic_NotificationsQueue_Magic_NotificationProviders">
+            <End Role="Magic_NotificationProviders" EntitySet="Magic_NotificationProviders" />
+            <End Role="Magic_NotificationQueue" EntitySet="Magic_NotificationQueue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_NotificationsQueue_Magic_NotificationTypes" Association="Self.FK_Magic_NotificationsQueue_Magic_NotificationTypes">
+            <End Role="Magic_NotificationTypes" EntitySet="Magic_NotificationTypes" />
+            <End Role="Magic_NotificationQueue" EntitySet="Magic_NotificationQueue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_SystemEditedMessages_Magic_SystemMessages" Association="Self.FK_Magic_SystemEditedMessages_Magic_SystemMessages">
+            <End Role="Magic_SystemMessages" EntitySet="Magic_SystemMessages" />
+            <End Role="Magic_SystemEditedMessages" EntitySet="Magic_SystemEditedMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_SystemMessages_Magic_MailAccounts" Association="Self.FK_Magic_SystemMessages_Magic_MailAccounts">
+            <End Role="Magic_MailAccounts" EntitySet="Magic_MailAccounts" />
+            <End Role="Magic_SystemMessages" EntitySet="Magic_SystemMessages" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MagicDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Magic_Mmb_PendingRegistrations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="token" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="completed_registration" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="MagicDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Magic_Mmb_PendingRegistrations" EntityType="Self.Magic_Mmb_PendingRegistrations" />
+          <FunctionImport Name="Magic_Mmb_UserRegistration">
+            <Parameter Name="xmlInput" Mode="In" Type="String" />
+            <Parameter Name="registered" Mode="InOut" Type="Boolean" />
+            <Parameter Name="message" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Magic_SystemEditedMessages" EntityType="MagicDBModel.Magic_SystemEditedMessages" />
+          <EntitySet Name="Magic_SystemMessages" EntityType="MagicDBModel.Magic_SystemMessages" />
+          <AssociationSet Name="FK_Magic_SystemEditedMessages_Magic_SystemMessages" Association="MagicDBModel.FK_Magic_SystemEditedMessages_Magic_SystemMessages">
+            <End Role="Magic_SystemMessages" EntitySet="Magic_SystemMessages" />
+            <End Role="Magic_SystemEditedMessages" EntitySet="Magic_SystemEditedMessages" />
+          </AssociationSet>
+          <EntitySet Name="Magic_NotificationProviders" EntityType="MagicDBModel.Magic_NotificationProviders" />
+          <EntitySet Name="Magic_NotificationQueue" EntityType="MagicDBModel.Magic_NotificationQueue" />
+          <EntitySet Name="Magic_NotificationTypes" EntityType="MagicDBModel.Magic_NotificationTypes" />
+          <AssociationSet Name="FK_Magic_NotificationsQueue_Magic_NotificationProviders" Association="MagicDBModel.FK_Magic_NotificationsQueue_Magic_NotificationProviders">
+            <End Role="Magic_NotificationProviders" EntitySet="Magic_NotificationProviders" />
+            <End Role="Magic_NotificationQueue" EntitySet="Magic_NotificationQueue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_NotificationsQueue_Magic_NotificationTypes" Association="MagicDBModel.FK_Magic_NotificationsQueue_Magic_NotificationTypes">
+            <End Role="Magic_NotificationTypes" EntitySet="Magic_NotificationTypes" />
+            <End Role="Magic_NotificationQueue" EntitySet="Magic_NotificationQueue" />
+          </AssociationSet>
+          <EntitySet Name="Magic_MailAccounts" EntityType="MagicDBModel.Magic_MailAccounts" />
+          <AssociationSet Name="FK_Magic_SystemMessages_Magic_MailAccounts" Association="MagicDBModel.FK_Magic_SystemMessages_Magic_MailAccounts">
+            <End Role="Magic_MailAccounts" EntitySet="Magic_MailAccounts" />
+            <End Role="Magic_SystemMessages" EntitySet="Magic_SystemMessages" />
+          </AssociationSet>
+          <EntitySet Name="Magic_MailQueue" EntityType="MagicDBModel.Magic_MailQueue" />
+          <AssociationSet Name="FK_Magic_MailQueue_Magic_MailAccounts" Association="MagicDBModel.FK_Magic_MailQueue_Magic_MailAccounts">
+            <End Role="Magic_MailAccounts" EntitySet="Magic_MailAccounts" />
+            <End Role="Magic_MailQueue" EntitySet="Magic_MailQueue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_MailQueue_Magic_SystemEditedMessages" Association="MagicDBModel.FK_Magic_MailQueue_Magic_SystemEditedMessages">
+            <End Role="Magic_SystemEditedMessages" EntitySet="Magic_SystemEditedMessages" />
+            <End Role="Magic_MailQueue" EntitySet="Magic_MailQueue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_MailQueue_Magic_SystemMessages" Association="MagicDBModel.FK_Magic_MailQueue_Magic_SystemMessages">
+            <End Role="Magic_SystemMessages" EntitySet="Magic_SystemMessages" />
+            <End Role="Magic_MailQueue" EntitySet="Magic_MailQueue" />
+          </AssociationSet>
+          <EntitySet Name="V_Magic_NotificationQueue" EntityType="MagicDBModel.V_Magic_NotificationQueue" />
+          </EntityContainer>
+        <EntityType Name="Magic_SystemEditedMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrigMessage_ID" Type="Int32" />
+          <Property Name="User_ID" Type="Int32" />
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="From" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="To" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="cc" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ccn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsHtml" Type="Boolean" Nullable="false" />
+          <Property Name="CultureId" Type="Int32" />
+          <Property Name="Attachments" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="BO_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BOType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Magic_SystemMessages" Relationship="MagicDBModel.FK_Magic_SystemEditedMessages_Magic_SystemMessages" FromRole="Magic_SystemEditedMessages" ToRole="Magic_SystemMessages" />
+          <Property Name="attachJSON" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Magic_MailQueue" Relationship="MagicDBModel.FK_Magic_MailQueue_Magic_SystemEditedMessages" FromRole="Magic_SystemEditedMessages" ToRole="Magic_MailQueue" />
+        </EntityType>
+        <EntityType Name="Magic_SystemMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="From" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="To" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="cc" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ccn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsHtml" Type="Boolean" Nullable="false" />
+          <Property Name="CultureId" Type="Int32" />
+          <Property Name="Attachments" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Magic_SystemEditedMessages" Relationship="MagicDBModel.FK_Magic_SystemEditedMessages_Magic_SystemMessages" FromRole="Magic_SystemMessages" ToRole="Magic_SystemEditedMessages" />
+          <Property Name="MailAccounts_ID" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUser_ID" Type="Int32" />
+          <NavigationProperty Name="Magic_MailAccounts" Relationship="MagicDBModel.FK_Magic_SystemMessages_Magic_MailAccounts" FromRole="Magic_SystemMessages" ToRole="Magic_MailAccounts" />
+          <NavigationProperty Name="Magic_MailQueue" Relationship="MagicDBModel.FK_Magic_MailQueue_Magic_SystemMessages" FromRole="Magic_SystemMessages" ToRole="Magic_MailQueue" />
+        </EntityType>
+        <Association Name="FK_Magic_SystemEditedMessages_Magic_SystemMessages">
+          <End Type="MagicDBModel.Magic_SystemMessages" Role="Magic_SystemMessages" Multiplicity="0..1" />
+          <End Type="MagicDBModel.Magic_SystemEditedMessages" Role="Magic_SystemEditedMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_SystemMessages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Magic_SystemEditedMessages">
+              <PropertyRef Name="OrigMessage_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Magic_NotificationProviders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Server_url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Credential_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Credential_pwd" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="License_key" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Magic_NotificationQueue" Relationship="MagicDBModel.FK_Magic_NotificationsQueue_Magic_NotificationProviders" FromRole="Magic_NotificationProviders" ToRole="Magic_NotificationQueue" />
+        </EntityType>
+        <EntityType Name="Magic_NotificationQueue">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="notificationType_ID" Type="Int32" Nullable="false" />
+          <Property Name="notified" Type="Boolean" Nullable="false" />
+          <Property Name="notified_at" Type="DateTime" Precision="3" />
+          <Property Name="send_attempts" Type="Int32" Nullable="false" />
+          <Property Name="last_attempt" Type="DateTime" Precision="3" />
+          <Property Name="message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="error" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="provider_ID" Type="Int32" />
+          <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Magic_NotificationProviders" Relationship="MagicDBModel.FK_Magic_NotificationsQueue_Magic_NotificationProviders" FromRole="Magic_NotificationQueue" ToRole="Magic_NotificationProviders" />
+          <NavigationProperty Name="Magic_NotificationTypes" Relationship="MagicDBModel.FK_Magic_NotificationsQueue_Magic_NotificationTypes" FromRole="Magic_NotificationQueue" ToRole="Magic_NotificationTypes" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="readByUser" Type="Boolean" Nullable="false" />
+          <Property Name="DocumentRepository_ID" Type="Int32" />
+          <Property Name="function_link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="function_filter" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="can_reply" Type="Boolean" Nullable="false" />
+          <Property Name="sender_user_id" Type="Int32" />
+          <Property Name="display_modal_unread" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Magic_NotificationTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Magic_NotificationQueue" Relationship="MagicDBModel.FK_Magic_NotificationsQueue_Magic_NotificationTypes" FromRole="Magic_NotificationTypes" ToRole="Magic_NotificationQueue" />
+        </EntityType>
+        <Association Name="FK_Magic_NotificationsQueue_Magic_NotificationProviders">
+          <End Type="MagicDBModel.Magic_NotificationProviders" Role="Magic_NotificationProviders" Multiplicity="0..1" />
+          <End Type="MagicDBModel.Magic_NotificationQueue" Role="Magic_NotificationQueue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_NotificationProviders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Magic_NotificationQueue">
+              <PropertyRef Name="provider_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_NotificationsQueue_Magic_NotificationTypes">
+          <End Type="MagicDBModel.Magic_NotificationTypes" Role="Magic_NotificationTypes" Multiplicity="1" />
+          <End Type="MagicDBModel.Magic_NotificationQueue" Role="Magic_NotificationQueue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_NotificationTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Magic_NotificationQueue">
+              <PropertyRef Name="notificationType_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Magic_MailAccounts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="from_name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="port" Type="Int32" Nullable="false" />
+          <Property Name="tls_or_ssl" Type="Boolean" Nullable="false" />
+          <Property Name="uri" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <Property Name="is_pec" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Magic_SystemMessages" Relationship="MagicDBModel.FK_Magic_SystemMessages_Magic_MailAccounts" FromRole="Magic_MailAccounts" ToRole="Magic_SystemMessages" />
+          <NavigationProperty Name="Magic_MailQueue" Relationship="MagicDBModel.FK_Magic_MailQueue_Magic_MailAccounts" FromRole="Magic_MailAccounts" ToRole="Magic_MailQueue" />
+          <Property Name="smtp_account_name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Magic_SystemMessages_Magic_MailAccounts">
+          <End Type="MagicDBModel.Magic_MailAccounts" Role="Magic_MailAccounts" Multiplicity="0..1" />
+          <End Type="MagicDBModel.Magic_SystemMessages" Role="Magic_SystemMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_MailAccounts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Magic_SystemMessages">
+              <PropertyRef Name="MailAccounts_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Magic_MailQueue">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="system_messages_id" Type="Int32" />
+          <Property Name="edited_messages_id" Type="Int32" />
+          <Property Name="taglist" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="mail_account_id" Type="Int32" />
+          <Property Name="error_messages" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="created" Type="DateTime" Precision="3" />
+          <Property Name="send_attempts" Type="Int32" Nullable="false" />
+          <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="error_counter" Type="Int32" Nullable="false" />
+          <Property Name="send_time" Type="DateTime" Precision="3" />
+          <Property Name="last_attempt" Type="DateTime" Precision="3" />
+          <Property Name="send_to" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="reply_to" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="is_in_process" Type="Boolean" />
+          <NavigationProperty Name="Magic_MailAccounts" Relationship="MagicDBModel.FK_Magic_MailQueue_Magic_MailAccounts" FromRole="Magic_MailQueue" ToRole="Magic_MailAccounts" />
+          <NavigationProperty Name="Magic_SystemEditedMessages" Relationship="MagicDBModel.FK_Magic_MailQueue_Magic_SystemEditedMessages" FromRole="Magic_MailQueue" ToRole="Magic_SystemEditedMessages" />
+          <NavigationProperty Name="Magic_SystemMessages" Relationship="MagicDBModel.FK_Magic_MailQueue_Magic_SystemMessages" FromRole="Magic_MailQueue" ToRole="Magic_SystemMessages" />
+        </EntityType>
+        <Association Name="FK_Magic_MailQueue_Magic_MailAccounts">
+          <End Type="MagicDBModel.Magic_MailAccounts" Role="Magic_MailAccounts" Multiplicity="0..1" />
+          <End Type="MagicDBModel.Magic_MailQueue" Role="Magic_MailQueue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_MailAccounts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Magic_MailQueue">
+              <PropertyRef Name="mail_account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_MailQueue_Magic_SystemEditedMessages">
+          <End Type="MagicDBModel.Magic_SystemEditedMessages" Role="Magic_SystemEditedMessages" Multiplicity="0..1" />
+          <End Type="MagicDBModel.Magic_MailQueue" Role="Magic_MailQueue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_SystemEditedMessages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Magic_MailQueue">
+              <PropertyRef Name="edited_messages_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_MailQueue_Magic_SystemMessages">
+          <End Type="MagicDBModel.Magic_SystemMessages" Role="Magic_SystemMessages" Multiplicity="0..1" />
+          <End Type="MagicDBModel.Magic_MailQueue" Role="Magic_MailQueue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_SystemMessages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Magic_MailQueue">
+              <PropertyRef Name="system_messages_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="V_Magic_NotificationQueue">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="creationDate" />
+            <PropertyRef Name="notificationType_ID" />
+            <PropertyRef Name="notified" />
+            <PropertyRef Name="send_attempts" />
+            <PropertyRef Name="message" />
+            <PropertyRef Name="readByUser" />
+            <PropertyRef Name="can_reply" />
+            <PropertyRef Name="display_modal_unread" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="notificationType_ID" Type="Int32" Nullable="false" />
+          <Property Name="notificationType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="notified" Type="Boolean" Nullable="false" />
+          <Property Name="notified_at" Type="DateTime" Precision="3" />
+          <Property Name="send_attempts" Type="Int32" Nullable="false" />
+          <Property Name="last_attempt" Type="DateTime" Precision="3" />
+          <Property Name="message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="error" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="provider_ID" Type="Int32" />
+          <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="providercode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="providerdescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Server_url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Credential_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Credential_pwd" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="License_key" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="readByUser" Type="Boolean" Nullable="false" />
+          <Property Name="can_reply" Type="Boolean" Nullable="false" />
+          <Property Name="DocumentRepository_ID" Type="Int32" />
+          <Property Name="function_filter" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="function_link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sender_user_id" Type="Int32" />
+          <Property Name="tags" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="sender_user" Type="String" MaxLength="153" FixedLength="false" Unicode="true" />
+          <Property Name="ThreadMembers" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="display_modal_unread" Type="Boolean" Nullable="false" />
+          <Property Name="isAnError" Type="Boolean" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MagicDBModelStoreContainer" CdmEntityContainer="MagicDBEntities">
+          <EntitySetMapping Name="Magic_Mmb_PendingRegistrations">
+            <EntityTypeMapping TypeName="MagicDBModel.Magic_Mmb_PendingRegistrations">
+              <MappingFragment StoreEntitySet="Magic_Mmb_PendingRegistrations">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="token" ColumnName="token" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="completed_registration" ColumnName="completed_registration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Magic_Mmb_UserRegistration" FunctionName="MagicDBModel.Store.Magic_Mmb_UserRegistration" />
+          <EntitySetMapping Name="Magic_SystemEditedMessages">
+            <EntityTypeMapping TypeName="MagicDBModel.Magic_SystemEditedMessages">
+              <MappingFragment StoreEntitySet="Magic_SystemEditedMessages">
+                <ScalarProperty Name="attachJSON" ColumnName="attachJSON" />
+                <ScalarProperty Name="BOType" ColumnName="BOType" />
+                <ScalarProperty Name="BO_ID" ColumnName="BO_ID" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Attachments" ColumnName="Attachments" />
+                <ScalarProperty Name="CultureId" ColumnName="CultureId" />
+                <ScalarProperty Name="IsHtml" ColumnName="IsHtml" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="ccn" ColumnName="ccn" />
+                <ScalarProperty Name="cc" ColumnName="cc" />
+                <ScalarProperty Name="To" ColumnName="To" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="OrigMessage_ID" ColumnName="OrigMessage_ID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Magic_SystemMessages">
+            <EntityTypeMapping TypeName="MagicDBModel.Magic_SystemMessages">
+              <MappingFragment StoreEntitySet="Magic_SystemMessages">
+                <ScalarProperty Name="ModifiedUser_ID" ColumnName="ModifiedUser_ID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="MailAccounts_ID" ColumnName="MailAccounts_ID" />
+                <ScalarProperty Name="Attachments" ColumnName="Attachments" />
+                <ScalarProperty Name="CultureId" ColumnName="CultureId" />
+                <ScalarProperty Name="IsHtml" ColumnName="IsHtml" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="ccn" ColumnName="ccn" />
+                <ScalarProperty Name="cc" ColumnName="cc" />
+                <ScalarProperty Name="To" ColumnName="To" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Magic_NotificationProviders">
+            <EntityTypeMapping TypeName="MagicDBModel.Magic_NotificationProviders">
+              <MappingFragment StoreEntitySet="Magic_NotificationProviders">
+                <ScalarProperty Name="License_key" ColumnName="License_key" />
+                <ScalarProperty Name="Credential_pwd" ColumnName="Credential_pwd" />
+                <ScalarProperty Name="Credential_user" ColumnName="Credential_user" />
+                <ScalarProperty Name="Server_url" ColumnName="Server_url" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Magic_NotificationQueue">
+            <EntityTypeMapping TypeName="MagicDBModel.Magic_NotificationQueue">
+              <MappingFragment StoreEntitySet="Magic_NotificationQueue">
+                <ScalarProperty Name="display_modal_unread" ColumnName="display_modal_unread" />
+                <ScalarProperty Name="sender_user_id" ColumnName="sender_user_id" />
+                <ScalarProperty Name="can_reply" ColumnName="can_reply" />
+                <ScalarProperty Name="function_filter" ColumnName="function_filter" />
+                <ScalarProperty Name="function_link" ColumnName="function_link" />
+                <ScalarProperty Name="DocumentRepository_ID" ColumnName="DocumentRepository_ID" />
+                <ScalarProperty Name="readByUser" ColumnName="readByUser" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="provider_ID" ColumnName="provider_ID" />
+                <ScalarProperty Name="error" ColumnName="error" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="last_attempt" ColumnName="last_attempt" />
+                <ScalarProperty Name="send_attempts" ColumnName="send_attempts" />
+                <ScalarProperty Name="notified_at" ColumnName="notified_at" />
+                <ScalarProperty Name="notified" ColumnName="notified" />
+                <ScalarProperty Name="notificationType_ID" ColumnName="notificationType_ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Magic_NotificationTypes">
+            <EntityTypeMapping TypeName="MagicDBModel.Magic_NotificationTypes">
+              <MappingFragment StoreEntitySet="Magic_NotificationTypes">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Magic_MailAccounts">
+            <EntityTypeMapping TypeName="MagicDBModel.Magic_MailAccounts">
+              <MappingFragment StoreEntitySet="Magic_MailAccounts">
+                <ScalarProperty Name="smtp_account_name" ColumnName="smtp_account_name" />
+                <ScalarProperty Name="is_pec" ColumnName="is_pec" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="uri" ColumnName="uri" />
+                <ScalarProperty Name="tls_or_ssl" ColumnName="tls_or_ssl" />
+                <ScalarProperty Name="port" ColumnName="port" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="from_name" ColumnName="from_name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Magic_MailQueue">
+            <EntityTypeMapping TypeName="MagicDBModel.Magic_MailQueue">
+              <MappingFragment StoreEntitySet="Magic_MailQueue">
+                <ScalarProperty Name="is_in_process" ColumnName="is_in_process" />
+                <ScalarProperty Name="reply_to" ColumnName="reply_to" />
+                <ScalarProperty Name="send_to" ColumnName="send_to" />
+                <ScalarProperty Name="last_attempt" ColumnName="last_attempt" />
+                <ScalarProperty Name="send_time" ColumnName="send_time" />
+                <ScalarProperty Name="error_counter" ColumnName="error_counter" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="send_attempts" ColumnName="send_attempts" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="error_messages" ColumnName="error_messages" />
+                <ScalarProperty Name="mail_account_id" ColumnName="mail_account_id" />
+                <ScalarProperty Name="taglist" ColumnName="taglist" />
+                <ScalarProperty Name="edited_messages_id" ColumnName="edited_messages_id" />
+                <ScalarProperty Name="system_messages_id" ColumnName="system_messages_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_Magic_NotificationQueue">
+            <EntityTypeMapping TypeName="MagicDBModel.V_Magic_NotificationQueue">
+              <MappingFragment StoreEntitySet="V_Magic_NotificationQueue">
+                <ScalarProperty Name="isAnError" ColumnName="isAnError" />
+                <ScalarProperty Name="display_modal_unread" ColumnName="display_modal_unread" />
+                <ScalarProperty Name="ThreadMembers" ColumnName="ThreadMembers" />
+                <ScalarProperty Name="sender_user" ColumnName="sender_user" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="sender_user_id" ColumnName="sender_user_id" />
+                <ScalarProperty Name="function_link" ColumnName="function_link" />
+                <ScalarProperty Name="function_filter" ColumnName="function_filter" />
+                <ScalarProperty Name="DocumentRepository_ID" ColumnName="DocumentRepository_ID" />
+                <ScalarProperty Name="can_reply" ColumnName="can_reply" />
+                <ScalarProperty Name="readByUser" ColumnName="readByUser" />
+                <ScalarProperty Name="License_key" ColumnName="License_key" />
+                <ScalarProperty Name="Credential_pwd" ColumnName="Credential_pwd" />
+                <ScalarProperty Name="Credential_user" ColumnName="Credential_user" />
+                <ScalarProperty Name="Server_url" ColumnName="Server_url" />
+                <ScalarProperty Name="providerdescription" ColumnName="providerdescription" />
+                <ScalarProperty Name="providercode" ColumnName="providercode" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="provider_ID" ColumnName="provider_ID" />
+                <ScalarProperty Name="error" ColumnName="error" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="last_attempt" ColumnName="last_attempt" />
+                <ScalarProperty Name="send_attempts" ColumnName="send_attempts" />
+                <ScalarProperty Name="notified_at" ColumnName="notified_at" />
+                <ScalarProperty Name="notified" ColumnName="notified" />
+                <ScalarProperty Name="notificationType" ColumnName="notificationType" />
+                <ScalarProperty Name="notificationType_ID" ColumnName="notificationType_ID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Kein" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,389 @@
+/* here you can put your own css to customize and override the theme */
+
+/*classi per firma ilos nel footer*/
+.footer-inner {
+    font-weight:normal;
+    font-size:11px;
+}
+.footer-inner a{
+    color:#000000;
+    font-weight:bold;
+    font-size:14px;
+}
+
+/*classi per logo bicolore*/
+.logoSx{
+    color:#4d90fe;
+    font-size:32px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight:300;
+}
+.logoDx{
+    color:#ffffff;
+    font-size:32px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight:300;
+}
+.header .navbar-brand{
+    padding:0px;
+    padding-top:11px;
+    padding-left:20px;
+    padding-bottom:10px;
+}
+.logoSxInt{
+    color:#4d90fe;
+    font-size:20px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight:300;
+}
+.logoDxInt{
+    color:#ffffff;
+    font-size:20px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight:300;
+}
+@media (max-width: 767px) {
+    .header .navbar-brand {
+  		margin-left: 0px !important;
+  		width: 150px;
+	}
+}
+
+/*classe per colorare di rosso*/
+.red{
+    color:red !important;
+}
+/*classe per colorare di blue*/
+.colorBlue {
+    color:#4d90fe !important;
+}
+/*classe per allineare a destra*/
+.alignRight {
+    float:right !important;
+}
+/*classe per dare un po di margin bottom*/
+.marginBottom {
+    margin-bottom:0.5em;
+}
+/*classi per maschera di login*/
+.failureNotificationStar{
+    display:none !important;
+}
+.failureNotification {
+    color:red !important;
+}
+.login .content .input-icon
+{
+    border-left-color:#4d90fe !important;
+}
+
+/*classi menu di sinistra con selected in azzurro*/
+ul.page-sidebar-menu > li.active > a,
+ul.page-sidebar-menu > li > ul.sub-menu > li.active > a,
+ul.page-sidebar-menu > li > ul.sub-menu li > ul.sub-menu > li.active > a,
+ul.page-sidebar-menu > li > ul.sub-menu li > ul.sub-menu li > ul.sub-menu > li.active > a
+ {
+  background:#4d90fe !important;
+  position:relative;
+}
+
+/*classi per freccettina su menu selected*/
+ul.page-sidebar-menu > li > ul.sub-menu li > ul.sub-menu > li.active > a .selected {
+  display: block !important;
+  width: 8px;
+  height: 25px;
+  background-image: url("../img/sidebar-menu-arrow.png");
+  float: right;
+  position: absolute;
+  right:0px;
+  top:3px;
+}
+
+/*classi menu troppo lunghi*/
+ul.sub-menu span.title {
+    display:block;
+    float:left;
+    width:134px;
+    padding-left:3px;
+}
+li.openpage a {
+    padding-left:65px !important;
+}
+ul.sub-menu i {
+    float:left;
+}
+ul.sub-menu a {
+    overflow:hidden;
+}
+
+/*classe che allarga al 100% la tabelal che asp.net crea sulla funzionalità di change password*/
+#tab_3-3 table{
+    width:100%;
+}
+
+/*setto il colore azzurro ai tab che originariamente sarebbero rossi*/
+.tabbable-custom .nav-tabs > li.active{
+       border-color:#4d90fe !important;
+}
+
+/*setto il colore azzurro sui submenu all interno della pagina user profile*/
+.ver-inline-menu li.active a{
+    background-color:#4d90fe !important;
+    border-left-color:#0362fd !important;
+}
+.ver-inline-menu li.active i{
+    background:#0362fd !important;
+}
+.ver-inline-menu li.active:after{
+    border-left-color:#4d90fe !important;
+}
+
+/*classi per pagina ../Views/MagicFunctionsTree.aspx*/
+.headSelector{
+    width:100%;
+    background-color:#eeeeee;
+    border:1px solid #cccccc;
+    padding:10px;
+}
+.bodySelector
+{
+    width:100%;
+    border:1px solid #cccccc;
+    border-top:none;
+    padding:10px;
+    padding-bottom:1px;
+}
+.current-state {
+    margin: 20px 0 0;
+}
+.current-state pre {
+    font-size: 12px;
+}
+.files h4 {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: .4em;
+    margin-bottom: .4em;
+}
+.files .k-treeview {
+    min-height: 200px;
+}
+.k-treeview .k-in {
+    display:block;
+    background-color:#eeeeee;
+    border:1px solid #cccccc;
+    overflow:hidden;
+    padding:2px;
+}
+.k-treeview span.k-icon {
+    float:left;
+}
+.k-treeview .k-in.k-state-selected,
+.k-treeview .k-in.k-state-hover{
+    background-color:#eeeeee !important;
+    border:1px solid #cccccc !important;
+    color:#000000;
+    background-image:none;
+    padding:2px;
+}
+.k-treeview .k-button{
+    width:64px;
+    padding-left:25px;
+}
+.treeButton{
+    float:right;
+}
+#newRootItem {
+    text-align:left;
+    background-color:#eeeeee;
+    border:1px solid #cccccc;
+    padding:2px;
+    overflow:hidden;
+}
+#newRootItem .k-button{
+    width:64px;
+    padding:0px;
+    line-height:normal;
+    padding-bottom:1px;
+}
+.modalEditSectionLabel {
+    border-bottom:1px solid #dcdcdc;
+    margin-top:7px;
+    margin-bottom:7px;
+    font-style:italic;
+}
+.modalEditSection {
+    overflow:hidden;
+}
+span.spaceRight {
+    margin-right:10px;
+}
+span.spaceRight input {
+    margin-right:2px;
+}
+.filterList {
+    border:1px solid #dcdcdc;
+    padding:5px;
+    height:90px;
+    overflow:scroll;
+    }
+.filterList .spaceRight {
+    display:block;
+    }
+.block {
+    display:block;
+}
+/*classi modale change business unit*/
+.modal-body .k-widget{
+    width:100%;
+}
+li.dropdown.user .dropdown-toggle {
+    overflow:hidden;
+}
+li.dropdown.user .dropdown-toggle span{
+    float:left;
+    margin-right:5px;
+}
+.username, .spanBusinessUnit {
+    display:block;
+    overflow:hidden;
+}
+.username{
+   line-height:12px !important;
+}
+.spanBusinessUnit{
+    color:#4d90fe;
+    line-height:15px !important;
+}
+/*classi per search autocomplete*/
+.sidebar-search .k-autocomplete{
+    vertical-align: middle;
+    border:none !important;
+    padding:0px !important;
+    box-shadow:none !important;
+}
+#searchedtextautocomplete-list {
+        width:300px !important; 
+}
+.dropdown-header {
+    font-size: 1.2em;
+}
+.dropdown-header > span {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: left;
+    display: inline-block;
+    border-style: solid;
+    border-width: 0 0 1px 1px;
+    padding: .3em .6em;
+    width: 312px;
+}
+.dropdown-header > span:first-child {
+    width: 82px;
+    border-left-width: 0;
+}
+#searchedtextautocomplete-list .k-item {
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    border-color:#cccccc;
+    padding:0px;
+    margin:0px;
+}
+#searchedtextautocomplete-list .k-item > span{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    border-style: solid;
+    border-width: 0 0 0 1px;
+    vertical-align: top;
+    width: 79%;
+    padding: .6em 0 0 .6em;
+    border-color:#dcdcdc;
+}
+#searchedtextautocomplete-list .k-item.k-state-hover span.colorBlue {
+    color:black !important;
+}
+#searchedtextautocomplete-list .k-item > span:first-child{
+    width: 30px;
+    padding: .6em 0 0 .6em;
+    height:70px;
+}
+.switchColorDarkGrey {
+     border-left:3px solid #595959 !important;
+}
+.switchColorBlue {
+     border-left:3px solid #4d90fe !important;
+}
+.switchColorGrey {
+     border-left:3px solid #808080 !important;
+}
+.switchColorlightkGrey {
+     border-left:3px solid #dcdcdc !important;
+}
+#searchedtextautocomplete-list h3 {
+    font-size: 1.6em;
+    margin: 0;
+    padding: 0;
+}
+#searchedtextautocomplete-list p {
+    margin: 0;
+    padding: 0;
+}
+.sidebar-search span.k-loading {
+    background-image:url("/Magic/Styles/kendo_ilos_images/loading_search.gif") !important;
+}
+/*classi per MagicBroker_Scheduler*/
+.ricercaEventiCalendario{
+     float:left;
+    }
+.labelFiltraEventiPerTipologia{
+    padding-right:10px;
+    }
+.filtraEventiPerTipologia{
+     float:right;
+     position:relative;
+}
+
+.filtraEventiPerTipologia > div{
+    display:block;
+    float:right;
+    background-image:url("/Magic/Styles/kendo_ilos_images/add_events.png") !important;
+    background-repeat:no-repeat;
+    background-position-x:right;
+    background-position-y:6px;
+    padding-right:20px;
+    cursor:pointer;
+}
+.filtraEventiPerTipologia input{
+    position:absolute;
+    top:0px;
+    left:-25px;
+}
+
+.filtraEventiPerTipologia li.k-button:hover{
+     background-image:none, linear-gradient(to bottom, #ffffff 0px, #e6e6e6 100%) !important; 
+     background-color:#f5f5f5 !important;
+     border-left:1px solid #cccccc;
+     border-right:1px solid #cccccc;
+     border-bottom:1px solid #cccccc;
+     color:#333333;
+} 
+.filtraEventiPerTipologia .k-multiselect .k-state-hover .k-delete {
+    background-position:-160px -80px;
+}
+
+.k-scheduler-edit-form .k-edit-label {
+    width:30%;
+}
+.k-scheduler-edit-form .k-edit-field {
+    width:60%;
+}
+.k-scheduler-mark-slim {
+        width:auto;
+        margin-right:0px;
+}
+.page-content .page-breadcrumb.breadcrumb .dashboard-date-range {
+margin-right: 60px;
+background-color:#bfcad1;
+}

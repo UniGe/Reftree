@@ -1,0 +1,92 @@
+﻿<style>
+    #detail__.detailhidden {
+        display: none;
+    }
+    .mfnode-color-box {
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        background-color: #ccc;
+        left: 5px;
+        top: 5px;
+    }
+    #mfkendoscheduler {
+        height: 100%;
+        min-height: 140px;
+        display: block;
+        padding-right:2px;
+    }
+    .treeForScheduler {
+        height:727px;
+        font-size:11px;
+    }
+</style>
+<div class="row" style="height:40px;"></div>
+<form name="form" ng-submit="ts.filterTree(form)" ng-show="ts.showFilters">
+    <label class="control-label" for="operator">{{ ts.getLabels('operator') }}</label>
+    <select name="operator" id="operator" ng-model="ts.treeFilters.Operator">
+        <option value="AND">AND</option>
+        <option value="OR">OR</option>
+    </select>
+    <div class="row" style="height:10px;"></div>
+    <!--<magic-form-sp useasfilter="true" model="ts.treeFilters.Values" storedprocedure="config.USP_GET_FormData" isreadonly="false" formname="{{ ts.formName }}" itemsperrow=2 hidetabs="true" options='{ "kendoStyle":false }'
+                   ng-if="ts.formName">
+    </magic-form-sp>-->
+    <magic-form-sp useasfilter="true" model="ts.treeFilters.Values" storedprocedure="dbo.Magic_TreeGenericFunction_GetFilter" isreadonly="false" formname="{{ ts.formName }}" itemsperrow=2 hidetabs="true" options='{ "kendoStyle":false }'
+                   ng-if="ts.formName">
+    </magic-form-sp>
+    <input class="btn btn-success" type="submit" value="{{ ts.getLabels('applyfilter') }}" />
+</form>
+<div id="mastercancel__" ng-show="!ts.showFilters" class="btn btn-danger" style="position:absolute; top: 0; right: 0; z-index:10" ng-click="ts.closeViewer()">X</div>
+<div ng-show="ts.showFilters" class="btn btn-danger" style="position:absolute; top: 0; right: 0; z-index:10" ng-click="ts.showFilters = false">X</div>
+<h3>{{ ts.Label }}</h3>
+<div ng-if="!ts.treeHidden" ng-show="!ts.showFilters" class="col-xs-2" style="overflow:auto;height:95%;">
+    <div class="row">
+        <select style="float:left;margin-right:5px;margin-bottom:2px;width:95%;" kendo-drop-down-list="ts.selectedTree"
+                k-data-text-field="'Description'"
+                k-data-value-field="'ID'"
+                k-data-source="ts.TreesDs"
+                k-on-cascade="ts.onTreeChange()"></select>
+        <div style="float:left;">
+            <button style="float:left;" title="Filters" type="button" class="btn btn-default" ng-click="ts.toggleFilter()">
+                <span class="glyphicon glyphicon-filter"></span>
+            </button>
+            <button style="float:left;margin-left:1px;" title="Remove filters" type="button" ng-class="{'btn btn-default': !ts.filtersActive , 'btn btn-danger': ts.filtersActive }" ng-click="ts.undoFilterTree()">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+            <button id="actions___scheduler" style="float:left;margin-left:1px;" title="Show actions" type="button" class="btn btn-primary" ng-click="ts.showActions()">
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+    <div class="row" style="height:10px;"></div>
+    <div id="gantttree" class="row">
+        <div class="treeForScheduler"
+             kendo-tree-view="ts.openTree"
+             k-data-source="ts.selectedTreeData"
+             k-checkboxes="ts.checkboxesTemplate"
+             k-on-check="ts.getTematFromTree(kendoEvent)"
+             k-on-expand="ts.setTreeExpandedItem(kendoEvent)"
+             k-on-data-bound="ts.loadFilterForm(kendoEvent)">
+            <span k-template>
+                {{dataItem.Description}} <b>{{ dataItem.Area ?  dataItem.Area + ' m²' : ' ' }}</b> {{ dataItem.Tot_nr && dataItem.Tot_nr>1 ?  '(' + dataItem.Tot_nr + ')' : '' }}
+                <span class="mfnode-color-box" style="background-color:{{ dataItem.ColourTemat }};">
+                </span>
+            </span>
+        </div>
+    </div>
+</div>
+<div ng-class="ts.calcSchedulerClass()" id="mfkendoscheduler" ng-if="ts.schedulerOptions" ng-show="ts.showScheduler">
+    <!--<style scoped>
+        .isablock {
+            background-color:red;
+        }
+    </style>-->
+        <div kendo-scheduler="ts.scheduler" k-options="ts.schedulerOptions"></div>
+</div>
+<!--<div kendo-window="ts.detailWnd_" id="detail__"  ng-class="ts.showDetail && !ts.showFilters  ? 'col-xs-2' : 'detailhidden'" style="padding-right:45px;">-->
+<!--<div  k-visible="false"  k-width=300 kendo-window="ts.detailWnd_" id="detail__" ng-class="!ts.showFilters  ? '' : 'detailhidden'">
+    <ul class="list-group">
+        <li style="background-color:{{ item.ColourField ? item.ColourField: 'white' }}" ng-repeat="item in ts.detailInfo" class="list-group-item"><span><b>{{ item.label  }}</b>:</span><span style="word-wrap:break-word;font-weight:{{ item.bold ? 'bold' : 'normal' }}">{{ item.value }}</span></li>
+    </ul>
+</div>-->

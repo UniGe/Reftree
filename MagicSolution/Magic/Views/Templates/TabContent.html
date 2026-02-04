@@ -1,0 +1,19 @@
+﻿<div ng-if="!tc.renderDone" ng-bind-html="tc.spinner"></div>
+<div
+    ng-show="tc.renderDone && tc.showForms"
+    ng-repeat="tab in tc.forms track by $index"
+>
+    <magic-form
+        ng-show="$index == tc.activeTab"
+        options="tab"
+    >
+    </magic-form>
+</div>
+<div ng-if="tc.renderDone && !tc.showForms">
+    <div class="k-window-titlebar k-header" style="position: relative; margin-top: 0; min-height: 35px">
+        <div class="k-window-actions"><a ng-click="tc.showForms = true" role="button" href="#" class="k-window-action k-link"><span role="presentation" class="k-icon k-i-close">Close</span></a></div>
+    </div>
+    <kendo-grid options="tc.gridOptions">
+
+    </kendo-grid>
+</div>

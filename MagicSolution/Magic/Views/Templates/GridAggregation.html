@@ -1,0 +1,26 @@
+﻿<div id="aggregation-options" style="padding: 10px">
+    <div ng-init="ga.show = true" ng-click="ga.show = !ga.show"><i class="fa" ng-class="{'fa-plus-square-o': ga.show, 'fa-minus-square-o': !ga.show}" aria-hidden="true"></i></div>
+    <form name="ga.form" ng-submit="ga.aggregateGrid()" ng-show="ga.show">
+
+        <div class="row">
+            <div class="col-xs-2">GROUP BY<span style="float: right;">POS</span></div>
+            <div class="col-xs-2">MIN</div>
+            <div class="col-xs-2">MAX</div>
+            <div class="col-xs-2">COUNT</div>
+            <div class="col-xs-2">SUM</div>
+            <div class="col-xs-2">AVG</div>
+        </div>
+
+        <div style="border-top: 1px solid black; padding-top: 4px" class="row" ng-repeat="(group, column) in ga.columns">
+            <div class="col-xs-2"><label><input type="checkbox" ng-model="ga.aggregation[group].GROUPBY.field" />&nbsp;{{column.title}}</label><input style="float:right; width: 40px;" max="99" maxlength="2" type="number" ng-model="ga.aggregation[group].GROUPBY.pos" /></div>
+            <div class="col-xs-2"><label><input type="checkbox" ng-model="ga.aggregation[group].MIN" /></label></div>
+            <div class="col-xs-2"><label><input type="checkbox" ng-model="ga.aggregation[group].MAX" /></label></div>
+            <div class="col-xs-2"><label><input type="checkbox" ng-model="ga.aggregation[group].COUNT" /></label></div>
+            <div class="col-xs-2"><label><input type="checkbox" ng-model="ga.aggregation[group].SUM" /></label></div>
+            <div class="col-xs-2"><label><input type="checkbox" ng-model="ga.aggregation[group].AVG" /></label></div>
+        </div>
+
+        <div style="margin-top: 15px;"><button class="btn btn-default">Ok</button></div>
+    </form>
+</div>
+<div style="margin-top: 15px;" id="aggregation-grid"></div>

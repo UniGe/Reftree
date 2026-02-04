@@ -1,0 +1,60 @@
+﻿
+<style>
+     
+.modal-body {
+    max-height: calc(100vh - 600px);
+    overflow-y: auto;
+    height:calc(100vh - 600px);
+}
+
+
+.tree-view-wrapper, .tree-view-wrapper ul { list-style:none;}
+.show-hide, .edit{cursor:pointer;}
+.tree-checkbox{margin: 6px !important;}
+.edit{margin-right: 6px !important;}
+.edit i {color: #D77105;}
+.hide{display:none;}
+.show{display:block;}
+
+
+</style>
+
+<div ng-controller="GridDwgViewerController as gdv">
+
+   <div id="myheader" class="modal-header">
+      <div class="row">
+         <div class="col-lg-4">
+         </div>
+         <div class="col-lg-4">
+            <label class="label-title-pdf" >{{gdv.getLabels('filterThemati')}}</label>
+         </div>
+         <div class="col-lg-4" style="text-align: right;">
+            <button ng-model="button" id="btnExit" class="btn btn-danger" ng-click="cancel()">X</button>
+         </div>
+      </div>
+   </div>
+   <div class="modal-body">
+      <div class="row">
+         <!--<div ng-app="treeViewR3">-->
+         <!--<div ng-controller="treeCtrl">-->
+         <!--<tree-view-r3 checkbox="true" model="jsnoSource" on-data-source="gdv.allObject"></tree-view-r3>-->
+
+          <tree-view-r3  model="$parent.gdv.allObject" source="$parent.gdv.allObject"></tree-view-r3>
+         <!--</div>-->
+         <!--</div>-->
+      </div>
+   </div>
+   <div class="modal-footer">
+      <div class="row">
+         <div class="col-lg-4">
+         </div>
+         <div class="col-lg-4"> 
+         </div>
+         <div class="col-lg-4" style="text-align: right;">
+             <button ng-model="button" id="save"    class="btn btn-success" ng-click="cancel()">{{gdv.getLabels('save') }}</button>
+            <button ng-model="button" id="closePdf"    class="btn btn-warning" ng-click="cancel()">{{gdv.getLabels('exit') }}</button>
+         </div>
+      </div>
+   </div>
+</div>
+

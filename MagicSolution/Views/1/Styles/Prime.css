@@ -1,0 +1,98 @@
+﻿
+.mf-row-grid-in-error {
+    color: red;
+}
+
+/*Configuration for custom tabs*/
+/* --- Tecnonext --- */
+.application-prime_tecnonext #grid[gridname="DocumentBase_OFV"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items,
+.application-prime_tecnonext #grid[gridname="DocumentBase_ORV"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items,
+.application-prime_tecnonext #grid[gridname="DocumentBase_ORA"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items,
+.application-prime_tecnonext #grid[gridname="DocumentBase_FA"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items,
+.application-prime_tecnonext #grid[gridname="DocumentBase_FP"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items,
+.application-prime_tecnonext #grid[gridname="DocumentBase_RF"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items,
+.application-prime_tecnonext #grid[gridname="DocumentBase_FE"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items {
+    display: flex;
+}
+
+    .application-prime_tecnonext #grid[gridname="DocumentBase_OFV"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="4e0361d9-321f-46a1-9ac4-42a213ed0054"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_ORV"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="a4c2f3b9-b756-4fd0-9269-153eaecc04d4"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_ORA"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="140c3921-6b4f-480d-ac04-42959d423d4a"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FA"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="09da4fde-b5be-45a9-a6a6-0a5c41fbad45"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FP"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="120095bd-e2da-4808-923a-40561f473d7d"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_RF"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="929281f8-6e4b-4098-845e-a1d2c753e240"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FF"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="dd15db71-2b54-484f-94d9-d8b2d6452685"] {
+        order: 1;
+    }
+
+    .application-prime_tecnonext #grid[gridname="DocumentBase_OFV"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="abb19aee-ce49-4fd5-b3e0-42604fd1ec7e"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_ORV"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="4223cc37-e615-4ced-8503-fdb490a505e3"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_ORA"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="a32ea48c-e41f-4b74-9914-2b72fa977ce8"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FA"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="8dafe2f1-1151-421e-b7d2-0df2f3dead49"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FP"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="5d6c3b62-94e8-42ef-b3f4-e688086eeea4"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_RF"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="6965ca04-795f-45fd-b9aa-bbf721215793"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FE"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="a6b64fb8-30e8-4955-90bd-c2ab6c45dae3"] {
+        order: 2;
+    }
+
+    .application-prime_tecnonext #grid[gridname="DocumentBase_OFV"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="336606ab-5c2f-4cff-927e-ff156b1f567b"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_ORV"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="89ec6fd2-3a33-4457-9607-c0c63f5e3c35"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_ORA"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="7b154d83-b4b3-46c5-8c89-473d960b7208"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FA"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="2ded1147-eeed-43ed-a2a2-e947062c6e58"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FP"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="35884750-0569-42eb-bbad-774e0934cb2f"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_RF"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="763ba2e5-4dfd-4359-89a6-d25612ff09f7"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FE"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="20f48d67-631d-4c6c-80b5-3d70e798a489"] {
+        order: 3;
+    }
+
+    .application-prime_tecnonext #grid[gridname="DocumentBase_OFV"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="8a655998-0858-446c-a3d0-07601e3430d7"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_ORV"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="cc3825c2-78fe-42b0-b847-e11040335afa"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_ORA"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="819dcb5c-742f-4811-9dfb-874b9de8b648"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FA"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="5b1b6810-0ddb-463c-a6f7-9c1590c7c811"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FP"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="fd3d01c0-6361-4ef4-a5a0-32397ec4fbc2"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_RF"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="2c57f73a-e68e-4419-818f-05a1e27b2608"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FE"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="8bf0806e-031f-4e56-bfe6-2f5bc688b8c3"] {
+        order: 4;
+    }
+
+    .application-prime_tecnonext #grid[gridname="DocumentBase_OFV"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="8fe4ada4-0b19-42cc-be98-1705b4f51b9f"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_ORV"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="68bfff83-c60d-4069-8a89-3d6fdcc904df"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_ORA"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="fd57b32c-f1bd-40fb-b504-17e249c74124"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FA"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="8d18c14c-8719-4441-a432-e2ebdbb0d8c8"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FP"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="f66e50cf-d0d4-482e-a063-74d870093f84"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_RF"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="38813b38-fcee-45b9-ac1b-40663aa021ea"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FE"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="c196e584-292a-454b-aae1-5c450cbc29a8"] {
+        order: 5;
+    }
+
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FA"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="d0ae0cff-f9f8-4edb-ae99-2693467500c3"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FP"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="294712ba-d4f9-4b1e-8c7a-da3deba45bbc"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_RF"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="ed69c828-bb39-4cb2-9e57-311f39ba2136"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FE"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="6ace242f-dcfa-41ee-ba5c-d0d5e43b3e47"] {
+        order: 6;
+    }
+
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FA"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="6ff5349b-61ca-43e1-88bf-2a52b3266a9d"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_RF"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="f9d3fae8-cf81-4c01-a606-95a0cb49da58"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FE"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="956fafdc-2ccf-49dc-a11d-63750f3493e2"] {
+        order: 7;
+    }
+
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FA"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="a079c78b-db7a-431a-be0a-e9fa2aa796b2"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_RF"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="fc882edf-e3d5-4673-b771-a4058fc6d843"],
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FE"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="aaf6f55f-c22e-401e-86b1-194ff190c96c"] {
+        order: 8;
+    }
+
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FE"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="f1d6cda3-a85a-4ec4-94ae-eccd73876d92"] {
+        order: 9;
+    }
+
+    .application-prime_tecnonext #grid[gridname="DocumentBase_FE"] table[role="treegrid"] tr.k-detail-row ul.k-tabstrip-items li[data-guid="b391647f-ac42-43f5-bc5d-5b8a37dddeec"] {
+        order: 10;
+    }
+/* --- End Tecnonext --- */
+.mf-row-grid-in-error-background {
+	background-color: red;
+}
+

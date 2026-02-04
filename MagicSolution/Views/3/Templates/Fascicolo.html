@@ -1,0 +1,35 @@
+﻿<style>
+    .fascicolo .bootstrap-tagsinput{
+        background-color: white;
+    }
+    .fascicolo .bootstrap-tagsinput input{
+        display: none;
+    }
+</style>
+<search-drop
+    ng-if="f.fascicoli"
+    sd-values="f.fascicoli"
+    sd-value="DO_DOSSIE_ID"
+    sd-label="DO_DOSSIE_DESCRIPTION"
+    sd-onselect="f.fascicoloSelected(objectValue)"
+    sd-placeholder="{{f.searchPlaceholder}}"
+>
+</search-drop>
+<div ng-show="f.showBOGrid">
+    <h4 style="cursor: pointer" ng-click="f.dontShowElements = !f.dontShowElements">{{f.transSelBO}}<span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-{{!f.dontShowElements ? 'up' : 'down'}}"></i></span></h4>
+    <div ng-show="!f.dontShowElements">
+        <kendo-grid  gridname="AS_V_ASSET_Gred_bo_documentale"  ng-if="f.bOGridObject" options="f.bOGridObject"></kendo-grid>
+    </div>
+    <input id="fascicolo-bo-tagcloud" />
+</div>
+<div
+    ng-if="f.documentGrids"
+    ng-show="f.showDocumentGrids"
+>
+    <div ng-show="f.showSpinner"><p><i class="fa fa-spinner fa-spin fa-2x"></i></p></div>
+    <div ng-show="!f.showSpinner" ng-click="f.downloadFascicolo()" class="btn btn-default" style="margin-top: 10px; background-color:#8de45eba; padding: 20px 28px; font-size: 18px;">{{f.transDownload}}</div>
+    <h4>{{f.transDocumenti}}</h4>
+    <div id="DO_V_DOCUME_DOSSIERGrid"></div>
+    <h4>{{f.transDocumentiMissing}}</h4>
+    <div id="DO_V_DOCUME_MISSINGGrid"></div>
+</div>

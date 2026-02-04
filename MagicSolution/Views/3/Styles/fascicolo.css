@@ -1,0 +1,37 @@
+﻿#initialidiv {
+    padding:5px;
+    border: 1px solid #94c0d2;
+    background-color: #daecf4;
+    background-image: none,linear-gradient(to bottom,rgba(255,255,255,.45) 0,rgba(255,255,255,.0) 100%);
+  background-position: 50% 50%;
+}
+
+.srcdossiercontainer span {
+    width:100%;
+}
+
+.panel
+{
+    margin-top: 20px;
+}
+
+
+#multisel_obj
+{
+     margin-bottom:6px; 
+     margin-top:6px;
+}
+
+#multisel_obj input
+{
+     color: #a8abb2;
+     font-size: 100%;
+  font-family: inherit;
+  border-style: solid;
+  font: normal normal normal 13.3333330154419px/normal Arial;
+  text-rendering: auto;
+}
+
+.fascicoligrid {
+    margin-top:6px;
+}

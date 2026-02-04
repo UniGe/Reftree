@@ -1,0 +1,370 @@
+<style>
+    div + p {
+        display: none;
+    }
+
+    .pointer:hover {
+        cursor: pointer;
+    }
+
+    .grid-stack-item {
+    }
+
+    .innerWidget {
+        border: 1px groove #C1CACE;
+        border-radius: 0px;
+        text-align: left;
+    }
+
+        .innerWidget:hover {
+            cursor: grab;
+        }
+
+    .outerWidget {
+        border-left: 6px solid #C1CACE;
+        border-right: 6px solid #C1CACE;
+        overflow: hidden;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+
+    .widgetGroup {
+        border: dotted;
+    }
+
+    .ui-resizable-e {
+        background-color: black;
+    }
+
+    .whitespace > .ui-resizable-e {
+        background-color: transparent;
+    }
+
+    .unclickable {
+        pointer-events: none;
+    }
+
+        .unclickable:hover {
+            cursor: not-allowed;
+        }
+</style>
+
+<div ng-show="fe.mainGridVisible" id="mainGridContainer" class="container-fluid">
+    <magic-grid id="mainGrid" kendo-grid-instance="fe.mainGridInstance" gridname="Magic_EditForms"
+                command=" { command: { text: 'Edit form', click: fe.toggleView }, title: '', width: '180px' }  ">
+    </magic-grid>
+</div>
+
+
+
+<div class="row" ng-show="!fe.mainGridVisible && fe.layoutInitialized">
+
+    <!-- MENUE #start -->
+    <div class="container">
+
+        <ul id="tabList" class="nav nav-pills" role="group">
+            <li>
+                <button ng-click="fe.isApplied = !fe.isApplied;" type="button" class="btn btn-labeled btn-success" style="min-width:122px;">
+                    <i ng-if="fe.isApplied" class="fa fa-check-square-o fa-2x" style="min-width:26px;"></i>
+                    <i ng-if="!fe.isApplied" class="fa fa-square-o fa-2x" style="min-width:26px;"></i>
+                    <span class="btn-label">{{fe.text.applyLayout}}</span>
+                </button>
+            </li>
+            <li ng-if="fe.isApplied">
+                <button type="button" class="btn btn-labeled btn-success" disabled>
+                    <span class="btn-label">{{fe.text.in}}</span>
+                </button>
+                <button ng-click="fe.isMagicFormLayout = !fe.isMagicFormLayout;" type="button" class="btn btn-labeled btn-success">
+                    <i ng-if="fe.isMagicFormLayout" class="fa fa-check-square-o fa-2x" style="min-width:26px;"></i>
+                    <i ng-if="!fe.isMagicFormLayout" class="fa fa-square-o fa-2x" style="min-width:26px;"></i>
+                    <span class="btn-label">{{fe.text.applyLayoutInMagicForm}}</span>
+                </button>
+                <button ng-click="fe.isKendoPopupLayout = !fe.isKendoPopupLayout;" type="button" class="btn btn-labeled btn-success">
+                    <i ng-if="fe.isKendoPopupLayout" class="fa fa-check-square-o fa-2x" style="min-width:26px;"></i>
+                    <i ng-if="!fe.isKendoPopupLayout" class="fa fa-square-o fa-2x" style="min-width:26px;"></i>
+                    <span class="btn-label">{{fe.text.applyLayoutInKendoPopup}}</span>
+                </button>
+            </li>
+            <li ng-click="fe.addEmptyRow()" title="{{fe.text.addEmptyRow}}">
+                <button type="button" class="btn btn-labeled btn-warning">
+                    <span class="btn-label"><i class="fa fa-plus fa-2x"></i></span>
+                </button>
+            </li>
+            <li ng-click="fe.save()" title="{{fe.text.saveTitle}}" ng-class="{'unclickable': !fe.layoutChangesMade}">
+                <button type="button" ng-disabled="!fe.layoutChangesMade" ng-class="{'disabled': !fe.layoutChangesMade}" class="btn btn-labeled btn-primary">
+                    <span class="btn-label"><i class="fa fa-save fa-2x"></i></span>
+                </button>
+            </li>
+            <!-- RESET-FEATURE NOT IMPLEMENTED #TODO #felixtodo
+                <li ng-click="fe.layoutChangesMade === false || fe.reset()" ng-class="{'disabled': !fe.layoutChangesMade}" title="{{fe.text.resetLayout}}">
+                <button type="button" class="btn btn-labeled btn-primary">
+                    <span class="btn-label"><i class="fa fa-refresh fa-2x"></i></span>
+                </button>
+            </li>-->
+        </ul>
+    </div>
+    <!-- MENUE #end -->
+    <!-- EDITOR #start -->
+    <div class="container">
+
+        <ul class="nav nav-tabs" role="tablist">
+            <li ng-repeat="(tabIdx, tab) in fe.Layout" role="presentation" data-ng-class="{'active' : tabIdx == 0}" ng-click="fe.onTabClicked(tab)">
+
+                <a ng-if="!tab.hasSubTabs" href="#tab{{tab.uid}}" role="tab" data-toggle="tab">
+                    <span class="fa fa-tags pointer"></span>
+                    <span>{{tab.title}}</span>
+                </a>
+
+
+                <a ng-if="tab.hasSubTabs" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    {{tab.title}}<span class="fa fa-chevron-down"></span>
+                </a>
+                <ul ng-if="tab.hasSubTabs" class="dropdown-menu">
+                    <li class="pointer" ng-repeat="subTab in tab.subTabs" href="#tab{{tab.uid}}" role="tab" data-toggle="tab">
+                        <a ng-click="fe.onTabClicked(subTab)">
+                            <span class="fa fa-tags "></span>
+                            <span>{{subTab.title}}</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </li>
+        </ul>
+
+        <div class="tab-content clearfix">
+
+            <div ng-repeat="(tabIdx, tab) in fe.Layout" id="tab{{tab.uid}}" role="tabpanel" class="tab-pane fade in" data-ng-class="{'active' : tabIdx == 0}">
+
+                <div ng-if="!tab.hasSubTabs" gridstack class="grid-stack" options="fe.outerGridstackOptions">
+                    <!-- GRIDSTACK CONTAINING ROWS  id="outerGridstack"-->
+                    <!-- REPEAT ROWS -->
+
+                    <div ng-repeat="(rowIdx,row) in tab.rows"
+                         gridstack-item class="grid-stack-item"
+                         gs-item-id="row.uid" id="{{row.uid}}"
+                         gs-item-width="12" gs-item-height="row.height"
+                         gs-item-x="0" gs-item-y="rowIdx"
+                         gs-item-autopos="rowIdx"
+                         data-gs-no-move="true"
+                         data-gs-no-resize="true"
+                         data-gs-locked="false"
+                         on-item-added="fe.onRowAdded(item, row)">
+
+                        <div class="grid-stack-item-content outerWidget" ng-include="fe.editableGridstackTemplateUrl">
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div ng-if="tab.hasSubTabs" ng-repeat="(subTabIdx, subTab) in tab.subTabs" id="tab{{tab.uid}}" role="tabpanel" class="tab-pane fade in">
+
+                    <div gridstack class="grid-stack" options="fe.outerGridstackOptions">
+                        
+                        <div ng-repeat="(rowIdxx,row) in subTab.rows"
+                             gridstack-item class="grid-stack-item outerWidget"
+                             gs-item-id="row.uid" id="{{row.uid}}"
+                             gs-item-width="12" gs-item-height="1"
+                             gs-item-x="0" gs-item-y="rowIdxx"
+                             gs-item-autopos="rowIdx"
+                             data-gs-no-move="true"
+                             data-gs-no-resize="true"
+                             data-gs-locked="true"
+                             data-gs-height="{{row.height}}"
+                             on-item-added="fe.onRowAdded(item, row)">
+
+
+                            <div class="grid-stack-item-content" style="overflow:hidden;" ng-include="fe.editableGridstackTemplateUrl">
+                                <!-- EDITABLE GRIDSTACK HERE -->
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- EDITOR #end -->
+
+
+
+</div> <!-- mainContainer #end-->
+<!-- WHITESPACE-TEMPLATE -->
+<div gridstack class="grid-stack hidden">
+
+    <div gridstack-item class="grid-stack-item whitespace"
+         data-gs-no-move="true"
+         data-gs-no-resize="true"
+         data-gs-locked="true">
+        <div class="grid-stack-item-content">
+            <div style="width:100%; height:100%;">
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- <MAGIC-FORM> for getting data -->
+<div class="row">
+    <magic-form ng-if="fe.renderMagicForm" table-name="{{fe.magicGridName}}" options="fe.magicFormOptions"></magic-form>
+
+
+    <magic-grid ng-if="fe.renderMagicGrid" kendo-grid-instance="{}" gridname="{{fe.magicGridName}}"
+                gridoptionsextension="{}" filter="{}"></magic-grid>
+
+
+</div>
+
+
+<p class="text-center" style="padding: 20px;">
+    <i class="fa fa-spinner fa-spin fa-5x"></i>
+</p>
+
+<!-- #labelCSS #start -->
+<div id="styleModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Label style editor</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row" style="margin-bottom: 40px;">
+                        <h3 class="text-center"><label id="previewLabel">{{fe.styleItem.tag}}</label></h3>
+                    </div>
+                    <div class="row">
+
+
+                        <div class="form-group row">
+                            <div class="col-md-2">
+                                <label for="fontSize">Size</label>
+                                <input class="form-control" id="fontSize" type="number" min="1" max="30" ng-model="fe.styleItem.fontSize" ng-change="fe.onFontStyleChanged(fe.styleItem)">
+                            </div>
+                            <div class="col-md-4 col-md-offset-2">
+                                <label for="backgroundColor">Background</label>
+                                <input id="backgroundColor" type="color" ng-disabled="fe.styleItem.backgroundTransparent == true" ng-model="fe.styleItem.backgroundColor" ng-change="fe.onFontStyleChanged(fe.styleItem)">
+                                <input id="backgroundTransparent" type="checkbox" ng-model="fe.styleItem.backgroundTransparent" ng-change="fe.onFontStyleChanged(fe.styleItem)" title="no background!">
+                                <span>transparent</span>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="textColor">Text</label>
+                                <input id="textColor" type="color" ng-model="fe.styleItem.color" ng-change="fe.onFontStyleChanged(fe.styleItem)">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <label for="fontWeight">Weight</label>
+                                <select id="fontWeight" title="Select label's font weight" class="selectpicker form-control" ng-model="fe.styleItem.fontWeight" ng-change="fe.onFontStyleChanged(fe.styleItem)">
+                                    <option value="100">100 (lightest)</option>
+                                    <option value="200">200 (lighter)</option>
+                                    <option value="300">300 (light)</option>
+                                    <option value="400">400 (normal)</option>
+                                    <option value="500">500 (thick)</option>
+                                    <option value="600">600 (thicker)</option>
+                                    <option value="700">700 (bold)</option>
+                                    <option value="800">800 (bolder)</option>
+                                    <option value="900">900 (boldest)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="fontStyle">Style</label>
+                                <select id="fontStyle" title="Select label's font style" class="selectpicker form-control" ng-model="fe.styleItem.fontStyle" ng-change="fe.onFontStyleChanged(fe.styleItem)">
+                                    <option value="normal">Normal</option>
+                                    <option value="italic">Italic</option>
+                                    <option value="oblique">Oblique</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="fontVariantCaps">Variant</label>
+                                <select id="fontVariantCaps" class="selectpicker form-control" ng-model="fe.styleItem.fontVariantCaps" ng-change="fe.onFontStyleChanged(fe.styleItem)">
+                                    <option value="normal" style="font-variant-caps: normal;">Normal</option>
+                                    <option value="small-caps" style="font-variant-caps: small-caps;">Small caps</option>
+                                    <option value="all-small-caps" style="font-variant-caps: all-small-caps;">All small caps</option>
+                                    <option value="petite-caps" style="font-variant-caps: petite-caps;">Petite caps</option>
+                                    <option value="all-petite-caps" style="font-variant-caps: all-petite-caps;">All petite caps</option>
+                                    <option value="unicase" style="font-variant-caps: unicase;">Unicase</option>
+                                    <option value="titling-caps" style="font-variant-caps: titling-caps;">Titling caps</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <span style="font-size:16px;">Decoration</span>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="textDecorationLine">Line</label>
+                                <select id="textDecorationLine" class="selectpicker form-control" ng-model="fe.styleItem.textDecorationLine" ng-change="fe.onFontStyleChanged(fe.styleItem)">
+                                    <option value="none">None</option>
+                                    <option value="underline" style="text-decoration-line: underline;">Underline</option>
+                                    <option value="overline" style="text-decoration-line: overline;">Overline</option>
+                                    <option value="line-through" style="text-decoration-line: line-through;">Line-through</option>
+                                    <option value="overline underline" style="text-decoration-line: overline underline;">Overline underline</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="textDecorationStyle">Style</label>
+                                <select id="textDecorationStyle" class="selectpicker form-control" ng-model="fe.styleItem.textDecorationStyle" ng-change="fe.onFontStyleChanged(fe.styleItem)">
+                                    <option value="solid">Solid</option>
+                                    <option value="wavy">Wavy</option>
+                                    <option value="dotted">Dotted</option>
+                                    <option value="dashed">Dashed</option>
+                                    <option value="double">Double</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="textDecorationColor">Color</label>
+                                <input id="textDecorationColor" type="color" ng-model="fe.styleItem.textDecorationColor" ng-change="fe.onFontStyleChanged(fe.styleItem)">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <span style="font-size:16px;">Shadow</span>
+                                <input style="margin-left:4px;" id="shadowActive" type="checkbox" ng-model="fe.styleItem.shadowActive" ng-change="fe.onFontStyleChanged(fe.styleItem)" title="no shadow!">
+                                <span>active</span>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="shadowX">X</label>
+                                <input ng-disabled="fe.styleItem.shadowActive == false" class="form-control" id="shadowX" type="number" ng-model="fe.styleItem.shadowX" ng-change="fe.onFontStyleChanged(fe.styleItem)" min="0">
+                            </div>
+                            <div class="col-md-2">
+                                <label for="shadowY">Y</label>
+                                <input ng-disabled="fe.styleItem.shadowActive == false" class="form-control" id="shadowY" type="number" ng-model="fe.styleItem.shadowY" ng-change="fe.onFontStyleChanged(fe.styleItem)" min="0">
+                            </div>
+                            <div class="col-md-2">
+                                <label for="shadowBlur">Blur</label>
+                                <input ng-disabled="fe.styleItem.shadowActive == false" class="form-control" id="shadowBlur" type="number" ng-model="fe.styleItem.shadowBlur" ng-change="fe.onFontStyleChanged(fe.styleItem)" min="0" max="30">
+                            </div>
+                            <div class="col-md-4 col-md-offset-2">
+                                <label for="shadowColor">Color</label>
+                                <input ng-disabled="fe.styleItem.shadowActive == false" id="shadowColor" type="color" ng-model="fe.styleItem.shadowColor" ng-change="fe.onFontStyleChanged(fe.styleItem)">
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" title="default!" ng-click="fe.onStyleModalReset()"><i class="fa fa-undo"></i></button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" title="cancel!" ng-click="fe.onStyleModalCancel()"><i class="fa fa-times"></i></button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" title="cool!" ng-click="fe.onStyleModalSubmit()"><i class="fa fa-check"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #labelCSS #end -->

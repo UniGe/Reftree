@@ -1,0 +1,1056 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Publish\RefTree</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/App_global.asax.compiled">
+      <publishTime>10/29/2014 16:01:42</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.dll">
+      <publishTime>10/29/2014 16:01:42</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.pdb">
+      <publishTime>10/29/2014 16:01:42</publishTime>
+    </File>
+    <File Include="bin/App_Web_a5rirwtr.dll">
+      <publishTime>09/17/2014 17:00:25</publishTime>
+    </File>
+    <File Include="bin/App_Web_a5rirwtr.pdb">
+      <publishTime>09/17/2014 17:00:25</publishTime>
+    </File>
+    <File Include="bin/App_Web_fk03stj3.dll">
+      <publishTime>09/17/2014 17:00:23</publishTime>
+    </File>
+    <File Include="bin/App_Web_fk03stj3.pdb">
+      <publishTime>09/17/2014 17:00:23</publishTime>
+    </File>
+    <File Include="bin/App_Web_fq2wgwe4.dll">
+      <publishTime>10/29/2014 16:01:44</publishTime>
+    </File>
+    <File Include="bin/App_Web_fq2wgwe4.pdb">
+      <publishTime>10/29/2014 16:01:44</publishTime>
+    </File>
+    <File Include="bin/App_Web_jcyqnqd3.dll">
+      <publishTime>10/29/2014 16:01:43</publishTime>
+    </File>
+    <File Include="bin/App_Web_jcyqnqd3.pdb">
+      <publishTime>10/29/2014 16:01:43</publishTime>
+    </File>
+    <File Include="bin/App_Web_kasizj34.dll">
+      <publishTime>09/17/2014 17:00:26</publishTime>
+    </File>
+    <File Include="bin/App_Web_kasizj34.pdb">
+      <publishTime>09/17/2014 17:00:26</publishTime>
+    </File>
+    <File Include="bin/App_Web_ldplaerg.dll">
+      <publishTime>10/29/2014 16:01:46</publishTime>
+    </File>
+    <File Include="bin/App_Web_ldplaerg.pdb">
+      <publishTime>10/29/2014 16:01:46</publishTime>
+    </File>
+    <File Include="bin/App_Web_vi1hvsai.dll">
+      <publishTime>09/17/2014 17:00:24</publishTime>
+    </File>
+    <File Include="bin/App_Web_vi1hvsai.pdb">
+      <publishTime>09/17/2014 17:00:24</publishTime>
+    </File>
+    <File Include="bin/App_Web_whphxdvy.dll">
+      <publishTime>10/29/2014 16:01:45</publishTime>
+    </File>
+    <File Include="bin/App_Web_whphxdvy.pdb">
+      <publishTime>10/29/2014 16:01:45</publishTime>
+    </File>
+    <File Include="bin/App_Web_x1g040sd.dll">
+      <publishTime>10/29/2014 16:01:45</publishTime>
+    </File>
+    <File Include="bin/App_Web_x1g040sd.pdb">
+      <publishTime>10/29/2014 16:01:45</publishTime>
+    </File>
+    <File Include="bin/App_Web_ycpbgnn1.dll">
+      <publishTime>09/17/2014 17:00:25</publishTime>
+    </File>
+    <File Include="bin/App_Web_ycpbgnn1.pdb">
+      <publishTime>09/17/2014 17:00:25</publishTime>
+    </File>
+    <File Include="bin/asset.aspx.65a2d1ee.compiled">
+      <publishTime>09/17/2014 17:00:26</publishTime>
+    </File>
+    <File Include="bin/AttributeRouting.dll">
+      <publishTime>01/16/2014 09:00:03</publishTime>
+    </File>
+    <File Include="bin/AttributeRouting.Web.dll">
+      <publishTime>01/16/2014 09:00:04</publishTime>
+    </File>
+    <File Include="bin/AttributeRouting.Web.Http.dll">
+      <publishTime>01/16/2014 09:00:04</publishTime>
+    </File>
+    <File Include="bin/AttributeRouting.Web.Http.WebHost.dll">
+      <publishTime>01/16/2014 09:00:04</publishTime>
+    </File>
+    <File Include="bin/bucket.master.cdcab7d2.compiled">
+      <publishTime>10/29/2014 16:01:43</publishTime>
+    </File>
+    <File Include="bin/container.aspx.797833c2.compiled">
+      <publishTime>10/29/2014 16:01:45</publishTime>
+    </File>
+    <File Include="bin/dashboard.aspx.cdcab7d2.compiled">
+      <publishTime>10/29/2014 16:01:44</publishTime>
+    </File>
+    <File Include="bin/Devart.Data.dll">
+      <publishTime>04/11/2014 11:16:21</publishTime>
+    </File>
+    <File Include="bin/Devart.Data.Oracle.dll">
+      <publishTime>04/11/2014 11:16:21</publishTime>
+    </File>
+    <File Include="bin/Dynamic.dll">
+      <publishTime>01/16/2014 09:00:05</publishTime>
+    </File>
+    <File Include="bin/elaborazioni.aspx.65a2d1ee.compiled">
+      <publishTime>10/29/2014 16:01:46</publishTime>
+    </File>
+    <File Include="bin/email.aspx.cdcab7d2.compiled">
+      <publishTime>10/29/2014 16:01:44</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>01/16/2014 09:00:11</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>01/16/2014 09:00:12</publishTime>
+    </File>
+    <File Include="bin/frm_chg_password.aspx.cdcab7d2.compiled">
+      <publishTime>10/29/2014 16:01:44</publishTime>
+    </File>
+    <File Include="bin/generatepassword.aspx.cdcab7d2.compiled">
+      <publishTime>10/29/2014 16:01:43</publishTime>
+    </File>
+    <File Include="bin/geobounds.aspx.65a2d1ee.compiled">
+      <publishTime>09/17/2014 17:00:26</publishTime>
+    </File>
+    <File Include="bin/KendoGridBinder.dll">
+      <publishTime>01/16/2014 09:00:13</publishTime>
+    </File>
+    <File Include="bin/licence.aspx.cdcab7d2.compiled">
+      <publishTime>10/29/2014 16:01:43</publishTime>
+    </File>
+    <File Include="bin/LicenceManager.dll">
+      <publishTime>01/08/2014 10:50:54</publishTime>
+    </File>
+    <File Include="bin/login.aspx.cdcab7d2.compiled">
+      <publishTime>10/29/2014 16:01:43</publishTime>
+    </File>
+    <File Include="bin/MagicFramework.dll">
+      <publishTime>10/28/2014 11:05:56</publishTime>
+    </File>
+    <File Include="bin/magicfunctiontrees.aspx.797833c2.compiled">
+      <publishTime>10/29/2014 16:01:45</publishTime>
+    </File>
+    <File Include="bin/magic_scheduler.aspx.797833c2.compiled">
+      <publishTime>09/17/2014 17:00:25</publishTime>
+    </File>
+    <File Include="bin/main.aspx.cdcab7d2.compiled">
+      <publishTime>10/29/2014 16:01:44</publishTime>
+    </File>
+    <File Include="bin/metronic.master.cdcab7d2.compiled">
+      <publishTime>10/29/2014 16:01:43</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.FriendlyUrls.dll">
+      <publishTime>04/23/2014 10:47:46</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.SignalR.Core.dll">
+      <publishTime>10/28/2014 11:04:12</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.SignalR.SystemWeb.dll">
+      <publishTime>10/28/2014 11:04:12</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>03/18/2014 09:42:10</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>03/18/2014 09:42:10</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>03/18/2014 09:42:10</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>04/23/2014 10:47:46</publishTime>
+    </File>
+    <File Include="bin/MongoDB.Bson.dll">
+      <publishTime>08/21/2014 12:48:42</publishTime>
+    </File>
+    <File Include="bin/MongoDB.Driver.dll">
+      <publishTime>08/21/2014 12:48:42</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>08/21/2014 12:51:48</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>03/18/2014 09:42:10</publishTime>
+    </File>
+    <File Include="bin/Ref3.dll">
+      <publishTime>10/29/2014 16:01:27</publishTime>
+    </File>
+    <File Include="bin/reportviewer.aspx.f1e66177.compiled">
+      <publishTime>10/29/2014 16:01:45</publishTime>
+    </File>
+    <File Include="bin/struttura.aspx.65a2d1ee.compiled">
+      <publishTime>10/29/2014 16:01:46</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>01/16/2014 09:00:18</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>01/16/2014 09:00:18</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>01/16/2014 09:00:19</publishTime>
+    </File>
+    <File Include="bin/test.aspx.65a2d1ee.compiled">
+      <publishTime>10/29/2014 16:01:46</publishTime>
+    </File>
+    <File Include="bin/WebActivator.dll">
+      <publishTime>01/16/2014 09:00:22</publishTime>
+    </File>
+    <File Include="bin/webarch.master.cdcab7d2.compiled">
+      <publishTime>10/29/2014 16:01:43</publishTime>
+    </File>
+    <File Include="dashboard.aspx">
+      <publishTime>10/29/2014 16:01:47</publishTime>
+    </File>
+    <File Include="Data/RefTree.edmx.diagram">
+      <publishTime>10/29/2014 09:17:45</publishTime>
+    </File>
+    <File Include="email.aspx">
+      <publishTime>10/29/2014 16:01:47</publishTime>
+    </File>
+    <File Include="frm_chg_password.aspx">
+      <publishTime>10/29/2014 16:01:47</publishTime>
+    </File>
+    <File Include="generatepassword.aspx">
+      <publishTime>10/29/2014 16:01:47</publishTime>
+    </File>
+    <File Include="licence.aspx">
+      <publishTime>10/29/2014 16:01:47</publishTime>
+    </File>
+    <File Include="localstyles/metronic/fonts/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff">
+      <publishTime>07/24/2014 18:16:55</publishTime>
+    </File>
+    <File Include="localstyles/metronic/fonts/DXI1ORHCpsQm3Vp6mXoaTXhCUOGz7vYGh680lGh-uXM.woff">
+      <publishTime>07/24/2014 18:16:55</publishTime>
+    </File>
+    <File Include="localstyles/metronic/fonts/font.css">
+      <publishTime>07/24/2014 18:16:55</publishTime>
+    </File>
+    <File Include="localstyles/metronic/fonts/k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff">
+      <publishTime>07/24/2014 18:16:55</publishTime>
+    </File>
+    <File Include="localstyles/metronic/fonts/MTP_ySUJH_bn48VBG8sNSnhCUOGz7vYGh680lGh-uXM.woff">
+      <publishTime>07/24/2014 18:16:55</publishTime>
+    </File>
+    <File Include="localstyles/metronic/plugins/font-awesome/css/font-awesome.min.css">
+      <publishTime>09/17/2014 16:21:41</publishTime>
+    </File>
+    <File Include="localstyles/metronic/plugins/font-awesome/font/fontawesome-webfont.eot">
+      <publishTime>09/17/2014 16:21:40</publishTime>
+    </File>
+    <File Include="localstyles/metronic/plugins/font-awesome/font/fontawesome-webfont.svg">
+      <publishTime>09/17/2014 16:21:40</publishTime>
+    </File>
+    <File Include="localstyles/metronic/plugins/font-awesome/font/fontawesome-webfont.ttf">
+      <publishTime>09/17/2014 16:21:40</publishTime>
+    </File>
+    <File Include="localstyles/metronic/plugins/font-awesome/font/fontawesome-webfont.woff">
+      <publishTime>09/17/2014 16:21:40</publishTime>
+    </File>
+    <File Include="localstyles/metronic/plugins/font-awesome/font/FontAwesome.otf">
+      <publishTime>09/17/2014 16:21:41</publishTime>
+    </File>
+    <File Include="localstyles/metronic/style/style.css">
+      <publishTime>07/24/2014 18:16:54</publishTime>
+    </File>
+    <File Include="localstyles/plugins/font-awesome/css/font-awesome.min.css">
+      <publishTime>09/17/2014 16:21:41</publishTime>
+    </File>
+    <File Include="localstyles/plugins/simple-line-icons/fonts/Simple-Line-Icons.dev.svg">
+      <publishTime>09/17/2014 16:21:41</publishTime>
+    </File>
+    <File Include="localstyles/plugins/simple-line-icons/fonts/Simple-Line-Icons.eot">
+      <publishTime>09/17/2014 16:21:41</publishTime>
+    </File>
+    <File Include="localstyles/plugins/simple-line-icons/fonts/Simple-Line-Icons.svg">
+      <publishTime>09/17/2014 16:21:41</publishTime>
+    </File>
+    <File Include="localstyles/plugins/simple-line-icons/fonts/Simple-Line-Icons.ttf">
+      <publishTime>09/17/2014 16:21:41</publishTime>
+    </File>
+    <File Include="localstyles/plugins/simple-line-icons/fonts/Simple-Line-Icons.woff">
+      <publishTime>09/17/2014 16:21:41</publishTime>
+    </File>
+    <File Include="localstyles/plugins/simple-line-icons/icons-lte-ie7.js">
+      <publishTime>09/17/2014 16:21:41</publishTime>
+    </File>
+    <File Include="localstyles/plugins/simple-line-icons/License.txt">
+      <publishTime>09/17/2014 16:21:41</publishTime>
+    </File>
+    <File Include="localstyles/plugins/simple-line-icons/Readme.txt">
+      <publishTime>09/17/2014 16:21:41</publishTime>
+    </File>
+    <File Include="localstyles/plugins/simple-line-icons/simple-line-icons.css">
+      <publishTime>09/17/2014 16:21:41</publishTime>
+    </File>
+    <File Include="localstyles/plugins/simple-line-icons/simple-line-icons.min.css">
+      <publishTime>09/17/2014 16:21:41</publishTime>
+    </File>
+    <File Include="localstyles/webarch/plugins/font-awesome/css/font-awesome.min.css">
+      <publishTime>09/17/2014 16:21:41</publishTime>
+    </File>
+    <File Include="localstyles/webarch/plugins/font-awesome/fonts/fontawesome-webfont.eot">
+      <publishTime>09/17/2014 16:21:42</publishTime>
+    </File>
+    <File Include="localstyles/webarch/plugins/font-awesome/fonts/fontawesome-webfont.svg">
+      <publishTime>09/17/2014 16:21:42</publishTime>
+    </File>
+    <File Include="localstyles/webarch/plugins/font-awesome/fonts/fontawesome-webfont.ttf">
+      <publishTime>09/17/2014 16:21:42</publishTime>
+    </File>
+    <File Include="localstyles/webarch/plugins/font-awesome/fonts/fontawesome-webfont.woff">
+      <publishTime>09/17/2014 16:21:42</publishTime>
+    </File>
+    <File Include="localstyles/webarch/plugins/font-awesome/fonts/FontAwesome.otf">
+      <publishTime>09/17/2014 16:21:42</publishTime>
+    </File>
+    <File Include="localstyles/webarch/style/css/custom-icon-set.css">
+      <publishTime>07/24/2014 18:16:55</publishTime>
+    </File>
+    <File Include="localstyles/webarch/style/fonts/custom-set.dev.svg">
+      <publishTime>07/24/2014 18:16:55</publishTime>
+    </File>
+    <File Include="localstyles/webarch/style/fonts/custom-set.eot">
+      <publishTime>07/24/2014 18:16:55</publishTime>
+    </File>
+    <File Include="localstyles/webarch/style/fonts/custom-set.svg">
+      <publishTime>07/24/2014 18:16:55</publishTime>
+    </File>
+    <File Include="localstyles/webarch/style/fonts/custom-set.ttf">
+      <publishTime>07/24/2014 18:16:55</publishTime>
+    </File>
+    <File Include="localstyles/webarch/style/fonts/custom-set.woff">
+      <publishTime>07/24/2014 18:16:55</publishTime>
+    </File>
+    <File Include="lockscreen.html">
+      <publishTime>07/16/2014 16:00:58</publishTime>
+    </File>
+    <File Include="lockscreen_files/animate.min.css">
+      <publishTime>07/16/2014 16:00:52</publishTime>
+    </File>
+    <File Include="lockscreen_files/avatar.jpg">
+      <publishTime>07/16/2014 16:00:52</publishTime>
+    </File>
+    <File Include="lockscreen_files/bootstrap-theme.min.css">
+      <publishTime>07/16/2014 16:00:52</publishTime>
+    </File>
+    <File Include="lockscreen_files/bootstrap.min.css">
+      <publishTime>07/16/2014 16:00:52</publishTime>
+    </File>
+    <File Include="lockscreen_files/bootstrap.min.js">
+      <publishTime>07/16/2014 16:00:52</publishTime>
+    </File>
+    <File Include="lockscreen_files/cloudflare.min.js">
+      <publishTime>07/16/2014 16:00:52</publishTime>
+    </File>
+    <File Include="lockscreen_files/custom-icon-set.css">
+      <publishTime>07/16/2014 16:00:52</publishTime>
+    </File>
+    <File Include="lockscreen_files/font-awesome.css">
+      <publishTime>07/16/2014 16:00:52</publishTime>
+    </File>
+    <File Include="lockscreen_files/jquery-1.8.3.min.js">
+      <publishTime>07/16/2014 16:00:52</publishTime>
+    </File>
+    <File Include="lockscreen_files/jquery.unveil.min.js">
+      <publishTime>07/16/2014 16:00:52</publishTime>
+    </File>
+    <File Include="lockscreen_files/less.js">
+      <publishTime>07/16/2014 16:00:52</publishTime>
+    </File>
+    <File Include="lockscreen_files/pace-theme-flash.css">
+      <publishTime>07/16/2014 16:00:52</publishTime>
+    </File>
+    <File Include="lockscreen_files/pace.min.js">
+      <publishTime>07/16/2014 16:00:52</publishTime>
+    </File>
+    <File Include="login.aspx">
+      <publishTime>10/29/2014 16:01:47</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/metronic_v3.1.3/assets/admin/pages/media/bg/1.jpg">
+      <publishTime>08/19/2014 12:52:45</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/metronic_v3.1.3/assets/admin/pages/media/bg/2.jpg">
+      <publishTime>08/19/2014 12:52:45</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/metronic_v3.1.3/assets/admin/pages/media/bg/3.jpg">
+      <publishTime>08/19/2014 12:52:45</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/metronic_v3.1.3/assets/admin/pages/media/bg/4.jpg">
+      <publishTime>08/19/2014 12:52:45</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/cover_pic.png">
+      <publishTime>06/09/2014 12:37:32</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/invoicelogo.png">
+      <publishTime>06/09/2014 12:37:32</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/invoicelogo2x.png">
+      <publishTime>06/09/2014 12:37:32</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/logo.png">
+      <publishTime>07/16/2014 16:00:57</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/logo2x.png">
+      <publishTime>06/09/2014 12:37:32</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/logowebarch.png">
+      <publishTime>07/16/2014 16:00:57</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/notification-alert.png">
+      <publishTime>06/09/2014 12:37:32</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profile-pic-big.png">
+      <publishTime>06/09/2014 12:37:32</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profile-pic.png">
+      <publishTime>06/09/2014 12:37:32</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/1.png">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/2.png">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/3.png">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/a.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/a2x.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/avatar.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/avatar2x.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/avatar_small.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/avatar_small2x.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/b.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/b2x.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/ba.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/ba2x.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/bb.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/bb2x.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/bc.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/bc2x.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/bd.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/bd2x.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/be.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/be2x.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/c.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/c2x.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/d.jpg">
+      <publishTime>07/16/2014 16:00:57</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/d2x.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/e.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/e2x.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/f.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/f2x.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/h.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/profiles/h2x.jpg">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/pullup.png">
+      <publishTime>06/09/2014 12:37:32</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/pullup2x.png">
+      <publishTime>06/09/2014 12:37:32</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/sidebar-menu-arrow.png">
+      <publishTime>06/09/2014 12:37:32</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/small-profile-pic.png">
+      <publishTime>06/09/2014 12:37:32</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/Thumbs.db">
+      <publishTime>06/09/2014 12:37:32</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/wea.jpg">
+      <publishTime>06/09/2014 12:37:32</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/widget-arrow-blue.png">
+      <publishTime>06/09/2014 12:37:31</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/widget-arrow-green.png">
+      <publishTime>06/09/2014 12:37:32</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/widget-arrow-orange.png">
+      <publishTime>06/09/2014 12:37:32</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/img/work.jpg">
+      <publishTime>06/09/2014 12:37:32</publishTime>
+    </File>
+    <File Include="Magic/HtmlTemplates/webarch/assets/js/core.js">
+      <publishTime>10/28/2014 11:03:51</publishTime>
+    </File>
+    <File Include="Magic/Styles/animate-custom.css">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/demo.css">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/add.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/administrator.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/application_cascade.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/arrow.jpg">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/bg.jpg">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/cabview.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/caution.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/chart_line.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/chart_pie_alternative.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/chart_up_color.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/column.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/cross.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/dashboard.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/database_refresh.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/delete.gif">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/document.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/earth.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/edit.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/elements.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/envelope.png">
+      <publishTime>06/09/2014 12:37:34</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/eraser.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/error-icon.png">
+      <publishTime>06/09/2014 12:37:34</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/error.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/execute.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/FIELDEDITLIST.png">
+      <publishTime>06/09/2014 12:37:34</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/FIELDLABELLIST.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/filler.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/form.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/grid.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/gridcols.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/group.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/header_bg.jpg">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/Hide.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/history.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/IlosLogo.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/IlosLogo2.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/IlosLogo3.jpg">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/IlosLogoFooter.jpg">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/Ilos_grande_trasp.gif">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/Ilos_piccolo_trasp.gif">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/login.jpg">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/logo.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/logout.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/logo_magicbroker.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/money.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/money_euro.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/NAVIGATION.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/notification.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/okbutton.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/plugins.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/POPUPEDITOR.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/POPUPEDITOR_big.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/PROPERTY.png">
+      <publishTime>06/09/2014 12:37:34</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/settings.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/Show.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/staroff.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/staron.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/success-icon.png">
+      <publishTime>06/09/2014 12:37:34</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/supervisor.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/tree.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/update.gif">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/user.jpg">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/user.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/user1.jpg">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/userauth.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Images/userdata.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/kendo.ilos.css">
+      <publishTime>05/13/2014 14:31:46</publishTime>
+    </File>
+    <File Include="Magic/Styles/kendo_ilos_images/editor.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/kendo_ilos_images/excel-icon-small.jpg">
+      <publishTime>04/27/2014 15:16:39</publishTime>
+    </File>
+    <File Include="Magic/Styles/kendo_ilos_images/imagebrowser.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/kendo_ilos_images/loading-image.gif">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/kendo_ilos_images/loading.gif">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/kendo_ilos_images/loading_2x.gif">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/kendo_ilos_images/loading_search.gif">
+      <publishTime>04/27/2014 15:16:39</publishTime>
+    </File>
+    <File Include="Magic/Styles/kendo_ilos_images/loading_transparent_image.gif">
+      <publishTime>04/27/2014 15:16:39</publishTime>
+    </File>
+    <File Include="Magic/Styles/kendo_ilos_images/slider-h.gif">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/kendo_ilos_images/slider-v.gif">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/kendo_ilos_images/sprite.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/kendo_ilos_images/sprite_2x.png">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Kendo_Ilos_theme.css">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/reset.css">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/reset_mobile.css">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/Site.css">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/style.css">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/style2.css">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Styles/style_mobile.css">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Utils/reportviewer.aspx">
+      <publishTime>10/29/2014 16:01:50</publishTime>
+    </File>
+    <File Include="Magic/Views/Container.aspx">
+      <publishTime>10/29/2014 16:01:50</publishTime>
+    </File>
+    <File Include="Magic/Views/Js/Magic_Classes.js">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Views/Js/Magic_Entities.js">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Views/Js/Magic_FunctionLabels.js">
+      <publishTime>09/17/2014 16:21:44</publishTime>
+    </File>
+    <File Include="Magic/Views/Js/Magic_Functions.js">
+      <publishTime>10/28/2014 11:03:52</publishTime>
+    </File>
+    <File Include="Magic/Views/Js/Magic_Grids.js">
+      <publishTime>08/20/2014 17:08:15</publishTime>
+    </File>
+    <File Include="Magic/Views/Js/Magic_Menus.js">
+      <publishTime>08/20/2014 17:08:15</publishTime>
+    </File>
+    <File Include="Magic/Views/Js/Magic_SchedulerStarter.js">
+      <publishTime>10/28/2014 11:03:52</publishTime>
+    </File>
+    <File Include="Magic/Views/Js/Magic_SqlDoc.js">
+      <publishTime>08/19/2014 12:52:46</publishTime>
+    </File>
+    <File Include="Magic/Views/Js/Magic_Templates.js">
+      <publishTime>10/28/2014 11:03:52</publishTime>
+    </File>
+    <File Include="Magic/Views/Js/Magic_UIComponentsLabels.js">
+      <publishTime>09/17/2014 16:21:44</publishTime>
+    </File>
+    <File Include="Magic/Views/Js/Magic_UserGroupVisibility.js">
+      <publishTime>04/23/2014 10:48:00</publishTime>
+    </File>
+    <File Include="Magic/Views/Js/Magic_UserGroupVisibilityTree.js">
+      <publishTime>10/28/2014 11:03:52</publishTime>
+    </File>
+    <File Include="Magic/Views/MagicFunctionTrees.aspx">
+      <publishTime>10/29/2014 16:01:50</publishTime>
+    </File>
+    <File Include="Magic/Views/Magic_Scheduler.aspx">
+      <publishTime>09/17/2014 17:00:27</publishTime>
+    </File>
+    <File Include="Magic/Views/Styles/Magic_UserGroupVisibilityTree.css">
+      <publishTime>10/28/2014 11:03:51</publishTime>
+    </File>
+    <File Include="main.aspx">
+      <publishTime>10/29/2014 16:01:50</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>10/28/2014 11:03:52</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>10/29/2014 16:01:32</publishTime>
+    </File>
+    <File Include="Scripts/AdminAreaCustomizations.js">
+      <publishTime>09/17/2014 16:21:44</publishTime>
+    </File>
+    <File Include="Scripts/AppLabels.js">
+      <publishTime>10/28/2014 11:03:51</publishTime>
+    </File>
+    <File Include="Scripts/dashboard.js">
+      <publishTime>10/28/2014 11:03:51</publishTime>
+    </File>
+    <File Include="Scripts/dispatchers.js">
+      <publishTime>10/29/2014 12:05:42</publishTime>
+    </File>
+    <File Include="Scripts/pushnotifications.js">
+      <publishTime>06/09/2014 12:37:41</publishTime>
+    </File>
+    <File Include="Views/AccountImages/635417228360430456developer.jpg">
+      <publishTime>07/23/2014 16:33:56</publishTime>
+    </File>
+    <File Include="Views/asset.aspx">
+      <publishTime>09/17/2014 17:00:27</publishTime>
+    </File>
+    <File Include="Views/elaborazioni.aspx">
+      <publishTime>10/29/2014 16:01:50</publishTime>
+    </File>
+    <File Include="Views/GeoBounds.aspx">
+      <publishTime>09/17/2014 17:00:27</publishTime>
+    </File>
+    <File Include="Views/Images/635338474825052534Resto.JPG">
+      <publishTime>04/23/2014 13:02:52</publishTime>
+    </File>
+    <File Include="Views/Images/635338529653058517Industriale.JPG">
+      <publishTime>04/23/2014 14:29:30</publishTime>
+    </File>
+    <File Include="Views/Images/635338529819838056Parcheggi.JPG">
+      <publishTime>04/23/2014 14:29:44</publishTime>
+    </File>
+    <File Include="Views/Images/635338529984567478Commerciale.JPG">
+      <publishTime>04/23/2014 14:29:58</publishTime>
+    </File>
+    <File Include="Views/Images/635338530149786928Immobiliare.JPG">
+      <publishTime>04/23/2014 14:30:15</publishTime>
+    </File>
+    <File Include="Views/Images/635338530243322278Parcheggi.JPG">
+      <publishTime>04/23/2014 14:30:24</publishTime>
+    </File>
+    <File Include="Views/Images/635379258452676656indust.jpg">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379259881851852indust.jpg">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379263187642402residen.jpg">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379263703784011residen.jpg">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379264340807707indust.jpg">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379265866000217direzi.jpg">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379266085772192residen.jpg">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379268772090805immmis.jpg">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379269795113097cencon.jpg">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379269929796564cencon.jpg">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379271293286560edific.jpg">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379272160539629negoz.jpg">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379272722765846cencon.jpg">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379272951068674immmis.jpg">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379273258869451direzi.jpg">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379281224285937agrico.JPG">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379281399903497agrico.JPG">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379281526336139agrico.JPG">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379283090602550agrico.JPG">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379283251498638cencon.jpg">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379283870610543agrico.JPG">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379284179346458agrico.JPG">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379284358366458direzi.jpg">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379285773760845agrico.JPG">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379285908214289agrico.JPG">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379294397263127agrico.JPG">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379295033646759agrico.JPG">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379295984131798agrico.JPG">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379297524275803nonedi.JPG">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379298578631228indus.JPG">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379299318095167appa.JPG">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Images/635379301814084747porzione.JPG">
+      <publishTime>10/28/2014 11:03:50</publishTime>
+    </File>
+    <File Include="Views/Js/assetmanagement.js">
+      <publishTime>09/17/2014 16:21:39</publishTime>
+    </File>
+    <File Include="Views/Js/assets.js">
+      <publishTime>10/28/2014 11:03:49</publishTime>
+    </File>
+    <File Include="Views/Js/entity.js">
+      <publishTime>09/17/2014 16:21:39</publishTime>
+    </File>
+    <File Include="Views/Js/geo.js">
+      <publishTime>10/28/2014 11:03:49</publishTime>
+    </File>
+    <File Include="Views/Js/GeoBounds.js">
+      <publishTime>10/28/2014 11:03:49</publishTime>
+    </File>
+    <File Include="Views/Js/monitor.js">
+      <publishTime>10/29/2014 12:16:59</publishTime>
+    </File>
+    <File Include="Views/Js/struttura.js">
+      <publishTime>08/18/2014 10:11:56</publishTime>
+    </File>
+    <File Include="Views/struttura.aspx">
+      <publishTime>10/29/2014 16:01:50</publishTime>
+    </File>
+    <File Include="Views/Styles/assets.css">
+      <publishTime>10/28/2014 11:03:49</publishTime>
+    </File>
+    <File Include="Views/Styles/monitor.css">
+      <publishTime>08/20/2014 17:26:49</publishTime>
+    </File>
+    <File Include="Views/test.aspx">
+      <publishTime>10/29/2014 16:01:50</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>10/29/2014 16:01:31</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

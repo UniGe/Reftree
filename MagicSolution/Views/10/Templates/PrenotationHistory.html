@@ -1,0 +1,27 @@
+﻿<div ng-switch="c.action">
+    <div ng-switch-default>
+        <div class="form-inline row">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label class="form-label-stripped" ng-bind="c.lang.project"></label>
+                </div>
+                <div class="form-group">
+                    <select class="form-control" ng-change="c.saveProjectInSession()"
+                            ng-model="c.checkInData.project"
+                            ng-options="d.PROGET_ID as d.PROGET_DESCRIZIONE for d in c.projectData | unique: 'PROGET_ID'"></select>
+
+                </div>
+                <div class="form-group" style="margin-left:20px;">
+                    <button class="btn btn-primary" ng-bind="c.lang.refresh" ng-click="c.refreshGrid()"></button>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group" style="float:right;">
+                    <span class="label label-info" ng-bind="c.lastUpdate"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div id="grid"></div>

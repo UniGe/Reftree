@@ -1,0 +1,186 @@
+﻿<style>
+
+
+    @media only screen and (max-width: 768px) {
+        /* For mobile phones: */
+        [class*="col-"] {
+            width: 100%;
+        }
+    }
+
+     #blockBody {
+         background-color: white;
+     }
+
+     #blockHeader {
+         background-color: white;
+     }
+
+    #myheader {
+        background-color: white;
+        hei
+    }
+
+     #blockFooter {
+         background-color: white;
+     }
+
+     #treeThemas {
+         overflow: auto !important;
+         width: auto;
+         max-height: 500px;
+     }
+
+     .itemColor-r3 {
+         width: 20px;
+         min-width: 20px;
+         background-color: transparent;
+     }
+
+     .itemColor-r3-ro {
+         width: 20px;
+         min-width: 20px;
+         background-color: transparent;
+         pointer-events: none;
+     }
+
+     #color-picker-wrapper {
+         float: left;
+     }
+
+  
+     .td_block {
+         padding: 5px;
+     }
+
+     .lbl-r3 {
+         display: block;
+         padding-left: 15px;
+         text-indent: -15px;
+     }
+
+    .ul-tab-r3 {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #0D638f;
+    }
+
+     .li-tab-r3 {
+         float: left;
+     }
+
+         .li-tab-r3 a {
+             display: block;
+             color: white;
+             text-align: center;
+             padding: 16px;
+             text-decoration: none;
+         }
+
+             .li-tab-r3 a:hover {
+                 background-color: #111111;
+             }
+
+     .listCheck-r3 {
+         border-color: black;
+         border-style: groove;
+         margin: 5px;
+         padding: 8px;
+         border-width: 1px;
+     }
+
+
+    .themati-window .modal-content {
+        margin: 30px;
+    }
+    .themati-window .td-r3 {
+        padding-right: 2px !important;
+    }
+
+
+    
+
+</style>
+
+
+<div id="myheader" class="modal-header">
+    <!--<button ng-model="button" id="btnExit" class="btn btn-danger pull-right" ng-click="cancel()">X</button>-->
+    <div ng-show="type == 'TEMI'" style="text-align:center;" class="col-lg-12">
+        <label>{{gdv.getLabels('selezionaTemi')}}</label>
+    </div>
+    <div ng-show="type == 'PIANI'" style="text-align:center;" class="col-lg-12">        
+        <label>{{gdv.getLabels('selezionaPiani')}}</label>
+    </div>
+</div>
+<div class="modal-body" id="blockBody">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="nav ul-tab-r3">
+                    <li ng-show="type == 'TEMI'" class="li-tab-r3" ng-class="{ active: isSet(1) }">
+                        <a ng-click="setTab(1)">{{gdv.getLabels('selezionaTemi')}}</a>
+                    </li>
+                    <li ng-show="type == 'TEMI'" class="li-tab-r3" ng-class="{ active: isSet(2) }">
+                        <a ng-click="setTab(2)">{{gdv.getLabels('blockGroup')}}</a>
+                    </li>
+                    <li ng-show="type == 'PIANI'" class="li-tab-r3" ng-class="{ active: isSet(3) }">
+                        <a ng-click="setTab(3)">{{gdv.getLabels('selezionaPiani')}}</a>
+                    </li>
+                </ul>
+                <div ng-show="isSet(1)">
+                    <br />
+                    <div id="treeRefTree" class="scrollable-tree-r3" data-always-visible="1" data-rail-visible="0">
+                        <tree-view-r3 model="themes" source="themes" on-check-block="true" change="checkChange(node)" b-selected-all="false" on-show-block="onShowBlock(node)" selected-node-block="nodeBlock" id="treeThemas">
+                        </tree-view-r3>
+                    </div>
+                </div>
+                <div ng-show="isSet(2)">
+                    <br />
+                    <div class="row">
+                        <div style="padding-left: 15px;" class="col-lg-12">
+                            <select class="pdf-form-control" ng-model="idThematiGroup" ng-value="idThematiGroup">
+                                <option ng-value=""></option>
+                                <option ng-repeat="node in ThematiForGroup" ng-value="node.id">{{node.text}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="listCheck-r3" ng-repeat="node in ThematiForGroupBlock">
+                                <input type=checkbox ng-model="node.value"><span style="padding-left:5px;">{{node.text}}</span></input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="isSet(3)" style="padding: 5px; margin-left: 10px;">
+                    <label>
+                        {{gdv.fileLabels['selectedAll']}}
+                        <input id="selectAllFloor" type="checkbox" ng-change="selectAllFloor()" ng-model="selectAllFloorValue" ng-value="selectAllFloorValue">
+                    </label>
+                    <div style="padding: 5px; margin-left: 10px;" ng-repeat="file in gdv.fileInfo">
+                        <label class="toggle-pdf">
+                            <input type="checkbox" class="selectFloor" ng-change="selectSingleFloor(file)" ng-model="file.checked">
+                            <span class="toggle-pdf">
+                                {{file.description}}
+                            </span>
+                        </label>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+<div class="modal-footer" id="blockFooter">
+        <div class="row">
+            <div class="col-lg-12">
+                <button class="btn btn-success" ng-click="save()">{{gdv.getLabels('save')}}</button>
+            </div>
+        </div>
+    </div>
+

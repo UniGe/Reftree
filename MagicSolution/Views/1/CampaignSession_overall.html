@@ -1,0 +1,25 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        Operatore:
+        <select kendo-drop-down-list="cd.options.usersDropDown"
+                k-data-text-field="'UserName'"
+                k-data-value-field="'ID'"
+                k-data-source="cd.options.users"
+                k-on-cascade="cd.options.setFilter()"
+                style="width: 100%"></select>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        Campagna:
+        <select kendo-drop-down-list="cd.options.campaignDropDown"
+                k-data-text-field="'CampaignDescription'"
+                k-data-value-field="'ID'"
+                k-data-source="cd.options.campaigns"
+                k-on-cascade="cd.options.setFilter()"
+                style="width: 100%"></select>
+    </div>
+</div>
+
+<div class="row" style="height:20px;"></div>
+<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <magic-grid id="grid0" gridname="Call_OP_overall" filter="cd.options.initialFilter" kendo-grid-instance="cd.options.kendoGridInstance"></magic-grid>
+</div>

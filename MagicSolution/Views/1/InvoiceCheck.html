@@ -1,0 +1,40 @@
+﻿<style>
+    .titles {
+        text-align: left;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .panel-heading{
+        height: 50px;
+    }
+</style>
+<div class="panel-heading ">
+    <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+            <p classe="titles" style="text-align: left;">
+                <b>  {{ cd.translate("InvoicesCheck")}} </b>
+            </p>
+        </a>
+    </h4>
+</div>
+<div id="collapseOne" class="panel-collapse collapse">
+    <div class="panel-body">
+        <div id="grid0"></div>
+        <magic-grid id="grid0" gridname="V_InvoiceCheckFE" filter="cd.options.initialFilter" kendo-grid-instance="cd.options.kendoGridInstance"></magic-grid>
+    </div>
+</div>
+<div class="panel-heading">
+    <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+            <p classe="titles" style="text-align: left;">
+                <b>  {{ cd.translate("MissingElectronicInvoices")}} </b>
+            </p>
+        </a>
+    </h4>
+</div>
+<div id="collapseThree" class="panel-collapse collapse">
+    <div class="panel-body">
+        <div id="grid0"></div>
+        <magic-grid id="grid0" gridname="V_CheckDocumentBaseMissing" filter="cd.options.initialFilter" kendo-grid-instance="cd.options.kendoGridInstance"></magic-grid>
+    </div>
+</div>

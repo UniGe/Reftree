@@ -1,0 +1,16 @@
+C:\Project\MagicFramework\MagicDeployDBManager\bin\Debug\MagicDeployDBManager.dll.config
+C:\Project\MagicFramework\MagicDeployDBManager\bin\Debug\MagicDeployDBManager.dll
+C:\Project\MagicFramework\MagicDeployDBManager\bin\Debug\MagicDeployDBManager.pdb
+C:\Project\MagicFramework\MagicDeployDBManager\bin\Debug\EntityFramework.dll
+C:\Project\MagicFramework\MagicDeployDBManager\bin\Debug\EntityFramework.SqlServer.dll
+C:\Project\MagicFramework\MagicDeployDBManager\bin\Debug\MongoDB.Bson.dll
+C:\Project\MagicFramework\MagicDeployDBManager\bin\Debug\MongoDB.Driver.dll
+C:\Project\MagicFramework\MagicDeployDBManager\bin\Debug\EntityFramework.xml
+C:\Project\MagicFramework\MagicDeployDBManager\bin\Debug\EntityFramework.SqlServer.xml
+C:\Project\MagicFramework\MagicDeployDBManager\bin\Debug\MongoDB.Bson.xml
+C:\Project\MagicFramework\MagicDeployDBManager\bin\Debug\MongoDB.Driver.xml
+C:\Project\MagicFramework\MagicDeployDBManager\obj\Debug\MagicDeployDBManager.csproj.AssemblyReference.cache
+C:\Project\MagicFramework\MagicDeployDBManager\obj\Debug\MagicDeployDBManager.csproj.CoreCompileInputs.cache
+C:\Project\MagicFramework\MagicDeployDBManager\obj\Debug\MagicDep.ADC5438F.Up2Date
+C:\Project\MagicFramework\MagicDeployDBManager\obj\Debug\MagicDeployDBManager.dll
+C:\Project\MagicFramework\MagicDeployDBManager\obj\Debug\MagicDeployDBManager.pdb

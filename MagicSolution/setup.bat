@@ -1,0 +1,1 @@
+npm install && npm run build:prod && rmdir /s /q .\node_modules

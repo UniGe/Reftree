@@ -1,0 +1,2932 @@
+﻿<style scoped>
+    #tblTemati th {
+        width: 100%;
+    }
+
+    #tblTemati td {
+        width: 100%;
+    }
+
+    .measurementLabel {
+        font-family: 'Times New Roman', Times, serif;
+        background-color: rgb(241, 7, 7);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+    }
+
+    .measurementButton {
+        visibility: visible;
+    }
+
+    .measurementButtonStart {
+        visibility: hidden;
+    }
+
+    .scroll-container {
+        border: 2px solid #daecf4;
+        border-radius: 7px;
+        overflow: hidden;
+        margin: 3px;
+        padding: 3px;
+        min-height: 15px;
+    }
+
+    .scroll-container-empty {
+        overflow: hidden;
+        margin: 3px;
+        padding: 3px;
+        min-height: 15px;
+    }
+
+    .scroll-text {
+        /* animation properties */
+        -moz-transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+        -moz-animation: my-animation 15s linear infinite;
+        -webkit-animation: my-animation 15s linear infinite;
+        animation: my-animation 15s linear infinite;
+        color: red;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+
+    /* for Firefox */
+    @-moz-keyframes my-animation {
+        from {
+            -moz-transform: translateX(100%);
+        }
+
+        to {
+            -moz-transform: translateX(-100%);
+        }
+    }
+
+    /* for Chrome */
+    @-webkit-keyframes my-animation {
+        from {
+            -webkit-transform: translateX(100%);
+        }
+
+        to {
+            -webkit-transform: translateX(-100%);
+        }
+    }
+
+    @keyframes my-animation {
+        from {
+            -moz-transform: translateX(100%);
+            -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+        }
+
+        to {
+            -moz-transform: translateX(-100%);
+            -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+        }
+    }
+
+    .modal-dialog-detail .modal-content {
+        margin: 30px;
+    }
+
+    .modal-dialog-detail .modal-dialog {
+        width: 40%;
+    }
+
+    #grid-dwg-controller {
+        margin-bottom: 120px;
+    }
+
+        #grid-dwg-controller button {
+            border-radius: 5px;
+            margin-left: 3px !important;
+        }
+
+
+        #grid-dwg-controller .btn-success.active.focus, .btn-success.active:focus, .btn-success.active:hover, .btn-success:active.focus, .btn-success:active:focus, .btn-success:active:hover, .open > .dropdown-toggle.btn-success.focus, .open > .dropdown-toggle.btn-success:focus, .open > .dropdown-toggle.btn-success:hover {
+            color: white;
+            background-color: #0090d9;
+            border-color: #0090d9
+        }
+
+    .dwg-map {
+        overflow-x: auto;
+        background-color: white;
+        height: 100%;
+    }
+
+    .dwg-color-box {
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        background-color: #ccc;
+        left: 5px;
+        top: 5px;
+    }
+
+    #treecontainer____.treehidden, #detail__.detailhidden {
+        display: none;
+    }
+
+    .row.kwin {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    3 .row.ltree {
+        margin-left: 15px;
+        margin-right: 0px;
+    }
+
+    .dwg-control-buttons button {
+        margin-left: 1px;
+    }
+
+    .type-color-circle-r3 {
+        border-radius: 50%;
+        overflow: hidden;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        overflow: hidden;
+        min-width: 15px;
+        min-height: 15px;
+        margin-left: 10px;
+        margin-top: -2px;
+    }
+
+    type-color-circle-r3::-webkit-color-swatch {
+        border: none;
+        border-radius: 50%;
+        padding: 0;
+    }
+
+    type-color-circle-r3::-webkit-color-swatch-wrapper {
+        border: none;
+        border-radius: 50%;
+        padding: 0;
+    }
+
+    #color-picker-wrapper {
+        float: left;
+    }
+
+    @media screen and (min-width: 768px) {
+        .modal-dialog {
+            width: 50%;
+        }
+    }
+
+    .dwg-detail-scroll {
+        overflow: hidden;
+    }
+
+    #gantttree input[type="color"] {
+        max-width: 17px;
+        min-width: 17px;
+        min-height: 20px;
+        background-color: transparent;
+        margin-left: 5px;
+        margin-top: -3px;
+        border: none;
+        background: none;
+        border-radius: 10px;
+        padding: 0;
+    }
+
+    #gantttree .k-treeview .k-in {
+        border: none;
+    }
+
+    #gantttree {
+        /*overflow: auto;*/
+        /*max-height: 400px;*/
+    }
+
+    #treeR3 input[type="color"] {
+        max-width: 17px;
+        min-width: 17px;
+        min-height: 20px;
+        background-color: transparent;
+        margin-left: 5px;
+        margin-top: -3px;
+        border: none;
+        background: none;
+        border-radius: 10px;
+        padding: 0;
+    }
+
+    #treeR3 .k-treeview .k-in {
+        border: none;
+    }
+
+    #treeR3 {
+        /*overflow: auto;*/
+        max-height: 400px;
+    }
+
+    .custom-range {
+        width: 100%;
+        height: calc(1rem + .4rem);
+        padding: 0;
+        background-color: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+
+    .tblLocaleTool {
+        font-size: 10px !important;
+    }
+
+    #treeThemati {
+        overflow: hidden !important;
+        display: table;
+    }
+
+
+
+    .dialogTree {
+        width: 20%;
+    }
+
+    .dialogActionGrid {
+        width: 50%;
+    }
+
+        .dialogActionGrid .k-grid-toolbar {
+            display: none;
+        }
+
+    #splitterContainer .col-md-6 {
+        width: 45%;
+    }
+
+    #splitterContainer .col-md-3 {
+        width: 20%;
+    }
+
+    #splitterContainer .col-md-4 {
+        width: 29%;
+    }
+
+    #vertical {
+        height: 100%;
+        margin: 0 auto;
+    }
+
+
+
+    #left-pane, #center-pane, #right-pane {
+        width: 20%;
+    }
+
+    #right-pane {
+        height: 100%;
+    }
+
+    #center-pane {
+        overflow-y: auto;
+    }
+
+    #splitterContainer {
+        height: 90vh;
+    }
+
+    /*#dxf-tree-one {
+            height: 50vh;
+        }*/
+
+
+
+    rowR3 {
+        display: table !important;
+        content: " ";
+        clear: both;
+    }
+
+    #dxf-tree-three {
+        margin: 10px
+    }
+
+    /*.collapse-r3 {
+            transition: .3s transform ease-in-out;
+        }
+
+        .panel-collapse.collapsing {
+            -webkit-transition-delay: 2s;
+            transition-delay: 2s;
+            visibility: hidden;
+        }
+
+        .panel-collapse.in {
+            -webkit-transition-delay: 3s;
+            transition-delay: 3s;
+            visibility: visible;
+        }*/
+
+    #treeAsset {
+        overflow: auto !important;
+        width: auto;
+        max-height: 500px;
+    }
+
+
+    .cad-control-buttons {
+        background-color: #0d6a92;
+        height: 36px;
+        margin-bottom: 5px;
+        text-align: center;
+        border-top-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+    }
+
+    .cad-control-buttons-title {
+        background-color: #0d6a92;
+        height: 18px;
+        margin-bottom: 2px;
+        text-align: center;
+    }
+
+    .cad-control-buttons-compare {
+        background-color: #0d6a92;
+        height: 36px;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    .cad-control-buttons-title-compare {
+        background-color: #0d6a92;
+        height: 18px;
+        margin-bottom: 2px;
+        text-align: center;
+    }
+
+
+    .btn-toolbar-cad-r3 {
+        background-color: transparent;
+        color: white;
+        margin: 7px 7px 5px 5px;
+    }
+
+        .btn-toolbar-cad-r3 > i {
+            margin-right: 5px;
+        }
+
+        .btn-toolbar-cad-r3:hover {
+            /*border-width: 0.5px;*/
+            /*background-color: transparent;
+                color: white;
+                font-weight: bold;
+                font-size: 18px;*/
+            /*border-radius: 5px;
+                border-color: white;
+                border-width: 0.2px;
+                background-color: transparent;
+                border-style: solid;*/
+        }
+
+        .btn-toolbar-cad-r3:focus {
+            /*border-width: 0.5px;*/
+            /*background-color: transparent;
+                    color: white*/
+            /*border-radius: 5px;
+                    border-color: white;
+                    border-width: 0.2px;
+                    background-color: transparent;
+                    border-style: solid;*/
+            background-color: transparent;
+        }
+
+        .btn-toolbar-cad-r3:hover > span {
+            /*border-width: 0.5px;*/
+            /*border-radius: 5px;
+                    border-color: white;
+                    border-width: 0.2px;
+                    background-color: transparent;
+                    border-style: solid;*/
+            /*background-color: transparent;
+                    color: white;
+                    font-weight: bold;
+                    font-size: 14px;*/
+            background-color: transparent;
+        }
+
+        .btn-toolbar-cad-r3:focus > span {
+            /*border-width: 0.5px;*/
+            /*background-color: transparent;
+                    color: white;
+                    font-size: 14px;*/
+        }
+
+    .span-title-button-cad {
+        /*background-color: transparent;
+                color: white;
+                margin: 5px;
+                font-size: 12px;*/
+    }
+
+
+
+    /*.span-title-button-cad:hover {
+                    border-width: 0.5px;
+                    background-color: transparent;
+                    color: white;
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+
+                .span-title-button-cad:focus {
+                    border-width: 0.5px;
+                    background-color: transparent;
+                    color: white
+                }*/
+
+    .span-title-cad {
+        display: inline-block;
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    .treeSelAction {
+        display: flex;
+        user-select: none;
+    }
+
+        .treeSelAction span:focus {
+            user-select: none;
+            color: red;
+        }
+
+    .dropdown-menu-right-r3 {
+        right: 10px;
+        left: auto;
+        border-radius: 10px 0 10px 0;
+        border-color: #0d6a92;
+        border-style: solid;
+        border-width: 0.5px;
+    }
+
+        .dropdown-menu-right-r3 > li > span:hover {
+            background-color: #0d6a92;
+            border-radius: 10px 0 10px 0;
+            border-color: #0d6a92;
+            border-style: solid;
+            border-width: 0.5px;
+        }
+
+        .dropdown-menu-right-r3 > li > a:hover {
+            background-color: #0d6a92;
+            border-radius: 10px 0 10px 0;
+            border-color: #0d6a92;
+            border-style: solid;
+            border-width: 0.5px;
+            color: white;
+        }
+
+        .dropdown-menu-right-r3 > li > a {
+            border-radius: 10px 0 10px 0;
+            border-style: solid;
+            border-width: 0.5px;
+            border-color: white;
+        }
+
+        .dropdown-menu-right-r3 > li {
+            cursor: pointer;
+        }
+
+    .btn-group-right-r3 {
+        float: right;
+    }
+
+    .btn-group-left-r3 {
+        float: left !important;
+    }
+
+
+    #left-pane ul::-webkit-scrollbar-thumb {
+        background-color: #d9ecf5;
+        border: 4px solid transparent;
+        border-radius: 8px;
+        background-clip: padding-box;
+    }
+
+    #left-pane ul::-webkit-scrollbar {
+        width: 16px;
+    }
+
+    .nav-pills-panel-r3 {
+        border: none;
+    }
+
+    #content_treeModalMenu .tab-content-r3 {
+        z-index: 0;
+        padding: 1px !important;
+        padding: 3px !important;
+    }
+
+    #content_treeModalMenu .tab-content > .active, .pill-content > .active {
+        padding: 3px !important;
+    }
+
+    #content_treeModalMenu .tab-content > .tab-pane, .pill-content > .pill-pane {
+        padding: 3px !important;
+    }
+
+    #content_treeModalMenu h4 {
+        line-height: 10px;
+    }
+
+    #contentTreeMenuR3 {
+        background-color: white;
+        z-index: 1;
+        border-style: solid;
+        border-radius: 7px;
+        border-color: #0d6a92;
+        border-width: 0.7px;
+    }
+
+
+    #toolbarButtonTop .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+        background-color: #0d6a92;
+        border-radius: 5px 0px 5px 0px;
+        margin: 5px;
+    }
+
+    #toolbarButtonTop .panel-heading .panel-title > a.collapsed:after {
+        content: "\f078";
+        color: white;
+    }
+
+    #toolbarButtonTop .panel-heading .panel-title > a:after {
+        content: "\f077";
+        color: white;
+    }
+
+    #toolbarButtonTop .panel-heading {
+        background-image: none;
+        background-color: #0d6a92;
+        cursor: pointer;
+    }
+
+        #toolbarButtonTop .panel-heading .panel-title > a.collapsed {
+            color: white !important;
+            content: "\f055";
+        }
+
+    #toolbarButtonTop .panel-title > a {
+        color: white;
+    }
+
+    #toolbarButtonTop .panel-heading .panel-title > a:focus {
+        color: white !important;
+        content: "\f055";
+    }
+
+
+    #treeModalMenu .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+        background-color: #0d6a92;
+        border-radius: 5px 0px 5px 0px;
+        margin: 5px;
+    }
+
+    #treeModalMenu .panel-heading .panel-title > a.collapsed:after {
+        content: "\f078";
+        color: white;
+    }
+
+    #treeModalMenu .panel-heading .panel-title > a:after {
+        content: "\f077";
+        color: white;
+    }
+
+    #treeModalMenu .panel-heading {
+        background-image: none;
+        background-color: #0d6a92;
+        cursor: pointer;
+    }
+
+        #treeModalMenu .panel-heading .panel-title > a.collapsed {
+            color: white !important;
+            content: "\f055";
+        }
+
+    #treeModalMenu .panel-title > a {
+        color: white;
+    }
+
+    #treeModalMenu .panel-heading .panel-title > a:focus {
+        color: white !important;
+        content: "\f055";
+    }
+
+
+    /*#toolbarButtonTop .panel-heading .panel-title > a:after {
+            content: "\f077" !important;
+            color: #00435e !important;
+        }*/
+
+    #toolbarButtonTop .tab-content-r3 {
+        z-index: 0;
+        padding: 1px !important;
+        padding: 3px !important;
+    }
+
+    #toolbarButtonTop .tab-content > .active, .pill-content > .active {
+        padding: 3px !important;
+    }
+
+    #toolbarButtonTop .tab-content > .tab-pane, .pill-content > .pill-pane {
+        padding: 3px !important;
+    }
+
+    #toolbarButtonTop h4 {
+        line-height: 10px;
+    }
+
+    .td-r3 {
+        padding: 1px !important;
+    }
+
+    .page-content {
+        margin: 0px !important;
+    }
+
+    .row-viewer-r3 {
+        flex-wrap: wrap;
+        display: flex;
+        position: relative;
+        width:99%;
+    }
+
+    .dropdown-menu-left-r3 {
+        right: auto;
+        left: 10px;
+        border-radius: 0px 10px 0px 10px;
+        border-color: #0d6a92;
+        border-style: solid;
+        border-width: 0.5px;
+    }
+
+        .dropdown-menu-left-r3 > li > span:hover {
+            background-color: #0d6a92;
+            border-radius: 0px 10px 0px 10px;
+            border-color: #0d6a92;
+            border-style: solid;
+            border-width: 0.5px;
+        }
+
+        .dropdown-menu-left-r3 > li {
+            cursor: pointer;
+        }
+
+            .dropdown-menu-left-r3 > li > a:hover {
+                background-color: #0d6a92;
+                border-radius: 0px 10px 0px 10px;
+                border-color: #0d6a92;
+                border-style: solid;
+                border-width: 0.5px;
+                color: white;
+            }
+
+            .dropdown-menu-left-r3 > li > a {
+                border-radius: 0px 10px 0px 10px;
+                border-style: solid;
+                border-width: 0.5px;
+                border-color: white;
+            }
+
+
+    .context-menu-cad-viewer-min {
+        display: none; /* Nasconde il menu di default */
+        position: fixed; /* Lo posiziona in modo fisso sulla pagina */
+        background-color: transparent;
+        border-radius: 8px;
+        z-index: 1000;
+        padding: 10px;
+    }
+
+        .context-menu-cad-viewer-min ul {
+            list-style: none;
+            padding: 0;
+            margin: 5px;
+        }
+
+    .context-menu-cad-viewer-min li {
+        padding: 4px 6px;
+        background-color: black;
+        color: white;
+        text-decoration: none;
+    }
+
+        .context-menu-cad-viewer-min li:first-child {
+            border-radius: 8px 8px 0 0px;
+        }
+
+        .context-menu-cad-viewer-min li:last-child {
+            border-radius: 0px 0px 8px 8px;
+        }
+
+    .context-menu-cad-viewer-min ul li:hover {
+        background-color: #555;
+    }
+
+    .context-menu-cad-viewer-min a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .r3-form-container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px; /* Spazio verticale tra gli elementi */
+        width: 300px;
+        margin: 20px auto;
+        font-family: sans-serif;
+    }
+
+        .r3-form-container input,
+        .r3-form-container select,
+        .r3-form-container div {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+</style>
+
+<div id="dwgControllorR3">
+
+    <div ng-show="rgv.showViewerDetail" id="toolbar-container" ng-if="rgv.toolBarButton" class="cad-control-buttons-title">
+        <span class="span-title-cad" ng-show="rgv.showViewerDetail">{{rgv.fileInfo[rgv.fileInDetail.fileName].description}}</span>
+    </div>
+
+    <div id="toolbar-container" ng-if="rgv.toolBarButton" class="cad-control-buttons">
+        <div class="btn-group btn-group-left-r3">
+            <button id="btnTematismi" ng-disabled="rgv.disableToolbarButton('btnTematismi')" ng-click="rgv.onResizePanelBody()" class="btn btn-success pull-left btn-toolbar-cad-r3" title="{{rgv.getLabels('tematismi')}}" type="button" data-toggle="dropdown">
+                <i class="glyphicon glyphicon-tasks"></i>
+                <span class="span-title-button-cad">{{rgv.selectedTree.text()}}</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-left-r3" id="selected-temati" role="menu">
+                <li ng-show="(n.RSN_THEMAT_FLAG_BLOCK && rgv.showViewerDetail || !n.RSN_THEMAT_FLAG_BLOCK)" ng-repeat="n in rgv.selectedTree.dataSource._data track by n.ID | unique:'ID'">
+                    <a ng-click="rgv.setSelectTreeDataValue(n)" class="collapsed" data-toggle="collapse" data-parent="#selected-temati" href="#dxf-themati-{{n.ID}}">
+                        {{n.Description}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <button id="details___dwg"
+                ng-show="!rgv.viewInsertBlock"
+                style="float:left;margin-left:1px;"
+                title="{{ rgv.getLabels('refreshTree') }}"
+                type="button"
+                class="btn btn-success pull-left btn-toolbar-cad-r3"
+                ng-click="rgv.viewerRefresh(true)"
+                ng-disabled="rgv.disableToolbarButton('details___dwg')">
+            <i class="glyphicon glyphicon-refresh" aria-hidden="true"></i>
+            <span class="span-title-button-cad">{{ rgv.getLabels('refreshTree') }}</span>
+        </button>
+        <button id="compare___dwg"
+                ng-show="rgv.enabledCompareMode && rgv.showViewerDetail && !rgv.assetMode"
+                style="float:left;margin-left:1px;"
+                title="{{rgv.getLabels('compareDxf')}}"
+                type="button"
+                class="btn btn-success pull-left btn-toolbar-cad-r3"
+                ng-click="rgv.onShowHideCompare()"
+                ng-disabled="rgv.disableToolbarButton('compare___dwg')">
+            <i class="glyphicon glyphicon-refresh" aria-hidden="true"></i>
+            <span class="span-title-button-cad">{{rgv.getLabels('compareDxf')}}</span>
+        </button>
+        <button id="view_cad_block"
+                style="float:left;margin-left:1px;"
+                title="{{ rgv.getLabels('viewDetail') }}"
+                type="button" class="btn btn-success pull-left btn-toolbar-cad-r3 "
+                ng-click="rgv.openModal()"
+                ng-show="rgv.openPopup"
+                ng-disabled="rgv.disableToolbarButton('view_cad_block')">
+            <span class="glyphicon glyphicon-new-window"></span>
+            <span class="span-title-button-cad">{{ rgv.getLabels('viewDetail') }}</span>
+        </button>
+        <button id="view_cad_block2"
+                style="float:left;margin-left:1px;"
+                title="{{ rgv.getLabels('viewDetail') }}"
+                type="button" class="btn btn-success pull-left btn-toolbar-cad-r3"
+                ng-click="rgv.openModalGridAction()"
+                ng-if="false"
+                ng-disabled="rgv.disableToolbarButton('view_cad_block2')">
+            <span class="glyphicon glyphicon-new-window"></span>
+            <span class="span-title-button-cad">{{ rgv.getLabels('viewDetail') }}</span>
+        </button>
+        <button id="insertCadBlock"
+                ng-if="rgv.showViewerDetail && rgv.assetMode"
+                style="float:left;margin-left:1px;"
+                title="{{ rgv.getLabels('insertBlock') }}"
+                type="button" class="btn btn-success pull-left btn-toolbar-cad-r3"
+                ng-click="rgv.onShowAddExternalBlock()"
+                ng-disabled="rgv.disableToolbarButton('insertCadBlock')">
+            <i class="fa fa-edit"></i>
+            <span class="span-title-button-cad">{{ rgv.getLabels('insertBlock') }}</span>
+        </button>
+        <button ng-if="rgv.showViewerDetail && rgv.assetMode"
+                id="blockSave"
+                style="float:left;margin-left:1px;"
+                title="{{ rgv.getLabels('saveExternalBlock') }}"
+                type="button" class="btn btn-success pull-left btn-toolbar-cad-r3"
+                ng-click="rgv.onBlockSave()"
+                ng-disabled="rgv.disableToolbarButton('blockSave')">
+            <i class="fa fa-save"></i>
+            <span class="span-title-button-cad">{{ rgv.getLabels('saveExternalBlock') }}</span>
+        </button>
+        <button id="showActions"
+                ng-show="rgv.showViewerDetail && rgv.hasProperties(rgv.viewerSelection) && !rgv.viewInsertBlock && !rgv.activateActionDirective"
+                style="float:left;margin-left:1px;"
+                title="{{ rgv.getLabels('showDetail') }} tree"
+                type="button"
+                class="btn btn-success pull-left btn-toolbar-cad-r3"
+                ng-click="rgv.onClickShowActions()"
+                ng-disabled="rgv.disableToolbarButton('showActions')">
+            <i class="glyphicon glyphicon-th-list" aria-hidden="true"></i>
+            <span class="span-title-button-cad">{{ rgv.getLabels('showDetail') }}</span>
+        </button>
+        <button id="showInfoCad"
+                ng-if="rgv.showInfoCadButton && rgv.enableLogInfo"
+                style="float:left;margin-left:1px;"
+                title="{{rgv.showInfoCad ? rgv.getLabels('Nascondi info') : rgv.getLabels('Visulaizza info')}}"
+                type="button"
+                class="btn btn-success pull-left btn-toolbar-cad-r3"
+                ng-click="rgv.showInfoCad = !rgv.showInfoCad"
+                ng-disabled="rgv.disableToolbarButton('showInfoCad')">
+            <i class="glyphicon glyphicon-th-list" aria-hidden="true"></i>
+            <span class="span-title-button-cad">{{ rgv.getLabels('Visulaizza info')}}</span>
+        </button>
+        <button id="showMeasureMode"
+                ng-if="rgv.showMeasureMode && rgv.showViewerDetail && !rgv.assetMode"
+                style="float:left;margin-left:1px;"
+                title="{{rgv.getLabels('Misurazione')}}"
+                type="button"
+                class="btn btn-success pull-left btn-toolbar-cad-r3"
+                ng-click="rgv.onSetMode('M')"
+                ng-disabled="rgv.disableToolbarButton('showMeasureMode')">
+            <i class="glyphicon glyphicon-th-list" aria-hidden="true"></i>
+            <span class="span-title-button-cad">{{ rgv.getLabels('Misurazione')}}</span>
+        </button>
+        <button id="showDrawingMode"
+                ng-if="rgv.showDrawingMode && rgv.showViewerDetail && !rgv.assetMode"
+                style="float:left;margin-left:1px;"
+                title="{{rgv.getLabels('Disegna')}}"
+                type="button"
+                class="btn btn-success pull-left btn-toolbar-cad-r3"
+                ng-click="rgv.onSetMode('D')"
+                ng-disabled="rgv.disableToolbarButton('showDrawingMode')">
+            <i class="glyphicon glyphicon-th-list" aria-hidden="true"></i>
+            <span class="span-title-button-cad">{{ rgv.getLabels('Disegna')}}</span>
+        </button>
+        <button ng-if="rgv.features.closeButton && !rgv.isGridEditPage"
+                title="{{ rgv.getLabels('close') }}"
+                type="button"
+                class="btn btn-danger pull-right btn-toolbar-cad-r3"
+                ng-click="rgv.closeViewer($event)">
+            <i class="fa fa-times" aria-hidden="true"></i>
+            <span class="span-title-button-cad">{{ rgv.getLabels('close') }}</span>
+        </button>
+        <div ng-show="rgv.mainContent !== 'map'" class="btn-group btn-group-right-r3">
+            <button id="btnEstrazioni" ng-disabled="rgv.disableToolbarButton('btnEstrazioni')" class="btn btn-success pull-right btn-toolbar-cad-r3" title="{{rgv.getLabels('Estrazioni')}}" type="button" data-toggle="dropdown">
+                <span class="fa fa-file-excel-o"></span>
+                <span class="span-title-button-cad">{{ rgv.getLabels('Estrazioni') }}</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right-r3" id="export-temati" role="menu">
+                <li>
+                    <a ng-click="rgv.onExportExcelThemati()" class="collapsed" data-toggle="collapse" data-parent="#export-temati">
+                        {{rgv.getLabels('EstraiTemes')}}
+                    </a>
+                </li>
+                <li>
+                    <a ng-if="(rgv.showViewerDetail && !rgv.assetMode) || !rgv.showViewerDetail" ng-click="rgv.onExportExcelAllAsset(rgv.initGridNameInfoCad)" class="collapsed" data-toggle="collapse" data-parent="#export-temati">
+                        {{rgv.getLabels('Estrai')}} {{rgv.selectedTree.text()}}
+                    </a>
+                </li>
+                <li>
+                    <a ng-if="(rgv.showViewerDetail && rgv.assetMode)" ng-click="rgv.onExportExcelAllAsset(rgv.initGridNameBlockInfoCad)" class="collapsed" data-toggle="collapse" data-parent="#export-temati">
+                        {{rgv.getLabels('Estrai')}} {{rgv.selectedTree.text()}}
+                    </a>
+                </li>
+                <!--<li>
+        <a ng-click="rgv.onExportExcelNew()" class="collapsed" data-toggle="collapse" data-parent="#export-temati">
+            Estrai excel new
+        </a>
+    </li>-->
+                <li>
+                    <a ng-if="rgv.enableDowloadDwg" ng-click="rgv.downloadDwg()" class="collapsed" data-toggle="collapse" data-parent="#export-temati">
+                        Download Dwg
+                    </a>
+                </li>
+                <li ng-if="rgv.enabledTipmodCad" ng-repeat="tipmod in rgv.tipmodForCad">
+                    <a ng-click="rgv.callTipmod(tipmod)" class="collapsed" data-toggle="collapse" data-parent="#export-temati">
+                        {{tipmod.PS_TIPMOD_DESCRIPTION}}
+                    </a>
+
+                </li>
+                <li>
+                    <a ng-if="rgv.showSavePdf && rgv.showDrawingMode && rgv.showViewerDetail" ng-click="rgv.saveDxf()" class="collapsed" data-toggle="collapse" data-parent="#export-export-pdf">
+                        {{rgv.getLabels('saveDxf')}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <button id="export___PDF1"
+                ng-if="!rgv.assetMode && rgv.mainContent !== 'map'"
+                style="float:left;margin-left:1px;"
+                title="{{ rgv.getLabels('extract_1') }}"
+                type="button" class="btn btn-success pull-right btn-toolbar-cad-r3"
+                ng-click="openPdf('/Views/3/Templates/PdfExtractTemplate.html',false)"
+                ng-disabled="rgv.disableToolbarButton('export___PDF1')">
+            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+            <span class="span-title-button-cad">Pdf</span>
+        </button>
+        <button id="export___LYT1"
+                ng-if="!rgv.assetMode && rgv.mainContent !== 'map' && rgv.enabledLayuot && rgv.showViewerDetail"
+                style="float:left;margin-left:1px;"
+                title="{{ rgv.getLabels('extract_lyt') }}"
+                ng-disabled="rgv.disableToolbarButton('export___LYT1')"
+                type="button" class="btn btn-success pull-right btn-toolbar-cad-r3"
+                ng-click="openLayout('/Views/3/Templates/PdfExtractTemplate.html',false)">
+            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+            <span class="span-title-button-cad">{{ rgv.getLabels('extract_lyt') }}</span>
+        </button>
+        <button id="export___DWG"
+                ng-show="rgv.enableDwgExport && rgv.showViewerDetail && !rgv.assetMode"
+                style="float:left;margin-left:1px;"
+                title="{{ rgv.getLabels('extract_2') }}"
+                type="button" class="btn btn-success pull-right btn-toolbar-cad-r3"
+                ng-click="openPdfDwg('/Views/3/Templates/pdfFloors.html',false)"
+                ng-disabled="rgv.disableToolbarButton('export___DWG')">
+            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+            <span class="span-title-button-cad">Dwg</span>
+        </button>
+        <button ng-show="false" title="{{ rgv.getLabels('applyfilter') }}"
+                type="button"
+                class="btn btn-success pull-right btn-toolbar-cad-r3"
+                ng-click="openFilterModal('/Views/3/Templates/DwgFilter.html')">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+        <button ng-show="rgv.history.length && rgv.showViewerDetail && rgv.selectedFiles.length > 1 || rgv.mainContent === 'actionGrid'"
+                title="{{ rgv.getLabels('back') }}"
+                type="button"
+                class="btn btn-success pull-right btn-toolbar-cad-r3"
+                ng-click="rgv.onBack()">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            <span class="span-title-button-cad">{{ rgv.getLabels('back') }}</span>
+        </button>
+        <button id="mapShowHideAsset"
+                ng-show="rgv.mainContent === 'map'"
+                title="{{ rgv.getLabels('selectAssets') }}"
+                type="button"
+                class="btn btn-success pull-right btn-toolbar-cad-r3"
+                ng-click="rgv.onMapSelect()">
+            <i class="fa fa-check" aria-hidden="true"></i>
+        </button>
+        <button ng-show="rgv.mainContent === 'map'"
+                title="{{ rgv.getLabels('backToInitialMapState') }}"
+                type="button"
+                class="btn btn-success pull-right btn-toolbar-cad-r3"
+                ng-click="rgv.onMapReset()">
+            <i class="fa fa-undo" aria-hidden="true"></i>
+        </button>
+        <button ng-if="rgv.features.map"
+                ng-show="!rgv.showViewerDetail && rgv.mainContent === 'viewer'"
+                title="{{ rgv.getLabels('showMap') }}"
+                type="button"
+                class="btn btn-success pull-right btn-toolbar-cad-r3"
+                ng-click="rgv.onShowMap()">
+            <i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>
+            <span class="span-title-button-cad">{{ rgv.getLabels('maps') }}</span>
+        </button>
+    </div>
+
+    <div ng-show="rgv.showExtraction" class="col-md-12">
+        <div class="row" ng-repeat="(k,v) in rgv.Themes">
+            <h4><input class="thethemestobeexported____" type="checkbox" id="{{k}}" /> {{ v }} </h4>
+        </div>
+        <button class="btn btn-success" ng-click="rgv.exportToXlsx()">{{ rgv.getLabels('extract') }}</button>
+    </div>
+
+    <div ng-show="rgv.showFilesGridData" class="col-md-12">
+        <h3>{{ rgv.Label }}</h3>
+        <div ng-show="rgv.showFilesGridData" kendo-grid="rgv.openGrid"
+             k-columns="rgv.filesGridColumns"
+             k-data-source="rgv.filesGridData"
+             k-selectable="'true'"
+             k-on-change="rgv.onFilesGridChange(kendoEvent)" />
+    </div>
+
+    <form name="form" ng-submit="rgv.filterTree(form)" ng-show="rgv.showFilters">
+        <label class="control-label" for="operator">{{ rgv.getLabels('operator') }}</label>
+        <select name="operator" id="operator" ng-model="rgv.treeFilters.Operator">
+            <option value="AND">AND</option>
+            <option value="OR">OR</option>
+        </select>
+        <div class="row" style="height:10px;"></div>
+        <magic-form-sp useasfilter="true" model="rgv.treeFilters.Values" storedprocedure="core.DWG_GetFilter" isreadonly="false" formname="{{ rgv.formName }}" itemsperrow=2 hidetabs="true" options='{ "kendoStyle":false }'
+                       ng-if="rgv.formName">
+        </magic-form-sp>
+        <input class="btn btn-success" type="submit" value="{{ rgv.getLabels('applyfilter') }}" />
+    </form>
+
+    <div ng-show="rgv.showFilters" class="btn btn-success" style="position:absolute; top: 0; right: 0; z-index:10" ng-click="rgv.showFilters = false">X</div>
+
+    <div ng-if="!rgv.showSpliHorizontal" id="splitterContainer">
+        <div kendo-splitter
+             id="horizontal"
+             ng-show="!rgv.showFilters && !rgv.showFilesGridData && !rgv.showExtraction && !rgv.showExtractionPdf"
+             k-panes="[{resizable:true,collapsible:true, size: rgv.features.sidebarAccordion ? '20%' : '39px' }, {resizable:true,collapsible:true}]"
+             k-orientation="'horizontal'"
+             style="height:100%"
+             k-on-resize="rgv.triggerWindowResize()">
+
+
+
+            <div id="left-pane">
+
+                <div ng-if="!rgv.toolBarButton">
+                    <!-- gestione dei bottoni generale -->
+                    <div ng-if="!rgv.toolBarButton" style="height: 36px; padding: 2px" class="dwg-control-buttons">
+                        <button ng-show="rgv.history.length && rgv.showViewerDetail && rgv.selectedFiles.length > 1 || rgv.mainContent === 'actionGrid'"
+                                title="{{ rgv.getLabels('back') }}"
+                                type="button"
+                                class="btn btn-success pull-right"
+                                ng-click="rgv.onBack()">
+                            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        </button>
+                        <button ng-show="rgv.mainContent === 'map'"
+                                title="{{ rgv.getLabels('selectAssets') }}"
+                                type="button"
+                                class="btn btn-success pull-right"
+                                ng-click="rgv.onMapSelect()">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                        </button>
+                        <button ng-show="rgv.mainContent === 'map'"
+                                title="{{ rgv.getLabels('backToInitialMapState') }}"
+                                type="button"
+                                class="btn btn-success pull-right"
+                                ng-click="rgv.onMapReset()">
+                            <i class="fa fa-undo" aria-hidden="true"></i>
+                        </button>
+                        <button ng-if="rgv.features.map"
+                                ng-show="!rgv.showViewerDetail && rgv.mainContent === 'viewer'"
+                                title="{{ rgv.getLabels('showMap') }}"
+                                type="button"
+                                class="btn btn-success pull-right"
+                                ng-click="rgv.onShowMap()">
+                            <i class="fa fa-globe" aria-hidden="true"></i>
+                        </button>
+                        <button ng-show="false" title="{{ rgv.getLabels('applyfilter') }}"
+                                type="button"
+                                class="btn btn-success"
+                                ng-click="openFilterModal('/Views/3/Templates/DwgFilter.html')">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </button>
+                        <button ng-if="rgv.features.closeButton"
+                                title="{{ rgv.getLabels('close') }}"
+                                type="button"
+                                class="btn btn-danger pull-left"
+                                ng-click="rgv.closeViewer($event)">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </button>
+                        <button id="export___PDF1"
+                                style="float:left;margin-left:1px;"
+                                title="{{rgv.getLabels('extract_1')}}"
+                                type="button" class="btn btn-danger"
+                                ng-click="openPdf('/Views/3/Templates/PdfExtractTemplate.html',false)">
+                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                        </button>
+                        <button id="export___DWG"
+                                ng-show="rgv.enableDwgExport && rgv.showViewerDetail"
+                                style="float:left;margin-left:1px;"
+                                title="{{ rgv.getLabels('extract_2') }}"
+                                type="button" class="btn btn-success"
+                                ng-click="openPdfDwg('/Views/3/Templates/pdfFloors.html',false)">
+                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-success" title="{{rgv.getLabels('Estrazioni')}}" type="button" data-toggle="dropdown" style="float:left;margin-left:1px;">
+                            <span class="fa fa-file-excel-o"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a ng-click="rgv.onExportExcelThemati()" class="collapsed" data-toggle="collapse" data-parent="#dxf-themati-accordion">
+                                    {{rgv.getLabels('EstraiTemes')}}
+                                </a>
+                            </li>
+                            <li>
+                                <a ng-if="(rgv.showViewerDetail && !rgv.assetMode) || !rgv.showViewerDetail" ng-click="rgv.onExportExcelAllAsset(rgv.initGridNameInfoCad)" class="collapsed" data-toggle="collapse" data-parent="#dxf-themati-accordion">
+                                    {{rgv.getLabels('EstraiLocali')}}
+                                </a>
+                            </li>
+                            <li>
+                                <a ng-if="(rgv.showViewerDetail && rgv.assetMode) || !rgv.showViewerDetail" ng-click="rgv.onExportExcelAllAsset(rgv.initGridNameBlockInfoCad)" class="collapsed" data-toggle="collapse" data-parent="#dxf-themati-accordion">
+                                    {{rgv.getLabels('EstraiImpianti')}}
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul>
+                            <li ng-repeat="tipmod in rgv.self.tipmodForCad">
+
+                                <a ng-if="(rgv.showViewerDetail && rgv.assetMode) || !rgv.showViewerDetail" ng-click="rgv.callTipmod(timpmod)" class="collapsed" data-toggle="collapse" data-parent="#dxf-themati-accordion">
+                                    {{tipmod.PS_TIPMOD_DESCRIPTION}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- gestione dei bottoni generale fine -->
+                    <div ng-if="rgv.features.sidebarAccordion" class="panel-group" id="dxf-tree-accordion">
+                        <!-- gestione del tree -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a ng-click="rgv.onShowTree('tematismi')" data-toggle="collapse" data-parent="#dxf-tree-accordion" href="#dxf-tree-one">
+                                        <!--{{rgv.getLabels('tematismi') + (rgv.showViewerDetail  ? ' ' + rgv.fileInfo[rgv.fileInDetail.fileName].description : '' )}}-->
+                                        {{rgv.getLabels('tematismi')}}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="dxf-tree-one" class="panel-collapse collapse in">
+                                <div class="panel-body" style="overflow:auto;">
+                                    <div id="treecontainer____" ng-show="!rgv.showFilters && !rgv.showFilesGridData && !rgv.showExtraction && !rgv.showExtractionPdf" style="height:95%;">
+                                        <div id="buttonTree" class="row ltree">
+                                            <select ng-show="false" id="dropThemati" style="float:left;margin-right:5px;margin-bottom:2px;width:95%;margin-top: 1em;" kendo-drop-down-list="rgv.selectedTree"
+                                                    k-data-text-field="'Description'"
+                                                    k-data-value-field="'ID'"
+                                                    k-data-source="rgv.TreesDs"
+                                                    k-on-cascade="rgv.getThematiFirstList()"></select>
+                                            <div ng-show="rgv.showMagic" style="float:left;">
+                                                <div id="divBtnConsole" class="btn-group">
+                                                    <button ng-click="rgv.onResizePanelBody()" class="btn btn-success dropdown-toggle" title="{{rgv.getLabels('tematismi')}}" type="button" data-toggle="dropdown">
+                                                        <span class="glyphicon glyphicon-tasks"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li ng-show="(n.RSN_THEMAT_FLAG_BLOCK && rgv.showViewerDetail || !n.RSN_THEMAT_FLAG_BLOCK)" ng-repeat="n in rgv.selectedTree.dataSource._data track by n.ID | unique:'ID'">
+                                                            <a ng-click="rgv.setSelectTreeDataValue(n)" class="collapsed" data-toggle="collapse" data-parent="#dxf-themati-accordion" href="#dxf-themati-{{n.ID}}">
+                                                                {{n.Description}}
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <button id="view_cad_block"
+                                                            style="float:left;margin-left:1px;"
+                                                            title="{{ rgv.getLabels('viewDetail') }}"
+                                                            type="button" class="btn btn-success"
+                                                            ng-click="rgv.openModal()">
+                                                        <span class="glyphicon glyphicon-new-window"></span>
+                                                    </button>
+                                                    <button id="view_cad_block2"
+                                                            style="float:left;margin-left:1px;"
+                                                            title="{{ rgv.getLabels('viewDetail') }}"
+                                                            type="button" class="btn btn-info"
+                                                            ng-click="rgv.openModalGridAction()"
+                                                            ng-if="false">
+                                                        <span class="glyphicon glyphicon-new-window"></span>
+                                                    </button>
+                                                    <button id="insertCadBlock"
+                                                            ng-if="rgv.showViewerDetail && rgv.assetMode"
+                                                            style="float:left;margin-left:1px;"
+                                                            title="{{ rgv.getLabels('insertBlock') }}"
+                                                            type="button" class="btn btn-info"
+                                                            ng-click="rgv.onShowAddExternalBlock()">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                    <button ng-if="rgv.showViewerDetail && rgv.assetMode"
+                                                            id="blockSave"
+                                                            style="float:left;margin-left:1px;"
+                                                            title="{{ rgv.getLabels('saveExternalBlock') }}"
+                                                            type="button" class="btn btn-success"
+                                                            ng-click="rgv.onBlockSave()">
+                                                        <i class="fa fa-save"></i>
+                                                    </button>
+                                                    <button id="showActions"
+                                                            ng-show="rgv.showViewerDetail && rgv.hasProperties(rgv.viewerSelection) && !rgv.viewInsertBlock && !rgv.activateActionDirective"
+                                                            style="float:left;margin-left:1px;"
+                                                            title="{{ rgv.getLabels('showDetail') }}tree"
+                                                            type="button"
+                                                            class="btn btn-info"
+                                                            ng-click="rgv.onClickShowActions()">
+                                                        <i class="glyphicon glyphicon-th-list" aria-hidden="true"></i>
+                                                    </button>
+                                                    <button id="details___dwg"
+                                                            ng-show="!rgv.viewInsertBlock"
+                                                            style="float:left;margin-left:1px;"
+                                                            title="{{ rgv.getLabels('refreshTree') }}"
+                                                            type="button"
+                                                            class="btn btn-warning"
+                                                            ng-click="rgv.viewerRefresh(true)">
+                                                        <i class="glyphicon glyphicon-refresh" aria-hidden="true"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <!--<div class="row ltree" style="height:10px;"></div>-->
+                                        <div id="gantttree" class="row ltree">
+                                            <div id="divtreeThemati" ng-show="rgv.showTreeData">
+                                                <!--ng-show="rgv.showTreeThemati"-->
+
+                                                <div id="treeThemati" kendo-tree-view="rgv.openTree" ng-if="!rgv.viewInsertBlock"
+                                                     k-data-source="rgv.selectedTreeData"
+                                                     k-checkboxes="rgv.checkboxesTemplate"
+                                                     k-on-check="rgv.getTematFromTree(kendoEvent)"
+                                                     k-on-expand="rgv.setTreeExpandedItem(kendoEvent)"
+                                                     k-on-data-bound="rgv.loadFilterForm(kendoEvent)"
+                                                     style="">
+                                                    <span class="treeSelAction" k-template ng-dblclick="rgv.onTreeClickItem(this)" ng-mobile-dblclick="rgv.onTreeClickItem(this)" ng-mouseover="rgv.onMouseOverBlock(this)" ng-mouseleave="rgv.onMouseLeaveBlock(this)">
+                                                        {{ !!dataItem.$$hashKey ? rgv.getLabels("selectAll") : dataItem.Description }}
+                                                        <span ng-show="true">
+                                                            {{ dataItem.Area ?  (dataItem.unit_measure != '' ? dataItem.unit_measure : ' ') + ' ' + dataItem.Area : ' ' }}
+                                                        </span>{{ dataItem.Tot_nr && dataItem.Tot_nr > 1 ?  '(' + dataItem.Tot_nr + ')' : '' }}
+                                                        <input ng-show="dataItem.showColor && dataItem.dwg_theme && !rgv.assetMode" ng-change="rgv.onChangeColor(this)" ng-model="dataItem.ColourTemat" type="color" ng-value="dataItem.ColourTemat" />
+                                                    </span>
+
+                                                </div>
+                                            </div>
+
+                                            <br />
+                                            <div class="panel-group" id="dxf-tree-2-accordion" ng-if="!rgv.viewInsertBlock && rgv.onShowGroupThemati">
+                                                <!--!rgv.viewInsertBlock-->
+                                                <div ng-repeat="thema in rgv.groupThematiList" class="panel panel-success">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a ng-click="rgv.setGroupThematiList(thema)" class="collapsed" data-toggle="collapse" data-parent="#dxf-tree-2-accordion" href="#dxf-tree-2-{{thema.ClathemId}}-{{thema.ThematiId}}">
+                                                                {{thema.Description}}
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+
+                                                    <div id="dxf-tree-2-{{thema.ClathemId}}-{{thema.ThematiId}}" class="panel-collapse collapse">
+                                                        <div class="panel-body" style="overflow:auto;">
+                                                            <div id="contain_{{thema.ClathemId}}_{{thema.ThematiId}}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div ng-show="rgv.viewInsertBlock" class="panel-group" id="dxf-header-accordion">
+                                                <div ng-if="rgv.classForAsset.length" ng-repeat="n in rgv.classForAsset | unique:'NEW' | orderBy:'NEW'" class="panel panel-success">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a data-toggle="collapse" class="collapsed" data-parent="#dxf-header-accordion" href="#dxf-header-{{n.NEW}}">
+                                                                {{n.NEW}}
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="dxf-header-{{n.NEW}}" class="panel-collapse collapse">
+                                                        <div class="panel-body" style="overflow:auto;">
+                                                            <div class="panel-group" id="dxf-blocks-accordion">
+                                                                <div ng-repeat="head in rgv.classForAsset | filter: {NEW: n.NEW} | unique:'id_father_key'" class="panel panel-success">
+                                                                    <div class="panel-heading">
+                                                                        <h4 class="panel-title">
+                                                                            <a class="collapsed" data-toggle="collapse" data-parent="#dxf-blocks-accordion" href="#dxf-tree-{{head.NEW}}-{{head.id_father_key}}">
+                                                                                {{head.ds_father}}
+                                                                            </a>
+                                                                        </h4>
+                                                                    </div>
+                                                                    <div id="dxf-tree-{{head.NEW}}-{{head.id_father_key}}" class="panel-collapse collapse">
+                                                                        <div class="panel-body" style="overflow:auto;">
+
+                                                                            <a ng-repeat="child in rgv.classForAsset | filter:head.id_father_key"
+                                                                               href="#"
+                                                                               ng-click="rgv.setVisibleInsertBlock(child)"
+                                                                               class="list-group-item"
+                                                                               ng-class="{ 'active':  (rgv.selectedClassForAsset[rgv.fileShownInDetail].id_child == child.id_child) }">
+                                                                                {{child.ds_child}}
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-show="false" ng-if="rgv.loadingTree" style="margin-top: 1em">
+                                        <p class="text-center"><i class="fa fa-spinner fa-spin fa-2x"></i></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- gestione del tree nuovo fine-->
+                        <!-- gestione layer e blocchi  -->
+                        <div class="panel panel-default" ng-if="(rgv.enableBlockLayerOnPreview || rgv.showViewerDetail )">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a ng-click="rgv.shownTree !== 'blocks' && rgv.onShowTree('blocks')" class="collapsed" data-toggle="collapse" data-parent="#dxf-tree-accordion" href="#dxf-tree-three">
+                                        {{rgv.getLabels('blocchiLayer')}}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="dxf-tree-three" class="panel-collapse collapse">
+                                <div>
+                                    <div class="panel-group" id="dxf-file-accordion">
+                                        <div ng-repeat="file in rgv.selectedFiles track by file.fileName" class="panel panel-success" ng-show="(!rgv.showViewerDetail && !!rgv.viewers[file.fileName]) || (rgv.showViewerDetail && file.fileName == rgv.fileInDetail.fileName)">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" class="collapsed" data-parent="#dxf-file-accordion" href="#file_blocks_layers_{{rgv.fileInfo[file.fileName].idDwg}}" style="font-size:10px">
+                                                        {{rgv.fileInfo[file.fileName].description}}
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="file_blocks_layers_{{rgv.fileInfo[file.fileName].idDwg}}" class="panel-collapse collapse">
+                                                <div class="panel-body" style="overflow:auto;">
+                                                    <div class="panel-group" id="blokcs_file_accordion">
+                                                        <div class="panel panel-success">
+                                                            <div class="panel-heading">
+                                                                <h4 class="panel-title">
+                                                                    <a data-toggle="collapse" class="collapsed" data-parent="#blokcs_file_accordion" href="#blokcs_file_{{rgv.fileInfo[file.fileName].idDwg}}">
+                                                                        {{rgv.getLabels('blocks')}}
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div id="blokcs_file_{{rgv.fileInfo[file.fileName].idDwg}}" class="panel-collapse collapse">
+                                                                <div class="panel-body" style="overflow:auto;">
+                                                                    <div class="checkbox checkbox-primary">
+                                                                        <label for="detailBlocksSelectAll_{{rgv.fileInfo[file.fileName].idDwg}}">
+                                                                            <input id="detailBlocksSelectAll_{{rgv.fileInfo[file.fileName].idDwg}}"
+                                                                                   type="checkbox"
+                                                                                   ng-click="rgv.toggleSelectBlocksFileName(file.fileName)"
+                                                                                   ng-model="rgv.isAllBlockSelectFileName[file.fileName]"
+                                                                                   class="list-group-item" />
+                                                                            {{rgv.getLabels('selectAll')}}
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="panel-body">
+                                                                        <div class="checkbox checkbox-primary" ng-repeat="block in rgv.blocksAndLayersAll[file.fileName].blocks">
+                                                                            <label for="{{block.name}}">
+                                                                                <input id="{{block.name}}"
+                                                                                       type="checkbox"
+                                                                                       ng-model="block.checked"
+                                                                                       ng-change="rgv.onBlockClickFileName(block,file.fileName)"
+                                                                                       class="list-group-item" />
+                                                                                {{block.name}}
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-group" id="layers_file_accordion">
+                                                        <div class="panel panel-success">
+                                                            <div class="panel-heading">
+                                                                <h4 class="panel-title">
+                                                                    <a data-toggle="collapse" class="collapsed" data-parent="#layers_file_accordion" href="#layers_file_{{rgv.fileInfo[file.fileName].idDwg}}">
+                                                                        {{rgv.getLabels('layers')}}
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div id="layers_file_{{rgv.fileInfo[file.fileName].idDwg}}" class="panel-collapse collapse">
+                                                                <div class="panel-body" style="overflow:auto;">
+
+                                                                    <div class="checkbox checkbox-primary">
+                                                                        <label for="detailLayersSelectAll_{{rgv.fileInfo[file.fileName].idDwg}}">
+                                                                            <input id="detailLayersSelectAll_{{rgv.fileInfo[file.fileName].idDwg}}"
+                                                                                   type="checkbox"
+                                                                                   ng-click="rgv.toggleSelectLayersFileName(file.fileName)"
+                                                                                   ng-model="rgv.isAllLayerSelectFileName[file.fileName]"
+                                                                                   class="list-group-item" />
+                                                                            {{rgv.getLabels('selectAll')}}
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="panel-body">
+                                                                        <div ng-show="layer.selectable" class="checkbox checkbox-primary" ng-repeat="layer in rgv.blocksAndLayersAll[file.fileName].layers">
+                                                                            <label>
+                                                                                <input id="{{layer.name}}"
+                                                                                       type="checkbox"
+                                                                                       ng-model="layer.checked"
+                                                                                       ng-change="rgv.onLayerClickAllFileName(layer,file.fileName)"
+                                                                                       class="list-group-item" />
+                                                                                {{layer.name}}
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- gestione layer e blocchi fine -->
+                        <!-- gestione layer e blocchi  -->
+                        <div ng-if="rgv.selectedFiles && rgv.selectedFiles.length" class="panel panel-default" ng-show="rgv.fileShownInDetail==file.fileName">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a ng-click="rgv.shownTree !== 'blocks' && rgv.onShowTree('blocks')" class="collapsed" data-toggle="collapse" data-parent="#dxf-tree-accordion" href="#dxf-tree-two">
+                                        {{rgv.getLabels('blocchiLayer')}}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="dxf-tree-two" class="panel-collapse collapse">
+                                <div ng-if="rgv.blocksAndLayersReady" class="panel-body">
+                                    <div ng-repeat="file in rgv.selectedFiles track by file.fileName"
+                                         ng-if="
+                            (
+                                !rgv.showViewerDetail
+                                || rgv.showViewerDetail
+                                    && rgv.fileShownInDetail === file.fileName
+                            )
+                            &&
+                            (
+                                rgv.visibleBlocksAndLayers[file.fileName].blocks.length
+                                || rgv.visibleBlocksAndLayers[file.fileName].layers.length
+                            )
+                        "
+                                         class="panel panel-default">
+                                        <div class="panel-heading">{{rgv.fileLabels[file.fileName]}}</div>
+                                        <div ng-if="rgv.visibleBlocksAndLayers[file.fileName].blocks.length"
+                                             class="panel-body"
+                                             style="
+                                border: 1px solid #D9E0E4;
+                                border-bottom: 0px;
+                                border-top: 0px;
+                            ">
+                                            <strong>{{rgv.getLabels('blocks')}}</strong>
+                                        </div>
+                                        <a ng-if="rgv.visibleBlocksAndLayers[file.fileName].blocks.length"
+                                           ng-repeat="block in rgv.visibleBlocksAndLayers[file.fileName].blocks track by block.name"
+                                           href="#"
+                                           class="list-group-item"
+                                           ng-click="rgv.onBlockClick(block)"
+                                           ng-class="{ 'active':  rgv.activeBlocks[block.name] }">
+                                            {{block.name}}
+                                        </a>
+                                        <div ng-if="rgv.visibleBlocksAndLayers[file.fileName].layers.length"
+                                             class="panel-body"
+                                             style="
+                                border: 1px solid #D9E0E4;
+                                border-bottom: 0px;
+                                border-top: 0px;
+                            ">
+                                            <strong>{{rgv.getLabels('layers')}}</strong>
+                                        </div>
+                                        <a ng-if="rgv.visibleBlocksAndLayers[file.fileName].layers.length"
+                                           ng-repeat="layer in rgv.visibleBlocksAndLayers[file.fileName].layers track by layer.name"
+                                           ng-click="rgv.onLayerClick(layer)"
+                                           ng-class="{ 'active':  rgv.activeLayers[layer.name] }"
+                                           href="#"
+                                           class="list-group-item">
+                                            {{layer.name}}
+                                        </a>
+                                    </div>
+                                </div>
+                                <div ng-if="!rgv.blocksAndLayersReady" style="margin-top: 1em">
+                                    <p class="text-center"><i class="fa fa-spinner fa-spin fa-2x"></i></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- gestione layer e blocchi fine -->
+                        <div style="height: 36px; padding: 2px" class="dwg-control-buttons">
+                            <button ng-show=""
+                                    type="button"
+                                    class="btn btn-success pull-right"
+                                    ng-click="rgv.refreshTreeAsset">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            </button>
+                        </div>
+
+                        <div class="panel panel-default" ng-if="rgv.showTreeAsset">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a ng-click="rgv.onSetTreeAsset()" class="collapsed" data-toggle="collapse" data-parent="#dxf-tree-accordion" href="#dxf-tree-four">
+                                        {{rgv.getLabels('gestioneAsset')}}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="dxf-tree-four" class="panel-collapse collapse">
+                                <div class="panel-body" style="overflow:auto;">
+                                    <div id="treeRefTreeAsset" class="scrollable-tree-r3" data-always-visible="1" data-rail-visible="0">
+
+                                        <tree-view-r3 click="rgv.treeAssetClick(this)" ng-if="rgv.bShowTreeAsset" model="rgv.treeDataAsset" source="rgv.treeDataAsset" id="treeAsset">
+                                        </tree-view-r3>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="toolbarButtonTop" ng-if="rgv.toolBarButton" style="padding:2px;">
+                    <div id="nav-pills-container" ng-if="rgv.features.sidebarAccordion" class="panel-group">
+                        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                            <li class="nav-item active">
+                                <a class="nav-link active" id="pills-temati-tab" data-toggle="pill" href="#ulThemati" role="tab" aria-controls="themati" aria-selected="true">{{rgv.getLabels('tematismi')}}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-block-layers-tab" data-toggle="pill" href="#ulBlocksLayer" role="tab" aria-controls="ulBlocksLayer" aria-selected="false">{{rgv.getLabels('blocchiLayer')}}</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content tab-content-r3" id="pills-tabContent">
+                            <div class="tab-pane fade active in" id="ulThemati" role="tabpanel" aria-labelledby="pills-temati-tab">
+                                <div style="min-height:70vh">
+                                    <div id="treecontainer____" ng-show="!rgv.showFilters && !rgv.showFilesGridData && !rgv.showExtraction && !rgv.showExtractionPdf" style="height:95%;">
+                                        <div id="buttonTree" class="row ltree" ng-show="false">
+                                            <select ng-show="false" id="dropThemati" style="float:left;margin-right:5px;margin-bottom:2px;width:95%;margin-top: 1em;" kendo-drop-down-list="rgv.selectedTree"
+                                                    k-data-text-field="'Description'"
+                                                    k-data-value-field="'ID'"
+                                                    k-data-source="rgv.TreesDs"
+                                                    k-on-cascade="rgv.getThematiFirstList()"></select>
+                                        </div>
+                                        <div id="gantttree" class="">
+                                            <div id="divtreeThemati" ng-show="rgv.showTreeData">
+
+                                                <div id="treeThemati" kendo-tree-view="rgv.openTree" ng-if="!rgv.viewInsertBlock"
+                                                     k-data-source="rgv.selectedTreeData"
+                                                     k-checkboxes="rgv.checkboxesTemplate"
+                                                     k-on-check="rgv.getTematFromTree(kendoEvent)"
+                                                     k-on-expand="rgv.setTreeExpandedItem(kendoEvent)"
+                                                     k-on-data-bound="rgv.loadFilterForm(kendoEvent)"
+                                                     style="">
+                                                    <span class="treeSelAction" k-template ng-mobile-dblclick="rgv.onTreeClickItem(this)" ng-dblclick="rgv.onTreeClickItem(this)" ng-mouseover="rgv.onMouseOverBlock(this)" ng-mouseleave="rgv.onMouseLeaveBlock(this)">
+                                                        {{ !!dataItem.$$hashKey ? rgv.getLabels('selectAll') : dataItem.Description }} <span ng-show="true"><b>{{ dataItem.Area ?  (dataItem.unit_measure ? dataItem.unit_measure : ' ') + ' ' + dataItem.Area : ' ' }} </b></span> {{ dataItem.Tot_nr && dataItem.Tot_nr>1 ?  '(' + dataItem.Tot_nr + ')' : '' }}
+                                                        <input ng-show="dataItem.showColor && dataItem.dwg_theme && !rgv.assetMode" ng-change="rgv.onChangeColor(this)" ng-model="dataItem.ColourTemat" type="color" ng-value="dataItem.ColourTemat" />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="panel-group" id="dxf-tree-2-accordion" ng-if="!rgv.viewInsertBlock && rgv.onShowGroupThemati">
+                                                <div ng-repeat="thema in rgv.groupThematiList" class="panel panel-success">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a ng-click="rgv.setGroupThematiList(thema)" class="collapsed" data-toggle="collapse" data-parent="#dxf-tree-2-accordion" href="#dxf-tree-2-{{thema.ClathemId}}-{{thema.ThematiId}}">
+                                                                {{thema.Description}}
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="dxf-tree-2-{{thema.ClathemId}}-{{thema.ThematiId}}" class="panel-collapse collapse">
+                                                        <div class="panel-body" style="overflow:auto;">
+                                                            <div id="contain_{{thema.ClathemId}}_{{thema.ThematiId}}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-show="rgv.viewInsertBlock" class="panel-group" id="dxf-header-accordion">
+                                        <div ng-if="rgv.classForAsset.length" ng-repeat="n in rgv.classForAsset | unique:'NEW' | orderBy:'NEW'" class="panel panel-success">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" class="collapsed" data-parent="#dxf-header-accordion" href="#dxf-header-{{n.NEW}}">
+                                                        {{n.NEW}}
+                                                    </a>
+                                                </h4>
+                                            </div>
+
+                                            <div id="dxf-header-{{n.NEW}}" class="panel-collapse collapse">
+                                                <div class="panel-body" style="overflow:auto;">
+                                                    <div class="panel-group" id="dxf-blocks-accordion">
+                                                        <div ng-repeat="head in rgv.classForAsset | filter: {NEW: n.NEW} | unique:'id_father_key'" class="panel panel-success">
+                                                            <div class="panel-heading">
+                                                                <h4 class="panel-title">
+                                                                    <a class="collapsed" data-toggle="collapse" data-parent="#dxf-blocks-accordion" href="#dxf-tree-{{head.NEW}}-{{head.id_father_key}}">
+                                                                        {{head.ds_father}}
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div id="dxf-tree-{{head.NEW}}-{{head.id_father_key}}" class="panel-collapse collapse">
+                                                                <div class="panel-body" style="overflow:auto;">
+                                                                    <a ng-repeat="child in rgv.classForAsset | filter:head.id_father_key"
+                                                                       href="#"
+                                                                       ng-click="rgv.setVisibleInsertBlock(child)"
+                                                                       class="list-group-item"
+                                                                       ng-class="{ 'active':  (rgv.selectedClassForAsset[rgv.fileShownInDetail].id_child == child.id_child) }">
+                                                                        {{child.ds_child}}
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="ulBlocksLayer" role="tabpanel" aria-labelledby="pills-block-layers-tab">
+                                <div class="panel-group" id="dxf-file-accordion">
+                                    <div ng-repeat="file in rgv.selectedFiles track by file.fileName" class="panel panel-success" ng-show="(!rgv.showViewerDetail && !!rgv.viewers[file.fileName]) || (rgv.showViewerDetail && file.fileName == rgv.fileInDetail.fileName)">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" class="collapsed" data-parent="#dxf-file-accordion" href="#file_blocks_layers_{{rgv.fileInfo[file.fileName].idDwg}}" style="font-size:10px">
+                                                    {{rgv.fileInfo[file.fileName].description}}
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="file_blocks_layers_{{rgv.fileInfo[file.fileName].idDwg}}" class="panel-collapse collapse">
+                                            <div class="panel-body" style="overflow:auto;">
+                                                <div class="" id="blokcs_file_accordion">
+                                                    <div class="panel panel-success">
+                                                        <div class="panel-heading">
+                                                            <h4 class="panel-title">
+                                                                <a data-toggle="collapse" class="collapsed" data-parent="#blokcs_file_accordion" href="#blokcs_file_{{rgv.fileInfo[file.fileName].idDwg}}">
+                                                                    {{rgv.getLabels('blocks')}}
+                                                                </a>
+                                                            </h4>
+                                                        </div>
+                                                        <div id="blokcs_file_{{rgv.fileInfo[file.fileName].idDwg}}" class="panel-collapse collapse">
+                                                            <div class="panel-body" style="overflow:auto;">
+                                                                <div class="checkbox checkbox-primary">
+                                                                    <label for="detailBlocksSelectAll_{{rgv.fileInfo[file.fileName].idDwg}}">
+                                                                        <input id="detailBlocksSelectAll_{{rgv.fileInfo[file.fileName].idDwg}}"
+                                                                               type="checkbox"
+                                                                               ng-click="rgv.toggleSelectBlocksFileName(file.fileName)"
+                                                                               ng-model="rgv.isAllBlockSelectFileName[file.fileName]"
+                                                                               class="list-group-item" />
+                                                                        {{rgv.getLabels('selectAll')}}
+                                                                    </label>
+                                                                </div>
+                                                                <div class="panel-body">
+                                                                    <div class="checkbox checkbox-primary" ng-repeat="block in rgv.blocksAndLayersAll[file.fileName].blocks">
+                                                                        <label for="{{block.name}}">
+                                                                            <input id="{{block.name}}"
+                                                                                   type="checkbox"
+                                                                                   ng-model="block.checked"
+                                                                                   ng-change="rgv.onBlockClickFileName(block,file.fileName)"
+                                                                                   class="list-group-item" />
+                                                                            {{block.name}}
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="" id="layers_file_accordion">
+                                                    <div class="panel panel-success">
+                                                        <div class="panel-heading">
+                                                            <h4 class="panel-title">
+                                                                <a data-toggle="collapse" class="collapsed" data-parent="#layers_file_accordion" href="#layers_file_{{rgv.fileInfo[file.fileName].idDwg}}">
+                                                                    {{rgv.getLabels('layers')}}
+                                                                </a>
+                                                            </h4>
+                                                        </div>
+                                                        <div id="layers_file_{{rgv.fileInfo[file.fileName].idDwg}}" class="panel-collapse collapse">
+                                                            <div class="panel-body" style="overflow:auto;">
+
+                                                                <div class="">
+                                                                    <label for="detailLayersSelectAll_{{rgv.fileInfo[file.fileName].idDwg}}">
+                                                                        <input id="detailLayersSelectAll_{{rgv.fileInfo[file.fileName].idDwg}}"
+                                                                               type="checkbox"
+                                                                               ng-click="rgv.toggleSelectLayersFileName(file.fileName)"
+                                                                               ng-model="rgv.isAllLayerSelectFileName[file.fileName]"
+                                                                               class="list-group-item" />
+                                                                        {{rgv.getLabels('selectAll')}}
+                                                                    </label>
+                                                                </div>
+                                                                <div class="panel-body">
+                                                                    <div ng-show="layer.selectable" class="checkbox checkbox-primary" ng-repeat="layer in rgv.blocksAndLayersAll[file.fileName].layers">
+                                                                        <label>
+                                                                            <input id="{{layer.name}}"
+                                                                                   type="checkbox"
+                                                                                   ng-model="layer.checked"
+                                                                                   ng-change="rgv.onLayerClickAllFileName(layer,file.fileName)"
+                                                                                   class="list-group-item" />
+                                                                            {{layer.name}}
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---->
+            <div id="right-pane">
+                <div kendo-splitter
+                     id="vertical"
+                     k-orientation="'vertical'"
+                     k-on-resize="rgv.triggerWindowResize()"
+                     k-panes="[{ resizable: true, collapsible: true ,size: '80%'}, {collapsed: true, resizable: true , collapsible:  true,size: '20%' }]">
+                    <div id="top-pane" style="overflow-x:hidden !important;">
+                        <div id="detailTopPaneContainer" class="row" ng-style="rgv.showViewerDetail || rgv.mainContent === 'map' ? { height: '100%'} : {}"
+                             style="flex-wrap: wrap; display: flex; position: relative; margin-left: 15px !important;">
+
+                            <div ng-if="rgv.showViewersOverlay" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; background-color: black; opacity: 0.5; z-index: 10">
+                                <p class="text-center" style="color: white; margin: 30vh"><i class="fa fa-spinner fa-spin fa-4x"></i></p>
+                            </div>
+                            <div ng-if="rgv.mainContent === 'map'" style="padding:0px;"
+                                 class="col-md-12">
+                                <easy-map markers="rgv.mapMarkers">
+                                </easy-map>
+                            </div>
+                            <div id="actionGridSingleContainer">
+                                <div ng-show="false" id="actionGridSingle">
+
+                                    <div ng-if="rgv.initGridAction && rgv.gridActionSingle !=''" class="row">
+                                        <div class="col-md-12">
+                                            <magic-grid gridname="{{rgv.gridActionSingle}}" filterpk="HANDLE" filter="rgv.initFilterGridStart" gridoptionsextension="{dataBound: rgv.onDataBoundGridActionSingle}"></magic-grid>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!--style="margin-top: 38px"-->
+                            <div class="col-md-12"
+                                 ng-if="rgv.mainContent === 'actionGrid'">
+                                <p ng-show="!rgv.isActionGridReady" class="text-center"><i class="fa fa-spinner fa-spin fa-2x"></i></p>
+                                <magic-grid ng-if="rgv.actionGridName"
+                                            ng-show="rgv.isActionGridReady"
+                                            gridname="{{rgv.actionGridName}}"
+                                            filter="rgv.actionGridFilter"
+                                            data="rgv.actionGridData"
+                                            kendoGridInstance="rgv.actionGridInstance"
+                                            gridoptionsextension="{dataBound: rgv.onDataBoundGrid, save:rgv.onSaveGrid}"></magic-grid>
+                            </div>
+
+                            <!--style="margin-top: 38px"-->
+                            <div ng-show="false" class="col-md-12">
+                                <magic-grid ng-if="rgv.addBlocksGridName && !rgv.assetMode"
+                                            ng-show="true"
+                                            gridname="{{rgv.addBlocksGridName}}"
+                                            filter="rgv.actionGridFilter"
+                                            kendoGridInstance="rgv.actionGridInstance"
+                                            gridoptionsextension="{save:rgv.onSaveGridBlocks,dataBound: rgv.onDataBoundGridBlocks}"></magic-grid>
+                            </div>
+                            <div ng-show="false" class="col-md-12">
+                                <magic-grid ng-if="rgv.actionBlockGridName && rgv.assetMode"
+                                            ng-show="true"
+                                            gridname="{{rgv.actionBlockGridName}}"
+                                            filter="rgv.actionBlockGridFilterStart"
+                                            kendoGridInstance="rgv.actionBlockGridInstance"
+                                            gridoptionsextension="{dataBound: rgv.onDataBoundGridActionBlock}"></magic-grid>
+                            </div>
+
+                            <div id="dxfContainer" ng-if="true" ng-init="rgv.onSetSplitterViewer()"
+                                 ng-show="rgv.mainContent === 'viewer' && (!rgv.showViewerDetail || rgv.showViewerDetail && rgv.fileShownInDetail === file.fileName)"
+                                 ng-repeat="file in rgv.selectedFiles track by file.fileName"
+                                 ng-class="rgv.getViewerContainerClass(this)"
+                                 ng-click="rgv.onSingleFileSelect(file)"
+                                 ng-style="rgv.showViewerDetail ? { 'height': '95%', overflow: 'hidden', 'width':'100%'} : { cursor: 'pointer'  }"
+                                 onresize="rgv.triggerWindowResize()">
+
+                                <p style="text-align: center; font-size:14px; margin: 5px; font-weight: bold;">{{ !rgv.showViewerDetail ? rgv.fileLabels[file.fileName] : ''}}</p>
+
+                                <dxf-viewer ng-show="true" on-set-data="rgv.onSetViewerData"
+                                            on-show-tooltip="rgv.onShowViewerTooltip"
+                                            file-name="file.fileName"
+                                            fill-polylines="file.tdata"
+                                            active-layers="rgv.fileActiveLayers[file.fileName]"
+                                            active-blocks="rgv.fileActiveBlocks[file.fileName]"
+                                            mode="{{ rgv.showViewerDetail && rgv.fileShownInDetail === file.fileName ||  rgv.selectedFiles.length == 1 ? 'webgl' : 'svg' }}"
+                                            style="width:100%; display:block; margin: 5px; margin-top: 15px;"
+                                            ng-style="rgv.showViewerDetail && rgv.fileShownInDetail === file.fileName ? { height: '90%'} : {}"
+                                            events="rgv.showViewerDetail && rgv.fileShownInDetail === file.fileName ? rgv.fileInDetailEvents : null"
+                                            path-file-cad="rgv.pathFileCad"
+                                            view-block="rgv.viewBlock"
+                                            external-blocks="rgv.externalBlocks[file.fileName]"
+                                            on-render-blocks="rgv.renderBlocks[file.fileName]"
+                                            clear-selection="rgv.clearSelectionViewer[file.fileName]"
+                                            on-clear-external-blocks="rgv.clearExternalBlocks[file.fileName]"
+                                            asset-mode="rgv.assetMode"
+                                            scale="rgv.scale"
+                                            on-Set-blocks-scale="rgv.onChangeScale"
+                                            on-add-new-block="rgv.onAddBlock"
+                                            on-get-close-polilyne="rgv.fillPolilyneForAddBlocks[file.fileName]"
+                                            on-insert-block="rgv.selectedClassForAsset[file.fileName]"
+                                            title="{{ !rgv.showViewerDetail ? rgv.fileLabels[file.fileName] : ''}}"
+                                            on-click-deselect="rgv.activateActionDirective"
+                                            multi-action="rgv.multiAction"
+                                            on-select-all-handle="rgv.getActionAll"
+                                            selected-block="rgv.selectedBlock"
+                                            on-show-text-block="rgv.onShowTextBlock"
+                                            >
+                                </dxf-viewer>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="bottom-pane">
+                        <!--<div ng-if="rgv.showViewerDetail">-->
+                        <div ng-show="false" ng-if="rgv.initGridExportThemati">
+                            <magic-grid gridname="{{rgv.initGridNameExportThemati}}" filterpk="id" gridoptionsextension="{dataBound: rgv.onDataBoundGridExportThemati}"></magic-grid>
+                        </div>
+                        <div ng-if="rgv.assetMode" ng-show="rgv.initGridNameBlockInfoCad">
+                            <magic-grid gridname="{{rgv.initGridNameBlockInfoCad}}" filter="rgv.initBlockGridInfoCadFilterStart" gridoptionsextension="{dataBinding: rgv.onDataBoundBlockGridInfoCad}"></magic-grid>
+                        </div>
+
+                        <div ng-repeat="grid in rgv.selectedTree.dataSource._data">
+                            <div ng-if="!rgv.assetMode && rgv.initGridNameInfoCad == grid.initGridNameInfoCad" ng-show="rgv.activateInitGridCadInfo">
+                                <magic-grid gridname="{{grid.initGridNameInfoCad}}" filter="rgv.initGridInfoCadFilterStart" gridoptionsextension="{dataBinding: rgv.onDataBoundGridInfoCad}"></magic-grid>
+                            </div>
+
+                        </div>
+                        <div ng-if="!rgv.assetMode" ng-show="rgv.activateInitGridCadInfo">
+                            <magic-grid gridname="{{rgv.initGridNameInfoCad}}" filter="rgv.initGridInfoCadFilterStart" gridoptionsextension="{dataBinding: rgv.onDataBoundGridInfoCad}"></magic-grid>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="rgv.showSpliHorizontal" id="splitterContainer">
+        <div kendo-splitter
+             id="vertical"
+             ng-show="!rgv.showFilters && !rgv.showFilesGridData && !rgv.showExtraction && !rgv.showExtractionPdf"
+             k-panes="[{ resizable: true, collapsible: true}, {collapsed:true ,resizable: true , collapsible: true}]"
+             k-orientation="'vertical'"
+             style="width:100%; height: 100%;"
+             k-on-resize="rgv.triggerWindowResize()">
+            <div id="top-pane">
+                <div kendo-splitter
+                     id="horizontal"
+                     style="height: 100%; width: 100%;"
+                     k-on-resize="av.triggerWindowResize()"
+                     k-panes="[{resizable:true,collapsible:true,size:'20%'}, {resizable:true,collapsible:true,size:'50%'}]"
+                     k-orientation="'horizontal'">
+
+                    <div id="left-pane">
+                        <div ng-if="!rgv.toolBarButton">
+                            <!-- gestione dei bottoni generale -->
+                            <div ng-if="!rgv.toolBarButton" style="height: 36px; padding: 2px" class="dwg-control-buttons">
+                                <button ng-show="rgv.history.length && rgv.showViewerDetail && rgv.selectedFiles.length > 1 || rgv.mainContent === 'actionGrid'"
+                                        title="{{ rgv.getLabels('back') }}"
+                                        type="button"
+                                        class="btn btn-success pull-right"
+                                        ng-click="rgv.onBack()">
+                                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                </button>
+                                <button ng-show="rgv.mainContent === 'map'"
+                                        title="{{ rgv.getLabels('selectAssets') }}"
+                                        type="button"
+                                        class="btn btn-success pull-right"
+                                        ng-click="rgv.onMapSelect()">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                </button>
+                                <button ng-show="rgv.mainContent === 'map'"
+                                        title="{{ rgv.getLabels('backToInitialMapState') }}"
+                                        type="button"
+                                        class="btn btn-success pull-right"
+                                        ng-click="rgv.onMapReset()">
+                                    <i class="fa fa-undo" aria-hidden="true"></i>
+                                </button>
+                                <button ng-if="rgv.features.map"
+                                        ng-show="!rgv.showViewerDetail && rgv.mainContent === 'viewer'"
+                                        title="{{ rgv.getLabels('showMap') }}"
+                                        type="button"
+                                        class="btn btn-success pull-right"
+                                        ng-click="rgv.onShowMap()">
+                                    <i class="fa fa-globe" aria-hidden="true"></i>
+                                </button>
+                                <button ng-show="false" title="{{ rgv.getLabels('applyfilter') }}"
+                                        type="button"
+                                        class="btn btn-success"
+                                        ng-click="openFilterModal('/Views/3/Templates/DwgFilter.html')">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </button>
+                                <button ng-if="rgv.features.closeButton"
+                                        title="{{ rgv.getLabels('close') }}"
+                                        type="button"
+                                        class="btn btn-danger pull-left"
+                                        ng-click="rgv.closeViewer($event)">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </button>
+                                <button id="export___PDF1"
+                                        style="float:left;margin-left:1px;"
+                                        title="{{ rgv.getLabels('extract_1') }}"
+                                        type="button" class="btn btn-danger"
+                                        ng-click="openPdf('/Views/3/Templates/PdfExtractTemplate.html',false)">
+                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                </button>
+                                <button id="export___DWG"
+                                        ng-show="rgv.enableDwgExport && rgv.showViewerDetail"
+                                        style="float:left;margin-left:1px;"
+                                        title="{{ rgv.getLabels('extract_2') }}"
+                                        type="button" class="btn btn-success"
+                                        ng-click="openPdfDwg('/Views/3/Templates/pdfFloors.html',false)">
+                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                </button>
+                                <button class="btn btn-success" title="{{rgv.getLabels('Estrazioni')}}" type="button" data-toggle="dropdown" style="float:left;margin-left:1px;">
+                                    <span class="fa fa-file-excel-o"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a ng-click="rgv.onExportExcelThemati()" class="collapsed" data-toggle="collapse" data-parent="#dxf-themati-accordion">
+                                            {{rgv.getLabels('EstraiTemes')}}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a ng-if="(rgv.showViewerDetail && !rgv.assetMode) || !rgv.showViewerDetail" ng-click="rgv.onExportExcelAllAsset(rgv.initGridNameInfoCad)" class="collapsed" data-toggle="collapse" data-parent="#dxf-themati-accordion">
+                                            {{rgv.getLabels('EstraiTemes')}}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a ng-if="(rgv.showViewerDetail && rgv.assetMode) || !rgv.showViewerDetail" ng-click="rgv.onExportExcelAllAsset(rgv.initGridNameBlockInfoCad)" class="collapsed" data-toggle="collapse" data-parent="#dxf-themati-accordion">
+                                            {{rgv.getLabels('EstraiTemes')}}
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <!-- gestione dei bottoni generale fine -->
+                            <div ng-if="rgv.features.sidebarAccordion" class="panel-group" id="dxf-tree-accordion">
+                                <!-- gestione del tree -->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a ng-click="rgv.onShowTree('tematismi')" data-toggle="collapse" class="collapse" data-parent="#dxf-tree-accordion" href="#dxf-tree-one">
+                                                <!--{{rgv.getLabels('tematismi') + (rgv.showViewerDetail  ? ' ' + rgv.fileInfo[rgv.fileInDetail.fileName].description : '' )}}-->
+                                                {{rgv.getLabels('tematismi')}}
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="dxf-tree-one" class="panel-collapse collapse in">
+                                        <div class="panel-body" style="overflow:auto;">
+                                            <div id="treecontainer____" ng-show="!rgv.showFilters && !rgv.showFilesGridData && !rgv.showExtraction && !rgv.showExtractionPdf" style="height:95%;">
+                                                <div id="buttonTree" class="row ltree">
+                                                    <select ng-show="false" id="dropThemati" style="float:left;margin-right:5px;margin-bottom:2px;width:95%;margin-top: 1em;" kendo-drop-down-list="rgv.selectedTree"
+                                                            k-data-text-field="'Description'"
+                                                            k-data-value-field="'ID'"
+                                                            k-data-source="rgv.TreesDs"
+                                                            k-on-cascade="rgv.getThematiFirstList()"></select>
+                                                    <div ng-show="rgv.showMagic" style="float:left;">
+                                                        <div id="divBtnConsole" class="btn-group">
+                                                            <button ng-click="rgv.onResizePanelBody()" class="btn btn-success dropdown-toggle" title="{{rgv.getLabels('tematismi')}}" type="button" data-toggle="dropdown">
+                                                                <span class="glyphicon glyphicon-tasks"></span>
+                                                            </button>
+                                                            <ul class="dropdown-menu">
+                                                                <li ng-show="(n.RSN_THEMAT_FLAG_BLOCK && rgv.showViewerDetail || !n.RSN_THEMAT_FLAG_BLOCK)" ng-repeat="n in rgv.selectedTree.dataSource._data track by n.ID | unique:'ID'">
+                                                                    <a ng-click="rgv.setSelectTreeDataValue(n)" class="collapsed" data-toggle="collapse" data-parent="#dxf-themati-accordion" href="#dxf-themati-{{n.ID}}">
+                                                                        {{n.Description}}
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                            <button id="view_cad_block"
+                                                                    style="float:left;margin-left:1px;"
+                                                                    title="{{ rgv.getLabels('viewDetail') }}"
+                                                                    type="button" class="btn btn-success"
+                                                                    ng-click="rgv.openModal()">
+                                                                <span class="glyphicon glyphicon-new-window"></span>
+                                                            </button>
+                                                            <button id="view_cad_block2"
+                                                                    style="float:left;margin-left:1px;"
+                                                                    title="{{ rgv.getLabels('viewDetail') }}"
+                                                                    type="button" class="btn btn-info"
+                                                                    ng-click="rgv.openModalGridAction()"
+                                                                    ng-if="false">
+                                                                <span class="glyphicon glyphicon-new-window"></span>
+                                                            </button>
+                                                            <button id="insertCadBlock"
+                                                                    ng-if="rgv.showViewerDetail && rgv.assetMode"
+                                                                    style="float:left;margin-left:1px;"
+                                                                    title="{{ rgv.getLabels('insertBlock') }}"
+                                                                    type="button" class="btn btn-info"
+                                                                    ng-click="rgv.onShowAddExternalBlock()">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button ng-if="rgv.showViewerDetail && rgv.assetMode"
+                                                                    id="blockSave"
+                                                                    style="float:left;margin-left:1px;"
+                                                                    title="{{ rgv.getLabels('saveExternalBlock') }}"
+                                                                    type="button" class="btn btn-success"
+                                                                    ng-click="rgv.onBlockSave()">
+                                                                <i class="fa fa-save"></i>
+                                                            </button>
+                                                            <button id="showActions"
+                                                                    ng-show="rgv.showViewerDetail && rgv.hasProperties(rgv.viewerSelection) && !rgv.viewInsertBlock && !rgv.activateActionDirective"
+                                                                    style="float:left;margin-left:1px;"
+                                                                    title="{{ rgv.getLabels('showDetail') }}tree"
+                                                                    type="button"
+                                                                    class="btn btn-info"
+                                                                    ng-click="rgv.onClickShowActions()">
+                                                                <i class="glyphicon glyphicon-th-list" aria-hidden="true"></i>
+                                                            </button>
+                                                            <button id="details___dwg"
+                                                                    ng-show="!rgv.viewInsertBlock"
+                                                                    style="float:left;margin-left:1px;"
+                                                                    title="{{ rgv.getLabels('refreshTree') }}"
+                                                                    type="button"
+                                                                    class="btn btn-warning"
+                                                                    ng-click="rgv.viewerRefresh(true)">
+                                                                <i class="glyphicon glyphicon-refresh" aria-hidden="true"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <!--<div class="row ltree" style="height:10px;"></div>-->
+                                                <div id="gantttree" class="row ltree">
+                                                    <div id="divtreeThemati" ng-show="rgv.showTreeData">
+                                                        <!--ng-show="rgv.showTreeThemati"-->
+
+                                                        <div id="treeThemati" kendo-tree-view="rgv.openTree" ng-if="!rgv.viewInsertBlock"
+                                                             k-data-source="rgv.selectedTreeData"
+                                                             k-checkboxes="rgv.checkboxesTemplate"
+                                                             k-on-check="rgv.getTematFromTree(kendoEvent)"
+                                                             k-on-expand="rgv.setTreeExpandedItem(kendoEvent)"
+                                                             k-on-data-bound="rgv.loadFilterForm(kendoEvent)"
+                                                             style="">
+                                                            <span class="treeSelAction" k-template ng-mobile-dblclick="rgv.onTreeClickItem(this)" ng-dblclick="rgv.onTreeClickItem(this)" ng-mouseover="rgv.onMouseOverBlock(this)" ng-mouseleave="rgv.onMouseLeaveBlock(this)">
+                                                                {{ !!dataItem.$$hashKey ? 'Seleziona tutti' : dataItem.Description }}
+                                                                <span ng-show="true">
+                                                                    {{ dataItem.Area ?  (dataItem.unit_measure != '' ? dataItem.unit_measure : ' ') + ' ' + dataItem.Area : ' ' }}
+                                                                </span>{{ dataItem.Tot_nr && dataItem.Tot_nr > 1 ?  '(' + dataItem.Tot_nr + ')' : '' }}
+                                                                <input ng-show="dataItem.showColor && dataItem.dwg_theme && !rgv.assetMode" ng-change="rgv.onChangeColor(this)" ng-model="dataItem.ColourTemat" type="color" ng-value="dataItem.ColourTemat" />
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <br />
+                                                    <div class="panel-group" id="dxf-tree-2-accordion" ng-if="!rgv.viewInsertBlock && rgv.onShowGroupThemati">
+                                                        <!--!rgv.viewInsertBlock-->
+                                                        <div ng-repeat="thema in rgv.groupThematiList" class="panel panel-success">
+                                                            <div class="panel-heading">
+                                                                <h4 class="panel-title">
+                                                                    <a ng-click="rgv.setGroupThematiList(thema)" class="collapsed" data-toggle="collapse" data-parent="#dxf-tree-2-accordion" href="#dxf-tree-2-{{thema.ClathemId}}-{{thema.ThematiId}}">
+                                                                        {{thema.Description}}
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+
+                                                            <div id="dxf-tree-2-{{thema.ClathemId}}-{{thema.ThematiId}}" class="panel-collapse collapse">
+                                                                <div class="panel-body" style="overflow:auto;">
+                                                                    <div id="contain_{{thema.ClathemId}}_{{thema.ThematiId}}">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div ng-show="rgv.viewInsertBlock" class="panel-group" id="dxf-header-accordion">
+                                                        <div ng-repeat="n in rgv.classForAsset | unique:'NEW' | orderBy:'NEW'" class="panel panel-success">
+                                                            <div class="panel-heading">
+                                                                <h4 class="panel-title">
+                                                                    <a data-toggle="collapse" class="collapsed" data-parent="#dxf-header-accordion" href="#dxf-header-{{n.NEW}}">
+                                                                        {{n.NEW}}
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div id="dxf-header-{{n.NEW}}" class="panel-collapse collapse">
+                                                                <div class="panel-body" style="overflow:auto;">
+                                                                    <div class="panel-group" id="dxf-blocks-accordion">
+                                                                        <div ng-repeat="head in rgv.classForAsset | filter: {NEW: n.NEW} | unique:'id_father_key'" class="panel panel-success">
+                                                                            <div class="panel-heading">
+                                                                                <h4 class="panel-title">
+                                                                                    <a class="collapsed" data-toggle="collapse" data-parent="#dxf-blocks-accordion" href="#dxf-tree-{{head.NEW}}-{{head.id_father_key}}">
+                                                                                        {{head.ds_father}}
+                                                                                    </a>
+                                                                                </h4>
+                                                                            </div>
+                                                                            <div id="dxf-tree-{{head.NEW}}-{{head.id_father_key}}" class="panel-collapse collapse">
+                                                                                <div class="panel-body" style="overflow:auto;">
+
+                                                                                    <a ng-repeat="child in rgv.classForAsset | filter:head.id_father_key"
+                                                                                       href="#"
+                                                                                       ng-click="rgv.setVisibleInsertBlock(child)"
+                                                                                       class="list-group-item"
+                                                                                       ng-class="{ 'active':  (rgv.selectedClassForAsset[rgv.fileShownInDetail].id_child == child.id_child) }">
+                                                                                        {{child.ds_child}}
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div ng-show="false" ng-if="rgv.loadingTree" style="margin-top: 1em">
+                                                <p class="text-center"><i class="fa fa-spinner fa-spin fa-2x"></i></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- gestione del tree nuovo fine-->
+                                <!-- gestione layer e blocchi  -->
+                                <div class="panel panel-default" ng-if="(rgv.enableBlockLayerOnPreview || rgv.showViewerDetail )">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a ng-click="rgv.shownTree !== 'blocks' && rgv.onShowTree('blocks')" class="collapsed" data-toggle="collapse" data-parent="#dxf-tree-accordion" href="#dxf-tree-three">
+                                                {{rgv.getLabels('blocchiLayer')}}
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="dxf-tree-three" class="panel-collapse collapse">
+                                        <div>
+                                            <div class="panel-group" id="dxf-file-accordion">
+                                                <div ng-repeat="file in rgv.selectedFiles track by file.fileName" class="panel panel-success" ng-show="(!rgv.showViewerDetail && !!rgv.viewers[file.fileName]) || (rgv.showViewerDetail && file.fileName == rgv.fileInDetail.fileName)">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a data-toggle="collapse" class="collapsed" data-parent="#dxf-file-accordion" href="#file_blocks_layers_{{rgv.fileInfo[file.fileName].idDwg}}" style="font-size:10px">
+                                                                {{rgv.fileInfo[file.fileName].description}}
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="file_blocks_layers_{{rgv.fileInfo[file.fileName].idDwg}}" class="panel-collapse collapse">
+                                                        <div class="panel-body" style="overflow:auto;">
+                                                            <div class="panel-group" id="blokcs_file_accordion">
+                                                                <div class="panel panel-success">
+                                                                    <div class="panel-heading">
+                                                                        <h4 class="panel-title">
+                                                                            <a data-toggle="collapse" class="collapsed" data-parent="#blokcs_file_accordion" href="#blokcs_file_{{rgv.fileInfo[file.fileName].idDwg}}">
+                                                                                {{rgv.getLabels('blocks')}}
+                                                                            </a>
+                                                                        </h4>
+                                                                    </div>
+                                                                    <div id="blokcs_file_{{rgv.fileInfo[file.fileName].idDwg}}" class="panel-collapse collapse">
+                                                                        <div class="panel-body" style="overflow:auto;">
+                                                                            <div class="checkbox checkbox-primary">
+                                                                                <label for="detailBlocksSelectAll_{{rgv.fileInfo[file.fileName].idDwg}}">
+                                                                                    <input id="detailBlocksSelectAll_{{rgv.fileInfo[file.fileName].idDwg}}"
+                                                                                           type="checkbox"
+                                                                                           ng-click="rgv.toggleSelectBlocksFileName(file.fileName)"
+                                                                                           ng-model="rgv.isAllBlockSelectFileName[file.fileName]"
+                                                                                           class="list-group-item" />
+                                                                                    Seleziona tutti 1
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="panel-body">
+                                                                                <div class="checkbox checkbox-primary" ng-repeat="block in rgv.blocksAndLayersAll[file.fileName].blocks">
+                                                                                    <label for="{{block.name}}">
+                                                                                        <input id="{{block.name}}"
+                                                                                               type="checkbox"
+                                                                                               ng-model="block.checked"
+                                                                                               ng-change="rgv.onBlockClickFileName(block,file.fileName)"
+                                                                                               class="list-group-item" />
+                                                                                        {{block.name}}
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="panel-group" id="layers_file_accordion">
+                                                                <div class="panel panel-success">
+                                                                    <div class="panel-heading">
+                                                                        <h4 class="panel-title">
+                                                                            <a data-toggle="collapse" class="collapsed" data-parent="#layers_file_accordion" href="#layers_file_{{rgv.fileInfo[file.fileName].idDwg}}">
+                                                                                {{rgv.getLabels('layers')}}
+                                                                            </a>
+                                                                        </h4>
+                                                                    </div>
+                                                                    <div id="layers_file_{{rgv.fileInfo[file.fileName].idDwg}}" class="panel-collapse collapse">
+                                                                        <div class="panel-body" style="overflow:auto;">
+
+                                                                            <div class="checkbox checkbox-primary">
+                                                                                <label for="detailLayersSelectAll_{{rgv.fileInfo[file.fileName].idDwg}}">
+                                                                                    <input id="detailLayersSelectAll_{{rgv.fileInfo[file.fileName].idDwg}}"
+                                                                                           type="checkbox"
+                                                                                           ng-click="rgv.toggleSelectLayersFileName(file.fileName)"
+                                                                                           ng-model="rgv.isAllLayerSelectFileName[file.fileName]"
+                                                                                           class="list-group-item" />
+                                                                                    Seleziona tutti 1
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="panel-body">
+                                                                                <div ng-show="layer.selectable" class="checkbox checkbox-primary" ng-repeat="layer in rgv.blocksAndLayersAll[file.fileName].layers">
+                                                                                    <label>
+                                                                                        <input id="{{layer.name}}"
+                                                                                               type="checkbox"
+                                                                                               ng-model="layer.checked"
+                                                                                               ng-change="rgv.onLayerClickAllFileName(layer,file.fileName)"
+                                                                                               class="list-group-item" />
+                                                                                        {{layer.name}}
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- gestione layer e blocchi fine -->
+                                <!-- gestione layer e blocchi  -->
+                                <div ng-if="rgv.selectedFiles && rgv.selectedFiles.length" class="panel panel-default" ng-show="rgv.fileShownInDetail==file.fileName">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a ng-click="rgv.shownTree !== 'blocks' && rgv.onShowTree('blocks')" class="collapsed" data-toggle="collapse" data-parent="#dxf-tree-accordion" href="#dxf-tree-two">
+                                                {{rgv.getLabels('blocchiLayer')}}
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="dxf-tree-two" class="panel-collapse collapse">
+                                        <div ng-if="rgv.blocksAndLayersReady" class="panel-body">
+                                            <div ng-repeat="file in rgv.selectedFiles track by file.fileName"
+                                                 ng-if="
+                            (
+                                !rgv.showViewerDetail
+                                || rgv.showViewerDetail
+                                    && rgv.fileShownInDetail === file.fileName
+                            )
+                            &&
+                            (
+                                rgv.visibleBlocksAndLayers[file.fileName].blocks.length
+                                || rgv.visibleBlocksAndLayers[file.fileName].layers.length
+                            )
+                        "
+                                                 class="panel panel-default">
+                                                <div class="panel-heading">{{rgv.fileLabels[file.fileName]}}</div>
+                                                <div ng-if="rgv.visibleBlocksAndLayers[file.fileName].blocks.length"
+                                                     class="panel-body"
+                                                     style="
+                                border: 1px solid #D9E0E4;
+                                border-bottom: 0px;
+                                border-top: 0px;
+                            ">
+                                                    <strong>{{rgv.getLabels('blocks')}}</strong>
+                                                </div>
+                                                <a ng-if="rgv.visibleBlocksAndLayers[file.fileName].blocks.length"
+                                                   ng-repeat="block in rgv.visibleBlocksAndLayers[file.fileName].blocks track by block.name"
+                                                   href="#"
+                                                   class="list-group-item"
+                                                   ng-click="rgv.onBlockClick(block)"
+                                                   ng-class="{ 'active':  rgv.activeBlocks[block.name] }">
+                                                    {{block.name}}
+                                                </a>
+                                                <div ng-if="rgv.visibleBlocksAndLayers[file.fileName].layers.length"
+                                                     class="panel-body"
+                                                     style="
+                                border: 1px solid #D9E0E4;
+                                border-bottom: 0px;
+                                border-top: 0px;
+                            ">
+                                                    <strong>{{rgv.getLabels('layers')}}</strong>
+                                                </div>
+                                                <a ng-if="rgv.visibleBlocksAndLayers[file.fileName].layers.length"
+                                                   ng-repeat="layer in rgv.visibleBlocksAndLayers[file.fileName].layers track by layer.name"
+                                                   ng-click="rgv.onLayerClick(layer)"
+                                                   ng-class="{ 'active':  rgv.activeLayers[layer.name] }"
+                                                   href="#"
+                                                   class="list-group-item">
+                                                    {{layer.name}}
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div ng-if="!rgv.blocksAndLayersReady" style="margin-top: 1em">
+                                            <p class="text-center"><i class="fa fa-spinner fa-spin fa-2x"></i></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- gestione layer e blocchi fine -->
+                                <div style="height: 36px; padding: 2px" class="dwg-control-buttons">
+                                    <button ng-show=""
+                                            type="button"
+                                            class="btn btn-success pull-right"
+                                            ng-click="rgv.refreshTreeAsset">
+                                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+
+                                <div class="panel panel-default" ng-if="rgv.showTreeAsset">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a ng-click="rgv.onSetTreeAsset()" class="collapsed" data-toggle="collapse" data-parent="#dxf-tree-accordion" href="#dxf-tree-four">
+                                                {{rgv.getLabels('gestioneAsset')}}
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="dxf-tree-four" class="panel-collapse collapse">
+                                        <div class="panel-body" style="overflow:auto;">
+                                            <div id="treeRefTreeAsset" class="scrollable-tree-r3" data-always-visible="1" data-rail-visible="0">
+                                                <tree-view-r3 click="rgv.treeAssetClick(this)" ng-if="rgv.bShowTreeAsset" model="rgv.treeDataAsset" source="rgv.treeDataAsset" id="treeAsset">
+                                                </tree-view-r3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="toolbarButtonTop" ng-if="rgv.toolBarButton && !rgv.showCompare" style="padding:2px;">
+                            <div id="nav-pills-container" ng-if="rgv.features.sidebarAccordion" class="panel-group">
+                                <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                                    <li class="nav-item active">
+                                        <a class="nav-link active" id="pills-temati-tab" data-toggle="pill" href="#ulThemati" role="tab" aria-controls="themati" aria-selected="true">{{rgv.getLabels('tematismi')}}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-block-layers-tab" data-toggle="pill" href="#ulBlocksLayer" role="tab" aria-controls="ulBlocksLayer" aria-selected="false">{{rgv.getLabels('blocchiLayer')}}</a>
+                                    </li>
+                                    <li class="nav-item" ng-if="rgv.showViewerDetail && !rgv.assetMode && rgv.showDrawingMode">
+                                        <a class="nav-link" id="pills-options-dwg-tab" data-toggle="pill" href="#ulOptionsDwg" role="tab" aria-controls="ulOptionsDwg" aria-selected="false">{{rgv.getLabels('optionsDwg')}}</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content tab-content-r3" id="pills-tabContent">
+                                    <div class="tab-pane fade active in" id="ulThemati" role="tabpanel" aria-labelledby="pills-temati-tab">
+                                        <div>
+                                            <div id="treecontainer____" ng-show="!rgv.showFilters && !rgv.showFilesGridData && !rgv.showExtraction && !rgv.showExtractionPdf" style="height:95%;">
+                                                <div id="buttonTree" class="row ltree" ng-show="false">
+                                                    <select ng-show="false" id="dropThemati" style="float:left;margin-right:5px;margin-bottom:2px;width:95%;margin-top: 1em;" kendo-drop-down-list="rgv.selectedTree"
+                                                            k-data-text-field="'Description'"
+                                                            k-data-value-field="'ID'"
+                                                            k-data-source="rgv.TreesDs"
+                                                            k-on-cascade="rgv.getThematiFirstList()"></select>
+                                                </div>
+                                                <div id="gantttree" class="">
+                                                    <div id="divtreeThemati" ng-show="rgv.showTreeData">
+                                                        <div id="treeThemati" kendo-tree-view="rgv.openTree" ng-if="!rgv.viewInsertBlock" name="tematiNew"
+                                                             k-data-source="rgv.selectedTreeData"
+                                                             k-checkboxes="rgv.checkboxesTemplate"
+                                                             k-on-check="rgv.getTematFromTree(kendoEvent)"
+                                                             k-on-expand="rgv.setTreeExpandedItem(kendoEvent)"
+                                                             k-on-data-bound="rgv.loadFilterForm(kendoEvent)"
+                                                             style="">
+
+                                                            <span class="treeSelAction" k-template ng-dblclick="rgv.onTreeClickItem(this)" ng-mouseover="rgv.onMouseOverBlock(this)" ng-mouseleave="rgv.onMouseLeaveBlock(this)">
+                                                                <span ng-bind-html="dataItem.Description">
+
+                                                                </span>
+
+
+
+                                                                <!--{{ !!dataItem.$$hashKey ? rgv.getLabels('selectAll') : dataItem.Description }}-->
+                                                                <span style="margin-left:2px;">
+                                                                    <b>{{dataItem.TotArea == 0 ? '' : dataItem.TotArea}}</b>
+                                                                </span>
+
+                                                                <span style="margin-left:2px;" ng-show="true">
+                                                                    <b>{{ dataItem.Area ?  (dataItem.unit_measure ? dataItem.unit_measure : ' ') + ' ' + dataItem.Area : ' '}} </b>
+                                                                </span>
+
+                                                                <span style="margin-left:2px;" ng-show="true">
+                                                                    {{ dataItem.Tot_nr && dataItem.Tot_nr > 1 ?  '(' + dataItem.Tot_nr + ')' : '' }}
+                                                                </span>
+
+                                                                <input ng-show="dataItem.showColor && dataItem.dwg_theme && !rgv.assetMode" ng-change="rgv.onChangeColor(this)" ng-model="dataItem.ColourTemat" type="color" ng-value="dataItem.ColourTemat" />
+                                                                <button ng-if="rgv.assetMode && dataItem.dwg_theme && rgv.showDetailBlock"
+                                                                        style="max-height: 12px; background-color: transparent; color: black;"
+                                                                        title="{{ rgv.getLabels('Galleria') }}"
+                                                                        type="button" class="btn btn-success"
+                                                                        ng-click="rgv.openDetailObject(dataItem)">
+                                                                    <span class="fa fa-ellipsis-h"></span>
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-group" id="dxf-tree-2-accordion" ng-if="!rgv.viewInsertBlock && rgv.onShowGroupThemati">
+                                                        <div ng-repeat="thema in rgv.groupThematiList" class="panel panel-success">
+                                                            <div class="panel-heading">
+                                                                <h4 class="panel-title">
+                                                                    <a ng-click="rgv.setGroupThematiList(thema)" class="collapsed" data-toggle="collapse" data-parent="#dxf-tree-2-accordion" href="#dxf-tree-2-{{thema.ClathemId}}-{{thema.ThematiId}}">
+                                                                        {{thema.Description}}
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div id="dxf-tree-2-{{thema.ClathemId}}-{{thema.ThematiId}}" class="panel-collapse collapse">
+                                                                <div class="panel-body" style="overflow:auto;">
+                                                                    <div id="contain_{{thema.ClathemId}}_{{thema.ThematiId}}">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div ng-show="rgv.viewInsertBlock" class="panel-group" id="dxf-header-accordion">
+                                                <div ng-repeat="n in rgv.classForAsset | unique:'NEW' | orderBy:'NEW'" class="panel panel-success">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a data-toggle="collapse" class="collapsed" data-parent="#dxf-header-accordion" href="#dxf-header-{{n.NEW}}">
+                                                                {{n.NEW}}
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+
+                                                    <div id="dxf-header-{{n.NEW}}" class="panel-collapse collapse">
+                                                        <div class="panel-body" style="overflow:auto;">
+                                                            <div class="panel-group" id="dxf-blocks-accordion">
+                                                                <div ng-repeat="head in rgv.classForAsset | filter: {NEW: n.NEW} | unique:'id_father_key'" class="panel panel-success">
+                                                                    <div class="panel-heading">
+                                                                        <h4 class="panel-title">
+                                                                            <a class="collapsed" data-toggle="collapse" data-parent="#dxf-blocks-accordion" href="#dxf-tree-{{head.NEW}}-{{head.id_father_key}}">
+                                                                                {{head.ds_father}}
+                                                                            </a>
+                                                                        </h4>
+                                                                    </div>
+                                                                    <div id="dxf-tree-{{head.NEW}}-{{head.id_father_key}}" class="panel-collapse collapse">
+                                                                        <div class="panel-body" style="overflow:auto;">
+                                                                            <a ng-repeat="child in rgv.classForAsset | filter:head.id_father_key"
+                                                                               href="#"
+                                                                               ng-click="rgv.setVisibleInsertBlock(child)"
+                                                                               class="list-group-item"
+                                                                               ng-class="{ 'active':  (rgv.selectedClassForAsset[rgv.fileShownInDetail].id_child == child.id_child) }">
+                                                                                {{child.ds_child}}
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ulBlocksLayer" role="tabpanel" aria-labelledby="pills-block-layers-tab">
+                                        <div class="panel-group" id="dxf-file-accordion">
+                                            <div ng-repeat="file in rgv.selectedFiles track by file.fileName" class="panel panel-success" ng-show="(!rgv.showViewerDetail && !!rgv.viewers[file.fileName]) || (rgv.showViewerDetail && file.fileName == rgv.fileInDetail.fileName)">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a data-toggle="collapse" class="collapsed" data-parent="#dxf-file-accordion" href="#file_blocks_layers_{{rgv.fileInfo[file.fileName].idDwg}}" style="font-size:10px">
+                                                            {{rgv.fileInfo[file.fileName].description}}
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="file_blocks_layers_{{rgv.fileInfo[file.fileName].idDwg}}" class="panel-collapse collapse">
+                                                    <div class="panel-body" style="overflow:auto;">
+                                                        <div class="" id="blokcs_file_accordion">
+                                                            <div class="panel panel-success">
+                                                                <div class="panel-heading">
+                                                                    <h4 class="panel-title">
+                                                                        <a data-toggle="collapse" class="collapsed" data-parent="#blokcs_file_accordion" href="#blokcs_file_{{rgv.fileInfo[file.fileName].idDwg}}">
+                                                                            {{rgv.getLabels('blocks')}}
+                                                                        </a>
+                                                                    </h4>
+                                                                </div>
+                                                                <div id="blokcs_file_{{rgv.fileInfo[file.fileName].idDwg}}" class="panel-collapse collapse">
+                                                                    <div class="panel-body" style="overflow:auto;">
+                                                                        <div class="checkbox checkbox-primary">
+                                                                            <label for="detailBlocksSelectAll_{{rgv.fileInfo[file.fileName].idDwg}}">
+                                                                                <input id="detailBlocksSelectAll_{{rgv.fileInfo[file.fileName].idDwg}}"
+                                                                                       type="checkbox"
+                                                                                       ng-click="rgv.toggleSelectBlocksFileName(file.fileName)"
+                                                                                       ng-model="rgv.isAllBlockSelectFileName[file.fileName]"
+                                                                                       class="list-group-item" />
+                                                                                {{rgv.getLabels('selectAll')}}
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="panel-body">
+                                                                            <div class="checkbox checkbox-primary" ng-repeat="block in rgv.blocksAndLayersAll[file.fileName].blocks">
+                                                                                <label for="{{block.name}}">
+                                                                                    <input id="{{block.name}}"
+                                                                                           type="checkbox"
+                                                                                           ng-model="block.checked"
+                                                                                           ng-change="rgv.onBlockClickFileName(block,file.fileName)"
+                                                                                           class="list-group-item" />
+                                                                                    {{block.name}}
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="" id="layers_file_accordion">
+                                                            <div class="panel panel-success">
+                                                                <div class="panel-heading">
+                                                                    <h4 class="panel-title">
+                                                                        <a data-toggle="collapse" class="collapsed" data-parent="#layers_file_accordion" href="#layers_file_{{rgv.fileInfo[file.fileName].idDwg}}">
+                                                                            {{rgv.getLabels('layers')}}
+                                                                        </a>
+                                                                    </h4>
+                                                                </div>
+                                                                <div id="layers_file_{{rgv.fileInfo[file.fileName].idDwg}}" class="panel-collapse collapse">
+                                                                    <div class="panel-body" style="overflow:auto;">
+
+                                                                        <div class="">
+                                                                            <label for="detailLayersSelectAll_{{rgv.fileInfo[file.fileName].idDwg}}">
+                                                                                <input id="detailLayersSelectAll_{{rgv.fileInfo[file.fileName].idDwg}}"
+                                                                                       type="checkbox"
+                                                                                       ng-click="rgv.toggleSelectLayersFileName(file.fileName)"
+                                                                                       ng-model="rgv.isAllLayerSelectFileName[file.fileName]"
+                                                                                       class="list-group-item" />
+                                                                                {{rgv.getLabels('selectAll')}}
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="panel-body">
+                                                                            <div ng-show="layer.selectable" class="checkbox checkbox-primary" ng-repeat="layer in rgv.blocksAndLayersAll[file.fileName].layers">
+                                                                                <label>
+                                                                                    <input id="{{layer.name}}"
+                                                                                           type="checkbox"
+                                                                                           ng-model="layer.checked"
+                                                                                           ng-change="rgv.onLayerClickAllFileName(layer,file.fileName)"
+                                                                                           class="list-group-item" />
+                                                                                    {{layer.name}}
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div ng-if="rgv.showViewerDetail && !rgv.assetMode && rgv.showDrawingMode" class="tab-pane fade" id="ulOptionsDwg" role="tabpanel" aria-labelledby="pills-options_dwg-tab">
+                                        <div class="form-container">
+                                            <label for="layerPolyline" class="label-title-pdf form-label">Layer</label>
+                                            <select id="layerPolyline" ng-options="layer.name  for layer in rgv.blocksAndLayersAll[rgv.fileInDetail.fileName].layers" ng-model="rgv.optionsPolyline[rgv.fileInDetail.fileName].layer">
+                                                <option value="">
+                                                <option>
+                                            </select>
+                                            <label class="label-title-pdf form-label" for="scaleDwg">{{rgv.getLabels('scale')}}</label>
+                                            <input class="form-control" id="scaleDwg"
+                                                   ng-value="rgv.fileInfo[rgv.fileInDetail.fileName].scale"
+                                                   ng-model="rgv.fileInfo[rgv.fileInDetail.fileName].scale"
+                                                   placeholder="Inserisci scala"
+                                                   title="rgv.getLabels('scale')"
+                                                   type="number" />
+                                            <label class="label-title-pdf form-label" for="scaleDrawing">{{rgv.getLabels('scaleDrawing')}}</label>
+                                            <input class="form-control" id="scaleDrawing"
+                                                   ng-value="rgv.fileInfo[rgv.fileInDetail.fileName].scaleDrawing"
+                                                   ng-model="rgv.fileInfo[rgv.fileInDetail.fileName].scaleDrawing"
+                                                   placeholder="...Inserisci scala"
+                                                   title="rgv.getLabels('scaleDrawing')"
+                                                   step="1"
+                                                   type="number" />
+                                            <label class="toggle-pdf label-title-pdf">
+                                                <input type="checkbox" name="check" id="showDimension" ng-model="rgv.optionsPolyline[rgv.fileInDetail.fileName].showDimension" ng-checked="rgv.optionsPolyline[rgv.fileInDetail.fileName].showDimension">
+                                                <span class="label-title-pdf">{{rgv.getLabels('showDimension')}}</span>
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                        </div>
+
+                        <div id="toolbarButtonTop" ng-if="rgv.toolBarButton && rgv.showCompare">
+                            <div id="toolbar-container-compare" class="cad-control-buttons-compare">
+                                <button id="compare___added"
+                                        ng-show="rgv.enabledCompareMode && rgv.showViewerDetail && !rgv.assetMode"
+                                        style="float:left;margin-left:1px;"
+                                        title="{{rgv.getLabels('compareDxf')}}"
+                                        type="button"
+                                        class="btn btn-success pull-left btn-toolbar-cad-r3"
+                                        ng-click="rgv.onShowHideAdded()"
+                                        ng-disabled="rgv.enableButtonCompare">
+                                    <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                                </button>
+
+                                <button id="compare___minus"
+                                        style="float:left;margin-left:1px;"
+                                        title="{{ rgv.getLabels('viewDetail') }}"
+                                        type="button" class="btn btn-success pull-left btn-toolbar-cad-r3 "
+                                        ng-click="rgv.onShowHideMinus()"
+                                        ng-disabled="rgv.enableButtonCompare">
+                                    <span class="glyphicon glyphicon-minus"></span>
+
+                                </button>
+                                <button id="compare___pdf"
+                                        style="float:left;margin-left:1px;"
+                                        title="{{ rgv.getLabels('extract_1') }}"
+                                        type="button" class="btn btn-success pull-left btn-toolbar-cad-r3"
+                                        ng-click="rgv.onPdfCompare()"
+                                        ng-disabled="rgv.enableButtonCompare">
+                                    <span class="fa fa-file-pdf-o"></span>
+
+                                </button>
+                                <button id="compare___transparent"
+                                        style="float:left;margin-left:1px;"
+                                        title="{{ rgv.getLabels('setTransparent') }}"
+                                        type="button" class="btn btn-success pull-left btn-toolbar-cad-r3"
+                                        ng-click="rgv.onShowTranparent()"
+                                        ng-disabled="rgv.enableButtonCompare">
+                                    <span class="glyphicon glyphicon-off"></span>
+                                </button>
+                            </div>
+
+
+                            <!--<form id="fileForm">
+                                <div class="panel-body">
+                                    <input type="file"
+                                           id="fileUpload"
+                                           name="fileUpload"
+                                           label="prova">
+                                    <label for="fileUpload">{{rgv.getLabels('selezionaFile')}}</label>
+                                    <br>
+                                    <button type="button"
+                                            id="submitButtonCompare"
+                                            class="btn btn-success btn-toolbar-cad pull-right"
+                                            ng-click="rgv.compareDxf(this)">
+                                        <span class="span-title-button-cad">
+                                            {{rgv.getLabels('caricaFile')}}
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>-->
+                            <div class="panel-body_r3">
+                                <div ng-repeat="file in rgv.selectedFiles | unique:'fileName' | orderBy:'fileName'" ng-if="file.fileName != rgv.fileInDetail.fileName">
+                                    <div class="panel-body">
+                                        <span>{{rgv.fileInfo[file.fileName].description}}</span>
+                                        <button type="button"
+                                                id="submitButtonCompareCad"
+                                                class="btn btn-success btn-toolbar-cad pull-right"
+                                                ng-click="rgv.compareDxfPython(this,file)">
+                                            <span class="span-title-button-cad">
+                                                {{rgv.getLabels('caricaFile')}}
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="center-pane">
+
+                        <div ng-if="rgv.addPolyline" ng-include="'addPolyline.html'">
+                        </div>
+                        <div class="row-viewer-r3" ng-style="rgv.showViewerDetail || rgv.mainContent === 'map' ? { height: '100%'} : {}">
+                            <div ng-if="rgv.showViewersOverlay" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; background-color: black; opacity: 0.5; z-index: 10">
+                                <p class="text-center" style="color: white; margin: 30vh"><i class="fa fa-spinner fa-spin fa-4x"></i></p>
+                            </div>
+                            <div ng-if="rgv.mainContent === 'map'" style="padding:0px;"
+                                 class="col-md-12">
+                                <easy-map markers="rgv.mapMarkers">
+                                </easy-map>
+                            </div>
+                            <div id="actionGridSingleContainer">
+                                <div ng-show="false" id="actionGridSingle">
+                                    <div ng-if="rgv.initGridAction && rgv.gridActionSingle !=''" class="row">
+                                        <div class="col-md-12">
+                                            <magic-grid gridname="{{rgv.gridActionSingle}}" filterpk="HANDLE" filter="rgv.initFilterGridStart" gridoptionsextension="{dataBound: rgv.onDataBoundGridActionSingle}"></magic-grid>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12"
+                                 ng-if="rgv.mainContent === 'actionGrid'">
+                                <p ng-show="!rgv.isActionGridReady" class="text-center"><i class="fa fa-spinner fa-spin fa-2x"></i></p>
+                                <magic-grid ng-if="rgv.actionGridName"
+                                            ng-show="rgv.isActionGridReady"
+                                            gridname="{{rgv.actionGridName}}"
+                                            filter="rgv.actionGridFilter"
+                                            data="rgv.actionGridData"
+                                            kendoGridInstance="rgv.actionGridInstance"
+                                            gridoptionsextension="{dataBound: rgv.onDataBoundGrid, save:rgv.onSaveGrid}"></magic-grid>
+                            </div>
+                            <div ng-show="false" class="col-md-12">
+                                <magic-grid ng-if="rgv.addBlocksGridName && !rgv.assetMode"
+                                            ng-show="true"
+                                            gridname="{{rgv.addBlocksGridName}}"
+                                            filter="rgv.actionGridFilter"
+                                            kendoGridInstance="rgv.actionGridInstance"
+                                            gridoptionsextension="{save:rgv.onSaveGridBlocks,dataBound: rgv.onDataBoundGridBlocks}"></magic-grid>
+                            </div>
+                            <div ng-show="false" class="col-md-12">
+                                <magic-grid ng-if="rgv.actionBlockGridName && rgv.assetMode"
+                                            ng-show="true"
+                                            gridname="{{rgv.actionBlockGridName}}"
+                                            filter="rgv.actionBlockGridFilterStart"
+                                            kendoGridInstance="rgv.actionBlockGridInstance"
+                                            gridoptionsextension="{dataBound: rgv.onDataBoundGridActionBlock}"></magic-grid>
+                            </div>
+                            <div ng-init="rgv.onSetSplitterViewer()"
+                                 ng-show="rgv.mainContent === 'viewer' && (!rgv.showViewerDetail && rgv.selectedFiles.length > 1 || rgv.showViewerDetail && rgv.fileShownInDetail === file.fileName)"
+                                 ng-repeat="file in rgv.selectedFiles track by file.fileName"
+                                 ng-class="rgv.getViewerContainerClass(this)"
+                                 ng-click="rgv.onSingleFileSelect(file)"
+                                 ng-style="rgv.showViewerDetail ? { 'height': '95%', overflow: 'hidden' , 'width':'100%'} : { cursor: 'pointer'  }"
+                                 onresize="rgv.triggerWindowResize()">
+
+                                <div ng-if="rgv.showInfoCad && rgv.enableLogInfo && rgv.cadInformation[file.fileName].bannerMessage != ''" id="ulInfo" class="banner-info-r3">
+                                    <div class="scroll-container" ng-if="rgv.cadInformation[file.fileName]">
+                                        <div class="scroll-text">
+                                            {{rgv.cadInformation[file.fileName].bannerMessage}}
+                                        </div>
+                                    </div>
+                                    <div class="scroll-container-empty" ng-if="!rgv.cadInformation[file.fileName]">
+                                    </div>
+                                </div>
+
+                                <p style="text-align: center; font-size:14px; margin: 5px; font-weight: bold;">{{ !rgv.showViewerDetail ? rgv.fileLabels[file.fileName] : ''}}</p>
+                                <dxf-viewer on-set-data="rgv.onSetViewerData"
+                                            on-show-tooltip="rgv.onShowViewerTooltip"
+                                            file-name="file.fileName"
+                                            fill-polylines="file.tdata"
+                                            active-layers="rgv.fileActiveLayers[file.fileName]"
+                                            active-blocks="rgv.fileActiveBlocks[file.fileName]"
+                                            mode="{{ rgv.showViewerDetail && rgv.fileShownInDetail === file.fileName ? 'webgl' : 'svg' }}"
+                                            style="width:100%; display:block; margin: 5px; margin-top: 15px;"
+                                            ng-style="rgv.showViewerDetail && rgv.fileShownInDetail === file.fileName ? { height: '90%'} : {}"
+                                            events="rgv.showViewerDetail && rgv.fileShownInDetail === file.fileName ? rgv.fileInDetailEvents : null"
+                                            path-file-cad="rgv.fileInfo[file.fileName].pathFileCad"
+                                            view-block="rgv.viewBlock"
+                                            external-blocks="rgv.externalBlocks[file.fileName]"
+                                            on-render-blocks="rgv.renderBlocks[file.fileName]"
+                                            clear-selection="rgv.clearSelectionViewer[file.fileName]"
+                                            on-clear-external-blocks="rgv.clearExternalBlocks[file.fileName]"
+                                            asset-mode="rgv.assetMode"
+                                            scale="rgv.fileInfo[file.fileName].scale"
+                                            on-Set-blocks-scale="rgv.onChangeScale"
+                                            on-add-new-block="rgv.onAddBlock"
+                                            on-get-close-polilyne="rgv.fillPolilyneForAddBlocks[file.fileName]"
+                                            on-insert-block="rgv.selectedClassForAsset[file.fileName]"
+                                            title="{{ !rgv.showViewerDetail ? rgv.fileLabels[file.fileName] : ''}}"
+                                            on-click-deselect="rgv.activateActionDirective"
+                                            multi-action="rgv.multiAction"
+                                            on-select-all-handle="rgv.getActionAll"
+                                            selected-block="rgv.selectedBlock"
+                                            on-check-total="rgv.onCheckTotal"
+                                            measure-mode="rgv.bMeasureMode"
+                                            layer-import-order="rgv.layerImportOrder"
+                                            use-compression="rgv.fileInfo[file.fileName].useCompression"
+                                            file-compare="rgv.fileInDetail.fileName == file.fileName ?  rgv.fileCompare[rgv.fileInDetail.fileName] : ''"
+                                            comparable-entities="rgv.comparebleEntities[file.fileName]"
+                                            get-entities-comparable="rgv.getEntitiesComparable()"
+                                            on-load-compare="rgv.onLoadComapare"
+                                            modality="rgv.modalityMode"
+                                            on-add-polyline="rgv.onAddPolyline"
+                                            scale-drawing="rgv.fileInfo[file.fileName].scaleDrawing"                                           
+                                            options-polyline ="rgv.optionsPolyline[file.fileName]"
+                                            >
+                                </dxf-viewer>
+                            </div>
+                        </div> 
+                    </div>
+
+
+                </div>
+            </div>
+            <div id="bottom-pane">
+                <div ng-show="false" ng-if="rgv.initGridExportThemati">
+                    <magic-grid gridname="{{rgv.initGridNameExportThemati}}" filterpk="id" gridoptionsextension="{dataBound: rgv.onDataBoundGridExportThemati}"></magic-grid>
+                </div>
+                <div ng-if="rgv.assetMode && rgv.showGrid">
+                    <magic-grid gridname="{{rgv.initGridNameBlockInfoCad}}" filter="rgv.initBlockGridInfoCadFilterStart" gridoptionsextension="{dataBinding: rgv.onDataBoundBlockGridInfoCad}"></magic-grid>
+                </div>
+                <div ng-if="rgv.showGrid" ng-include="'infoGrid.html'">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    //$(document).ready(function () {
+    //    $("#vertical").find('.k-splitbar-vertical').hide();
+    //});
+
+    function reftrehR3Page(e) {
+        angular.element($('dxf-viewer')).scope().$parent.$parent.rgv.actionCallback(e);
+    }
+</script>
+
+<script type="text/ng-template" id="layersBlocksHtml.html">
+    <div class="panel-group">
+        <div ng-repeat="file in fileList track by file.fileName" class="panel panel-success">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" class="collapsed" data-parent="#dxf-file-accordion-pdf" href="#file_blocks_layers_pfd_{{gdv.fileInfo[file.fileName].id}}" style="font-size:10px">
+                        {{ gdv.fileInfo[file.fileName].description }}
+                    </a>
+                </h4>
+            </div>
+            <div id="file_blocks_layers_pfd_{{gdv.fileInfo[file.fileName].id}}" class="panel-collapse collapse">
+                <div class="panel-body" style="overflow:auto;">
+                    <div class="panel-group" id="layers_file_accordion_pdf">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#layers_file_accordion_pdf" href="#layers_file_pdf_{{gdv.fileInfo[file.fileName].id}}">
+                                        {{gdv.getLabels('layers')}}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="layers_file_pdf_{{gdv.fileInfo[file.fileName].id}}" class="panel-collapse collapse">
+                                <div class="panel-body" style="overflow:auto;">
+
+                                    <div class="checkbox checkbox-primary">
+                                        <label for="detailLayersSelectAll_pdf_{{gdv.fileInfo[file.fileName].id}}">
+                                            <input id="detailLayersSelectAll_pdf_{{gdv.fileInfo[file.fileName].id}}"
+                                                   type="checkbox"
+                                                   ng-click="toggleSelectLayersFileNamePdf(file.fileName)"
+                                                   ng-model="$parent.blocksAndLayersAllPdf[file.fileName].isSelectedAll"
+                                                   class="list-group-item" />
+                                            {{gdv.getLabels('selectAll')}}
+                                        </label>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div ng-show="layerPdf.selectable" class="checkbox checkbox-primary" ng-repeat="layerPdf in $parent.blocksAndLayersAllPdf[file.fileName].layers">
+                                            <label>
+                                                <input id="{{layerPdf.name}}"
+                                                       type="checkbox"
+                                                       ng-model="layerPdf.checked"
+                                                       ng-change=""
+                                                       class="list-group-item" />
+                                                {{layerPdf.name}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-group" id="blocks_file_accordion_pdf">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#blocks_file_accordion_pdf" href="#blocks_file_pdf_{{gdv.fileInfo[file.fileName].id}}">
+                                        {{gdv.getLabels('blocks')}}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="blocks_file_pdf_{{gdv.fileInfo[file.fileName].id}}" class="panel-collapse collapse">
+                                <div class="panel-body" style="overflow:auto;">
+
+                                    <div class="checkbox checkbox-primary">
+                                        <label for="detailBlocksSelectAll_pdf_{{gdv.fileInfo[file.fileName].id}}">
+                                            <input id="detailBlocksSelectAll_pdf_{{gdv.fileInfo[file.fileName].id}}"
+                                                   type="checkbox"
+                                                   ng-click="toggleSelectBlocksFileNamePdf(file.fileName)"
+                                                   ng-model="$parent.blocksAndLayersAllPdf[file.fileName].isSelectedBlocksAll"
+                                                   class="list-group-item" />
+                                            {{gdv.getLabels('selectAll')}}
+                                        </label>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div ng-show="blockPdf.selectable" class="checkbox checkbox-primary" ng-repeat="blockPdf in $parent.blocksAndLayersAllPdf[file.fileName].blocks">
+                                            <label>
+                                                <input id="{{blockPdf.name}}"
+                                                       type="checkbox"
+                                                       ng-model="blockPdf.checked"
+                                                       ng-change=""
+                                                       class="list-group-item" />
+                                                {{blockPdf.name}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="infoGrid.html">
+    <div ng-repeat="grid in rgv.selectedTree.dataSource._data">
+        <!--{{grid.ID}}-->
+        <div id="GRID_{{grid.ID}}" ng-if="!rgv.assetMode && rgv.selectedTree.value() ==  grid.ID" ng-show="rgv.activateInitGridCadInfo">
+            <magic-grid gridname="{{rgv.initGridNameInfoCad}}" filter="rgv.initGridInfoCadFilterStart" gridoptionsextension="{dataBinding: rgv.onDataBoundGridInfoCad}"></magic-grid>
+        </div>
+        <!--<div id="GRID_{{grid.ID}}" ng-if="rgv.selectedTree.value() ==  grid.ID" ng-show="rgv.activateInitGridCadInfo">
+            <magic-grid gridname="{{rgv.initGridNameBlockInfoCad}}" filter="rgv.initBlockGridInfoCadFilterStart" gridoptionsextension="{dataBinding: rgv.onDataBoundBlockGridInfoCad}"></magic-grid>
+        </div>-->
+    </div>
+</script>
+
+<script type="text/ng-template" id="blockDetailTemplateUrl.html">
+    <div ng-init="getInfoCadDetails()">
+        <div style="height:40px;">
+            <button title="{{ rgv.getLabels('back')}}"
+                    type="button"
+                    class="btn btn-danger pull-right"
+                    ng-click="cancel()"
+                    style="margin:15px">
+                <i class="glyphicon glyphicon-remove" aria-hidden="true"></i>
+            </button>
+            <span>title</span>
+        </div>
+        <div class="panel-body" style="width:auto;" id="blockDetailInfo">
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="measure.html">
+    <div ng-style="{ height: '90vh'}">
+
+    </div>
+</script>
+ 
+ 

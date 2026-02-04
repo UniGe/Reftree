@@ -1,0 +1,157 @@
+<style scoped>
+    #treeBimContainerR3, *:before, *:after {
+        -webkit-user-select: none; /* Chrome/Safari */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* IE10+ */
+    }
+
+
+    div.bimTreeNodeContainer {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    div.bimTreeNodeContainer:hover {
+        overflow: visible;  
+    }
+
+    .bimTreeNodeContainer:focus {
+        background-color: blue;
+    }
+
+    .treeBim ul {
+        list-style-type: none;
+        padding-inline-start: 10px;
+    }
+
+    .treeBim ul > .show {
+        padding-inline-start: 10px;
+    }
+
+    .treeBim li {
+        margin-top: 5px;
+    }
+
+    .treeBimAddRemoveNode {
+        margin-left: 5px
+    }
+
+    .treeBimHideNode {
+        margin-left: 5px
+    }
+
+    .isRefTreeNode {
+        color:red;
+    }
+
+    .isIsolateNode {
+        color: green;
+        font-weight: bold;
+        font-size :16px;
+    }
+
+    .bimTreeNodeDesc {
+        cursor:pointer;
+    }
+
+ 
+    .bimTreeNodeDesc:focus {
+        cursor: pointer;
+        font-weight:bold
+    }
+    .is-selected {
+        color: blue;
+        font-weight: bold;        
+    }
+
+    .is-isolated {
+        color: green;
+        font-weight: bold;
+    }
+
+    .is-hide {
+        color: lightgray;
+        font-weight: normal;
+    }
+
+    .is-show {
+        color: black;
+        font-weight: normal;
+    }
+
+    /*.is-hide span {
+        color: lightgray;
+        font-weight: normal;
+    }*/
+
+   
+</style>
+
+<div id="treeBimContainerR3">
+    <div class="r3-treeview">
+        <ul class="ul-r3">
+            <li  id="tree_{{n.modelId}}_{{n.Id}}" class="li-r3" ng-class="n.showHide ? 'is-show' : 'is-hide'" node_id="{{n.modelId}}_{{n.Id}}" ng-repeat="n in r3t.localNodes | filter: {parentId: '#'} | unique:'Id'">
+                <div class="bimTreeNodeContainer" data-toggle="tooltip" data-placement="top" title="{{n.name}}" ng-class="n.selectedClass">
+                    <!--Icona espansione-->
+                    <span id="spanDetail_{{n.modelId}}_{{n.Id}}" title="{{n.name}}" ng-show=showIcon(n) class="show-hide treeBimAddRemoveNode" expanded="{{n.expanded}}" ng-click=showHide(n)>
+                        <i ng-class="n.iconClass"></i>
+                    </span>
+                    <!--Icona hide show-->
+                    <span id="spanHideShow_{{n.modelId}}_{{n.Id}}" title="{{n.name}}" ng-show="n.showIconDetail" class="show-hide treeBimHideNode" ng-click="showHideNode({node:n})">
+                        <i ng-class="n.showHide ? 'glyphicon glyphicon-eye-open' : 'glyphicon glyphicon-eye-close'"></i>
+                    </span>
+                    <span id="spanThemati_{{n.modelId}}_{{n.Id}}" title="{{n.name}}" ng-show="n.showThemati" class="show-hide treeBimHideNode" ng-click=showThemati({node:n})>
+                        <i ng-class="n.iconThemati"></i>
+                    </span>
+                    <span class="span-r3">
+                        <input ng-show="n.showCheck && !!n.globalIfc" id="inputCheck_{{n.modelId}}_{{n.Id}}" style="margin-left:5px;" class="tree-checkbox" type=checkbox ng-model="n.checked" ng-change="checkChange({node:n})" />
+                    </span>
+                    <span id="spanNocr_{{n.modelId}}_{{n.Id}}" ng-class="n.style" class="edit nobr bimTreeNodeDesc" ng-dblclick="localDbClick({node:n})" ng-click="click({node:n})" title="{{n.name}}">
+                        <i class="fa fa-newspaper"></i>{{n.name}}
+                    </span>
+                    <span id="spanNocrCnt_{{n.modelId}}_{{n.Id}}" ng-class="n.style" class="edit nobr bimTreeNodeDesc">
+                        <i class="fa fa-newspaper"></i> {{n.nodeChild}}
+                    </span>
+                </div>
+                <div class="r3-treeview" ng-if="!n.show" ng-include="'menu.html'">
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<script type="text/ng-template" id="menu.html">
+    <div class="tree_bim-r3">
+        <ul class="ul-r3">
+            <li  class="li-r3" id="tree_{{n.modelId}}_{{n.Id}}" ng-class="n.showHide ? 'is-show' : 'is-hide'" node_id="{{n.modelId}}_{{n.Id}}" ng-repeat="n in n.children">
+                <div data-toggle="tooltip" data-placement="top" title="{{n.name}}" class="bimTreeNodeContainer" ng-class="n.selectedClass">
+                    <span id="spanDetail_{{n.modelId}}_{{n.Id}}" title="{{n.name}}" ng-show=showIcon(n) class="show-hide treeBimAddRemoveNode" expanded="{{n.expanded}}" ng-click=showHide(n)>
+                        <i ng-class="n.iconClass"></i>
+                    </span>
+                    <span id="spanHideShow_{{n.modelId}}_{{n.Id}}" title="{{n.name}}" ng-show="n.showIconDetail" class="show-hide treeBimHideNode" ng-click=showHideNode({node:n})>
+                        <i ng-class="n.showHide ? 'glyphicon glyphicon-eye-open' : 'glyphicon glyphicon-eye-close'"></i>
+                    </span>
+                    <span id="spanThemati_{{n.modelId}}_{{n.Id}}" title="{{n.name}}" ng-show="n.showThemati" class="show-hide treeBimHideNode" ng-click=showThemati({node:n})>
+                        <i ng-class="n.iconThemati"></i>
+                    </span>
+                    <span class="span-r3">
+                        <input ng-show="n.showCheck && !!n.globalIfc" id="inputCheck_{{n.modelId}}_{{n.Id}}" style="margin-left:5px;" class="tree-checkbox" type=checkbox ng-model="n.checked" ng-change="checkChange({node:n})" />
+                    </span>
+                    <span id="spanNocr_{{n.modelId}}_{{n.Id}}" ng-class="n.style" class="edit nobr bimTreeNodeDesc" ng-dblclick=localDbClick({node:n}) ng-click=click({node:n}) title="{{n.name}}">
+                        <i class="fa fa-newspaper"></i>{{n.name}}
+                    </span>
+                    <span id="spanNocrCnt_{{n.modelId}}_{{n.Id}}" ng-class="n.style" class="edit nobr bimTreeNodeDesc">
+                        <i class="fa fa-newspaper"></i>{{n.nodeChild}}
+                    </span>
+                </div>
+                <div class="r3-treeview" ng-if="n.children.length && !n.show" ng-include="'menu.html'">
+                </div>
+            </li>
+        </ul>
+    </div>
+</script>
+<script type="text/javascript">
+    $('[data-toggle="tooltip"]').tooltip();
+</script>
+
+

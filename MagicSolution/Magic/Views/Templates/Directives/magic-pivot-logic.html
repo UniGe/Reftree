@@ -1,0 +1,53 @@
+﻿<div class="container-fluid ng-cloak">
+    <div ng-if="!c.dontShowInitHint" class="alert alert-success" role="alert">{{c.translate('clickOnTabToInit')}}</div>
+    <ul class="nav nav-tabs">
+        <li ng-repeat="pivot in c.pivots track by pivot.code"
+            ng-click="c.buildPivot(pivot); c.dontShowInitHint = true"
+            role="presentation">
+            <a class="apivot" ng-href="#{{pivot.code}}" target="_blank" data-toggle="tab">
+                {{ c.translate(pivot.Description) || c.translate(pivot.code) }}
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div ng-repeat="pivot in c.pivots track by pivot.code"
+             ng-class="{true:'tab-pane active',false:'tab-pane'}[$index==0]"
+             ng-if="pivot.initialized"
+             id="{{pivot.code}}">
+            <div ng-show="pivot.pivotInstance">
+                <div title="{{c.translate('save')}}" ng-click="c.savePivotState(pivot)" class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i></div>
+                <div title="{{c.translate('loadSettings')}}" ng-click="c.getPivotStates(pivot)" class="btn btn-success"><i class="fa fa-folder-open-o" aria-hidden="true"></i></div>
+                <div title="{{c.translate('showChart')}}" ng-click="c.clickShowCharts(pivot)" class="btn btn-success"><i class="fa fa-line-chart" aria-hidden="true"></i></div>
+                <div title="{{c.translate('toggleButtons')}}" ng-click="c.toggleButtons(pivot)" class="btn btn-success">
+                    <i class="fa" ng-class="{'fa-eye-slash': c.buttonsAreVisible, 'fa-eye': !c.buttonsAreVisible }" aria-hidden="true"></i>                    
+                </div>
+            </div>
+            <div class="row" ng-show="pivot.showStates">
+                <div style="margin-top: 10px;" class="btn btn-warning col-md-3 col-sm-6"
+                     ng-repeat="state in pivot.states"
+                     ng-click="c.setPivotState(pivot, state)">
+                    <b>{{state.name}}</b> @{{state.timestamp | date: 'short'}} <i class="fa fa-trash pull-right" aria-hidden="true" ng-click="c.deleteState(pivot, $index)"></i>
+                </div>
+            </div>
+            <div class="pivotcontainer" style="height: 60vh; width: 100%;">
+                <div ng-if="pivot.options" dx-pivot-grid="pivot.options" style="margin-top: 10px; max-height: 100%"></div>
+            </div>
+            <div style="height:30px;"></div>
+            <div ng-if="pivot.showCharts">
+                <div title="{{c.translate('addChart')}}" ng-click="c.addChartToPivot(pivot, 'default')" class="btn btn-success"><i class="fa fa-bar-chart" aria-hidden="true"></i></div>
+                <div ng-if="pivot.charts.length"
+                     ng-repeat="chart in pivot.charts">
+                    <select style="margin-top: 10px"
+                            ng-options="type for type in c.chartSubTypes(chart.type)"
+                            ng-model="chart.options.commonSeriesSettings.type"
+                            ng-change="c.changeChartType(chart)"></select>
+                    <i ng-click="pivot.charts.splice($index, 1)"
+                       class="fa fa-2x fa-times-circle pull-right" aria-hidden="true"
+                       style="margin-top: 10px; cursor: pointer;"></i>
+                    <div dx-chart="chart.options"></div>
+                </div>
+                <div ng-show="pivot.charts.length" ng-click="c.addChartToPivot(pivot, 'default')" class="btn btn-success"><i class="fa fa-bar-chart" aria-hidden="true"></i></div>
+            </div>
+        </div>
+    </div>
+</div>

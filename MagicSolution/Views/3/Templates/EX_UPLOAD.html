@@ -1,0 +1,71 @@
+﻿<form  name="form" ng-submit="c.importExcel(form)">
+    <div>
+        <div class="form-inline row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="form-label-stripped" ng-bind="c.lang.appare"></label>
+                </div>
+                <div class="form-group">
+                    <select class="form-control"
+                            ng-model=" c.ImportData.appareData"
+                            ng-options="d.US_APPARE_ID as d.US_APPARE_DESCRIPTION for d in c.appAreasArray">
+                    </select>
+
+                </div>
+                <div class="form-group" style="margin-left:10px;">
+                    <label class="form-label-stripped" ng-bind="c.lang.exclass"></label>
+                </div>
+                <div class="form-group">
+                     <select   class="form-control"
+                            ng-model="c.ImportData.exclassData"
+                            ng-options="d.EX_CLAEXC_ID as d.EX_CLAEXC_DESCRIPTION for d in c.classesArray| filter: {US_APPARE_ID: c.ImportData.appareData}">
+                     </select>
+                </div>
+                <div class="form-group" style="margin-left:10px;">
+                    <label class=" form-label-stripped" ng-bind="c.lang.exmodel + '*'">
+                    </label>
+                </div>
+                <div class="form-group" ng-class="{'has-error': !c.ImportData.exmodData }">
+                    <select class="form-control"
+                        ng-model="c.ImportData.exmodData"
+                        ng-options="d.EX_MODEXC_ID as d.EX_MODEXC_DESCRIPTION for d in c.appareData  | filter: {EX_CLAEXC_ID: c.ImportData.exclassData}" required>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-left:10px;">
+                    <label class=" form-label-stripped" ng-bind="c.lang.simulation">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox"
+                           ng-model="c.ImportData.simulation" ng-init="c.ImportData.simulation=true"/>
+                </div>
+                <div class="form-group" style="margin-left:10px;">
+                    <label class=" form-label-stripped" ng-bind="c.lang.upload">
+                    </label>
+                </div>
+                <div class="form-group" ng-class="{'has-error': c.uploadError }">
+                    <input type="file" id="excelupload"
+                           ng-model="c.ImportData.files"
+                           accept=".xlsx"
+                           ng-init="c.initUpload()"/>
+                    <div style="margin: 0;" class="help-block" ng-show="c.uploadError" ng-bind="c.lang.uploadErrorMsg"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ng-form>
+                    <magic-form ng-if="c.ImportData.exmodData" table-name="{{c.ImportData.exmodData}}" model="c.ImportData" options="{ itemsPerRow: 2 , source: 'core.EX_V_INPFIE_INPUT_FIELDS' }"></magic-form>
+                </ng-form>
+                <div style="height: 10px;"></div>
+            </div>
+        </div>
+        <br />
+        <div>
+            <button class="btn btn-primary" ng-bind="c.lang.eximport"></button>
+        </div>
+    </div>
+</form>
+<br>
+<div id="gridcontainer">
+</div>

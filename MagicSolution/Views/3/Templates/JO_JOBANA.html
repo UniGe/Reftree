@@ -1,0 +1,17 @@
+﻿<form name="form" ng-submit="jo_jobana.but_submit(form)">
+    <div class="form-group">
+        <label ng-bind="jo_jobana.lang.groups" ng-show={{jo_jobana.isfirststep}}></label>
+        <ui-select multiple ng-model="jo_jobana.selectedGroups" theme="bootstrap" ng-show={{jo_jobana.isfirststep}} style="width: 250px">
+        <ui-select-match>{{$item.Textfield}}</ui-select-match>
+        <ui-select-choices repeat="visgroup.Valuefield as visgroup in jo_jobana.groupsData | propsFilter: {Textfield: $select.search}">
+        <div ng-bind="visgroup.Textfield"></div>
+        </ui-select-choices>
+        </ui-select>
+    </div>
+    <magic-form table-name="{{jo_jobana.gridName}}" model="jo_jobana.ProcessData" options="jo_jobana.magicFormOptions">
+    </magic-form>
+    <br />
+    <div>
+        <button class="btn btn-primary" ng-bind="jo_jobana.lang.save"></button>
+    </div>
+</form>

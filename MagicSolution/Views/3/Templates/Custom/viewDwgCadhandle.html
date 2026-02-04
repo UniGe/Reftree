@@ -1,0 +1,46 @@
+﻿<div style="height: 95vh; width: 95vw" id="controller" ng-controller="dxfController as d">
+    <dxf-viewer file-name="d.name"
+                fill-polylines="d.polylines"
+                on-show-tooltip = "dhc.returnTooltip"
+                mode="webgl"
+                >
+    </dxf-viewer>
+</div>
+
+<!--<script>
+
+    earlyRequire(function () {
+        require([window.includesVersion + "/Custom/3/Scripts/config.js"], function () {
+            requireConfigAndMore(
+                [
+                    "angular"
+                    , "angular-dxf-viewer"
+                ]
+                , function (angular) {
+                    angular
+                        .module("dxf", ["dxfViewer"])
+                        .controller(
+                        "dxfController"
+                        ,
+                        [
+                            function () {
+                                var self = this;
+                                var file = {};
+                                window.location.search.split('&').forEach(function (get) {
+                                    var index = get.indexOf('q')
+                                    if (index === 0 || index === 1) {
+                                        file = JSON.parse(decodeURIComponent(get.split('=')[1])).files[0];
+                                    }
+                                });
+                                self.name = file.name;
+                                self.polylines = file.polylines;
+                            }
+                        ]
+                        );
+
+                    angular.bootstrap($('#controller')[0], ["dxf"]);
+                }
+            );
+        });
+    });
+</script>-->

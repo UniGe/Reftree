@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Download Sicuro - Verifica</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 20px;
+		}
+
+		.container {
+			background: white;
+			border-radius: 20px;
+			box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+			max-width: 480px;
+			width: 100%;
+			padding: 40px;
+			animation: slideIn 0.5s ease-out;
+		}
+
+		@keyframes slideIn {
+			from {
+				opacity: 0;
+				transform: translateY(-20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.header {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+
+		.icon {
+			width: 80px;
+			height: 80px;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto 20px;
+		}
+
+			.icon svg {
+				width: 40px;
+				height: 40px;
+				fill: white;
+			}
+
+		h1 {
+			color: #2d3748;
+			font-size: 28px;
+			margin-bottom: 10px;
+		}
+
+		.subtitle {
+			color: #718096;
+			font-size: 16px;
+		}
+
+		.form-group {
+			margin-bottom: 24px;
+		}
+
+		label {
+			display: block;
+			color: #4a5568;
+			font-weight: 500;
+			margin-bottom: 8px;
+			font-size: 14px;
+		}
+
+		input {
+			width: 100%;
+			padding: 12px 16px;
+			border: 2px solid #e2e8f0;
+			border-radius: 10px;
+			font-size: 16px;
+			transition: all 0.3s;
+		}
+
+			input:focus {
+				outline: none;
+				border-color: #667eea;
+				box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+			}
+
+			input:disabled {
+				background-color: #f7fafc;
+				cursor: not-allowed;
+				opacity: 0.6;
+			}
+
+		.btn {
+			width: 100%;
+			padding: 14px 24px;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			border: none;
+			border-radius: 10px;
+			font-size: 16px;
+			font-weight: 600;
+			cursor: pointer;
+			transition: all 0.3s;
+			position: relative;
+			overflow: hidden;
+		}
+
+			.btn:hover:not(:disabled) {
+				transform: translateY(-2px);
+				box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+			}
+
+			.btn:disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
+				transform: none;
+			}
+
+		.btn-secondary {
+			background: #e2e8f0;
+			color: #4a5568;
+			margin-top: 12px;
+		}
+
+			.btn-secondary:hover:not(:disabled) {
+				background: #cbd5e0;
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+			}
+
+		.step {
+			display: none;
+			animation: fadeIn 0.4s ease-out;
+		}
+
+			.step.active {
+				display: block;
+			}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateX(10px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+
+		.alert {
+			padding: 12px 16px;
+			border-radius: 10px;
+			margin-bottom: 20px;
+			display: none;
+			animation: slideDown 0.3s ease-out;
+		}
+
+		@keyframes slideDown {
+			from {
+				opacity: 0;
+				transform: translateY(-10px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.alert.error {
+			background-color: #fed7d7;
+			color: #c53030;
+			border: 1px solid #fc8181;
+		}
+
+		.alert.success {
+			background-color: #c6f6d5;
+			color: #22543d;
+			border: 1px solid #9ae6b4;
+		}
+
+		.alert.info {
+			background-color: #bee3f8;
+			color: #2c5282;
+			border: 1px solid #90cdf4;
+		}
+
+		.spinner {
+			display: none;
+			width: 20px;
+			height: 20px;
+			border: 3px solid #e2e8f0;
+			border-top: 3px solid #667eea;
+			border-radius: 50%;
+			animation: spin 1s linear infinite;
+			margin: 0 auto;
+		}
+
+			.spinner.active {
+				display: block;
+			}
+
+		@keyframes spin {
+			0% {
+				transform: rotate(0deg);
+			}
+
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		.progress-bar {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 30px;
+		}
+
+		.progress-step {
+			flex: 1;
+			text-align: center;
+			position: relative;
+		}
+
+			.progress-step:not(:last-child)::after {
+				content: '';
+				position: absolute;
+				top: 15px;
+				left: 50%;
+				width: 100%;
+				height: 2px;
+				background-color: #e2e8f0;
+				z-index: -1;
+			}
+
+			.progress-step.completed:not(:last-child)::after {
+				background-color: #667eea;
+			}
+
+		.progress-circle {
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			background-color: #e2e8f0;
+			margin: 0 auto 8px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 12px;
+			font-weight: bold;
+			color: #718096;
+		}
+
+		.progress-step.completed .progress-circle {
+			background-color: #667eea;
+			color: white;
+		}
+
+		.progress-step.active .progress-circle {
+			background-color: #764ba2;
+			color: white;
+			box-shadow: 0 0 0 4px rgba(118, 75, 162, 0.2);
+		}
+
+		.progress-label {
+			font-size: 12px;
+			color: #718096;
+		}
+
+		.progress-step.completed .progress-label,
+		.progress-step.active .progress-label {
+			color: #2d3748;
+			font-weight: 500;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<div class="icon">
+				<svg viewBox="0 0 24 24">
+					<path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" />
+				</svg>
+			</div>
+			<h1>Download Sicuro</h1>
+			<p class="subtitle">Verifica la tua identit&agrave; per procedere</p>
+		</div>
+
+		<div class="progress-bar">
+			<div class="progress-step active" id="progress-email">
+				<div class="progress-circle">1</div>
+				<div class="progress-label">Email</div>
+			</div>
+			<div class="progress-step" id="progress-code">
+				<div class="progress-circle">2</div>
+				<div class="progress-label">Codice</div>
+			</div>
+			<div class="progress-step" id="progress-download">
+				<div class="progress-circle">3</div>
+				<div class="progress-label">Download</div>
+			</div>
+		</div>
+
+		<div class="alert error" id="errorAlert"></div>
+		<div class="alert success" id="successAlert"></div>
+		<div class="alert info" id="infoAlert"></div>
+
+		<!-- Step 1: Email Verification -->
+		<div class="step active" id="emailStep">
+			<form id="emailForm">
+				<div class="form-group">
+					<label for="email">Indirizzo Email</label>
+					<input type="email"
+						   id="email"
+						   name="email"
+						   placeholder="esempio@mail.com"
+						   required />
+					<small style="color: #718096; display: block; margin-top: 8px;">
+						Inserisci l'email sulla quale hai ricevuto il link di download
+					</small>
+				</div>
+				<button type="submit" class="btn" id="emailSubmitBtn">
+					Verifica Email
+				</button>
+			</form>
+		</div>
+
+		<!-- Step 2: Code Verification -->
+		<div class="step" id="codeStep">
+			<form id="codeForm">
+				<div class="form-group">
+					<label for="code">Codice di Verifica</label>
+					<input type="text"
+						   id="code"
+						   name="code"
+						   placeholder="123456"
+						   maxlength="6"
+						   pattern="[0-9]{6}"
+						   required />
+					<small style="color: #718096; display: block; margin-top: 8px;">
+						Inserisci il codice a 6 cifre ricevuto via email (valido per 15 minuti)
+					</small>
+				</div>
+				<button type="submit" class="btn" id="codeSubmitBtn">
+					Verifica Codice
+				</button>
+				<button type="button" class="btn btn-secondary" id="resendBtn" onclick="resendCode()">
+					<span id="resendBtnText">Reinvia Codice</span>
+				</button>
+			</form>
+		</div>
+
+		<!-- Step 3: Download -->
+		<div class="step" id="downloadStep">
+			<div style="text-align: center;">
+				<svg style="width: 60px; height: 60px; fill: #48bb78; margin-bottom: 20px;" viewBox="0 0 24 24">
+					<path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+				</svg>
+				<h2 style="color: #2d3748; margin-bottom: 10px;">Verifica Completata!</h2>
+				<p style="color: #718096; margin-bottom: 24px;">
+					Il tuo file &egrave; pronto per essere scaricato
+				</p>
+				<button class="btn" id="downloadBtn" onclick="downloadFile()">
+					<svg style="width: 20px; height: 20px; fill: white; vertical-align: middle; margin-right: 8px;" viewBox="0 0 24 24">
+						<path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+					</svg>
+					Scarica File
+				</button>
+			</div>
+		</div>
+
+		<div class="spinner" id="loadingSpinner"></div>
+	</div>
+
+	<script>
+		// Configuration
+		const API_BASE_URL = '/api/MAGIC_SAVEFILE';
+		const RESEND_COOLDOWN = 60; // seconds
+		let downloadUrl = '';
+		let userEmail = '';
+		let resendTimer = null;
+		let resendCountdown = 0;
+
+		// Get URL parameters
+		function getUrlParams() {
+			const params = new URLSearchParams(window.location.search);
+			return {
+				instanceId: params.get('instanceId'),
+				token: params.get('token')
+			};
+		}
+
+		// Show/hide alerts
+		function showAlert(type, message) {
+			const alerts = ['errorAlert', 'successAlert', 'infoAlert'];
+			alerts.forEach(id => document.getElementById(id).style.display = 'none');
+
+			const alert = document.getElementById(type + 'Alert');
+			alert.textContent = message;
+			alert.style.display = 'block';
+
+			// Auto-hide after 8 seconds
+			setTimeout(() => {
+				alert.style.display = 'none';
+			}, 8000);
+		}
+
+		// Update progress bar
+		function updateProgress(step) {
+			const steps = ['email', 'code', 'download'];
+			const currentIndex = steps.indexOf(step);
+
+			steps.forEach((s, index) => {
+				const element = document.getElementById('progress-' + s);
+				element.classList.remove('active', 'completed');
+
+				if (index < currentIndex) {
+					element.classList.add('completed');
+				} else if (index === currentIndex) {
+					element.classList.add('active');
+				}
+			});
+		}
+
+		// Start resend countdown timer
+		function startResendCountdown() {
+			resendCountdown = RESEND_COOLDOWN;
+			const resendBtn = document.getElementById('resendBtn');
+			const resendBtnText = document.getElementById('resendBtnText');
+
+			resendBtn.disabled = true;
+
+			// Clear any existing timer
+			if (resendTimer) {
+				clearInterval(resendTimer);
+			}
+
+			// Update button text immediately
+			resendBtnText.textContent = 'Reinvia Codice (' + resendCountdown + 's)';
+
+			resendTimer = setInterval(() => {
+				resendCountdown--;
+
+				if (resendCountdown > 0) {
+					resendBtnText.textContent = 'Reinvia Codice (' + resendCountdown + 's)';
+				} else {
+					clearInterval(resendTimer);
+					resendTimer = null;
+					resendBtn.disabled = false;
+					resendBtnText.textContent = 'Reinvia Codice';
+				}
+			}, 1000);
+		}
+
+		// Show loading spinner
+		function showLoading(show) {
+			document.getElementById('loadingSpinner').classList.toggle('active', show);
+		}
+
+		// Navigate to step
+		function goToStep(stepId) {
+			document.querySelectorAll('.step').forEach(step => {
+				step.classList.remove('active');
+			});
+			document.getElementById(stepId).classList.add('active');
+		}
+
+		// Email form submission
+		document.getElementById('emailForm').addEventListener('submit', async (e) => {
+			e.preventDefault();
+
+			const email = document.getElementById('email').value.trim();
+			const params = getUrlParams();
+
+			if (!params.instanceId || !params.token) {
+				showAlert('error', 'Parametri mancanti nell\'URL');
+				return;
+			}
+
+			showLoading(true);
+			document.getElementById('emailSubmitBtn').disabled = true;
+
+			try {
+				const response = await fetch(
+					API_BASE_URL + '/DownloadPublicZip?instanceId=' + encodeURIComponent(params.instanceId) + '&token=' + encodeURIComponent(params.token) + '&email=' + encodeURIComponent(email),
+					{ method: 'GET' }
+				);
+
+				const contentType = response.headers.get('content-type');
+
+				if (response.ok) {
+					// Check if response is JSON
+					if (contentType && contentType.includes('application/json')) {
+						const data = await response.json();
+						if (data.success) {
+							userEmail = email;
+							showAlert('success', 'Codice di verifica inviato! Controlla la tua casella di posta (valido per 15 minuti).');
+							updateProgress('code');
+							goToStep('codeStep');
+							// Start the countdown timer
+							startResendCountdown();
+						} else {
+							showAlert('error', data.message || 'Errore durante la verifica dell\'email');
+						}
+					} else {
+						userEmail = email;
+						showAlert('success', 'Codice di verifica inviato! Controlla la tua casella di posta (valido per 15 minuti).');
+						updateProgress('code');
+						goToStep('codeStep');
+						// Start the countdown timer
+						startResendCountdown();
+					}
+				} else {
+					const errorText = await response.text();
+					showAlert('error', errorText || 'Email non corretta. Verificare l\'indirizzo sul quale &egrave; stato ricevuto il link.');
+				}
+			} catch (error) {
+				showAlert('error', 'Errore di connessione. Riprova pi&ugrave; tardi.');
+				console.error('Error:', error);
+			} finally {
+				showLoading(false);
+				document.getElementById('emailSubmitBtn').disabled = false;
+			}
+		});
+
+		// Code form submission
+		document.getElementById('codeForm').addEventListener('submit', async (e) => {
+			e.preventDefault();
+
+			const code = document.getElementById('code').value.trim();
+			const params = getUrlParams();
+
+			if (!userEmail) {
+				showAlert('error', 'Email non verificata. Riprova dall\'inizio.');
+				return;
+			}
+
+			showLoading(true);
+			document.getElementById('codeSubmitBtn').disabled = true;
+
+			try {
+				const response = await fetch(
+					API_BASE_URL + '/DownloadPublicZip?instanceId=' + encodeURIComponent(params.instanceId) + '&token=' + encodeURIComponent(params.token) + '&email=' + encodeURIComponent(userEmail) + '&codice=' + encodeURIComponent(code),
+					{ method: 'GET' }
+				);
+
+				if (response.ok) {
+					const contentType = response.headers.get('content-type');
+
+					if (contentType && contentType.includes('application/json')) {
+						const data = await response.json();
+
+						if (data.success && data.downloadUrl) {
+							downloadUrl = data.downloadUrl;
+							showAlert('success', 'Codice verificato con successo!');
+							updateProgress('download');
+							goToStep('downloadStep');
+							// Clear the countdown timer
+							if (resendTimer) {
+								clearInterval(resendTimer);
+								resendTimer = null;
+							}
+						} else {
+							showAlert('error', data.message || 'Codice non valido');
+						}
+					} else {
+						showAlert('error', 'Risposta non valida dal server');
+					}
+				} else {
+					const errorText = await response.text();
+					showAlert('error', errorText || 'Codice non valido o scaduto. Riprova o richiedi un nuovo codice.');
+				}
+			} catch (error) {
+				showAlert('error', 'Errore di connessione. Riprova pi&ugrave; tardi.');
+				console.error('Error:', error);
+			} finally {
+				showLoading(false);
+				document.getElementById('codeSubmitBtn').disabled = false;
+			}
+		});
+
+		// Resend code function
+		async function resendCode() {
+			const params = getUrlParams();
+
+			if (!userEmail) {
+				showAlert('error', 'Email non disponibile. Riprova dall\'inizio.');
+				return;
+			}
+
+			showLoading(true);
+
+			try {
+				const response = await fetch(
+					API_BASE_URL + '/DownloadPublicZip?instanceId=' + encodeURIComponent(params.instanceId) + '&token=' + encodeURIComponent(params.token) + '&email=' + encodeURIComponent(userEmail),
+					{ method: 'GET' }
+				);
+
+				if (response.ok) {
+					showAlert('info', 'Nuovo codice inviato! Controlla la tua email (valido per 15 minuti).');
+					// Clear the code input
+					document.getElementById('code').value = '';
+					// Start the countdown timer again
+					startResendCountdown();
+				} else {
+					const errorText = await response.text();
+					showAlert('error', errorText || 'Impossibile reinviare il codice. Riprova pi&ugrave; tardi.');
+				}
+			} catch (error) {
+				showAlert('error', 'Errore di connessione. Riprova pi&ugrave; tardi.');
+				console.error('Error:', error);
+			} finally {
+				showLoading(false);
+			}
+		}
+
+		// Download file function
+		function downloadFile() {
+			if (downloadUrl) {
+				window.location.href = downloadUrl;
+				showAlert('info', 'Download avviato.');
+			} else {
+				showAlert('error', 'Link di download non disponibile.');
+			}
+		}
+
+		// Check initial token validity on page load
+		window.addEventListener('load', async () => {
+			const params = getUrlParams();
+
+			if (!params.instanceId || !params.token) {
+				showAlert('error', 'Link non valido. Parametri mancanti.');
+				document.getElementById('emailSubmitBtn').disabled = true;
+				return;
+			}
+
+			// Check if token is valid (Case 1 of the stored procedure)
+			showLoading(true);
+			try {
+				const response = await fetch(
+					API_BASE_URL + '/DownloadPublicZip?instanceId=' + encodeURIComponent(params.instanceId) + '&token=' + encodeURIComponent(params.token),
+					{ method: 'GET' }
+				);
+
+				// If we get HTML back, it means the token is valid
+				if (response.ok) {
+					const contentType = response.headers.get('content-type');
+					if (contentType && contentType.includes('text/html')) {
+						// Token is valid, HTML page is being served
+						console.log('Token valid');
+					}
+				} else if (response.status === 403 || response.status === 404) {
+					const errorText = await response.text();
+					showAlert('error', errorText || 'Token non valido o scaduto.');
+					document.getElementById('emailSubmitBtn').disabled = true;
+				}
+			} catch (error) {
+				console.error('Error checking token:', error);
+				showAlert('error', 'Errore durante la verifica del token.');
+			} finally {
+				showLoading(false);
+			}
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+﻿<div id="qb_wndmodalContainer" ng-init="qb.showModal()" class="modal fade" aria-hidden="true" style="display: none;">
+
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div>
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<h4 class="modal-title">Query builder</h4>
+				</div>
+				<div id="qb_contentofmodal" class="modal-body">
+					<div class="row">
+
+						<div id="mf-querybuilder">
+							<div id="queryBuilder"></div>
+						</div>
+						<div class="btn-group">
+							<button id="btn-get-sql" class="btn btn-primary parse-sql" data-target="import_export" data-stmt="false">SQL</button>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button id="qb_executesave" class="btn btn-primary" aria-label="save" ng-click="qb.save()">
+						Salva
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

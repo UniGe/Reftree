@@ -1,0 +1,99 @@
+<div class="panel-heading">
+    <ul ng-init="" class="nav nav-tabs">
+        <li g-init="loadContent = {}" class="active">
+            <a href="#tab1default" data-toggle="tab">Dati Generali</a>
+        </li>
+        <li ng-click="loadContent.refere = true">
+            <a href="#refere" data-toggle="tab">Anagrafiche</a>
+        </li>
+        <li ng-click="loadContent.bgt = true">
+            <a href="#bgt" data-toggle="tab">Budget</a>
+        </li>
+        <!--        <li ng-click="loadContent.asset = true">
+            <a href="#asset" data-toggle="tab">Asset</a>
+        </li> -->
+        <li ng-click="loadContent.eigth = true">
+            <a href="#valori" data-toggle="tab">Valori</a>
+        </li>
+        <li ng-click="loadContent.six = true">
+            <a href="#tab6default" data-toggle="tab">Documenti</a>
+        </li>
+        <li ng-click="loadContent.seven = true">
+            <a href="#diario" data-toggle="tab">Diario</a>
+        </li>
+
+    </ul>
+</div>
+<div class="panel-body">
+    <div class="tab-content">
+        <div class="tab-pane fade active in" id="tab1default">
+            <div class="row">
+                <div class="panel-group_r3" id="div-DG">
+                    <div class="panel panel-primary_r3" id="primary-DG">
+                        <div class="panel-heading_r3" id="heading-DG">
+                            <h3 class="panel-title_r3" id="title-DG">
+                                <a data-toggle="collapse" data-parent="#Group2" href="#collapse-DG">
+                                    <b>Dati generali</b>
+                                </a>
+                            </h3>
+                        </div>
+                        <div id="collapse-DG" class="panel-collapse in">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true"
+                                            formname="TK_REQUES_TENDER" hidetabs="true" itemsperrow=2></magic-form-sp>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="bgt">
+            <div ng-if="loadContent.bgt">
+                <div class="row">
+                    <div class="col-md-12">
+                        <magic-grid gridname="TK_TENDER_REQ_BGT" filterpk="TK_TENDER_ID"></magic-grid>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="refere">
+            <div ng-if="loadContent.refere">
+                <div class="row">
+                    <div class="col-md-12">
+                        <magic-grid gridname="TK_TENREQ_REFERE_L_OO" filterpk="TK_TENDER_ID"></magic-grid>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="valori">
+            <div ng-if="loadContent.eigth">
+                <div class="row">
+                    <div class="col-md-12">
+                        <magic-grid gridname="TK_TENREQ_VALUEA_L" filterpk="TK_TENDER_ID"></magic-grid>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="tab6default">
+            <div ng-if="loadContent.six">
+                <div class="row">
+                    <div class="col-md-12">
+                        <magic-grid gridname="TK_TENREQ_DOCUME_L" filterpk="TK_TENDER_ID"></magic-grid>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="diario">
+            <div ng-if="loadContent.seven">
+                <div class="row">
+                    <div class="col-md-12">
+                        <magic-grid gridname="TKR_VI_REQUES_NOTE_L" filterpk="TK_TENDER_ID"></magic-grid>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

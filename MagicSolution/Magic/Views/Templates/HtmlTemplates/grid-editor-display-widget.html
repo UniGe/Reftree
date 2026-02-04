@@ -1,0 +1,95 @@
+﻿<div class="panel panel-info" style="height:90%;" ng-if="(ged.mainFormSubmitted || widget.id == 'mainForm')">
+    <div class="panel-heading" ng-hide="widget.panelTransparent">
+        {{widget.title}}
+    </div>
+
+    <div class="panel-body" ng-class="{fullHeight: widget.contentType == 'MAGIC-IMAGE-SLIDER' || widget.contentType == 'MAGIC-IMAGE-CAROUSEL'}">
+
+        <div ng-if="widget.contentType == 'MAGIC-CHART-GAUGE'" id="{{widget.uid}}">
+            <div ng-if="widget.contentType == 'MAGIC-CHART-GAUGE'" ng-init="ged.initGauge(widget)" class="hidden"></div>
+        </div>
+
+        <div ng-if="widget.contentType == 'MAGIC-GANTT'" id="{{widget.uid}}" style="height: 100%;">
+            <div id="tools"></div>
+            <div ng-if="widget.contentType == 'MAGIC-GANTT'" ng-init="ged.initGantt(widget)" class="hidden"></div>
+        </div>
+
+        <magic-chart class="magicChart" ng-if="widget.contentType == 'MAGIC-CHART' && !ged.reloadingCharts && ged.mainFormSubmitted"
+                     chartid="{{widget.contentObjectPath}}" options="ged.magicChartOptions"
+                     storedproceduredata="widget.magicChartFilter" on-chart-ready="ged.onMagicChartRendered"></magic-chart>
+
+        <magic-grid ng-if="widget.contentType == 'MAGIC-GRID'  && !ged.reloadingGrids && ged.mainFormSubmitted"
+                    kendo-grid-instance="ged.gridInstances[widget.gridInstance]" gridname="{{widget.contentObjectPath}}"
+                    filter="widget.filterObj" remove-new-button="tab.isReadonly"></magic-grid>
+
+        <div ng-if="widget.contentType == 'MAGIC-GRID'" ng-init="ged.activateGridListeners()" class="hidden"></div>
+
+        <magic-grid-sp ng-if="widget.contentType == 'MAGIC-GRID-SP' && ged.mainFormSubmitted" storedprocedure="{{widget.SPpath}}"
+                       savestoredprocedure="{{widget.SSPpath}}" gridname="{{widget.SPgridname}}"
+                       options="widget.spOptions"
+                       data="ged.mainFormModel" remove-new-button="tab.isReadonly"></magic-grid-sp>
+
+        <magic-form class="magicForm" ng-if="widget.contentType == 'MAGIC-FORM' && widget.id =='mainForm' && !ged.reloadingForms"
+                    table-name="{{widget.contentObjectPath}}" options="widget.magicFormOptions" model="ged.mainFormModel"></magic-form>
+
+        <magic-form class="magicForm" ng-if="widget.contentType == 'MAGIC-FORM' && widget.id != 'mainForm' && !ged.reloadingForms"
+                    table-name="{{widget.contentObjectPath}}" options="widget.magicFormOptions" model="ged.mainFormModel[widget.contentObjectPath]"></magic-form>
+
+        <magic-form-sp ng-if="widget.contentType == 'MAGIC-FORM-SP' && ged.mainFormSubmitted"
+                       model="ged.mainFormModel[widget.SPgridname]" storedprocedure="{{widget.SPpath}}" formname="{{widget.SPgridname}}"
+                       itemsperrow="{{widget.magicFormOptions.itemsPerRow}}" hidetabs="{{widget.magicFormOptions.hideTabs}}" options="{kendoStyle:false}" data="widget.data"></magic-form-sp>
+
+
+        <magic-slider style="height: 95%" ng-if="widget.contentType == 'MAGIC-IMAGE-SLIDER' && widget.slideImagesInitialized  && ged.mainFormSubmitted" images="widget.slideImages" group="1">
+        </magic-slider>
+
+        <magic-indicator ng-if="widget.contentType == 'MAGIC-INDICATOR' && ged.mainFormSubmitted" widgetdata="widget" modeldata="ged.mainFormModel"></magic-indicator>
+
+        <div ng-if="widget.contentType == 'CUSTOM-HTML' && ged.mainFormSubmitted" ng-bind-html="widget.customHtml">
+            
+        </div>
+
+        <div ng-if="widget.contentType == 'MAGIC-IMAGE-CAROUSEL' && widget.carouselImages" id="widget_{{widget.id}}" style="height:100%;">
+
+            <div ng-if="widget.dateFilterActive" class="date-filter-container " ng-class="{'date-filter-active': widget.dateFilterActive===true}" style="width:100%;">
+                <div class="date-filter-container">
+                    <div></div>
+                    <i class="fa fa-2x fa-filter"></i>
+                    <input id="startDateFilter_{{widget.id}}"
+                           type="text"
+                           data-date-type="object" data-date-format="dd/MM/yyyy" data-autoclose="1"
+                          data-use-navitve="false"/>
+
+                    <input id="endDateFilter_{{widget.id}}"
+                           type="text"
+                           data-date-type="object" data-date-format="dd/MM/yyyy" data-autoclose="1"
+                          data-use-navitve="false" />
+                </div>
+            </div>
+            <magic-carousel id="carousel-container_{{widget.id}}"  ng-if="!widget.dateFilterActive || (widget.dateFilterActive)" widget="widget" name="carousel-container_{{widget.id}}">
+            </magic-carousel>
+        </div>
+    </div>
+</div>
+
+<style>
+    .b-widget.b-container.b-outer.b-visible-scrollbar.b-chrome.b-content-element {
+        height: 90%;
+    }
+    .date-filter-container {
+        width: auto;
+        display: inline-flex;
+        background-color: #EFEFEF;
+        margin-right: 20px;
+    }
+    .date-filter-container > * {
+        margin-right: 20px;
+    }
+	.date-filter-active, .date-filter-active > * {
+		background-image: linear-gradient(to bottom, #d9edf7 0, #c4e3f3 100%);
+		background-repeat: repeat-x;
+    }
+    .date-filter-inactive {
+        background-color: green;
+    }
+</style>

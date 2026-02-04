@@ -1,0 +1,75 @@
+﻿<style>
+    @media screen and (min-width: 768px) {
+        .modal-dialog {
+            width: 50%;
+        }
+    }
+
+    #blockBodyPdf {
+        background-color: white;
+    }
+
+    #blockHeaderPdf {
+        background-color: white;
+    }
+
+    #blockFooterPdf {
+        background-color: white;
+    }
+
+    .fa-file-pdf-o.spinning {
+        animation: spin 2s infinite linear;
+        -webkit-animation: spin2 2s infinite linear;
+    }
+
+    @keyframes spin {
+        from {
+            transform: scale(1) rotate(0deg);
+        }
+
+        to {
+            transform: scale(1) rotate(360deg);
+        }
+    }
+
+    @-webkit-keyframes spin2 {
+        from {
+            -webkit-transform: rotate(0deg);
+        }
+
+        to {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+</style>
+<div class='modal-body' id='blockBodyPdf'>
+    <div class='row'>
+        <div class='col-lg-12'>
+            <div id="filterGrid">
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div class='modal-footer' id='blockFooterPdf'>
+    <div class='row'>
+        <div class='col-lg-12'>
+            <button ng-model='button' id='pdfButton' ng-disabled='DisabledAll' class='btn btn-success' ng-click='exportToPDF();'>
+                {{gdv.getLabels('extract_1')}}
+            </button>
+            <button ng-model="button" id="closePdf" ng-disabled="DisabledAll" class="btn btn-warning" ng-click="cancel()">{{gdv.getLabels('exit') }}</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).load(function () {
+        
+        console.log($("#showFilterGridTree").length)
+    });
+
+    $(window).on("load", function () {
+        console.log("window loaded");
+    });
+
+</script>

@@ -1,0 +1,13 @@
+﻿<style>
+    #questionnaire.personal-data-form .form-control-date, #questionnaire.personal-data-form .form-control-time{
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    #questionnaire.personal-data-form .form-control-feedback{
+        display: none;
+    }
+</style>
+<form name="q.$form" id="questionnaire" class="personal-data-form angularstrap" sf-schema="q.schema" sf-form="q.form" sf-model="q.model"></form>
+<span class="btn btn-default" ng-show="q.hasPrev" ng-click="q.showQuestion('-')" ng-bind="q.labels.previouslb"></span>
+<span class="btn btn-default" ng-show="q.hasNext" ng-click="q.showQuestion('+')" ng-bind="q.labels.nextlb"></span>
+<span class="btn btn-primary" ng-show="!q.hasNext" ng-click="q.submit()" ng-bind="q.labels.savelb" ng-if="q.taskId"></span>

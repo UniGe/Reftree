@@ -1,0 +1,174 @@
+﻿<style>
+
+    .laybloPdf-window {
+        z-index: 99999 !important;
+    }
+    .laybloPdf-window .modal-dialog {
+        width: 60%;
+        /*background-color:white;*/
+    }
+
+    .laybloPdf-window .modal-body {
+        background-color: white;
+    }
+
+
+    .laybloPdf-window .panel-heading .panel-title > a.collapsed:after {
+        content: "\f055";
+        color: white;
+    }
+
+    .laybloPdf-window .panel-heading .panel-title > a:hover {
+        content: "\f055";
+        color: white;
+    }
+
+    .laybloPdf-window .panel-heading {
+        background-image: none;
+        background-color: #0d6a92;
+    }
+
+        .laybloPdf-window .panel-heading .panel-title > a.collapsed {
+            color: white !important;
+            content: "\f055";
+        }
+
+    .laybloPdf-window .panel-title > a {
+        color: white;
+    }
+
+    .laybloPdf-window .panel-heading .panel-title > a:focus {
+        color: white !important;
+        content: "\f055";
+    }
+
+
+  
+    #left {
+        width: 33%;
+        min-width: 33%;
+    }
+
+    #center {
+        width: 33%;
+        min-width: 33%;
+         
+    }
+
+    #right {
+        width: 33%;
+        min-width:33%;
+      
+    }
+
+    #pdf-viewer {
+        width: 100%;
+        height: 841px;
+        background: rgba(0, 0, 0, 0.1);
+        overflow-y: scroll;
+        max-height: 65%;
+    }
+
+    .pdf-page-canvas {
+        display: block;
+        margin: 5px auto;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+
+    }
+
+    .span-title-pdf {
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .pdf-control-buttons-title {
+        background-color: #0d6a92;
+        height: 30px;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .btn-toolbar-pdf-r3 {
+        background-color: transparent;
+        color: #0d6a92;
+        margin: 5px;
+        /*border-color: #0d6a92;
+        border-width: 0.5px;
+        border-style: solid;*/
+    }
+
+
+        .btn-toolbar-pdf-r3:hover {
+            background-color: transparent;
+            color: #0d6a92;
+            border-color: #0d6a92;
+            border-width: 0.5px;
+            border-style: solid;
+        }
+
+        .btn-toolbar-pdf-r3:focus {
+            /*border-width: 0.5px;*/
+            background-color: transparent;
+            color: #0d6a92;
+            border-color: #0d6a92;
+            border-width: 0.5px;
+            border-style: solid;
+        }
+
+
+</style>
+<div id="toolbar-container" class="pdf-control-buttons-title">  
+</div>
+<div class="row" data-toggle="tooltip">
+    <div id="left" class="col-md-4">
+        <span></span>
+    </div>
+    <div id="center" class="col-md-4">
+        <center>
+            <button id="zoom_out" data-toggle="tooltip" data-placement="top" title="Zoom out"
+                    type="button"
+                    class="btn btn-success pull-center btn-toolbar-pdf-r3"
+                    ng-click="onZoomIn(fasle)">
+                <i class="fa fa-minus" aria-hidden="true"></i>
+                <span class="span-title-button-bim"></span>
+            </button>
+
+
+            <input type="text" style="width:50px; text-align:center;" ng-model="zoomText" ng-value="zoomText" ng-blur="changeZoom()"  />
+            <button id="zoom_in" data-toggle="tooltip" data-placement="top" title="Zoom in"
+                    type="button"
+                    class="btn btn-success pull-center btn-toolbar-pdf-r3"
+                    ng-click="onZoomIn(true)">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                <span class="span-title-button-bim"></span>
+            </button>
+        </center>
+
+    </div>
+    <div id="right" class="col-md-4">
+        <button title=""
+                type="button"
+                class="btn btn-danger pull-right"
+                ng-click="onCloseModal($event)">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+        <button title=""
+                type="button"
+                class="btn btn-succes pull-right"
+                ng-click="downloadPdf()">
+            <i class="fa fa-download" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+
+<div id="Container">
+    <center>
+        <div ng-init="v.onInit()" id="pdf-viewer">
+        </div>
+    </center>
+</div>

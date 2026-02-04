@@ -1,0 +1,985 @@
+﻿<div class="panel with-nav-tabs panel-default">
+    <div id="TabList" class="panel-heading">
+        <ul ng-init="" class="nav nav-tabs">
+            <li ng-show="foc.options.id_invio_GEN" id="GEN"><a href="#tab1default" data-toggle="tab">Dati generali</a></li>
+            <li ng-show="foc.options.id_invio_DOC" ng-click="loadContent.one = true" id="DOC"><a href="#tab2default"
+                    data-toggle="tab">Documenti</a></li>
+            <li ng-show="foc.options.id_invio_SMAN" ng-click="loadContent.two = true" id="SMAN"><a href="#tab3default"
+                    data-toggle="tab">Stato involucro</a></li>
+            <li ng-show="foc.options.id_invio_CON" ng-click="loadContent.three = true" id="CON"><a href="#tab4default"
+                    data-toggle="tab">Contratti di manutenzione</a></li>
+            <li ng-show="foc.options.id_invio_FOT" ng-click="loadContent.four = true" id="FOT"><a href="#tab5default"
+                    data-toggle="tab">Doc. fotografica</a></li>
+            <li ng-show="foc.options.id_invio_SEG" ng-click="loadContent.five = true" id="SEG"><a href="#tab6default"
+                    data-toggle="tab">Segnalazioni</a></li>
+            <li ng-show="foc.options.id_invio_MAN" ng-click="loadContent.six = true" id="MAN"><a href="#tab7default"
+                    data-toggle="tab">Manutenzioni programmate</a></li>
+            <li ng-show="foc.options.id_invio_DOC_SI" ng-click="loadContent.seven = true" id="DOC_SI"><a href="#tab8default"
+                    data-toggle="tab">Documenti SI-A</a></li>
+            <li class="pull-right">
+                        <div class="badge badge-info dimen-intestazione">
+                           <div id="intest_diocesi">##Diocesi##</div>
+                           <div id="intest_tipo">##Tipo##</div>
+                       </div>
+            </li>        
+        </ul>
+    </div>
+    <div class="panel-body">
+        <div class="tab-content" id="ContenutoTab">
+            <div class="tab-pane fade" id="tab1default">
+                <div class="panel-group_r3" id="Group1">
+                    <div class="panel panel-primary_r3" id="primary1">
+                        <div class="panel-heading_r3 clearfix" id="heading1">
+                            <h3 class="panel-title_r3">
+                                <!--<h3 class="panel-title_r3" id="title1">-->
+                                <a data-toggle="collapse" data-parent="#Group1" href="#collapse1">
+                                    <b>Identificazione ed ubicazione</b>
+                                </a>
+                            </h3>
+
+                        </div>
+                        <div id="collapse1" class="panel-collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true"
+                                            formname="RD_IDENTIFICAZIONE_LAST" hidetabs="true"></magic-form-sp>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-group_r3" id="Div2">
+                    <div class="panel panel-primary_r3" id="primary2">
+                        <div class="panel-heading_r3 clearfix" id="heading2">
+                            <h3 class="panel-title_r3" id="title2">
+                                <a data-toggle="collapse" data-parent="#Group2" href="#collapse2">
+                                    <b>Proprietà</b>
+                                    <button class="btn btn-info pull-right">
+                                        <i id="I1" onclick="EditNote(this);" class="icon-note" gridname="VI_RD_NOTINV_NoteInvii"
+                                            filter="2"></i>
+                                    </button>
+                                    <span class="button-checkbox pull-right">
+                                        <button id="But1" onclick="ValidaSez(this);" sottosezione="2" type="button"
+                                            class="btn btn-warning" data-sotto="2" data-color="primary" gridname="RD_VI_VALSOT_CEI">Validazione</button>
+                                        <i><input type="checkbox" class="hidden" /> </i>
+                                    </span>
+                                </a>
+                            </h3>
+                        </div>
+                        <div id="collapse2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true"
+                                            formname="RD_PROPRA_LAST" hidetabs="true"></magic-form-sp>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-group_r3" id="Div3">
+                    <div class="panel panel-primary_r3" id="primary3">
+                        <div class="panel-heading_r3 clearfix" id="heading3">
+                            <h3 class="panel-title_r3" id="title3">
+                                <a data-toggle="collapse" data-parent="#Group3" href="#collapse3">
+                                    <b>Destinazione d'uso</b>
+                                    <button class="btn btn-info pull-right">
+                                        <i id="I2" onclick="EditNote(this);" class="icon-note" gridname="VI_RD_NOTINV_NoteInvii"
+                                            filter="3"></i>
+                                    </button>
+                                    <span class="button-checkbox pull-right">
+                                        <button id="Button1" onclick="ValidaSez(this);" sottosezione="3" type="button"
+                                            class="btn btn-warning" data-sotto="3" data-color="primary" gridname="RD_VI_VALSOT_CEI">Validazione</button>
+                                        <i><input type="checkbox" class="hidden" /> </i>
+                                    </span>
+                                </a>
+                            </h3>
+                        </div>
+                        <div id="collapse3" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <magic-grid gridname="RD_VI_DESTIN_USO_CEI_Last" filterpk="LASINV_AS_ASSET_ID"></magic-grid>
+                                    </div>
+                                    <br />                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-group_r3" id="Div4">
+                    <div class="panel panel-primary_r3" id="primary4">
+                        <div class="panel-heading_r3 clearfix" id="Div6">
+                            <h3 class="panel-title_r3" id="H1">
+                                <a data-toggle="collapse" data-parent="#Group2" href="#collapse4">
+                                    <b>Caratteristiche dimensionali</b>
+                                    <button class="btn btn-info pull-right">
+                                        <i id="I3" onclick="EditNote(this);" class="icon-note" gridname="VI_RD_NOTINV_NoteInvii"
+                                            filter="4"></i>
+                                    </button>
+                                    <span class="button-checkbox pull-right">
+                                        <button id="Button2" onclick="ValidaSez(this);" sottosezione="4" type="button"
+                                            class="btn btn-warning" data-sotto="4" data-color="primary" gridname="RD_VI_VALSOT_CEI">Validazione</button>
+                                        <i><input type="checkbox" class="hidden" /> </i>
+                                    </span>
+                                </a>
+                            </h3>
+                        </div>
+                        <div id="collapse4" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true"
+                                            formname="RD_DIM_LAST" hidetabs="true"></magic-form-sp>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    Piani fuori terra
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true"
+                                            formname="RD_DIM_FT_LAST" hidetabs="true"></magic-form-sp>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    Piani Entro terra
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true"
+                                            formname="RD_DIM_ET_LAST" hidetabs="true"></magic-form-sp>
+                                    </div>
+                                </div>
+                            </div>                           
+                        </div>
+                    </div>
+                </div>
+
+                <!--Figure professionali-->
+                <div class="panel-group_r3" id="Div26">
+                    <div class="panel panel-primary_r3" id="primary26">
+                        <div class="panel-heading_r3 clearfix" id="heading26">
+                            <h3 class="panel-title_r3" id="title26">
+                                <a data-toggle="collapse" data-parent="#Group26" href="#collapse26">
+                                    <b>Figure professionali</b>
+                                    <button class="btn btn-info pull-right">
+                                        <i id="I11" onclick="EditNote(this);" class="icon-note" gridname="VI_RD_NOTINV_NoteInvii"
+                                            filter="13"></i>
+                                    </button>
+                                    <span class="button-checkbox pull-right">
+                                        <button id="Button11" onclick="ValidaSez(this);" sottosezione="13" type="button"
+                                            class="btn btn-warning" data-sotto="13" data-color="primary" gridname="RD_VI_VALSOT_CEI">Validazione</button>
+                                        <i><input type="checkbox" class="hidden" /> </i>
+                                    </span>
+                                </a>
+                            </h3>
+                        </div>
+                        <div id="collapse26" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <magic-grid gridname="RD_VI_Figure_prof_Last" filterpk="LASINV_AS_ASSET_ID"></magic-grid>
+                                    </div>
+                                    <br />                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--documenti-->
+
+            <div class="tab-pane fade" id="tab2default">
+                <div ng-if="loadContent.one">
+                    <div class="panel-group_r3" id="Div1">
+                        <div class="panel panel-primary_r3" id="Div5">
+                            <div class="panel-heading_r3 clearfix" id="Div7">
+                                <h3 class="panel-title_r3" id="H2">
+                                    <a data-toggle="collapse" data-parent="#Group2" href="#collapse5">
+                                        <b>Patrimoniale</b>
+                                        <button class="btn btn-info pull-right">
+                                            <i id="I4" onclick="EditNote(this);" class="icon-note" gridname="VI_RD_NOTINV_NoteInvii"
+                                                filter="15"></i>
+                                        </button>
+                                        <span class="button-checkbox pull-right">
+                                            <button id="Button3" onclick="ValidaSez(this);" sottosezione="15" type="button"
+                                                data-sotto="15" class="btn btn-warning" data-color="primary" gridname="RD_VI_VALSOT_CEI">Validazione</button>
+                                            <i><input type="checkbox" class="hidden" /> </i>
+                                        </span>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse5" class="panel-collapse">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <magic-grid gridname="FASC_DOCUMENTI" filterpk="LASINV_AS_ASSET_ID"
+                                                    filter="foc.options.FASC_DOCUMENTI_filter_PAT"></magic-grid>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-group_r3" id="Div1">
+                        <div class="panel panel-primary_r3" id="Div15">
+                            <div class="panel-heading_r3 clearfix" id="Div17">
+                                <h3 class="panel-title_r3" id="H12">
+                                    <a data-toggle="collapse" data-parent="#Group2" href="#collapse15">
+                                        <b>Amministrativa</b>
+                                        <button class="btn btn-info pull-right">
+                                            <i id="I4" onclick="EditNote(this);" class="icon-note" gridname="VI_RD_NOTINV_NoteInvii"
+                                                filter="16"></i>
+                                        </button>
+                                        <span class="button-checkbox pull-right">
+                                            <button id="Button113" onclick="ValidaSez(this);" sottosezione="16" type="button"
+                                                data-sotto="16" class="btn btn-warning" data-color="primary" gridname="RD_VI_VALSOT_CEI">Validazione</button>
+                                            <i><input type="checkbox" class="hidden" /> </i>
+                                        </span>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse15" class="panel-collapse in">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <magic-grid gridname="FASC_DOCUMENTI" filterpk="LASINV_AS_ASSET_ID"
+                                                    filter="foc.options.FASC_DOCUMENTI_filter_AMM"></magic-grid>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-group_r3" id="Tecnica">
+                        <div class="panel panel-primary_r3" id="Tecnica15_1">
+                            <div class="panel-heading_r3 clearfix" id="Tecnica17">
+                                <h3 class="panel-title_r3" id="H12">
+                                    <a data-toggle="collapse" data-parent="#Group2" href="#Tecnica15">
+                                        <b>Tecnica</b>
+                                        <button class="btn btn-info pull-right">
+                                            <i id="Tecnica15_4" onclick="EditNote(this);" class="icon-note" gridname="VI_RD_NOTINV_NoteInvii"
+                                                filter="17"></i>
+                                        </button>
+                                        <span class="button-checkbox pull-right">
+                                            <button id="Tecnica1513" onclick="ValidaSez(this);" sottosezione="17" type="button"
+                                                data-sotto="17" class="btn btn-warning" data-color="primary" gridname="RD_VI_VALSOT_CEI">Validazione</button>
+                                            <i><input type="checkbox" class="hidden" /> </i>
+                                        </span>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="Tecnica15" class="panel-collapse in">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <magic-grid gridname="FASC_DOCUMENTI" filterpk="LASINV_AS_ASSET_ID"
+                                                    filter="foc.options.FASC_DOCUMENTI_filter_TEC"></magic-grid>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-group_r3" id="Impianti">
+                        <div class="panel panel-primary_r3" id="Impianti_1">
+                            <div class="panel-heading_r3 clearfix" id="Impianti17">
+                                <h3 class="panel-title_r3" id="H12">
+                                    <a data-toggle="collapse" data-parent="#Group2" href="#Impianti5">
+                                        <b>Impiantistica</b>
+                                        <button class="btn btn-info pull-right">
+                                            <i id="Impianti15_4" onclick="EditNote(this);" class="icon-note" gridname="VI_RD_NOTINV_NoteInvii"
+                                                filter="18"></i>
+                                        </button>
+                                        <span class="button-checkbox pull-right">
+                                            <button id="Tecnica1513" onclick="ValidaSez(this);" sottosezione="18" type="button"
+                                                data-sotto="18" class="btn btn-warning" data-color="primary" gridname="RD_VI_VALSOT_CEI">Validazione</button>
+                                            <i><input type="checkbox" class="hidden" /> </i>
+                                        </span>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="Impianti5" class="panel-collapse in">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <magic-grid gridname="FASC_DOCUMENTI" filterpk="LASINV_AS_ASSET_ID"
+                                                    filter="foc.options.FASC_DOCUMENTI_filter_IMP"></magic-grid>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-group_r3" id="Speciali">
+                        <div class="panel panel-primary_r3" id="Speciali_1">
+                            <div class="panel-heading_r3 clearfix" id="Speciali17">
+                                <h3 class="panel-title_r3" id="H12">
+                                    <a data-toggle="collapse" data-parent="#Group2" href="#Speciali5">
+                                        <b>Impiantistica - Speciali</b>
+                                        <button class="btn btn-info pull-right">
+                                            <i id="Speciali15_4" onclick="EditNote(this);" class="icon-note" gridname="VI_RD_NOTINV_NoteInvii"
+                                                filter="19"></i>
+                                        </button>
+                                        <span class="button-checkbox pull-right">
+                                            <button id="Speciali1513" onclick="ValidaSez(this);" sottosezione="19" type="button"
+                                                data-sotto="19" class="btn btn-warning" data-color="primary" gridname="RD_VI_VALSOT_CEI">Validazione</button>
+                                            <i><input type="checkbox" class="hidden" /> </i>
+                                        </span>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="Speciali5" class="panel-collapse in">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <magic-grid gridname="FASC_DOCUMENTI" filterpk="LASINV_AS_ASSET_ID"
+                                                    filter="foc.options.FASC_DOCUMENTI_filter_SPE"></magic-grid>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-group_r3" id="Manute">
+                        <div class="panel panel-primary_r3" id="Manute_1">
+                            <div class="panel-heading_r3 clearfix" id="Manute17">
+                                <h3 class="panel-title_r3" id="H12">
+                                    <a data-toggle="collapse" data-parent="#Group2" href="#Manute5">
+                                        <b>Manutenzioni</b>
+                                        <button class="btn btn-info pull-right">
+                                            <i id="Manute5_4" onclick="EditNote(this);" class="icon-note" gridname="VI_RD_NOTINV_NoteInvii"
+                                                filter="20"></i>
+                                        </button>
+                                        <span class="button-checkbox pull-right">
+                                            <button id="Manute1513" onclick="ValidaSez(this);" sottosezione="20" type="button"
+                                                data-sotto="20" class="btn btn-warning" data-color="primary" gridname="RD_VI_VALSOT_CEI">Validazione</button>
+                                            <i><input type="checkbox" class="hidden" /> </i>
+                                        </span>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="Manute5" class="panel-collapse in">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <magic-grid gridname="FASC_DOCUMENTI" filterpk="LASINV_AS_ASSET_ID"
+                                                    filter="foc.options.FASC_DOCUMENTI_filter_MAN"></magic-grid>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!--Stato conservativo-->
+            <div class="tab-pane fade" id="tab3default">
+                <div ng-if="loadContent.two">
+                    <div class="panel-group_r3" id="Div8">
+                        <div class="panel panel-primary_r3" id="Div9">
+                            <div class="panel-heading_r3 clearfix" id="Div10">
+                                <h3 class="panel-title_r3" id="H3">
+                                    <a data-toggle="collapse" data-parent="#Group2" href="#collapse6">
+                                        <b>Stato conservativo</b>
+                                        <button class="btn btn-info pull-right">
+                                            <i id="I5" onclick="EditNote(this);" class="icon-note" gridname="VI_RD_NOTINV_NoteInvii"
+                                                filter="6"></i>
+                                        </button>
+                                        <span class="button-checkbox pull-right">
+                                            <button id="Button4" onclick="ValidaSez(this);" sottosezione="6" type="button"
+                                                data-sotto="6" class="btn btn-warning" data-color="primary" gridname="RD_VI_VALSOT_CEI">Validazione</button>
+                                            <i><input type="checkbox" class="hidden" /> </i>
+                                        </span>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse6" class="panel-collapse">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <magic-grid gridname="RD_VI_StatoCons_CEI_LAST" filterpk="LASINV_AS_ASSET_ID"></magic-grid>
+                                            </div>
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!--Contratti-->
+            <div class="tab-pane fade" id="tab4default">
+                <div ng-if="loadContent.three">
+                    <div class="panel-group_r3" id="Div11">
+                        <div class="panel panel-primary_r3" id="Div12">
+                            <div class="panel-heading_r3 clearfix" id="Div13">
+                                <h3 class="panel-title_r3" id="H4">
+                                    <a data-toggle="collapse" data-parent="#Group2" href="#collapse7">
+                                        <b>Contratti</b>
+                                        <button class="btn btn-info pull-right">
+                                            <i id="I6" onclick="EditNote(this);" class="icon-note" gridname="VI_RD_NOTINV_NoteInvii"
+                                                filter="7"></i>
+                                        </button>
+                                        <span class="button-checkbox pull-right">
+                                            <button id="Button5" onclick="ValidaSez(this);" sottosezione="7" type="button"
+                                                class="btn btn-warning" data-sotto="7" data-color="primary" gridname="RD_VI_VALSOT_CEI">Validazione</button>
+                                            <i><input type="checkbox" class="hidden" /> </i>
+                                        </span>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse7" class="panel-collapse">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <magic-grid gridname="RD_VI_ElencoContratti_CEI_LAST" filterpk="LASINV_AS_ASSET_ID"></magic-grid>
+                                            </div>
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--foto-->
+            <div class="tab-pane fade" id="tab5default">
+                <div ng-if="loadContent.four">
+                    <div class="panel-group_r3" id="Div14">
+                        <div class="panel panel-primary_r3" id="Div15">
+                            <div class="panel-heading_r3 clearfix" id="Div16">
+                                <h3 class="panel-title_r3" id="H5">
+                                    <a data-toggle="collapse" data-parent="#Group2" href="#collapse7">
+                                        <b>Immagini</b>
+                                        <button class="btn btn-info pull-right">
+                                            <i id="I7" onclick="EditNote(this);" class="icon-note" gridname="VI_RD_NOTINV_NoteInvii"
+                                                filter="8"></i>
+                                        </button>
+                                        <span class="button-checkbox pull-right">
+                                            <button id="Button6" onclick="ValidaSez(this);" sottosezione="8" type="button"
+                                                class="btn btn-warning" data-sotto="8" data-color="primary" gridname="RD_VI_VALSOT_CEI">Validazione</button>
+                                            <i><input type="checkbox" class="hidden" /> </i>
+                                        </span>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse7" class="panel-collapse">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <magic-grid gridname="RD_VI_ElencoFoto_last" filterpk="LASINV_AS_ASSET_ID"></magic-grid>
+                                            </div>
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Segnalazioni-->
+            <div class="tab-pane fade" id="tab6default">
+                <div ng-if="loadContent.five">
+                    <div class="panel-group_r3" id="Div17">
+                        <div class="panel panel-primary_r3" id="Div18">
+                            <div class="panel-heading_r3 clearfix" id="Div19">
+                                <h3 class="panel-title_r3" id="H6">
+                                    <a data-toggle="collapse" data-parent="#Group2" href="#collapse8">
+                                        <b>Segnalazioni</b>
+                                        <button class="btn btn-info pull-right">
+                                            <i id="I8" onclick="EditNote(this);" class="icon-note" gridname="VI_RD_NOTINV_NoteInvii"
+                                                filter="9"></i>
+                                        </button>
+                                        <span class="button-checkbox pull-right">
+                                            <button id="Button7" onclick="ValidaSez(this);" sottosezione="9" type="button"
+                                                class="btn btn-warning" data-sotto="9" data-color="primary" gridname="RD_VI_VALSOT_CEI">Validazione</button>
+                                            <i><input type="checkbox" class="hidden" /> </i>
+                                        </span>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse8" class="panel-collapse">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <!--Segnalazioni Manu-->
+
+                                            <!--Segnalazioni Auto-->
+                                            <h4 style="padding-top: 1em;">Anomalie riscontrate</h4>
+                                            <div class="row">
+                                                <magic-grid gridname="RD_V_SegnalazioniAuto_CEI_Last" filterpk="id_esterno"></magic-grid>
+                                            </div>
+                                            <h4 style="padding-top: 1em;">Altre segnalazioni</h4>
+                                            <div class="row">
+                                                <!--<magic-grid gridname="RD_VI_Bacheca_CEI_Last" filterpk="id_esterno"></magic-grid>-->
+                                                <magic-grid gridname="RD_V_SegnalazioniManu_CEI_Last" filterpk="id_esterno"></magic-grid>
+                                            </div>
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!--Attività manutentive-->
+            <div class="tab-pane fade" id="tab7default">
+                <div ng-if="loadContent.six">
+                    <div class="panel-group_r3" id="Div20">
+                        <div class="panel panel-primary_r3" id="Div21">
+                            <div class="panel-heading_r3 clearfix" id="Div22">
+                                <h3 class="panel-title_r3" id="H7">
+                                    <a data-toggle="collapse" data-parent="#Group2" href="#collapse9">
+                                        <b>Manutenzione programmata</b>
+                                        <button class="btn btn-info pull-right">
+                                            <i id="I9" onclick="EditNote(this);" class="icon-note" gridname="VI_RD_NOTINV_NoteInvii"
+                                                filter="11"></i>
+                                        </button>
+                                        <span class="button-checkbox pull-right">
+                                            <button id="Button8" onclick="ValidaSez(this);" sottosezione="11" type="button"
+                                                class="btn btn-warning" data-sotto="11" data-color="primary" gridname="RD_VI_VALSOT_CEI">Validazione</button>
+                                            <i><input type="checkbox" class="hidden" /> </i>
+                                        </span>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse9" class="panel-collapse">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <magic-grid gridname="RD_VI_AttivitaManute_CEI_LAST" filterpk="LASINV_AS_ASSET_ID"></magic-grid>
+                                            </div>
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Documenti sicurezza-->
+            <div class="tab-pane fade" id="tab8default">
+                <div ng-if="loadContent.seven">
+                    <div class="panel-group_r3" id="Div23">
+                        <div class="panel panel-primary_r3" id="Div24">
+                            <div class="panel-heading_r3 clearfix" id="Div25">
+                                <h3 class="panel-title_r3" id="H8">
+                                    <a data-toggle="collapse" data-parent="#Group2" href="#collapse10">
+                                        <b>Documenti sicurezza</b>
+                                        <button class="btn btn-info pull-right">
+                                            <i id="I10" onclick="EditNote(this);" class="icon-note" gridname="VI_RD_NOTINV_NoteInvii"
+                                                filter="21"></i>
+                                        </button>
+                                        <span class="button-checkbox pull-right">
+                                            <button id="Button9" onclick="ValidaSez(this);" sottosezione="12" type="button"
+                                                class="btn btn-warning" data-sotto="12" data-color="primary" gridname="RD_VI_VALSOT_CEI">Validazione</button>
+                                            <i><input type="checkbox" class="hidden" /> </i>
+                                        </span>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse10" class="panel-collapse">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <magic-grid gridname="RD_VI_DocumeSic_CEI" filterpk="LASINV_AS_ASSET_ID"></magic-grid>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    //recupero dati grid..
+    var data = $("#appcontainer").data("customItemInfo");
+
+    console.log("passo badge");
+    //Dati in toolbar
+    //var diocesiName = data.Diocesi;
+    var enteName = (data.Ente !== undefined && data.Ente !== '') ?  data.Ente : '';
+    if (data.CEI_COD_ENTE!= null)
+        enteName=data.CEI_COD_ENTE+'-'+data.US_TIPGRU_DESCRIPTION+' '+enteName;
+
+    if(data.ComuneEnte!==undefined && data.ComuneEnte!=='')
+        enteName=enteName+' - '+data.ComuneEnte;
+
+    var assetType = (data.AS_TIPSAS_DESCRIPTION !== undefined) ? data.AS_TIPSAS_DESCRIPTION : '';
+    // var assetSpec = (data.AS_SASSPE_DESCRIPTION !== undefined
+    //     && data.AS_SASSPE_DESCRIPTION !== null
+    //     && data.AS_SASSPE_DESCRIPTION !== '') ? ' - ' + data.AS_SASSPE_DESCRIPTION : '';
+
+  
+    var assetDescr = (data.AS_ASSET_DESCRIZIONE !== undefined
+        && data.AS_ASSET_DESCRIZIONE !== null
+        && data.AS_ASSET_DESCRIZIONE !== '') ? ' - ' + data.AS_ASSET_DESCRIZIONE : '';
+
+    if (data.municipality && data.municipality!==null && data.AS_ASSET_DESCRIZIONE!==null)
+        assetDescr=assetDescr+'-'+data.municipality;
+    else 
+    assetDescr=data.municipality;
+    //Imposto valori
+    $('#intest_diocesi').text(enteName);
+    //$('#intest_tipo').text(assetType + assetSpec);        //Come da richiesta Loris Trubian a Luca Angelino del 17/09/2018
+    $('#intest_tipo').text(assetType + assetDescr);
+
+    console.log("fascicolo scheda");
+
+
+
+
+    function ValidaSez(e) {
+
+        var gridcode = e.getAttribute("gridname");
+        var Sezione = e.getAttribute("sottosezione");
+
+        // console.log(Sezione);
+        // console.log(data.AS_ASSET_ID);
+        // console.log(gridcode);
+
+        var jsonpayload = JSON.parse('{ "actiontype": "EDTGD", "actionfilter":{ "logic": "and", "filters" :[ { "field": "VALSOT_AS_ASSET_ID", "operator": "eq", "value": "' + data.AS_ASSET_ID + '"}, { "field": "VALSOT_SOTMOD_ID", "operator": "eq", "value": "' + Sezione + '" }]}, "actioncommand": "' + gridcode + '" }');
+
+        //  console.log(jsonpayload);
+        jsonpayload.rowData = data;
+        //depending on the click binding (jquery click or html onclick)
+        var selector = (e.currentTarget ? e.currentTarget : e);
+        jsonpayload.jqgrid = $(selector).closest(".k-grid");
+        jsonpayload.jrow = $(selector).closest(".k-grid tr");
+
+
+        if (!jsonpayload.actiontype || !jsonpayload.actioncommand)
+            console.log("actioncommand or actiontype not provided");
+        dispatchAction(e, jsonpayload);
+    }
+
+
+    function EditNote(e) {
+        //  var jsonpayload = { "actiontype": "EDTGD", "actionfilter": { "field": "TK_TICKET_AS_ASSET_ID", "operator": "eq", "value": "AS_ASSET_ID" }, "actioncommand": "MOB_TK_V_LIST_TICKET" };
+        var gridcode = e.getAttribute("gridname");
+        var Sezione = e.getAttribute("filter");
+
+        // var jsonpayload = JSON.parse('{ "actiontype": "EDTGD", "actionfilter":{ "field": "NOTINV_INVIO_ID", "operator": "eq", "value": "3" }, "actioncommand": "' + gridcode + '" }');
+        var jsonpayload = JSON.parse('{ "actiontype": "EDTGD", "actionfilter":{ "logic": "and", "filters" :[ { "field": "NOTINV_AS_ASSET_ID", "operator": "eq", "value": "' + data.AS_ASSET_ID + '"}, { "field": "NOTINV_SOTMOD_ID", "operator": "eq", "value": "' + Sezione + '" }]}, "actioncommand": "' + gridcode + '" }');
+
+
+        //console.log(jsonpayload);
+
+        jsonpayload.rowData = data; // getRowDataFromButton(e);
+        //depending on the click binding (jquery click or html onclick)
+        var selector = (e.currentTarget ? e.currentTarget : e);
+        jsonpayload.jqgrid = $(selector).closest(".k-grid");
+        jsonpayload.jrow = $(selector).closest(".k-grid tr");
+
+
+        if (!jsonpayload.actiontype || !jsonpayload.actioncommand)
+            console.log("actioncommand or actiontype not provided");
+        dispatchAction(e, jsonpayload);
+    }
+
+
+    //Gestione tab attivo..
+    $(document).ready(function () {
+        // $("div li:first-child").addClass("active");
+        //  $("#ContenutoTab").find('div:first').addClass("active in");
+
+
+        window.setTimeout(function () {
+
+            console.log("setInterval on");
+
+            if (data.id_invio_GEN == null) {
+                if (data.id_invio_DOC != null) { $('#DOC').find('a').click(); }
+                else if (data.id_invio_SMAN != null) { $('#SMAN').find('a').click(); }
+                else if (data.id_invio_CON != null) { $('#CON').find('a').click(); }
+                else if (data.id_invio_FOT != null) { $('#FOT').find('a').click(); }
+                else if (data.id_invio_SEG != null) { $('#SEG').find('a').click(); }
+                else if (data.id_invio_MAN != null) { $('#MAN').find('a').click(); }
+                else if (data.id_invio_DOC_SI != null) { $('#DOC_SI').find('a').click(); }
+            }
+            else { $('#GEN').find('a').click(); }
+
+        }, 500);
+
+
+        $("div[sfondo='BodyCol']").css("background-color", "rgba(175, 201, 99, 0.2)");
+
+    });
+
+    $('#DOC').click(function () {
+
+        setTimeout(function () {
+
+            console.log("setInterval on");
+            //$('.panel-collapse').collapse('hide');
+            $('.panel-collapse.in').collapse('hide');
+
+        }, 4500);
+    }
+    );
+
+    //close all panel (button scheda a)
+    $('.closeall').click(function () {
+        $('.panel-collapse.in').collapse('hide');
+        $('.panel-collapsed.in').collapse('hide');
+
+    });
+
+    // open all panel (scheda a)
+    $('.openall').click(function () {
+        $('.panel-collapse:not(".in")').collapse('show');
+        $('.panel-collapsed:not(".in")').collapse('show');
+    });
+
+    //validazione(JSON.parse(data.JSON_VALID));
+
+
+    function validaEle(valData) {
+
+        var butn = $("button[data-sotto='" + valData.VALSOT_SOTMOD_ID.toString() + "']");
+        var icn = butn.children("i");
+        // var $checkbox = $widget.find('input:checkbox');
+        butn
+            .removeClass('btn-warning btn-danger')
+            .addClass(valData.VALSOT_STAVAL_ID==1 ? 'btn-primary active':'btn-danger active');
+
+        butn.children("i").removeClass('glyphicon glyphicon-unchecked').addClass('glyphicon glyphicon-check');
+
+    }
+
+    $(function () {
+
+
+        var valid = [];
+
+        if (data.JSON_VALID) {
+            //valid=JSON.parse(data.JSON_VALID);
+            valid = valid.concat(JSON.parse(data.JSON_VALID));
+        }
+
+        console.log(valid);
+
+        $('.button-checkbox').each(function () {
+
+            // Settings
+            var $widget = $(this),
+                $button = $widget.find('button'),
+                $checkbox = $widget.find('input:checkbox'),
+                color = $button.data('color'),
+                sotto = $button.data('sotto'),
+                settings = {
+                    on: {
+                        icon: 'glyphicon glyphicon-check'
+                    },
+                    off: {
+                        icon: 'glyphicon glyphicon-unchecked'
+                    }
+                };
+
+            var json=JSON.parse(data.JSON_VALID); 
+            if (Array.isArray(json)) 
+                json.forEach(function (element, index) {
+                    if(element['valsot_sotmod_id'] == sotto && element['valsot_staval_id']==2 ){
+                        color='danger';
+                    }
+                })
+
+            else 
+                if (json && json.valsot_staval_id == sotto && json.valsot_staval_id==2)
+                  color='danger';
+
+            if (valid && valid.findIndex(i => i.valsot_sotmod_id == sotto) > -1)
+                updateCheck()
+            // {
+
+            //     $checkbox.prop('checked', !$checkbox.is(':checked'));
+            //     updateDisplay();
+            // }
+
+            function updateCheck() {
+                $checkbox.prop('checked', !$checkbox.is(':checked'));
+                updateDisplay();
+
+            }
+            // Actions
+            function updateDisplay() {
+                var isChecked = $checkbox.is(':checked');
+
+                // Set the button's state
+                $button.data('state', (isChecked) ? "on" : "off");
+
+                // Set the button's icon
+                $button.find('.state-icon')
+                    .removeClass()
+                    .addClass('state-icon ' + settings[$button.data('state')].icon);
+
+                // Update the button's color
+                if (isChecked) {
+                    $button
+                        .removeClass('btn-warning')
+                        .addClass('btn-' + color + ' active');
+                }
+                else {
+                    $button
+                        .removeClass('btn-' + color + ' active')
+                        .addClass('btn-warning');
+                }
+            }
+
+            // Initialization
+            function init() {
+
+                updateDisplay();
+
+                // Inject the icon if applicable
+                if ($button.find('.state-icon').length === 0) {
+                    $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
+                }
+            }
+            init();
+        });
+
+
+
+
+    });
+
+
+
+
+</script>
+<style>
+    .btn-red {
+
+        color: red;
+    }
+
+
+    /**************************************************************
+    Per gestire gli stili con uno "scope" raccogliere gli elementi
+    in un div con una classe identificativa e definire i selettori
+    degli stili come "Gli elementi discendenti di un certo selettore"
+    Es:
+        .ANCESTOR .SPECIFIC_SELECTOR {
+            Styles...
+        }
+
+    **************************************************************/
+
+    .schedaBce-style-holder #Indirizzo {
+        width: 81% !important;
+
+    }
+
+    .dimen-intestazione {
+        /* padding: .40em 1.5em; */
+        padding: .0em 1.5em;
+        font-size: 125%;
+        line-height: 2;
+        text-align: center;
+        margin-left: 1%;
+    }
+
+    .dimen-intestazione #intest_diocesi {
+        margin-bottom: -2%;
+    }
+
+    .dimen-intestazione #intest_tipo {
+        text-align: left;
+    }
+
+    .dimen {
+        padding: .25em .4em;
+        font-size: 135%;
+        line-height: 2;
+        width: 200px;
+        text-align: center;
+        margin-left: 1%;
+    }
+
+    .schedaBce-style-holder .btnClass {
+        float: right;
+        margin-right: 3%;
+    }
+
+    .schedaBce-style-holder .form-group {
+        margin: 0px;
+    }
+
+    .schedaBce-style-holder .bend label {
+        width: auto;
+    }
+
+    .schedaBce-style-holder label {
+        font-size: 12px;
+        font-weight: normal;
+        line-height: 20px;
+    }
+
+    .schedaBce-style-holder h2 {
+        font-size: 14px;
+
+    }
+
+
+</style>

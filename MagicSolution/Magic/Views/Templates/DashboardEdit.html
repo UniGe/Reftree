@@ -1,0 +1,67 @@
+﻿<style>
+    #ContentPlaceHolder1_dashboardTabs .tab-pane {
+        padding-top: 0;
+    }
+    #ContentPlaceHolder1_dashboardTabs .tab-pane.row [ng-include]{
+        text-align: center;
+        border: 1px solid #ccc;
+        margin: 0 0 30px;
+        padding: 10px;
+    }
+    #ContentPlaceHolder1_dashboardTabs .tab-pane.row [ng-include] > ng-form{
+        max-width: 300px;
+        display: inline-block;
+        text-align: left;
+    }
+    #ContentPlaceHolder1_dashboardTabs .tab-pane.row [ng-class^="content.splittedClasses"]:last-child [ng-include] {
+        margin-bottom: 0;
+    }
+</style>
+<form ng-submit="de.save()" name="de.$form" id="ContentPlaceHolder1_dashboardTabs" novalidate>
+    <ul class="nav nav-pills">
+        <li ng-repeat="tab in de.data.tabs" ng-class="{active: $index == 0}">
+            <a data-toggle="tab" href="#dashboard-tab-{{ tab.id }}">
+                {{ tab.code }}&nbsp;
+                <span ng-click="de.redirectToObject(tab)" class="fa fa-pencil"></span>
+            </a>
+        </li>
+        <li>
+            <a title="{{de.lang.addTab}}" ng-click="de.redirectToObject()" href="javascript:void(0)"><span class="fa fa-plus"></span></a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div ng-class="{active: $index == 0}" id="dashboard-tab-{{ tab.id }}" class="tab-pane row" ng-repeat="tab in de.data.tabs">
+
+            <div>
+                <p class="text-center">
+                    <a title="{{de.lang.addContent}}" href="javascript:void(0)" class="k-button" ng-click="de.addContent(tab.id)"><span class="fa fa-plus"></span></a>
+                </p>
+            </div>
+
+            <div class="panel panel-default" ng-repeat="group in de.data.groups | where: {tabId: tab.id} | orderBy: 'position'">
+                <div class="panel-heading" role="tab">
+                    <ng-form name="de.$subForms['group-' + group.id]" class="pull-right">
+                        <label>
+                            {{ de.lang.position }}&nbsp;
+                            <input ng-change="de.setSubFormDirty('group-' + group.id)" style="max-width: 80px;" kendo-numeric-text-box k-options="de.numberData" ng-model="group.position" ng-model-options="{ updateOn: 'blur' }" />
+                        </label>
+                    </ng-form>
+                    <h3 class="panel-title">{{ group.code }}</h3>
+                </div>
+                <div class="panel-collapse collapse in" role="tabpanel" style="border: 1px solid #ccc; border-top: none;">
+                    <div class="panel-body row">
+                        <div style="text-align: center;" ng-class="content.splittedClasses.join(' ')" ng-repeat="content in de.data.contents | where: {groupId: group.id, tabId: tab.id} | orderBy: 'position'">
+                            <div ng-include="de.contentFormUrl"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-class="content.splittedClasses.join(' ')" ng-repeat="content in de.data.contents | where: {tabId: tab.id, groupId: null} | orderBy: 'position'">
+                <div ng-include="de.contentFormUrl"></div>
+            </div>
+
+        </div>
+    </div>
+    <button style="margin: -25px 20px 0 0; position: relative; z-index: 20;" class="pull-right k-button k-primary">{{ de.lang.save }}</button>
+</form>

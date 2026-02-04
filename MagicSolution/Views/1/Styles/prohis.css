@@ -1,0 +1,47 @@
+﻿#abstract
+{
+    /*position: relative;
+    width: 692px;
+    height: 480px;*/
+    margin: 0 auto;
+}
+
+#abstract a
+{
+    /*position: absolute; */ 
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-color: #fff600;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+    border: 0;
+    -moz-box-shadow: 0 0 0 1px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,0.5);
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.5);
+    -moz-transition: -moz-box-shadow .3s;
+    -webkit-transition: -webkit-box-shadow .3s;
+    transition: box-shadow .3s;
+}
+
+#abstract a:hover
+{
+    -moz-box-shadow: 0 0 0 15px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 0 0 15px rgba(0,0,0,0.5);
+    box-shadow: 0 0 0 15px rgba(0,0,0,0.5);
+    -moz-transition: -moz-box-shadow .3s;
+    -webkit-transition: -webkit-box-shadow .3s;
+    transition: box-shadow .3s;
+}
+
+#testo
+{
+    top: 1px;
+    left: 100px;
+}
+
+#testo:hover
+{
+    z-index: 10;
+}

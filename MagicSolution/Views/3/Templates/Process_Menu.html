@@ -1,0 +1,73 @@
+﻿<style>
+    .rtree-procmenu-item {
+        margin-bottom: 20px;
+    }
+
+    .panel-title > a {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .panel-group .panel {
+        margin-bottom: 20px;
+    }
+
+    .rtree-procmenu-ver {
+        margin-bottom: 40px;
+        border: #888888;
+        border-style: solid;
+        border-width: 1px 1px 1px 1px;
+        border-radius: 2px;
+        box-shadow: 0 7px 19px rgba(88,88,88,.5);
+    }
+</style>
+<div ng-show="!p_m.requestFinished" class="text-center" style="padding: 30px;">
+    <span class="fa fa-spinner fa-spin fa-4x"></span>
+</div>
+<div ng-show="p_m.requestFinished && p_m.result.length">
+    <p>
+        <!--    <input class="k-input k-textbox" placeholder="{{ p_m.searchPlaceholder }}" type="text" ng-model="p_m.searchText" /><br />-->
+        <input kendo-auto-complete ng-model="p_m.userfilter" placeholder="{{ p_m.searchPlaceholder }}" type="text" k-options="p_m.autocompleteOptions" style="width:300px;" /><br />
+    </p>
+    <div class="row">
+        <div class="panel-group">
+            <div class="panel panel-default rtree-procmenu-ver" ng-repeat="deptPrfs in p_m.result | filter:p_m.searchText | groupBy:'claprfId' | toArray:true | orderBy:p_m.claprfOrder">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <a data-toggle="collapse" target="_self" class="{{ p_m.claprfExpanded[deptPrfs[$index].claprfId] ? '' : ' collapsed' }}" href="{{'#collapse'+($index + 1)}}">{{ deptPrfs[0].claprfLabel }}</a>
+                    </h3>
+                </div>
+                <div id="{{'collapse'+($index + 1)}}" class="panel-collapse{{ p_m.claprfExpanded[deptPrfs[$index].claprfId] == true ? ' in' : ' collapse' }}">
+                    <div class="panel-body">
+                        <div ng-repeat="deptPrf in deptPrfs | orderBy:'order'" class="row rtree-procmenu-item">
+                            <div>
+                                <div class="col-sm-12">
+                                    <h4>{{deptPrf.label}}</h4>
+                                    <p>
+                                        <button ng-if="deptPrf.actionType!='LEVCH'" target="_self" ng-click="p_m.launchAction($event, deptPrf)" class="k-button" style="margin: 15px; {{deptPrf.color ? 'background-color: ' + deptPrf.color : ''}}" type="button">Execute !</button>
+                                        <a ng-if="deptPrf.actionType=='LEVCH'" href="javascript:void(0);" ng-click="p_m.launchAction($event, deptPrf)">Go to process step!</a>
+                                    </p>
+                                    <h5>{{deptPrf.description}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-xs-6 text-left">
+            <button class="btn btn-default" type="button" ng-click="p_m.level = null;p_m.userselectedId = null;">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Restart
+            </button>
+        </div>
+        <!--<div class="col-xs-6 text-right">
+            <button ng-show="p_m.hasLevelAfter" class="k-button" type="button" ng-click="p_m.level = p_m.level + 1">Level {{ (p_m.level + 1) }} >></button>
+        </div>-->
+    </div>
+</div>
+<div class="text-center" ng-show="p_m.requestFinished && !p_m.result.length">
+    <h3><i>No Data Found</i></h3>
+</div>

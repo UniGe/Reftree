@@ -1,0 +1,129 @@
+﻿<style>
+    .ul-nav-editpage {
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+    height: 40px;
+}
+
+.li-nav-editpage {
+    background-color: #0090d9;
+    margin: 1px;
+    border-radius: 8px;
+}
+
+.nav-tabs > .li-nav-editpage > a {
+    border-radius: 8px;
+    border: 0px;
+    padding: 5px 10px;
+    color: white;
+    min-width: 100px;
+    text-align: center;
+}
+
+    .nav-tabs > .li-nav-editpage > a:hover, .nav-tabs > .li-nav-editpage > a:focus {
+        cursor: pointer;
+        background-color: #2a6496;
+        border-radius: 8px;
+        color: white;
+        font-size:14px;
+    
+        
+    }
+
+.nav-tabs > .li-nav-editpage.active > a, .nav-tabs > .li-nav-editpage.active > a:hover, .nav-tabs > .li-nav-editpage.active > a:focus {
+    color: white;
+    cursor: default;
+    background-color: #2a6496;
+    border-radius: 8px;
+    /*padding: 5px 15px;*/
+}
+
+
+
+.tab-content-editpage {
+    /*border: #2a6496;*/
+    /*border-style: solid;
+    border-width: 1.3px;
+    border-radius: 8px;*/
+    padding: 5px;
+}
+
+.nav > .li-nav-editpage.open > a, .nav > .li-nav-editpage.open > a:hover, .nav > .li-nav-editpage.open > a:focus {
+    /*background-color: #2a6496;*/
+    background-color: #2a6496;
+    border-radius: 8px;
+    /*padding: 5px 10px;*/
+}
+
+.dropdown-menu > .li-nav-editpage > a {
+    line-height: normal;
+    padding: 5px 10px;
+    margin: unset;
+    border-radius: 8px;
+    color:white;
+}
+
+.dropdown-menu > .li-nav-editpage > a:hover {
+        color: white;
+        background-color: #2a6496;
+}
+
+.dropdown-menu > .li-nav-editpage.active > a {
+        color: white;
+        background-color: #2a6496;
+    }
+
+.dropdown-menu > .li-nav-editpage.active.open > a {
+    color: white;
+    background-color: #2a6496;
+}
+
+
+.li-nav-editpage .open > a .caret-editpage, .li-nav-editpage.open > a:hover .caret-editpage, .li-nav-editpage .open > a:focus .caret-editpage {
+    border-top-color: #2a6496;
+    border-bottom-color: #2a6496;
+}
+</style>
+<ul class="nav nav-tabs ul-nav-editpage">
+    <li class="li-nav-editpage" ng-repeat="tabstripTab in widget.tabs" data-ng-class="{'active' : tabstripTab.tabNum == ged.getMinimumIdx(widget.tabs) }">
+        <a ng-init="ged.loadTabstripTabContent[tabstripTab.id] = tabstripTab.tabNum == ged.getMinimumIdx(widget.tabs);" ng-click="ged.onTabstripTabSelected(tabstripTab.id)" data-toggle="tab" href="#{{'subtab_' + tabstripTab.id}}">            
+            <span>{{tabstripTab.title || tabstripTab.titles.en}}</span>
+        </a>
+    </li>
+</ul>
+<div class="tab-content-editpage tab-content">
+    <div  ng-repeat="tabstripTab in widget.tabs" id="{{'subtab_' + tabstripTab.id
+                }}"  ng-if="ged.loadTabstripTabContent[tabstripTab.id]" class="tab-pane fade in" data-ng-class="{'active' : tabstripTab.tabNum == ged.getMinimumIdx(widget.tabs) }">
+
+
+                <div gridstack id="tabStripstack{{widgetLayout}}{{tab.id}}" class="grid-stack">
+
+                    <div gridstack-item class="grid-stack-item editpage-widget-container-inner" ng-repeat="widget in tabstripTab.tabWidgets"
+                         data-gs-no-resize="true" data-gs-no-move="true"
+                         gs-item-x="widget.x" gs-item-y="widget.y"
+                         gs-item-width="widget.width" gs-item-height="widget.height">
+
+
+                        <div style="width: 100%;"
+                             ng-if="widget.contentType !== 'MAGIC-WIDGET-GROUP' && widget.contentType !== 'GOOGLE-MAP' && widget.contentType !== 'MAGIC-TABSTRIP'"
+                             ng-class="{fullHeight: widget.contentType == 'MAGIC-IMAGE-SLIDER' || widget.contentType == 'MAGIC-IMAGE-CAROUSEL'}"
+                             ng-include="ged.widgetTemplateUrl">
+                        </div>
+
+                        <easy-map style="width: 100%;" ng-if="widget.contentType == 'GOOGLE-MAP'" mapOptions="{}"
+                                  markers="widget.mapMarkers" on-map-ready="ged.onMapReady()"
+                                  on-select="ged.onMapSelect()"></easy-map>
+
+                        <div ng-if="widget.contentType == 'MAGIC-WIDGET-GROUP'"
+                             ng-include="ged.widgetGroupTemplateUrl">
+                        </div>
+
+                        <div ng-if="widget.contentType == 'MAGIC-TABSTRIP'" style="width:100%;"
+                             ng-include="ged.tabstripTemplateUrl">
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+                </div>

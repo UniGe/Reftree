@@ -1,0 +1,19 @@
+﻿<div ng-click="doNotCloseThisTime = true" class="sd-wrapper dropdown" ng-class="shallShow()">
+    <div class="input-group">
+        <input name="searchInput"
+               ng-model="searchTerm"
+               class="form-control sd-input"
+               style="box-sizing: border-box"
+               ng-click="open()"
+               ng-change="open(); setDirty(); setModelValue($element); checkInput();"
+               placeholder="{{sdPlaceholder}}"
+               autocomplete="off"
+        />
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button" ng-click="clearInput(); checkInput();">x</button>
+        </span>
+    </div>
+    <ul ng-show="resultsLength" class="sd-list dropdown-menu" style="width: 100%; left: 0;" ng-style="dropStyles()">
+        <li ng-repeat="(key, value) in filterList()" data-value="{{get(key, value)}}" ng-click="notify(key, value); $event.stopPropagation()" style="cursor: pointer;">{{get(key, value, true)}}</li>
+    </ul>
+</div>

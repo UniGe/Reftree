@@ -1,0 +1,512 @@
+﻿<style>
+    .themati-window .modal-content {
+        margin: 30px;
+    }
+
+    .themati-window .td-r3 {
+        padding-right: 2px !important;
+    }
+
+    .laybloPdf-window .modal-content {
+        margin: 30px;
+    }
+     
+    .laybloPdf-window .modal-dialog {
+        width: 40%;
+    }
+
+    .laybloPdf-window .modal-dialog {
+        width: 40%;
+        /*background-color:white;*/
+    }
+
+    .laybloPdf-window .modal-body {
+        background-color: white;
+    }
+
+
+    .laybloPdf-window .panel-heading .panel-title > a.collapsed:after {
+        content: "\f055";
+        color: white;
+    }
+
+    .laybloPdf-window .panel-heading .panel-title > a:hover {
+        content: "\f055";
+        color: white;
+    }
+
+    .laybloPdf-window .panel-heading {
+        background-image: none;
+        background-color: #0d6a92;
+    }
+
+        .laybloPdf-window .panel-heading .panel-title > a.collapsed {
+            color: white !important;
+            content: "\f055";
+        }
+
+    .laybloPdf-window .panel-title > a {
+        color: white;
+    }
+
+    .laybloPdf-window .panel-heading .panel-title > a:focus {
+        color: white !important;
+        content: "\f055";
+    }
+
+    .laybloPdf-window .btn-success {
+        background-color: #0d6a92;
+    }
+
+    #treeThemas input[type="color"] {
+        max-width: 17px;
+        min-width: 17px;
+        min-height: 20px;
+        background-color: transparent;
+        margin-left: 5px;
+        margin-top: -3px;
+        border: none;
+        background: none;
+        border-radius: 10px;
+        padding: 0;
+    }
+
+    @media screen and (min-width: 768px) {
+        .modal-dialog {
+            width: calc(60%);
+        }
+    }
+
+    #blockBodyPdf {
+        background-color: white;
+    }
+
+    #blockHeaderPdf {
+        background-color: white;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    #blockFooterPdf {
+        background-color: white;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .fa-file-pdf-o.spinning {
+        animation: spin 2s infinite linear;
+        -webkit-animation: spin2 2s infinite linear;
+    }
+
+    @keyframes spin {
+        from {
+            transform: scale(1) rotate(0deg);
+        }
+
+        to {
+            transform: scale(1) rotate(360deg);
+        }
+    }
+
+    @-webkit-keyframes spin2 {
+        from {
+            -webkit-transform: rotate(0deg);
+        }
+
+        to {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+  
+    .pdf-form-control {
+        border-radius: 10px;
+    }
+
+        .pdf-form-control .option {
+            border-radius: 10px;
+        }
+
+    .row-pdf-divider-r3 {
+        padding: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    
+
+    #pdfContainer .btn-success {
+        background-color: #0d6a92;
+        height: 36px;
+    }
+
+        #pdfContainer .btn-success:active {
+            /*background-color: #0D638f;*/
+        }
+
+        #pdfContainer  .btn-success:focus {
+            /*background-color: #0D638f;*/
+        }
+
+        #pdfContainer  .btn-success:hover {
+            /*background-color: #0D638f;*/
+        }
+
+    #pdfContainer .btn-danger {
+        height:36px;
+    }
+
+    .tblLayerContainer {
+        position: relative;
+        display: block;
+        overflow: scroll;
+        height: 250px;
+        margin: 10px;
+        padding: 10px;
+        border: #0090d9;
+        border-style: solid;
+        border-radius: 5px;
+    }
+
+
+    #myheader {
+        background-color:transparent;
+    }
+
+    #blockBody .panel-group {
+      margin:1px;
+    }
+
+</style>
+
+
+
+<div id="pdfContainer" ng-show="!gdv.openLayout">
+    <div id="blockHeaderPdf" class="modal-header">
+        <div class="row">
+            <div class="col-lg-4">
+            </div>
+            <div class="col-lg-4">
+                <label class="label-title-pdf">{{gdv.getLabels('TitlePdf')}}</label>
+            </div>
+            <div class="col-lg-4" style="text-align: right; height:36px;">
+                <button ng-if="false" ng-model="button" id="btnExit" class="btn btn-danger" ng-click="cancel()">X</button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="modal-body" id="blockBodyPdf">
+        <div class="row row-pdf-divider-r3">
+            <div class="col-lg-4">
+            </div>
+            <div class="col-lg-4">                
+                <label class="label-title-pdf">{{gdv.getLabels('profiesPdf')}}</label>
+                <div class="div-pdf" style="display:flex">
+                    <select ng-disabled="DisabledAll" class="pdf-form-control-3" ng-change="setProfile(ProfileUser)" ng-options="item.value as item.text for item in gdv.ProfilesUser" ng-model="ProfileUser">
+                        <option value="">
+                        <option>
+                    </select>
+                    <button id="btnAddProfile" style="margin-left:3px;" ng-disabled="DisabledAll" class="btn btn-success pull-right" ng-click="openAddProfile()" title="{{gdv.getLabels('addProfile')}}">
+                        <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4">                
+            </div>
+        </div>
+        <br />
+        <div class="row row-pdf-divider-r3">
+            <div class="col-lg-4">
+                <div class="div-pdf">
+                    <label class="label-title-pdf">{{gdv.getLabels('Architettonico')}}</label>
+                    <div class="div-pdf">
+                        <label class="toggle-pdf">
+                            <input ng-disabled="DisabledAll" class="pdf-checkbox" type="checkbox" name="check" id="chkArchitettonico" ng-model="xmlExtractPdf.Architettonico" ng-checked="xmlExtractPdf.Architettonico">
+                            <span class="label-text">{{gdv.getLabels('Architettonico')}}</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <form>
+                    <label class="label-title-pdf">{{gdv.getLabels('orientamentoPagina')}}</label>
+                    <div class="div-pdf" ng-repeat="PaperOrientation in gdv.paperOrientation">
+                        <label class="toggle-pdf">
+                            <input ng-disabled="DisabledAll" class="pdf-radio" id="rdbPaperOrientation_{{PaperOrientation.code}}" type="radio" name="toggle" ng-value="PaperOrientation.code" ng-model="xmlExtractPdf.PaperOrientation"><span class="label-text">{{ PaperOrientation.text }}</span>
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4">
+                <form>
+                    <label class="label-title-pdf">{{gdv.getLabels('legendaPdf')}}</label>
+                    <div class="div-pdf" ng-repeat="TableOrientation in gdv.legendaPdf">
+                        <label class="toggle-pdf">
+                            <input ng-disabled="DisabledAll" class="pdf-radio" type="radio" name="toggle" ng-model="xmlExtractPdf.TableOrientation" ng-value="TableOrientation.code"><span class="label-text">{{TableOrientation.text}}</span>
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br />
+        <div class="row row-pdf-divider-r3">
+            <div class="col-lg-4">
+                <label class="label-title-pdf">{{gdv.getLabels('selectPen')}}</label>
+                <div class="div-pdf">
+                    <select ng-disabled="DisabledAll" class="pdf-form-control-3" ng-options="pen.value as pen.text for pen in gdv.PenList" ng-model="xmlExtractPdf.penPath">
+                        <option value="">
+                        <option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <label class="label-title-pdf">{{gdv.getLabels('sizePrint')}}</label>
+                <div class="div-pdf">
+                    <select ng-disabled="DisabledAll" class="pdf-form-control-3" ng-options="size.value as size.text for size in gdv.PaperSizeList" ng-model="xmlExtractPdf.paperSize">
+                        <option value="">
+                        <option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-4">
+
+                <label class="label-title-pdf">&nbsp</label>
+                <label class="toggle-pdf">
+                    <input ng-disabled="DisabledAll" class="pdf-checkbox" type="checkbox" name="check" id="Checkbox3" ng-model="xmlExtractPdf.PrintTitle" ng-checked="xmlExtractPdf.PrintTitle">
+                    <span class="label-text">{{ gdv.optionsPdf[2].text}}</span>
+                </label>
+                <label class="toggle-pdf">
+                    <input ng-disabled="DisabledAll" class="pdf-checkbox" type="checkbox" name="check" id="Checkbox3" ng-model="xmlExtractPdf.excludeThemati" ng-checked="xmlExtractPdf.excludeThemati">
+                    <span class="label-text">{{ gdv.optionsPdf[3].text}}</span>
+                </label>
+            </div>
+        </div>
+        <br />
+        <div class="row row-pdf-divider-r3" style="border-bottom: 1px solid black;">
+            <div class="col-lg-4">
+                <div class="div-pdf" ng-repeat="multiPage in gdv.multiPage">
+                    <label class="toggle-pdf">
+                        <input ng-disabled="DisabledAll" class="pdf-radio" id="rdbMultiPage_{{multiPage.id}}" type="radio" name="toggle" ng-value="multiPage.id" ng-model="xmlExtractPdf.MultiPage"><span class="label-text">{{ multiPage.text }}</span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <label class="label-title-pdf">{{gdv.getLabels('dwgCartiglio')}}</label>
+                <div class="div-pdf">
+                    <select ng-disabled="DisabledAll" class="pdf-form-control-3" ng-options="cartouche.value as cartouche.text for cartouche in gdv.dwgcartouche" ng-model="xmlExtractPdf.cartouche">
+                        <option value="">
+                        <option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-4">
+
+            </div>
+        </div>
+        <br />
+        <div class="row row-pdf-divider-r3">
+            <div class="col-lg-4">
+                <label class="label-title-pdf">{{gdv.getLabels('selezionaLayersStampa')}}</label>
+                <div>
+                    <button ng-disabled="DisabledAll" class="btn btn-success" ng-click="openLayersBlocksPdf()">
+                        {{gdv.getLabels('selezionaLayersStampa')}}
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div ng-show="!gdv.showViewerDetail">
+                    <label class="label-title-pdf">{{gdv.getLabels('selezionaPiani')}}</label>
+                    <div>
+                        <button ng-disabled="DisabledAll" class="btn btn-success" ng-click="openThematiPdf('/Views/3/Templates/pdfThemati.html','PIANI')">{{gdv.getLabels('selezionaPiani') + " (" + selectedFloor + ")"}}  </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <label class="label-title-pdf">{{gdv.getLabels('selezionaTemi')}}</label>
+                <div>
+                    <button ng-disabled="DisabledAll" class="btn btn-success" ng-click="openThematiPdf('/Views/3/Templates/pdfThemati.html','TEMI')">{{gdv.getLabels('selezionaTemi')}}</button>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row row-pdf-divider-r3">
+            <div class="col-lg-4">
+                <label class="label-title-pdf">{{gdv.getLabels('layerIncludeAll')}}</label>
+                <div class="div-pdf">
+                    <label class="toggle-pdf">
+                        <input ng-disabled="DisabledAll" class="pdf-checkbox" type="checkbox" name="check" id="chkIncludeAllLayer" ng-model="includeAllLayer" ng-checked="false">
+                        <span class="label-text">{{gdv.getLabels('layerIncludeAll')}}</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <label class="label-title-pdf">{{gdv.getLabels('blockIncludeAll')}}</label>
+                <div class="div-pdf">
+                    <label class="toggle-pdf">
+                        <input ng-disabled="DisabledAll" class="pdf-checkbox" type="checkbox" name="check" id="chkIncludeAllBlock" ng-model="includeAllBlock" ng-checked="false">
+                        <span class="label-text">{{gdv.getLabels('blockIncludeAll')}}</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+
+            </div>
+        </div>
+    </div>
+    <br />
+    <div ng-show="!showProfiles" class="modal-footer" id="blockFooterPdf">
+        <div class="row">
+            <div class="col-lg-4">
+            </div>
+            <div class="col-lg-4" style="text-align: center;">
+                <button ng-show="ngClassLoader != ''" class="btn btn-success">
+                    <span id="pdfLoader" ng-show="ngClassLoader != ''">
+                        <i class="fa fa-file-pdf-o spinning"></i>
+                    </span>
+                </button>
+
+                <!--<button id="getPdfFile" type="button" class="btn btn-success" ng-show="pdfShow" ng-click="apriPdf();">
+                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                </button>-->
+
+                <a ng-if="pdfShow" ng-repeat="file in pdfFiles" href={{file.href}} target="_blank" class="btn btn-success" title="file">
+                    <span class="fa fa-file-pdf-o"></span>
+                </a>
+            </div>
+            <div class="col-lg-4">
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-12">
+                <button ng-model="button" id="pdfButton" ng-disabled="DisabledAll" class="btn btn-success" ng-click="exportToPDF();">
+                    {{gdv.getLabels('extract_1')}}
+                    <!--<span id="pdfLoader"  ng-show="ngClassLoader != ''">
+                        <i class="glyphicon glyphicon-refresh spinning"></i>
+                    </span>-->
+                    <!--<span id="pdfLoader" role="status" aria-hidden="true" ng-class="ngClassLoader"></span>-->
+                </button>
+                <button ng-model="button" id="closePdf" ng-disabled="DisabledAll" class="btn btn-danger" ng-click="cancel()">{{gdv.getLabels('exit') }}</button>
+                <!--<a id="pdfEstratto" ng-href="pdfHref" target="_blank" style="display:none"></a>-->
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <!--</div>-->
+</div>
+
+<!--Gestione dell layout-->
+<div id="pdfContainer" ng-show="gdv.openLayout">
+    <div id="blockHeaderPdf" class="modal-header">
+        <div class="row">
+            <div class="col-lg-4">
+
+            </div>
+            <div class="col-lg-4">
+                <label class="label-title-pdf">{{gdv.getLabels('extract_lyt')}}</label>
+            </div>
+            <div class="col-lg-4" style="text-align: right;">
+                <button ng-model="button" id="btnExit" class="btn btn-danger" ng-click="cancel()">X</button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="modal-body" id="blockBodyPdf">
+        <div class="row row-pdf-divider-r3">
+            <!--<div class="col-lg-4">
+            </div>-->
+            <div class="col-lg-12">
+                <label class="label-title-pdf" style="margin-left: 15px;">{{gdv.getLabels('getLayerLayout')}}</label>
+                <div id="tblThematiContainer3" class="tblLayerContainer">
+                    <label class="toggle-pdf">
+                        <input ng-disabled="DisabledAll" id="selectAllLayout" class="pdf-checkbox" type="checkbox" ng-change="selectAllLayout('layout',selectAllLayoutValue)" ng-model="selectAllLayoutValue" ng-value="selectAllLayoutValue">
+                        <span class="label-text">{{gdv.getLabels['selectedAll']}}</span>
+                    </label>
+                    <div style="padding: 5px; margin-left: 10px;" ng-repeat="lay in LayoutCode">
+                        <label class="toggle-pdf">
+                            <input ng-disabled="DisabledAll" type="checkbox" class="selectLayout pdf-checkbox" ng-change="selectSingle('selectLayout', selectAllLayoutValue)" ng-model="lay.checked">
+                            <span class="label-text">
+                                {{lay.text}}
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="col-lg-4">
+
+            </div>-->
+        </div>
+        <br />
+        <div class="row row-pdf-divider-r3">
+            <div class="col-lg-6">
+                <label class="label-title-pdf">{{gdv.getLabels('selectPen')}}</label>
+                <div class="div-pdf">
+                    <select ng-disabled="DisabledAll" class="pdf-form-control-3" ng-options="pen.value as pen.text for pen in gdv.PenList" ng-model="penPath" ng-change="penPath"></select>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <label class="label-title-pdf">{{gdv.getLabels('sizePrint')}}</label>
+                <div class="div-pdf">
+                    <select ng-disabled="DisabledAll" class="pdf-form-control-3" ng-options="size.value as size.text for size in gdv.PaperSizeList" ng-model="paperSize" ng-change="paperSize">
+                        <!--<option value=""></option>-->
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <label class="label-title-pdf">{{gdv.getLabels('selectFormat')}}</label>
+                <div class="div-pdf">
+                    <select ng-disabled="DisabledAll" class="pdf-form-control-3" ng-options="format.id as format.text for format in gdv.pdfPrintFormat" ng-model="PdfVer"></select>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="div-pdf">
+                    <label class="label-title-pdf">{{gdv.getLabels('abilitaLayer')}}</label>
+                    <div class="div-pdf">
+                        <label class="toggle-pdf">
+                            <input ng-disabled="DisabledAll" class="pdf-checkbox" type="checkbox" name="check" id="chkAbilitaLayer" ng-model="enabledLayer" ng-checked="enabledLayer">
+                            <span class="label-text">{{gdv.getLabels('abilitaLayer')}}</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br />
+    </div>
+    <br />
+    <div ng-show="!showProfiles" class="modal-footer" id="blockFooterPdf">
+        <div class="row">
+            <div class="col-lg-4">
+            </div>
+            <div class="col-lg-4" style="text-align: center;">
+                <button ng-show="ngClassLoader != ''" class="btn btn-success">
+                    <span id="pdfLoader" ng-show="ngClassLoader != ''">
+                        <i class="fa fa-file-pdf-o spinning"></i>
+                    </span>
+                </button>
+                <a ng-if="pdfShow" ng-repeat="file in pdfFiles" href={{file.href}} target="_blank" class="btn btn-success" title="file">
+                    <span class="fa fa-file-pdf-o"></span>
+                </a>
+            </div>
+            <div class="col-lg-4">
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-12">
+                <button ng-model="button" id="pdfButton" ng-disabled="DisabledAll" class="btn btn-success" ng-click="exportToPDF();">
+                    {{gdv.getLabels('extract_1')}}
+                </button>
+                <button ng-model="button" id="closePdf" ng-disabled="DisabledAll" class="btn btn-danger" ng-click="cancel()">{{gdv.getLabels('exit') }}</button>
+            </div>
+        </div>
+    </div>
+
+</div>

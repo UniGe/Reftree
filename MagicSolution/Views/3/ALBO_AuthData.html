@@ -1,0 +1,33 @@
+<div id="authModal" class="modal fade" style="display:none;">
+    <div class="modal-dialog" style="width: 60%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📢 Informativa sulla raccolta dati</h2>
+                <p>
+                    Ai fini della gestione e dell'inserimento nell'Albo Fornitori informatico, raccogliamo e trattiamo i tuoi dati personali nel rispetto della normativa vigente in materia di protezione dei dati. Per maggiori dettagli, consulta la nostra
+                    <a href="#" ng-click="cd.options.downloadCustomDocument(event,&apos;SR_AUTH&apos;)">Informativa sulla Privacy</a>.
+                </p>
+            </div>
+            <div class="modal-header" id="Div_Cod_Etico">
+                <h2>📋 Codice Etico</h2>
+                <p>
+                    Il Fornitore che intenda registrarsi all’Elenco è tenuto a prendere visione del Codice Etico della Società accettandone i relativi contenuti.
+                    <a href="#" ng-click="cd.options.downloadCustomDocument(event,&apos;SR_ETICO&apos;)">Codice Etico</a>.
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <label>
+                    <input type="checkbox" id="acceptCheckbox" ng-click="cd.options.clickCheck(this)">
+                    Accetto l'informativa sul trattamento dei dati personali
+                </label>
+                <button id="acceptButton" ng-click="cd.options.accept()" type="button" class="btn btn-success">Prosegui</button>
+                <button ng-click="cd.options.logout()" type="button" class="btn btn-danger">No, Annulla</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <magic-grid ng-init="cd.options.showModal()" id="grid0" gridname="SIDIEF_ALBO"
+                kendo-grid-instance="cd.options.kendoGridInstance"></magic-grid>
+</div>

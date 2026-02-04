@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Offline Grid</title>
+	<meta charset="utf-8" />
+    <link href="/version2.6.0/Magic/HtmlTemplates/webarch/assets/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Magic/kendo/2016.1.226/Styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="/Magic/kendo/2016.1.226/Styles/kendo.mobile.all.min.css" rel="stylesheet" />
+
+    <link href="/Magic/kendo/2016.1.226/styles/kendo.blueopal.min.css" rel="stylesheet" />
+    <link href="/Magic/kendo/2016.1.226/styles/kendo.blueopal.mobile.min.css" rel="stylesheet" />
+    <script src="/Magic/HtmlTemplates/webarch/assets/plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="/Magic/kendo/2016.1.226/js/kendo.all.min.js"></script>
+</head>
+<body>
+    <div id="templatecontainer"></div>
+    <div style="display: none" id="toolbar" class="row">
+        <div class="col-xs-12">
+            <div id="info" class="alert alert-warning" role="alert" style="padding-right: 50px; position: relative;"></div>
+        </div>
+    </div>
+    <div id="grid"></div>
+
+    <script>
+        var translations = {
+            "en": {
+                useFilteredDataSet: "Your grid displays a filtered DataSet, do you wish do use the filtered Dataset or do you want to load all records? Press OK to load full DataSet.",
+                offlineMode: "The grid is now in offline mode, please dont close this window. If you want to save your changes get internet access and press the sync button."
+            },
+            "it": {
+                useFilteredDataSet: "La griglia mostra dati filtrati, desidera ad usare i dati filtrati o a caricare tutti i dati della griglia? Prema conferma per caricare tutti i dati.",
+                offlineMode: "La griglia può essere usata adesso offline, si prega di non chiudere questa finestra. Per salvare le modifiche è necessario a prendere conessione internet e premere il bottone sync."
+            },
+            "de": {
+                useFilteredDataSet: "Die Tabelle zeigt gefilterte Daten, wünschen Sie die gefilterten Daten anzuzeigen oder sollen alle Daten der Tabelle geladen werden? Drücken Sie Ok um sämtliche Daten zu laden.",
+                offlineMode: "Die Tabelle befindet sich nun im offline Modus, bitte schließen sie dieses Fenster nicht. Um ihre Änderungen zu speichern ist eine aktive Internetverbindung und das Drücken des Buttons sync notwending."
+            }
+        };
+
+        if (window.opener && window.opener.offlineGridData) {
+
+            var culture = window.opener.culture.substring(0, 2);
+
+            if (window.opener.offlineGridData.templates)
+                $("#templatecontainer").html(window.opener.offlineGridData.templates);
+
+            if (window.opener.offlineGridData.gridObject) {
+                var gridObject = $.extend(true, {}, window.opener.offlineGridData.gridObject);
+
+                gridObject.dataSource.pageSize = 100000;
+                gridObject.offlineStorage = gridObject.EntitiyName + "-offline-grid";
+
+                if (gridObject.toolbar && Array.isArray(gridObject.toolbar)) {
+                    var i = 0;
+                    while (i < gridObject.toolbar.length) {
+                        if (gridObject.toolbar[i].name && gridObject.toolbar[i].name == "create") {
+                            i++;
+                            continue;
+                        }
+                        gridObject.toolbar.splice(i, 1);
+                    }
+                }
+
+                if (gridObject.columns && Array.isArray(gridObject.columns)) {
+                    var i = 1;
+                    while (i < gridObject.columns.length) {
+                        if (gridObject.columns[i].filterable) {
+                            i++;
+                            continue;
+                        }
+                        gridObject.columns.splice(i, 1);
+                    }
+                }
+
+                var useFilteredDataSet = false;
+                if (window.opener.offlineGridData.filter) {
+                    useFilteredDataSet = !confirm(translations[culture].useFilteredDataSet);
+                    if (useFilteredDataSet)
+                        gridObject.dataSource.filter = window.opener.offlineGridData.filter;
+                }
+
+                var gridInstance;
+                gridObject.dataBound = function () {
+                    setTimeout(function () {
+                        gridInstance.dataSource.online(false);
+                        $("#info")
+                        .html(translations[culture].offlineMode + '<div style="position: absolute; top: 8px; right: 20px;" class="btn btn-success pull-right" onclick="sync()">sync</div>');
+                        $("#toolbar")
+                            .show();
+                    });
+                };
+
+                var doRequest = true;
+                gridObject.dataSource.requestStart = function () {
+                    doRequest = false;
+                };
+
+                gridInstance = $("#grid")
+                    .kendoGrid(gridObject)
+                    .data("kendoGrid");
+
+                if(doRequest)
+                    gridInstance.dataSource.read();
+                
+                //setTimeout(function () {
+                //    gridInstance.editRow($("#grid tr:eq(1)"));
+                //}, 1000);
+
+                function sync() {
+                    gridInstance.dataSource.online(true);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

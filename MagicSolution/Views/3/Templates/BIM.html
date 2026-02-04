@@ -1,0 +1,91 @@
+﻿<style scoped>
+    body {
+        overflow: hidden;
+        height: 100%;
+    }
+    .page-container{
+        max-height: 100%;
+        overflow-y: auto;
+        height: auto;
+    }
+    #bim-viewer canvas{
+        width: 100%;
+        height: 100%;
+    }
+    #bim-expander{
+        position: absolute;
+        right: -3px;
+        padding: 0 3px;
+    }
+    #typeSelector .btn-xs{
+        padding: 1px 5px;
+        font-size: 12px;
+        line-height: 1.5;
+        border-radius: 3px;
+    }
+
+    #treeContainer .tree-actions {
+        float: right;
+        cursor: pointer;
+    }
+    #actionButton {
+        padding-left:15px;
+        margin-bottom:5px;
+    }
+</style>
+<div style="display: flex; align-items: center;">
+    <search-drop sd-values="bim.assets | groupBy: 'asset'"
+                 sd-value="$$value"
+                 sd-label="$$key"
+                 sd-onselect="bim.assetSelected(objectValue)"
+                 sd-placeholder="asset">
+    </search-drop>
+    <button ng-show="bim.projects.length" class="btn btn-secondary m-l-10" data-toggle="collapse" data-target="#detailed-bim-configuration"><span class="fa fa-pencil"></span></button>
+    <button ng-show="bim.showTreeAndRenderingArea && bim.currentProject && bim.currentProject.HasToImportRawData" class="btn btn-success m-l-10" ng-click="bim.synchDB()"><span class="glyphicon glyphicon-refresh"></span> Raw Data</button>
+</div>
+<div id="detailed-bim-configuration" class="collapse">
+    <search-drop ng-if="bim.projects.length"
+                 sd-values="bim.projects"
+                 sd-value="oid"
+                 ng-model="bim.selectedProjectId"
+                 sd-label="name"
+                 sd-onselect="bim.projectSelected(objectValue)"
+                 sd-placeholder="project">
+    </search-drop>
+    <search-drop ng-if="bim.revisions.length && !bim.currentProject.hasSubProjects"
+                 sd-values="bim.revisions"
+                 sd-value="oid"
+                 ng-model="bim.selectedRevision.oid"
+                 sd-label="comment"
+                 sd-onselect="bim.revisionSelected(objectValue)"
+                 sd-placeholder="revision">
+    </search-drop>
+</div>
+<div class="m-t-10" ng-show="bim.showTreeAndRenderingArea">
+    <div class="row">
+        <div id="actionButton" ng-show="bim.enableActions" ng-click="bim.getActions()"><div class="btn btn-primary"><i class="fa fa-list" aria-hidden="true"></i></div></div>
+        <div class="col-md-3">
+            <search-drop ng-show="bim.treeSearchVals"
+                         sd-values="bim.treeSearchVals"
+                         sd-value="id"
+                         sd-label="name"
+                         sd-onselect="bim.onTreeSearchSelect(selectedKey)"
+                         sd-max-drop-height="250px"
+                         sd-placeholder="search for objects">
+            </search-drop>
+         </div>
+        <div id="typeSelector" class="col-md-9"></div>
+    </div>
+    <div class="row" ng-style="{height: (bim.dataContainerOpened ? '70vh' : '80vh')}">
+        <div id="treeContainer" class="col-md-3 bimsurfer-static-tree" style="max-height: 100%; overflow: auto;">
+            <ul class="tree-root"></ul>
+        </div>
+        <div ng-class="'col-md-' + (bim.dataContainerOpened ? '6' : '9')" style="height: 100%;">
+            <a id="bim-expander" href="#" ng-click="bim.dataContainerOpened = !bim.dataContainerOpened" class="btn btn-success btn-xs">
+                <span class="fa" ng-class="{'fa-arrow-right': bim.dataContainerOpened, 'fa-arrow-left': !bim.dataContainerOpened}"></span>
+            </a>
+            <div id="bim-viewer" style="height: 100%;"></div>
+        </div>
+        <div id="dataContainer" ng-show="bim.dataContainerOpened" class="col-md-3" style="max-height: 100%; overflow: auto;"></div>
+    </div>
+</div>

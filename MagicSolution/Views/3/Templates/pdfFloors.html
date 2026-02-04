@@ -1,0 +1,299 @@
+﻿<style>
+    @media screen and (min-width: 768px) {
+        .modal-dialog {
+            width: 60%;
+        }
+
+        .modal-header {
+            background-color:white;
+        }
+    }
+
+    #blockBodyPdf {
+        background-color: white;
+    }
+
+    #blockHeaderPdf {
+        background-color: white;
+    }
+
+    
+
+    #blockFooterPdf {
+        background-color: white;
+    }
+
+
+    .fa-file-pdf-o.spinning {
+        animation: spin 2s infinite linear;
+        -webkit-animation: spin2 2s infinite linear;
+    }
+
+    @keyframes spin {
+        from {
+            transform: scale(1) rotate(0deg);
+        }
+
+        to {
+            transform: scale(1) rotate(360deg);
+        }
+    }
+
+    @-webkit-keyframes spin2 {
+        from {
+            -webkit-transform: rotate(0deg);
+        }
+
+        to {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    #blockBodyPdf {
+        /*height: 500px;*/
+    }
+
+    #tblContainer{
+        border-style: solid !important;
+        border-color:red;
+    }
+
+    #infoContainer {
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 10px;
+        border-color: #0090d9;
+    }
+
+        #infoContainer .row {
+            margin: 10px;
+            min-height: 30px;
+            max-height: 30px;
+            height: 30px;
+        }
+
+        #infoContainer input[type="color"] {
+            width: 30px;
+            min-height: 30px;
+            max-height: 30px;
+            height: 30px;
+            border: none;
+            vertical-align: middle;
+        }
+
+    .rowR3 .col-md-4 {
+        padding: 0;
+    }
+
+
+    .tblLayerContainer {
+        position: relative;
+        display: block;
+        overflow: scroll;
+        height: 250px;
+        margin: 10px;
+        padding: 10px;
+        border: #0090d9;
+        border-style: solid;
+        border-radius: 5px;
+    }
+
+
+     
+
+    .pdf-form-control {
+        border-radius:10px;
+
+    }
+
+    .option {
+        border-radius: 10px;
+    }
+
+    .rowR3 {
+        display: inline;
+    }
+
+    .btnDwgR3 {
+        margin:3px;
+    }
+ 
+</style>
+
+<div ng-show="initForm" id="dwgModalContainer">
+    <div id="myheader" class="modal-header">
+        <button title="{{ rgv.getLabels('back') }}"
+                type="button"
+                class="btn btn-danger pull-right"
+                ng-click="cancel()">
+            <i class="glyphicon glyphicon-remove" aria-hidden="true"></i>
+        </button>
+
+        <label class="label-title-pdf">{{rgv.getLabels('esportaDwg')}}</label>
+        <!--<button ng-model="button" id="btnExit" class="btn btn-danger" ng-click="cancel()">X</button>-->
+        <!--<div class="col-lg-4">
+    </div>
+    <div class="col-lg-4">
+        <label class="label-title-pdf">{{rgv.getLabels('esportaDwg')}}</label>
+    </div>
+    <div class="col-lg-4" style="text-align: right;">
+
+    </div>-->
+
+    </div>
+    <div class="modal-body" id="blockBodyPdf">
+        <div class="row rowR3">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <label class="toggle-pdf">
+                    <label class="label-title-pdf" style="margin-left: 15px;">{{rgv.getLabels('profilesDwg')}}</label>
+                    <select ng-disabled="DisabledAll" class="pdf-form-control" ng-model="profileDwg" ng-change="setProfileDwg(profileDwg);" ng-options="profileDwg.Name for profileDwg in profilesDwg">
+                        <option></option>
+                    </select>
+                </label>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+        <div class="row rowR3">
+            <div id="infoContainer" class="panel-body">
+                <div class="col-md-4">
+                    <label class="label-title-pdf">{{rgv.getLabels('selectPen')}}</label>
+                    <div class="div-pdf">
+                        <select ng-disabled="DisabledAll" class="pdf-form-control" ng-options="pen.Id as pen.value for pen in rgv.PenList" ng-model="dwgExtraInfo.idPen">
+                            <option value=""></option>
+                        </select>
+                        <br />
+                        <br />
+                        <span style="padding-right: 5px; padding-left: 5px;">{{rgv.getLabels('dimensioneCarattere')}}</span>
+                        <input ng-disabled="DisabledAll" ng-model="dwgExtraInfo.FontSize" ng-value="dwgExtraInfo.FontSize" type="text" style="width:50px; min-height: 20px; font-size: 14px; text-align: center; border-style: solid; border-color: black;" />
+                        <br />
+                        <br />
+                        <span style="padding-right: 5px; padding-left: 5px;">{{rgv.getLabels('colorTestoPers')}}</span>
+                        <input ng-disabled="DisabledAll" ng-model="dwgExtraInfo.BlockForeGround" ng-value="dwgExtraInfo.BlockForeGround" type="color" />
+                        <br />
+                        <br />
+                        <span style="padding-right: 5px; padding-left: 5px;">{{rgv.getLabels('colorTestoSfondo')}}</span>
+                        <input ng-disabled="DisabledAll" ng-model="dwgExtraInfo.BlockBackGround" ng-value="dwgExtraInfo.BlockBackGround" type="color" />
+
+                       
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="label-title-pdf">{{rgv.getLabels('idCartiglio')}}</label>
+                    <div class="div-pdf">
+                        <select ng-disabled="DisabledAll" class="pdf-form-control" ng-options="cart.value as cart.text for cart in cartoucheDwg" ng-model="dwgExtraInfo.idCartiglio">
+                            <option></option>
+                        </select>
+                        <br />
+                        <br />
+                        <label class="toggle-pdf">
+                            <input ng-disabled="DisabledAll" class="pdf-checkbox" type="checkbox" name="check" id="chkInfoArea" ng-model="dwgExtraInfo.InfoArea" ng-checked="dwgExtraInfo.InfoArea ==1">
+                            <span class="label-text">{{rgv.getLabels('infoArea')}}</span>
+                        </label>
+                        <br />
+                        <br />
+                        <label class="toggle-pdf">
+                            <input ng-disabled="DisabledAll" class="pdf-checkbox" type="checkbox" name="check" id="chkInfoArea" ng-model="dwgExtraInfo.WriteLabels" ng-checked="dwgExtraInfo.WriteLabels ==1">
+                            <span class="label-text">{{rgv.getLabels('stampaEtichette')}}</span>
+                        </label>
+                        <br />
+                        <br />
+                        <label class="toggle-pdf">
+                            <input ng-disabled="DisabledAll" class="pdf-checkbox" type="checkbox" name="check" id="chkPdf" ng-model="dwgExtraInfo.OutPutType" ng-checked="dwgExtraInfo.OutPutType == 1">
+                            <span class="label-text">PDF</span>
+                        </label>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                    <label class="label-title-pdf" style="margin-left: 15px;">{{rgv.getLabels('getThemiTitle')}}</label>
+                    <div id="tblThematiContainer" class="tblLayerContainer">
+                        <label class="toggle-pdf">
+                            <input ng-disabled="DisabledAll" id="selectAllThema" class="pdf-checkbox" type="checkbox" ng-change="selectAll('themati')" ng-model="selectAllThemaValue" ng-value="selectAllThemaValue">
+                            <span class="label-text">{{rgv.getLabels['selectedAll']}}</span>
+                        </label>
+                        <div style="padding: 5px; margin-left: 10px;" ng-repeat="thema in thematiList">
+                            <label class="toggle-pdf">
+                                <input ng-disabled="DisabledAll" type="checkbox" class="selectThema pdf-checkbox" ng-change="selectSingle('selectThema', selectAllThemaValue)" ng-model="thema.checked">
+                                <span class="label-text">
+                                    {{thema.Description}}
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row rowR3">
+                <div class="col-md-4">
+                    <label class="label-title-pdf" style="margin-left: 15px;">{{rgv.getLabels('getLayerTitle')}}</label>
+                    <div id="tblLayerContainer" class="tblLayerContainer">
+                        <label class="toggle-pdf">
+                            <input ng-disabled="DisabledAll" id="selectAllLayer" class="pdf-checkbox" type="checkbox" ng-change="selectAll('layers')" ng-model="selectAllLayersValue" ng-value="selectAllLayersValue">
+                            <span class="label-text">{{rgv.getLabels['selectedAll']}}</span>
+                        </label>
+
+                        <div style="padding: 5px; margin-left: 10px;" ng-repeat="layer in layerListForDwg">
+                            <label class="toggle-pdf">
+                                <input ng-disabled="DisabledAll" type="checkbox" class="selectLayer pdf-checkbox" ng-change="selectSingle('selectLayer', selectAllLayersValue)" ng-model="layer.checked">
+                                <span class="label-text">
+                                    {{layer.name}}
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="label-title-pdf">{{rgv.getLabels('getBlockTitle')}}</label>
+                    <div id="tblLayerContainer" class="tblLayerContainer">
+                        <label class="toggle-pdf">
+                            <input ng-disabled="DisabledAll" id="selectAllLayer" class="pdf-checkbox" type="checkbox" ng-change="selectAll('blocks')" ng-model="selectAllBlocksValue" ng-value="selectAllBlocksValue">
+                            <span class="label-text">{{rgv.getLabels['selectedAll']}}</span>
+                        </label>
+
+                        <div style="padding: 5px; margin-left: 10px;" ng-repeat="block in blockListForDwg">
+                            <label class="toggle-pdf">
+                                <input ng-disabled="DisabledAll" type="checkbox" class="selectBlock pdf-checkbox" ng-change="selectSingle('selectBlock', selectAllBlocksValue)" ng-model="block.checked">
+                                <span class="label-text">
+                                    {{block.name}}
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+           
+                <div class="col-md-4">
+                   
+
+                   
+                </div>
+        </div>
+     </div>
+    <div class="modal-footer" style="display: -webkit-box;">
+        <div style="width:50%">
+            <button ng-show="ngClassLoader != ''" class="btn btn-success pull-center btnDwgR3">
+                <span id="dwgLoader" ng-show="ngClassLoader != ''">
+                    <i class="fa fa-file-pdf-o spinning"></i>
+                </span>
+            </button>
+
+            <button id="getDwgFile" type="button" class="btn btn-success pull-center btnDwgR3" ng-show="dwgShow" ng-click="apriDwg();">
+                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div style="width:50%">
+            <button ng-model="button" id="closeDwg" ng-disabled="DisabledAll" class="btn btn-warning pull-right btnDwgR3" ng-click="cancel()">{{rgv.getLabels('exit') }}</button>
+            <button id=" dwgButton" title="{{rgv.getLabels('dwgExport')}}"
+                    type="button"
+                    class="btn btn-success pull-right btnDwgR3"
+                    ng-click="exportToDwg()">
+                {{rgv.getLabels('dwgExport')}}
+            </button>
+            <a id="dwgEstratto" ng-href="dwgHref" target="_blank" style="display:none"></a>
+        </div>
+     </div>
+</div>

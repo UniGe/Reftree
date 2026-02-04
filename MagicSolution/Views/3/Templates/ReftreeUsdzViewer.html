@@ -1,0 +1,219 @@
+﻿<style scoped>
+    #splitterContainer .col-md-6 {
+        width: 45%;
+    }
+
+    #splitterContainer .col-md-3 {
+        width: 20%;
+    }
+
+    #splitterContainer .col-md-4 {
+        width: 29%;
+    }
+
+    #vertical {
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    #left-pane, #center-pane, #right-pane {
+        width: 20%;
+    }
+
+    #right-pane {
+        height: 100%;
+    }
+
+    #center-pane {
+        overflow-y: auto;
+    }
+
+    #splitterContainer {
+        height: 90vh;
+    }
+
+    canvas {
+    }
+
+    #usdz_1 {
+        max-width: 100% !important;
+        max-height: 100% !important;
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+
+
+    #iframeUsdz {
+        display: block; /* iframes are inline by default */
+        height: 100vh; /* Set height to 100% of the viewport height */
+        width: 100vw; /* Set width to 100% of the viewport width */
+        border: none; /* Remove default border */
+        background: lightyellow; /* Just for styling */
+    }
+
+    .cad-control-buttons {
+        background-color: #0d6a92;
+        height: 36px;
+        margin-bottom: 5px;
+        text-align: center;
+        border-top-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+    }
+
+    .cad-control-buttons-panel {
+        height:50px;
+        margin-bottom: 5px;
+        text-align: center;
+        border-top-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+    }
+
+    .cad-control-buttons-title {
+        background-color: #0d6a92;
+        height: 18px;
+        margin-bottom: 2px;
+        text-align: center;
+    }
+
+    .btn-toolbar-cad-r3 {
+        background-color: transparent;
+        color: white;
+        margin: 7px 7px 5px 5px;
+    }
+
+        .btn-toolbar-cad-r3 > i {
+            margin-right: 5px;
+        }
+
+        .btn-toolbar-cad-r3:hover {
+        }
+
+        .btn-toolbar-cad-r3:focus {
+            background-color: transparent;
+        }
+
+        .btn-toolbar-cad-r3:hover > span {
+            background-color: transparent;
+        }
+
+        .btn-toolbar-cad-r3:focus > span {
+        }
+
+    #grid-usdz-controller .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+        background-color: #0d6a92;
+        border-radius: 5px 0px 5px 0px;
+        margin: 5px;
+    }
+
+    #grid-usdz-controller .panel-heading .panel-title > a.collapsed:after {
+        content: "\f078";
+        color: white;
+    }
+
+    #grid-usdz-controller .panel-heading .panel-title > a:after {
+        content: "\f077";
+        color: white;
+    }
+
+    #grid-usdz-controller .panel-heading {
+        background-image: none;
+        background-color: #0d6a92;
+        cursor: pointer;
+    }
+
+        #grid-usdz-controller .panel-heading .panel-title > a.collapsed {
+            color: white !important;
+            content: "\f055";
+        }
+
+    #grid-usdz-controller .panel-title > a {
+        color: white;
+    }
+
+    #grid-usdz-controller .panel-heading .panel-title > a:focus {
+        color: white !important;
+        content: "\f055";
+    }
+</style>
+    <div id="toolbar-container-title" class="cad-control-buttons-title" ng-init="ruv.init()">
+        <span class="span-title-cad">{{rgv.fileInfo[rgv.fileInDetail.fileName].description}}</span>
+    </div>
+
+    <div id="toolbar-container" class="cad-control-buttons">
+        <button title="{{ ruv.getLabels('close') }}"
+                type="button"
+                class="btn btn-danger pull-right btn-toolbar-cad-r3"
+                ng-click="ruv.closeViewer($event)">
+            <i class="fa fa-times" aria-hidden="true"></i>
+            <span class="span-title-button-cad">{{ ruv.getLabels('close') }}</span>
+        </button>
+    </div>
+
+    <div id="splitterContainer" ng-show="ruv.bShowHideViewer">
+        <div kendo-splitter
+             id="horizontal"
+             k-panes="[{resizable:true,collapsible:true, size: '20%',collapsed:false}, {resizable:true,collapsible:true}]"
+             k-orientation="'horizontal'"
+             style="height:100%"
+             k-on-resize="ruv.triggerWindowResize()">
+            <div id="left-pane">
+                <div class="panel-group" id="dxf-tree-accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a ng-click="" data-toggle="collapse" data-parent="#dxf-tree-accordion" href="#dxf-tree-one">
+                                    {{ruv.getLabels('filesList')}}
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="dxf-tree-one" class="panel-collapse collapse in">
+                            <div class="panel-body" style="overflow:auto;">
+                                <div ng-repeat="file in ruv.files">
+                                    <div class="panel-body">
+
+                                        <div style="padding:3px">
+                                            <span>{{file.description2}}</span>
+                                        </div>
+                                        <div style="padding:3px">
+                                            <button type="button"
+                                                    id="submitButtonCompareCad"
+                                                    class="btn btn-success btn-toolbar-cad pull-right"
+                                                    ng-click="ruv.onLoadFile(file.filename)">
+                                                <span class="span-title-button-cad">
+                                                    {{ruv.getLabels('caricaFile')}}
+                                                </span>
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!---->
+            <div id="right-pane">
+                <div kendo-splitter
+                     id="vertical"
+                     k-orientation="'vertical'"
+                     k-on-resize="ruv.triggerWindowResize()"
+                     k-panes="[{ resizable: true, collapsible: true ,size: '80%'}, {collapsed: true, resizable: true , collapsible:  true,size: '20%' }]">
+                    <div id="top-pane" style="overflow-x:hidden !important;">
+
+                        <usdz-viewer ng-if="ruv.loadFile" filename="ruv.filename">
+
+                        </usdz-viewer>
+
+                    </div>
+                    <div id="bottom-pane">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

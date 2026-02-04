@@ -1,0 +1,97 @@
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+		
+		<link rel="stylesheet" href="../bootstrap/3.0.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../js/jq/jqueryui/1.10.1/themes/smoothness/jquery-ui.css"/>
+		
+		<link rel="stylesheet" href="../css/plani3d-maps.min.css" type="text/css">
+		
+		<script type="text/javascript" src="../js/require.js"></script>
+		
+		<title>Aggiungi a disegno - Plani3D Maps 2.0</title>
+	</head>
+	<body>
+		<div><!-- se questo manca, la selezione ha un offset --></div>
+		
+		<div id="p3dt-map" class="p3dt-map"></div>
+		<script>
+		var geoidsObj = [{
+				"geoid": 1,
+				"label": "Esempio 1",
+				"RefId": 123,
+				"color": "#ffa340"
+			},
+			{
+				"geoid": 2,
+				"label": "Esempio 2",
+				"RefId": 456,
+				"color": "#ae3475"
+			},
+			{
+				"geoid": 3,
+				"label": "Esempio 3",
+				"RefId": 789,
+				"color": "#bb00ff"
+			}];
+			require(["config.js"], function () {
+				require(["plani3d-maps"], function (plani3d) {
+					var p3dmaps = new plani3d.Maps({
+						server: 'showcase.alysso.it',
+						maps: 'it',
+						layers: ['RV', 'OSM'],
+						imgpath: '/views/3/'
+					});
+
+					p3dmaps.init().then(function () {
+						p3dmaps.zoomToExtent(1237766, 5791005, 1238334, 5791285);
+						p3dmaps.createVeil(geoidsObj);
+						p3dmaps.displayButton({
+							'id': 'activate-draw',
+							'text': 'Attiva disegno',
+							'isHeader' : true
+							}, function(){
+								$('#activate-draw').hide();
+								p3dmaps.displayButton({
+									'id': 'start-draw',
+									'text': 'Disegna'
+									}, function(){
+										p3dmaps.activateVeilDraw();
+									}
+								);
+								p3dmaps.displayButton({
+									'id': 'end-draw',
+									'text': 'Termina'
+									}, function(){
+										p3dmaps.persistVeilDraw(function(features){alert(features);});
+									}
+								);
+								p3dmaps.displayButton({
+									'id': 'delete-draw',
+									'text': 'Elimina'
+									}, function(){
+										p3dmaps.deleteVeilDraw();
+									}
+								);
+								p3dmaps.displayButton({
+									'id': 'clear-draw',
+									'text': 'Annulla'
+									}, function(){
+										p3dmaps.deactivateVeilDraw();
+										$('#activate-draw').show();
+										$('#start-draw').remove();
+										$('#end-draw').remove();
+										$('#delete-draw').remove();
+										$('#clear-draw').remove();
+									}
+								);
+							}
+						);
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

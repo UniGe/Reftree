@@ -1,0 +1,679 @@
+﻿<style scoped>
+
+    #splitterContainer {
+        height: 100%;
+    }
+
+        #splitterContainer .col-md-6 {
+            width: 48%;
+        }
+
+        #splitterContainer .col-md-3 {
+            width: 23%;
+        }
+
+        #splitterContainer .col-md-4 {
+            width: 31%;
+        }
+
+    #adhox-viewer-controller {
+        margin-bottom: 50px;
+    }
+
+    #vertical {
+        margin: 0 auto;
+        height: 100%;
+    }
+
+    #bimTopToolBarMenuR3 {
+        display: inline-flex;
+        width: 100%;
+        margin-bottom: 35px;
+    }
+
+        #bimTopToolBarMenuR3.dropdown-menu {
+            position: relative;
+            width: max-content;
+        }
+
+
+        #bimTopToolBarMenuR3.dropdown-submenu {
+            position: relative;
+            width: max-content;
+        }
+
+            #bimTopToolBarMenuR3.dropdown-submenu > .dropdown-menu {
+                top: 0;
+                left: 100%;
+                margin-top: -6px;
+                margin-left: -1px;
+                -webkit-border-radius: 0 6px 6px 6px;
+                -moz-border-radius: 0 6px 6px;
+                border-radius: 0 6px 6px 6px;
+            }
+
+            #bimTopToolBarMenuR3.dropdown-submenu:hover > .dropdown-menu {
+                display: block;
+            }
+
+            #bimTopToolBarMenuR3.dropdown-submenu > a:after {
+                display: block;
+                content: " ";
+                float: right;
+                width: 0;
+                height: 0;
+                border-color: transparent;
+                border-style: solid;
+                border-width: 5px 0 5px 5px;
+                border-left-color: #ccc;
+                margin-top: 5px;
+                margin-right: -10px;
+            }
+
+            #bimTopToolBarMenuR3.dropdown-submenu:hover > a:after {
+                border-left-color: #fff;
+            }
+
+            #bimTopToolBarMenuR3.dropdown-submenu.pull-left {
+                float: none;
+            }
+
+                #bimTopToolBarMenuR3.dropdown-submenu.pull-left > .dropdown-menu {
+                    left: -100%;
+                    margin-left: 10px;
+                    -webkit-border-radius: 6px 0 6px 6px;
+                    -moz-border-radius: 6px 0 6px 6px;
+                    border-radius: 6px 0 6px 6px;
+                }
+
+    #left-pane .panel-title {
+        font-size: smaller;
+    }
+
+    .iconPanelRefTree {
+        float: right;
+        top: 5px;
+    }
+
+    .slider {
+        margin: 0;
+    }
+
+    #forgeViewer {
+        width: auto;
+        height: auto;
+    }
+
+    .propertyNested {
+        display: none;
+    }
+
+    #divModelSelect .k-button {
+        background-color: white !important;
+        border: none !important;
+    }
+
+    #divModelSelect .k-state-selected {
+        background-color: white !important;
+        border: none !important;
+    }
+
+    #divModelSelect .k-list > .k-state-selected {
+        background-color: white !important;
+        border: none !important;
+    }
+
+    #divModelSelect > .k-list-container {
+        background-color: white !important;
+        border: none !important;
+    }
+
+    #divModelSelect row {
+        font-size: 12px;
+    }
+
+    #ViewerModelStructurePanel label {
+        display: inline-block !important;
+    }
+
+    .div-property-r3 {
+        margin: 10px;
+    }
+
+    .div-property-header-r3 {
+        margin: 5px;
+        cursor: pointer;
+        background-color: #daecf4;
+    }
+
+    #bottom-pane {
+        overflow: hidden;
+        font-size: 11px;
+    }
+
+
+    #searchBim {
+        box-sizing: border-box;
+        background-image: url('searchicon.png');
+        background-position: 14px 12px;
+        background-repeat: no-repeat;
+        font-size: 16px;
+        padding: 14px 20px 12px 45px !important;
+        border: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+        #searchBim:focus {
+            outline: 3px solid #ddd;
+        }
+
+    .dropdownSearchBim {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdownSearchBim-content {
+        display: none;
+        position: absolute;
+        background-color: #f6f6f6;
+        min-width: 250px;
+        overflow: auto !important;
+        border: 1px solid #ddd;
+        z-index: 10;
+        top: 40px;
+        left: 14px;
+    }
+
+        .dropdownSearchBim-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+    .dropdownSearchBim a:hover {
+        background-color: #ddd;
+    }
+
+    .showSearch {
+        display: block;
+    }
+
+    #toolbarBim {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        height: calc(100% - 20px);
+        text-align: center;
+        z-index: 5;
+        pointer-events: none;
+        background-color: red;
+    }
+
+    .demo-div {
+        width: 400px;
+        height: 200px;
+        background-color: #FFFFFF;
+        border: 2px solid #183147;
+        position: absolute;
+        cursor: default;
+        font-family: sans-serif;
+        text-align: center;
+        z-index: 2;
+    }
+
+    #bimContainer .mySidenavHeader {
+        height: 36px;
+        max-height: 36px;
+        background-color: #d9ecf5;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding: 5px;
+        font-size: 16px
+    }
+
+    #bimContainer .mySidenavBody {
+        overflow: auto;
+        height: 90%;
+        max-height: 90%;
+    }
+
+    #bimContainer .mySidenavFooter {
+        height: 36px;
+        max-height: 36px;
+    }
+
+    #bimContainer .sidenav {
+        width: 250px;
+        position: fixed;
+        z-index: 1000;
+        top: inherit;
+        left: inherit;
+        background-color: white;
+        border-radius: 10px;
+        height: inherit;
+        min-height: 300px;
+        border-style: solid;
+        border-color: #a3d0e4;
+        border-width: 0.5px;
+    }
+
+    #bimContainer .sidenavProperties {
+        width: 250px;
+        position: fixed;
+        z-index: 1000;
+        top: inherit;
+        left: inherit;
+        background-color: white;
+        border-radius: 10px;
+        height: inherit;
+        min-height: 300px;
+        border-style: solid;
+        border-color: #a3d0e4;
+        border-width: 0.5px;
+    }
+
+    #bimContainer .sidenavGrid {
+        width: calc(100% - 200px);
+        position: fixed;
+        z-index: 1000;
+        top: 50%;
+        left: 120px;
+        background-color: white;
+        border-radius: 10px;
+        height: 350px;
+        min-height: 350px;
+        border-style: solid;
+        border-color: #a3d0e4;
+        border-width: 0.5px;
+    }
+
+    /*#bimContainer .sidenavProperties a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+    }
+
+    #bimContainer .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+
+    }*/
+
+    /*#bimContainer .sidenav a:hover {
+        color: #f1f1f1;
+    }
+
+    #bimContainer .sidenavProperties a:hover {
+        color: #f1f1f1;
+    }*/
+
+    #bimContainer .sidenav .closebtn {
+        position: absolute;
+        top: -7px;
+        right: 10px;
+        font-size: 25px;
+    }
+
+    #bimContainer .sidenavProperties .closebtnProperties {
+        position: absolute;
+        top: -7px;
+        right: 10px;
+        font-size: 25px;
+    }
+
+    #bimContainer .sidenavGrid .closebtnGrid {
+        position: absolute;
+        top: -7px;
+        right: 10px;
+        font-size: 25px;
+    }
+
+    @media screen and (max-height: 450px) {
+        #bimContainer .sidenav {
+            padding-top: 15px;
+        }
+
+        /*#bimContainer .sidenav a {
+            font-size: 18px;
+        }*/
+
+        #bimContainer .sidenavProperties {
+            padding-top: 15px;
+        }
+
+        /*#bimContainer .sidenavProperties a {
+            font-size: 18px;
+        }*/
+
+        #bimContainer .sidenavGrid {
+            padding-top: 15px;
+        }
+    }
+
+    #bimContainer div::-webkit-scrollbar-thumb {
+        background-color: #d9ecf5;
+        border: 4px solid transparent;
+        border-radius: 8px;
+        background-clip: padding-box;
+    }
+
+    #bimContainer div::-webkit-scrollbar {
+        width: 16px;
+    }
+
+    #bimContainer ul::-webkit-scrollbar-thumb {
+        background-color: #d9ecf5;
+        border: 4px solid transparent;
+        border-radius: 8px;
+        background-clip: padding-box;
+    }
+
+    #bimContainer ul::-webkit-scrollbar {
+        width: 16px;
+    }
+
+    .btnToolBarBimR3 {
+        background-color: transparent;
+        color: white;
+        margin: 5px;
+    }
+
+        .btnToolBarBimR3:hover {
+            border-style: solid;
+            border-color: white;
+            border-width: 0.5px;
+            background-color: transparent;
+            color: white
+        }
+
+
+    .dwg-control-buttons {
+        background-color: #0d6a92;
+        height: 50px;
+    }
+</style>
+
+<div ng-if="false" id="splitterContainer">
+    <div class="dwg-control-buttons">
+        <button title="{{ rgv.getLabels('back') }}"
+                type="button"
+                class="btn btn-danger pull-right"
+                ng-click="av.closeViewer($event)">
+            <i class="glyphicon glyphicon-remove" aria-hidden="true"></i>
+        </button>
+        <div class="dropdownSearchBim">
+            <button title="{{ rgv.getLabels('search')}}" type="button" class="btn btn-default pull-right" ng-click="av.onShowSearchBim()">
+                <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+            </button>
+            <div id="myDropdown" class="dropdownSearchBim-content">
+                <input type="text" ng-model="av.search" placeholder="Search.." id="searchBim" ng-keyup="av.onFilterTreeBim()">
+                <a ng-repeat="node in av.filterDbId" ng-click="av.onSelectNodeSearch(node)">
+                    {{node.name}}
+                    <div style="margin-left:20px;">
+                        {{node.searchDesc}}
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div kendo-splitter
+         id="vertical"
+         k-orientation="'vertical'"
+         k-panes="[{ resizable: true, collapsible: true}, {collapsed:true ,resizable: true , collapsible: true}]"
+         style="width:100%"
+         k-on-resize="av.triggerWindowResize()">
+
+
+
+        <div id="top-pane">
+            <div kendo-splitter
+                 id="horizontal"
+                 style="height: 100%; width: 100%;"
+                 k-on-resize="av.triggerWindowResize()"
+                 k-panes="[{resizable:true,collapsible:true, size: '15%'}, {resizable:true,collapsible:true, size: '80%'},{resizable:true,collapsible:true,collapse:true, size: '5%'}]"
+                 k-orientation="'horizontal'">
+
+                <div id="left-pane">
+
+
+
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#TabLpBim">{{av.getLabels('Bim')}}</a></li>
+                        <li ng-show="true"><a data-toggle="tab" href="#TabLpReftree">{{av.getLabels('Reftree')}}</a></li>
+                    </ul>
+
+                    <div style="height: inherit;">
+
+                        <div id="TabLpBim" class="tab-pane fade in active">
+                            <div ng-repeat="model in av.reftreeModels">
+                                <div ng-if="modelBim.start" ng-repeat="modelBim in model.modelBim">
+                                    <tree-bim-r3 maxlevels="1"
+                                                 id="reftreeModel_{{modelBim.id}}"
+                                                 click="av.onNodeClick(modelBim,node)"
+                                                 class="treeBim"
+                                                 model="modelBim.elements"
+                                                 db-click="av.onNodeDbClick(modelBim,node);"
+                                                 change="av.onCheckChange(modelBim,node);"
+                                                 show-hide-node="av.onHideShowNode(modelBim,node);"
+                                                 show-hide="av.onAddRemoveNode(modelBim,node)"
+                                                 model-reftree="model">
+                                    </tree-bim-r3>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="TabLpReftree" class="tab-pane fade">
+                            <div>
+                                <tree-bim-r3 id="reftreeTree_{{tree.Id}}"
+                                             model="av.nodeReftree"
+                                             show-hide="av.onAddRemoveNodeReftree(node)"
+                                             class="treeBim"
+                                             change="av.onCheckChangeReftree(node.model,node);">
+                                </tree-bim-r3>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="center-pane">
+                    <div id="forgeViewer">
+                    </div>
+                </div>
+
+
+                <div id="right-pane">
+                    <div>{{av.nodeSelected.dbId}} </div>
+
+                    <div ng-repeat="prop in av.nodeSelected.properties | unique:'displayCategory' | orderBy:'displayCategory'">
+                        <div class="div-property-header-r3" data-toggle="collapse" data-target="#div_prop_{{prop.displayCategory}}">{{prop.displayCategory}} - {{}}</div>
+
+                        <div id="div_prop_{{prop.displayCategory}}" class="collapse in">
+                            <div class="div-property-r3" ng-repeat="item in av.nodeSelected.properties | filter: {displayCategory: prop.displayCategory} | unique:'displayName'">
+                                <b>{{item.displayName}}</b> : {{item.displayValue}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="bottom-pane">
+            <ul class="nav nav-tabs">
+                <li ng-repeat="grid in av.gridDetail" ng-class="grid.class"><a data-toggle="tab" href="#TabBp{{grid.titolo}}">{{grid.titolo}}</a></li>
+                <!--<li><a data-toggle="tab" href="#TabBpImpianti">{{av.getLabels('{{grid.titolo}}')}}</a></li>-->
+            </ul>
+            <div class="tab-content">
+                <div ng-repeat="grid in av.gridDetail" id="TabBp{{grid.titolo}}" ng-class="grid.classDiv">
+                    <magic-grid gridname="{{grid.magicGridName}}"></magic-grid>
+                </div>
+                <!--<div id="TabBpImpianti" class="tab-pane fade in active">
+                    <magic-grid gridname="{{av.magicGridName}}"></magic-grid>
+                </div>-->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="dwg-control-buttons">
+    <button title="{{ rgv.getLabels('back') }}"
+            type="button"
+            class="btn btn-success pull-right btnToolBarBimR3"
+            ng-click="av.closeViewer($event)">
+        <i class="glyphicon glyphicon-remove" aria-hidden="true"></i>
+    </button>
+    <!--ng-click="av.openTreeDiv = !av.openTreeDiv"-->
+    <button data-toggle="tooltip" data-placement="top" title="{{ av.getLabels('treeBim') }}"
+            type="button"
+            class="btn btn-success pull-left btnToolBarBimR3"
+            ng-click="av.openNav()">
+        <i class="glyphicon glyphicon-indent-right" aria-hidden="true"></i>
+    </button>
+    <button data-toggle="tooltip" data-placement="top" title="{{ av.getLabels('PropertiesBim') }}"
+            type="button"
+            class="btn btn-success pull-left btnToolBarBimR3"
+            ng-click="av.openNavProperties()">
+        <i class="glyphicon glyphicon-tags" aria-hidden="true"></i>
+    </button>
+    <button data-toggle="tooltip" data-placement="top" title="{{ av.getLabels('gridReftree') }}"
+            type="button"
+            class="btn btn-success pull-left btnToolBarBimR3"
+            ng-click="av.openNavGrid()">
+        <i class="glyphicon glyphicon-book" aria-hidden="true"></i>
+    </button>
+    <button data-toggle="tooltip" data-placement="top" title="{{ av.getLabels('refreshModel') }}"
+            type="button"
+            class="btn btn-success pull-left btnToolBarBimR3"
+            ng-click="av.onResetModel(model,true)">
+        <i class="glyphicon glyphicon-refresh" aria-hidden="true"></i>
+    </button>
+    <div class="dropdownSearchBim">
+        <button data-toggle="tooltip" data-placement="top" title="{{ av.getLabels('search')}}" type="button" class="btn btn-default pull-right btnToolBarBimR3" ng-click="av.onShowSearchBim()">
+            <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+        </button>
+        <div id="myDropdown" class="dropdownSearchBim-content">
+            <input type="text" ng-model="av.search" placeholder="Search.." id="searchBim" ng-keyup="av.onFilterTreeBim()">
+            <a ng-repeat="node in av.filterDbId" ng-click="av.onSelectNodeSearch(node)">
+                {{node.name}}
+                <div style="margin-left:20px;">
+                    {{node.searchDesc}}
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<div id="bimContainer" style="height:80vh; background-color:white; margin-bottom:50px;">
+    <div id="mySidenav" class="sidenav" ng-show="av.bShowSidebar" draggable resize>
+        <div id="mySidenavHeader" class="mySidenavHeader">
+            <span>{{ av.getLabels('treeBim') }}</span>
+            <a href="javascript:void(0)" class="closebtn" ng-click="av.closeNav()">&times;</a>
+        </div>
+        <div id="mySidenavBody" class="mySidenavBody">
+            <div ng-repeat="model in av.reftreeModels |  orderBy:'name'">
+
+                <div ng-if="modelBim.start" ng-repeat="modelBim in model.modelBim |  orderBy:'name'">
+
+                    <tree-bim-r3 maxlevels="1"
+                                 id="reftreeModel_{{modelBim.id}}"
+                                 click="av.onNodeClick(modelBim,node)"
+                                 class="treeBim"
+                                 model="modelBim.elements"
+                                 db-click="av.onNodeDbClick(modelBim,node);"
+                                 change="av.onCheckChange(modelBim,node);"
+                                 show-hide-node="av.onHideShowNode(modelBim,node);"
+                                 show-hide="av.onAddRemoveNode(modelBim,node)"
+                                 model-reftree="model">
+                    </tree-bim-r3>
+                </div>
+            </div>
+        </div>
+        <div class="mySidenavFooter">
+        </div>
+    </div>
+
+    <div id="mySidenavProperties" class="sidenavProperties" ng-show="av.bShowSidebarProperties" draggable resize>
+        <div class="mySidenavHeader">
+            <span>{{ av.getLabels('PropertiesBim') }}</span>
+            <a href="javascript:void(0)" class="closebtnProperties" ng-click="av.closeNavProperties()">&times;</a>
+        </div>
+        <div class="mySidenavBody">
+            <div>{{av.nodeSelected.dbId}} </div>
+
+            <div ng-repeat="prop in av.nodeSelected.properties | unique:'displayCategory' | orderBy:'displayCategory'">
+                <div class="div-property-header-r3" data-toggle="collapse" data-target="#div_prop_{{prop.displayCategory}}">{{prop.displayCategory}} - {{}}</div>
+
+                <div id="div_prop_{{prop.displayCategory}}" class="collapse in">
+                    <div class="div-property-r3" ng-repeat="item in av.nodeSelected.properties | filter: {displayCategory: prop.displayCategory} | unique:'displayName'">
+                        <b>{{item.displayName}}</b> : {{item.displayValue}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mySidenavFooter">
+        </div>
+    </div>
+
+    <div id="mySidenavGrid" class="sidenavGrid" ng-show="av.bShowsidebarGrid" draggable resize>
+        <div class="mySidenavHeader">
+            <span>{{ av.getLabels('gridReftree') }}</span>
+            <a href="javascript:void(0)" class="closebtnGrid" ng-click="av.closeNavGrid()">&times;</a>
+        </div>
+        <div class="mySidenavBody">
+            <ul class="nav nav-tabs">
+                <li ng-repeat="grid in av.gridDetail" ng-class="grid.class"><a data-toggle="tab" href="#TabBp{{grid.titolo}}">{{grid.titolo}}</a></li>
+                <!--<li><a data-toggle="tab" href="#TabBpImpianti">{{av.getLabels('{{grid.titolo}}')}}</a></li>-->
+            </ul>
+            <div class="tab-content">
+                <!--<magic-grid   gridname="AS_US_VI_ASSET_VIEW_BIM_DETAIL" filter='{"logic": "and", "filters" : [{ "field": "BIM_RELBIM_IFC_GLOBALID", "operator": "eq", "value": "" }]}'></magic-grid>-->
+
+
+
+                <div ng-repeat="grid in av.gridDetail" id="TabBp{{grid.titolo}}" ng-class="grid.classDiv">
+                    <magic-grid ng-if="grid.start" gridname={{grid.magicGridName}} filter=grid.initFilterGridStart></magic-grid>
+
+                </div>
+                <!--<div id="TabBpImpianti" class="tab-pane fade in active">
+                    <magic-grid gridname="{{av.magicGridName}}"></magic-grid>
+                </div>-->
+
+            </div>
+        </div>
+        <div class="mySidenavFooter">
+        </div>
+
+    </div>
+
+    <div id="forgeViewer">
+    </div>
+</div>
+
+<script type="text/ng-template" id="myModalContent.html">
+    <div my-modal>
+        <div class="modal-header">
+            <h3 class="modal-title">Modal!</h3>
+        </div>
+        <div class="modal-body">
+            <div>
+                <div id="myDropdown" class="dropdownSearchBim-content">
+                    <input type="text" ng-model="av.search" placeholder="Search.." id="searchBim" ng-keyup="av.onFilterTreeBim()">
+                    <a ng-repeat="node in av.filterDbId" ng-click="av.open('rrr')">
+                        {{node.name}}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="$close('awesome')">OK</button>
+            <button class="btn btn-warning" ng-click="$dismiss('nah')">Cancel</button>
+        </div>
+    </div>
+
+</script>

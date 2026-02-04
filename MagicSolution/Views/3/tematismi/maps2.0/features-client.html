@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+		
+		<link rel="stylesheet" href="../bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../js/jq/jqueryui/1.10.1/themes/smoothness/jquery-ui.css"/>
+		
+		<link rel="stylesheet" href="../css/plani3d-maps.min.css" type="text/css">
+		
+		<script type="text/javascript" src="../js/require.js"></script>
+		
+		<title>Features - Plani3D Maps 2.0</title>
+	</head>
+	<body>
+		<div><!-- se questo manca, la selezione ha un offset, ma in REFtree non dovrebbe servire --></div>
+		
+		<!-- INIZIO parte per REFtree -->
+		<div id="p3dt-map" class="p3dt-map"></div>
+		<script>
+			var geoidsObj = [{
+					"geoid": 1,
+					"label": "Esempio 1",
+					"RefId": 123
+				},
+				{
+					"geoid": 2,
+					"label": "Esempio 2",
+					"RefId": 456
+				},
+				{
+					"geoid": 3,
+					"label": "Esempio 3",
+					"RefId": 789
+				}];
+			
+			function externalCallbackFunction(feature) {
+				alert(feature.values_.geoid);
+			}
+
+			require(["config.js"], function () {
+				require(["plani3d-maps"], function (plani3d) {
+					var p3dmaps = new plani3d.Maps({
+						//protocol: 'http',
+						server: '94.177.184.169',
+						//webapp: 'plani3d-srv',
+						maps: 'tn-1.0.6',
+						layers: ['OSM', 'SAT', 'v_CAT'],
+						tematismi: testData,
+						imgpath: '/views/3/'
+					});
+					p3dmaps.init();
+					p3dmaps.zoomToExtent(1237766, 5791005, 1238334, 5791285);
+					p3dmaps.initDrawing(geoidsObj, false, externalCallbackFunction);
+				});
+			});
+		</script>
+		<!-- FINE parte per REFtree -->
+	</body>
+</html>

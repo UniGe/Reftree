@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Print</title>
+	<meta charset="utf-8" />
+    <link href="/version2.6.0/Magic/HtmlTemplates/webarch/assets/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Magic/kendo/2016.1.226/Styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="/Magic/kendo/2016.1.226/Styles/kendo.mobile.all.min.css" rel="stylesheet" />
+
+    <link href="/Magic/kendo/2016.1.226/styles/kendo.blueopal.min.css" rel="stylesheet" />
+    <link href="/Magic/kendo/2016.1.226/styles/kendo.blueopal.mobile.min.css" rel="stylesheet" />
+    <script src="/Magic/HtmlTemplates/webarch/assets/plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="/Magic/kendo/2016.1.226/js/kendo.all.min.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        if (window.opener && window.opener.printData) {
+            var $container = $("#container").html(window.opener.printData.html);
+            if (window.opener.printData.inputData)
+                $.each(window.opener.printData.inputData, function (k, v) {
+                    $container.find("input[name='" + k + "']").val(v);
+                });
+            setTimeout(function () {
+                window.print();
+            }, 2500);
+        }
+    </script>
+</body>
+</html>

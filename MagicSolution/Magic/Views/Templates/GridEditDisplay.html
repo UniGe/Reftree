@@ -1,0 +1,173 @@
+﻿<style>
+    .fullHeight {
+        height: 97%;
+    }
+
+
+    .k-grid-header.fixed-header {
+        position:initial;
+    }
+
+    .widgetContainer {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        flex-direction: row;
+        justify-content: flex-start;        
+        align-items: stretch;        
+        align-content: stretch;
+        overflow-x: auto;
+        overflow-y: auto;
+        background-color: white;
+    }
+
+    .magicChart {
+        margin: 0 auto;
+        border: none;
+        width: 100%;
+        overflow: visible;
+    }
+
+    .widgetGroup {
+        width: 99%;
+        display: block;
+    }
+
+    div + p {
+        display: none;
+    }
+
+    #PARENT_OF_EVERYTHING > .nav-tabs {
+        background-image: linear-gradient(to bottom, #d9edf7 0, #c4e3f3 100%);
+        background-repeat: repeat-x;
+    }
+
+    .layoutContent {
+        padding: 5px;
+    }
+
+    .pointer {
+        cursor: pointer;
+    }
+
+    .grid-stack-item {
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .page-content.condensed {
+        margin-left: 0px;
+    }
+
+    .page-content .content {
+        padding-top: 0px;
+    }
+    #gauge-container {
+        height:200px;
+        min-height:200px;
+    }
+    .k-gauge {
+        height:200px;
+        min-height:200px;
+    }
+</style>
+<style>
+.ul-nav-editpage {
+    background-color: transparent;
+    border: none;    
+    padding: 5px;
+    min-height: 40px;
+}
+
+.li-nav-editpage {
+    background-color: #0090d9;
+    margin: 1px;
+    border-radius: 8px;
+}
+
+.nav-tabs > .li-nav-editpage > a {
+    border-radius: 8px;
+    border: 0px;
+    padding: 5px 10px;
+    color: white;
+    min-width: 100px;
+    text-align: center;
+}
+
+    .nav-tabs > .li-nav-editpage > a:hover, .nav-tabs > .li-nav-editpage > a:focus {
+        cursor: pointer;
+        background-color: #2a6496;
+        border-radius: 8px;
+        color: white;
+        font-size:14px;
+    
+        
+    }
+
+.nav-tabs > .li-nav-editpage.active > a, .nav-tabs > .li-nav-editpage.active > a:hover, .nav-tabs > .li-nav-editpage.active > a:focus {
+    color: white;
+    cursor: default;
+    background-color: #2a6496;
+    border-radius: 8px;
+}
+.unclickable {
+    pointer-events: none;
+}
+.unclickable:hover {
+    cursor: not-allowed;
+}
+</style>
+
+ 
+<div id="PARENT_OF_EVERYTHING" class="container-fluid">
+    <div>
+            <magic-actions parentgridinstance="ged.mainGridDataSrc" rowdata="ged.actionsModel" gridname="ged.mainGridName" entityname="ged.mainGridEntityName" actiontype="customactions" callback="ged.onActionExecuted" ng-if="ged.showStandardActions && ged.editExistingRow"></magic-actions>
+            <magic-actions parentgridinstance="ged.mainGridDataSrc" rowdata="ged.actionsModel" gridname="ged.mainGridName" entityname="ged.mainGridEntityName" actiontype="stageactions" callback="ged.onActionExecuted" ng-if="ged.showCustomActions && ged.editExistingRow"></magic-actions>     
+    </div>
+    <ul class="nav nav-tabs ul-nav-editpage" ng-show="ged.UserStatus">
+        <li ng-repeat="tab in ged.RenderLayout" ng-click="ged.changeTab(tab.id)" ng-if="ged.mainFormSubmitted || tab.id == 0" class="pointer li-nav-editpage"
+            data-ng-class="{'active' : tab.id == 0}">
+            <a data-toggle="tab" href="#tab{{tab.id}}">
+                <span class="fa fa-tag"></span>
+                <span>{{tab.title}}</span>
+            </a>
+        </li>
+                
+        <li ng-if="ged.UserStatus == 'update' && !ged.rowIsReadonly" ng-class="{'unclickable': ged.isSaving, 'disabled': ged.isSaving}" class="pointer li-nav-editpage" title="Save">
+            <a ng-click="ged.onMainFormSubmitted()"><i class="fa fa-save"></i></a>
+        </li>
+    </ul>
+    <div ng-show="ged.UserStatus" class="tab-content clearfix">
+        <div ng-repeat="tab in ged.RenderLayout">
+            <div class="tab-pane fade in" ng-if="ged.loadTabContent[tab.id]" id="tab{{tab.id}}"
+                 data-ng-class="{'active' : tab.id == 0}">
+
+                <div class="layoutContent" ng-if="ged.desktopLayout" ng-include="ged.templateUrl">
+                </div>
+
+                <div class="layoutContent" ng-if="ged.tabletLayout" ng-include="ged.templateUrl">
+                </div>
+
+                <div class="layoutContent" ng-if="ged.mobileLayout" ng-include="ged.templateUrl">
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div ng-show="ged.IsAuthentificated && !ged.UserStatus">
+        {{ged.text.NO_ACCESS_TO_PAGE}}
+        <br>
+        <a href="{{ged.noAccessRedirectPath}}" class="btn btn-labeled btn-default">
+            <span class="btn-label"><i class="glyphicon glyphicon-chevron-left"></i></span>{{ged.text.NO_ACCESS_TO_PAGE_LINK}}
+        </a>
+
+    </div>
+
+</div>
+
+<p class="mySpinner text-center" style="padding: 20px;">
+    <i class="fa fa-spinner fa-spin fa-5x"></i>
+</p> 
+

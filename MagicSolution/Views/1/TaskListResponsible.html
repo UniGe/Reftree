@@ -1,0 +1,30 @@
+﻿<style>
+    .labels {
+        height: 20px;
+        font-size: xx-large;
+        font-weight: bold;
+        color: #565454;
+    }
+</style>
+<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <p class="labels">
+        {{ cd.translate("FromProccess") }}
+    </p>
+    <br />
+    <div id="grid1"></div>
+</div>
+<div class="row" style="height:20px;"></div>
+<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <p class="labels">
+        {{ cd.translate("JobSpot") }}
+    </p>
+    <br />
+    <div id="grid2"></div>
+</div>
+<script>
+    var grid = getrootgrid("TaskList_Responsible");
+    renderGrid(grid, null, null, "grid1");
+
+    var grid2 = getrootgrid("RecurringActivityResponsible");
+    renderGrid(grid2, null, null, "grid2");
+</script>

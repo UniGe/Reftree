@@ -1,0 +1,36 @@
+﻿<!-- inside grid-stack-item-content !!-->
+<div class="row">
+    <div class="col-md-1">
+        <i ng-if="item.position == 0 && rowIdx != 0" ng-click="fe.moveItem(item, row, 'up')" class="fa fa-chevron-circle-up fa-2x pointer"></i>
+        <br />
+        <i ng-if="item.position == (row.items.length-1) && (row.position != (tab.rows.length - 1) && row.position != (subTab.rows.length - 1))" ng-click="fe.moveItem(item, row , 'down')" class="fa fa-chevron-circle-down fa-2x pointer"></i>
+    </div>
+
+    <div class="col-md-10">
+        <div class="row">
+
+                <label id="{{item.uid}}_tag" name="{{item.tag}}_tag">
+                    <span>{{item.tag}}</span>
+                    <button title="setup label-style" class="btn btn-warning btn-small" style="padding: 1px 9px !important;" ng-click="fe.showStyleModal(item)"><span class="fa fa-pencil-square-o"></span></button>
+                </label>
+
+        </div>
+        <div class="row">
+
+            <div ng-if="item.type == 'textarea'">
+                <span class="label label-default" style="display: inline-block;margin-top: 8px; pointer-events:none;">Number of textarea-rows:</span>
+                <input ng-model="item.numberOfRows"
+                       ng-change="fe.onTextareaNumberOfRowsChanged(item)"
+                       type="number"
+                       min="{{fe.textareaMinNumberOfRows}}"
+                       max="{{fe.textareaMaxNumberOfRows}}"
+                       style="display: inline-block;" />
+            </div>
+            <input ng-if="item.type != 'textarea'" style="width:100%;" type="text" disabled />
+            <textarea ng-if="item.type == 'textarea'" style="width:100%; background: #EFEFEF" rows="{{item.numberOfRows}}" disabled />
+
+        </div>
+    </div>
+    <div class="col-md-1" style="text-align:right;">
+    </div>
+</div>

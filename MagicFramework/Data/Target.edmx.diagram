@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dcc5d687d1b6494f8f4074b0f10e9449" Name="Diagram1">
+        <EntityTypeShape EntityType="MagicDBModel.Magic_Mmb_PendingRegistrations" Width="3.25" PointX="0.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicDBModel.Magic_SystemEditedMessages" Width="1.5" PointX="7.625" PointY="7.375" />
+        <EntityTypeShape EntityType="MagicDBModel.Magic_SystemMessages" Width="1.5" PointX="2.375" PointY="5" />
+        <AssociationConnector Association="MagicDBModel.FK_Magic_SystemEditedMessages_Magic_SystemMessages" />
+        <EntityTypeShape EntityType="MagicDBModel.Magic_NotificationProviders" Width="1.5" PointX="1.875" PointY="13.125" />
+        <EntityTypeShape EntityType="MagicDBModel.Magic_NotificationQueue" Width="1.5" PointX="4.125" PointY="9.5" />
+        <EntityTypeShape EntityType="MagicDBModel.Magic_NotificationTypes" Width="1.5" PointX="1.875" PointY="10.5" />
+        <AssociationConnector Association="MagicDBModel.FK_Magic_NotificationsQueue_Magic_NotificationProviders" />
+        <AssociationConnector Association="MagicDBModel.FK_Magic_NotificationsQueue_Magic_NotificationTypes" />
+        <EntityTypeShape EntityType="MagicDBModel.Magic_MailAccounts" Width="1.5" PointX="5.125" PointY="4.25" />
+        <AssociationConnector Association="MagicDBModel.FK_Magic_SystemMessages_Magic_MailAccounts" />
+        <EntityTypeShape EntityType="MagicDBModel.Magic_MailQueue" Width="1.5" PointX="8.5" PointY="1.5" />
+        <AssociationConnector Association="MagicDBModel.FK_Magic_MailQueue_Magic_MailAccounts" />
+        <AssociationConnector Association="MagicDBModel.FK_Magic_MailQueue_Magic_SystemEditedMessages" />
+        <AssociationConnector Association="MagicDBModel.FK_Magic_MailQueue_Magic_SystemMessages" />
+        <EntityTypeShape EntityType="MagicDBModel.V_Magic_NotificationQueue" Width="1.5" PointX="10.375" PointY="6.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

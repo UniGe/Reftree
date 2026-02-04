@@ -1,0 +1,35 @@
+﻿   
+  
+ 
+   <div id="myheader" class="modal-header">
+       <div class="row">
+           <label>{{gdv.getLabels('selezionaPiani')}}</label>
+           <div class="col-lg-6">
+               <input type="checkbox" checked data-toggle="toggle">
+           </div>
+           <div class="col-lg-6" style="text-align: right;">
+               <button ng-model="button" id="btnExit" class="btn btn-danger" ng-click="cancel()">X</button>
+           </div>
+       </div>
+   </div>
+
+   <div class="modal-body">
+       <div class="row">
+           <div class="col-lg-12">
+             
+
+           </div>
+       </div>
+
+
+   </div>
+   <div class="modal-footer">
+               <div class="row">
+                   <div class="col-lg-12">
+                       <button class="btn btn-success" ng-click="save()">{{gdv.getLabels('save')}}</button>
+                       
+                   </div>
+               </div>
+           </div>
+ 
+

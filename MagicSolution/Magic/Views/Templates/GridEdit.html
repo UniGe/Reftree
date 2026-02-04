@@ -1,0 +1,193 @@
+﻿<style>
+    .pointer:hover {
+        cursor: pointer;
+    }
+
+    .grid-stack-item {
+        border: 1px groove #C1CACE;
+        border-radius: 0px;
+        /* padding: 20px;        */
+    }
+
+        .grid-stack-item:hover {
+            -webkit-box-shadow: 5px 5px 8px 0px #8C8C8C;
+            box-shadow: 5px 5px 8px 0px #8C8C8C;
+            cursor: move;
+        }
+
+    .move-cursor:hover {
+        cursor: move;
+    }
+
+    .sort-cursor:hover {
+        cursor: e-resize;
+    }
+
+    magic-grid + p {
+        display: none;
+    }
+
+    .inner-grid-stack { /* PADDING OF GROUP-WIDGETS */
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 50px;
+    }
+</style>
+
+
+<div id="grid-div" ng-show="ge.showList">
+    <magic-grid id="mainGrid" kendo-grid-instance="ge.gridInstance" gridname="Magic_EditPages"
+                command=" { command: { text: 'Edit page', click: ge.toggleTheList }, title: '', width: '180px' }  ">
+    </magic-grid>
+    <p class="mySpinner text-center" style="padding: 20px;">
+        <i class="fa fa-spinner fa-spin fa-5x"></i>
+    </p>
+</div>
+
+
+<div id="editor-div" ng-show="!ge.showList">
+    <ul id="tabList" class="nav nav-tabs" role="tablist" ng-model="ge.EditPageLayout.Tabs"
+        ui-sortable="ge.sortableOptions">
+        <li role="presentation" ng-repeat="(key,tab) in ge.EditPageLayout.Tabs" ng-click="ge.onTabSelected(tab.id)"
+            ng-dblclick="ge.editTabDescription(tab, $event)" data-ng-class="{'active' : tab.id == 0}">
+            <a href="#tab{{tab.id}}" role="tab" data-toggle="tab">
+                <span ng-click="ge.editTabDescription(tab, $event)" class="fa fa-edit text-muted edit pointer"
+                      title="{{ge.text.editTabWorkingTitle}}"></span>
+                <span ng-model="tab.titles.en">{{tab.titles.en}}</span>
+                <span data-toggle="modal" data-target="#renameModal{{tab.id}}" class="fa fa-globe pointer"
+                      title="{{ge.text.editTabInternationalTitle}}"></span>
+                <span class="fa fa-arrows-h sort-cursor" title="{{ge.text.editTabOrder}}"></span>
+                <span ng-click="ge.removeTab(tab)" class="fa fa-remove pointer" title="{{ge.text.deleteTab}}"></span>
+            </a>
+        </li>
+
+        <li class="pointer" title="{{ge.text.addTab}}">
+            <a ng-click="ge.addTab()"><i class="fa fa-plus fa-2x"></i></a>
+        </li>
+        <li ng-class="{'disabled': !ge.layoutChangesMade}" class="pointer" title="{{ge.text.reset}}">
+            <a ng-click="ge.layoutChangesMade === false || ge.reset()"><i class="fa fa-undo fa-2x"></i></a>
+        </li>
+        <li ng-class="{'disabled': !ge.layoutChangesMade}" id="saveTabs" class="pointer">
+            <a ng-click="ge.layoutChangesMade === false || ge.saveTabs()"><i class="fa fa-save fa-2x"></i></a>
+        </li>
+    </ul>
+
+    <div class="tab-content clearfix">
+        <!-- LAYOUT-TAB -->
+        <!-- DESK / TABLET / MOBILE #start -->
+        <div ng-repeat="(key,tab) in ge.EditPageLayout.Tabs" id="tab{{tab.id}}" ng-if="ge.loadTabContent[tab.id]" role="tabpanel" class="tab-pane fade in"
+             data-ng-class="{'active' : tab.id == 0}">
+            <div id="parent_for_layoutTypes">
+                <div class="row">
+                    <ul class="nav nav-pills col-lg-3">
+                        <li role="presentation" ng-repeat="layoutType in ge.layoutTypeOptions"
+                            ng-click="ge.onLayoutTypeSelected(layoutType.name)" title="{{layoutType.title}}"
+                            data-ng-class="{'active' : layoutType.name == 'desktop'}">
+                            <a href="#{{layoutType.name}}{{tab.id}}" role="tab" data-toggle="tab">
+                                <i class="fa fa-{{layoutType.icon}} fa-2x"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- NEW #start-->
+                    <a class="btn btn-primary" ng-click="ge.addWidget(tab)" href="#" title="{{ge.text.addWidget}}">
+                        <i class="fa fa-plus fa-2x"></i>
+                    </a> <!-- ADD-WIDGET-button -->
+                    <div class="btn-group" role="group" aria-label="...">
+                        <span title="{{ge.text.englishDescription}}">
+                            <button type="button" class="btn btn-default" disabled>
+                                <span>
+                                    <span class="flag-icon flag-icon-gb" ng-model="tab.titles.en">
+                                    </span>{{tab.titles.en}}
+                                </span>
+                            </button>
+                        </span>
+                        <span title="{{ge.text.italianDescription}}">
+                            <button type="button" class="btn btn-default" disabled>
+                                <span>
+                                    <span class="flag-icon flag-icon-it" ng-model="tab.titles.it">
+                                    </span>{{tab.titles.it}}
+                                </span>
+                            </button>
+                        </span>
+                        <span title="{{ge.text.germanDescription}}">
+                            <button type="button" class="btn btn-default" disabled>
+                                <span>
+                                    <span class="flag-icon flag-icon-de" ng-model="tab.titles.de">
+                                    </span>{{tab.titles.de}}
+                                </span>
+                            </button>
+                        </span>
+                        <span>
+                            <button type="button" class="btn btn-default" data-toggle="modal"
+                                    data-target="#renameModal{{tab.id}}" title="{{ge.text.editTabInternationalTitle}}">
+                                <span class="fa fa-globe pointer"></span>
+                            </button>
+                        </span>
+
+                    </div>
+                    <div class="btn-group pull-right" role="group" aria-label="...">                        
+                        <span> 
+                            <button disabled type="button" class="btn btn-default">TAB-CODE:<input disabled id="copyCode{{tab.id}}" type="text" value="tab{{tab.id}}" /></button>
+                            <button ng-click="ge.copyTabCodeToClipboard($event, tab.id)" type="button" class="btn btn-warning" title="Copy to clipboard"><i class="fa fa-copy"></i></button>                             
+                        </span>
+                    </div>
+                    <!-- NEW #end-->
+                </div>
+                <div class="tab-content">
+                    <div ng-repeat="(widgetLayout, widgets) in tab.widgets" id="{{widgetLayout}}{{tab.id}}"
+                         ng-if="ge.loadLayoutContent[widgetLayout]" 
+                         data-ng-class="{'active in' : widgetLayout == 'desktop'}" class="tab-content tab-pane fade"
+                         role="tabpanel">
+
+                        <div ng-include="ge.gridTemplateUrl"></div>
+                    </div>
+                </div>
+                <!-- DESK / TABLET / MOBILE #end -->
+            </div>
+            <div class="hidden" ng-init="ge.hideSpinner()"></div>
+        </div>
+    </div>
+</div>
+
+<div ng-repeat="(key,myTab) in ge.EditPageLayout.Tabs" class="modal fade" id="renameModal{{myTab.id}}" role="dialog">
+    <!-- SET-TITLES-modal -->
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{ge.text.editTabInternationalTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon" title="{{ge.text.englishDescription}}">
+                        <span class="flag-icon flag-icon-gb"></span>
+                    </span>
+                    <input id="title_en" type="text" class="form-control" placeholder="en-GB"
+                           ng-model="myTab.titles.en">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon" title="{{ge.text.italianDescription}}">
+                        <span class="flag-icon flag-icon-it"></span>
+                    </span>
+                    <input id="title_it" type="text" class="form-control" placeholder="it-IT"
+                           ng-model="myTab.titles.it">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon" title="{{ge.text.germanDescription}}">
+                        <span class="flag-icon flag-icon-de"></span>
+                    </span>
+                    <input id="title_de" type="text" class="form-control" placeholder="de-DE"
+                           ng-model="myTab.titles.de">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" title="{{ge.text.confirm}}" data-dismiss="modal"
+                        ng-click="ge.onTabTitlesModified()">
+                    <span class="btn-label"><i class="glyphicon glyphicon-thumbs-up"></i></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+        <label for='toPicker'>{{ cd.translate("Year") }}</label>
+        <select kendo-drop-down-list="cd.options.yearDropDown"
+                k-data-text-field="'FromDate'"
+                k-data-value-field="'FromDate'"
+                k-data-source="cd.options.years"
+                k-on-cascade="cd.options.setFilter()"
+                style="width: 100%"></select> 
+        <p>{{ cd.translate("AbsenceYearSelector") }}</p>
+    </div>
+</div>
+
+<div class="row" style="height:20px;"></div>
+<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div id="grid2"></div>
+</div>
+<div class="row" style="height:20px;"></div>
+<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <p>
+        {{ cd.translate("AbsenceNewRequest") }}
+    </p>
+    <magic-grid id="grid0" gridname="AbsenceRequest" filter="cd.options.initialFilter" kendo-grid-instance="cd.options.kendoGridInstance"></magic-grid>
+</div>
+
+<script>
+    var grid = getrootgrid("V_HolidayReport");
+    renderGrid(grid,null,null,"grid2")    
+
+    $(document).ready(function () {
+        $("#grid2 .k-grid-toolbar").hide();
+        $("#grid2 .k-grid-pager").hide();
+    });
+    
+</script>

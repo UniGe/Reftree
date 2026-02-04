@@ -1,0 +1,34 @@
+﻿<div ng-class="dic.config.color" class="grid tiles added-margin tiles-custom">
+    <div class="tiles-body tiles-body-custom">
+        <div class="controller">
+            <a ng-show="dic.dshb_isCustomizable()" title="Swap with another element" onclick="dshb_swapElements(this);" href="javascript:;" class="fa fa-random"></a>
+            <a ng-show="dic.dshb_isCustomizable()" title="Resize" onclick="dshb_resize(this);" href="javascript:;" class="fa fa-expand"></a>
+            <a title="Reload" ng-click="dic.refresh($event)" href="javascript:;" class="fa fa-refresh"></a>
+            <a ng-show="dic.dshb_isCustomizable()" title="Remove from tab" onclick="dshb_remove(this);" href="javascript:;" class="fa fa-times"></a>
+        </div>
+        <div class="tiles-title tiles-title-custom">{{ dic.config.description }}</div>
+        <div class="heading heading-custom">
+            <span count-to="{{ dic.value }}" duration="1.2"></span>&nbsp;{{ dic.config.measurementUnit }}
+        </div>
+        <div class="progress transparent progress-small no-radius">
+            <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="{{ dic.percentValue }}%" style="width: {{ dic.percentValue }}%;"></div>
+        </div>
+        <div ng-if="dic.hasSubValues" style="margin-bottom:20px;">
+            <div ng-repeat="sv in dic.subValues" class="widget-stats">
+                <div class="wrapper transparent" style="min-width:100px;">
+                    <span class="item-title">{{ sv.label  }}</span>
+                    <div class="col-md-12">
+                        <span count-to="{{ sv.value }}" duration="1.2" class="item-count animate-number semi-bold col-md-6 text-right"></span><span style="margin-top:3px;" class="item-title col-md-6"> {{ sv.measurementunit }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="description description-custom">
+            <span class="mini-description mini-description-custom">
+                <a ng-if="dic.config.functionGUID" class="more text-white" ng-click="dic.more()" href="javascript:void(0);">{{ dic.lang.viewMore }}</a>
+                <a ng-if="!dic.config.functionGUID" style="color:transparent;" class="more  indicator-no-link">{{ dic.lang.noLink }}</a>
+            </span>
+        </div>
+
+    </div>
+</div>

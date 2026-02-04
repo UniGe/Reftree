@@ -1,0 +1,31 @@
+﻿#workcalendar {
+    width: 50%;
+}
+#workcalendar .k-content {
+    height: 500px;
+}
+
+ul.ulcolor-box {
+    float: right;
+}
+
+ul.ulcolor-box li{
+    list-style-type:none
+}
+
+
+.input-color {
+    position: relative;
+}
+.input-color input {
+    padding-left: 20px;
+}
+.input-color .color-box {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background-color: #ccc;
+    position: absolute;
+    left: 5px;
+    top: 3px;
+}

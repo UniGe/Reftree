@@ -1,0 +1,39 @@
+﻿<div id="mandatorypasswordchange" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{c.labels.passwordExpired}}</h4>
+            </div>
+            <div class="modal-body">
+                <p>{{c.labels.passwordExpiredWarning}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="clearfix">
+    <form name="c.$form" class="personal-data-form personal-data" sf-schema="c.schema" sf-form="c.form" sf-model="c.model">
+        <!-- fake fields are a workaround for chrome autofill getting the wrong fields -->
+        <input style="display:none" type="text" name="fakeusernameremembered" />
+        <input style="display:none" type="password" name="fakepasswordremembered" />
+    </form>
+    <button class="btn btn-primary pull-right" ng-click="c.submit($event)" ng-bind="c.labels.save"></button>
+</div>
+<br />
+<hr />
+<br />
+<br />
+<div class="clearfix">
+    <form name="c.$passwordForm" class="password-form personal-data" sf-schema="c.passwordSchema" sf-form="c.passwordForm" sf-model="c.passwordModel">
+        <!-- fake fields are a workaround for chrome autofill getting the wrong fields -->
+        <input style="display:none" type="text" name="fakeusernameremembered" />
+        <input style="display:none" type="password" name="fakepasswordremembered" />
+    </form>
+    <button class="btn btn-primary pull-right" ng-click="c.submitPassword($event)" ng-bind="c.labels.save"></button>
+    <br/><br />
+</div>

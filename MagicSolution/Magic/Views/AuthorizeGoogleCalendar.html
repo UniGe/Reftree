@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="/Magic/HtmlTemplates/metronic_v3.1.3/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-lg-offset-2">
+                <form action="/api/Magic_Mmb_Users/AuthorizeGoogleCalendar" method="POST">
+                    <div class="form-group">
+                        <label id="labelCalendarName" for="googleCalendarName"></label>
+                        <select class="form-control" id="googleCalendarName" name="GoogleCalendarName">#options#</select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Ok</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function () {
+            var lang = "#language#";
+            var dict = {
+                "de": "Bitte wählen Sie den Google Kalender mit dem Sie den Kalender der Anwendung synchronisieren möchten:",
+                "it": "Prego selezionare il calendario google da sincronizzare con il calendario dell'applicativo:",
+                "en": "Please select the google calendar to be synchronized with the application calendar:"
+            };
+
+            document.getElementById("labelCalendarName").textContent = dict[lang] || dict["en"];
+        })();
+    </script>
+</body>
+</html>

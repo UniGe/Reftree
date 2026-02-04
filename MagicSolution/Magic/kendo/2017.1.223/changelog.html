@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Changelog for Kendo UI Professional v2017.1.223 (February 23, 2017)</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font: .75em/1.5 Tahoma, sans-serif;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            font-size: normal;
+        }
+
+        h2 {
+            font-size: 2em;
+            font-weight: normal;
+
+            margin: 1.2em 0 .3em;
+            padding-bottom: .2em;
+        }
+
+        .breaking {
+            background-color: #e10c01;
+            color: #fff;
+            border-radius: 3px;
+            padding: 3px 4px;
+            display: inline-block;
+            font-size: 11px;
+            line-height: 1;
+            font-weight: bold;
+        }
+
+        #page {
+            width: 50em;
+            margin: 0 auto 2em;
+            border-radius: 0 0 1em 1em;
+            box-shadow: 0 0 10px #ccc;
+            padding: 1em 2em 2em;
+        }
+
+        .poBoxIcon {
+            float: left;
+            font-size: 2em;
+            margin: 1.2em .5em 0 0;
+        }
+
+        .poTopLine {
+            border-top: 2px solid #e1e1e1;
+            margin: 17px 0 40px 0;
+        }
+    </style>
+
+    <base href="http://www.telerik.com/support/whats-new/kendo-ui-web/release-history">
+</head>
+<body>
+    <div id="page">
+        <h1 class="title">Release notes for Kendo UI Professional v2017.1.223</h1>
+
+        <h1>Components</h1>
+        <div class="tClear poTopLine">
+            <div class="poBoxIconText">
+                
+                <p><strong>What's fixed</strong></p>
+<ul>
+<li>There is no right padding in sheet tab when there is single one (<a href="https://github.com/telerik/kendo-ui-core/issues/2736">#2736</a>)</li>
+</ul>
+            </div>
+        </div>
+
+
+        <div class="tClear poTopLine">
+            <h2>Chart</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Style the Charts with SASS-based themes (<a href="https://github.com/telerik/kendo-ui-core/issues/2774">#2774</a>)</li>
+</ul>
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Chart disappears from multi-page PDF Export regression (<a href="https://github.com/telerik/kendo-ui-core/issues/2750">#2750</a>)</li>
+<li>Incorrect area points with missing values gap and out of range points (<a href="https://github.com/telerik/kendo-ui-core/issues/2737">#2737</a>)</li>
+<li>Does not bind fields from array index (<a href="https://github.com/telerik/kendo-ui-core/issues/2722">#2722</a>)</li>
+<li>getAxis and findAxisByName method do not work during render event (<a href="https://github.com/telerik/kendo-ui-core/issues/2668">#2668</a>)</li>
+<li>Custom gradients are not recognized (<a href="https://github.com/telerik/kendo-ui-core/issues/2659">#2659</a>)</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>ComboBox</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Multiple loading icons displayed in ComboBox (<a href="https://github.com/telerik/kendo-ui-core/issues/2655">#2655</a>)</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Drawing</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>JS error in IE when exporting to PDF and using page breaks (<a href="https://github.com/telerik/kendo-ui-core/issues/2666">#2666</a>)</li>
+<li>PdfExport functionality (in particular drawDOM method) removes attributes from the elements in the DOM tree. (<a href="https://github.com/telerik/kendo-ui-core/issues/2625">#2625</a>)</li>
+<li>kendo.geometry.Circle pointAt method counts degrees ccw instead of clockwise</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>DropDownList</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Widget selects focused item on blur unexpectedly (<a href="https://github.com/telerik/kendo-ui-core/issues/2327">#2327</a>)</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Editor</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Cannot focus and type in ComboBoxes added to the toolbar (<a href="https://github.com/telerik/kendo-ui-core/issues/2686">#2686</a>)</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Globalization</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>toString method does not correctly handle grouping of 4 digit negative numbers with a custom negative number format. (<a href="https://github.com/telerik/kendo-ui-core/issues/2681">#2681</a>)</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Grid</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>JavaScript error on column resize in a multi-header columns scenario (<a href="https://github.com/telerik/kendo-ui-core/issues/2701">#2701</a>)</li>
+<li>Grid and TreeList should propagate scroll event to the page when frozen part scrolling is not needed</li>
+<li>Grid and TreeList should propagate scroll event to the page when frozen part scrolling is not needed</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>MultiSelect</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Wrong color of the disabled items in MultiSelect in the Default theme (<a href="https://github.com/telerik/kendo-ui-core/issues/2658">#2658</a>)</li>
+<li>Unnecessary padding in RTL mode (<a href="https://github.com/telerik/kendo-ui-core/issues/2587">#2587</a>)</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>NumericTextBox</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Add the ability to edit data in the percentTextBox as a percent. (<a href="https://github.com/telerik/kendo-ui-core/issues/2791">#2791</a>)</li>
+</ul>
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Spin buttons of NumericTextBox are not alighned. (<a href="https://github.com/telerik/kendo-ui-core/issues/2747">#2747</a>)</li>
+<li>Spinner Icons must be closer to each other  (<a href="https://github.com/telerik/kendo-ui-core/issues/2653">#2653</a>)</li>
+<li>Misaligned spinner icons in NumericTextBox (<a href="https://github.com/telerik/kendo-ui-core/issues/2643">#2643</a>)</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>PDF Export</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Chart disappears from multi-page PDF Export regression (<a href="https://github.com/telerik/kendo-ui-core/issues/2750">#2750</a>)</li>
+<li>The li elements are not exported correctly between pages. (<a href="https://github.com/telerik/kendo-ui-core/issues/2732">#2732</a>)</li>
+<li>PdfExport functionality (in particular drawDOM method) removes attributes from the elements in the DOM tree. (<a href="https://github.com/telerik/kendo-ui-core/issues/2625">#2625</a>)</li>
+<li>When text is underlined and justified, the spaces are not underlined after PDF export. (<a href="https://github.com/telerik/kendo-ui-core/issues/2588">#2588</a>)</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Pager</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li><span class='breaking'>Breaking</span> Pager icons flipped in RTL mode (<a href="https://github.com/telerik/kendo-ui-core/issues/2727">#2727</a>)</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>PanelBar</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>PanelBar's change event fires twice (<a href="https://github.com/telerik/kendo-ui-core/issues/2761">#2761</a>)</li>
+<li>PanelBar fires Select event two times when bound with dataSource (<a href="https://github.com/telerik/kendo-ui-core/issues/2752">#2752</a>)</li>
+<li>ContentUrl not working correctly (<a href="https://github.com/telerik/kendo-ui-core/issues/2741">#2741</a>)</li>
+<li> Panelbar does not expand when content property is used (<a href="https://github.com/telerik/kendo-ui-core/issues/2682">#2682</a>)</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Slider</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Implement setOptions method (<a href="https://github.com/telerik/kendo-ui-core/issues/1449">#1449</a>)</li>
+</ul>
+            
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Sparkline</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Style the Charts with SASS-based themes (<a href="https://github.com/telerik/kendo-ui-core/issues/2774">#2774</a>)</li>
+</ul>
+            
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Spreadsheet</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Spreadsheet does not persist filters when exporting to Excel (<a href="https://github.com/telerik/kendo-ui-core/issues/2532">#2532</a>)</li>
+</ul>
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Spreadsheet does not get reference to a cell / cells, when the cell is in the "RC" column (<a href="https://github.com/telerik/kendo-ui-core/issues/2669">#2669</a>)</li>
+<li>Editing a cell, containing multi-line text, or pasting such in the formula bar distorts the Spreadsheet (<a href="https://github.com/telerik/kendo-ui-core/issues/2639">#2639</a>)</li>
+<li>Entering "=" in a Spreadsheet cell, then deleting it, resizes the cell/row on blur (<a href="https://github.com/telerik/kendo-ui-core/issues/2637">#2637</a>)</li>
+<li>Duplicated More Formats dialog in Spreadsheet (<a href="https://github.com/telerik/kendo-ui-core/issues/2279">#2279</a>)</li>
+<li>Cells can't be edited after undo is executed (<a href="https://github.com/telerik/kendo-ui-core/issues/1964">#1964</a>)</li>
+<li>Pass pointer events through filtering overlay</li>
+<li>Broken client-side exported excel files, if validation is applied on a cell</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>StockChart</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Style the Charts with SASS-based themes (<a href="https://github.com/telerik/kendo-ui-core/issues/2774">#2774</a>)</li>
+</ul>
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>An error is thrown when shared tooltip is enabled (<a href="https://github.com/telerik/kendo-ui-core/issues/2775">#2775</a>)</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>TreeList</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Grid and TreeList should propagate scroll event to the page when frozen part scrolling is not needed</li>
+<li>Grid and TreeList should propagate scroll event to the page when frozen part scrolling is not needed</li>
+</ul>
+        </div>
+    </div>
+</body>
+</html>

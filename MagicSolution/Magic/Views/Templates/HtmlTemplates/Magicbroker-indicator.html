@@ -1,0 +1,23 @@
+﻿<div ng-class="dic.config.color" class="grid tiles added-margin">
+    <div class="tiles-body">
+        <div class="controller">
+            <a ng-show="dic.dshb_isCustomizable()" title="Swap with another element" onclick="dshb_swapElements(this);" href="javascript:;" class="fa fa-random"></a>
+            <a ng-show="dic.dshb_isCustomizable()" title="Resize" onclick="dshb_resize(this);" href="javascript:;" class="fa fa-expand"></a>
+            <a title="Reload" ng-click="dic.refresh()" href="javascript:;" class="fa fa-refresh"></a>
+            <a ng-show="dic.dshb_isCustomizable()" title="Remove from tab" onclick="dshb_remove(this);" href="javascript:;" class="fa fa-times"></a>
+        </div>
+        <div class="tiles-title">{{ dic.config.description }}</div>
+        <div class="heading">
+            <span count-to="{{ dic.value }}" duration="1.2"></span>&nbsp;{{ dic.config.measurementUnit }}
+        </div>
+        <div class="progress transparent progress-small no-radius">
+            <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="{{ dic.percentValue }}%" style="width: {{ dic.percentValue }}%;"></div>
+        </div>
+        <div class="description">
+            <span  class="mini-description ">
+                <a ng-if="dic.config.functionGUID" class="more text-white" ng-click="dic.more()" href="javascript:void(0);">{{ dic.lang.viewMore }}</a>
+                <a ng-if="!dic.config.functionGUID" class="more text-white indicator-no-link">{{ dic.lang.noLink }}</a>
+            </span>
+        </div>
+    </div>
+</div>

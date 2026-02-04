@@ -1,0 +1,61 @@
+﻿  .current-state {
+            margin: 20px 0 0;
+        }
+
+        .current-state pre {
+            font-size: 12px;
+        }
+
+        .files h3 {
+            color: #787878;
+            padding-bottom: .4em;
+            margin-bottom: .4em;
+        }
+
+        .files .k-treeview {
+            height: 600px;
+        }
+        #bu,#bued {
+            width:191px
+         }
+        .selected-value {
+                    float: left;
+                    width: 16px;
+                    margin: 0 4px;
+                }
+
+                .dropdown-header {
+                    font-size: 1.2em!important;
+                }
+
+                .dropdown-header > span {
+                    -webkit-box-sizing: border-box!important;
+                    -moz-box-sizing: border-box!important;
+                    box-sizing: border-box!important;
+                    text-align: left!important;
+                    display: inline-block!important;
+                    border-style: solid!important;
+                    border-width: 0 0 1px 1px!important;
+                    padding: .3em .6em!important;
+                    width: 312px!important ;
+                }
+
+                .dropdown-header > span:first-child {
+                    width: 82px;
+                    border-left-width: 0;
+                }
+
+                
+                .tag-image {
+                    width: auto;
+                    height: 18px;
+                    margin: 2px 5px 2px 0;
+                    vertical-align: top;
+                }
+
+                .item-image {
+                    width: auto;
+                    height: 74px;
+                    margin: 2px 5px 2px 0;
+                    vertical-align: top;
+                }

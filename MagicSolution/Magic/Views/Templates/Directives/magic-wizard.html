@@ -1,0 +1,57 @@
+﻿<div>
+    <div ng-show="!settings || submitted" class="center-text">
+        <p>&nbsp;</p>
+        <span class="fa fa-spinner fa-spin fa-4x"></span>
+    </div>
+    <div ng-if="settings" ng-show="!submitted">
+        <p class="text-right" ng-if="!options.hideClearButton">
+            <button class="btn btn-default" ng-disabled="compiledSteps < 1" ng-click="clearWizard()" title="{{ translations.clear }}"><i class="fa fa-eraser"></i></button>
+        </p>
+        <div ng-class="{'k-widget k-header k-tabstrip k-floatwrap k-tabstrip-top': settings.useKendoStyle}">
+            <ul class="nav" ng-class="settings.additionalNavClass + (settings.useKendoStyle ? ' k-tabstrip-items k-reset' : '')">
+                <li ng-class="{active: i == activeStep, disabled: i > compiledSteps, 'k-state-active': i == activeStep && settings.useKendoStyle, 'k-item k-state-default': settings.useKendoStyle}" ng-repeat="(i, step) in settings.steps" ng-show="!step.hidden">
+                    <a href="javascript:void(0)" ng-click="goToStep(i, $form)">
+                        <span class="badge" ng-class="{'badge-danger badge-important': i != compiledSteps && $form[i].$invalid, 'badge-success': $form[i].$valid && i < compiledSteps, 'badge-info': i == compiledSteps, 'badge-inverse': i > compiledSteps || step.readonly}">{{ step.title.badge || i+1 }}</span>&nbsp;
+                        {{ step.title[language] || step.title.en || step.title.it || step.title.de }}
+                    </a>
+                </li>
+            </ul>
+            <form class="tab-content" style="overflow: visible;" name="$form">
+                <div class="tab-pane" ng-class="{active: i == activeStep, 'k-content': settings.useKendoStyle}" ng-repeat="(i, step) in settings.steps" ng-if="i <= compiledSteps" ng-show="!step.hidden" data-step-key="{{step.stepKey}}">
+                    <div ng-if="!reload[step.stepKey]" style="display: inline-block; width: 100%;">
+                        <ng-form name="{{i}}">
+                            <magic-form ng-if="!step.storedProcedure" model="models[step.stepKey]" events="events[step.stepKey]" table-name="{{ step.tableName }}" options="{
+                                valuesToResolve: getValuesToResolve(step.stepKey),
+                                itemsPerRow: step.formColumnsPerRow || 2,
+                                formDefinition: getFormDefinition(step.fields),
+                                hideTabs: !step.tableName,
+                                apiCallData: getApiCallData(),
+                                kendoStyle: settings.useKendoStyle,
+                                callback: magicFormCallback(step.stepKey),
+                                readonly: step.readonly,
+                                renderDone: renderDone,
+                                outerSaveForDetailGrids:intermediateSaveCallback($form,step) }"></magic-form>
+                            <magic-form-sp ng-if="step.storedProcedure  && !reload[step.stepKey]" model="models[step.stepKey]" storedprocedure="{{ step.storedProcedure }}" formname="{{ step.stepKey }}" options="{
+                                valuesToResolve: getValuesToResolve(step.stepKey),
+                                itemsPerRow: step.formColumnsPerRow || 2,
+                                apiCallData: getApiCallData(),
+                                kendoStyle: settings.useKendoStyle,
+                                callback: magicFormCallback(step.stepKey),
+                                readonly: step.readonly,
+                                renderDone: renderDone }"></magic-form-sp>
+                        </ng-form>
+                        <button type="button" class="pull-right" ng-class="settings.useKendoStyle ? 'k-button' : 'btn btn-default'" ng-click="submitStep($form, settings.steps.length - 1)" ng-if="!options.readonly && (!getNextStepIndex() || fullyCompleted)" title="{{ translations.save }}"><i class="fa fa-floppy-o"></i></button>
+
+                        <button type="button" style="margin-left: 10px;" class="pull-right" ng-class="settings.useKendoStyle ? 'k-button' : 'btn btn-default'" ng-click="goToStep(compiledSteps)" ng-if="i < compiledSteps" title="{{ translations.last }}"><i class="fa fa-angle-double-right"></i></button>
+                        <button type="button" class="pull-right" ng-class="settings.useKendoStyle ? 'k-button' : 'btn btn-default'" ng-click="submitStep($form, i)" ng-if="getNextStepIndex()" title="{{ translations.next }}"><i class="fa fa-chevron-right"></i></button>
+
+                        <button type="button" style="margin-right: 10px;" class="pull-right" ng-class="settings.useKendoStyle ? 'k-button' : (!$form[i].$dirty ? 'btn btn-default' : 'btn btn-primary')" ng-disabled="!$form[i].$dirty" ng-click="intermediateSave($form)" ng-if="settings.intermediateSave && getNextStepIndex()" title="{{ translations.save }}"><i class="fa fa-floppy-o"></i></button>
+
+                        <button type="button" style="margin-right: 10px;" class="pull-left" ng-class="settings.useKendoStyle ? 'k-button' : 'btn btn-default'" ng-show="i > 0" ng-click="goToStep(0)" title="{{ translations.first }}"><i class="fa fa-angle-double-left"></i></button>
+                        <button type="button" class="pull-left" ng-class="settings.useKendoStyle ? 'k-button' : 'btn btn-default'" ng-show="getPreviousStepIndex() >= 0" ng-click="goToStep(getPreviousStepIndex())" title="{{ translations.previous }}"><i class="fa fa-chevron-left"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

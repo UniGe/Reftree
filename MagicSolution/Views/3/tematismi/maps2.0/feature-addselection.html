@@ -1,0 +1,83 @@
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+		
+		<link rel="stylesheet" href="../bootstrap/3.0.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../js/jq/jqueryui/1.10.1/themes/smoothness/jquery-ui.css"/>
+		
+		<link rel="stylesheet" href="../css/plani3d-maps.min.css" type="text/css">
+		
+		<script type="text/javascript" src="../js/require.js"></script>
+		
+		<title>Aggiungi a selezione - Plani3D Maps 2.0</title>
+	</head>
+	<body>
+		<div><!-- se questo manca, la selezione ha un offset --></div>
+		
+		<div id="p3dt-map" class="p3dt-map"></div>
+		<script>
+			var fidsObj = [
+		               {
+		            	  "catid": "040600000000.370",
+		            	  "label": "Duomo",
+		            	  "RefId": 12,
+		            	  "color": "#ffa340"
+		               },
+		               {
+		            	  "catid": "040600000000.368",
+		            	  "label": "Museo del duomo",
+		            	  "RefId": 13,
+		            	  "color": "#ae3475"
+		               },
+		               {
+		            	  "catid": "040600000000.369",
+		            	  "label": "Chissa",
+		            	  "RefId": 14,
+		            	  "color": "#bb00ff"
+		               }
+		               ];
+			/*var fidsObj = [
+			      {
+					"osm_id": "30791982",
+					"label": "Duomo",
+					"RefId": 12,
+					"color": "#ffa340"
+			      },
+			      {
+					"osm_id": "24785843",
+					"label": "Museo del duomo",
+					"RefId": 13,
+					"color": "#ae3475"
+			      },
+			      {
+					"osm_id": "67214964",
+					"label": "Chissa",
+					"RefId": 14,
+					"color": "#bb00ff"
+			      }
+			      ];*/
+			function externalSelectFunction(features) {
+				alert(features);
+			}
+			require(["config.js"], function () {
+				require(["plani3d-maps", "ol", "proj"], function (plani3d, ol, proj4) {
+					var p3dmaps = new plani3d.Maps({
+						ol: ol,
+						proj4: proj4,
+						server: 'showcase.alysso.it',
+						maps: 'tn2',
+						layers: ['v_CAT', 'RV', 'OSM'],
+						imgpath: '/views/3/'
+					});
+
+					p3dmaps.init().then(function () {
+						p3dmaps.zoomToExtent(1237766, 5791005, 1238334, 5791285);
+						p3dmaps.createSelection(fidsObj, 'v_CAT', true, externalSelectFunction);
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

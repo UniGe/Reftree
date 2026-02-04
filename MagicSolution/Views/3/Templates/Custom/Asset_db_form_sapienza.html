@@ -1,0 +1,324 @@
+﻿<input style="display:none" id="chkRefresh" type="checkbox" ng-model="myVar" ng-init="myVar = true">
+<div ng-if="myVar">
+    <div ng-show="false" class="panel-group_r3" id="group-azioni">
+        <div class="panel panel-primary_r3" id="primary-azioni">
+            <div class="panel-heading_r3" id="heading-azioni">
+                <h3 class="panel-title_r3" id="title-azioni">
+                    <a role="button" data-toggle="collapse" data-parent="#Group2" href="#collapse-azioni" aria-expanded="true" aria-controls="collapse-azioni">
+                        <i class="more-less more-less-r3 glyphicon glyphicon-minus"></i>
+                        <b>Azioni</b>
+                    </a>
+                </h3>
+            </div>
+
+
+
+            <div  id="collapse-azioni" class="panel-collapse in" role="tabpanel" aria-labelledby="collapse-azioni">
+                <div class="panel-body">
+
+                    <br />
+                    <magic-grid ng-show="false" gridname="US_VI_MONITOR_TO_VALIDATE_READONLY" filterpk="AS_ASSET_ID"></magic-grid>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div name="divAction"></div>
+
+    <br />
+    <div class="panel-group_r3" id="div-DG">
+        <div class="panel panel-primary_r3" id="primary-DG">
+            <div class="panel-heading_r3" id="heading-DG">
+                <h3 class="panel-title_r3" id="title-DG">
+                    <a data-toggle="collapse" data-parent="#Group2" href="#collapse-DG">
+                        <i class="more-less more-less-r3 glyphicon glyphicon-minus"></i>
+                        <b>Scheda</b>
+                    </a>
+                </h3>
+            </div>
+
+
+
+            <div id="collapse-DG" class="panel-collapse in">
+
+                <div class="panel-body">
+                    <div ng-show="false" class="row">
+                        <div class="col-md-12">
+                            <magic-grid gridname="AS_US_VI_ROOM_ANAL_PV_ACTION" filterpk="AS_ASSET_ID"></magic-grid>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="panel with-nav-tabs panel-default">
+
+                        <ul class="nav nav-tabs ul-nav-r3">
+                            <li class="active li-nav-r3"><a href="#tab1default_assuti" data-toggle="tab">Anagrafica</a></li>
+                            <li class="li-nav-r3" ng-click="loadContent.two = true"><a href="#tab2default_assuti" data-toggle="tab">Utilizzo</a></li>
+                            <li class="li-nav-r3" ng-click="loadContent.three = true"><a href="#tab3default_assuti" data-toggle="tab">Risorse</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane fade active in" id="tab1default_assuti">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <magic-form-sp model="window.jqueryEditRefTreeGrid.rowData" storedprocedure="config.USP_GET_FormData" formname="UNIGE_ASSET_FORM" hidetabs="true" itemsperrow="2" isreadonly="true">
+                                    </div>
+                                </div>
+                                <!--AS_US_VI_ASSOPB_L-->
+                                <div class="panel-group_r3" id="div-ASSOPB">
+                                    <div class="panel panel-primary_r3" id="primary-ASSOPB">
+                                        <div class="panel-heading_r3" id="heading-ASSOPB">
+                                            <h3 class="panel-title_r3" id="title-ASSOPB">
+                                                <a data-toggle="collapse" data-parent="#Group2" href="#collapse-ASSOPB">
+                                                    <i class="more-less more-less-r3 glyphicon glyphicon-minus"></i>
+                                                    <b>Giorni/orari apertura</b>
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        <div id="collapse-ASSOPB" class="panel-collapse in">
+                                            <div class="panel-body">
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <magic-grid gridname="AS_US_VI_ASSOPB_L" filterpk="AS_ASSOPB_AS_ASSET_ID"></magic-grid>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--AS_US_VI_ASSOPB_L-->
+                                <!--AS_US_VI_ASSET_DIMENS_TIPSAS_RD_L-->
+                                <div class="panel-group_r3" id="div-DIMENS">
+                                    <div class="panel panel-primary_r3" id="primary-DIMENS">
+                                        <div class="panel-heading_r3" id="heading-DIMENS">
+                                            <h3 class="panel-title_r3" id="title-DIMENS">
+                                                <a data-toggle="collapse" data-parent="#Group2" href="#collapse1-DIMENS">
+                                                    <i class="more-less more-less-r3 glyphicon glyphicon-minus"></i>
+                                                    <b>Dimensioni</b>
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        <div id="collapse-DIMENS" class="panel-collapse in">
+                                            <div class="panel-body">
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <magic-grid gridname="AS_US_VI_ASSET_DIMENS_TIPSAS_RD_L" filterpk="AS_ASSET_ID"></magic-grid>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--AS_US_VI_ASSET_DIMENS_TIPSAS_RD_L-->
+                            </div>
+                            <div class="tab-pane fade" id="tab2default_assuti">
+                                <div ng-if="loadContent.two">
+                                    <!--AS_US_VI_ASSUTI_L-->
+                                    <div class="panel-group_r3" id="Div3">
+                                        <div class="panel panel-primary_r3" id="primary3">
+                                            <div class="panel-heading_r3" id="heading3">
+                                                <h3 class="panel-title_r3" id="title3">
+                                                    <a data-toggle="collapse" data-parent="#Group3" href="#collapse3">
+                                                        <i class="more-less more-less-r3 glyphicon glyphicon-minus"></i>
+                                                        <b>Struttura assegnataria/utilizzatrice</b>
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                            <div id="collapse3" class="panel-collapse in">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <magic-grid gridname="AS_US_VI_ASSUTI_L" filter="{'field': 'AS_ASSUTI_DATE_END', 'operator': 'isnull' }" filterpk="AS_ASSUTI_AS_ASSET_ID"></magic-grid>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--AS_US_VI_ASSTPU_RD_L-->
+                                    <div class="panel-group_r3" id="Div2">
+                                        <div class="panel panel-primary_r3" id="primary2">
+                                            <div class="panel-heading_r3" id="heading2">
+                                                <h3 class="panel-title_r3" id="title2">
+                                                    <a data-toggle="collapse" data-parent="#Group2" href="#collapse2">
+                                                        <i class="more-less more-less-r3 glyphicon glyphicon-minus"></i>
+                                                        <b>Destinazione d'uso</b>
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                            <div id="collapse2" class="panel-collapse in">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <magic-grid gridname="AS_US_VI_ASSTPU_RD_L" filter="{'field': 'AS_ASSTPU_TO', 'operator': 'isnull' }" filterpk="AS_ASSET_ID" ng-init="t.endToInit = true"></magic-grid>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--AS_US_VI_ASSTPU_RD_L-->
+
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab3default_assuti">
+                                <div ng-if="loadContent.three">
+                                    <!--AS_US_VI_ASSTPU_RD_L-->
+                                    <div class="panel-group_r3" id="div-risorse-attive">
+                                        <div class="panel panel-primary_r3" id="primary-risorse-attive">
+                                            <div class="panel-heading_r3" id="heading-risorse-attive">
+                                                <h3 class="panel-title_r3" id="title-risorse-attive">
+                                                    <a data-toggle="collapse" data-parent="#Group2" href="#collapse-risorse-attive">
+                                                        <i class="more-less more-less-r3 glyphicon glyphicon-minus"></i>
+                                                        <b>Risorse attive</b>
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                            <div id="collapse-risorse-attive" class="panel-collapse in">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <magic-grid gridname="AS_US_VI_RISORS_ANAL" filter="{'field': 'LE_REFASS_DATE_TO', 'operator': 'isnull' }" filterpk="AS_ASSET_ID"></magic-grid>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-group_r3" id="div-risorse-non-attive">
+                                        <div class="panel panel-primary_r3" id="primary-risorse-non-attive">
+                                            <div class="panel-heading_r3" id="heading-risorse-non-attive">
+                                                <h3 class="panel-title_r3" id="title-risorse-non-attive">
+                                                    <a data-toggle="collapse" data-parent="#Group2" href="#collapse-risorse-non-attive">
+                                                        <i class="more-less more-less-r3 glyphicon glyphicon-minus"></i>
+                                                        <b>Risorse non attive</b>
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                            <div id="collapse-risorse-non-attive" class="panel-collapse in">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <magic-grid gridname="AS_US_VI_RISORS_ANAL" filter="{'field': 'LE_REFASS_DATE_TO', 'operator': 'neq', 'value': '' }" filterpk="AS_ASSET_ID"></magic-grid>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function reftrehR3Page(e) {
+      
+        if (angular.element($('tree-view-r3')).length > 0) {
+            if (angular.element($('tree-view-r3')).scope().t.onRefresh) {
+                angular.element($('tree-view-r3')).scope().t.refreshTree();
+            }
+        }
+        else {
+            $("#chkRefresh")[0].checked = false;
+            angular.element('#chkRefresh').triggerHandler('click');
+            $("#chkRefresh")[0].checked = true;
+            angular.element('#chkRefresh').triggerHandler('click');
+
+
+        }
+
+
+        actionMenu();
+
+    }
+ 
+   function actionMenu() {
+ 
+
+       window.jqueryEditRefTreeGrid.actionTemplate =
+                   '<div ng-repeat="father in rtmm.fatherAction" class="btn-group navbar-btn" style="margin:3px; z-index:1000;">\
+                   <button type="button" style="border-top-left-radius: 8px;border-bottom-left-radius: 8px;" class="btn btn-success">{{father.name}}</button> \
+                   <button type="button" style="border-top-right-radius: 8px;border-bottom-right-radius: 8px;" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">\
+                   <span class="caret"></span>\
+                   </button>\
+                   <ul  id="mnav" class="dropdown-menu scrollable-menu-r3" role="menu">\
+                   <li ng-repeat="action in rtmm.fatherAction[$index].action | orderBy:' + "'orderBy'" + '"><a ng-click="rtmm.dispatch(action)">{{action.label}}</a></li>\
+                   </ul>\
+                   </div>'
+
+       window.jqueryEditRefTreeGrid.pk = 'AS_ASSET_ID'
+       window.jqueryEditRefTreeGrid.entityname = 'core.AS_US_VI_ROOM_ANAL_PV_ACTION'
+
+
+       window.jqueryEditRefTreeGrid.actionCallback = function (p) {
+
+           if (p.type != "read" && !!p.type) {
+              
+               if (angular.element($('tree-view-r3')).length > 0) {
+                   if (angular.element($('tree-view-r3')).scope().t.onRefresh) {
+                       angular.element($('tree-view-r3')).scope().t.refreshTree();
+                   }
+               }
+               else {
+                   $("#chkRefresh")[0].checked = false;
+                   angular.element('#chkRefresh').triggerHandler('click');
+                   $("#chkRefresh")[0].checked = true;
+                   angular.element('#chkRefresh').triggerHandler('click');
+
+
+               }
+
+             
+
+               if ($('div[gridname="US_VI_MONITOR_TO_VALIDATE_L"]').length > 0) {
+                   $('div[gridname="US_VI_MONITOR_TO_VALIDATE_L"]').data('kendoGrid').dataSource.read();
+                   $('div[gridname="US_VI_MONITOR_TO_VALIDATE_L"]').data('kendoGrid').refresh();
+               }
+               if ($('div[gridname="US_VI_MONITOR_TO_VALIDATE_L_USER"]').length > 0) {
+                   $('div[gridname="US_VI_MONITOR_TO_VALIDATE_L_USER"]').data('kendoGrid').dataSource.read();
+                   $('div[gridname="US_VI_MONITOR_TO_VALIDATE_L_USER"]').data('kendoGrid').refresh();
+               }
+
+               if ($('div[gridname="AS_US_VI_ROOM_ANAL_CAD"]').length > 0) {
+                   $('div[gridname="AS_US_VI_ROOM_ANAL_CAD"]').data('kendoGrid').dataSource.read();
+                   $('div[gridname="AS_US_VI_ROOM_ANAL_CAD"]').data('kendoGrid').refresh();
+               }
+ 
+               actionMenu();
+           }
+       }
+       getAngularControllerElement("reftreeDirectiveController", window.jqueryEditRefTreeGrid);
+
+   }
+    actionMenu();
+
+    function toggleIconDett(e) {
+        
+        $(e.target)
+            .prev('.panel-heading_r3')
+            .find(".more-less")
+            .toggleClass('glyphicon-plus glyphicon-minus');
+        console.log(e);
+    }
+
+    $('.panel-group_r3').on('hidden.bs.collapse', toggleIconDett);
+    $('.panel-group_r3').on('shown.bs.collapse', toggleIconDett);
+
+
+   
+
+</script>

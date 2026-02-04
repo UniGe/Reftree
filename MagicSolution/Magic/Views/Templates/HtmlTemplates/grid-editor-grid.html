@@ -1,0 +1,35 @@
+﻿<div class="container-fluid">
+          
+     <div class="row" style="margin-top: 1%;">
+          
+         <div gridstack id="gridstack{{tab.id}}{{widgetLayout}}" class="grid-stack" options="ge.gridstackOptions"
+              on-resize-stop="ge.onGridstackResizeStop(event, items)"
+              on-drag-stop="ge.onGridstackChanged(event, items, widget)">
+
+             <!-- MAGIC-WIDGET -->
+             <div gridstack-item class="grid-stack-item" ng-repeat="(layoutType, widget) in widgets"
+                  ng-if="!(widget.contentType == 'MAGIC-WIDGET-GROUP' || widget.contentType == 'MAGIC-TABSTRIP')" ng-include="ge.widgetTemplateUrl"
+                  gs-item-x="widget.x" gs-item-y="widget.y" gs-item-width="widget.width"
+                  gs-item-height="widget.height" id="{{widgetLayout}}{{widget.id}}" gs-item-id="widget.id">
+
+             </div>
+             
+             <!-- MAGIC-WIDGET-GROUP -->
+             <div ng-repeat="(layoutType, widget) in widgets" ng-if="widget.contentType == 'MAGIC-WIDGET-GROUP'"
+                  id="collapsibleGridstack{{widgetLayout}}{{widget.id}}" gs-item-id="widget.id" gridstack-item
+                  class="grid-stack-item" data-gs-no-resize="false" gs-item-x="widget.x" gs-item-y="widget.y"
+                  gs-item-width="widget.width" gs-item-height="widget.height"
+                  ng-include="ge.groupWidgetTemplateUrl">
+             </div>
+             <!-- MAGIC-TABSTRIP -->
+             <div ng-repeat="(layoutType, widget) in widgets" ng-if="widget.contentType == 'MAGIC-TABSTRIP'"  
+                  id="tabStripstack{{widgetLayout}}{{widget.id}}" gs-item-id="widget.id" gridstack-item
+                  class="grid-stack-item" data-gs-no-resize="false" gs-item-x="widget.x" gs-item-y="widget.y"
+                  gs-item-width="widget.width" gs-item-height="widget.height"
+                  ng-include="ge.tabstripWidgetTemplateUrl">
+             </div>
+
+         </div>
+     </div>
+</div>
+<!--GridEditor #end-->

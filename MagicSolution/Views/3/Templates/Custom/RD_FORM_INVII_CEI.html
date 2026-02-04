@@ -1,0 +1,286 @@
+﻿<div class="panel with-nav-tabs panel-default">
+    <div id="TabList" class="panel-heading">
+        <ul
+            ng-init=""
+            class="nav nav-tabs">
+            <li  ng-show="foc.options.id_invio_GEN"  id="GEN" ><a href="#tab1default" data-toggle="tab">Dati generali</a></li>
+            <li  ng-show="foc.options.id_invio_DOC" ng-click="loadContent.one = true" id="DOC" ><a href="#tab2default" data-toggle="tab">Documenti</a></li>
+            <li ng-show="foc.options.id_invio_SMAN" ng-click="loadContent.two = true" id="SMAN" ><a href="#tab3default" data-toggle="tab">Stato involucro</a></li>
+            <li ng-show="foc.options.id_invio_CON" ng-click="loadContent.three = true" id="CON" ><a href="#tab4default" data-toggle="tab">Contratti di manutenzione</a></li>
+            <li ng-show="foc.options.id_invio_FOT" ng-click="loadContent.four = true" id="FOT" ><a href="#tab5default" data-toggle="tab">Doc. fotografica</a></lin>
+            <li  ng-show="foc.options.id_invio_SEG" ng-click="loadContent.five = true" id="SEG" ><a href="#tab6default" data-toggle="tab">Segnalazioni</a></li>
+            <li  ng-show="foc.options.id_invio_MAN" ng-click="loadContent.six = true" id="MAN" ><a href="#tab7default" data-toggle="tab">Manutenzioni programmate</a></li>
+            <li ng-show="foc.options.id_invio_DOC_SI" ng-click="loadContent.seven = true" id="DOC_SI" ><a href="#tab8default" data-toggle="tab">Documenti SI-A</a></li>
+        </ul>
+    </div>
+    <div class="panel-body">      
+			<div class="tab-content"> 
+   <div class="tab-pane fade" id="tab1default">				
+       <div class="panel-group_r3" id="Group1">
+					<div class="panel panel-primary_r3" id="primary1">
+						<div class="panel-heading_r3" id="heading1">
+							<h3 class="panel-title_r3" id="title1">
+								<a data-toggle="collapse" data-parent="#Group1" href="#collapse1">
+									<b>Identificazione ed ubicazione</b>
+								</a>
+							</h3>
+						</div>
+						<div id="collapse1" class="panel-collapse">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-12">
+										<magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true" formname="RD_IDENTIFICAZIONE" hidetabs="true"></magic-form-sp>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+              <div class="panel-group_r3" id="Div2">
+					<div class="panel panel-primary_r3" id="primary2">
+						<div class="panel-heading_r3" id="heading2">
+							<h3 class="panel-title_r3" id="title2">
+								<a data-toggle="collapse" data-parent="#Group2" href="#collapse2">
+									<b>Proprietà</b>
+								</a>
+							</h3>
+						</div>
+						<div id="collapse2" class="panel-collapse collapse">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-12">
+										<magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true" formname="RD_PROPRA" hidetabs="true"></magic-form-sp>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+        <div class="panel-group_r3" id="Div3">
+					<div class="panel panel-primary_r3" id="primary3">
+						<div class="panel-heading_r3" id="heading3">
+							<h3 class="panel-title_r3" id="title3">
+								<a data-toggle="collapse" data-parent="#Group3" href="#collapse3">
+									<b>Destinazione d'uso</b>
+								</a>
+							</h3>
+						</div>
+						<div id="collapse3" class="panel-collapse collapse">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-12">
+                                        <magic-grid gridname="RD_VI_DESTIN_USO_CEI" filterpk="id"></magic-grid>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+                     <div class="panel-group_r3" id="Div4">
+					<div class="panel panel-primary_r3" id="primary4">
+						<div class="panel-heading_r3" id="Div6">
+							<h3 class="panel-title_r3" id="H1">
+								<a data-toggle="collapse" data-parent="#Group2" href="#collapse4">
+									<b>Caratteristiche dimensionali</b>
+								</a>
+							</h3>
+						</div>
+						<div id="collapse4" class="panel-collapse collapse">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-12">
+										<magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true" formname="RD_DIM" hidetabs="true"></magic-form-sp>
+									</div>
+								</div>
+							</div>
+
+                            <div class="panel panel-default">
+                              <div class="panel-body">
+                               Piani fuori terra
+                              </div>
+                                <div class="row">
+									<div class="col-md-12">
+										<magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true" formname="RD_DIM_FT" hidetabs="true"></magic-form-sp>
+									</div>
+								</div>
+                            </div>
+
+                            
+                            <div class="panel panel-default">
+                              <div class="panel-body">
+                               Piani Entro terra
+                              </div>
+                                <div class="row">
+									<div class="col-md-12">
+										<magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true" formname="RD_DIM_ET" hidetabs="true"></magic-form-sp>
+									</div>
+								</div>
+                            </div>
+
+						</div>
+					</div>
+				</div>
+               <div class="panel-group_r3" id="Div1">
+					<div class="panel panel-primary_r3" id="Div5">
+						<div class="panel-heading_r3" id="Div7">
+							<h3 class="panel-title_r3" id="H2">
+								<a data-toggle="collapse" data-parent="#Group3" href="#collapseProf">
+									<b>Figure professionali</b>
+								</a>
+							</h3>
+						</div>
+						<div id="collapseProf" class="panel-collapse collapse">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-12">
+                                        <magic-grid gridname="RD_VI_Figure_prof" filterpk="id_invio"></magic-grid>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+	</div>
+    <!--documenti-->
+	<div class="tab-pane fade" id="tab2default">
+                <div ng-if="loadContent.one">
+<!--                    <div class="row">
+                        <div class="col-md-6">
+                            <magic-grid gridname="DO_VI_ALL_DOCUME_SCH_GRP" filterpk="AS_ASSET_ID"></magic-grid>
+                        </div>
+                        <div class="col-md-6">
+                            <magic-chart chartid="1021" />
+                        </div>
+                    </div>-->
+                    <div class="row">
+                        <magic-grid gridname="RD_VI_ElencoDoc_CEI" filterpk="id_invio"></magic-grid>
+                    </div>
+                </div>
+       </div>
+
+	<!--Stato conservativo-->
+	<div class="tab-pane fade" id="tab3default">
+                <div ng-if="loadContent.two">
+                    <div class="row">
+                        <magic-grid gridname="RD_VI_StatoCons_CEI" filterpk="id_invio"></magic-grid>
+                    </div>
+                </div>
+       </div>
+      <!--Contratti-->
+	<div class="tab-pane fade" id="tab4default">
+                <div ng-if="loadContent.three">
+                    <div class="row">
+                        <magic-grid gridname="RD_VI_ElencoContratti_CEI" filterpk="id_invio"></magic-grid>
+                    </div>
+                </div>
+       </div>
+     <!--foto-->
+	<div class="tab-pane fade" id="tab5default">
+                <div ng-if="loadContent.four">
+                    <div class="row">
+                        <magic-grid gridname="RD_VI_ElencoFoto" filterpk="id"></magic-grid>
+                    </div>
+                </div>
+       </div>
+	   <!--Segnalazioni-->
+    	<div class="tab-pane fade" id="tab6default">
+			<div ng-if="loadContent.five">
+				<div class="panel-group_r3" id="Div10">
+					<!--Segnalazioni Auto-->
+					<div class="panel panel-primary_r3" id="primary3">
+							<!--Segnalazioni Auto-->
+						<h4 style="padding-top: 1em;">Anomalie riscontrate</h4>
+						<div class="row">
+							<magic-grid gridname="RD_V_SegnalazioniAuto_CEI" filterpk="id_invio"></magic-grid>
+						</div>
+						<!--Segnalazioni Manu-->
+						<h4 style="padding-top: 1em;">Altre segnalazioni</h4>
+						<div class="row">
+							<!--<magic-grid gridname="RD_VI_Bacheca_CEI_Last" filterpk="id_esterno"></magic-grid>-->
+							<magic-grid gridname="RD_V_SegnalazioniManu_CEI" filterpk="id_invio"></magic-grid>
+						</div>
+					
+						
+					</div>
+				</div>
+			</div>
+       </div>
+        
+        
+    <!--Attività manutentive-->
+	<div class="tab-pane fade" id="tab7default">
+                <div ng-if="loadContent.six">
+                    <div class="row">
+                        <magic-grid gridname="RD_VI_AttivitaManute_CEI" filterpk="id_invio"></magic-grid>
+                    </div>
+                </div>
+       </div>
+                              
+               
+    <!--Documenti sicurezza-->
+	<div class="tab-pane fade" id="tab8default">
+                <div ng-if="loadContent.seven">
+                    <div class="row">
+                        <magic-grid gridname="VI_DOCUMENTI_SIC_STO" filterpk="id_invio"></magic-grid>
+                    </div>
+                </div>
+       </div>
+                            
+                
+      </div>
+      </div>   
+       
+ </div>
+<script>
+
+    var data = $("#appcontainer").data("customItemInfo");
+  //  $('#LinkScheda').text(data.Denominazione_principale);
+    //Title and href scheda A 
+
+    $(document).ready(function () {
+        window.setTimeout(function () {
+
+            if (data.id_invio_GEN == null) {
+                if (data.id_invio_DOC != null)
+                { $('#DOC').find('a').click(); }
+                else if (data.id_invio_SMAN != null)
+                { $('#SMAN').find('a').click(); }
+                else if (data.id_invio_CON != null)
+                { $('#CON').find('a').click(); }
+                else if (data.id_invio_FOT != null)
+                { $('#FOT').find('a').click(); }
+                else if (data.id_invio_SEG != null)
+                { $('#SEG').find('a').click(); }
+                else if (data.id_invio_MAN != null)
+                { $('#MAN').find('a').click(); }
+                else if (data.id_invio_DOC_SI != null)
+                { $('#DOC_SI').find('a').click(); }
+            }
+            else { $('#GEN').find('a').click(); }
+
+        }, 500);
+
+    });
+
+
+    //close all panel (button scheda a)
+    $('.closeall').click(function () {
+        $('.panel-collapse.in').collapse('hide');
+        $('.panel-collapsed.in').collapse('hide');
+
+    });
+
+    // open all panel (scheda a)
+    $('.openall').click(function () {
+        $('.panel-collapse:not(".in")').collapse('show');
+        $('.panel-collapsed:not(".in")').collapse('show');
+    });
+
+
+</script>
+
+
+

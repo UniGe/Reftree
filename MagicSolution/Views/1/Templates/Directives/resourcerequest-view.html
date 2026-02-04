@@ -1,0 +1,572 @@
+﻿
+<div id="pagestart">
+    <style>
+        .bgcolorhide {
+            background-color: #e5e9ec !important;
+        }
+
+        .div1 {
+            width: auto;
+            height: 20px;
+        }
+
+        #main-table {
+            border: none;
+            border-spacing: 0;
+            margin-left: 141px;
+            overflow-x: scroll;
+            /*overflow-y: hidden;*/
+            padding-bottom: 5px;
+        }
+
+            #main-table th {
+                border: none;
+                padding: 10px;
+                text-align: left;
+                white-space: nowrap;
+            }
+
+            #main-table tbody td {
+                border-bottom: solid 1px #DDEFEF;
+                padding: 10px;
+                white-space: nowrap;
+            }
+
+        .zui-wrapper {
+            position: relative;
+            /*overflow-y: scroll;*/
+            /*height: 550px;*/
+        }
+
+        .wrapper1 {
+            position: relative;
+            width: auto;
+            border: none 0px RED;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            margin-left: 141px;
+        }
+
+        .zui-scroller {
+            margin-left: 141px;
+            overflow-x: scroll;
+            /*overflow-y: hidden;*/
+            padding-bottom: 5px;
+        }
+
+
+        #main-table .zui-sticky-col {
+            border-left: solid 1px #DDEFEF;
+            border-right: solid 1px #DDEFEF;
+            left: 0;
+            position: absolute;
+            top: auto;
+            width: 300px;
+        }
+        /**/
+        input[type=number] {
+            width: 40px;
+        }
+
+        input[type=time] {
+            width: 70px;
+        }
+
+        select {
+            width: 150px;
+        }
+
+        .table td {
+            font-size: 14px;
+            border: medium;
+            padding: 5px !important;
+        }
+
+        .table th {
+            text-align: center;
+            border: medium;
+            padding: 5px !important;
+        }
+
+        .nullo {
+            opacity: 0;
+            background-color: #e5e9ec;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        .label {
+            font-size: 10px;
+        }
+
+        .button {
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        .assignment-td {
+            width: 160px;
+        }
+
+        .square {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+    </style>
+    <script>
+        $(function () {
+            $(".wrapper1").scroll(function () {
+                $(".zui-scroller")
+                    .scrollLeft($(".wrapper1").scrollLeft());
+            });
+            $(".zui-scroller").scroll(function () {
+                $(".wrapper1")
+                    .scrollLeft($(".zui-scroller").scrollLeft());
+            });
+        });
+    </script>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <p>
+                        <b>{{rr.translate("YearSelector")}}</b>
+                    </p>
+                    <select ng-options="year.Year as year.Year for year in rr.years" ng-model="rr.year"> </select>
+                </td>
+                <td>
+                    <p>
+                        <b>{{rr.translate("MonthSelector")}}</b>
+                    </p>
+                    <select ng-options="month.ID as month.Description for month in rr.months" ng-model="rr.month"> </select>
+                </td>
+
+                <td>
+                    <p>
+                        <b>{{rr.translate("Project")}}</b>
+                    </p>
+                    <select ng-options="project as project.Description for project in rr.projects | filter:{ Month_ID: rr.month } | filter:{ Year: rr.year }" ng-model="rr.project"> </select>
+                </td>
+                <td>
+                    <p>
+                        <b>{{rr.translate("ActivityGroup")}}</b>
+                    </p>
+                    <select ng-options="activityGroup as activityGroup.Description for activityGroup in rr.activityGroups | filter:{ Month_ID: rr.month } | filter:{ Year: rr.year }" ng-model="rr.activityGroup"> </select>
+                </td>
+                <td ng-show="rr.project.ID" style="width:200px;">
+                    <br />
+                    <p>
+                        <b>
+                            {{rr.translate("StartDate")}}
+                        </b>
+                    </p>
+                    <p>
+                        {{rr.project.StartDate}}
+                    </p>
+                </td>
+                <td ng-show="rr.project.ID">
+                    <br />
+                    <p>
+                        <b>{{rr.translate("EndDate")}} </b>
+                    </p>
+                    <p>{{rr.project.EndDate}} </p>
+                </td>
+            </tr>
+        </table>
+        <ul class="nav nav-tabs" style="background-color: #e5e9ec; font-size: 20px;" ng-show="rr.view != 'resourceTimetable'">
+            <li ng-click="rr.dataView('insert')" ng-model="rr.view" ng-show="rr.project.ID  && !rr.activityGroup.ID">
+                <a data-toggle="tab" href="#"> {{rr.translate("EntringRequests")}} </a>
+            </li>
+            <li ng-click="rr.dataView('development'); rr.getDevelopment()" ng-model="rr.view" ng-show="rr.project.ID && rr.POP == 1  && !rr.activityGroup.ID">
+                <a data-toggle="tab" href="#"> {{rr.translate("RequestDevelopment")}} </a>
+            </li>
+            <li ng-click="rr.dataView('assignment'); rr.getAvailabilities()" ng-model="rr.view" ng-show="rr.project.ID && rr.POP == 0 && !rr.activityGroup.ID">
+                <a data-toggle="tab" href="#"> {{rr.translate("TaskAssignment")}} </a>
+            </li>
+            <li ng-click="rr.dataView('dailyAssignment'); rr.getDailyPlanning()" ng-model="rr.view"  ng-show="rr.activityGroup.ID">
+                <a data-toggle="tab" href="#"> {{rr.translate("DailyAssignment")}} </a>
+            </li>
+            <li ng-click="rr.dataView('plan'); rr.getPlanForPersons()" ng-model="rr.view" ng-show="rr.project.ID && rr.POP == 0  && !rr.activityGroup.ID">
+                <a data-toggle="tab" href="#"> {{rr.translate("PlanningView")}} </a>
+            </li>
+        </ul>
+        <br />
+        <div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <button style="margin-left:15px;" class="btn btn-primary" ng-show="rr.view == 'development'" ng-click="rr.saveDevelopment(rr.dataSetTable)"> {{rr.translate("Save")}} </button>
+                        </td>
+                        <td>
+                            <button style="margin-left:15px;" class="btn btn-primary" ng-click="rr.addLine()" ng-show="rr.view == 'insert' && rr.project.ID"> {{rr.translate("AddRow")}}</button>
+                        </td>
+                        <td>
+                            <button style="margin-left:15px;" class="btn btn-primary" ng-click="rr.save(rr.dataSet)" ng-show="rr.view == 'insert' && rr.project.ID"> {{rr.translate("Save")}}</button>
+                        </td>
+                        <td>
+                            <button style="margin-left:15px;" class="btn btn-primary" ng-click="rr.closePianification()" ng-show="rr.view == 'plan'">{{rr.translate("ClosePianification")}}</button>
+                        </td>
+                        <td>
+                            <button style="margin-left:15px;" class="btn btn-primary" ng-click="rr.sendPlanning()" ng-show="rr.view == 'plan'"> {{rr.translate("SendCalendar")}} </button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+            <br />
+        </div>
+    </div>
+
+
+    <!--Inserimento valori -->
+
+    <div class="zui-wrapper" id="requestcontainer" ng-show="rr.view == 'insert' && rr.project.ID">
+        <div class="zui-scroller">
+            <table class="table table-bordered" border="1" id="main-table">
+                <tr id="myHeader">
+                    <td style="background-color:#e5e9ec">
+                        <table class="bgcolorhide">
+                            <tr>
+                                <td class="zui-sticky-col" style="background-color:#e5e9ec;width:350px;">
+                                    <!--<p>DATE</p>-->
+                                    <p style="font-size: 10px; align-self: center;" ng-show="rr.POP == 1">Orari Espositori</p>
+                                    <p style="font-size: 10px; align-self: center;" ng-show="rr.POP == 1">Orari visitatori</p>
+                                </td>
+                                <td style="background-color:#e5e9ec">
+                                    <p class="nullo"> NULLO </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td ng-repeat="dates in rr.projectDates track by $index">
+                        <table>
+                            <tr>
+                                <td>
+                                    <p class="nullo"> NULLO </p>
+                                </td>
+                                <td>
+                                    <!--<p> {{dates.Date}} </p>-->
+                                    <p style="font-size: 10px; align-self: center;" ng-show="rr.POP == 1">{{dates.ExhibitorsDate}}</p>
+                                    <p style="font-size: 10px; align-self: center;" ng-show="rr.POP == 1">{{dates.VisitorsDate}}</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr ng-repeat="dataSetRows in rr.addedLines track by $index">
+                    <td class="zui-sticky-col bgcolorhide" style="width: 350px;">
+                        <table class="bgcolorhide">
+                            <tr class="nullo" ng-show="$index%10==0">
+                                <td> Nullo </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p ng-show="$index == 0">
+                                        <b> {{rr.translate("Skill")}} </b>
+                                    </p>
+                                    <select ng-options="formSkill.SkillID as formSkill.Description for formSkill in rr.skills | filter:{ Project_ID: rr.project.ID }" ng-model="rr.dataSet[$index][0].skill"> </select>
+                                </td>
+                                <td>
+                                    <p ng-show="$index == 0">
+                                        <b> {{rr.translate("Location")}} </b>
+                                    </p>
+                                    <select ng-options="formLocation.EventVenue_ID as formLocation.Description for formLocation in rr.locations | filter:{ Project_ID: rr.project.ID }" ng-model="rr.dataSet[$index][0].location"> </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+
+                    <td ng-repeat="dates in rr.projectDates track by $index" style="margin: 141px; background-color: {{rr.getColorByIndex($parent.$index)}};">
+                        <table>
+                            <tr style="text-align: center;" ng-show="$parent.$index%10==0">
+                                <td colspan="3">{{dates.Date}}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p ng-show="$parent.$index == 0">
+                                        <b>Qta</b>
+                                    </p>
+                                    <input type="number" size="2" ng-model="rr.dataSet[$parent.$index][$index].quantity" />
+                                </td>
+                                <td>
+                                    <p ng-show="$parent.$index == 0">
+                                        <b> HH iniz</b>
+                                    </p>
+                                    <input type="time" size="8" ng-model="rr.dataSet[$parent.$index][$index].timeFrom" />
+                                </td>
+                                <td>
+                                    <p ng-show="$parent.$index == 0">
+                                        <b> HH fine</b>
+                                    </p>
+                                    <input type="time" size="8" ng-model="rr.dataSet[$parent.$index][$index].timeTo" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+    <!--Assegnazione incarichi-->
+    <div ng-show="rr.view == 'assignment' && rr.POP == 0">
+        <p style="font-size: 15px; text-align:left;"> <b> {{rr.translate("Filters")}} :  </b></p>
+        <table>
+            <tr>
+                <th>
+                    <input ng-model="skillFilter" placeholder="Mansione...">
+                </th>
+                <th>
+                    <input ng-model="eventVenueFilter" placeholder="Location...">
+                </th>
+
+                <th>
+                    Dal <input ng-model="rr.plannedDateFrom" />
+                    Al <input ng-model="rr.plannedDateTo" />
+                </th>
+
+
+                <th>
+                    <button style="margin-left:15px;" class="btn btn-primary" ng-click="rr.saveAssignment(rr.availabilities,rr.personAssignment)" ng-show="rr.view == 'assignment'"> {{rr.translate("Save")}} </button>
+                    <!--<button ng-click="rr.saveAssignment(rr.availabilities,rr.personAssignment)" ng-show="rr.view == 'assignment'"> Salva </button>-->
+                </th>
+            </tr>
+        </table>
+        <br />
+        <table class="table table-bordered" border="1">
+            <tr>
+                <th>
+                    {{rr.translate("Skill")}}
+                </th>
+                <th>
+                    {{rr.translate("Location")}}
+                </th>
+                <th ng-repeat="reqDates in rr.requestsDates  track by $index" class="requestDates"
+                    ng-show="(reqDates.DayOfDate >= rr.plannedDateFrom &&  reqDates.DayOfDate <= rr.plannedDateTo)  || rr.dateFilter == 0">
+                    <p> {{reqDates.Date}} </p>
+                    <p style="font-size: 11px;"> {{reqDates.TimeFrom}} - {{reqDates.TimeTo}} </p>
+                </th>
+            </tr>
+            <tr ng-repeat=" av in rr.availabilities | filter: {SkillDesc :skillFilter} | filter: {EventVenueDesc: eventVenueFilter} track by $index">
+                <th>
+                    {{rr.availabilities[$index]["SkillDesc"]}}
+                </th>
+                <th>
+                    {{rr.availabilities[$index]["EventVenueDesc"]}}
+                </th>
+                <td ng-repeat="reqDates in rr.requestsDates track by $index"
+                    ng-show="(reqDates.DayOfDate >= rr.plannedDateFrom &&  reqDates.DayOfDate <= rr.plannedDateTo)  || rr.dateFilter == 0" class="assignment-td">
+                    <select ng-options="personsAvailability.Person_ID as personsAvailability.FullDescription for personsAvailability in rr.requestAvailability | filter:{ ID: rr.availabilities[$parent.$index][$index] }"
+                            ng-model="rr.personAssignment[$parent.$index][$index]"
+                            ng-show="rr.availabilities[$parent.$index][$index]"></select>
+                    <button class="fa fa-calendar" ng-show="rr.personAssignment[$parent.$index][$index]" ng-click="rr.getResourceTimetable(rr.personAssignment[$parent.$index][$index])" style="background: #E8EDF1;border: none;"> </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <!--Visualizzazione degli incarichi assegnati per persona-->
+    <div ng-show="rr.view == 'plan'">
+        <table class="table table-bordered" border="1">
+            <tr>
+                <th>
+                    <p style="font-size: 10px; align-self: center;"> {{rr.translate("Resource")}} </p>
+                </th>
+                <th ng-repeat="reqDates in rr.requestsDates track by $index " class="requestDates">
+                    <p> {{reqDates.Date}} </p>
+                    <p style="font-size: 11px;"> {{reqDates.TimeFrom}} - {{reqDates.TimeTo}} </p>
+                </th>
+            </tr>
+            <tr ng-repeat=" pfp in rr.planningForPerson  track by $index">
+                <th>
+                    {{rr.planningForPerson[$index].Person}}
+                </th>
+                <td ng-repeat="reqDates in rr.requestsDates track by $index" ng-style="{'background-color':rr.planningHilightedCells[$parent.$index][$index]}">
+                    <p><b>{{rr.planningForPerson[$parent.$index][$index]}}</b></p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Visualizzazione POP -->
+    <div class="zui-wrapper" id="requestcontainer" ng-show="rr.view == 'development' && rr.project.ID">
+        <div class="zui-scroller">
+            <table class="table table-bordered" border="1" id="main-table">
+                <tr id="myHeader">
+                    <td style="background-color:#e5e9ec">
+                        <table class="bgcolorhide">
+                            <tr>
+                                <td class="zui-sticky-col" style="background-color:#e5e9ec">
+                                    <p style="font-size: 10px; align-self: center;">Orari Espositori</p>
+                                    <p style="font-size: 10px; align-self: center;">Orari visitatori</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td ng-repeat="dates in rr.projectDates track by $index">
+                        <table style="width:100%;">
+                            <tr>
+                                <td>
+                                    <p style="font-size: 10px; align-self: center;">{{dates.ExhibitorsDate}}</p>
+                                    <p style="font-size: 10px; align-self: center;">{{dates.VisitorsDate}}</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr ng-repeat="dataSetTableRows in rr.numberOfContainers track by $index" style="background-color:  {{rr.numberOfContainers[$index].RowColor}};">
+                    <td class="zui-sticky-col bgcolorhide">
+                        <table class="bgcolorhide">
+                            <tr class="nullo" ng-show="$index%10==0">
+                                <td> Nullo </td>
+                            </tr>
+                            <tr class="bgcolorhide">
+                                <td class="bgcolorhide" style="width: 290px; overflow: hidden;display: inline-block;">
+                                    <p ng-show="$index == 0">
+                                        <b> {{rr.translate("Skill")}} - {{rr.translate("Location")}}</b>
+                                    </p>
+                                    {{rr.dataSetTable[$index][0].skill}} - {{rr.dataSetTable[$index][0].location}}
+                                    <br />
+                                    <select ng-options="allEventPersonsAvailability.Person_ID as allEventPersonsAvailability.FullDescription for allEventPersonsAvailability in rr.allEventAvailabilities"
+                                            ng-show="rr.allEventAvailabilities"
+                                            ng-model="rr.dataSetTable[$index][0].Person_ID"></select>
+                                    <button class="fa fa-calendar" ng-show="rr.dataSetTable[$index][0].Person_ID" ng-click="rr.getResourceTimetable(rr.dataSetTable[$index][0].Person_ID)" style="background: #E8EDF1;border: none;"> </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td ng-repeat="dates in rr.projectDates track by $index" style="margin: 141px;">
+                        <table>
+                            <tr style="text-align: center;" ng-show="$parent.$index%10==0">
+                                <td colspan="3">{{dates.Date}}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p ng-show="$parent.$index == 0">
+                                        <b> HH iniz</b>
+                                    </p>
+                                    <input type="time" size="8" ng-model="rr.dataSetTable[$parent.$index][$index].timeFrom" ng-disabled="!rr.dataSetTable[$parent.$index][$index].timeFrom" />
+                                </td>
+                                <td>
+                                    <p ng-show="$parent.$index == 0">
+                                        <b> HH fine</b>
+                                    </p>
+                                    <input type="time" size="8" ng-model="rr.dataSetTable[$parent.$index][$index].timeTo" ng-disabled="!rr.dataSetTable[$parent.$index][$index].timeTo" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!--Visualizzazione del calendario per risorse-->
+    <div ng-show="rr.view == 'resourceTimetable' && rr.NoJobs == 0">
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/left.png" ng-click="rr.dataView('development')" style="cursor: pointer;" ng-show="rr.POP == 1" />
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/left.png" ng-click="rr.dataView('assignment')" style="cursor: pointer;" ng-show="rr.POP == 0" />
+        <p style="text-align: left;font-size: 50px;">{{rr.selectedPerson.FullDescription}} - Tel. {{rr.selectedPerson.Contact}}</p>
+        <label>Progetto corrente</label>
+        <div class="square" style="background-color: white;"></div>
+
+        <label>Orari sovrapposti</label>
+        <div class="square" style="background-color: #980b0b;"></div>
+        <table class="table table-bordered" border="1">
+            <tr>
+                <th> {{rr.translate("Project")}} </th>
+                <th ng-repeat="plannedDates in rr.plannedDates track by $index">
+                    <p> {{plannedDates.DateAbbr}} </p> <br />
+                    <p ng-show="plannedDates.SerialNumber"> Contratto: {{plannedDates.SerialNumber}}</p>
+                    <p ng-show="!plannedDates.SerialNumber" style="color: #980b0b;"> Contratto:  Data non coperta</p>
+                </th>
+            </tr>
+            <tr ng-repeat="nOfProjects in rr.projectRows track by $index">
+                <th style="background-color: {{nOfProjects.BgColor}}">
+                    {{nOfProjects.Project}}
+                </th>
+                <td ng-repeat="plannedDates in rr.plannedDates track by $index">
+                    <table style="width:100%;" ng-show="rr.timeTable[$parent.$index][$index].Skill">
+                        <tr>
+                            <td>
+                                <p ng-show="rr.timeTable[$parent.$index][$index].Skill"> <b>{{rr.translate("Skill")}} </b> </p>
+                            </td>
+                            <td>
+                                <p>{{rr.timeTable[$parent.$index][$index].Skill}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p ng-show="rr.timeTable[$parent.$index][$index].EventVenue"> <b>{{rr.translate("Location")}} </b> </p>
+                            </td>
+                            <td>
+                                <p>{{rr.timeTable[$parent.$index][$index].EventVenue}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="background-color: {{rr.timeTable[$parent.$index][$index].BgColor}}; color: {{rr.timeTable[$parent.$index][$index].FontColor}}">
+                                <p><b> {{rr.timeTable[$parent.$index][$index].Time}}  </b></p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <!-- Assegnazione per giornata -->
+    <div ng-show="rr.view == 'dailyAssignment'">
+        <table>
+            <tr>
+                <td ng-show="rr.activityGroup">
+                    <label>
+                        <b>{{rr.translate("DateDailyAssignment")}}</b>
+                    </label>
+                    <input type="number" min="1" max="31" ng-model="rr.dateDailyAssignment" placeholder="gg" />
+                    <button style="margin-left:15px;" class="btn btn-primary" ng-click="rr.getDailyPlanning()"> {{rr.translate("View")}}</button>
+                    <button style="margin-left:15px;" class="btn btn-primary" ng-click="rr.saveDailyChanges(rr.dailyTimeTable)"> {{rr.translate("Save")}}</button>
+                </td>
+            </tr>
+        </table>
+
+        <table  class="table table-bordered" border="1">
+            <tr> 
+                <td> 
+                    <b>{{rr.translate("Resource")}}</b> 
+                </td> 
+                <td ng-repeat="dailyPlanCols in rr.dailyPlanCols track by $index">
+                    <b> {{rr.dailyTimeTable[0][$index].ColDescription}}</b>
+                </td>
+            </tr>
+            <tr ng-repeat="nOfLines in rr.dailyPlanLines track by $index">
+                <td> 
+                    <b> {{rr.dailyPlan[$index].FullDescription}} </b>
+                </td>
+                <td ng-repeat="dailyPlanCols in rr.dailyPlanCols track by $index">
+                    <a ng-click="rr.dailyTimeTableStatus($parent.$index,$index)">
+                        <img ng-src="{{rr.dailyTimeTable[$parent.$index][$index].CheckBoxValue == '0' && rr.notCheckIcon || rr.checkIcon}}" style="margin: 0 auto; display: block;" />
+                        <img src="https://img.icons8.com/material-two-tone/15/000000/time.png" ng-show="rr.dailyTimeTable[$parent.$index][$index].Available == '1'" style="margin: 0 auto; display: block;" />
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div ng-show="rr.view == 'resourceTimetable' && rr.NoJobs == 1">
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/left.png" ng-click="rr.dataView('development')" style="cursor: pointer;" ng-show="rr.POP == 1" />
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/left.png" ng-click="rr.dataView('assignment')" style="cursor: pointer;" ng-show="rr.POP == 0" />
+        <p style="text-align: left;font-size: 50px;"> La risorsa {{rr.selectedPerson.FullDescription}} non ha incarichi assegnati per il mese di {{rr.months[rr.month - 1].Description}}</p>
+    </div>
+</div>
+

@@ -1,0 +1,51 @@
+﻿<div class="row">
+	<div class="col-xs-4 col-sm-4">
+		<label for='ProviderPicker'>Mese</label>
+		<select id="month-drop" kendo-drop-down-list="mv.monthDropDown"
+				k-data-text-field="'text'"
+				k-data-value-field="'value'"
+				k-data-source="mv.month"
+				k-value="mv.currentMonth"
+				k-on-change="mv.onChange($event)"
+				style="width: 100%"></select>
+	</div>
+	<div class="col-xs-4 col-sm-4">
+		<label for='CampaignPicker'>Anno</label>
+		<select id="year-drop" kendo-drop-down-list="mv.yearsDrop"
+				k-data-text-field="'year'"
+				k-data-value-field="'year'"
+				k-value="mv.currentYear"
+				k-data-source="mv.yearsDS"
+				k-on-change="mv.onChange($event)"
+				style="width: 100%"></select>
+	</div>
+	<!--<div class="col-xs-12 col-sm-2  col-md-2 col-lg-2">
+		<label for='fromPicker'>{{ cd.translate("FromDate") }}</label>
+		<input style="width:100%" id="fromPicker" kendo-date-picker
+			   k-ng-model="mv.mDateFrom"
+			   k-options="{start: 'month',depth: 'month',value: mv.dateFrom() , format:'dd/MM/yyyy' }"
+			   k-on-change="mv.onChange($event)" />
+	</div>
+	<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+		<label for='toPicker'>{{ cd.translate("ToDate") }}</label>
+		<input style="width:100%" id="toPicker" kendo-date-picker
+			   k-ng-model="mv.mDateTo"
+			   k-options="{start: 'month',depth: 'month',value: mv.dateTo() , format:'dd/MM/yyyy' }"
+			   k-on-change="mv.onChange($event)" />
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+			<label for='ProviderPicker'>{{ cd.translate("Provider") }}</label>
+			<select kendo-drop-down-list="mv.providerDropDown"
+					k-data-text-field="'text'"
+					k-data-value-field="'value'"
+					k-data-source="mv.provider"
+					k-on-cascade="mv.onChange($event)"
+					style="width: 100%"></select>
+		</div>
+	</div>-->
+</div>
+<div class="row" style="height:20px;"></div>
+<div class="row" ng-if="mv.gridName ">
+    <magic-grid id="grid0" gridname="{{mv.gridName}}" filter="mv.initialFilter" kendo-grid-instance="mv.kendoGridInstance"></magic-grid>
+</div>

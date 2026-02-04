@@ -1,0 +1,11 @@
+﻿<div>
+    <div class="row">
+        <div ng-repeat="link in links track by link.ID" class="col-md-4">
+            <div class="panel panel-info">
+                <div class="panel-heading"><b>{{link.Title}}</b></div>
+                <div class="panel-body">{{link.Description}}</div>
+                <div class="panel-footer"><a href="{{link.Link}}" target="_blank">{{link.Link}}</a></div>
+            </div>
+        </div>
+    </div>
+</div>

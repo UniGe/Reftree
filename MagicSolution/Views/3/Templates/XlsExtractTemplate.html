@@ -1,0 +1,116 @@
+﻿
+<style>
+
+    @media screen and (min-width: 768px) {
+        .modal-dialog {
+            width: 50%;
+            
+        }
+    }
+</style>
+
+<link rel="stylesheet" type="text/css" href="//loading.io/css/loading.css">
+<link rel="stylesheet" type="text/css" href="//loading.io/css/loading-btn.css">
+
+<div ng-controller="GridDwgViewerController as gdv">
+<div id="myheader" class="modal-header">
+   
+     <div class="row">
+      <div class="col-lg-4">
+      </div>
+      <div class="col-lg-4">
+          <label class="label-title-pdf" >{{gdv.getLabels('TitlePdf')}}</label>
+      </div>
+      <div class="col-lg-4" style="text-align: right;">
+          <button ng-model="button" id="btnExit" class="btn btn-danger" ng-click="cancel()">X</button>
+      </div>
+   </div>
+</div>
+<br>
+<div class="modal-body">
+   <div class="row">
+      <div class="col-lg-4">
+      </div>
+      <div class="col-lg-4">
+      </div>
+      <div class="col-lg-4">
+      </div>
+   </div>
+   <br />
+   <div class="row">
+      <div class="col-lg-4">
+         
+      </div>
+      <div class="col-lg-4">
+       
+      </div>
+      <div class="col-lg-4">
+         
+      </div>
+   </div>
+   <br />
+   <div class="row">
+      <div class="col-lg-4">
+         <div>
+            <button ng-disabled="DisabledAll" class="btn btn-success" ng-click="openFloor('/Views/3/Templates/pdfFloors.html')">{{gdv.getLabels('selezionaPiani')}}</button> 
+         </div>
+      </div>
+      <div class="col-lg-4">
+         
+      </div>
+      <div class="col-lg-4">
+       
+      </div>
+   </div>
+   <br />
+   <div class="row">
+      <div class="col-lg-4">
+         
+      </div>
+      <div class="col-lg-4">
+      
+      </div>
+      <div class="col-lg-4">
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-4">
+      </div>
+      <div class="col-lg-4">
+      </div>
+      <div class="col-lg-4">
+      </div>
+   </div>
+</div>
+<br />
+<div class="modal-footer">
+
+
+   <div class="row">
+      
+      <div class="col-lg-4">
+      </div>
+      <div class="col-lg-4" style="text-align: center;">
+        <button id="getPdfFile" type="button" class="btn btn-success" ng-show="pdfShow" ng-click="apriPdf();">
+        <i class="fa fa-file-pdf-o" aria-hidden="true"></i></button>
+      </div>
+      <div class="col-lg-4">
+      </div>  
+   </div>
+    <br />
+   <div class="row">
+ 
+           <div class="col-lg-12">
+                  <button ng-model="button" id="pdfButton" ng-disabled="DisabledAll"  class="btn btn-success" ng-click="exportToPDF();">
+                  {{gdv.getLabels('extract_1') }} <div id="pdfLoader" class="" ng-class="ngClassLoader"></div>
+               </button>
+                <button ng-model="button" id="closePdf" ng-disabled="DisabledAll"  class="btn btn-warning" ng-click="cancel()">{{gdv.getLabels('exit') }}</button>
+               <a id="pdfEstratto" ng-href="pdfHref" target="_blank" style="display:none"></a>
+
+       
+       </div>
+
+   </div>
+          
+</div>
+<!--</div>-->

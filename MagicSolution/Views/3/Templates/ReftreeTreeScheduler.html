@@ -1,0 +1,314 @@
+﻿<style>
+
+    .r3_task {
+        font-size: 12px;
+        height: 5vh;
+ 
+    }
+
+
+    #reftree-tree-scheduler-controller .k-scheduler-header-all-day tbody > tr:nth-child(1) {
+        height: 6vh;
+    }
+
+    #reftree-tree-scheduler-controller .k-scheduler-fullday {
+        display: none !important;
+    }
+
+    #reftree-tree-scheduler-controller .k-scheduler-content {
+        overflow: hidden !important;
+    }
+
+    /*table.k-scheduler-table > tbody > tr {
+        height: 10px;
+    }*/
+
+    #reftree-tree-scheduler-controller .k-scheduler-header > .k-scheduler-header-wrap > table.k-scheduler-table > tbody > tr:nth-child(1) {
+        height: auto;
+    }
+
+        #reftree-tree-scheduler-controller .k-scheduler-header > .k-scheduler-header-wrap > table.k-scheduler-table > tbody > tr:nth-child(1) > th {
+            width: 150px;
+        }
+
+
+    #reftree-tree-scheduler-controller .k-scheduler-content > table.k-scheduler-table > tbody > tr > td {
+        width: 150px;
+    }
+
+    #reftree-tree-scheduler-controller .k-scheduler-header .k-event {
+        white-space: nowrap;
+    }
+
+    #detail__.detailhidden {
+        display: none;
+    }
+
+    .mfnode-color-box {
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        background-color: #ccc;
+        left: 5px;
+        top: 5px;
+    }
+
+    #mfkendoscheduler {
+        height: 100%;
+        min-height: 140px;
+        display: block;
+        padding-right: 2px;
+        overflow: auto;
+    }
+
+    .treeForScheduler {
+        height: 727px;
+        font-size: 11px;
+    }
+
+    /*#reftree-tree-scheduler-controller tr  {
+        height: 150px !important;
+    }*/
+    .cad-control-buttons {
+        background-color: #0d6a92;
+        height: 36px;
+        margin-bottom: 5px;
+        text-align: center;
+        border-top-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+    }
+
+    #splitterContainer {
+        width: 100%;
+        height: 80vh;
+    }
+
+    .btn-toolbar-cad-r3 {
+        background-color: transparent;
+        color: white;
+        margin: 7px 7px 5px 5px;
+    }
+
+        .btn-toolbar-cad-r3 > i {
+            margin-right: 5px;
+        }
+
+    .dropdown-menu-left-r3 {
+        right: auto;
+        left: 10px;
+        border-radius: 0px 10px 0px 10px;
+        border-color: #0d6a92;
+        border-style: solid;
+        border-width: 0.5px;
+    }
+
+        .dropdown-menu-left-r3 > li > span:hover {
+            background-color: #0d6a92;
+            border-radius: 0px 10px 0px 10px;
+            border-color: #0d6a92;
+            border-style: solid;
+            border-width: 0.5px;
+        }
+
+        .dropdown-menu-left-r3 > li {
+            cursor: pointer;
+        }
+
+            .dropdown-menu-left-r3 > li > a:hover {
+                background-color: #0d6a92;
+                border-radius: 0px 10px 0px 10px;
+                border-color: #0d6a92;
+                border-style: solid;
+                border-width: 0.5px;
+                color: white;
+            }
+
+            .dropdown-menu-left-r3 > li > a {
+                border-radius: 0px 10px 0px 10px;
+                border-style: solid;
+                border-width: 0.5px;
+                border-color: white;
+            }
+</style>
+
+<div ng-if="rts.isNew">
+    <div class="row" style="height:40px;"></div>
+    <form name="form" ng-submit="rts.filterTree(form)" ng-show="rts.showFilters">
+        <label class="control-label" for="operator">{{ rts.getLabels('operator') }}</label>
+        <select name="operator" id="operator" ng-model="rts.treeFilters.Operator">
+            <option value="AND">AND</option>
+            <option value="OR">OR</option>
+        </select>
+        <div class="row" style="height:10px;"></div>
+        <!--<magic-form-sp useasfilter="true" model="rts.treeFilters.Values" storedprocedure="config.USP_GET_FormData" isreadonly="false" formname="{{ rts.formName }}" itemsperrow=2 hidetabs="true" options='{ "kendoStyle":false }'
+                       ng-if="rts.formName">
+        </magic-form-sp>-->
+        <magic-form-sp useasfilter="true" model="rts.treeFilters.Values" storedprocedure="dbo.Magic_TreeGenericFunction_GetFilter" isreadonly="false" formname="{{ rts.formName }}" itemsperrow=2 hidetabs="true" options='{ "kendoStyle":false }'
+                       ng-if="rts.formName">
+        </magic-form-sp>
+        <input class="btn btn-success" type="submit" value="{{ rts.getLabels('applyfilter') }}" />
+    </form>
+    <div id="mastercancel__" ng-show="!rts.showFilters" class="btn btn-danger" style="position:absolute; top: 0; right: 0; z-index:10" ng-click="rts.closeViewer()">X</div>
+
+    <div id="toolbar-container" class="cad-control-buttons">
+
+        <button ng-show="rts.selectedTree.dataSource._data.length > 1" ng-click="rts.onResizePanelBody()" class="btn btn-success pull-left btn-toolbar-cad-r3" title="Tematismi" type="button" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-tasks"></i>
+            <span class="span-title-button-cad ng-binding">{{rts.selectedTree.dataItem(rts.selectedTree.select()).Description}}</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-left-r3" id="selected-temati" role="menu">
+            <li ng-repeat="n in rts.selectedTree.dataSource._data track by n.ID | unique:'ID'">
+                <a ng-click="rts.setSelectTreeDataValue(n)" class="collapsed" data-toggle="collapse" data-parent="#selected-temati" href="#dxf-themati-{{n.ID}}">
+                    {{n.Description}}
+                </a>
+            </li>
+        </ul>
+
+        <button ng-show="!rts.showFilters" title="Filters" type="button" class="btn btn-success pull-left btn-toolbar-cad-r3 ng-scope" ng-click="rts.toggleFilter()">
+            <i class="glyphicon glyphicon-filter" aria-hidden="true"></i>
+            <span class="span-title-button-cad ng-binding">Filters</span>
+        </button>
+
+        <!--<button id="actions___scheduler_new" title="Show actions" type="button" class="btn btn-success pull-left btn-toolbar-cad-r3 ng-scope" ng-click="rts.showActionsNew()">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            <span class="span-title-button-cad ng-binding">Azioni</span>
+        </button>-->
+
+        <button id="actions___scheduler" title="Show actions" type="button" class="btn btn-success pull-left btn-toolbar-cad-r3 ng-scope" ng-click="rts.showActions()">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            <span class="span-title-button-cad ng-binding">Azioni</span>
+        </button>
+
+        <button id="actions___scheduler" title="Show actions" type="button" class="btn btn-success pull-left btn-toolbar-cad-r3 ng-scope" ng-click="rts.refreshTree()">
+            <i class="k-icon k-i-refresh" aria-hidden="true"></i>
+            <span class="span-title-button-cad ng-binding">Refresh</span>
+        </button>
+
+        <button id="mastercancel__" ng-show="!rts.showFilters" title="Esci" type="button" class="btn btn-danger pull-right btn-toolbar-cad-r3 ng-scope" ng-click="rts.closeViewer($event)">
+            <i class="fa fa-times" aria-hidden="true"></i>
+            <span class="span-title-button-cad ng-binding">Esci</span>
+        </button>
+
+    </div>
+
+    <div ng-show="rts.showFilters" class="btn btn-danger" style="position:absolute; top: 0; right: 0; z-index:10" ng-click="rts.showFilters = false">X</div>
+    <h3>{{ rts.Label }}</h3>
+    <div ng-if="!rts.treeHidden" ng-show="!rts.showFilters" class="col-xs-2" style="overflow:auto;height:95%;">
+        <div class="row">
+            <select style="float:left;margin-right:5px;margin-bottom:7px;width:95%;" kendo-drop-down-list="rts.selectedTree"
+                    k-data-text-field="'Description'"
+                    k-data-value-field="'ID'"
+                    k-data-source="rts.TreesDs"
+                    k-on-cascade="rts.onTreeChange()" ng-show="false"></select>
+            <div ng-if="false" style="float:left;">
+                <button ng-if="false" style="float:left;" title="Filters" type="button" class="btn btn-default" ng-click="rts.toggleFilter()">
+                    <span class="glyphicon glyphicon-filter"></span>
+                </button>
+                <button style="float:left;margin-left:1px;" title="Remove filters" type="button" ng-class="{'btn btn-default': !rts.filtersActive , 'btn btn-danger': rts.filtersActive }" ng-click="rts.undoFilterTree()">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+                <button id="actions___scheduler" style="float:left;margin-left:1px;" title="Show actions" type="button" class="btn btn-primary" ng-click="rts.showActions()">
+                    <i class="fa fa-list" aria-hidden="true"></i>
+                </button>
+                <!--<button id="actions___scheduler" style="float:left;margin-left:1px;" title="Show actions" type="button" class="btn btn-primary" ng-click="rts.showActionsNew()">
+                    <i class="fa fa-list" aria-hidden="true"></i>
+                </button>-->
+                <button id="refresh__scheduler" style="float:left;margin-left:1px;" title="Show actions" type="button" class="btn btn-primary" ng-click="rts.refreshTree()">
+                    <i class="k-icon k-i-refresh" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <div id="gantttree" class="row">
+            <div id="kendoSKTree"
+                 class="treeForScheduler"
+                 kendo-tree-view="rts.openTree"
+                 k-data-source="rts.selectedTreeData"
+                 k-checkboxes="rts.checkboxesTemplate"
+                 k-on-check="rts.getTematFromTree(kendoEvent)"
+                 k-on-expand="rts.setTreeExpandedItem(kendoEvent)"
+                 k-on-data-bound="rts.loadFilterForm(kendoEvent)">
+                <span k-template>
+                    {{dataItem.Description}} <b>{{ dataItem.Area ?  dataItem.Area + ' m²' : ' ' }}</b> {{ dataItem.Tot_nr && dataItem.Tot_nr>1 ?  '(' + dataItem.Tot_nr + ')' : '' }}
+                    <span ng-if="!!dataItem.ColourTemat" class="mfnode-color-box" style="background-color:{{ dataItem.ColourTemat }};">
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div ng-class="rts.calcSchedulerClass()" id="mfkendoscheduler" ng-if="rts.schedulerOptions" ng-show="rts.showScheduler">
+
+
+        <!--<style scoped>
+            .isablock {
+                background-color:red;
+            }
+        </style>-->
+        <div kendo-scheduler="rts.scheduler" k-options="rts.schedulerOptions" id="reftreeScheduler"></div>
+
+        <!--<div ng-if="rts.activateGridForAction" ng-repeat="g in rts.gridForAction track by n.EV_ACTION_ID | unique:'EV_ACTION_ID'">
+            <magic-grid ng-show="false" gridname="{{g.EV_ACTION_COMMAND}}" filter="g.EV_ACTION_FILTER" gridoptionsextension="{dataBinding: rgv.onDataBoundGridNameAction}"></magic-grid>
+        </div>
+
+        <magic-grid grid ng-show="false" gridname="EXP_VI_ASSET_L" filter="" gridoptionsextension="{dataBinding: rts.onDataBoundGridNameAction}"></magic-grid>-->
+
+       
+
+    </div>
+
+
+
+
+
+    <!--<div kendo-window="rts.detailWnd_" id="detail__"  ng-class="rts.showDetail && !rts.showFilters  ? 'col-xs-2' : 'detailhidden'" style="padding-right:45px;">-->
+    <!--<div  k-visible="false"  k-width=300 kendo-window="rts.detailWnd_" id="detail__" ng-class="!rts.showFilters  ? '' : 'detailhidden'">
+        <ul class="list-group">
+            <li style="background-color:{{ item.ColourField ? item.ColourField: 'white' }}" ng-repeat="item in rts.detailInfo" class="list-group-item"><span><b>{{ item.label  }}</b>:</span><span style="word-wrap:break-word;font-weight:{{ item.bold ? 'bold' : 'normal' }}">{{ item.value }}</span></li>
+        </ul>
+    </div>-->
+
+</div>
+
+<script id="calendarPopupTemplateTest" type="text/x-kendo-template">
+
+
+    #if(data) {#
+
+    <table cellpadding="0" cellspacing="0" class="scheduler-template-table stt-tooltip">
+        <tbody>
+            <tr>
+                <!--<td class="et-time" width="1%" nowrap>#=kendo.format('{0:HH:mm}',data.start)#</td>-->
+                <td class="et-content" valign="middle">
+                    <h3>#: data.title #</h3>
+                    <p>#=data.description#</p>
+                </td>
+            </tr>
+        <tbody>
+    </table>
+    #} else {#
+    <p>No event data is available</p>
+    #}#
+</script>
+
+ 
+<script id="calendarPopupTemplate" type="text/x-kendo-template">
+    #var uid = target.attr("data-uid");#
+    #var scheduler = target.closest("[data-role=scheduler]").data("kendoScheduler");#
+    #var model = scheduler.occurrenceByUid(uid);#
+
+    #if(model) {#
+
+    <table cellpadding="0" cellspacing="0" class="scheduler-template-table stt-tooltip">
+        <tbody>
+            <tr>
+                <!--<td class="et-time" width="1%" nowrap>#=kendo.format('{0:HH:mm}',model.start)#</td>-->
+                <td class="et-content" valign="middle">
+                    <h3>#: model.title #</h3>
+                    <p>#=model.description#</p>
+                </td>
+            </tr>
+        <tbody>
+    </table>
+    #} else {#
+    <p>No event data is available</p>
+    #}#
+</script>

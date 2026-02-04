@@ -1,0 +1,33 @@
+﻿<style scoped>
+    .bo-tagbox button:not(#unselectButton) {
+        bottom:0!important;
+    }
+    #semanticDocSearch {
+        min-height:32px;
+    }
+</style>
+<div class="row" style="padding-bottom:5px;">
+    <div class="col-sm-6 col-xs-9">
+        <div bo-selector="{isRequired: true, isKendoForm: false, openGridInNewWindow: true, tags: ds.BusinessObject_ID ? [{Description: ds.BusinessObjectDescription, Id: ds.BusinessObject_ID, Type: ds.BusinessObjectType}] : []}" on-change="ds.boChange(event, ds)"></div>
+    </div>
+    <div class="col-sm-6 col-xs-3">
+        <label>&nbsp;</label><br/>
+        <button ng-click="ds.searchDocuments()" class="btn btn-primary">{{ ds.lang.search }}</button>
+    </div>
+</div>
+<div class="row" style="padding-top:20px;">
+        <div class="col-md-2">
+            <div ng-show="ds.doctypes" id="docCounter">
+                <ul class="list-group">
+                    <li ng-repeat="doctype in ds.doctypes" ng-click="ds.selectedDocAggr = doctype.DocumentAggrDescription; ds.createGrid(doctype.DocumentAggrType,doctype.GridName,doctype.GridFilter)" class="list-group-item">
+                        <span class="badge">{{ doctype.DocumentAggrCounter }}</span>
+                        {{ doctype.DocumentAggrDescription }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    <div ng-show="ds.showGrid" id="gridcontainer" class="col-md-10">
+        <h2>{{ ds.selectedDocAggr }}</h2>
+        <div id="docGrid"></div>
+    </div>
+</div>

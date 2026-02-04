@@ -1,0 +1,83 @@
+﻿<div>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <div style="margin-right:10px;">
+                        <div style="float:left; margin-right:2px;"><b>{{ translate("VacationReferral") }}:</b></div>
+                        <div style="float:left;">{{getReferralName("Primary")}}</div>
+                    </div>
+                </td>
+                <td>
+                    <div style="margin-right:10px;">
+                        <div style="float:left; margin-right:2px;"> <b>{{ translate("VacationReferralSubstitute") }}:</b></div>
+                        <div style="float:left;">{{getReferralName("Substitute")}}</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <p style="float:left;" ng-repeat="lastMod in lastModifiedDetails track by lastMod.AbsenceType"><b>{{ translate("lastCounterModifiedDetails") }} {{ lastMod.Month }} ({{ lastMod.AbsenceType }})</b></p>
+    </div>
+    <div>
+        <br /><br />
+        <div class="panel panel-default">           
+            <div class="panel-heading"><h1><b>  {{ translate('PersonAbsent')}} </b></h1></div>            
+            <table class="table" border="0">                
+                <tr>
+                    <td>
+                        <b> {{ translate("Employee") }} </b>
+                    </td>
+                    <td>
+                        <b> {{ translate("AbsenceType") }}</b>
+                    </td>
+                    <td>
+                        <b> {{ translate("FromDate") }}</b>
+                    </td>
+                    <td>
+                        <b> {{ translate("ToDate") }}</b>
+                    </td>
+                    <td>
+                        <b> {{ translate("FreeHoursDate") }}</b>
+                    </td>
+                    <td>
+                        <b> {{ translate("FromHour") }}</b>
+                    </td>
+                    <td>
+                        <b> {{ translate("ToHour") }}</b>
+                    </td>
+                    <td>
+                        <b> {{ translate("Department") }}</b>
+                    </td>
+                </tr>
+                <tr ng-repeat="absentPerson in personAbsent track by absentPerson.ID">
+                    <td>
+                        {{absentPerson.FullDescription}}
+                    </td>
+                    <td>
+                        {{absentPerson.T_AbsenceType}}
+                    </td>
+                    <td>
+                        {{absentPerson.FromDate}}
+                    </td>
+                    <td>
+                        {{absentPerson.ToDate}}
+                    </td>
+                    <td>
+                        {{absentPerson.FreeHoursDate}}
+                    </td>
+                    <td>
+                        {{absentPerson.FromHour}}
+                    </td>
+                    <td>
+                        {{absentPerson.ToHour}}
+                    </td>
+                    <td>
+                        {{absentPerson.Departments}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

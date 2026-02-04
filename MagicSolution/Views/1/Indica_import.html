@@ -1,0 +1,25 @@
+﻿
+<div class="cold-md-12">
+	<div>
+		<div class="form-inline row" style="margin-left: 5px;">
+			<label>Inserimento file</label>
+
+			<div class="form-group" style="display:inline-block;margin-right:10px" ng-class="{'has-error': cd.options.uploadError }">
+				<input type="file" id="excelupload"
+					   ng-model="cd.options.ImportData.files"
+					   accept=".xlsx"
+					   ng-init="cd.options.initUpload()" />
+				<div style="margin: 0;" class="help-block" ng-show="cd.options.uploadError" ng-bind="cd.options.lang.uploadErrorMsg"></div>
+			</div>
+			<div style="height:20px; display:inline-block;"></div>
+			<button style="margin-left:10px; " class="btn btn-primary" ng-bind="cd.options.lang.eximport" ng-click="cd.options.importExcel()"></button>
+			<div>
+			</div>
+		</div>
+	</div>
+	<div style="height:50px"></div>
+	<label>Riepilogo import</label>
+	<div class="row">
+		<magic-grid id="grid0" gridname="DatiPartecipantiImportFile" kendo-grid-instance="cd.options.kendoGridInstance"></magic-grid>
+	</div>
+</div>

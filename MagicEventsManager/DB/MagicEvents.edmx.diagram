@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bd57622db21e4a109b0dda793ef19fa8" Name="Diagram1">
+        <EntityTypeShape EntityType="MagicDBModel.Magic_Eve_ActionType" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicDBModel.Magic_Eve_Interval" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicDBModel.Magic_Eve_ScriptType" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicDBModel.Magic_Eve_Track" Width="1.5" PointX="8.625" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicDBModel.Magic_Eve_PlannedEvent" Width="1.5" PointX="6.375" PointY="1.125" />
+        <AssociationConnector Association="MagicDBModel.FK_Magic_Eve_PlannedEvent_Magic_Eve_Interval" />
+        <AssociationConnector Association="MagicDBModel.FK_Magic_Eve_Track_Magic_Eve_PlannedEvent" />
+        <EntityTypeShape EntityType="MagicDBModel.Magic_Eve_Event" Width="1.5" PointX="3.375" PointY="0.625" />
+        <AssociationConnector Association="MagicDBModel.FK_Magic_Eve_Event_Magic_Eve_ActionType" />
+        <AssociationConnector Association="MagicDBModel.FK_Magic_Eve_Event_Magic_Eve_Event" />
+        <AssociationConnector Association="MagicDBModel.FK_Magic_Eve_Event_Magic_Eve_ScriptType" />
+        <AssociationConnector Association="MagicDBModel.FK_Magic_Eve_PlannedEvent_Magic_Eve_Event" />
+        <EntityTypeShape EntityType="MagicDBModel.Magic_FTP_Protocols" Width="1.5" PointX="6.625" PointY="7.125" />
+        <EntityTypeShape EntityType="MagicDBModel.Magic_FTP_Transfer_Types" Width="1.5" PointX="7.875" PointY="4.75" />
+        <EntityTypeShape EntityType="MagicDBModel.Magic_FTP_Encryptions" Width="1.5" PointX="6.625" PointY="11.125" />
+        <EntityTypeShape EntityType="MagicDBModel.Magic_FTP_Servers" Width="1.5" PointX="8.875" PointY="7.75" />
+        <AssociationConnector Association="MagicDBModel.FK_Magic_FTP_Servers_Magic_FTP_Encryptions" />
+        <AssociationConnector Association="MagicDBModel.FK_Magic_FTP_Servers_Magic_FTP_Protocols" />
+        <EntityTypeShape EntityType="MagicDBModel.Magic_FTP_Settings" Width="1.5" PointX="11.125" PointY="7.125" />
+        <AssociationConnector Association="MagicDBModel.FK_Magic_FTP_Settings_Magic_FTP_Servers" />
+        <AssociationConnector Association="MagicDBModel.FK_Magic_FTP_Settings_Magic_FTP_Transfer_Types" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

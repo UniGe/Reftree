@@ -1,0 +1,4 @@
+{{fullChampResultAndClassification.fullChampResults.category}} GIRONE {{fullChampResultAndClassification.fullChampResults.round}}
+{%if fullChampResultAndClassification.fullChampResults.getLastWeekPlayed() is not none %}{{fullChampResultAndClassification.fullChampResults.getLastWeekPlayed().week}}{{a}}Giornata
+{% for match in fullChampResultAndClassification.fullChampResults.getLastWeekPlayed().matches.resultList %}{{match.teamA.name}}-{{match.teamB.name}} {%if logics.multipleGoals(match) is not none  %} {{logics.multipleGoals(match)}} {% endif %}
+{% endfor %}{% endif %}

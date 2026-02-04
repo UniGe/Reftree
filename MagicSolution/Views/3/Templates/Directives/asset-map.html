@@ -1,0 +1,41 @@
+﻿<style>
+    .am .angular-google-map, .am .angular-google-map-container {
+        height: 100%;
+    }
+
+    .am .gm-style-iw li {
+        cursor: pointer;
+    }
+
+    .am .gm-style-iw li:hover {
+        text-decoration: underline;
+    }
+
+    .am .gm-style .gm-style-iw {
+        min-height: 140px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-xs-12 col-md-5" id="am-google-searchbar">
+        <input id="am-google-autocomplete" type="text" class="form-control" placeholder="Location..." />
+    </div>
+    <div class="col-xs-6 col-md-5">
+        <input id="am-assset-autocomplete" class="form-control" type="text"
+            placeholder="Asset..."
+            uib-typeahead="asset as asset.AS_ASSET_DESCRIZIONE for asset in getAssetByDescription($viewValue)"
+            typeahead-on-select="selectAsset($item)"
+            typeahead-wait-ms="1000"
+            typeahead-min-length="3"
+            ng-model="selectedAsset" />
+    </div>
+    <div class="col-xs-6 col-md-2" style="text-align: right;">
+        <div id="asset-map-actions-button" ng-show="addAction && selectedAssets && selectedAssets.length" ng-click="setModel('actionClicked')" class="btn btn-primary"><i class="fa fa-list" aria-hidden="true"></i></div>
+        <div ng-show="isMapReady" ng-click="goToCurrentLocation()" class="btn btn-primary"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+        <div class="btn btn-success" ng-click="setModel()">OK</div>
+    </div>
+</div>
+<div class="am" style="width: 100%; height:70vh">
+    <ui-gmap-google-map control="mapControl" center="map.center" zoom="map.zoom" events="map.events">
+    </ui-gmap-google-map>
+</div>

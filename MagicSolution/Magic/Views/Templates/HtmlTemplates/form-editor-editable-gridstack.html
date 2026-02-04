@@ -1,0 +1,33 @@
+﻿<style>
+    .vcenter {
+        text-align:right;
+        display: inline-block;
+        vertical-align: middle;
+        float: none;
+    }
+</style>
+
+<div gridstack class="grid-stack" options="fe.innerGridstackOptions"
+     on-drag-start="fe.onDragStart(event,ui, row)"
+     on-drag-stop="fe.onDragStop(event,ui)"
+     on-resize-stop="fe.onResizeStop()"
+     >
+
+    <!-- GRIDSTACK CONTAINING row's ITEMS  (itemsPerRow) -->
+
+    <div gridstack-item class="grid-stack-item" ng-repeat="(itemIdx, item) in row.items"
+         gs-item-id="item.uid" id="{{item.uid}}"
+         gs-item-width="item.width" gs-item-height="item.height"
+         gs-item-x="item.x" gs-item-y="item.y"
+         data-gs-locked="true"> 
+
+        <div class="grid-stack-item-content innerWidget" ng-include="fe.singleWidgetTemplateUrl" style="overflow:hidden;">
+            <!-- single widget: adaptive width, fixed heigth-->            
+        </div>
+    </div>
+
+    <div ng-if="row.items.length <= 0" class="vcenter">
+        <i class="fa fa-trash-o fa-3x pointer" title="Remove empty row." ng-click="fe.removeRow(row, tab, subTab)"></i>
+    </div>
+
+</div>

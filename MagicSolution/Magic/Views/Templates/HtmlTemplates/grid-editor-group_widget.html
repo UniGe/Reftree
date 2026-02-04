@@ -1,0 +1,67 @@
+﻿
+
+<div gridstack-item-content class="grid-stack-item-content" style="max-height:inherit;">
+
+    <div class="card-header">
+        {{widget.contentType}}
+        <a class="pull-right pointer"><i ng-click="ge.removeWidget(widget,tab)" ng-hide="widget.id =='mainFormGroup'" class="fa fa-remove"></i></a>         
+    </div>
+
+
+    <!--<button class="btn btn-secondary" type="button" ng-click="ge.onGroupToggle(widget, $event)">
+        <i ng-class="widget.groupExpanded ? 'fa fa-chevron-up' : 'fa fa-chevron-down'"></i>
+    </button>-->
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-primary" type="button" ng-click="ge.addWidgetToGroup(widget,tab,$event)" title="{{ge.text.addWidget}}">
+                <i class="fa fa-plus"></i>
+            </button>
+
+            <label title="{{ge.text.expandedTitle}}" class="btn btn-secondary" role="button">
+                <input type="checkbox" ng-model="widget.groupExpanded" ng-change="ge.onExpandedStatusSelected(widget, tab)" />
+                <span>
+                    {{ge.text.expandedText}}
+                </span>
+            </label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- ng-class="widget.groupExpanded ? 'in' : 'collapse'" -->
+            <!-- contentTYPE selector-->
+            <label class="col-md-12">
+                {{ ge.text.selectContentType }}
+                <select style="width: 100%;" required="required" ng-change="ge.onContentTypeSelected(widget)"
+                        kendo-drop-down-list ng-model="widget.contentType" k-data-source="ge.contentTypeOptions"></select>
+            </label>
+
+            <label class="col-md-12">
+                {{ge.text.widgetGroupTitle}}
+                <div class="input-group">
+                    <span class="input-group-addon" title="{{ge.text.englishDescription}}"><span class="flag-icon flag-icon-gb"></span></span>
+                    <input id="title_en" type="text" class="form-control" placeholder="en-GB" ng-model="widget.titles.en" ng-change="ge.activateSaveBtn()">
+                    <span class="input-group-addon" title="{{ge.text.italianDescription}}"><span class="flag-icon flag-icon-it"></span></span>
+                    <input id="title_it" type="text" class="form-control" placeholder="it-IT" ng-model="widget.titles.it" ng-change="ge.activateSaveBtn()">
+                    <span class="input-group-addon" title="{{ge.text.germanDescription}}"><span class="flag-icon flag-icon-de"></span></span>
+                    <input id="title_de" type="text" class="form-control" placeholder="de-DE" ng-model="widget.titles.de" ng-change="ge.activateSaveBtn()">
+                </div>
+            </label>
+        </div>
+    </div>
+
+    <div id="widgetGroup{{widgetLayout}}{{widget.id}}" class="inner-grid-stack">
+        <!--ng-class="widget.groupExpanded ? 'in' : 'collapse'"-->
+        <!-- content-->
+        <div gridstack id="groupGridstack{{widgetLayout}}{{widget.id}}" class="grid-stack"
+             on-drag-stop="ge.onGridstackChanged(event, items)" on-resize-stop="ge.onGridstackChanged(event, items)">
+
+            <div gridstack-item class="grid-stack-item" ng-repeat="widget in widget.groupWidgets" id="{{widgetLayout}}{{widget.parentWidget}}{{widget.id}}"
+                 data-gs-no-resize="false" gs-item-x="widget.x" gs-item-y="widget.y" gs-item-width="widget.width"
+                 gs-item-height="widget.height" ng-include="ge.widgetTemplateUrl">
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,13 @@
+{% if fullChampResultAndClassification.fullChampResults.getLastWeekPlayed() is none %}@300_Prossimo_Turno_Titolo:Prossimo Turno
+Il campionato {{e}} terminato.{{newline}}{% else %}<v6.50><e0>
+@200_Risultati_Titolo:Risultati
+@201_Risultati:{%for match in fullChampResultAndClassification.fullChampResults.getLastWeekPlayed().matches.resultList %}{{match.teamA.name}}-{{match.teamB.name}}{{tab}}{%if match.anomalyID is not none %}{{match.anomaly_Description}}{%else%}{{match.teamA.goals}}-{{match.teamB.goals}}{%endif%}
+{% endfor %}{%endif%}{% if fullChampResultAndClassification.fullChampResults.nextWeekMatches.nextWeekMatches.resultList is not none %}{% if fullChampResultAndClassification.fullChampResults.getLastWeekPlayed() is not none %}{% if fullChampResultAndClassification.fullChampResults.getLastWeekPlayed().singleTeam is not none%}@Riposa: Ha riposato {{fullChampResultAndClassification.fullChampResults.getLastWeekPlayed().singleTeam}}{{newline}}{%endif%}{% for nextMatch in fullChampResultAndClassification.fullChampResults.nextWeekMatches.nextWeekMatches.resultList %}{% if loop.first %}@300_Prossimo_Turno_Titolo:Prossimo Turno
+@301_Prossimo_Turno:{{nextMatch.teamA.name}}-{{nextMatch.teamB.name}}{% endif %}{% if loop.index > 1 %}
+{{nextMatch.teamA.name}}-{{nextMatch.teamB.name}}{% endif %}{% endfor %}{% endif %}{% if fullChampResultAndClassification.fullChampResults.getLastWeekPlayed().nextWeekSingleTeam is not none %}
+@Riposa: Riposa {{fullChampResultAndClassification.fullChampResults.getLastWeekPlayed().nextWeekSingleTeam}}{%endif%}{{newline}}<\c>{%endif%}{%for team in fullChampResultAndClassification.classification.classificationList %}{% if  loop.index  is divisibleby 2 %}{% set X = 102 %}@{{X}}_Classifica:<@100_Class_Squadra>{{team.name}}<@$p>
+{% else %}{% set X=101 %}@{{X}}_Classifica:<@100_Class_Squadra>{{team.name}}<@$p>
+{% endif %}{% endfor %}{% for points in fullChampResultAndClassification.classification.classificationList  %}{% if  loop.index==1 %}<\c>{% endif %}@100_Classifica:<@100_Classifica_Punti><a$$>	{{points.points}}<@$p>
+{% endfor %}{% for classifiche in fullChampResultAndClassification.classification.classificationList %}{% if  loop.index==1 %}<\c>{% endif %}{% if  loop.index  is divisibleby 2 %}{% set X = 102 %}
+@{{ X }}_Classifica:	{{classifiche.played}}	{{classifiche.won}}	{{classifiche.even}}	{{classifiche.lost}}	{{classifiche.gF}}	{{classifiche.gS}}	{{classifiche.englishMedia}}
+{% else %}{% set X=101 %}@{{ X }}_Classifica:	{{classifiche.played}}	{{classifiche.won}}	{{classifiche.even}}	{{classifiche.lost}}	{{classifiche.gF}}	{{classifiche.gS}}	{{classifiche.englishMedia}}{% endif %}{% endfor %}

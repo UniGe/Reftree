@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+		
+		<link rel="stylesheet" href="../bootstrap/3.0.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../js/jq/jqueryui/1.10.1/themes/smoothness/jquery-ui.css"/>
+		
+		<link rel="stylesheet" href="../css/plani3d-maps.min.css" type="text/css">
+		
+		<script type="text/javascript" src="../js/require.js"></script>
+		
+		<title>Features da layer - Plani3D Maps 2.0</title>
+	</head>
+	<body>
+		<div><!-- se questo manca, la selezione ha un offset, ma in REFtree non dovrebbe servire --></div>
+		
+		<!-- INIZIO parte per REFtree -->
+		<div id="p3dt-map" class="p3dt-map"></div>
+		<script>
+			var fidsObj1 = [
+				{
+					"catid": "G224003200000509",
+					"label": "Particella 509",
+					"RefId": 001,
+					"color": "#ff0000"
+				},
+				{
+					"catid": "G224003200000497",
+					"label": "Particella 497",
+					"RefId": 002,
+					"color": "#00ff00"
+				},
+				{
+					"catid": "G224003200000507",
+					"label": "Particella 507",
+					"RefId": 003,
+					"color": "#0000ff"
+				}
+			];
+			var fidsObj2 = [
+				{
+					"catid": "G224003200001008",
+					"label": "Particella 1008",
+					"RefId": 004,
+					"color": "#ff0000"
+				},
+				{
+					"catid": "G224003200001009",
+					"label": "Particella 1009",
+					"RefId": 005,
+					"color": "#00ff00"
+				},
+				{
+					"catid": "G224003200001010",
+					"label": "Particella 1010",
+					"RefId": 006,
+					"color": "#0000ff"
+				}
+			];
+			
+			function externalCallbackFunction(feature) {
+				alert(feature.values_.name);
+			}
+
+			require(["config.js"], function () {
+				require(["plani3d-maps", "ol", "proj"], function (plani3d, ol, proj4) {
+					var p3dmaps = new plani3d.Maps({
+						ol: ol,
+						proj4: proj4,
+						//protocol: 'http',
+						server: 'showcase.alysso.it',
+						//webapp: 'plani3d-srv',
+						maps: 'pds2',
+						layers: ['v_CAT', 'v_CATp', 'RV', 'OSM']
+					});
+					
+					p3dmaps.init().then(function () {
+						p3dmaps.createSelection(fidsObj1, 'v_CATp', false, externalCallbackFunction);
+						setTimeout(function(){
+							p3dmaps.refreshSelection(fidsObj2);
+						}, 3000);
+					});
+				});
+			});
+		</script>
+		<!-- FINE parte per REFtree -->
+	</body>
+</html>

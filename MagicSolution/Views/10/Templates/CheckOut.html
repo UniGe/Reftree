@@ -1,0 +1,144 @@
+﻿<div ng-switch="c.action">
+    <div class="row" ng-switch-when="overview">
+        <div class="col-md-6">
+            <div ng-bind-template="{{c.lang.amountChildren}}: {{c.toCheckOut.length}}"></div>
+            <div ng-if="c.prenotations.length">
+                <label ng-bind="c.lang.prenotation"></label>
+                <select ng-options="p.PRENOT_ID as p.PRENOT_DESCR for p in c.prenotations"
+                        ng-model="c.checkInData.prenotatione"></select>
+            </div>
+            <table class="table table-striped" style="table-layout: fixed; margin-bottom: 0">
+                <tr ng-repeat="service in c.services">
+                    <td ng-bind="service.PRODOT_DESCRIZIONE"></td>
+                    <td><input type="number" ng-model="service.AMOUNT" min="0" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div ng-switch-default>
+        <div class="form-inline">
+            <div class="form-group">
+                <label style="margin-right: 10px;" ng-bind="c.lang.project"></label>
+                <select class="form-control pull-right" ng-change="c.saveProjectInSession(); c.updateCheckOutData()"
+                        ng-model="c.checkInData.project"
+                        ng-options="d.PROGET_ID as d.PROGET_DESCRIZIONE for d in c.projectData | unique: 'PROGET_ID'"></select>
+
+            </div>
+            <div class="form-group">
+                <label style="margin-right: 10px;" ng-bind="c.lang.venue"></label>
+                <select class="form-control pull-right" ng-change="c.saveProjectInSession(); c.updateCheckOutData()"
+                        ng-model="c.checkInData.venue"
+                        ng-options="d as d.ANASED_DESCRIZIONE for d in c.projectData | filter: {PROGET_ID: c.checkInData.project} | unique: 'ANASED_ID' track by d.ANASED_ID"></select>
+            </div>
+            <!--<div class="form-group">
+                <label ng-bind="c.lang.room"></label>
+            </div>
+            <div class="form-group">
+                <select class="form-control" ng-change="c.saveProjectInSession()"
+                        ng-model="c.checkInData.room"
+                        ng-options="d.SPASED_ID as d.SPASED_DESCRIZIONE for d in c.projectData | filter: {ANASED_ID: c.checkInData.venue.ANASED_ID}"></select>
+            </div>-->
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div style="height: 40px;"></div>
+                <div class="form-inline">
+                    <div class="form-group">
+                        <input class="form-control" placeholder="{{c.lang.search}}" ng-model="c.filterValue" />
+                    </div>
+                    <div class="form-group">
+                        <div class="btn btn-default" ng-bind="c.lang.refresh" ng-click="c.updateCheckOutData();"></div>
+                    </div>
+                    <div class="form-group">
+                        <div ng-bind="c.refreshTime | date: 'medium'"></div>
+                    </div>
+                    <div class="form-group" ng-bind-html="c.spinner.refresh">
+                    </div>
+                </div>
+                <div style="height: 20px;"></div>
+                <table class="table table-striped" style="table-layout: fixed; margin-bottom: 0">
+                    <thead>
+                        <tr>
+                            <td style="width: 20%" ng-bind="c.lang.name"></td>
+                            <td style="width: 20%" ng-bind="c.lang.surname"></td>
+                            <td style="width: 20%" ng-bind="c.lang.birthday"></td>
+                            <td style="width: 20%" ng-bind="c.lang.checkInTime"></td>
+                            <td style="width: 20%">Tempo passato</td>
+                            <td style="width: 30%" ng-bind="c.lang.responsible"></td>
+                            <td style="width: 20%" ng-bind="c.lang.prenotation"></td>
+                            <td style="width: 15%"></td>
+                        </tr>
+                    </thead>
+                </table>
+                <div style="max-height:250px; overflow-y:auto;">
+                    <table class="table table-striped" style="table-layout: fixed;">
+                        <tr ng-if="!c.checkOutData.length" class="text-center"><td colspan="6" ng-bind="c.lang.empty"></td></tr>
+                        <tr ng-repeat="checkOut in c.checkOutData | filterOr: c.filterValue: ['ANAGRA_DENOMINAZIONE', 'PARENT_COMPLETE_NAME', 'PRENOT_DESCR'] track by checkOut.REGPRE_ID">
+                            <td style="width: 20%" ng-bind="checkOut.ANAGRA_NOME"></td>
+                            <td style="width: 20%" ng-bind="checkOut.ANAGRA_COGNOME"></td>
+                            <td style="width: 20%" ng-bind="checkOut.ANAGRA_DATA_NASCITA | date:'shortDate'"></td>
+                            <td style="width: 20%" ng-bind="checkOut.REGPRE_CHECK_IN | date:'medium'"></td>
+                            <td style="width: 20%" ng-bind="c.calcTimeSpent(checkOut.REGPRE_CHECK_IN)"></td>
+                            <td style="width: 30%" ng-bind="checkOut.PARENT_COMPLETE_NAME + ' ' + c.formatContactData(checkOut)"></td>
+                            <td style="width: 20%" ng-bind="checkOut.PRENOT_DESCR"></td>
+                            <td style="text-align: right; width: 15%"><div class="btn btn-default btn-xs" ng-bind="c.lang.select" ng-click="c.add(checkOut)"></div></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-12" ng-if="c.toCheckOut.length">
+                <h2 ng-bind="c.lang.toCheckOut"></h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td ng-bind="c.lang.name"></td>
+                            <td ng-bind="c.lang.surname"></td>
+                            <td ng-bind="c.lang.birthday"></td>
+                            <td ng-bind="c.lang.checkInTime"></td>
+                            <td ng-bind="c.lang.responsible"></td>
+                            <td ng-bind="c.lang.prenotation"></td>
+                        </tr>
+                    </thead>
+                    <tr ng-if="!c.toCheckOut.length" class="text-center"><td colspan="6" ng-bind="c.lang.empty"></td></tr>
+                    <tr ng-repeat="checkOut in c.toCheckOut track by checkOut.REGPRE_ID">
+                        <td ng-bind="checkOut.ANAGRA_NOME"></td>
+                        <td ng-bind="checkOut.ANAGRA_COGNOME"></td>
+                        <td ng-bind="checkOut.ANAGRA_DATA_NASCITA | date:'shortDate'"></td>
+                        <td ng-bind="checkOut.REGPRE_CHECK_IN | date:'medium'"></td>
+                        <td>
+                            <select ng-model="checkOut.REGPRE_CHECK_OUT_RESP_ID"
+                                    ng-options="d.ANAGRA_ID as d.ANAGRA_RESPONSABILE + ' - ' + d.ANAGRA_CODICE_FISCALE for d in checkOut.responsibles"></select>
+                        </td>
+                        <td style="width: 20%" ng-bind="checkOut.PRENOT_DESCR"></td>
+                        <td style="text-align: right;"><div class="btn btn-default btn-xs" ng-bind="c.lang.remove" ng-click="c.remove(checkOut)"></div></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 10px;"></div>
+<div class="row" ng-switch="c.action">
+    <div class="col-md-12" ng-switch-when="dialog">
+        <h4 ng-bind="c.lang.printInvoice"></h4>
+        <div class="btn btn-success" ng-bind="c.lang.yes" ng-click="c.action = 'overview'; c.showServices()"></div>
+        <div ng-if="!c.disableButtons" class="btn btn-danger" ng-bind="c.lang.no" ng-click="c.confirmCheckOut()"></div>
+        <div class="btn btn-default" ng-bind="c.lang.back" ng-click="c.action = ''"></div>
+    </div>
+    <div class="col-md-12" ng-switch-when="overview">
+        <div ng-if="!c.disableButtons" class="btn btn-default" ng-bind="c.lang.checkOut" ng-click="c.confirmCheckOut(true);"></div>
+        <div class="btn btn-default" ng-bind="c.lang.back" ng-click="c.action = ''"></div>
+     </div>
+    <div class="col-md-12" ng-switch-default>
+        <div class="btn btn-default" ng-bind="c.lang.checkOut" ng-show="c.checkCheckOutData()" ng-click="c.action = 'dialog'"></div>
+        <div class="btn btn-default" ng-bind="c.lang.reset" ng-click="c.reset()"></div>
+        <div style="display: inline-block" ng-bind-html="c.spinner.checkOut"></div>
+    </div>
+</div>
+<div class="row" ng-if="c.message">
+    <div style="height: 20px;"></div>
+    <div class="col-md-12">
+        <div ng-bind="c.message" class="label label-{{c.messageType}}"></div>
+    </div>
+</div>
+<div style="height: 30px;"></div>

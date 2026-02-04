@@ -1,0 +1,38 @@
+﻿<div id="powerBiContainer" class="container-fluid">
+	<div id="powerBiControls" class="row" style="padding-bottom: 20px;">
+		<div class="col-xs-3 col-sm-3">
+			<label for='Workspace'><b>WORKSPACE</b></label>
+			<select id="workspace-drop" kendo-drop-down-list="cd.options.workspaceDropDown"
+					k-data-text-field="'Description'"
+					k-data-value-field="'ID'"
+					k-data-source="cd.options.workSpaceDS"
+					k-value="cd.options.selectedWorkspace"
+					k-on-change="cd.options.onWorkspaceSelected($event)"
+					style="width: 100%"></select>
+		</div>
+		<div class="col-xs-3 col-sm-3">
+			<label for='Report'><b>REPORT</b></label>
+			<select id="report-drop" kendo-drop-down-list="cd.options.reportDrop"
+					k-data-text-field="'Description'"
+					k-data-value-field="'ID'"
+					k-on-cascade="cd.options.onWorkspaceSelected($event)"
+					k-value="cd.options.selectedReport"
+					k-data-source="cd.options.reportDS"
+					k-on-change="cd.options.onReportSelected($event)"
+					style="width: 100%"></select>
+		</div>
+		<div class="col-xs-3 col-sm-3">
+			<label></label>
+			<button id="loadReport" class="btn btn-primary btn-large"><i class="fa fa-play"></i><span>Apri</span></button>
+			<button id="loadReportInNewTab" class="btn btn-warning btn-large"><i class="fa fa-desktop"></i><span>Apri a schermo intero</span></button>
+		</div>
+	</div>
+	<div class="row">
+		<iframe id="powerBiFrame" src="" hidden></iframe>
+	</div>
+</div>
+<style>
+    .fa {
+        margin-right: 10px;
+    }
+</style>

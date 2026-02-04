@@ -1,0 +1,40 @@
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+		
+		<link rel="stylesheet" href="../bootstrap/3.0.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../js/jq/jqueryui/1.10.1/themes/smoothness/jquery-ui.css"/>
+		
+		<link rel="stylesheet" href="../css/plani3d-maps.min.css" type="text/css">
+		
+		<script type="text/javascript" src="../js/require.js"></script>
+		
+		<title>Tematismi multipli - Plani3D Maps 2.0</title>
+	</head>
+	<body>
+		<div><!-- se questo manca, la selezione ha un offset --></div>
+		
+		<div id="p3dt-map" class="p3dt-map"></div>
+		<script>
+			require(["config.js"], function () {
+				require(["plani3d-maps", "alyssoTestData"], function (plani3d, testData) {
+					var p3dmaps = new plani3d.Maps({
+						debug: true,
+						server: 'showcase.alysso.it',
+						maps: 'it',
+						layers: ['OSM', 'RV'],
+						tematismi: testData,
+						imgpath: '/views/3/'
+					});
+					p3dmaps.init().then(function () {
+						p3dmaps.loadTematismi(function (feature) {
+							alert("selezione: "+feature.get('assetid') + "/" + feature.get('codice_asset') + ": " + feature.get('descrizione'));
+						}, testData);
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

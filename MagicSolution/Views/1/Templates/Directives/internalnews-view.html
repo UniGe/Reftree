@@ -1,0 +1,93 @@
+﻿<div>
+    <style>
+        .titles {
+            text-align: left;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        #button {
+            background-color: #0090d9; /* Blue (Prime) */
+            border: none;
+            color: #e5e9ec;
+            padding: 7px 17px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+        }
+        #search {
+            width: 50%;
+            padding: 8px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+    </style>
+    <div class="panel-heading " ng-if="news[0].CanWrite">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                <p class="titles" style="text-align: left;">
+                    <b>  {{ translate('NewsManagement')}} </b>
+                </p>
+            </a>
+        </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse" ng-if="news[0].CanWrite">
+        <div class="panel-body">
+            <div id="grid0"></div>
+            <magic-grid id="grid0" gridname="V_News" filter="cd.options.initialFilter" kendo-grid-instance="cd.options.kendoGridInstance"></magic-grid>
+            <!--<magic-form-sp model="cd.model" storedprocedure="dbo.Get_FormValues" formname="V_News"></magic-form-sp>
+            <magic-form model="cd.model" table-name="V_News"></magic-form>-->
+        </div>
+    </div>
+    <label> <input ng-model="searchText" placeholder="{{ translate('SearchNews')}}" id="search"></label>
+    <div class="col-md-6">
+        <table class="table table-bordered">
+           
+            <tr class="titles">
+                    <td>
+                        {{ translate('Sender')}}
+                    </td>
+                    <td>
+                        {{ translate('SendDate')}}
+                    </td>
+                    <td>
+                        {{ translate('NewsSubject')}}
+                    </td>
+                    <td>
+                        {{ translate('Attachments')}}
+                    </td>
+                    <td></td>
+            </tr>
+        
+            <tr ng-repeat="message in news  | filter:searchText:strict">
+                <td>{{message.From_User_FullDescription}}</td>
+                <td>{{message.Date}}</td>
+                <td>{{message.Subject}}</td>
+                <td><a href="{{message.Attachments}}"  ng-if="message.Attachments" target="_blank"><input id="button" type="button" value="{{ translate('Attachments')}}" /></a></td>
+                <td>
+                    <b><input id="button" type="button" value="{{ translate('ReadNews')}}" ng-click="getNews(message.ID)" /></b>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row col-md-6">
+        <div ng-repeat="message in selectednews track by message.ID" class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <b>{{message.From_User_FullDescription}}, {{message.Date}}</b>
+                    <br />
+                    <i>{{ translate('Subject')}} : {{message.Subject}}</i>
+                    <br />
+                    <i ng-click="showPersonDepartment($event)" style="cursor: pointer">{{ translate('Recipients')}}</i>
+                    <i> : {{message.Recipients}}</i>
+                </div>
+                <div class="panel-body" ng-bind-html="message.Body"></div>
+                <div ng-if="message.Attachments" class="panel-footer"><a href="{{message.Attachments}}" target="_blank">{{ translate('Attachments')}}</a></div>
+            </div>
+        </div>
+    </div>
+</div>

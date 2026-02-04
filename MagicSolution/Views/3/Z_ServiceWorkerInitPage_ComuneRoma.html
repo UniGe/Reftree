@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>Loading service worker customize with some decent css ...</h1>
+<script>
+     if ('serviceWorker' in navigator) {
+         navigator.serviceWorker.register('servizi3/reftree2roma/RefTreeServiceWorker').then(function (registration) {
+            // Registration was successful
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            return navigator.serviceWorker.ready;
+        }).then(function () {
+            // Service worker is ready to intercept requests
+            // Redirect to dashboard-v2
+            setTimeout(() => {
+                window.location.href = "../../dashboard-v2";
+            }, 1000);
+        }).catch(function (error) {
+            // Registration or service worker initialization failed
+            console.error('ServiceWorker registration failed: ', error);
+        });;
+    }
+
+
+</script>
+</body>
+
+</html>

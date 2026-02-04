@@ -1,0 +1,16 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-2  col-md-2 col-lg-2">
+        <select kendo-drop-down-list="cd.options.signalsDropDown"
+                k-data-text-field="'Description'"
+                k-data-value-field="'ID'"
+                k-data-source="cd.options.bikeCubeSignalsds"
+                k-on-cascade="cd.options.setFilter()"
+                style="width: 100%"></select>
+    </div>
+</div>
+<div class="row" style="height:20px;"></div>
+<h3>Cube log</h3>
+<div class="row">
+    <magic-grid id="grid0" gridname="v_BikeCubeLog" filter="cd.options.initialFilter" kendo-grid-instance="cd.options.kendoGridInstanceCube"></magic-grid>
+</div>
+

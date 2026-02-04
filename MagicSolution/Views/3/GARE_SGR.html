@@ -1,0 +1,64 @@
+<div class="panel with-nav-tabs panel-default">
+    <div class="panel-heading" id="TabList">
+        <ul class="nav nav-tabs" ng-init="loadContent = {}">
+            <li class="active"><a data-toggle="tab" href="#daInv" id="triggerME___">Elenco generale</a> </li>
+            <li ng-click="loadContent.inDet = true"><a data-toggle="tab" href="#inDet" id="inDetTab">Definizione del procedimento</a></li>
+            <li ng-click="loadContent.inVer = true"><a data-toggle="tab" href="#inVer" id="inVerTab">Selezione dei partecipanti</a></li>
+            <li ng-click="loadContent.inAgg = true"><a data-toggle="tab" href="#inAgg" id="inAggTab">Aggiudicazione</a> </li>
+            <!-- <li ng-click="loadContent.valid = true"><a data-toggle="tab" href="#valid" id="verTab">Aggiudicazione
+                    definitiva</a> </li> -->
+            <ul class="nav navbar-nav navbar-right">
+                <li> <button id="_helpOnLine" class="btn btn-white btn-icon btn-cerchio" onclick="helpDownloadFile(event,'tk_tender')"
+                        data-toggle="tooltip" data-placement="bottom" title="Manuale utente"> <i class="fa fa-question fa-2x"></i>
+                    </button></li>
+            </ul>
+        </ul>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane fade active in" id="daInv">
+            <div>
+                <magic-grid gridname="GARE_SGR"></magic-grid>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="inDet">
+            <div ng-if="loadContent.inDet">
+                <magic-grid filter="{field:'EV_STAGE_CODE',operator:'eq', value:'DET'}" gridname="GARE_SGR" id="GARE_SGR">
+                </magic-grid>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="inVer">
+            <div ng-if="loadContent.inVer">
+                <magic-grid filter="{field:'EV_STAGE_CODE',operator:'eq', value:'PROCAFF'}"
+                    gridname="GARE_SGR"  id="GARE_SGR"></magic-grid>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="inAgg">
+            <div ng-if="loadContent.inAgg">
+                <magic-grid filter="{field:'EV_STAGE_CODE',operator:'eq', value:'DEF'}" gridname="GARE_SGR"  id="GARE_SGR">
+                </magic-grid>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#_helpOnLine').tooltip('show');
+    console.log("RequireConfig");
+    setTimeout(function () {
+        $('#_helpOnLine').tooltip('hide');
+    }, 7000);
+</script>
+<style>
+    .btn-cerchio {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.428571429;
+        border-radius: 15px;
+        padding-top: 4px;
+        padding-right: 5px;
+        padding-left: 5px;
+        margin-top: 20%;
+        margin-right: 10px;
+    }
+</style>

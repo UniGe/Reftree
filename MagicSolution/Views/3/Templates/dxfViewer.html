@@ -1,0 +1,222 @@
+﻿<style>
+
+    .toolbar-container {
+        position: relative;
+    }
+
+    .toolbar-container-button {
+        margin: 3px;
+        background-color: #0d6a92 !important;
+    }
+
+    .toolbar-container-info {
+        height: 60px;
+        position: relative;
+        width: 50%;
+    }
+
+    .toolbar-container-info-off {
+        height: 60px;
+        position: relative;
+        display: none;
+    }
+
+    .div-input-option {
+        margin-right: 5px;
+    }
+
+    .drawingInfo {
+        bottom: 0;
+        width: calc(100% - 25px);
+        /* height: 40px;*/
+        position: absolute;
+    }
+</style>
+
+<div id="NormalToolbar"
+     ng-show="!d.isLoading"
+     class="toolbar-container">
+    <button title="{{d.getLabel('center')}}"
+            ng-if="d.mode === 'webgl'"
+            type="button"
+            class="btn btn-success toolbar-container-button"
+            ng-click="d.center()">
+        <i class="fa fa-dot-circle-o"
+           aria-hidden="true" />
+    </button>
+    <button title="{{d.getLabel('showInfo')}}"
+            ng-if="d.mode === 'webgl' && d.settings.showCursorInfo"
+            type="button"
+            ng-class="d.showCursorInfo ?  'btn btn-success draggable toolbar-container-button' : 'btn btn-default draggable'"
+            ng-click="d.hideInfoView()">
+        <i class="fa fa-info-circle"
+           aria-hidden="true" />
+    </button>
+    <!--<button title="{{d.getLabel('showInfo')}}"
+            ng-if="d.mode === 'webgl' && d.settings.showCursorInfo"
+            type="button"
+            ng-class="d.showCursorInfo ?  'btn btn-success draggable toolbar-container-button' : 'btn btn-default draggable'"
+            ng-click="d.hideInfoView()">
+        <i class="fa fa-info-circle"
+           aria-hidden="true" />
+    </button>-->
+    <button title="{{d.getLabel('save')}}"
+            ng-if="d.modality == 'D' && d.mode === 'webgl'"
+            type="button"
+            class="btn btn-success toolbar-container-button"
+            ng-click="d.onExportDxf(true)">
+        <i class="fa fa-save"
+           aria-hidden="true" />
+    </button>
+    <button title="{{d.getLabel('addScale')}}"
+            ng-if="d.assetMode && d.showActionSingle && d.mode === 'webgl'"
+            type="button"
+            class="btn btn-success toolbar-container-button"
+            ng-click="d.onchangeScale(true)">
+        <i class="fa fa-plus"
+           aria-hidden="true" />
+    </button>
+    <button title="{{d.getLabel('removeScale')}}"
+            ng-if="d.assetMode && d.showActionSingle && d.mode === 'webgl'"
+            type="button"
+            class="btn btn-success toolbar-container-button"
+            ng-click="d.onchangeScale(false)">
+        <i class="fa fa-minus"
+           aria-hidden="true" />
+    </button>
+    <button title="{{d.getLabel('ruota')}}"
+            ng-if="d.assetMode && d.showActionSingle && d.mode === 'webgl'"
+            type="button"
+            class="btn btn-success toolbar-container-button"
+            ng-click="d.onChangeRotate(true)">
+        <i class="fa fa-arrow-circle-left"
+           aria-hidden="true" />
+    </button>
+    <button title="{{d.getLabel('ruota')}}"
+            ng-if="d.assetMode && d.showActionSingle && d.mode === 'webgl'"
+            type="button"
+            class="btn btn-success toolbar-container-button"
+            ng-click="d.onChangeRotate(false)">
+        <i class="fa fa-arrow-circle-right"
+           aria-hidden="true" />
+    </button>
+    <button title="{{d.getLabel('selectAll')}}"
+            ng-if="d.mode === 'webgl' && !d.assetMode && d.fillPolylines.length > 0 && !d.measureMode"
+            type="button"
+            class="btn btn-success toolbar-container-button"
+            ng-click="d.onSelectAll()">
+        <i class="fa fa-check"
+           aria-hidden="true" />
+    </button>
+    <button title="{{d.getLabel('deleteLine')}}"
+            ng-if="d.mode === 'webgl' && !d.assetMode && d.modality == 'M'"
+            type="button"
+            class="btn btn-danger"
+            ng-click="d.onClearLineMeasure()">
+        <i class="fa fa-trash"
+           aria-hidden="true" />
+    </button>
+    <div ng-if="d.showActionSingle"
+         name="divAction"
+         style="margin-left:15px;"
+         class="btn-group">
+    </div>
+    <!--<div class="div-input-lable pull-right" ng-if="d.mode === 'webgl' && !d.assetMode && (d.modality == 'M' || d.modality == 'D')">
+        <label for="scaleDwg">Scala dwg</label>
+        <input id="scaleDwg"
+               ng-value="d.scale"
+               ng-model="d.scale"
+               placeholder="Inserisci scala"
+               style="flex: 0 0 150px; color: #0d6a92;" />
+    </div>
+    <div class="div-input-lable pull-right" ng-if="d.mode === 'webgl' && !d.assetMode && (d.modality == 'M' || d.modality == 'D')">
+        <label for="scaleDrawing">Scala oggetti dwg</label>
+        <input id="scaleDrawing"
+               ng-value="d.scaleDrawing"
+               ng-model="d.scaleDrawing"
+               placeholder="Inserisci scala"
+               style="flex: 0 0 150px; color: #0d6a92;" />
+    </div>-->
+    <button title="{{d.getLabel('ruota')}}"
+            ng-if="!d.assetMode && d.bCompare && d.mode === 'webgl'"
+            type="button"
+            class="btn btn-success toolbar-container-button"
+            ng-click="d.onRotateLeft(true)">
+        <i class="fa fa-arrow-circle-left"
+           aria-hidden="true" />
+    </button>
+    <button title="{{d.getLabel('ruota')}}"
+            ng-if="!d.assetMode && d.bCompare && d.mode === 'webgl'"
+            type="button"
+            class="btn btn-success toolbar-container-button"
+            ng-click="d.onRotateRight(false)">
+        <i class="fa fa-arrow-circle-right"
+           aria-hidden="true" />
+    </button>
+    <button title="{{d.getLabel('move')}}"
+            ng-if="!d.assetMode && d.bCompare && d.mode === 'webgl'"
+            type="button"
+            class="btn btn-success toolbar-container-button"
+            ng-click="d.onMoveUp()">
+        <i class="fa fa-arrow-up"
+           aria-hidden="true" />
+    </button>
+    <button title="{{d.getLabel('move')}}"
+            ng-if="!d.assetMode && d.bCompare && d.mode === 'webgl'"
+            type="button"
+            class="btn btn-success toolbar-container-button"
+            ng-click="d.onMoveDown()">
+        <i class="fa fa-arrow-down"
+           aria-hidden="true" />
+    </button>
+    <button title="{{d.getLabel('move')}}"
+            ng-if="!d.assetMode && d.bCompare && d.mode === 'webgl'"
+            type="button"
+            class="btn btn-success toolbar-container-button"
+            ng-click="d.onMoveLeft()">
+        <i class="fa fa-arrow-left"
+           aria-hidden="true" />
+    </button>
+    <button title="{{d.getLabel('move')}}"
+            ng-if="!d.assetMode && d.bCompare && d.mode === 'webgl'"
+            type="button"
+            class="btn btn-success toolbar-container-button"
+            ng-click="d.onMoveRight()">
+        <i class="fa fa-arrow-right"
+           aria-hidden="true" />
+    </button>
+    <button title="{{d.getLabel('addPolyline')}}"
+            ng-if="!d.assetMode && d.modality == 'D'"
+            type="button"
+            class="btn btn-success toolbar-container-button"
+            ng-click="d.addPolyline()">
+        <i class="fa fa-plus"
+           aria-hidden="true" />
+    </button>
+</div>
+
+
+<div id="dwg_{{d.idFile}}"
+     class="dxf-viewer-container"
+     ng-show="!d.isLoading"
+     style="width: 100%; height: 100%;"
+     ng-mousemove="d.onMouseMoveOverViewer($event)">
+</div>
+
+<div ng-if="true && d.mode === 'webgl' && d.showCursorInfo"
+     ng-show="d.showPopover"
+     ng-class="d.getPopoverClass()"
+     style="{{ d.getPopoverStyle() }}">
+    <h3 class="popover-title"
+        style="display: none;" />
+    <div id="popoveTooltip"
+         class="popover-content"
+         style="overflow-y: auto;"
+         ng-bind-html="d.mouseOverDetailDescription" />
+</div>
+<div ng-show="false"
+     class="dwg-tooltip-r3"
+     ng-bind-html="d.infoHanlde" />
+</div>
+
+

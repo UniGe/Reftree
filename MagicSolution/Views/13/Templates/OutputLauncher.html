@@ -1,0 +1,30 @@
+﻿<form name="form" ng-submit="ol.save(form)">
+    <style scoped>
+        .modal-body {
+            background-color: white;
+        }
+
+        .nav-tabs {
+            background-color: whitesmoke;
+        }
+    </style>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">{{ ol.translate('Generate') }}</h4>
+    </div>
+    <div id="contentofmodal" class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <ng-form>
+                    <magic-form model="ol.form.data" table-name="Form_OutputLauncher" options="{ itemsPerRow: 2 }">
+                    </magic-form>
+                </ng-form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button id="executesave" class="btn btn-primary" aria-label="save">
+            {{ ol.translate('save') }}
+        </button>
+    </div>
+</form>

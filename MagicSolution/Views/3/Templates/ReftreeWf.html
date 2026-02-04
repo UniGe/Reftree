@@ -1,0 +1,150 @@
+﻿<style>
+    .btn-success.focus, .btn-success:focus {
+        background-color: #0d638f;
+    }
+
+    .btn-success:active:focus {
+        background-color: #0d638f;
+    }
+
+    .control-buttons {
+        background-color: white;
+        height: 50px;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    body {
+        background-color: #e5e9ec;
+        width:calc(100% -20px);
+    }
+
+    p {
+        color: white;
+    }
+
+    .center-screen {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 65vh;
+         
+    }
+
+    .show-grid {
+        margin: 25px;
+    }
+
+    .actionButton {
+        margin: 3px;
+        min-width:200px;
+        min-height:7vh;
+    }
+
+    .btn-group-father {
+        min-width:200px;
+    }
+
+    .divAction {
+        display: block;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .initTab {
+        min-height:90vh;
+    }
+
+    .scrollable-menu-r3 {
+        overflow: hidden;
+        max-height: 80vh !important;
+        height: auto !important;
+    }
+</style>
+
+<div id="toolbar-container"
+     class="control-buttons">
+    <div class="pull-right"
+         style="padding: 13px 5px; text-align: center;">
+        <span id="loginName">{{rw.requestData.Username}}</span>
+        <span class="spanBusinessUnit">{{rw.requestData.dsBusinessUnit}}</span>
+        <a id="A1"
+           onclick="logout();"
+           href="javascript:void(0);">
+            <span id="logout"
+                  style="margin-left:10px;">Esci</span>
+        </a>
+    </div>
+    <div class="pull-left"
+         style="padding: 13px 5px; text-align: center;">
+        <a href="dashboard-v2"
+           id="dshb2">
+            <i class="icon-custom-home" />
+            <span class="title">Dashboard</span>
+            <span class="selected" />
+            <span id="activityCounter"
+                  class="badge badge-important pull-right" />
+        </a>
+    </div>
+</div>
+
+<div ng-class="!rw.requestData.showGrid ? 'center-screen' : 'show-grid'">
+    <div ng-if="rw.errorList.length==0 && rw.showInitTab"
+         ng-include="'initTab.html'" class="initTab" />
+    <div ng-if="rw.errorList.length>0"
+         ng-include="'errors.html'" />
+</div>
+
+<script type="text/ng-template"
+        id="errors.html">
+    <div id="actionSuccess">
+        <div id="descriptionContainer"
+             ng-repeat="err in rw.errorList">
+            <p>{{err.text}}</p>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template"
+        id="initTab.html">
+    <div ng-if="rw.requestData.showGrid" name="divAction" class="divAction"></div>
+    <div ng-if="!rw.requestData.showGrid" ng-include="'detail.html'" />
+    <magic-grid ng-show="rw.requestData.showGrid"
+                external-grid-object="rw.mainGrid"
+                gridname="{{rw.mainGrid.code}}"
+                gridoptionsextension="{dataBinding: rw.onDataBindingGrid}" />
+    <div ng-if="!rw.requestData.showGrid" name="divAction" class="divAction"></div>
+</script>
+
+<script type="text/ng-template"
+        id="action.html">
+    <magic-actions parentgridinstance="rw.mainGridDataSrc"
+                   rowdata="rw.currentDataRow"
+                   gridname="rw.mainGrid.code"
+                   entityname="rw.mainGrid.EntityName"
+                   actiontype="customactions"
+                   callback="rw.onActionExecuted" />
+    <magic-actions parentgridinstance="rw.mainGridDataSrc"
+                   rowdata="rw.currentDataRow"
+                   gridname="rw.mainGrid.code"
+                   entityname="rw.mainGrid.EntityName"
+                   actiontype="stageactions"
+                   callback="rw.onActionExecuted" />
+</script>
+
+<script type="text/ng-template"
+        id="detail.html">
+    <div ng-if="rw.columnsForm.length>0"
+         class="form-container">
+        <form id="contactForm">
+            <div ng-repeat="c in rw.columnsForm"
+                 class="tbl-record">
+                <span class="tbl-record-title">{{c.title}}:</span>{{c.value}}
+            </div>
+        </form>
+        <div id="messageBox" />
+    </div>
+</script>
+
+
+

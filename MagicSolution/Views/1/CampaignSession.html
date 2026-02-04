@@ -1,0 +1,14 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+        <select kendo-drop-down-list="cd.options.campaignDropDown"
+                k-data-text-field="'CampaignDescription'"
+                k-data-value-field="'ID'"
+                k-data-source="cd.options.campaigns"
+                k-on-cascade="cd.options.setFilter()"
+                style="width: 100%"></select>
+    </div>
+</div>
+<div class="row" style="height:20px;"></div>
+<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <magic-grid id="grid0" gridname="Call_OP" filter="cd.options.initialFilter" kendo-grid-instance="cd.options.kendoGridInstance"></magic-grid>
+</div>

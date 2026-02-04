@@ -1,0 +1,9 @@
+﻿<div>
+    <asset-map ng-show="!am.showGrid" ng-if="am.mapLoaded" model="am.asset" onselect-asset="am.onselectAsset(assets, event)" grid="am.gridInstance"></asset-map>
+    <div ng-show="am.showGrid">
+        <p style="text-align: right;">
+            <button style="padding: 5px 13px 5px; position: relative; z-index: 10; font-weight: bold;" class="k-button" ng-click="am.showMap()">{{ am.getObjectText('showMap') }}</button>
+        </p>
+        <div ng-if="!$.isEmptyObject(am.gridObject)" kendo-grid="am.gridInstance" k-options="am.gridObject" gridname="{{ am.gridObject.gridcode }}"></div>
+    </div>
+</div>

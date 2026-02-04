@@ -1,0 +1,75 @@
+﻿<style>
+    .ggm-map .gm-style .gm-style-iw {
+        overflow: visible;
+    }
+    #detail__.detailhidden {
+        display: none;
+    }
+    .dwg-color-box {
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        background-color: #ccc;
+        left: 5px;
+        top: 5px;
+    }
+</style>
+<form name="form" ng-submit="tgm.filterTree(form)" ng-show="tgm.showFilters">
+    <label class="control-label" for="operator">{{ tgm.getLabels('operator') }}</label>
+    <select name="operator" id="operator" ng-model="tgm.treeFilters.Operator">
+        <option value="AND">AND</option>
+        <option value="OR">OR</option>
+    </select>
+    <div class="row" style="height:10px;"></div>
+    <!--<magic-form-sp useasfilter="true" model="tgm.treeFilters.Values" storedprocedure="config.USP_GET_FormData" isreadonly="false" formname="{{ tgm.formName }}" itemsperrow=2 hidetabs="true" options='{ "kendoStyle":false }'
+                   ng-if="tgm.formName">
+    </magic-form-sp>-->
+    <magic-form-sp useasfilter="true" model="tgm.treeFilters.Values" storedprocedure="core.DWG_GetFilter" isreadonly="false" formname="{{ tgm.formName }}" itemsperrow=2 hidetabs="true" options='{ "kendoStyle":false }'
+                   ng-if="tgm.formName">
+    </magic-form-sp>
+    <input class="btn btn-success" type="submit" value="{{ tgm.getLabels('applyfilter') }}" />
+</form>
+<div id="mastercancel__" ng-show="!tgm.showFilters" class="btn btn-danger" style="position:absolute; top: 0; right: 0; z-index:10" ng-click="tgm.closeViewer()">X</div>
+<div ng-show="tgm.showFilters" class="btn btn-danger" style="position:absolute; top: 0; right: 0; z-index:10" ng-click="tgm.showFilters = false">X</div>
+<h3>{{ tgm.Label }}</h3>
+<div ng-show="!tgm.showFilters" class="col-md-4" style="overflow:auto;height:95%;">
+    <div class="row">
+        <select style="float:left;margin-right:5px;margin-bottom:2px;width:95%;" kendo-drop-down-list="tgm.selectedTree"
+                k-data-text-field="'Description'"
+                k-data-value-field="'ID'"
+                k-data-source="tgm.TreesDs"
+                k-on-cascade="tgm.onTreeChange()"></select>
+        <div style="float:left;">
+            <button style="float:left;" title="Filters" type="button" class="btn btn-default" ng-click="tgm.toggleFilter()">
+                <span class="glyphicon glyphicon-filter"></span>
+            </button>
+            <button style="float:left;margin-left:1px;" title="Remove filters" type="button" ng-class="{'btn btn-default': !tgm.filtersActive , 'btn btn-danger': tgm.filtersActive }" ng-click="tgm.undoFilterTree()">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+            <button id="actions___gmap" style="float:left;margin-left:1px;" title="Show actions" type="button" class="btn btn-primary" ng-click="tgm.showActions()">
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+    <div class="row" style="height:10px;"></div>
+    <div id="gantttree" class="row">
+        <div kendo-tree-view="tgm.openTree"
+             k-data-source="tgm.selectedTreeData"
+             k-checkboxes="tgm.checkboxesTemplate"
+             k-on-check="tgm.getTematFromTree(kendoEvent)"
+             k-on-expand="tgm.setTreeExpandedItem(kendoEvent)"
+             k-on-data-bound="tgm.loadFilterForm(kendoEvent)">
+            <span k-template>
+                {{dataItem.Description}} <b>{{ dataItem.Area ?  dataItem.Area + ' m²' : ' ' }}</b> {{ dataItem.Tot_nr && dataItem.Tot_nr>1 ?  '(' + dataItem.Tot_nr + ')' : '' }}
+                <span class="dwg-color-box" style="background-color:{{ dataItem.ColourTemat }};">
+                </span>
+            </span>
+        </div>
+    </div>
+</div>
+<easy-map ng-show="!tgm.showFilters" ng-class="tgm.calcViewerClass()" mapOptions="tgm.mapOptions" markers="tgm.markers" on-map-ready="tgm.onMapReady()" on-select="tgm.setGridFilter(event)"></easy-map>
+<div id="detail__" ng-class="tgm.showDetail && !tgm.showFilters  ? 'col-md-3' : 'detailhidden'" style="padding-right:45px;">
+    <ul class="list-group">
+        <li style="background-color:{{ item.ColourField ? item.ColourField: 'white' }}" ng-repeat="item in tgm.detailInfo" class="list-group-item"><span><b>{{ item.label  }}</b>:</span><span style="word-wrap:break-word;font-weight:{{ item.bold ? 'bold' : 'normal' }}">{{ item.value }}</span></li>
+    </ul>
+</div>

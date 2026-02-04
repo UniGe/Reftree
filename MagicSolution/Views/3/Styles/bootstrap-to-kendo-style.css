@@ -1,0 +1,290 @@
+﻿html {
+	/* kendo blue opal style colors */
+	--color: #003f59;
+	--primary-color: #fff;
+	--icon-color: #003f59;
+	--border-color: #a3d0e4;
+	--primary-border-color: #1cb1ef;
+	--hover-border-color: #8bc4dd;
+	--background-color: #d9ecf5;
+	--background-image: none,linear-gradient(to bottom,rgba(255,255,255,.45) 0,rgba(255,255,255,0) 100%);
+	--primary-background-color: #157299;
+	--primary-background-image: none,linear-gradient(to bottom,rgba(255,255,255,0) 0,rgba(255,255,255,.23) 100%);
+	--hover-background-color: #7ad2f7;
+	--hover-background-image: none,linear-gradient(to bottom,rgba(255,255,255,.4) 0,rgba(255,255,255,0) 100%);
+	--hover-primary-background-color: #157299;
+	--hover-primary-background-image: var(--hover-background-image);
+	--font-family: 'Raleway-Medium';
+}
+
+/* magic form */
+magic-form .form-group {
+	display: inline-block;
+	width: 100%;
+}
+magic-form .form-group label,
+magic-form .schema-form-checkbox label > span {
+	font-size: 12px;
+	color: var(--color) !important;
+	font-family: var(--font-family);
+}
+/*magic-form .form-group label,
+magic-form .schema-form-checkbox label > span {
+	float: left;
+	clear: both;
+	width: 30%;
+	text-align: right;
+}*/
+magic-form .schema-form-checkbox label {
+	width: 100%;
+	padding: 0 !important;
+	display: flex;
+}
+magic-form .form-group.schema-form-grid label {
+	width: 100%;
+	text-align: inherit;
+	float: inherit;
+}
+magic-form .form-group label + textarea,
+magic-form .form-group label + input,
+magic-form .form-group label + select,
+magic-form .form-group label > select,
+magic-form .schema-form-checkbox label > input,
+magic-form .schema-form-checkbox label > select,
+magic-form .form-group label + .form-group .sf-searchgrid-wrapper .ui-select-toggle,
+magic-form .form-group label + .form-group .sf-searchgrid-wrapper input,
+magic-form .form-group label + .row .form-control-date input,
+magic-form .form-group label + .row .form-control-time input {
+	border-color: var(--border-color);
+	background-color: #fff;
+	color: var(--color);
+}
+magic-form .form-group label + textarea:hover,
+magic-form .form-group label + input:hover,
+magic-form .form-group label + select:hover,
+magic-form .form-group label > select:hover,
+magic-form .schema-form-checkbox label > input:hover,
+magic-form .schema-form-checkbox label > select:hover,
+magic-form .form-group label + .form-group .sf-searchgrid-wrapper .ui-select-toggle:hover,
+magic-form .form-group label + .form-group .sf-searchgrid-wrapper input:hover,
+magic-form .form-group label + .row .form-control-date input:hover,
+magic-form .form-group label + .row .form-control-time input:hover,
+magic-form .form-group label + textarea:focus,
+magic-form .form-group label + input:focus,
+magic-form .form-group label + select:focus,
+magic-form .form-group label > select:focus,
+magic-form .schema-form-checkbox label > input:focus,
+magic-form .schema-form-checkbox label > select:focus,
+magic-form .form-group label + .form-group .sf-searchgrid-wrapper .ui-select-toggle:focus,
+magic-form .form-group label + .form-group .sf-searchgrid-wrapper input:focus,
+magic-form .form-group label + .row .form-control-date input:focus,
+magic-form .form-group label + .row .form-control-time input:focus {
+	border-color: var(--hover-border-color);
+}
+magic-form .form-group label + input,
+magic-form .form-group label + select,
+magic-form .form-group label > select,
+magic-form .schema-form-checkbox label > input,
+magic-form .schema-form-checkbox label > select,
+magic-form .form-group label + input + .k-widget input,
+magic-form .form-group label + .form-group .sf-searchgrid-wrapper .ui-select-toggle,
+magic-form .form-group label + .form-group .sf-searchgrid-wrapper input,
+magic-form .form-group label + .row .form-control-date input,
+magic-form .form-group label + .row .form-control-time input {
+	height: 27px !important;
+	min-height: 27px;
+	max-height: 27px;
+}
+magic-form .form-group label + select,
+magic-form .form-group label > select,
+magic-form .schema-form-checkbox label > select {
+	background-color: var(--background-color);
+	background-image: var(--background-image);
+}
+magic-form .schema-form-checkbox label > input {
+	-ms-transform: scale(1) !important;
+	-moz-transform: scale(1) !important;
+	-webkit-transform: scale(1) !important;
+	-o-transform: scale(1) !important;
+	margin: 0 0 0 10% !important;
+	width: auto !important;
+	order: 2;
+	position: relative !important;
+}
+magic-form .form-group label + .form-group .sf-searchgrid-wrapper .input-group-addon,
+magic-form .form-group label + .row .form-control-date .input-group-addon,
+magic-form .form-group label + .row .form-control-time .input-group-addon {
+	color: var(--icon-color);
+	border-color: var(--border-color);
+	background-color: var(--background-color);
+	background-image: var(--background-image);
+	padding: 2px 7px 3px;
+}
+magic-form .form-group label + .form-group .sf-searchgrid-wrapper .input-group-addon:hover,
+magic-form .form-group label + .row .form-control-date .input-group-addon:hover,
+magic-form .form-group label + .row .form-control-time .input-group-addon:hover {
+	background-color: var(--hover-background-color);
+	background-image: var(--hover-background-image);
+}
+magic-form .form-group label + .form-group .sf-searchgrid-wrapper .ui-select-toggle {
+	padding: 4px !important;
+}
+magic-form .form-group label + .form-group .sf-searchgrid-wrapper > div {
+	width: calc(100% - 55px);
+}
+magic-form .form-group .form-control-feedback {
+	display: none;
+}
+magic-form .sf-searchgrid-wrapper ~ .help-block {
+	padding-left: 0;
+}
+magic-form bootstrap-decorator input.form-control {
+	padding: 0 4px !important;
+}
+
+/* side by side */
+/*magic-form .form-group label + *:not([gridname]):not(.filter-labels),
+magic-form .form-group label > select,
+magic-form .schema-form-checkbox label > input,
+magic-form .form-group label + input + .k-widget {
+	float: right !important;
+	clear: right !important;
+	width: 60% !important;
+}
+magic-form .form-group label + select:hover,
+magic-form .form-group label > select:hover,
+magic-form .schema-form-checkbox label > select:hover {
+	background-color: var(--hover-background-color);
+	background-image: var(--hover-background-image);
+}
+magic-form .form-group .help-block {
+	clear: both;
+	padding-left: 40%;
+}
+magic-form .form-group label + input + .k-widget {
+	width: 60% !important;
+}*/
+
+/* tabstrip */
+.nav.nav-tabs {
+	background-color: var(--background-color);
+	background-image: var(--background-image);
+	border: none;
+}
+.nav.nav-tabs > li {
+	background-color: var(--background-color);
+	background-image: var(--background-image);
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-color: var(--border-color);
+	border-style: solid;
+	border-left-width: 1px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 0;
+}
+.nav.nav-tabs > li.active {
+	border-bottom-width: 1px;
+	margin-bottom: -1px;
+	border-bottom-color: #fff;
+	z-index: 11;
+}
+.nav.nav-tabs > li.active,
+.nav.nav-tabs > li:not(.active):not(.disabled):hover {
+	background-color: var(--hover-background-color);
+	background-image: var(--hover-background-image);
+	color: inherit;
+}
+.nav.nav-tabs > li + li {
+	margin-left: -1px;
+}
+.nav.nav-tabs > li > a {
+	color: var(--color);
+	padding: 6px 11px;
+	font-size: 12px;
+	line-height: 20px;
+	box-shadow: none !important;
+	font-family: var(--font-family);
+
+}
+.nav.nav-tabs > li > a > .badge {
+	padding: 0 4px 2px;
+}
+.nav.nav-tabs + .tab-content {
+	border: 1px solid var(--hover-border-color);
+}
+.nav.nav-tabs + .tab-content > .tab-pane {
+	padding: 4px 11px;
+}
+
+/* modal */
+.modal .modal-content {
+	border-radius: 4px;
+	border: 1px solid var(--border-color);
+}
+.modal .modal-header {
+	color: var(--color);
+	background-color: var(--background-color);
+	background-image: var(--background-image);
+	border-color: var(--border-color);
+	padding: 4px 6px;
+	font-size: 14px;
+	line-height: 17px;
+	min-height: 25px;
+	font-family: var(--font-family);
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+.modal .modal-header .modal-title {
+	color: var(--color);
+	font-size: 14px;
+	line-height: 17px;
+	font-family: var(--font-family);
+	text-align: left;
+}
+.modal .modal-header .close {
+	color: var(--color);
+	text-shadow: none;
+	opacity: 1;
+	font-weight: normal;
+	font-size: 25px;
+	margin-top: -6px;
+}
+.modal .modal-body {
+	padding: 7px;
+	background: none
+}
+.modal .modal-footer {
+	padding: 7px;
+	background: none;
+	border-top: 1px solid var(--border-color);
+}
+
+/* buttons */
+.btn {
+	font-size: 12px;
+	line-height: 20px;
+	font-family: var(--font-family);
+	padding: 2px 7px;
+}
+.btn:not(.btn-danger):not(.btn-success):not(.btn-warning):not(.input-group-addon):not(.ui-select-toggle) {
+	color: var(--color);
+	border: 1px solid var(--border-color);
+	background-color: var(--background-color);
+	background-image: var(--background-image) !important;
+}
+.btn:not(.btn-danger):not(.btn-success):hover:not(.btn-warning):not(.input-group-addon):not(.ui-select-toggle):hover {
+	background-color: var(--hover-background-color);
+	background-image: var(--hover-background-image) !important;
+	border-color: var(--hover-border-color);
+}
+.btn.btn-primary {
+	color: var(--primary-color) !important;
+	border: 1px solid var(--primary-border-color) !important;
+	background-color: var(--primary-background-color) !important;
+	background-image: var(--primary-background-image) !important;
+}
+.btn.btn-primary:hover {
+	background-color: var(--hover-primary-background-color) !important;
+	background-image: var(--hover-primary-background-image) !important;
+}

@@ -1,0 +1,23 @@
+﻿<div class="col-md-8">
+    <magic-form-sp model="cd.options.ImportData" storedprocedure="dbo.Get_FormValues" formname="V_InvoiceImportForm"></magic-form-sp>
+</div>
+<div class="cold-md-4">
+    <div>
+        <div class="form-inline row">
+            <div class="form-group" style="margin-left:10px;">
+                <label class="form-label-stripped" ng-bind="cd.options.lang.upload">
+                </label>
+            </div>
+            <div class="form-group" ng-class="{'has-error': cd.options.uploadError }">
+                <input type="file" id="excelupload"
+                       ng-model="cd.options.ImportData.files"
+                       accept=".xlsx,.csv"
+                       ng-init="cd.options.initUpload()" />
+                <div style="margin: 0;" class="help-block" ng-show="cd.options.uploadError" ng-bind="cd.options.lang.uploadErrorMsg"></div>
+            </div>
+        </div>
+        <div>
+            <button style="margin-left:15px;" class="btn btn-primary" ng-bind="cd.options.lang.eximport" ng-click="cd.options.importExcel()"></button>
+        </div>
+    </div>
+</div>

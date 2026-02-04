@@ -1,0 +1,26 @@
+﻿<form> 
+        <div class="form-group row">
+            <div class="col-md-1">
+                <span class="fa fa-mobile fa-2x pull-right"></span>&nbsp;
+            </div>
+            <div class="col-md-11">
+                <select kendo-drop-down-list k-options="dr.dropdownData" ng-model="dr.selections[0]" k-data-source="dr.bootstrapClasses.xs"></select>
+            </div>
+         </div>
+        <div class="form-group row">
+            <div class="col-md-1">
+                <span class="fa fa-tablet fa-2x pull-right"></span>&nbsp;
+            </div>
+            <div class="col-md-11">
+                <select  kendo-drop-down-list k-options="dr.dropdownData" ng-model="dr.selections[1]" k-data-source="dr.bootstrapClasses.sm"></select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-1">
+                <span class="fa fa-desktop fa-2x pull-right"></span>&nbsp;
+            </div>
+            <div class="col-md-11">
+                <select class="pull-right" kendo-drop-down-list k-options="dr.dropdownData" ng-model="dr.selections[2]" k-data-source="dr.bootstrapClasses.md"></select>
+            </div>
+        </div>
+</form>

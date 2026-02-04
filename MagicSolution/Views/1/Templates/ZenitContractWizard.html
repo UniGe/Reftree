@@ -1,0 +1,76 @@
+﻿<h5 ng-if="zcw.wizardCode">
+    <button title="Cambio wizard" class="btn btn-default" ng-click="zcw.openWindow()">
+        <span class="fa fa-exchange"></span>&nbsp;Cambio wizard 
+    </button>
+</h5>
+<h5 ng-if="!zcw.wizardCode">
+    <button title="Nuovo contratto" class="btn btn-default" ng-click="zcw.openWindow()">
+        <span class="fa fa-plus"></span>&nbsp;Nuovo contratto
+    </button>
+</h5>
+<div kendo-window="zcw.winSelectionWizard" k-options="zcw.winOptions">
+    <div class="form-group">
+        <label class="form-label-stripped">Provider</label>
+    </div>
+    <div class="form-group">
+        <select class="form-control"
+                ng-init="zcw.provider = zcw.providers[0].ID"
+                ng-model="zcw.filter.filters[0].value"
+                ng-change="zcw.onChangeProviders()"
+                ng-options="p.ID as p.Name for p in zcw.providers  | unique: 'ID'"></select>
+
+    </div>
+    <div class="form-group" style="margin-left:10px;">
+        <label class="form-label-stripped">Segmento</label>
+    </div>
+    <div class="form-group">
+        <select class="form-control"
+                ng-model="zcw.filter.filters[1].value"
+                ng-change="zcw.onChangeSegment()"
+                ng-options="s.ID as s.Description for s in zcw.segments  | unique: 'ID' track by s.ID"></select>
+    </div>
+    <div class="form-group" style="margin-left:10px;">
+        <label class="form-label-stripped">Tipo di copertura</label>
+    </div>
+    <div class="form-group">
+        <select class="form-control"
+                ng-model="zcw.filter.filters[2].value"
+                ng-change="zcw.onChangeCoverageType()"
+                ng-options="c.ID as c.Description for c in zcw.coveragetypes  | unique: 'ID' track by c.ID"></select>
+    </div>
+
+    <div class="form-group" style="margin-left:10px;">
+        <label class="form-label-stripped">Offerta</label>
+    </div>
+    <div class="form-group">
+        <select class="form-control"
+                ng-model="zcw.offer"
+                ng-options="o.ID as o.Description for o in zcw.offers | unique: 'value' track by o.ID"></select>
+    </div>
+	<div ng-if="zcw.teamLeaders && zcw.teamLeaders.visible">
+		<div class="form-group" style="margin-left:10px;">
+			<label class="form-label-stripped">Team leader</label>
+		</div>
+		<div class="form-group">
+			<select class="form-control"
+					ng-model="zcw.selectedTeamLeader_ID"
+					ng-if="zcw.teamLeaders && zcw.teamLeaders.visible"
+					ng-options="c.TeamLeaderID as c.TeamLeaderDesc for c in zcw.teamLeaders  | unique: 'TeamLeaderID' track by c.TeamLeaderID"></select>
+		</div>
+	</div>
+    <p ng-show="zcw.wizardChange">Attenzione! Il wizard verrà cambiato ed i dati inseriti saranno persi</p>
+    <button ng-show="zcw.offer && ((!zcw.teamLeaders || !zcw.teamLeaders.visible)|| zcw.selectedTeamLeader_ID)" class="btn btn-success" ng-click="zcw.setWizardCode()">
+        Avvia il wizard
+    </button>
+    <button ng-show="zcw.wizardCode" ng-class="{ 'btn btn-success':zcw.offer , 'btn btn-default':!zcw.offer }" ng-click="zcw.winSelectionWizard.close()">
+        Chiudi senza variazioni
+    </button>
+    <button ng-show="!zcw.wizardCode" class="btn btn-error" ng-click="zcw.closeWindow()">
+        Esci
+    </button>
+</div>
+<!--<magic-wizard id="wizard01" wizard-code="CRMZenit" options="zcw.wizardOptions"></magic-wizard>-->
+<div ng-show="zcw.wizardCode">
+    <magic-wizard id="wizard01" wizard-code="{{ zcw.wizardCode }}" options="zcw.wizardOptions" models="zcw.models"></magic-wizard>
+</div>
+<magic-grid id="grid0" gridname="PhoneContract_FrontOffice" filter="zcw.gridFilter" kendo-grid-instance="zcw.gridInstance"></magic-grid>

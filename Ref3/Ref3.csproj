@@ -1,0 +1,599 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{713FC3B6-9CF6-4232-B69F-DDBAEFE6FE0A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ref3</RootNamespace>
+    <AssemblyName>Ref3</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AttributeRouting">
+      <HintPath>..\packages\AttributeRouting.Core.3.4.2\lib\net40\AttributeRouting.dll</HintPath>
+    </Reference>
+    <Reference Include="AttributeRouting.Web">
+      <HintPath>..\packages\AttributeRouting.Core.Web.3.4.2\lib\net40\AttributeRouting.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="AttributeRouting.Web.Http">
+      <HintPath>..\packages\AttributeRouting.Core.Http.3.4.2\lib\net40\AttributeRouting.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="AttributeRouting.Web.Http.WebHost">
+      <HintPath>..\packages\AttributeRouting.WebApi.3.4.2\lib\net40\AttributeRouting.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net48\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=68293a411f0cabcc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DynamicQuery.1.0\lib\35\Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=7.5.2.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.7.5.2\lib\net462\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=7.5.0.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.Interfaces.7.5.0\lib\net462\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.System.Drawing, Version=7.5.0.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.System.Drawing.7.5.0\lib\net462\EPPlus.System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Fleck">
+      <HintPath>..\MagicSolution\bin\Fleck.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>packages\Ionic\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="JWT, Version=7.0.0.0, Culture=neutral, PublicKeyToken=6f98bca0f40f2ecf, processorArchitecture=MSIL">
+      <HintPath>..\packages\JWT.7.2.2\lib\net40\JWT.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build.Tasks.v4.0" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Identity.Client, Version=4.50.0.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.4.50.0\lib\net461\Microsoft.Identity.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Abstractions, Version=6.27.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Abstractions.6.27.0\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.3.0.1\lib\netstandard2.0\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.PowerBI.Api, Version=4.13.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.PowerBI.Api.4.13.0\lib\net48\Microsoft.PowerBI.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.21\lib\net461\Microsoft.Rest.ClientRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp-gdi, Version=1.50.4000.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\PDFsharp-MigraDocFoundation-1_50-beta5\lib\PdfSharp-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting-gdi">
+      <HintPath>..\packages\PDFsharp-gdi.1.50.4000-beta3b\lib\net20\PdfSharp.Charting-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="RabbitMQ.Client, Version=6.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <HintPath>..\packages\RabbitMQ.Client.6.6.0\lib\net462\RabbitMQ.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing.Common, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.8.0.4\lib\net462\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Channels, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Channels.7.0.0\lib\net462\System.Threading.Channels.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.0.0.0\lib\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="websocket-sharp-customheaders">
+      <HintPath>..\MagicSolution\bin\websocket-sharp-customheaders.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Data\RefTree.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RefTree.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Data\RefTree.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RefTree.edmx</DependentUpon>
+      <LastGenOutput>RefTree.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\RefTree.edmx.diagram">
+      <DependentUpon>RefTree.edmx</DependentUpon>
+    </Content>
+    <Content Include="Data\RefTree.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RefTree.edmx</DependentUpon>
+      <LastGenOutput>RefTree.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AttributeRoutingHttp.cs" />
+    <Compile Include="BL\FileGenerator.cs" />
+    <Compile Include="Controllers\AssetThemesController.cs" />
+    <Compile Include="Controllers\AssetTreeController.cs" />
+    <Compile Include="Controllers\AS_V_LOCATION_LOCATIONEXTENDEDController.cs" />
+    <Compile Include="Controllers\BIM_PROJECTSController.cs" />
+    <Compile Include="Controllers\HelpDeskController.cs" />
+    <Compile Include="Controllers\IntegrationController.cs" />
+    <Compile Include="Controllers\MF_APIController.cs" />
+    <Compile Include="Controllers\PowerBIRefTreeController.cs" />
+    <Compile Include="Controllers\RefTreeServicesController.cs" />
+    <Compile Include="Controllers\RefTreeSSOController.cs" />
+    <Compile Include="Controllers\CeiController.cs" />
+    <Compile Include="Controllers\DocumentaleController.cs" />
+    <Compile Include="Controllers\AS_V_ASSET_assetgroupsController.cs" />
+    <Compile Include="Controllers\DWGController.cs" />
+    <Compile Include="Controllers\SignatureController.cs" />
+    <Compile Include="Controllers\XmlUploadController.cs" />
+    <Compile Include="Controllers\InOutFileController.cs" />
+    <Compile Include="Controllers\US_V_CROSS_AREFUNController.cs" />
+    <Compile Include="Controllers\US_V_CROSS_AREGRIController.cs" />
+    <Compile Include="Controllers\ProcedureController.cs" />
+    <Compile Include="Controllers\ExcelUploadController.cs" />
+    <Compile Include="Controllers\FascicoloController.cs" />
+    <Compile Include="Controllers\RefTreeSchedulerController.cs" />
+    <Compile Include="Controllers\RefTreeXMLFieldsConfigController.cs" />
+    <Compile Include="Controllers\WORKFLOWSController.cs" />
+    <Compile Include="Controllers\ElaborazioniController.cs" />
+    <Compile Include="Controllers\M_TIPSAS_TIPASSController.cs" />
+    <Compile Include="Controllers\RoldepArevisController.cs" />
+    <Compile Include="Controllers\ChatBotController.cs" />
+    <Compile Include="Controllers\STREET_V_STREETEXTENDEDCONTROLLER.cs" />
+    <Compile Include="Data\AS_ASSET_asset.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\AS_GET_ASSET_MAIN_TB_Result.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\AS_SUBTIP_asset_subtipo.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\AS_V_ASSET_assetExtended.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\AS_V_LOCATION_locationextended.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CF_FIELDS_DATA_TYPE.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ContextExtension.cs" />
+    <Compile Include="Data\DatabaseEntityAutomations.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\DO_CAMUSE_fields_document_user.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_CLADOC_document_class.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_CLADOS_dossier_class.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_CLASTA_class_status.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_CLAUTE_class_document_user.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_DOCFIE_fields_document.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_DOCFIL_document_file.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_DOCGRO_Document_groups.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_DOCREL_document_relation.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_DOCUME_documents.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_DOCVER_versions.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_DOSSIE_dossier.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_DOSTIP_dosssier_type_document.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_DOSUTE_dossier_user.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_GET_UI_ELEMENTS_Result.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_OBTIDO_type_document.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_SP_DOCUMENTS_L_Result.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_STADOC_status.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_STAWRK_status_workflow.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_TIPDOC_document_type.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_V_DOCFIE_class_doc_fields.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_V_DOCFIL.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_V_DOCUME.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_V_DOCUME_ENTITY.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_V_DOCUME_MISSING.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DO_V_DOCVER.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EV_EVENT_EVENTS.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EV_GET_FUNCTIONS_FOR_STATUS_Result.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EX_EXCTIP_type_excel.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\FL_CLAFIL_class_file.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\FL_FILINP_input_file.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\FL_FORMAT_format.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\FL_RECFIL_fields.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\FL_TIPFIL_type_file.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetWaterMarkForUser_Result.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GET_ASSET_TREE_Result.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\get_do_cladoc_for_user_Result.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\JO_ACTIVE_JOBS.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\JO_ANAPRO_jobana_proare.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\JO_EXEORD_execution_order.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\JO_GET_UI_ELEMENTS_Result.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\JO_JOBANA_job_steps.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\JO_JOBEVE_jobs.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\JO_JOBFIE_job_fields.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\JO_JOBGRO_Job_groups.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\JO_JOBINP_job_input.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\JO_JOBNOT_notification.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\JO_JOBREC_job_record.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Magic_BusinessObjectTypes.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\M_TIPSAS_TIPASS.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PP_GET_UI_ELEMENTS_Result.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\RefTree.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RefTree.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\RefTree.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\RefTree.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RefTree.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\RefTree1.Designer.cs" />
+    <Compile Include="Data\STREET_V_streetExtended.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_do_botypes_GetList_Result.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_do_dossier_GetMissingDocs_Result.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_do_fascicolo_GetDocuments_Result.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_do_fascicolo_GetList_Result.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\US_AREFUN__Arepro_Functions.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\US_AREGRI_Arepro_Grids.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\US_AREGRO_area_groups.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\US_AREVIS_area_visibility.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\US_GROUPS_groups.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\utf_AS_V_ASSET_assetgroups_Result.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\utf_us_arefun_cross_Result.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\utf_us_aregrid_cross_Result.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\utf_US_V_GROUPS_groupsassets_Result.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\WF_V_ACTAGG_aggregate_activities.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\WF_V_ACTCAL_activities_calendar.cs">
+      <DependentUpon>RefTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\IntegrationFileImportManager.cs" />
+    <Compile Include="Helpers\JWTHelper.cs" />
+    <Compile Include="Helpers\RabbitMQService.cs" />
+    <Compile Include="Helpers\Sql\DataExportQueries.cs" />
+    <Compile Include="Helpers\Sql\ReftreeAPIGetQueries.cs" />
+    <Compile Include="Models\ALAB_CreateJobRequest.cs" />
+    <Compile Include="Models\DO_DOCFIE_fields_document.cs" />
+    <Compile Include="Models\DO_DOCFIL_document_file.cs" />
+    <Compile Include="Models\DO_DOCUME_documents.cs" />
+    <Compile Include="Models\DO_DOCVER_versions.cs" />
+    <Compile Include="Models\DO_DOSSIE_dossier.cs" />
+    <Compile Include="Models\AS_V_ASSET_assetgroups.cs" />
+    <Compile Include="Helpers\IAM_Manager.cs" />
+    <Compile Include="Models\EmbedReport.cs" />
+    <Compile Include="Models\ReportEmbedConfig.cs" />
+    <Compile Include="Models\US_V_AREFUN_CROSS.cs" />
+    <Compile Include="Models\US_V_AREGRI_CROSS.cs" />
+    <Compile Include="Models\ALAB_ViewRequest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AadService.cs" />
+    <Compile Include="Services\ConfigValidatorService.cs" />
+    <Compile Include="Services\EmbedService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\MagicSolution.pubxml" />
+    <None Include="Properties\PublishProfiles\RefTreeLocal.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="obj\Debug\" />
+    <Folder Include="packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\" />
+    <Folder Include="packages\WebActivatorEx.2.0.3\lib\net40\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MagicFramework\MagicFramework.csproj">
+      <Project>{75afa561-283c-4719-a09c-efaead3421fd}</Project>
+      <Name>MagicFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>34103</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:21277/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Questo progetto fa riferimento a uno o più pacchetti NuGet che non sono presenti in questo computer. Usare lo strumento di ripristino dei pacchetti NuGet per scaricarli. Per altre informazioni, vedere http://go.microsoft.com/fwlink/?LinkID=322105. Il file mancante è {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

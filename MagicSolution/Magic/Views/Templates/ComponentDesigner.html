@@ -1,0 +1,74 @@
+﻿<div ng-switch="cd.view">
+    <div ng-switch-default>
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-default" ng-click="cd.view = 'list'"><i class="fa fa-table" style="padding-right:10px;"></i>Show existing Overwrites</button>
+                <button ng-show="cd.GridSelected" title="Toggle active-status of overwrite-configuration!" ng-click="cd.ConfigIsActive = !cd.ConfigIsActive; cd.ChangesMade = true;" class="btn btn-success">
+                    <i ng-show="cd.ConfigIsActive" class="fa fa-check-square-o"></i>
+                    <i ng-show="!cd.ConfigIsActive" class="fa fa-square-o" style="padding-left:2px"></i>
+                    Active!
+                </button>
+                <button ng-show="cd.GridSelected" ng-class="{'disabled': !cd.ChangesMade}" ng-click="cd.saveColumnOverwrite()" class="btn btn-primary" title="Save current overwrite configuration!">
+                    <i class="fa fa-save"></i>
+                    Save!
+                </button>
+            </div>
+            <div class="col-md-offset-2 col-md-6">
+                <div ng-show="cd.ChangesMade" class="alert alert-warning" role="alert"><strong>Don't forget to save your changes!</strong></div>
+                <div ng-show="cd.ChangesSaved" class="alert alert-success" role="alert"><strong>Overwrite-Configuration was saved successfully!</strong></div>
+                <div ng-show="cd.ErrorOccured" class="alert alert-danger" role="alert"><strong>An error occured while trying to save Overwrite-Confituration!</strong></div>
+                <div ng-show="cd.ShowCreateNewAlert" class="alert alert-success" role="alert"><strong>Brand new Overwrite-Configuration!</strong></div>
+                <div ng-show="cd.ShowEditExistingAlert" class="alert alert-warning" role="alert"><strong>Already existing Overwrite-Configuration!</strong></div>
+                <div ng-show="cd.ShowOrderingAlert" class="alert alert-warning" role="alert"><strong>You are rearranging column positions! Please keep in mind that columns with unsetted ordinal position will be appended to the end!</strong></div>
+            </div>
+        </div>
+        <div class="row margin-top-10">
+            <div class="col-md-6"  >
+                <input class="form-control" type="text"
+                       placeholder="Search and select a grid to create a new overwrite..."
+                       uib-typeahead="grid as grid.MagicGridName for grid in cd.getGrids($viewValue)"
+                       typeahead-on-select="cd.setGrid()"
+                       typeahead-wait-ms="cd.settings.typeaheadWait"
+                       ng-model="cd.current.grid" />                
+                <div class="margin-top-10" ng-show="cd.GridSelected" ng-include="cd.readonlyTableTemplate"></div>
+            </div>
+            <div class="col-md-6" ng-show="cd.GridSelected">
+                <input class="form-control" type="text"
+                       placeholder="Filter columns"
+                       uib-typeahead="overwrite as cd.getFilteredColumns(column) for column in cd.filterColumns($viewValue)"
+                       typeahead-wait-ms="cd.settings.typeaheadWait"
+                       ng-model="cd.currentColumnFilter" />
+                <div class="margin-top-10" ng-include="cd.editableTableTemplate"></div> 
+            </div>
+        </div>         
+    </div>
+    <div ng-switch-when="list">
+        <div class="row">
+            <div class="col-md-6">
+                <button class="btn btn-default" ng-click="cd.showEditor()"><i class="fa fa-pencil-square-o" style="padding-right:10px;"></i>Create new Configuration</button>
+            </div>
+            <div class="col-md-6">
+                <div class="alert alert-warning">
+                    <strong>{{cd.SelectConfigText}}</strong>
+                </div>
+            </div>
+        </div>
+        <kendo-grid class="margin-top-10" options="cd.gridOverwriteGridOptions">
+
+        </kendo-grid>        
+    </div>
+</div>
+<style>
+    .alert { 
+        float:right;
+        max-height:inherit;
+        padding:8px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-right: 0px;
+        margin-left: 20px;
+    }
+    .k-widget > .k-widget {
+        display:none;
+    }
+</style>

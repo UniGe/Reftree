@@ -1,0 +1,74 @@
+﻿<style>
+    .labels {
+        height: 20px;
+        font-size: xx-large;
+        font-weight: bold;
+        color: #565454;
+    }
+</style>
+<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <p class="labels">
+        {{ cd.translate("FromProccess") }}
+    </p>
+    <br />
+    <div id="grid1"></div>
+</div>
+<div class="row" style="height:20px;"></div>
+<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <p class="labels">
+        {{ cd.translate("JobSpot") }}
+    </p>
+    <br />
+    <div id="grid2"></div>
+</div>
+<script>
+    var grid = getrootgrid("TaskList_complete");
+    renderGrid(grid, null, null, "grid1");
+
+    var grid2 = getrootgrid("RecurringActivitiy_Collaborator");
+    renderGrid(grid2, null, null, "grid2");
+</script>
+<!--<style>
+    .titles {
+        text-align: left;
+        font-weight: bold;
+        font-size: xx-large;
+        font-weight: bold;
+        color: black;
+    }
+
+    .panel-heading {
+        height: 50px;
+    }
+</style>
+<div class="panel-heading ">
+    <p class="titles" style="text-align: left;">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+
+            <b>   {{ cd.translate("FromProccess") }} </b>
+
+        </a>
+    </p>
+</div>
+<div id="collapseOne" class="panel-collapse collapse">
+    <div class="panel-body">
+        <div id="grid0"></div>
+        <magic-grid id="grid0" gridname="TaskList_complete" filter="cd.options.initialFilter" kendo-grid-instance="cd.options.kendoGridInstance"></magic-grid>
+    </div>
+</div>
+<div class="panel-heading">
+    <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+            <p class="titles" style="text-align: left;">
+                <b>  {{ cd.translate("JobSpot") }} </b>
+            </p>
+        </a>
+    </h4>
+</div>
+<div id="collapseThree" class="panel-collapse collapse">
+    <div class="panel-body">
+        <div id="grid2"></div>
+        <magic-grid id="grid0" gridname="RecurringActivitiy_Collaborator" filter="cd.options.initialFilter" kendo-grid-instance="cd.options.kendoGridInstance"></magic-grid>
+    </div>
+</div>-->
+

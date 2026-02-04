@@ -1,0 +1,31 @@
+﻿<div>
+    <link rel="stylesheet" href="/Views/3/tematismi/js/jq/jqueryui/1.10.1/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="/Views/3/tematismi/css/plani3d-maps.min.css" type="text/css">
+<!--     <link rel="stylesheet" href="/Views/3/tematismi/css/plani3d-3d.css" type="text/css"> -->
+
+    <div ng-show="!aa.alyssoMapReady || !aa.alyssoCatastoReady || !aa.showGrid">
+        <span class="lead">{{aa.assetDescription}}</span>
+        <button style="padding: 5px 13px 5px; position: relative; z-index: 10; font-weight: bold; height: 36px" class="pull-right btn btn-warning" ng-click="aa.showGrid = true; aa.onselectAsset()">{{ aa.getObjectText('showGrid') }}</button>
+        <button style="padding: 5px 13px 5px; position: relative; z-index: 10; font-weight: bold; height: 36px; margin-right: 5px;" class="pull-right btn btn-warning" ng-click="aa.showCatastoFn()" ng-show="!aa.showCatasto">{{ aa.getObjectText('showCatasto') }}</button>
+        <button style="padding: 5px 13px 5px; position: relative; z-index: 10; font-weight: bold; height: 36px; margin-right: 5px;" class="pull-right btn btn-warning" ng-click="aa.showCatasto = false" ng-show="aa.showCatasto">{{ aa.getObjectText('showMap') }}</button>
+        <div style="display: inline-block;" class="pull-right">
+            <div id="asset-map-actions-button" ng-show="aa.alyssoAssets" ng-click="aa.onselectAsset('actionClicked')" class="btn btn-primary" style="margin-right:10px">
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </div>
+        </div>
+        <!--<iframe src="/Views/3/tematismi/tematismi/test.html" style="width: 100%; height:70vh" frameborder="0"></iframe>-->
+        <div style="width: 100%; height:70vh; clear: both; position: relative;">
+            <div id="p3dt-map" class="p3dt-map" ng-show="!aa.showCatasto && !aa.is3d"></div>
+        <!--     <div id="p3d-model" class="p3d" ng-show="!aa.showCatasto && aa.is3d"></div> -->
+            <div id="p3dt-catasto" class="p3dt-map" ng-show="aa.showCatasto || !aa.alyssoCatastoReady"></div>
+        </div>
+    </div>
+    <div ng-show="aa.showGrid">
+        <p style="text-align: right;">
+            <button style="padding: 5px 13px 5px; position: relative; z-index: 10; font-weight: bold;" class="k-button" ng-click="aa.showCatastoFn()">{{ aa.getObjectText('showCatasto') }}</button>
+            <button style="padding: 5px 13px 5px; position: relative; z-index: 10; font-weight: bold;" class="k-button" ng-click="aa.showMap()">{{ aa.getObjectText('showMap') }}</button>
+          <!--   <button style="padding: 5px 13px 5px; position: relative; z-index: 10; font-weight: bold;" class="k-button" ng-click="aa.showMap('true')">{{ aa.getObjectText('showMap') }} 3D</button> -->
+        </p>
+        <div ng-if="!$.isEmptyObject(aa.gridObject)" kendo-grid="aa.gridInstance" k-options="aa.gridObject" gridname="{{ aa.gridObject.gridcode }}"></div>
+    </div>
+</div>

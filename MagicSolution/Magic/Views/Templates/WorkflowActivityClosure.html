@@ -1,0 +1,101 @@
+﻿<form name="form" ng-submit="wac.save(form)">
+    <style scoped>
+        .modal-body {
+            background-color:white;
+        }
+        .nav-tabs {
+            background-color:whitesmoke;
+        }
+    </style>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">{{ wac.taskDescription }}</h4>
+    </div>
+    <div id="contentofmodal" class="modal-body">
+        <div ng-if="wac.statuses" id="taskdata">
+            <h3>{{ wac.translate('taskClosure') }}</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <label for="statuses">{{ wac.translate("outStatus") }}</label>
+                        <select id="statuses" kendo-drop-down-list
+                                k-ng-model="wac.statusID"
+                                k-value-primitive="true"
+                                k-data-text-field="'Description'"
+                                k-data-value-field="'ID'"
+                                k-data-source="wac.statuses"
+                                k-cascade="wac.changeStatus"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="height:10px;"></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <label for="notes">{{ wac.translate("outStatusNote") }}</label>
+                        <textarea id="notes" rows="5" cols="30" ng-model="wac.notes"></textarea>
+                    </div>
+                    <div class="col-md-6" ng-class="{'has-error': wac.uploadError }">
+                        <label for="attachments">{{ wac.translate("attachments") }}</label>
+                        <input type="file" id="workflowupload"
+                               ng-model="wac.files"
+                               ng-init="wac.initUpload()" />
+                        <div style="margin: 0;" class="help-block" ng-show="wac.uploadError" ng-bind="wac.lang.uploadErrorMsg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="height:10px;"></div>
+        <div class="row" ng-if="wac.hasCustomForm">
+            <div id="activitydynamicdata" class="col-md-12">
+                <ng-form>
+                    <magic-form model="wac.customFormData" table-name="{{wac.taskid}}" options="{ itemsPerRow: 2 , formDefinition: wac.customFormModel }">
+                    </magic-form>
+                </ng-form>
+            </div>
+        </div>
+        <div ng-if="!wac.hasCustomForm && wac.hasNextTasks" class="row" style="height:30px;"></div>
+        <div ng-show="wac.hasNextTasks" class="row"></div>
+        <div id="nexttaskdata" ng-show="wac.hasNextTasks">
+            <h3>{{ wac.translate('nextTasks') }}</h3>
+            <div ng-repeat="(id,activity) in wac.nextTasksData" class="row">
+                <div class="col-md-12">
+                    <h4>{{ activity.Description }}</h4>
+                    <div class="col-md-4">
+                        <label>{{wac.translate("dueuserselection")}}</label>
+                        <select ng-if="wac.isSingleUser"
+                                kendo-drop-down-list
+                                k-value-primitive="true"
+                                k-data-text-field="'text'"
+                                k-data-value-field="'value'"
+                                k-ng-model="wac.nextTasksData[id].selectedOwnerIds"
+                                k-data-source="wac.nextTasksData[id].schedulableUsers"></select>
+                        <select ng-if="!wac.isSingleUser"
+                                k-value-primitive="true"
+                                kendo-multi-select
+                                k-ng-model="wac.nextTasksData[id].selectedOwnerIds"
+                                k-data-source="wac.nextTasksData[id].schedulableUsers"></select>
+                    </div>
+                    <div class="col-md-4">
+                        <label>{{wac.translate("durationMin")}}</label>
+                        <input kendo-numeric-text-box
+                               k-ng-model="wac.nextTasksData[id].duration"
+                               k-options="{ format:'n0' }">
+                        </input>
+                    </div>
+                    <div class="col-md-4">
+                        <label>{{wac.translate("duedateselection")}}</label>
+                        <input style="width:100%" id="toPicker" kendo-date-time-picker
+                               k-ng-model="wac.nextTasksData[id].duedate" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button id="executesave" class="btn btn-primary" aria-label="save">
+            {{ wac.translate('save') }}
+        </button>
+    </div>
+</form>

@@ -1,0 +1,79 @@
+﻿<div>
+    <div id="listView"></div>
+    <div id="pager" class="k-pager-wrap"></div>
+</div>
+<script type="text/x-kendo-template" id="template">
+    <div class="product">
+        <img class="zoom" onerror="makeMissingThumbnail(this);" docid="#= DO_DOCFIL_ID #" width="100" height="100" src="#= DO_DOCVER_THUMBNAIL #" alt="#: DO_DOCUME_DESCRIPTION # image" />
+        <h3><a title="Click to download the full size image" href="javascript:viewOrigPicture(# buildImageGalleryWindowVar(DO_DOCFIL_DO_DOCUME_ID,DO_DOCVER_LINK_FILE,DO_DOCFIL_ID); # #=DO_DOCFIL_DO_DOCUME_ID #,#= DO_DOCFIL_ID #)">#: DO_DOCFIL_NOTE #</a></h3>
+    </div>
+
+</script>
+
+<style>
+
+    #listView {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+   /* #imggallerycontent a {
+        display: flow;
+        padding: 5px;
+    }*/
+
+    .modal-body .k-widget {
+        width: auto !important;
+    }
+
+    .product {
+        float: left;
+        position: relative;
+        margin: 0 2px;
+        padding: 0;
+    }
+
+/*    .product h3 {
+        margin: 0;
+        padding: 3px 5px 0 0;
+        max-width: 96px;
+        overflow: hidden;
+        line-height: 1.1em;
+        font-size: .9em;
+        font-weight: normal;
+        text-transform: uppercase;
+        color: #999;
+    }*/
+
+        .product h3 {
+            display: flow;
+            padding: 5px;
+            font-size: 12px;
+        }
+  
+
+    .k-listview:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+
+    #listView .zoom {
+        transition: transform .2s; /* Animation */
+        margin: 0 auto;
+    }
+
+    #listView .zoom:hover {
+        transform: scale(2.25);
+        border: 0.5px solid;
+        border-color: #999999;
+        border-radius: 3px;
+        box-shadow: 2px 2px #999999;
+        /* To bring top */
+        position: relative;
+        z-index: 9999;
+    }
+</style>

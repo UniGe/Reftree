@@ -1,0 +1,27 @@
+﻿<div gridstack class="grid-stack">   
+    <div gridstack-item ng-repeat="widget in tab.widgets[ged.currentLayoutType]" ng-if="ged.mainFormSubmitted || widget.isMainFormGroup"
+         class="grid-stack-item widgetContainer editpage-widget-container" data-gs-no-resize="true" data-gs-no-move="true"
+         data-gs-locked="true" gs-item-x="widget.x" gs-item-y="widget.y" gs-item-width="widget.width"
+         gs-item-height="widget.height"
+         style="{{widget.css}}">
+
+        <div style="width: 100%;"
+             ng-if="widget.contentType !== 'MAGIC-WIDGET-GROUP' && widget.contentType !== 'GOOGLE-MAP' && widget.contentType !== 'MAGIC-TABSTRIP' && ged.mainFormSubmitted"
+             ng-class="{fullHeight: widget.contentType == 'MAGIC-IMAGE-SLIDER' || widget.contentType == 'MAGIC-IMAGE-CAROUSEL'}"
+             ng-include="ged.widgetTemplateUrl">
+        </div>
+
+        <easy-map style="width: 100%;" ng-if="widget.contentType == 'GOOGLE-MAP' && ged.mainFormSubmitted" mapOptions="{}"
+                  markers="widget.mapMarkers" on-map-ready="ged.onMapReady()"
+                  on-select="ged.onMapSelect()"></easy-map>
+
+        <div ng-if="widget.contentType == 'MAGIC-WIDGET-GROUP'" class="widgetGroup"
+             ng-include="ged.widgetGroupTemplateUrl">
+        </div>
+
+        <div ng-if="widget.contentType == 'MAGIC-TABSTRIP'" style="width:100%; height:100%;"
+             ng-include="ged.tabstripTemplateUrl">
+        </div>
+
+    </div>
+</div>

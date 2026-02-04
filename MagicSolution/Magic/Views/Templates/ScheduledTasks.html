@@ -1,0 +1,18 @@
+﻿<div class="tiles white">
+    <div class="tiles-body">
+        <div class="tiles-title">{{c.title}}</div><br/>
+        <div class="row">
+            <div class="col-md-6" ng-repeat="item in c.taskIndicators track by $index" ng-if="c.userCanSchedule || item.typeofindicators == 'MYACTS'">
+                <div ng-class="['notification-messages', item.value > 0 ? 'danger blinking' : 'info', 't-' + $index]" ng-click="c.showTaskIndicator(item.typeofindicators, item.gridcode)">
+                    <div class="iconholder">
+                        <span ng-class="['badge', item.value > 0 ? 'badge-important' : '']" ng-bind="item.value"></span>
+                    </div>
+                    <div class="message-wrapper">
+                        <div class="heading" ng-bind="item.description"></div>
+                        <div class="description">clicca quí per vedere</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

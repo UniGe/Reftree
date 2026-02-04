@@ -1,0 +1,26 @@
+﻿<table class="table table-striped" style="table-layout: fixed; margin-bottom: 0">
+    <thead>
+        <tr>
+            <td style="width: 20%" ng-bind="lang.name"></td>
+            <td style="width: 20%" ng-bind="lang.surname"></td>
+            <td style="width: 20%" ng-bind="lang.taxnumber"></td>
+            <td style="width: 20%" ng-if="showRelation" ng-bind="lang.relationWithChild"></td>
+            <td style="width: 20%" ng-if="selectLabel || copy"></td>
+        </tr>
+    </thead>
+</table>
+<div style="max-height:250px; overflow-y:auto;">
+    <table class="table table-striped" style="table-layout: fixed;">
+        <tr ng-if="!data.length" class="text-center"><td style="width: 100%" ng-bind="lang.empty"></td></tr>
+        <tr ng-repeat="responsible in data track by responsible.ANAGRA_ID">
+            <td style="width: 20%" ng-bind="responsible.ANAGRA_NOME"></td>
+            <td style="width: 20%" ng-bind="responsible.ANAGRA_COGNOME"></td>
+            <td style="width: 20%" ng-bind="responsible.ANAGRA_CODICE_FISCALE"></td>
+            <td style="width: 20%" ng-if="showRelation" ng-bind="responsible.T_TIPREL_DESCRIZIONE"></td>
+            <td style="width: 20%; text-align: right;">
+                <div class="btn btn-default btn-xs" ng-if="copy" ng-bind="copy.lang.copy" ng-click="paste(responsible)"></div>
+                <div class="btn btn-default btn-xs" ng-if="selectLabel" ng-bind="selectLabel" ng-click="select(responsible)"></div>
+            </td>
+        </tr>
+    </table>
+</div>

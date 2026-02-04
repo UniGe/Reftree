@@ -1,0 +1,76 @@
+﻿<a href="javascript:void(0)" class="pull-right k-button" ng-click="de.deleteContent(content)">
+    <span class="fa fa-times"></span>
+</a>
+<ng-form name="de.$subForms[content.id]">
+    <!--<pre ng-bind="de.json(content)"></pre>-->
+    <div class="form-group row">
+        <label class="col-md-12">
+            {{ de.lang.tab }}
+            <select style="width: 100%;"
+                    ng-change="content.groupId = null; de.setSubFormDirty(content.id)"
+                    required="required"
+                    kendo-drop-down-list
+                    k-data-text-field="'code'"
+                    k-data-value-field="'id'"
+                    ng-model="content.tabId"
+                    k-data-source="de.data.tabs"></select>
+        </label>
+        <label class="col-md-12">
+            {{ de.lang.contentType }}
+            <select style="width: 100%;"
+                    required="required"
+                    ng-change="de.setContentObjectId(content)"
+                    kendo-drop-down-list
+                    k-options="de.dropdownData"
+                    ng-model="content.contentTypeId"
+                    k-data-source="de.data.contentTypes"></select>
+        </label>
+        <label ng-show="de.data.contentObjects[content.contentTypeId].length" class="col-md-12">
+            {{ de.lang.contentObject }}
+            <select style="width: 100%;"
+                    required="required"
+                    kendo-drop-down-list
+                    k-options="de.dropdownData"
+                    ng-model="content.contentObjectId"
+                    ng-change="de.setMagicGridName(content)"
+                    k-data-source="de.data.contentObjects[content.contentTypeId]"></select>
+        </label>
+        <p class="col-md-12">
+            <a ng-if="!de.data.contentObjects[content.contentTypeId].length" class="k-button k-primary" ng-click="de.redirectToObject(content)">{{ de.lang.createDashboardContent.format(de.getContentType(content.contentTypeId).label) }}</a>
+        </p>
+        <label class="col-md-12" ng-if="de.tabGroups[tab.id]">
+            {{ de.lang.group }}
+            <select style="width: 100%;" ng-change="de.setSubFormDirty(content.id)" k-option-label="de.lang.none" kendo-drop-down-list k-data-text-field="'code'" k-data-value-field="'id'" ng-model="content.groupId" k-data-source="de.tabGroups[tab.id]"></select>
+        </label>
+        <label class="col-xs-6">
+            {{ de.lang.position }}
+            <input style="width: 100%;" ng-change="de.setSubFormDirty(content.id); de.setPosition(content);" required="required" kendo-numeric-text-box k-options="de.numberData" ng-model="content.position" ng-model-options="{ updateOn: 'blur' }" />
+        </label>
+        <label class="col-xs-6">
+            {{ de.lang.active }}<br />
+            <input type="checkbox" ng-model="content.active" />
+        </label>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-12">{{ de.lang.widthClasses }}</label>
+        <label class="col-md-12">
+            <span class="fa fa-mobile fa-2x"></span>&nbsp;
+            <select class="pull-right" kendo-drop-down-list k-options="de.dropdownData" ng-model="content.splittedClasses[0]" k-data-source="de.bootstrapClasses.xs"></select>
+        </label>
+        <label class="col-md-12">
+            <span class="fa fa-tablet fa-2x"></span>&nbsp;
+            <select class="pull-right" kendo-drop-down-list k-options="de.dropdownData" ng-model="content.splittedClasses[1]" k-data-source="de.bootstrapClasses.sm"></select>
+        </label>
+        <label class="col-md-12">
+            <span class="fa fa-desktop fa-2x"></span>&nbsp;
+            <select class="pull-right" kendo-drop-down-list k-options="de.dropdownData" ng-model="content.splittedClasses[2]" k-data-source="de.bootstrapClasses.md"></select>
+        </label>
+        <label class="col-md-12">
+            <input style="width: 100%;" placeholder="{{ de.lang.additionalClass }}" class="k-textbox" ng-model="content.splittedClasses[3]" />
+        </label>
+    </div>
+    <a href="javascript:void(0);" ng-click="de.redirectToObject(content)">
+        <span class="fa fa-pencil"></span>
+        {{ de.lang.configureContent }}
+    </a>
+</ng-form>

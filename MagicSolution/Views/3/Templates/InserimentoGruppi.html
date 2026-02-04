@@ -1,0 +1,25 @@
+﻿<div class="angularstrap">
+    <form name="ig.$form">
+        <magic-form table-name="US_V_GROUPS_MANAGER" model="ig.formData" options="{ itemsPerRow: 2 }"></magic-form>
+    </form>
+</div>
+<div class="btn btn-success" ng-click="ig.submit()">Ok</div>
+<div ng-show="ig.message" class="btn btn-{{ig.messageType}}" ng-bind="ig.message"></div>
+<div style="height: 20px;"></div>
+<ul class="nav nav-tabs" role="tablist">
+    <li ng-class="ig.isActiveTab(0)" ng-click="ig.activeTab = 0"><a href="javascript:void(0)" aria-controls="AS_V_ASSGRO_insert_mcheck">Associazione asset</a></li>
+    <li ng-show="ig.formData.LINK_PL_ASSETS" ng-class="ig.isActiveTab(1)" ng-click="ig.activeTab = 1"><a href="javascript:void(0)" aria-controls="AS_V_PLTAGR_insert_mcheckk">Tipologie di impianti</a></li>
+    <li ng-show="ig.formData.LINK_DOCS" ng-class="ig.isActiveTab(2)" ng-click="ig.activeTab = 2"><a href="javascript:void(0)" aria-controls="US_V_DEPGRU_insert_mcheck">Documenti</a></li>
+    <li ng-show="ig.formData.LINK_PL_ASSETS" ng-class="ig.isActiveTab(3)" ng-click="ig.activeTab = 3"><a href="javascript:void(0)" aria-controls="AS_V_PLASGRO_insert_mcheck">Associazione impianti</a></li>
+</ul>
+<div class="tab-content" style="z-index: 1">
+    <div class="tab-pane" ng-class="ig.isActiveTab(0)" id="AS_V_ASSGRO_insert_mcheck">
+    </div>
+    <div class="tab-pane" ng-class="ig.isActiveTab(1)" id="AS_V_PLTAGR_insert_mcheckk">
+    </div>
+    <div class="tab-pane" ng-class="ig.isActiveTab(2)" id="US_V_DEPGRU_insert_mcheck">
+    </div>
+    <div class="tab-pane" ng-class="ig.isActiveTab(3)" id="AS_V_PLASGRO_insert_mcheck">
+    </div>
+</div>
+<div style="height: 30px;"></div>

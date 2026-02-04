@@ -1,0 +1,156 @@
+﻿<style>
+    #notes-list {
+        padding: 3em 1em;
+        list-style: none;
+    }
+
+    #notes-list > li {
+        text-decoration: none;
+        color: #000;
+        background: #ffc;
+        display: block;
+        min-height: 20em;
+        width: 20em;
+        padding: 1em;
+        box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+        transition: transform .15s linear;
+        transform: rotate(-6deg);
+        margin: 1em;
+        float: left;
+    }
+
+    #notes-list > li h2 {
+        font-size: 140%;
+        font-weight: bold;
+        padding-bottom: 10px;
+    }
+
+    #notes-list > li p {
+        font-family: "Reenie Beanie",arial,sans-serif;
+        font-size: 180%;
+    }
+
+    #notes-list > li:nth-child(even) {
+        transform: rotate(4deg);
+        position: relative;
+        top: 5px;
+        background: #cfc;
+    }
+
+    #notes-list > li:nth-child(3n) {
+        transform: rotate(-3deg);
+        position: relative;
+        top: -5px;
+        background: #ccf;
+    }
+
+    #notes-list > li:nth-child(5n) {
+        transform: rotate(5deg);
+        position: relative;
+        top: -10px;
+    }
+
+    #notes-list > li.active,
+    #notes-list > li:hover,
+    #notes-list > li:focus {
+        box-shadow: 10px 10px 7px rgba(0,0,0,.7);
+        transform: scale(1.25);
+        position: relative;
+        z-index: 5;
+    }
+    #notes-list > li .fa-pencil {
+        opacity: 0;
+        transition: opacity .15s linear;
+    }
+    #notes-list > li:focus .fa-pencil,
+    #notes-list > li:hover .fa-pencil {
+        opacity: 1;
+    }
+    #add-note{
+        width: 50px;
+        height: 50px;
+        line-height: 30px;
+        font-size: 40px;
+        background: rgba(255, 0, 0, .6);
+        color: white;
+        border: none;
+        outline: none;
+        border-radius: 100% !important;
+        padding: 0;
+        text-align: center;
+        float: right;
+    }
+    #notes-list > li > div > .tag.label{
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+    }
+    #notes-list .tags > .tag {
+        float: left;
+        margin: 2px;
+    }
+</style>
+<div>
+    <div class="form-inline">
+        <div class="form-group">
+            <label for="note-text">{{n.lang.search}}</label><br />
+            <input id="note-text" class="k-input k-textbox" ng-model="n.filters.text" type="text" />
+        </div>
+        <div class="form-group" style="margin-left:10px;">
+            <label for="note-due-date">{{n.lang.dueDateShow}}</label><br />
+            <!--<select style="width:auto;" kendo-drop-down-list k-options="n.operatorOptions" ng-model="n.filters.dueDateOperator"></select>-->
+            <!--<input ng-show="n.filters.dueDateOperator.indexOf('null') < 0" id="note-due-date" kendo-date-time-picker type="text" k-ng-model="n.filters.dueDate" />-->
+            <input type="checkbox"  id="note-due-date"  ng-model="n.filters.filterBydueDate" />
+        </div>
+        <!--<div class="form-group">
+            <label for="note-creation-date">{{n.lang.creationDate}}</label><br />
+            <select style="width:auto" kendo-drop-down-list k-options="n.operatorOptions" ng-model="n.filters.creationDateOperator"></select>
+            <input id="note-creation-date" kendo-date-time-picker type="text" k-ng-model="n.filters.creationDate" />
+        </div>-->
+    </div>
+
+    <ul id="notes-list">
+        <li ng-class="{active: n.editNoteId == note.ID}" ng-repeat="note in n.notes|notesFilter:n.filters track by note.ID">
+            <div ng-if="n.editNoteId != note.ID">
+                <a ng-if="!note.Creator" ng-click="n.editNoteId = note.ID" class="pull-right" href="javascript:void(0)"><span class="fa fa-pencil"></span></a>
+                <small> {{ n.lang.creationDate + ': ' +  n.formatDate(note.InsertionDate) }}</small><br /><br />
+                <span title="{{ note.BusinessObjectDescription }} ({{ note.BusinessObjectType }})" class="tag label label-info">{{ note.BusinessObjectDescription }} ({{ note.BusinessObjectType }})</span>
+                <strong ng-if="note.Creator"><br /><br />{{ note.Creator }}</strong>
+                <br /><br /><label ng-if="note.DueDate">{{n.lang.dueDate + ': '}}</label>
+                <label ng-style="{color: note.DueDate && note.DueDate < n.now ? 'red' : 'inherit'}">{{ n.formatDate(note.DueDate) }}</label>
+                <p>{{ note.DocumentFile }}</p>
+                <div class="tags">
+                    <span ng-title="tag" class="tag label label-info" ng-repeat="tag in note.DocumentJSONTags track by $index" ng-bind="tag"></span>
+                </div>
+            </div>
+            <form ng-if="n.editNoteId == note.ID" ng-submit="n.updateNote(note)">
+                <a ng-if="note.ID" ng-click="n.editNoteId = null" class="pull-right" href="javascript:void(0)"><span class="fa fa-times"></span></a>
+                <label style="width: 100%">
+                    {{ n.lang.note }} *<br />
+                    <textarea style="width: 100%" name="memo_note" rows="5" class="k-input k-textbox" ng-model="note.DocumentFile" required></textarea>
+                </label>
+                <label>
+                    {{ n.lang.dueDate }}<br />
+                    <input kendo-date-time-picker type="text" k-ng-model="note.DueDate" />
+                </label>
+                <div bo-selector="{isRequired: false, isKendoForm: false, openGridInNewWindow: true, tags: note.BusinessObject_ID ? [{Description: note.BusinessObjectDescription, Id: note.BusinessObject_ID, Type: note.BusinessObjectType}] : []}" on-change="n.boChange(event, note)"></div>
+                <label>
+                    {{ n.lang.public }}&nbsp;
+                    <input type="checkbox" ng-model="note.IsPublic" />
+                </label><br/>
+                <label>
+                    {{ n.lang.tags }}<br/>
+                    <div style="position: relative; border: 1px solid #ccc; background-color: #fff;">
+                        <input type="text" tag-selector="note.DocumentJSONTags" />
+                    </div>
+                </label>
+                <div class="text-right">
+                    <button ng-if="note.ID" class="k-button k-button-icontext" type="button" ng-click="n.deleteNote(note)"><span class="k-icon k-delete"></span>{{ n.lang.delete }}</button>&nbsp;
+                    <button class="k-button k-button-icontext k-primary" type="submit"><span class="k-icon k-update"></span>{{ n.lang.save }}</button>
+                </div>
+            </form>
+        </li>
+    </ul>
+    <button id="add-note" ng-click="n.addNote()" title="{{ n.lang.add }}">+</button>
+</div>

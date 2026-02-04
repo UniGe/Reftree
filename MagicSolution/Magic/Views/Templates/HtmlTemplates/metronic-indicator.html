@@ -1,0 +1,18 @@
+﻿<div ng-class="dic.config.color" class="dashboard-stat" style="position: relative">
+    <div ng-show="dic.dshb_isCustomizable()" style="color:white; padding: 5px 0px 0px 5px; position: absolute; z-index: 10">
+        <span style="cursor:pointer" title="Swap with another element" onclick="dshb_swapElements(this);" href="javascript:;" class="fa fa-random"></span>
+        <span style="cursor:pointer" title="Resize" onclick="dshb_resize(this);" href="javascript:;" class="fa fa-expand"></span>
+        <span style="cursor:pointer" title="Remove from tab" onclick="dshb_remove(this);" href="javascript:;" class="fa fa-times"></span>
+    </div>
+    <div class="visual">
+        <i ng-class="dic.config.iconClass"></i>
+    </div>
+    <div class="details">
+        <div class="number">
+            <span count-to="{{ dic.value }}" duration="1.2"></span>&nbsp;{{ dic.config.measurementUnit }}
+        </div>
+        <div class="desc">{{ dic.config.description }}</div>
+    </div>
+    <a ng-if="dic.config.functionGUID" class="more" ng-click="dic.more()" href="javascript:void(0);">{{ dic.lang.viewMore }} <i class="m-icon-swapright m-icon-white"></i></a>
+    <a ng-if="!dic.config.functionGUID" class="more">{{ dic.lang.noLink }}</a>
+</div>

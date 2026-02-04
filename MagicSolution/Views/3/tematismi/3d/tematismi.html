@@ -1,0 +1,33 @@
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+		
+		<link rel="stylesheet" href="../bootstrap/3.0.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../js/jq/jqueryui/1.10.1/themes/smoothness/jquery-ui.css"/>
+		
+		<link rel="stylesheet" href="../css/plani3d-3d.min.css" type="text/css">
+		
+		<script type="text/javascript" src="../js/require.js"></script>
+		
+		<title>UIU - Plani3D Viewer</title>
+	</head>
+	<body>
+		<div id="p3d-model" class="p3d"></div>
+		<script>
+			require(["config.js"], function () {
+				require(["plani3d-3d", "testdata"], function (plani3d, testdata) {
+					var p3d = new plani3dmodel.Plani3D({
+						server: 'showcase.alysso.it'
+					});
+					p3d.init().then(function () {
+						p3d.loadTematismi(function (feature) {
+							alert("selezione: assetid "+feature['AssetID']);
+						}, testdata);
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

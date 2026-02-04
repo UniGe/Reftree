@@ -1,0 +1,415 @@
+/* here you can put your own css to customize and override the theme */
+
+/***
+Rounded Portlets
+***/
+/*
+.portlet {
+	border-radius: 4px !important;
+}
+
+.portlet .portlet-title {
+	border-radius: 4px 4px 0px 0px !important;
+}
+
+.portlet .portlet-body,
+.portlet .portlet-body .form-actions  {
+	border-radius: 0px 0px 4px 4px !important;
+}
+*/
+
+/*classi per firma ilos nel footer*/
+.footer-inner {
+    font-weight:normal;
+    font-size:11px;
+}
+.footer-inner a{
+    color:#000000;
+    font-weight:bold;
+    font-size:14px;
+}
+
+/*classi per logo bicolore*/
+.logoSx{
+    color:#4d90fe;
+    font-size:32px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight:300;
+}
+.logoDx{
+    color:#ffffff;
+    font-size:32px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight:300;
+}
+.header .navbar-brand{
+    padding:0px;
+    padding-top:11px;
+    padding-left:20px;
+    padding-bottom:10px;
+}
+.logoSxInt{
+    color:#4d90fe;
+    font-size:20px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight:300;
+}
+.logoDxInt{
+    color:#ffffff;
+    font-size:20px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight:300;
+}
+@media (max-width: 767px) {
+    .header .navbar-brand {
+  		margin-left: 0px !important;
+  		width: 150px;
+	}
+}
+
+@media (max-width: 700px) {
+    .header-fs {
+        display: none !important;
+    }
+}
+
+/*classe per colorare di rosso*/
+.red{
+    color:red !important;
+}
+/*classe per colorare di blue*/
+.colorBlue {
+    color:#4d90fe !important;
+}
+/*classe per allineare a destra*/
+.alignRight {
+    float:right !important;
+}
+/*classe per dare un po di margin bottom*/
+.marginBottom {
+    margin-bottom:0.5em;
+}
+/*classi per maschera di login*/
+.failureNotificationStar{
+    display:none !important;
+}
+.failureNotification {
+    color:red !important;
+}
+.login .content .input-icon
+{
+    border-left-color:#4d90fe !important;
+}
+
+/*classi menu di sinistra con selected in azzurro*/
+ul.page-sidebar-menu > li.active > a,
+ul.page-sidebar-menu > li > ul.sub-menu > li.active > a,
+ul.page-sidebar-menu > li > ul.sub-menu li > ul.sub-menu > li.active > a,
+ul.page-sidebar-menu > li > ul.sub-menu li > ul.sub-menu li > ul.sub-menu > li.active > a
+ {
+  background:#4d90fe !important;
+  position:relative;
+}
+
+/*classi per freccettina su menu selected*/
+ul.page-sidebar-menu > li > ul.sub-menu li > ul.sub-menu > li.active > a .selected {
+  display: block !important;
+  width: 8px;
+  height: 25px;
+  background-image: url("../img/sidebar-menu-arrow.png");
+  float: right;
+  position: absolute;
+  right:0px;
+  top:3px;
+}
+
+/*classi menu troppo lunghi*/
+ul.sub-menu span.title {
+    display:block;
+    float:left;
+    width:134px;
+    padding-left:3px;
+}
+li.openpage a {
+    padding-left:65px !important;
+}
+ul.sub-menu i {
+    float:left;
+}
+ul.sub-menu a {
+    overflow:hidden;
+}
+
+/*classe che allarga al 100% la tabelal che asp.net crea sulla funzionalità di change password*/
+#tab_3-3 table{
+    width:100%;
+}
+
+/*setto il colore azzurro ai tab che originariamente sarebbero rossi*/
+.tabbable-custom .nav-tabs > li.active{
+       border-color:#4d90fe !important;
+}
+
+/*setto il colore azzurro sui submenu all interno della pagina user profile*/
+.ver-inline-menu li.active a{
+    background-color:#4d90fe !important;
+    border-left-color:#0362fd !important;
+}
+.ver-inline-menu li.active i{
+    background:#0362fd !important;
+}
+.ver-inline-menu li.active:after{
+    border-left-color:#4d90fe !important;
+}
+
+/*classi per pagina ../Views/MagicFunctionsTree.aspx*/
+
+li.dropdown-user a.dropdown-toggle {
+    overflow:hidden;
+    padding-top:8px !important;
+    padding-bottom:9px !important;
+}
+li.dropdown-user a.dropdown-toggle span{
+    float:left;
+    margin-right:5px;
+}
+.username, .spanBusinessUnit {
+    display:block;
+    overflow:hidden;
+}
+.username{
+   line-height:12px !important;
+}
+.spanBusinessUnit{
+    color:#4d90fe;
+    line-height:15px !important;
+}
+/*classi per search autocomplete*/
+.sidebar-search .k-autocomplete{
+    vertical-align: middle;
+    border:none !important;
+    padding:0px !important;
+    box-shadow:none !important;
+}
+#searchedtextautocomplete-list {
+        width:300px !important; 
+}
+.dropdown-header {
+    font-size: 1.2em;
+}
+.dropdown-header > span {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: left;
+    display: inline-block;
+    border-style: solid;
+    border-width: 0 0 1px 1px;
+    padding: .3em .6em;
+    width: 312px;
+}
+.dropdown-header > span:first-child {
+    width: 82px;
+    border-left-width: 0;
+}
+#searchedtextautocomplete-list .k-item {
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    border-color:#cccccc;
+    padding:0px;
+    margin:0px;
+}
+#searchedtextautocomplete-list .k-item div {
+    cursor: pointer;
+}
+#searchedtextautocomplete-list .k-item div > span{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    border-style: solid;
+    border-width: 0 0 0 1px;
+    vertical-align: top;
+    width: 79%;
+    padding: .6em 0 0 .6em;
+    border-color:#dcdcdc;
+}
+#searchedtextautocomplete-list .k-item.k-state-hover span.colorBlue {
+    color:black !important;
+}
+#searchedtextautocomplete-list .k-item div > span:first-child{
+    width: 30px;
+    padding: .6em 0 0 .6em;
+    height:70px;
+}
+.switchColorDarkGrey {
+     border-left:3px solid #595959 !important;
+}
+.switchColorBlue {
+     border-left:3px solid #4d90fe !important;
+}
+.switchColorGrey {
+     border-left:3px solid #808080 !important;
+}
+.switchColorlightkGrey {
+     border-left:3px solid #dcdcdc !important;
+}
+#searchedtextautocomplete-list span.menuItemFound {
+    font-size: 1.6em;
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+    line-height:30px;
+}
+#searchedtextautocomplete-list p {
+    margin: 0;
+    padding: 0;
+}
+.sidebar-search span.k-loading {
+    background-image:url("/Magic/Styles/kendo_ilos_images/loading_search.gif") !important;
+}
+
+.page-content .page-breadcrumb.breadcrumb .dashboard-date-range {
+margin-right: 60px;
+background-color:#bfcad1;
+}
+
+/* date range picker */
+
+.rangePicker input {
+    height: 17px !important;
+}
+
+.personal-data-form [class*=" glyphicon-"]{
+    margin-top: 10px;
+}
+
+.personal-data-form{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.personal-data-form .col-xs-6 div.checkbox{
+  height: 65px;
+  padding-top: 29px;
+  padding-left: 22px;
+}
+
+/*-- Schema Forms*/
+
+bootstrap-decorator div.no-title span.form-control-feedback {
+  top: 16px !important;
+}
+
+/*-- Notifications */
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu.notification .text{
+    padding-top: 10px;
+    display: inline-block;
+    max-width: 100%;
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu.notification .dropdown-menu-list > li:first-child{
+    border-top: none;
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu.notification .dropdown-menu-list > li{
+    border-bottom: 1px solid #EFF2F6!important;
+    color: #888;
+    font-weight: 300;
+    line-height: 16px;
+    white-space: normal;
+    font-size: 13px;
+    padding: 12px 15px 10px;
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li .details .label-icon{
+    margin-right: 10px;
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .unread{
+    cursor: pointer;
+    background: #e9eaed;
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .unread:hover{
+    background: #f6f7f8;
+}
+
+.page-title .fa-question{
+    font-size: 1em;
+}
+
+#scheduler #scheduler-search{
+    height: 16px;
+    padding-left: 0;
+}
+
+ul.nav.nav-tabs li .btn-group button{
+    height: 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    color: #2a6496;
+}
+
+ul.nav.nav-tabs li.active .btn-group button{
+    border: 1px solid #ddd;
+    color: black;
+}
+
+/* favorite links dropdown */
+.sidebar-toggler-wrapper .favorites{
+    margin-top: 15px !important;
+    margin-right: 19px !important;
+    float: right;
+    background-color: #24303E;
+}
+.sidebar-toggler-wrapper .favorites > a {
+    border: none !important;
+    display: inline-block;
+}
+.sidebar-toggler-wrapper .favorites > a > i {
+    margin: 6px 8px 7px !important;
+    width: auto;
+    font-size: initial;
+    color: #505f72;
+}
+.sidebar-toggler-wrapper .favorites.open,
+.sidebar-toggler-wrapper .favorites:hover {
+    background-color: #25313F !important;
+}
+
+@media (min-width: 992px) {
+    .page-sidebar-menu.page-sidebar-menu-closed .sidebar-toggler-wrapper .favorites{
+        margin-right: 8px !important;
+    }
+}
+@media (max-width: 991px){
+    .sidebar-toggler-wrapper .favorites {
+        float: left;
+        margin-left: 19px !important;
+    }
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-submenu .dropdown-menu:after,
+.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-submenu .dropdown-menu:before{
+    content: '' !important;
+}
+
+#friends-list > [data-toggle="collapse"] {
+    text-decoration: none !important;
+}
+#friends-list .list-heading{
+    padding: 5px 0;
+}
+#friends-list .list-heading:after{
+    font: normal normal normal 14px/1 FontAwesome;
+    content: "\f078";
+    float: right;
+}
+#friends-list .collapsed .list-heading:after{
+    content: "\f053";
+}
+#friends-list a:not(.collapsed) .list-heading{
+    color: #fff;
+}
+
+.angularstrap .form-control-feedback {
+    float: right;
+    margin: 10px 10px 0 0;
+}

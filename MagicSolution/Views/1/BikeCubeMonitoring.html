@@ -1,0 +1,24 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-2  col-md-2 col-lg-2">
+        <select kendo-drop-down-list="cd.options.cubesDropDown"
+                k-data-text-field="'Description'"
+                k-data-value-field="'ID'"
+                k-data-source="cd.options.bikeCubeds"
+                k-on-cascade="cd.options.setFilter()"
+                style="width: 100%"></select>
+    </div>
+    <div class="col-xs-12 col-sm-2  col-md-2 col-lg-2">
+        <button title="Refresh every 30 seconds!" type="button" ng-class="{'btn-default': !cd.options.refreshActive , 'btn-success': cd.options.refreshActive }" ng-click="cd.options.refreshGrids()">
+            <span class="glyphicon glyphicon-refresh"></span>
+        </button>
+    </div>
+</div>
+<div class="row" style="height:20px;"></div>
+<h3>Cube</h3>
+<div class="row" ng-if="cd.options.cascadeFired">
+    <magic-grid id="grid0" gridname="V_MonitorCube" filter="cd.options.initialFilter" kendo-grid-instance="cd.options.kendoGridInstanceCube"></magic-grid>
+</div>
+<h3>Boxes</h3>
+<div class="row" ng-if="cd.options.cascadeFired">
+    <magic-grid id="grid1" gridname="V_MonitorBoxes" filter="cd.options.initialFilter" kendo-grid-instance="cd.options.kendoGridInstanceBoxes"></magic-grid>
+</div>

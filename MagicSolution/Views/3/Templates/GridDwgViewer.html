@@ -1,0 +1,1047 @@
+﻿<style scoped>
+    #grid-dwg-controller {
+        margin-bottom: 50px;
+    }
+
+        #grid-dwg-controller button {
+            border-radius: 5px;
+            margin-left: 3px !important;
+        }
+
+    .dwg-map {
+        overflow-x: auto;
+        background-color: white;
+        height: 100%;
+    }
+
+    .dwg-color-box {
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        background-color: #ccc;
+        left: 5px;
+        top: 5px;
+    }
+
+    #treecontainer____.treehidden, #detail__.detailhidden {
+        display: none;
+    }
+
+    .row.kwin {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .row.ltree {
+        margin-left: 15px;
+        margin-right: 0px;
+    }
+
+    .dwg-control-buttons button {
+        margin-left: 1px;
+    }
+
+    .type-color-circle-r3 {
+        border-radius: 50%;
+        overflow: hidden;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        overflow: hidden;
+        min-width: 15px;
+        min-height: 15px;
+        margin-left: 10px;
+        margin-top: -2px;
+    }
+
+    type-color-circle-r3::-webkit-color-swatch {
+        border: none;
+        border-radius: 50%;
+        padding: 0;
+    }
+
+    type-color-circle-r3::-webkit-color-swatch-wrapper {
+        border: none;
+        border-radius: 50%;
+        padding: 0;
+    }
+
+    #color-picker-wrapper {
+        float: left;
+    }
+
+    @media screen and (min-width: 768px) {
+        .modal-dialog {
+            width: 80%;
+        }
+    }
+
+    .dwg-detail-scroll {
+        overflow: hidden;
+    }
+
+    #gantttree input[type="color"] {
+        max-width: 17px;
+        min-width: 17px;
+        min-height: 20px;
+        background-color: transparent;
+        margin-left: 5px;
+        margin-top: -3px;
+        border: none;
+        background: none;
+        border-radius: 10px;
+        padding: 0;
+    }
+
+
+    #treeThemas input[type="color"] {
+        max-width: 17px;
+        min-width: 17px;
+        min-height: 20px;
+        background-color: transparent;
+        margin-left: 5px;
+        margin-top: -3px;
+        border: none;
+        background: none;
+        border-radius: 10px;
+        padding: 0;
+    }
+    
+
+    #gantttree .k-treeview .k-in {
+        border: none;
+    }
+
+    #gantttree {
+        /*overflow: auto;*/
+        max-height: 400px;
+    }
+
+    #treeR3 input[type="color"] {
+        max-width: 17px;
+        min-width: 17px;
+        min-height: 20px;
+        background-color: transparent;
+        margin-left: 5px;
+        margin-top: -3px;
+        border: none;
+        background: none;
+        border-radius: 10px;
+        padding: 0;
+    }
+
+    #treeR3 .k-treeview .k-in {
+        border: none;
+    }
+
+    #treeR3 {
+        /*overflow: auto;*/
+        max-height: 400px;
+    }
+
+    .custom-range {
+        width: 100%;
+        height: calc(1rem + .4rem);
+        padding: 0;
+        background-color: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+
+    .tblLocaleTool {
+        font-size: 10px !important;
+    }
+
+    #treeThemati {
+        overflow: hidden !important;
+        display: table;
+    }
+
+
+
+    .dialogTree {
+        width: 20%;
+    }
+
+    .dialogActionGrid {
+        width: 50%;
+    }
+
+        .dialogActionGrid .k-grid-toolbar {
+            display: none;
+        }
+
+    #splitterContainer .col-md-6 {
+        width: 48%;
+    }
+
+    #splitterContainer .col-md-3 {
+        width: 23%;
+    }
+
+    #splitterContainer .col-md-4 {
+        width: 31%;
+    }
+
+    #vertical {
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    #middle-pane {
+    }
+
+    #bottom-pane {
+    }
+
+    #left-pane, #center-pane, #right-pane {
+        width: 20%;
+    }
+
+    #splitterContainer {
+        height: 80vh;
+    }
+
+    /*#dxf-tree-one {
+        height: 50vh;
+    }*/
+
+
+
+    rowR3 {
+        display: table !important;
+        content: " ";
+        clear: both;
+    }
+
+    #dxf-tree-three {
+        margin: 10px
+    }
+
+    /*.collapse-r3 {
+        transition: .3s transform ease-in-out;
+    }
+
+    .panel-collapse.collapsing {
+        -webkit-transition-delay: 2s;
+        transition-delay: 2s;
+        visibility: hidden;
+    }
+
+    .panel-collapse.in {
+        -webkit-transition-delay: 3s;
+        transition-delay: 3s;
+        visibility: visible;
+    }*/
+
+
+</style>
+
+<div ng-show="gdv.showExtraction" class="col-md-12">
+    <div class="row" ng-repeat="(k,v) in gdv.Themes">
+        <h4><input class="thethemestobeexported____" type="checkbox" id="{{k}}" /> {{ v }} </h4>
+    </div>
+
+    <button class="btn btn-success" ng-click="gdv.exportToXlsx()">{{ gdv.getLabels('extract') }}</button>
+</div>
+<div ng-show="gdv.showFilesGridData" class="col-md-12">
+    <h3>{{ gdv.Label }}</h3>
+    <div ng-show="gdv.showFilesGridData" kendo-grid="gdv.openGrid"
+         k-columns="gdv.filesGridColumns"
+         k-data-source="gdv.filesGridData"
+         k-selectable="'true'"
+         k-on-change="gdv.onFilesGridChange(kendoEvent)" />
+</div>
+<form name="form" ng-submit="gdv.filterTree(form)" ng-show="gdv.showFilters">
+    <label class="control-label" for="operator">{{ gdv.getLabels('operator') }}</label>
+    <select name="operator" id="operator" ng-model="gdv.treeFilters.Operator">
+        <option value="AND">AND</option>
+        <option value="OR">OR</option>
+    </select>
+    <div class="row" style="height:10px;"></div>
+    <magic-form-sp useasfilter="true" model="gdv.treeFilters.Values" storedprocedure="core.DWG_GetFilter" isreadonly="false" formname="{{ gdv.formName }}" itemsperrow=2 hidetabs="true" options='{ "kendoStyle":false }'
+                   ng-if="gdv.formName">
+    </magic-form-sp>
+    <input class="btn btn-success" type="submit" value="{{ gdv.getLabels('applyfilter') }}" />
+</form>
+<div ng-show="gdv.showFilters" class="btn btn-danger" style="position:absolute; top: 0; right: 0; z-index:10" ng-click="gdv.showFilters = false">X</div>
+
+<div id="splitterContainer">
+
+
+    <div kendo-splitter
+         id="horizontal"
+         ng-show="!gdv.showFilters && !gdv.showFilesGridData && !gdv.showExtraction && !gdv.showExtractionPdf"
+         k-panes="[{resizable:true,collapsible:true, size: gdv.features.sidebarAccordion ? '20%' : '39px' }, {resizable:true,collapsible:true}]"
+         k-orientation="'horizontal'"
+         style="height:100%"
+         k-on-resize="gdv.triggerWindowResize()">
+        <div id="left-pane">
+            <div>
+                <!-- gestione dei bottoni generale -->
+                <div style="height: 36px; padding: 2px" class="dwg-control-buttons">
+                    <button ng-show="gdv.history.length && gdv.showViewerDetail && gdv.selectedFiles.length > 1 || gdv.mainContent === 'actionGrid'"
+                            title="{{ gdv.getLabels('back') }}"
+                            type="button"
+                            class="btn btn-default pull-right"
+                            ng-click="gdv.onBack()">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    </button>
+                    <button ng-show="gdv.mainContent === 'map'"
+                            title="{{ gdv.getLabels('selectAssets') }}"
+                            type="button"
+                            class="btn btn-success pull-right"
+                            ng-click="gdv.onMapSelect()">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                    </button>
+                    <button ng-show="gdv.mainContent === 'map'"
+                            title="{{ gdv.getLabels('backToInitialMapState') }}"
+                            type="button"
+                            class="btn btn-default pull-right"
+                            ng-click="gdv.onMapReset()">
+                        <i class="fa fa-undo" aria-hidden="true"></i>
+                    </button>
+                    <button ng-if="gdv.features.map"
+                            ng-show="!gdv.showViewerDetail && gdv.mainContent === 'viewer'"
+                            title="{{ gdv.getLabels('showMap') }}"
+                            type="button"
+                            class="btn btn-default pull-right"
+                            ng-click="gdv.onShowMap()">
+                        <i class="fa fa-globe" aria-hidden="true"></i>
+                    </button>
+                    <button ng-show="false" title="{{ gdv.getLabels('applyfilter') }}"
+                            type="button"
+                            class="btn btn-success"
+                            ng-click="openFilterModal('/Views/3/Templates/DwgFilter.html')">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                    <button ng-if="gdv.features.closeButton"
+                            title="{{ gdv.getLabels('close') }}"
+                            type="button"
+                            class="btn btn-danger pull-left"
+                            ng-click="gdv.closeViewer($event)">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                    <button id="export___PDF1"
+                            style="float:left;margin-left:1px;"
+                            title="{{ gdv.getLabels('extract_1') }}"
+                            type="button" class="btn btn-danger"
+                            ng-click="openPdf('/Views/3/Templates/PdfExtractTemplate.html',false)">
+                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                    </button>
+                    <button id="export___DWG"
+                            ng-show="gdv.enableDwgExport && gdv.showViewerDetail"
+                            style="float:left;margin-left:1px;"
+                            title="{{ gdv.getLabels('extract_2') }}"
+                            type="button" class="btn btn-success"
+                            ng-click="openPdfDwg('/Views/3/Templates/pdfFloors.html',false)">
+                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                    </button>
+                    <button class="btn btn-primary" title="{{gdv.getLabels('Estrazioni')}}" type="button" data-toggle="dropdown" style="float:left;margin-left:1px;">
+                        <span class="fa fa-file-excel-o"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a ng-click="gdv.onExportExcelThemati()" class="collapsed" data-toggle="collapse" data-parent="#dxf-themati-accordion">
+                                Estrai tematismi
+                            </a>
+                        </li>
+                        <li>
+                            <a ng-click="gdv.onExportExcelAllAsset()" class="collapsed" data-toggle="collapse" data-parent="#dxf-themati-accordion">
+                                Estrai Locali
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- gestione dei bottoni generale fine -->
+
+                <div ng-if="gdv.features.sidebarAccordion" class="panel-group" id="dxf-tree-accordion">
+
+                    <!-- gestione del tree -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a ng-click="gdv.onShowTree('tematismi')" data-toggle="collapse" data-parent="#dxf-tree-accordion" href="#dxf-tree-one">
+                                    {{gdv.getLabels('tematismi') + (gdv.showViewerDetail  ? ' ' + gdv.fileInfo[gdv.fileInDetail.fileName].description : '' )}}
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="dxf-tree-one" class="panel-collapse collapse in">
+                            <div class="panel-body" style="overflow:auto;">
+                                <!--ng-show="!gdv.loadingTree"-->
+                                <div id="treecontainer____" ng-show="!gdv.showFilters && !gdv.showFilesGridData && !gdv.showExtraction && !gdv.showExtractionPdf" style="height:95%;">
+                                    <div id="buttonTree" class="row ltree">
+                                        <select ng-show="false" id="dropThemati" style="float:left;margin-right:5px;margin-bottom:2px;width:95%;margin-top: 1em;" kendo-drop-down-list="gdv.selectedTree"
+                                                k-data-text-field="'Description'"
+                                                k-data-value-field="'ID'"
+                                                k-data-source="gdv.TreesDs"
+                                                k-on-cascade="gdv.getThematiFirstList()"></select>
+                                        <!--k-on-cascade="gdv.onTreeChange()"-->
+                                        <!--gdv.getTreeThemas()-->
+                                        <div ng-show="gdv.showMagic" style="float:left;">
+
+                                            <div id="divBtnConsole" class="btn-group">
+
+                                                <button ng-click="gdv.onResizePanelBody()" class="btn btn-primary dropdown-toggle" title="{{gdv.getLabels('tematismi')}}" type="button" data-toggle="dropdown">
+                                                    <span class="glyphicon glyphicon-tasks"></span>
+                                                </button>
+
+                                                <ul class="dropdown-menu">
+                                                    <li ng-show="(n.RSN_THEMAT_FLAG_BLOCK && gdv.showViewerDetail || !n.RSN_THEMAT_FLAG_BLOCK)" ng-repeat="n in gdv.selectedTree.dataSource._data track by n.ID | unique:'ID'">
+                                                        <a ng-click="gdv.setSelectTreeDataValue(n)" class="collapsed" data-toggle="collapse" data-parent="#dxf-themati-accordion" href="#dxf-themati-{{n.ID}}">
+                                                            {{n.Description}}
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <button id="view_cad_block"
+                                                        style="float:left;margin-left:1px;"
+                                                        title="{{ gdv.getLabels('viewDetail') }}"
+                                                        type="button" class="btn btn-success"
+                                                        ng-click="gdv.openModal()">
+                                                    <span class="glyphicon glyphicon-new-window"></span>
+                                                </button>
+                                                <button id="view_cad_block2"
+                                                        style="float:left;margin-left:1px;"
+                                                        title="{{ gdv.getLabels('viewDetail') }}"
+                                                        type="button" class="btn btn-info"
+                                                        ng-click="gdv.openModalGridAction()"
+                                                        ng-if="false">
+                                                    <span class="glyphicon glyphicon-new-window"></span>
+                                                </button>
+                                                <!--ng-if="gdv.showViewerDetail && gdv.onShowBtnDetail"-->
+
+                                                <button id="insertCadBlock"
+                                                        ng-if="gdv.showViewerDetail && gdv.assetMode"
+                                                        style="float:left;margin-left:1px;"
+                                                        title="{{ gdv.getLabels('insertBlock') }}"
+                                                        type="button" class="btn btn-info"
+                                                        ng-click="gdv.onShowAddExternalBlock()">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+
+                                                <!--<button ng-if="gdv.showViewerDetail && gdv.optionsExternalBlock && gdv.hasProperties(gdv.viewerSelection)"
+                                                        id="copy_block"
+                                                        style="float:left;margin-left:1px;"
+                                                        title="{{ gdv.getLabels('copyExternalBlock') }}"
+                                                        type="button" class="btn btn-success"
+                                                        ng-click="gdv.onBlockCopy()">
+                                                    <i class="fa fa-copy" aria-hidden="true"></i>
+                                                </button>-->
+
+                                                <button ng-if="gdv.showViewerDetail && gdv.optionsExternalBlock && gdv.showBlockToSave"
+                                                        id="blockSave"
+                                                        style="float:left;margin-left:1px;"
+                                                        title="{{ gdv.getLabels('saveExternalBlock') }}"
+                                                        type="button" class="btn btn-success"
+                                                        ng-click="gdv.onBlockSave()">
+                                                    <i class="fa fa-save"></i>
+                                                </button>
+
+                                                <button id="showActions"
+                                                        ng-show="gdv.showViewerDetail && gdv.hasProperties(gdv.viewerSelection) && !gdv.viewInsertBlock && !gdv.activateActionDirective"
+                                                        style="float:left;margin-left:1px;"
+                                                        title="{{ gdv.getLabels('showDetail') }}tree"
+                                                        type="button"
+                                                        class="btn btn-info"
+                                                        ng-click="gdv.onClickShowActions()">
+                                                    <i class="glyphicon glyphicon-th-list" aria-hidden="true"></i>
+                                                </button>
+                                                <button id="details___dwg"
+                                                        ng-show="!gdv.viewInsertBlock"
+                                                        style="float:left;margin-left:1px;"
+                                                        title="{{ gdv.getLabels('refreshTree') }}"
+                                                        type="button"
+                                                        class="btn btn-warning"
+                                                        ng-click="gdv.viewerRefresh(true)">
+                                                    <i class="glyphicon glyphicon-refresh" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+
+
+                                    <!--<div class="row ltree" style="height:10px;"></div>-->
+                                    <div id="gantttree" class="row ltree">
+                                        <div id="divtreeThemati" ng-show="gdv.showTreeData">
+                                            <!--ng-show="gdv.showTreeThemati"-->
+                                            <div id="treeThemati" kendo-tree-view="gdv.openTree" ng-if="!gdv.viewInsertBlock"
+                                                 k-data-source="gdv.selectedTreeData"
+                                                 k-checkboxes="gdv.checkboxesTemplate"
+                                                 k-on-check="gdv.getTematFromTree(kendoEvent)"
+                                                 k-on-expand="gdv.setTreeExpandedItem(kendoEvent)"
+                                                 k-on-data-bound="gdv.loadFilterForm(kendoEvent)"
+                                                 style="">
+                                                <span k-template ng-mouseover="gdv.onMouseOverBlock(this)" ng-mouseleave="gdv.onMouseLeaveBlock(this)">
+                                                    {{ !!dataItem.$$hashKey ? 'Seleziona tutti' : dataItem.Description }} <span ng-show="true"><b>{{ dataItem.Area ?  (dataItem.unit_measure ? dataItem.unit_measure : ' ') + ' ' + dataItem.Area : ' ' }} </b></span> {{ dataItem.Tot_nr && dataItem.Tot_nr>1 ?  '(' + dataItem.Tot_nr + ')' : '' }}
+                                                    <input ng-show="dataItem.showColor && dataItem.dwg_theme && !dataItem.isBlock" ng-change="gdv.onChangeColor(this)" ng-model="dataItem.ColourTemat" type="color" ng-value="dataItem.ColourTemat" />
+
+                                                    <!--<input ng-if="gdv.assetMode &&  dataItem.dwg_theme" type="range" name="points" min="0" max="10" ng-model="dataItem.xscale" ng-change="gdv.onChangeScale(dataItem)">-->
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <br />
+                                        <div class="panel-group" id="dxf-tree-2-accordion" ng-if="!gdv.viewInsertBlock && gdv.onShowGroupThemati">
+                                            <!--!gdv.viewInsertBlock-->
+                                            <div ng-repeat="thema in gdv.groupThematiList" class="panel panel-success">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a ng-click="gdv.setGroupThematiList(thema)" class="collapsed" data-toggle="collapse" data-parent="#dxf-tree-2-accordion" href="#dxf-tree-2-{{thema.ClathemId}}-{{thema.ThematiId}}">
+                                                            {{thema.Description}}
+                                                        </a>
+                                                    </h4>
+                                                </div>
+
+                                                <div id="dxf-tree-2-{{thema.ClathemId}}-{{thema.ThematiId}}" class="panel-collapse collapse">
+                                                    <div class="panel-body" style="overflow:auto;">
+                                                        <div id="contain_{{thema.ClathemId}}_{{thema.ThematiId}}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div ng-show="gdv.viewInsertBlock" class="panel-group" id="dxf-header-accordion">
+                                            <div ng-repeat="n in gdv.classForAsset | unique:'NEW' | orderBy:'NEW'" class="panel panel-success">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a data-toggle="collapse" class="collapsed" data-parent="#dxf-header-accordion" href="#dxf-header-{{n.NEW}}">
+                                                            {{n.NEW}}
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="dxf-header-{{n.NEW}}" class="panel-collapse collapse">
+                                                    <div class="panel-body" style="overflow:auto;">
+                                                        <div class="panel-group" id="dxf-blocks-accordion">
+                                                            <div ng-repeat="head in gdv.classForAsset | filter: {NEW: n.NEW} | unique:'id_father_key'" class="panel panel-success">
+                                                                <div class="panel-heading">
+                                                                    <h4 class="panel-title">
+                                                                        <a class="collapsed" data-toggle="collapse" data-parent="#dxf-blocks-accordion" href="#dxf-tree-{{head.NEW}}-{{head.id_father_key}}">
+                                                                            {{head.ds_father}}
+                                                                        </a>
+                                                                    </h4>
+                                                                </div>
+                                                                <div id="dxf-tree-{{head.NEW}}-{{head.id_father_key}}" class="panel-collapse collapse">
+                                                                    <div class="panel-body" style="overflow:auto;">
+
+                                                                        <a ng-repeat="child in gdv.classForAsset | filter:head.id_father_key"
+                                                                           href="#"
+                                                                           ng-click="gdv.setVisibleInsertBlock(child)"
+                                                                           class="list-group-item"
+                                                                           ng-class="{ 'active':  (gdv.selectedClassForAsset[gdv.fileShownInDetail].id_child == child.id_child) }">
+                                                                            {{child.ds_child}}
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-show="false" ng-if="gdv.loadingTree" style="margin-top: 1em">
+                                    <p class="text-center"><i class="fa fa-spinner fa-spin fa-2x"></i></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- gestione del tree fine-->
+                    <!-- gestione del tree nuovo -->
+                    <!--<div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a ng-click="gdv.onShowTree('tematismi')" data-toggle="collapse" data-parent="#dxf-tree-accordion" href="#dxf-tree-four">
+                                    {{gdv.getLabels('tematismi') + (gdv.showViewerDetail  ? ' ' + gdv.fileInfo[gdv.fileInDetail.fileName].description : '' )}}
+                                </a>
+                            </h4>
+                        </div>
+
+                        <div id="dxf-tree-four" class="panel-collapse collapse in">
+                            <div class="panel-body" style="overflow:auto;">
+
+
+                            </div>
+                        </div>
+                    </div>-->
+                    <!-- gestione del tree nuovo fine-->
+                    <!-- gestione layer e blocchi  -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a ng-click="gdv.shownTree !== 'blocks' && gdv.onShowTree('blocks')" class="collapsed" data-toggle="collapse" data-parent="#dxf-tree-accordion" href="#dxf-tree-three">
+                                    {{gdv.getLabels('blocchiLayer')}}
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="dxf-tree-three" class="panel-collapse collapse">
+                            <div ng-show="false">
+
+
+
+
+                                <div class="panel-body">
+                                    <p><strong>{{gdv.getLabels('blocks')}}</strong></p>
+
+                                    <div ng-if="gdv.showViewerDetail" class="checkbox checkbox-primary">
+                                        <label for="detailBlocksSelectAll">
+                                            <input id="detailBlocksSelectAll"
+                                                   type="checkbox"
+                                                   ng-click="gdv.toggleSelectBlocks()"
+                                                   ng-model="gdv.isAllBlocksSelect"
+                                                   class="list-group-item" />
+                                            seleziona tutti
+                                        </label>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div ng-if="gdv.showViewerDetail" class="checkbox checkbox-primary" ng-repeat="block in gdv.blocksAndLayersAll[gdv.fileInDetail.fileName].blocks">
+                                            <label for="{{block.name}}">
+                                                <input id="{{block.name}}"
+                                                       type="checkbox"
+                                                       ng-model="block.checked"
+                                                       ng-change="gdv.onBlockClickAll(block)"
+                                                       class="list-group-item" />
+                                                {{block.name}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        <strong>{{gdv.getLabels('layers')}}</strong>
+                                    </p>
+                                    <div ng-if="gdv.showViewerDetail" class="checkbox checkbox-primary">
+                                        <label for="detailLayersSelectAll">
+                                            <input id="detailLayersSelectAll"
+                                                   type="checkbox"
+                                                   ng-click="gdv.toggleSelectLayers()"
+                                                   ng-model="gdv.isAllLayerSelect"
+                                                   class="list-group-item" />
+                                            Seleziona tutti
+                                        </label>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div ng-show="layer.selectable" ng-if="gdv.showViewerDetail" class="checkbox checkbox-primary" ng-repeat="layer in gdv.blocksAndLayersAll[gdv.fileInDetail.fileName].layers">
+                                            <label>
+                                                <input id="{{layer.name}}"
+                                                       type="checkbox"
+                                                       ng-model="layer.checked"
+                                                       ng-change="gdv.onLayerClickAll(layer)"
+                                                       class="list-group-item" />
+                                                {{layer.name}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div id="layersBlocks" ng-show="true">
+                                <div class="panel-group" id="dxf-file-accordion">
+                                    <div ng-repeat="file in gdv.selectedFiles track by file.fileName" class="panel panel-success" ng-show="(!gdv.showViewerDetail && !!gdv.viewers[file.fileName]) || (gdv.showViewerDetail && file.fileName == gdv.fileInDetail.fileName)">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" class="collapsed" data-parent="#dxf-file-accordion" href="#file_blocks_layers_{{gdv.fileInfo[file.fileName].id}}" style="font-size:10px">
+                                                    {{gdv.fileInfo[file.fileName].description}}
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="file_blocks_layers_{{gdv.fileInfo[file.fileName].id}}" class="panel-collapse collapse">
+                                            <div class="panel-body" style="overflow:auto;">
+                                                <div class="panel-group" id="blokcs_file_accordion">
+                                                    <div class="panel panel-success">
+                                                        <div class="panel-heading">
+                                                            <h4 class="panel-title">
+                                                                <a data-toggle="collapse" class="collapsed" data-parent="#blokcs_file_accordion" href="#blokcs_file_{{gdv.fileInfo[file.fileName].id}}">
+                                                                    {{gdv.getLabels('blocks')}}
+                                                                </a>
+                                                            </h4>
+                                                        </div>
+                                                        <div id="blokcs_file_{{gdv.fileInfo[file.fileName].id}}" class="panel-collapse collapse">
+                                                            <div class="panel-body" style="overflow:auto;">
+                                                                <div class="checkbox checkbox-primary">
+                                                                    <label for="detailBlocksSelectAll_{{gdv.fileInfo[file.fileName].id}}">
+                                                                        <input id="detailBlocksSelectAll_{{gdv.fileInfo[file.fileName].id}}"
+                                                                               type="checkbox"
+                                                                               ng-click="gdv.toggleSelectBlocksFileName(file.fileName)"
+                                                                               ng-model="gdv.isAllBlockSelectFileName[file.fileName]"
+                                                                               class="list-group-item" />
+                                                                        seleziona tutti
+                                                                    </label>
+                                                                </div>
+                                                                <div class="panel-body">
+                                                                    <div class="checkbox checkbox-primary" ng-repeat="block in gdv.blocksAndLayersAll[file.fileName].blocks">
+                                                                        <label for="{{block.name}}">
+                                                                            <input id="{{block.name}}"
+                                                                                   type="checkbox"
+                                                                                   ng-model="block.checked"
+                                                                                   ng-change="gdv.onBlockClickFileName(block,file.fileName)"
+                                                                                   class="list-group-item" />
+                                                                            {{block.name}}
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-group" id="layers_file_accordion">
+                                                    <div class="panel panel-success">
+                                                        <div class="panel-heading">
+                                                            <h4 class="panel-title">
+                                                                <a data-toggle="collapse" class="collapsed" data-parent="#layers_file_accordion" href="#layers_file_{{gdv.fileInfo[file.fileName].id}}">
+                                                                    {{gdv.getLabels('layers')}}
+                                                                </a>
+                                                            </h4>
+                                                        </div>
+                                                        <div id="layers_file_{{gdv.fileInfo[file.fileName].id}}" class="panel-collapse collapse">
+                                                            <div class="panel-body" style="overflow:auto;">
+
+                                                                <div class="checkbox checkbox-primary">
+                                                                    <label for="detailLayersSelectAll_{{gdv.fileInfo[file.fileName].id}}">
+                                                                        <input id="detailLayersSelectAll_{{gdv.fileInfo[file.fileName].id}}"
+                                                                               type="checkbox"
+                                                                               ng-click="gdv.toggleSelectLayersFileName(file.fileName)"
+                                                                               ng-model="gdv.isAllLayerSelectFileName[file.fileName]"
+                                                                               class="list-group-item" />
+                                                                        Seleziona tutti
+                                                                    </label>
+                                                                </div>
+                                                                <div class="panel-body">
+                                                                    <div ng-show="layer.selectable" class="checkbox checkbox-primary" ng-repeat="layer in gdv.blocksAndLayersAll[file.fileName].layers">
+                                                                        <label>
+                                                                            <input id="{{layer.name}}"
+                                                                                   type="checkbox"
+                                                                                   ng-model="layer.checked"
+                                                                                   ng-change="gdv.onLayerClickAllFileName(layer,file.fileName)"
+                                                                                   class="list-group-item" />
+                                                                            {{layer.name}}
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- gestione layer e blocchi fine -->
+                    <!-- gestione layer e blocchi  -->
+                    <div ng-if="gdv.selectedFiles && gdv.selectedFiles.length" class="panel panel-default" ng-show="gdv.fileShownInDetail==file.fileName">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a ng-click="gdv.shownTree !== 'blocks' && gdv.onShowTree('blocks')" class="collapsed" data-toggle="collapse" data-parent="#dxf-tree-accordion" href="#dxf-tree-two">
+                                    {{gdv.getLabels('blocchiLayer')}}
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="dxf-tree-two" class="panel-collapse collapse">
+                            <div ng-if="gdv.blocksAndLayersReady" class="panel-body">
+
+
+                                <div ng-repeat="file in gdv.selectedFiles track by file.fileName"
+                                     ng-if="
+                                (
+                                    !gdv.showViewerDetail
+                                    || gdv.showViewerDetail
+                                        && gdv.fileShownInDetail === file.fileName
+                                )
+                                &&
+                                (
+                                    gdv.visibleBlocksAndLayers[file.fileName].blocks.length
+                                    || gdv.visibleBlocksAndLayers[file.fileName].layers.length
+                                )
+                            "
+                                     class="panel panel-default">
+                                    <div class="panel-heading">{{gdv.fileLabels[file.fileName]}}</div>
+                                    <div ng-if="gdv.visibleBlocksAndLayers[file.fileName].blocks.length"
+                                         class="panel-body"
+                                         style="
+                                    border: 1px solid #D9E0E4;
+                                    border-bottom: 0px;
+                                    border-top: 0px;
+                                ">
+                                        <strong>{{gdv.getLabels('blocks')}}</strong>
+                                    </div>
+                                    <a ng-if="gdv.visibleBlocksAndLayers[file.fileName].blocks.length"
+                                       ng-repeat="block in gdv.visibleBlocksAndLayers[file.fileName].blocks track by block.name"
+                                       href="#"
+                                       class="list-group-item"
+                                       ng-click="gdv.onBlockClick(block)"
+                                       ng-class="{ 'active':  gdv.activeBlocks[block.name] }">
+                                        {{block.name}}
+                                    </a>
+                                    <div ng-if="gdv.visibleBlocksAndLayers[file.fileName].layers.length"
+                                         class="panel-body"
+                                         style="
+                                    border: 1px solid #D9E0E4;
+                                    border-bottom: 0px;
+                                    border-top: 0px;
+                                ">
+                                        <strong>{{gdv.getLabels('layers')}}</strong>
+                                    </div>
+                                    <a ng-if="gdv.visibleBlocksAndLayers[file.fileName].layers.length"
+                                       ng-repeat="layer in gdv.visibleBlocksAndLayers[file.fileName].layers track by layer.name"
+                                       ng-click="gdv.onLayerClick(layer)"
+                                       ng-class="{ 'active':  gdv.activeLayers[layer.name] }"
+                                       href="#"
+                                       class="list-group-item">
+                                        {{layer.name}}
+                                    </a>
+                                </div>
+                            </div>
+                            <div ng-if="!gdv.blocksAndLayersReady" style="margin-top: 1em">
+                                <p class="text-center"><i class="fa fa-spinner fa-spin fa-2x"></i></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- gestione layer e blocchi fine -->
+                    <!--<div ng-if="gdv.polylines" class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a ng-click="gdv.onShowTree('polylines')" class="collapsed" data-toggle="collapse" data-parent="#dxf-tree-accordion" href="#dxf-tree-three">
+                                    {{gdv.getLabels('polylines')}}
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="dxf-tree-three" class="panel-collapse collapse">
+                            <div class="panel-body">
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+        <!---->
+        <div id="right-pane">
+            <div kendo-splitter
+                 id="vertical"
+                 k-orientation="'vertical'"
+                 k-on-resize="gdv.triggerWindowResize()"
+                 k-panes="[{ resizable: true, collapsible: true ,size: '80%'}, {collapsed: true, resizable: true , collapsible:  true,size: '20%' }]">
+
+                <div id="top-pane">
+
+                    <div class="row" ng-style="gdv.showViewerDetail || gdv.mainContent === 'map' ? { height: '100%'} : {}"
+                         style="flex-wrap: wrap; display: flex; position: relative; margin-left: 15px !important;">
+
+                        <div ng-if="gdv.showViewersOverlay" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; background-color: black; opacity: 0.5; z-index: 10">
+                            <p class="text-center" style="color: white; margin: 30vh"><i class="fa fa-spinner fa-spin fa-4x"></i></p>
+                        </div>
+                        <div ng-if="gdv.mainContent === 'map'"
+                             class="col-md-12">
+                            <easy-map markers="gdv.mapMarkers">
+                            </easy-map>
+                        </div>
+                        <div id="actionGridSingleContainer">
+                            <div ng-show="false" id="actionGridSingle">
+
+                                <div ng-if="gdv.initGridAction && gdv.gridActionSingle !=''" class="row">
+                                    <div class="col-md-12">
+                                        <magic-grid gridname="{{gdv.gridActionSingle}}" filterpk="HANDLE" filter="gdv.initFilterGridStart" gridoptionsextension="{dataBound: gdv.onDataBoundGridActionSingle}"></magic-grid>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!--style="margin-top: 38px"-->
+                        <div class="col-md-12"
+                             ng-if="gdv.mainContent === 'actionGrid'">
+                            <p ng-show="!gdv.isActionGridReady" class="text-center"><i class="fa fa-spinner fa-spin fa-2x"></i></p>
+                            <magic-grid ng-if="gdv.actionGridName"
+                                        ng-show="gdv.isActionGridReady"
+                                        gridname="{{gdv.actionGridName}}"
+                                        filter="gdv.actionGridFilter"
+                                        data="gdv.actionGridData"
+                                        kendoGridInstance="gdv.actionGridInstance"
+                                        gridoptionsextension="{dataBound: gdv.onDataBoundGrid, save:gdv.onSaveGrid}"></magic-grid>
+                        </div>
+                        <!--style="margin-top: 38px"-->
+                        <div ng-show="false" class="col-md-12">
+                            <magic-grid ng-if="gdv.addBlocksGridName"
+                                        ng-show="true"
+                                        gridname="{{gdv.addBlocksGridName}}"
+                                        filter="gdv.actionGridFilter"
+                                        kendoGridInstance="gdv.actionGridInstance"
+                                        gridoptionsextension="{save:gdv.onSaveGridBlocks,dataBound: gdv.onDataBoundGridBlocks}"></magic-grid>
+                        </div>
+
+
+
+                        <div ng-init="gdv.onSetSplitterViewer()" ng-show="gdv.mainContent === 'viewer' && (!gdv.showViewerDetail || gdv.showViewerDetail && gdv.fileShownInDetail === file.fileName)"
+                             ng-repeat="file in gdv.selectedFiles track by file.fileName"
+                             ng-class="gdv.getViewerContainerClass()"
+                             ng-click="gdv.onSingleFileSelect(file)"
+                             ng-style="gdv.showViewerDetail ? { 'height': '95%', overflow: 'hidden' } : { cursor: 'pointer'  }"
+                             onresize="gdv.triggerWindowResize()">
+
+                            <p style="text-align: center; font-size=14px; margin: 5px; font-weight: bold;">{{ !gdv.showViewerDetail ? gdv.fileLabels[file.fileName] : ''}}</p>
+
+                            <dxf-viewer on-set-data="gdv.onSetViewerData"
+                                        on-show-tooltip="gdv.onShowViewerTooltip"
+                                        file-name="file.fileName"
+                                        fill-polylines="file.tdata"
+                                        active-layers="gdv.fileActiveLayers[file.fileName]"
+                                        active-blocks="gdv.fileActiveBlocks[file.fileName]"
+                                        mode="{{ gdv.showViewerDetail && gdv.fileShownInDetail === file.fileName ? 'webgl' : 'svg' }}"
+                                        style="display:block; margin: 5px; margin-top: 15px;"
+                                        ng-style="gdv.showViewerDetail && gdv.fileShownInDetail === file.fileName ? { height: '95%'} : {}"
+                                        events="gdv.showViewerDetail && gdv.fileShownInDetail === file.fileName ? gdv.fileInDetailEvents : null"
+                                        path-file-cad="gdv.pathFileCad"
+                                        view-block="gdv.viewBlock"
+                                        external-blocks="gdv.externalBlocks[file.fileName]"
+                                        on-render-blocks="gdv.renderBlocks[file.fileName]"
+                                        clear-selection="gdv.clearSelectionViewer[file.fileName]"
+                                        on-clear-external-blocks="gdv.clearExternalBlocks[file.fileName]"
+                                        asset-mode="gdv.assetMode"
+                                        scale="gdv.scale"
+                                        on-Set-blocks-scale="gdv.onChangeScale"
+                                        on-add-new-block="gdv.onAddBlock"
+                                        on-get-close-polilyne="gdv.fillPolilyneForAddBlocks[file.fileName]"
+                                        on-insert-block="gdv.selectedClassForAsset[file.fileName]"
+                                        title="{{ !gdv.showViewerDetail ? gdv.fileLabels[file.fileName] : ''}}"
+                                        on-click-deselect="gdv.activateActionDirective"
+                                        multi-action="gdv.multiAction">
+                            </dxf-viewer>
+                            <br />
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div id="bottom-pane" ng-show="true">
+
+                    <div ng-show="false" ng-if="gdv.initGridExportThemati">
+                        <magic-grid gridname="{{gdv.initGridNameExportThemati}}" filterpk="id" gridoptionsextension="{dataBound: gdv.onDataBoundGridExportThemati}"></magic-grid>
+                    </div>
+                    <!--<div ng-if="gdv.showViewerDetail">-->
+                    <div ng-if="gdv.activateInitGridCadInfo">
+                        <magic-grid gridname="{{gdv.initGridNameInfoCad}}" filter="gdv.initGridInfoCadFilterStart" gridoptionsextension="{dataBinding: gdv.onDataBoundGridInfoCad}"></magic-grid>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#vertical").find('.k-splitbar-vertical').hide();
+    });
+
+    function reftrehR3Page(e) {
+        angular.element($('dxf-viewer')).scope().$parent.$parent.gdv.actionCallback(e);
+    }
+
+</script>
+
+<script type="text/ng-template" id="layersBlocksHtml.html">
+    <div class="panel-group">
+        <div ng-repeat="file in fileList track by file.fileName" class="panel panel-success">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" class="collapsed" data-parent="#dxf-file-accordion-pdf" href="#file_blocks_layers_pfd_{{gdv.fileInfo[file.fileName].id}}" style="font-size:10px">
+                        {{ gdv.fileInfo[file.fileName].description }}
+                    </a>
+                </h4>
+            </div>
+            <div id="file_blocks_layers_pfd_{{gdv.fileInfo[file.fileName].id}}" class="panel-collapse collapse">
+                <div class="panel-body" style="overflow:auto;">
+                    <div class="panel-group" id="layers_file_accordion_pdf">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#layers_file_accordion_pdf" href="#layers_file_pdf_{{gdv.fileInfo[file.fileName].id}}">
+                                        {{gdv.getLabels('layers')}}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="layers_file_pdf_{{gdv.fileInfo[file.fileName].id}}" class="panel-collapse collapse">
+                                <div class="panel-body" style="overflow:auto;">
+
+                                    <div class="checkbox checkbox-primary">
+                                        <label for="detailLayersSelectAll_pdf_{{gdv.fileInfo[file.fileName].id}}">
+                                            <input id="detailLayersSelectAll_pdf_{{gdv.fileInfo[file.fileName].id}}"
+                                                   type="checkbox"
+                                                   ng-click="toggleSelectLayersFileNamePdf(file.fileName)"
+                                                   ng-model="$parent.blocksAndLayersAllPdf[file.fileName].isSelectedLayersAll"
+                                                   class="list-group-item" />
+                                            Seleziona tutti
+                                        </label>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div ng-show="layerPdf.selectable" class="checkbox checkbox-primary" ng-repeat="layerPdf in $parent.blocksAndLayersAllPdf[file.fileName].layers">
+                                            <label>
+                                                <input id="{{layerPdf.name}}"
+                                                       type="checkbox"
+                                                       ng-model="layerPdf.checked"
+                                                       ng-change=""
+                                                       class="list-group-item" />
+                                                {{layerPdf.name}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="panel-group" id="blocks_file_accordion_pdf">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="collapsed" data-parent="#blocks_file_accordion_pdf" href="#blocks_file_pdf_{{gdv.fileInfo[file.fileName].id}}">
+                                        {{gdv.getLabels('blocks')}}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="blocks_file_pdf_{{gdv.fileInfo[file.fileName].id}}" class="panel-collapse collapse">
+                                <div class="panel-body" style="overflow:auto;">
+
+                                    <div class="checkbox checkbox-primary">
+                                        <label for="detailBlocksSelectAll_pdf_{{gdv.fileInfo[file.fileName].id}}">
+                                            <input id="detailBlocksSelectAll_pdf_{{gdv.fileInfo[file.fileName].id}}"
+                                                   type="checkbox"
+                                                   ng-click="toggleSelectBlocksFileNamePdf(file.fileName)"
+                                                   ng-model="$parent.blocksAndLayersAllPdf[file.fileName].isSelectedBlocksAll"
+                                                   class="list-group-item" />
+                                            Seleziona tutti
+                                        </label>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div ng-show="blockPdf.selectable" class="checkbox checkbox-primary" ng-repeat="blockPdf in $parent.blocksAndLayersAllPdf[file.fileName].blocks">
+                                            <label>
+                                                <input id="{{blockPdf.name}}"
+                                                       type="checkbox"
+                                                       ng-model="blockPdf.checked"
+                                                       ng-change=""
+                                                       class="list-group-item" />
+                                                {{blockPdf.name}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+</script>

@@ -1,0 +1,440 @@
+﻿<input style="display:none" id="chkRefresh" type="checkbox" ng-model="myVar" ng-init="myVar = true" />
+<div ng-if="myVar">
+    <!--<div class="panel-heading-r3" id="asset_db_form_edific_unige_heading">-->
+    <div class="panel-group_r3" id="group-azioni-edific">
+        <div class="panel panel-primary_r3" id="primary-azioni-edific">
+            <div class="panel-heading_r3" id="heading-azioni-edific">
+                <h3 class="panel-title_r3" id="title-azioni-edific">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-azioni-edific" aria-expanded="true" aria-controls="collapseOne">
+                        <i class="short-full-r3 glyphicon glyphicon-minus"></i>
+                        Azioni
+                    </a>
+                </h3>
+            </div>
+            <div id="collapse-azioni-edific" class="panel-collapse in">
+                <div class="panel-body">
+                    <!--<div name="divAction"></div>-->
+                    <!--<br />
+                    <magic-grid gridname="US_VI_MONITOR_TO_VALIDATE_READONLY" filterpk="AS_ASSET_ID"></magic-grid>-->
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <!--</div>-->
+    <!--<div class="panel-body" id="asset_db_form_edific_unige_body">-->
+    <div class="panel-group_r3" id="asset_db_form_edific_unige_body-scheda">
+        <div class="panel panel-primary_r3" id="primary-asset_db_form_edific_unige_body-scheda">
+            <div class="panel-heading_r3" id="heading-asset_db_form_edific_unige_body-scheda">
+                <h3 class="panel-title_r3" id="title-asset_db_form_edific_unige_body-scheda">
+                    <a data-toggle="collapse" data-parent="#Group2" href="#collapse-asset_db_form_edific_unige_body-scheda">
+                        <i class="short-full-r3 glyphicon glyphicon-minus"></i>
+                        <b>Scheda</b>
+                    </a>
+                </h3>
+            </div>
+            <div id="collapse-asset_db_form_edific_unige_body-scheda" class="panel-collapse in">
+                <div class="panel-body">
+
+                    <div class="panel with-nav-tabs panel-default">
+
+                        <ul class="nav nav-tabs ul-nav-r3">
+                            <li class="active li-nav-r3">
+                                <a href="#tab1default" data-toggle="tab">Anagrafica</a>
+                            </li>
+                            <li class="li-nav-r3" ng-click="loadContent.two = true">
+                                <a href="#tab2default" data-toggle="tab">Superfici</a>
+                            </li>
+
+                            <li ng-show="t.selectedNode.TEMP_OBJ_TYPE=='EDI'|| t.selectedNode.TEMP_OBJ_TYPE=='UNI'" class="dropdown li-nav-r3" ng-init="loadContent = {}">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Identificativi catastali
+                                    <span class="caret-r3"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li class="li-nav-r3" ng-click="loadContent.three = true">
+                                        <a href="#tab3default" role="tab" data-toggle="tab">Urbano</a>
+                                    </li>
+                                    <li class="li-nav-r3" ng-click="loadContent.four = true">
+                                        <a href="#tab4default" role="tab" data-toggle="tab">Terreni</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="li-nav-r3" ng-show="t.selectedNode.TEMP_OBJ_TYPE=='EDI'" ng-click="loadContent.five = true">
+                                <a href="#tab5default" data-toggle="tab">Specifiche</a>
+                            </li>
+                            <li class="li-nav-r3" ng-click="loadContent.six = true">
+                                <a href="#tab6default" data-toggle="tab">Documenti</a>
+                            </li>
+                            <li class="li-nav-r3" ng-show="t.selectedNode.TEMP_OBJ_TYPE !='UNI'" ng-click="loadContent.seven = true">
+                                <a href="#tab7default" data-toggle="tab">Risorse</a>
+                            </li>
+                            <li class="li-nav-r3" ng-show="t.selectedNode.TEMP_OBJ_TYPE !='UNI'" ng-click="loadContent.eight = true">
+                                <a href="#tab8default" data-toggle="tab">Attrezzature</a>
+                            </li>
+                            <li class="li-nav-r3" ng-show="t.selectedNode.TEMP_OBJ_TYPE == 'EDI'" ng-click="loadContent.nine = true">
+                                <a href="#tab9default" data-toggle="tab">Storico</a>
+                            </li>
+                        </ul>
+
+
+
+                        <div class="tab-content-r3 tab-content">
+
+                            <div class="tab-pane fade active in" id="tab1default">
+                                <!--<div class="row">
+                                    <div class="panel-group_r3" id="div-DG">
+                                        <div class="panel panel-primary_r3" id="primary-DG">
+                                            <div class="panel-heading_r3" id="heading-DG">
+                                                <h3 class="panel-title_r3" id="title-DG">
+                                                    <a data-toggle="collapse" data-parent="#Group2" href="#collapse-DG">
+                                                        <b>Dati generali</b>
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                            <div id="collapse-DG" class="panel-collapse in">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <magic-form-sp ng-if="t.selectedNode.TEMP_OBJ_TYPE=='EDI'" storedprocedure="config.USP_GET_FormData" isreadonly="true" formname="UNIGE_ASSET_FORM_EDIFIC" hidetabs="true" itemsperrow=2></magic-form-sp>
+                                                            <magic-form-sp ng-if="t.selectedNode.TEMP_OBJ_TYPE=='PIANI'" storedprocedure="config.USP_GET_FormData" isreadonly="true" formname="UNIGE_ASSET_FORM_PIANO" hidetabs="true" itemsperrow=2></magic-form-sp>
+                                                            <magic-form-sp ng-if="t.selectedNode.TEMP_OBJ_TYPE=='UNI'" storedprocedure="config.USP_GET_FormData" isreadonly="true" formname="UNIGE_ASSET_FORM_UNI" hidetabs="true" itemsperrow=2></magic-form-sp>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="panel-group_r3" id="div-indiri">
+                                        <div class="panel panel-primary_r3" id="primary-indiri">
+                                            <div class="panel-heading_r3" id="heading-indiri">
+                                                <h3 class="panel-title_r3" id="title-indiri">
+                                                    <a data-toggle="collapse" data-parent="#Group2" href="#collapse-indiri">
+                                                        <b>Altri indirizzi</b>
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                            <div id="collapse-indiri" class="panel-collapse in">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <magic-grid gridname="AS_VI_US_ASSIND_OTHERS" filterpk="AS_ASSIND_ASSET_ID"></magic-grid>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>-->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <magic-form-sp ng-if="t.selectedNode.TEMP_OBJ_TYPE=='EDI'" storedprocedure="config.USP_GET_FormData" isreadonly="true" formname="UNIGE_ASSET_FORM_EDIFIC" hidetabs="true" itemsperrow=2></magic-form-sp>
+                                        <magic-form-sp ng-if="t.selectedNode.TEMP_OBJ_TYPE=='PIANI'" storedprocedure="config.USP_GET_FormData" isreadonly="true" formname="UNIGE_ASSET_FORM_PIANO" hidetabs="true" itemsperrow=2></magic-form-sp>
+                                        <magic-form-sp ng-if="t.selectedNode.TEMP_OBJ_TYPE=='UNI'" storedprocedure="config.USP_GET_FormData" isreadonly="true" formname="UNIGE_ASSET_FORM_UNI" hidetabs="true" itemsperrow=2></magic-form-sp>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <magic-grid gridname="AS_VI_US_ASSIND_OTHERS" filterpk="AS_ASSIND_ASSET_ID"></magic-grid>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab2default">
+                                <div ng-if="loadContent.two">
+                                    <!--<div class="row">
+        <div class="col-md-12">
+            <magic-grid gridname="AS_US_VI_DIMENS_ASSET" filterpk="AS_DIMENS_AS_ASSET_ID"></magic-grid>
+        </div>
+    </div>
+    <br />-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <magic-grid-sp storedprocedure="core.AS_CREDEM_SP_DIMENS_ALL" gridname="AS_CREDEM_SP_DIMENS_ALL" options="{groupable:false,resizable:false,sortable:true}"></magic-grid-sp>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <magic-grid-sp storedprocedure="core.AS_CREDEM_SP_DIMENS_DETT" gridname="AS_CREDEM_SP_DIMENS_DETT" options="{groupable:false,resizable:false,sortable:true}"></magic-grid-sp>
+                                        </div>
+                                    </div>
+
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <magic-grid-sp storedprocedure="core.AS_CREDEM_SP_DIMENS_ALL_CLASAS" gridname="AS_CREDEM_SP_DIMENS_ALL_CLASAS" options="{groupable:false,resizable:false,sortable:true}"></magic-grid-sp>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-show="t.selectedNode.TEMP_OBJ_TYPE=='EDI'|| t.selectedNode.TEMP_OBJ_TYPE=='UNI'" class="tab-pane" id="tab3default">
+                                <div ng-if="loadContent.three">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <magic-grid gridname="AS_V_ASSET_idecat_sintesi" filterpk="AS_ASSET_ID"></magic-grid>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <magic-grid gridname="AS_VI_IDECAT_PER_ASSET_nceu" filterpk="AS_ASSET_ID"></magic-grid>
+                                        </div>
+                                    </div>
+                                    <!--<div class="panel-group_r3" id="div-urbano">
+                                        <div class="panel panel-primary_r3" id="primary-urbano">
+                                            <div class="panel-heading_r3" id="heading-urbano">
+                                                <h3 class="panel-title_r3" id="title-urbano">
+                                                    <a data-toggle="collapse" data-parent="#Group2" href="#collapse-urbano">
+                                                        <b>Urbano</b>
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                            <div id="collapse-urbano" class="panel-collapse in">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <magic-grid gridname="AS_V_ASSET_idecat_sintesi" filterpk="AS_ASSET_ID"></magic-grid>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <magic-grid gridname="AS_VI_IDECAT_PER_ASSET_nceu" filterpk="AS_ASSET_ID"></magic-grid>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>-->
+                                </div>
+                            </div>
+                            <div ng-show="t.selectedNode.TEMP_OBJ_TYPE=='EDI'|| t.selectedNode.TEMP_OBJ_TYPE=='UNI'" class="tab-pane" id="tab4default">
+                                <div ng-if="loadContent.four">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <magic-grid gridname="AS_VI_IDECAT_PER_ASSET_nct_GROUP" filterpk="AS_ASSET_ID"></magic-grid>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <magic-grid gridname="AS_VI_IDECAT_PER_ASSET_nct" filterpk="AS_ASSET_ID"></magic-grid>
+                                        </div>
+                                    </div>
+                                    <!--<div class="panel-group_r3" id="div-terreni">
+                                        <div class="panel panel-primary_r3" id="primary-terreni">
+                                            <div class="panel-heading_r3" id="heading-terreni">
+                                                <h3 class="panel-title_r3" id="title-terreni">
+                                                    <a data-toggle="collapse" data-parent="#Group2" href="#collapse-terreni">
+                                                        <b>Terreni</b>
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                            <div id="collapse-terreni" class="panel-collapse in">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <magic-grid gridname="AS_VI_IDECAT_PER_ASSET_nct_GROUP" filterpk="AS_ASSET_ID"></magic-grid>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <magic-grid gridname="AS_VI_IDECAT_PER_ASSET_nct" filterpk="AS_ASSET_ID"></magic-grid>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>-->
+
+
+                                </div>
+                            </div>
+                            <div ng-show="t.selectedNode.TEMP_OBJ_TYPE=='EDI'" class="tab-pane fade" id="tab5default">
+                                <div ng-if="loadContent.five">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true" formname="UNIGE_ASSET_FORM_SPECIFICHE" hidetabs="true" itemsperrow=1></magic-form-sp>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div style="text-align:center;">
+                                                <img class="" ng-src="/api/MAGIC_SAVEFILE/GetFile?path={{t.selectedNode.Immagine_principale}}"></img>
+                                            </div>
+                                            <!--<div id="thebeautifulmap"></div>-->
+                                            <!--impostata classe col-md-12 per la gestione immagini -->
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <magic-grid gridname="DO_VI_ALL_DOCUME_SCH" filterpk="AS_ASSET_ID" options="{groupable:false,resizable:false,sortable:true}" filter="{'field': 'DO_CLADOC_CODE', 'operator': 'eq', 'value': 'VINC' }"></magic-grid>
+                                        </div>
+                                    </div>
+
+
+                                    <!--<div class="row">
+                                    <div class="col-md-12">
+                                       <magic-grid gridname="AS_VI_ALL_ASSET_SCH_GRP" filterpk="AS_ASSET_ID"></magic-grid>
+                                    </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                                            <div class="col-md-12">
+                                    <magic-grid gridname="AS_VI_ALL_ASSET_SCH" filterpk="AS_ASSET_ID"></magic-grid>
+                                                                </div>
+                                    </div>-->
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab6default">
+                                <div ng-if="loadContent.six">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <magic-grid ng-if="t.selectedNode.TEMP_OBJ_TYPE=='EDI'" gridname="AS_US_VI_ASSET_EDIT" filterpk="AS_ASSET_ID"></magic-grid>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <magic-grid gridname="DO_VI_ALL_DOCUME_SCH_GRP" filterpk="AS_ASSET_ID"></magic-grid>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <magic-grid gridname="DO_VI_ALL_DOCUME_SCH" filterpk="AS_ASSET_ID"></magic-grid>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-show="t.selectedNode.TEMP_OBJ_TYPE !='UNI'" class="tab-pane fade" id="tab7default">
+                                <div ng-if="loadContent.seven">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <magic-grid gridname="AS_US_VI_RISORS_ANAL" filterpk="AS_ASSET_ID"></magic-grid>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-show="t.selectedNode.TEMP_OBJ_TYPE !='UNI'" class="tab-pane fade" id="tab8default">
+                                <div ng-if="loadContent.eight">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <magic-grid gridname="AS_US_VI_PL_ASSET_ALL_FOR_ASSET" filterpk="AS_ASSET_IDV"></magic-grid>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-show="t.selectedNode.TEMP_OBJ_TYPE == 'EDI'" class="tab-pane fade" id="tab9default">
+                                <div ng-if="loadContent.nine">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <magic-grid gridname="AS_US_VI_CARASS_L" filter="{'field': 'AS_ASSSPE_TO', 'operator': 'neq', 'value': '' }" filterpk="AS_ASSSPE_AS_ASSET_ID"></magic-grid>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--</div>-->
+</div>
+
+<script>
+   //$('div[gridname="AS_UNIGE_SP_DIMENS_DETT"]').data('kendoGrid').dataSource.group({field: "AS_TIPSAS_DESCRIPTION"})
+
+   function prova() {
+       console.log('prova');
+   }
+
+    var tab = 1;
+
+    function setTab(newTab) {
+
+        tab = newTab;
+    };
+
+    function isSet(tabNum) {
+        console.log('ci passso');
+        return tab === tabNum;
+    };
+
+    setTab(1);
+
+   function actionMenu() {
+
+
+       window.jqueryEditRefTreeGrid.actionTemplate =
+                   '<div ng-repeat="father in rtmm.fatherAction"  class="btn-group navbar-btn" style="margin:3px;">\
+                  <button type="button" style="padding: 5px 10px; border-top-left-radius: 8px;border-bottom-left-radius: 8px;" class="btn btn-success">{{father.name}}</button> \
+                  <button type="button" style="padding: 5px 10px; border-top-right-radius: 8px;border-bottom-right-radius: 8px;"class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">\
+                  <span class="caret"></span>\
+                  </button>\
+                  <ul  id="mnav" class="dropdown-menu scrollable-menu-r3" role="menu">\
+                  <li class="dropdown-item" ng-repeat="action in rtmm.fatherAction[$index].action"><a  ng-click="rtmm.dispatch(action)">{{action.label}}</a></li>\
+                  </ul>\
+                  </div>'
+
+
+       window.jqueryEditRefTreeGrid.pk = 'AS_ASSET_ID'
+       window.jqueryEditRefTreeGrid.entityname = 'core.AS_US_VI_ROOM_ANAL_PV_ACTION'
+       window.jqueryEditRefTreeGrid.actionCallback = function (p) {
+
+
+
+
+           if (p.type != "read" && !!p.type) {
+               angular.element($('tree-view-r3')).scope().t.refreshTree();
+
+
+
+               $("#chkRefresh")[0].checked = false;
+               angular.element('#chkRefresh').triggerHandler('click');
+               $("#chkRefresh")[0].checked = true;
+               angular.element('#chkRefresh').triggerHandler('click');
+
+               if ($('div[gridname="US_VI_MONITOR_TO_VALIDATE_L"]').length > 0) {
+
+                   $('div[gridname="US_VI_MONITOR_TO_VALIDATE_L"]').data('kendoGrid').dataSource.read();
+                   $('div[gridname="US_VI_MONITOR_TO_VALIDATE_L"]').data('kendoGrid').refresh();
+
+               }
+
+               if ($('div[gridname="US_VI_MONITOR_TO_VALIDATE_L_USER"]').length > 0) {
+
+                   $('div[gridname="US_VI_MONITOR_TO_VALIDATE_L_USER"]').data('kendoGrid').dataSource.read();
+                   $('div[gridname="US_VI_MONITOR_TO_VALIDATE_L_USER"]').data('kendoGrid').refresh();
+
+               }
+
+
+               actionMenu();
+           }
+
+
+       }
+
+       getAngularControllerElement("reftreeDirectiveController", window.jqueryEditRefTreeGrid);
+
+   }
+
+    actionMenu();
+
+    function toggleIcon(e) {
+        $(e.target)
+            .prev('.panel-heading_r3')
+            .find(".short-full-r3")
+            .toggleClass('glyphicon-plus glyphicon-minus');
+    }
+    $('.panel-group_r3').on('hidden.bs.collapse', toggleIcon);
+    $('.panel-group_r3').on('shown.bs.collapse', toggleIcon);
+
+</script>

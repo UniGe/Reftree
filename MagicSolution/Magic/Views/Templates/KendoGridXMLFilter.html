@@ -1,0 +1,28 @@
+﻿<div style="height: 25px;" ondblclick="$(this).closest('#gridXMLFilter').hide()"><div style="float: right; cursor: pointer" onclick="$(this).closest('#gridXMLFilter').hide()">x</div></div>
+<search-drop sd-values="xfc.searchValues" sd-close-drop-after="750" sd-height="150px" sd-value="value" sd-label="label" sd-max-drop-height="200px" sd-onselect="xfc.addFilter(selectedKey)"></search-drop>
+<div class="activeXmlFilters form-inline">
+    <div ng-repeat="filter in xfc.activeFilters">
+        <div class="form-group">
+            <span ng-bind="xfc.searchValuesTranslations[filter.field]"></span>
+        </div>
+        <div class="form-group">
+            <select ng-model="xfc.activeFilters[$index].operator"
+                    class="form-control"
+                    ng-options="option.operator as option.label for option in xfc.getOperators(filter)"></select>
+        </div>
+        <div class="form-group" ng-switch="xfc.getType(filter)">
+            <search-drop ng-switch-when="drop" sd-values="xfc.foreignValues[filter.field]" sd-initial-value="{{filter.value}}" sd-close-drop-after="250" sd-height="150px" sd-value="value" sd-label="text" sd-max-drop-height="200px" sd-onselect="xfc.dropValueSelected(selectedKey, $index)"></search-drop>
+            <input ng-switch-when="bool" type="checkbox" ng-model="xfc.activeFilters[$index].value" class="form-control" ng-true-value="true" ng-false-value="false" />
+            <input ng-switch-default ng-model="xfc.activeFilters[$index].value" class="form-control" />
+        </div>
+        <div class="form-group">
+            <select ng-model="xfc.activeFilters[$index].logic"
+                    class="form-control"
+                    ng-options="option.logic as option.label for option in xfc.logicOptions"></select>
+        </div>
+        <div class="form-group" style="min-width: 20px;">
+            <span ng-click="xfc.removeFilter($index)">x</span>
+        </div>
+    </div>
+</div>
+<span class="btn btn-default" ng-bind="xfc.lang.apply" ng-click="xfc.applyFilters()">Apply</span>

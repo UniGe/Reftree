@@ -1,0 +1,264 @@
+﻿<div>
+    <style>
+        .is-app, .is-onapp {
+            text-align: center;
+            vertical-align: central;
+        }
+
+
+
+            .is-app:not(.is-weekend):not(.is-weekend):not(.is-festivity):before {
+                content: "\f00c";
+                font-family: "FontAwesome";
+                color: white;
+            }
+
+
+
+            .is-onapp:not(.is-weekend):not(.is-weekend):not(.is-festivity):before {
+                content: "\f128";
+                font-family: "FontAwesome";
+                color: white;
+            }
+
+        .is-weekend {
+            background-color: dimgrey !important;
+        }
+
+        .is-festivity {
+            background-color: darkgrey !important;
+        }
+
+
+        h1 {
+            color: dimgrey;
+        }
+
+        p {
+            font-size: 12px;
+        }
+
+        label {
+            font-size: 13px;
+        }
+
+        .square {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+
+        #month {
+            color: black;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+    </style>
+    <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="!hideFilters">
+        <p>
+            {{ translate('AbsenceViewType')}}
+        </p>
+    </div>
+    <table class="table table-bordered" border="0" ng-show="!hideFilters">
+        <tr>
+            <td>
+                <label>
+                    {{ translate('AbsenceYearView')}}
+                    <input type="radio" value="year" ng-model="period" />
+                </label>
+                <label>
+                    {{ translate('AbsenceMonthView')}}
+                    <input type="radio" value="month" ng-model="period" />
+                </label>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <label>
+                                {{translate("YearSelector")}}
+                            </label>
+                        </td>
+                        <td>
+                            <select ng-options="year.Year as year.Year for year in years" ng-model="year"> </select>
+                        </td>
+                        <td ng-show="period == 'month'">
+                            <label>
+                                {{translate("MonthSelector")}}
+                            </label>
+                        </td>
+                        <td ng-show="period == 'month'">
+                            <a href="javascript:void(0)" ng-click="setMonth(-1)">
+                                <img src="https://img.icons8.com/material-rounded/24/000000/left-squared.png">
+                            </a>
+                            <select ng-options="month.ID as month.Description for month in months" ng-model="month"> </select>
+                            <a href="javascript:void(0)" ng-click="setMonth(+1)">
+                                <img src="https://img.icons8.com/material-rounded/24/000000/right-squared.png">
+                            </a>
+                        </td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>
+                    {{ translate("Department") }}
+                </label>
+            </td>
+            <td>
+                <select ng-options="department.ID as department.Description for department in departments" ng-model="department">
+                    <option value="" class="" selected="selected">{{translate("All")}}</option>
+                    <option></option>
+
+                </select>
+            </td>
+            <td>
+                <label>
+                    {{ translate("Operators") }}
+                </label>
+            </td>
+            <td>
+                <select multiple ng-options="person as person.FullDescription for person in (department ? (persons |  filter:{ Department_ID: department }:true) : persons)" ng-model="person"> </select>
+            </td>
+
+        </tr>
+    </table>
+    </td>
+    </tr>
+    </table>
+    <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-if="period == 'year'">
+        <p ng-show="!hideFilters">
+            {{ translate("AbsenceYearViewInfo") }}
+        </p>
+        <p>
+            <table>
+                <tbody>
+                    <tr>
+                        <td ng-repeat="type in absenceType track by type.Code">
+                            <div style="margin-right:10px;"><div class="square" style="background-color: {{ getColour(type.Code) }}; float:left; margin-right:2px;"></div> <div style="float:left;">{{type.Description}}</div></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <tr>
+                    <td>
+                        <div style="margin-right:10px;">
+                            <div class="square" style="background-color: darkgrey;float:left; margin-right:2px;"></div>
+                            <div style="float:left;">  {{ translate("Festivity") }}</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>
+                        <div style="margin-right:10px;">
+                            <div style="float:left; margin-right:2px;"><b>{{ translate("VacationReferral") }}:</b></div>
+                            <div style="float:left;">{{getReferralName("Primary")}}</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="margin-right:10px;">
+                            <div style="float:left; margin-right:2px;"> <b>{{ translate("VacationReferralSubstitute") }}:</b></div>
+                            <div style="float:left;">{{getReferralName("Substitute")}}</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </p>
+    </div>
+    <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-if="period == 'month'">
+        <p ng-show="!hideFilters">
+            {{ translate("AbsenceMonthViewInfo") }}
+        </p>
+        <table>
+            <tbody>
+                <tr>
+                    <td ng-repeat="type in absenceType track by type.Code">
+                        <div style="margin-right:10px;"><div class="square" style="background-color: {{ getColour(type.Code) }}; float:left; margin-right:2px;"></div> <div style="float:left;">{{type.Description}}</div></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    <div style="margin-right:10px;">
+                        <div class="square" style="background-color: darkgrey;float:left; margin-right:2px;"></div>
+                        <div style="float:left;">  {{ translate("Festivity") }}</div>
+                    </div>
+                </td>
+                <td>
+
+                    <div style="margin-right:10px;">
+                        <div style="color : black;float:left; font-weight: 900;font-size : 20px; margin-right:2px;"> ? </div>
+                        <div style="float:left;padding-top:6px;"> {{ translate("ForApproval") }} </div>
+                    </div>
+
+                </td>
+                <td>
+                    <div style="margin-right:10px;">
+                        <div style="color : black;font-size : 20px;float:left;">✔</div>
+                        <div style="float:left;padding-top:6px;"> {{ translate("Approve") }} </div>
+                    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <!-- TABELLA MENSILE -->
+    <table ng-if="period == 'month'" class="table table-bordered">
+        <tr>
+            <td>
+                <p ng-show="!hideFilters" id="month">
+                    <b>{{months[month-1].Description}}</b>
+                </p>
+            </td>
+            <th ng-repeat="day in monthDays track by $index">
+                <p ng-if="day.day < 10">
+                    <span style=" visibility: hidden;color: #ecf0f2;">0</span>{{ day.day }}
+                </p>
+                <p ng-if="day.day >= 10">{{ day.day }}</p>
+            </th>
+        </tr>
+        <tr ng-repeat="person in (person.length ? person : (department ? (persons |  filter:{ Department_ID: department }:true) : persons)) track by person.ID">
+            <th>
+                <p>{{person.FullDescription}}</p>
+            </th>
+
+            <td ng-style="{'background-color':  getBoxColour(person.ID, day) }" ng-repeat="day in monthDays track by $index" ng-class="{'is-weekend': day.weekday == 0 || day.weekday == 6, 'is-festivity': getFestivityClass(day) == 1 }" class="{{ getAbsenceClass(person.ID, day) }}" ng-click="showAbsenceDetails(person.ID, day,$event)"></td>
+
+        </tr>
+    </table>
+
+    <!-- TABELLA ANNUALE-->
+    <table ng-if="period == 'year'" width="100%" class="table table-bordered">
+        <tr>
+            <th></th>
+            <th>
+                <div style="width: {{ 100/12 }}%; text-align: center; display: inline-block;" ng-repeat="month in YearMonths track by $index">
+                    <p>{{months[$index].Description}}</p>
+                </div>
+            </th>
+        </tr>
+        <tr ng-repeat="person in (person.length ? person : (department ? (persons |  filter:{ Department_ID: department }:true) : persons)) | unique: 'ID'  track by person.ID">
+            <th width="150px;">
+                <p>{{person.FullDescription}}</p>
+
+            </th>
+            <td colspan="12">
+                <div style="position: relative; background: grey;  height: 10px;">
+                    <div ng-repeat="holiday in ResultPerson | filter: {Person_ID_Request: person.ID} : true"
+                         style="{{ yearHolidayStyle(holiday) }}" ng-click="showHoliday(holiday, $event)">
+                    </div>
+
+                    <div ng-repeat="fest in festivity  track by $index" style="{{ festivityStyle(fest) }}" ng-click="showFestivity(fest, $event)"> </div>
+
+                    <div ng-repeat="month in YearMonths track by $index" style="position: absolute; height: 100%; border-left: 1px solid white; left: {{ 100 / 12 * $index }}%;"></div>
+
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,90 @@
+﻿
+<style>
+    .ggm-map .gm-style .gm-style-iw {
+        overflow: visible;
+    }
+
+    #detail__.detailhidden {
+        display: none;
+    }
+
+    .dwg-color-box {
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        background-color: #ccc;
+        left: 5px;
+        top: 5px;
+    }
+    .abitatmap.mapToolbar {
+        position: absolute;
+        bottom: 5px;
+        right: 0;
+        z-index: 1000;
+        margin-bottom: 35px;
+        margin-right: 5px;
+    }
+</style>
+<form name="form" ng-submit="ag.filterTree(form)" ng-show="ag.showFilters">
+    <label class="control-label" for="operator">{{ ag.getLabels('operator') }}</label>
+    <select name="operator" id="operator" ng-model="ag.treeFilters.Operator">
+        <option value="AND">AND</option>
+        <option value="OR">OR</option>
+    </select>
+    <div class="row" style="height:10px;"></div>
+    <!--<magic-form-sp useasfilter="true" model="ag.treeFilters.Values" storedprocedure="config.USP_GET_FormData" isreadonly="false" formname="{{ ag.formName }}" itemsperrow=2 hidetabs="true" options='{ "kendoStyle":false }'
+                   ng-if="ag.formName">
+    </magic-form-sp>-->
+    <magic-form-sp useasfilter="true" model="ag.treeFilters.Values" storedprocedure="core.DWG_GetFilter" isreadonly="false" formname="{{ ag.formName }}" itemsperrow=2 hidetabs="true" options='{ "kendoStyle":false }'
+                   ng-if="ag.formName">
+    </magic-form-sp>
+    <input class="btn btn-success" type="submit" value="{{ ag.getLabels('applyfilter') }}" />
+</form>
+<div id="mastercancelgis__" ng-show="!ag.showFilters" class="btn btn-danger" style="position:absolute; top: 0; right: -15px; z-index:10" ng-click="ag.closeViewer()">X</div>
+<div ng-show="ag.showFilters" class="btn btn-danger" style="position:absolute; top: 0; right: 0; z-index:10" ng-click="ag.showFilters = false">X</div>
+<h3>{{ ag.Label }}</h3>
+<div ng-show="!ag.showFilters" class="col-md-3" style="overflow:auto;height:95%;">
+    <div class="row">
+        <select style="float:left;margin-right:5px;margin-bottom:2px;width:95%;" kendo-drop-down-list="ag.selectedTree"
+                k-data-text-field="'Description'"
+                k-data-value-field="'ID'"
+                k-data-source="ag.TreesDs"
+                k-on-cascade="ag.onTreeChange()"></select>
+        <div style="float:left;">
+            <button style="float:left;" title="Filters" type="button" class="btn btn-default" ng-click="ag.toggleFilter()">
+                <span class="glyphicon glyphicon-filter"></span>
+            </button>
+            <button style="float:left;margin-left:1px;" title="Remove filters" type="button" ng-class="{'btn btn-default': !ag.filtersActive , 'btn btn-danger': ag.filtersActive }" ng-click="ag.undoFilterTree()">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+            <button id="actions___gmap" style="float:left;margin-left:1px;" title="Show actions" type="button" class="btn btn-primary" ng-click="ag.showActions()">
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+    <div class="row" style="height:10px;"></div>
+    <div id="gantttree" class="row">
+        <div kendo-tree-view="ag.openTree"
+             k-data-source="ag.selectedTreeData"
+             k-checkboxes="ag.checkboxesTemplate"
+             k-on-check="ag.getTematFromTree(kendoEvent)"
+             k-on-expand="ag.setTreeExpandedItem(kendoEvent)"
+             k-on-data-bound="ag.loadFilterForm(kendoEvent)">
+            <span k-template>
+                {{dataItem.Description}} <b>{{ dataItem.Area ?  dataItem.Area + ' m²' : ' ' }}</b> {{ dataItem.Tot_nr && dataItem.Tot_nr>1 ?  '(' + dataItem.Tot_nr + ')' : '' }}
+                <span class="dwg-color-box" style="background-color:{{ dataItem.ColourTemat }};">
+                </span>
+            </span>
+        </div>
+    </div>
+</div>
+<!--<easy-map ng-show="!ag.showFilters" ng-class="ag.calcViewerClass()" mapOptions="ag.mapOptions" markers="ag.markers" on-map-ready="ag.onMapReady()" on-select="ag.setGridFilter(event)"></easy-map>-->
+<!--<div ng-init="ag.initGIS()" id="container" style="height:500px;" class="ms2"></div>-->
+<div class="col-md-9" style="height:95%;">
+    <div ng-init="ag.initGIS()" id="map-container" class="ms2"></div>
+</div>
+<div id="detail__" ng-class="ag.showDetail && !ag.showFilters  ? 'col-md-3' : 'detailhidden'" style="padding-right:45px;">
+    <ul class="list-group">
+        <li style="background-color:{{ item.ColourField ? item.ColourField: 'white' }}" ng-repeat="item in ag.detailInfo" class="list-group-item"><span><b>{{ item.label  }}</b>:</span><span style="word-wrap:break-word;font-weight:{{ item.bold ? 'bold' : 'normal' }}">{{ item.value }}</span></li>
+    </ul>
+</div>

@@ -1,0 +1,322 @@
+﻿<div class="panel with-nav-tabs panel-default">
+    <div class="panel-heading">
+        <ul
+            ng-init=""
+            class="nav nav-tabs">
+            <li class="active"><a href="#tab1default" data-toggle="tab">Dati generali</a></li>
+            <li
+                ng-init="loadContent = {}"
+                class="dropdown">
+                <a href="#" data-toggle="dropdown">Catasto <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li ng-click="loadContent.two = true"><a href="#tab2default" data-toggle="tab">Urbano</a></li>
+                    <li ng-click="loadContent.three = true"><a href="#tab3default" data-toggle="tab">Terreni</a></li>
+                </ul>
+            </li>
+            <li ng-click="loadContent.four = true"><a href="#tab4default" data-toggle="tab">Consistenza</a></li>
+            <li ng-click="loadContent.five = true"><a href="#tab5default" data-toggle="tab">Documenti</a></li>
+        </ul>
+    </div>
+    <div class="panel-body">
+        <div class="tab-content">
+            <!--<div style="text-align: right; padding: 10px">
+                <div class="btn btn-default" onclick="setSizeToA4($(this).closest('.tab-content').find('.tab-pane.fade.active.in'), 'p')"><i class="fa fa-file-o" aria-hidden="true"></i></div>
+                <div class="btn btn-default" onclick="setSizeToA4($(this).closest('.tab-content').find('.tab-pane.fade.active.in'), 'l')"><i class="fa fa-file-o fa-rotate-90" aria-hidden="true"></i></div>
+                <div class="btn btn-default" onclick="setInitialWidth($(this).closest('.tab-content').find('.tab-pane.fade.active.in'))"><i class="fa fa-undo" aria-hidden="true"></i></div>
+                <div class="btn btn-default" onclick="createPdfFromHtml($(this).closest('.tab-content').find('.tab-pane.fade.active.in'), null, getOrientation($(this).closest('.tab-content').find('.tab-pane.fade.active.in')))"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
+            </div>-->
+            <div class="tab-pane fade active in" id="tab1default">
+                <!--  <div class="row">
+                    <div id="mf_carousel" style="height:400px;" >
+                    </div>
+                </div>-->
+                <div class="row" style="height:10px;"></div>
+                <div class="row">
+                    <div class="col-md-6 add-to-pdf">
+                        <magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true" formname="MY_FORM"  hidetabs="true" itemsperrow = 1></magic-form-sp>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-6" id="thebeautifulmap"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tab2default">
+                <div ng-if="loadContent.two">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <magic-grid gridname="AS_V_ASSET_idecat_sintesi" filterpk="AS_ASSET_ID"></magic-grid>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- SOSTITUITO CON CHIAMATA ONC RIFERIMENTO AL GUID PER GARANTIRNE IL FUNZIONAMENTO IN TUTTI GLI AMBIENTI <magic-chart chartid="1016" /> -->
+                            <magic-chart chartguid="9C7828C2-7BED-4136-B602-E7BD08251682" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <magic-grid gridname="AS_VI_IDECAT_PER_ASSET_nceu" filterpk="AS_ASSET_ID"></magic-grid>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tab3default">
+                <div ng-if="loadContent.three">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <magic-grid gridname="AS_VI_IDECAT_PER_ASSET_nct_GROUP" filterpk="AS_ASSET_ID"></magic-grid>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- <magic-chart chartid="1019" /> -->
+                            <magic-chart chartguid="7047D7A7-6627-457C-9320-E5CD7EADA901" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <magic-grid gridname="AS_VI_IDECAT_PER_ASSET_nct" filterpk="AS_ASSET_ID"></magic-grid>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tab4default">
+                <div ng-if="loadContent.four">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <magic-grid gridname="AS_VI_ALL_ASSET_SCH_GRP" filterpk="AS_ASSET_ID"></magic-grid>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- <magic-chart chartid="1020" /> -->
+                            <magic-chart chartguid="D4B66F52-1969-4D0E-AF5D-4FA7F49B0EAA" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <magic-grid gridname="AS_VI_ALL_ASSET_SCH" filterpk="AS_ASSET_ID"></magic-grid>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tab5default">
+                <div ng-if="loadContent.five">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <magic-grid gridname="DO_VI_ALL_DOCUME_SCH_GRP" filterpk="AS_ASSET_ID"></magic-grid>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- <magic-chart chartid="1021" /> -->
+                            <magic-chart chartguid="E5D8F286-D787-4D7D-A9CB-0B92F852DD1A" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <magic-grid gridname="DO_VI_ALL_DOCUME_SCH" filterpk="AS_ASSET_ID"></magic-grid>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style media="screen" type="text/css">
+.carousel {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 400px;
+  perspective: 500px;
+  transform-style: preserve-3d;
+  transform-origin: 0% 50%;
+}
+.carousel.carousel-slider {
+  top: 0;
+  left: 0;
+  height: 0;
+}
+.carousel.carousel-slider .carousel-fixed-item {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  z-index: 1;
+}
+.carousel.carousel-slider .carousel-fixed-item.with-indicators {
+  bottom: 68px;
+}
+.carousel.carousel-slider .carousel-item {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.carousel.carousel-slider .carousel-item h2 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+}
+.carousel.carousel-slider .carousel-item p {
+  font-size: 15px;
+}
+.carousel .carousel-item {
+  display: none;
+  width: 200px;
+  height: 400px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.carousel .carousel-item img {
+  width: 100%;
+}
+.carousel .indicators {
+  position: absolute;
+  text-align: center;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+}
+.carousel .indicators .indicator-item {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  height: 8px;
+  width: 8px;
+  margin: 24px 4px;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: background-color .3s;
+  border-radius: 50%;
+}
+.carousel .indicators .indicator-item.active {
+  background-color: #fff;
+}
+.materialboxed {
+  display: block;
+  cursor: zoom-in;
+  position: relative;
+  transition: opacity .4s;
+}
+.materialboxed:hover {
+  will-change: left, top, width, height;
+}
+.materialboxed:hover:not(.active) {
+  opacity: .8;
+}
+
+.materialboxed.active {
+  cursor: zoom-out;
+}
+
+#materialbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #292929;
+  z-index: 1000;
+  will-change: opacity;
+}
+
+.materialbox-caption {
+  position: fixed;
+  display: none;
+  color: #fff;
+  line-height: 50px;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 0% 15%;
+  height: 50px;
+  z-index: 1000;
+  -webkit-font-smoothing: antialiased;
+}
+
+</style>
+
+<script>
+
+    $("#wndmodalContainer").addClass("modal-wide");
+    var data = $("#appcontainer").data("customItemInfo");
+    $("#thebeautifulmap").append('<div><iframe width="600" height="250" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCcOKGhVcgm8EIErOotXKvPaI41oHEb2HM&q=' + data.AS_ASSET_ADDRESS + '" ></iframe></div><div><iframe width="600" height="350" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/streetview?key=AIzaSyCcOKGhVcgm8EIErOotXKvPaI41oHEb2HM&location=' + data.latitude + ',' + data.longitude + '&heading=210&pitch=10&fov=35" ></iframe></div>');
+				//carosello immagini...
+			/*	var $content = $("#mf_carousel");
+				//must be on first tab...
+				requireConfigAndMore(["MagicSDK"], function (MF) {
+					MF.api.get({
+						table: "core.AS_V_ASSET_IMG_GALLERY",
+						where: "AS_ASSET_ID = " + data.AS_ASSET_ID
+					}).then(function (res1)
+					{
+						if (res1.length) {
+							var docids = [];
+							$.each(res1, function (index, value) {
+								if (docids.indexOf(value.DO_DOCUME_ID) == -1)
+									docids.push(value.DO_DOCUME_ID)
+							});
+							$.get("/api/Documentale/GetDocumentPaths?documentIDs=" + docids.join())
+								.then(function (res) {
+									if (res) {
+										res = JSON.parse(res);
+										if (res.length) {
+											var imgs = []; 
+											$.each(res1, function (j, v) { 
+												if (j < 10)
+												{
+													$.each(res, function (k, val) {
+														if (val.DO_DOCUME_ID == v.DO_DOCUME_ID)
+															path = val.path;
+													});
+													imgs.push({
+														src: "/api/MAGIC_SAVEFILE/GetFile?path=" + path + "\\" + JSON.parse(v.DO_DOCVER_LINK_FILE)[0].name, height: "350px"
+													});
+												}
+											});
+											MaterializeAddCarouselTo$el($content, "asset-gallery", imgs);
+										}
+										else
+											
+											$content.html();
+									
+									}
+			  
+
+								});
+							}
+							else 
+							// remove crousel ...
+							$("#mf_carousel").remove();
+						});
+					
+					});
+					*/
+function MaterializeAddCarouselTo$el($el, carouselID, arrayOfImgObjects) {
+    $el.html(largeSpinnerHTML);
+    return $.get("/Views/3/Templates/Materialize-carousel.html")
+        .then(function (HTML) {
+            HTML = HTML.format(carouselID);
+            var itemsHTML = "",
+                indicatorsHTML = "",
+                style = "";
+            $.each(arrayOfImgObjects, function (k, v) {
+                style = "";
+                if(v.width != undefined){
+                    style += 'width:' + v.width + ' !important;';
+                }
+                if(v.height != undefined){
+                    style += 'height:' + v.height + ' !important';
+                }
+                itemsHTML +=   '<a class="carousel-item" href="'+ v.src +'" target="_blank"><img src="' + v.src + '"></a>'
+				//itemsHTML +=   '<a class="carousel-item" ><img class="materialboxed" src="' + v.src + '"></a>'
+            });
+		
+            var $html = $(HTML);
+        
+            $el.html($html);
+			$("#at123").append(itemsHTML);
+			
+
+   //inizializzo il componente caricando prima il js
+  
+		$.getScript('Views/3/Js/carousel.js', function()
+			{   $(document).ready(function(){
+				$('.carousel').carousel({padding:80,shift:10});				
+				});
+			})
+
+
+   
+        });
+}
+</script>

@@ -1,0 +1,47 @@
+﻿<div class="row col-12-form">
+    <div class="panel-group_r3">
+        <div class="panel panel-primary_r3">
+            <div class="panel-heading_r3 collapsible pointer">
+                <h4 class="panel-title_r3" ng-click="ged.onGroupToggle(widget, $event)">
+                    <a style="display: flex;
+  align-items: center;
+  justify-content:space-between;">
+                        <span>{{widget.title}}</span>
+                        <span style="padding-right:10px;" ng-class="widget.groupExpanded ? 'fa fa-minus' : 'fa fa-plus'"></span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse{{widget.uid}}" class="panel-collapse" ng-show="widget.groupExpanded">
+
+                <div gridstack class="grid-stack">
+
+                    <div gridstack-item class="grid-stack-item editpage-widget-container-inner" ng-repeat="widget in widget.groupWidgets" style="padding-left:30px; padding-right:30px;"
+                         gs-item-x="widget.x" gs-item-y="widget.y" gs-item-width="widget.width"
+                         gs-item-height="widget.height" data-gs-no-resize="true" data-gs-no-move="true">
+
+
+
+                        <div style="padding-top:5px" ng-if="widget.contentType !== 'MAGIC-WIDGET-GROUP' && widget.contentType !== 'GOOGLE-MAP' && widget.contentType !== 'MAGIC-TABSTRIP'"
+                             ng-class="{fullHeight: widget.contentType == 'MAGIC-IMAGE-SLIDER' || widget.contentType == 'MAGIC-IMAGE-CAROUSEL'}"
+                             ng-include="ged.widgetTemplateUrl">
+                        </div>
+
+                        <easy-map style="width: 100%; padding-top:5px" ng-if="widget.contentType == 'GOOGLE-MAP'" mapOptions="{}"
+                                  markers="widget.mapMarkers" on-map-ready="ged.onMapReady()" on-select="ged.onMapSelect()">
+                        </easy-map>
+
+                        <div style="padding-top:5px" ng-if="widget.contentType == 'MAGIC-TABSTRIP'" ng-include="ged.tabstripTemplateUrl">
+
+                        </div>
+                        <div style="padding-top:5px" ng-if="widget.contentType == 'MAGIC-WIDGET-GROUP'" ng-include="ged.widgetGroupTemplateUrl">
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

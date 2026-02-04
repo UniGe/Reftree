@@ -1,0 +1,265 @@
+﻿<div ng-switch="c.action">
+
+    <div class="row" ng-if="c.action == 'children' || c.action == 'responsible'">
+        <div ng-switch-when="children" class="col-md-10">
+            <h4 ng-bind="c.lang.addNewChild"></h4>
+            <form name="childForm" ng-submit="c.save('children', childForm)">
+                <magic-form table-name="V_ANAGRA_MINORI" model="c.anagra.children" options="{ itemsPerRow: 2, renderDone: c.childFormRendered }"></magic-form>
+                <div ng-if="childForm.$invalid"><div class="label label-danger" ng-bind="c.lang.checkForErrors"></div><div style="height: 10px;"></div></div>
+
+                <label ng-bind="c.lang.problematiche"></label>
+                <ui-select multiple ng-model="c.selectedProblems" theme="bootstrap" ng-disabled="disabled" style="width: 100%">
+                    <ui-select-match>{{$item.T_TIPPRO_DESCRIZIONE}}</ui-select-match>
+                    <ui-select-choices repeat="prob.T_TIPPRO_ID as prob in c.allProblems | propsFilter: {T_TIPPRO_DESCRIZIONE: $select.search}">
+                        <div ng-bind="prob.T_TIPPRO_DESCRIZIONE"></div>
+                    </ui-select-choices>
+                </ui-select>
+                <div style="height: 20px;"></div>
+
+                <button ng-show="c.anagra.children.ANAGRA_AUT_DATI_PERSONALI" class="btn btn-default" ng-bind="c.lang.save"></button>
+                <div class="btn btn-default" ng-bind="c.lang.back" ng-click="c.resetAction()"></div>
+                <div class="btn btn-default" ng-bind="c.lang.reset" ng-click="c.resetAnagra('children')"></div>
+            </form>
+            <div style="height: 10px;"></div>
+        </div>
+
+        <div ng-switch-when="responsible" class="col-md-10">
+            <h4 ng-bind="c.lang.addNewResponsible"></h4>
+            <form name="responsibleForm" ng-submit="c.save('responsible', responsibleForm)">
+                <magic-form table-name="V_ANAGRA_RESPONSABILI" model="c.anagra.responsible" options="{ itemsPerRow: 2 }"></magic-form>
+                <div ng-if="responsibleForm.$invalid"><div class="label label-danger" ng-bind="c.lang.checkForErrors"></div><div style="height: 10px;"></div></div>
+
+                <label ng-bind="c.lang.tessere"></label>
+                <ui-select multiple ng-model="c.selectedTessere" theme="bootstrap" ng-disabled="disabled" style="width: 100%">
+                    <ui-select-match>{{$item.TESRES_DESCRIZIONE}}</ui-select-match>
+                    <ui-select-choices repeat="tessera.TESRES_ID as tessera in c.allTessere | propsFilter: {TESRES_DESCRIZIONE: $select.search}">
+                        <div ng-bind="tessera.TESRES_DESCRIZIONE"></div>
+                    </ui-select-choices>
+                </ui-select>
+                <div style="height: 20px;"></div>
+
+                <button ng-show="c.anagra.responsible.ANAGRA_AUT_DATI_PERSONALI" class="btn btn-default" ng-bind="c.lang.save"></button>
+                <div class="btn btn-default" ng-bind="c.lang.back" ng-click="c.resetAction()"></div>
+                <div class="btn btn-default" ng-bind="c.lang.reset" ng-click="c.resetAnagra('responsible')"></div>
+            </form>
+            <div style="height: 10px;"></div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="btn btn-default"
+                 style="width: 100%; margin-bottom: 5px; overflow: hidden; text-overflow: ellipsis;"
+                 ng-repeat="person in c.peopleStore"
+                 ng-click="c.anagra[c.action] = c.extend(c.peopleStore[$index])"
+                 title="{{person.ANAGRA_NOME}} - {{person.ANAGRA_COGNOME}} - {{person.ANAGRA_INDIRIZZO}}">
+                {{person.ANAGRA_NOME}} - {{person.ANAGRA_COGNOME}} <br /> {{person.ANAGRA_INDIRIZZO}}
+            </div>
+        </div>
+    </div>
+
+    <div ng-switch-when="rights" class="row">
+        <div class="col-md-10 col-md-offset-1">
+             <div class="row">
+                 <form name="rights" ng-submit="c.saveRights(rights,selectedPromos)">
+                     <div class="row" ng-if="c.showPromo">
+                         <div><h2 ng-bind="c.lang.setPromo" class="center-text"></h2></div>
+                         <div ng-repeat="(anagraid,promos) in c.missingPromos" class="col-md-2">
+                             <div style="font-size: 15px; font-weight: bold;" ng-bind="promos.length ? promos[0].ANAGRA_DENOMINAZIONE : ''"></div>
+                             <label ng-bind="c.lang.promo">
+                             </label>
+                             <ui-select multiple ng-model="c.selectedPromos[anagraid]" theme="bootstrap">
+                                 <ui-select-match>{{$item.PROMO_DESCRIZIONE}}</ui-select-match>
+                                 <ui-select-choices repeat="prm.PROMO_ID as prm in promos | propsFilter: {PROMO_DESCRIZIONE: $select.search}">
+                                     <div ng-bind="prm.PROMO_DESCRIZIONE"></div>
+                                 </ui-select-choices>
+                             </ui-select>
+                         </div>
+                     </div>
+                     <div class="row" ng-if="c.showRights">
+                         <div><h2 ng-bind="c.lang.setRights" class="center-text"></h2></div>
+                         <div ng-repeat="anagra in c.missingRights" ng-switch="anagra.type" class="col-md-2">
+                             <div style="font-size: 15px; font-weight: bold;" ng-repeat="a in c.checkInData[anagra.type] | filter: {ANAGRA_ID: anagra.id}: true" ng-bind="a.ANAGRA_DENOMINAZIONE || a.ANAGRA_RESPONSABILE" ng-init="c.rights[anagra.id].type = anagra.type;"></div>
+                             <div ng-switch-when="children">
+                                 <div ng-if="c.checkInData.venue.PROIMP_FOTO_VIDEO">
+                                     <label ng-bind="c.lang.foto"></label>
+                                     <input class="form-control" type="checkbox" ng-model="c.rights[anagra.id].MINAUT_FOTO_VIDEO" ng-init="c.rights[anagra.id].MINAUT_FOTO_VIDEO = false;" />
+                                 </div>
+                                 <div ng-if="c.checkInData.venue.PROIMP_USCITA_AUTONOMA">
+                                     <label ng-bind="c.lang.exit"></label>
+                                     <input class="form-control" type="checkbox" ng-model="c.rights[anagra.id].MINAUT_USCITA_AUTONOMA" ng-init="c.rights[anagra.id].MINAUT_USCITA_AUTONOMA = false" />
+                                 </div>
+                                 <div ng-if="c.checkInData.venue.PROIMP_SPOSTAMENTO">
+                                     <label ng-bind="c.lang.changeVenue"></label>
+                                     <input class="form-control" type="checkbox" ng-model="c.rights[anagra.id].MINAUT_SPOSTAMENTO" ng-init="c.rights[anagra.id].MINAUT_SPOSTAMENTO = false" />
+                                 </div>
+                                 <label ng-bind="c.lang.doc"></label>
+                                 <input class="form-control" type="checkbox" ng-model="c.rights[anagra.id].MINAUT_AUTORIZZAZIONE_DOC" ng-init="c.rights[anagra.id].MINAUT_AUTORIZZAZIONE_DOC = false" />
+                             </div>
+                             <div ng-switch-when="responsible">
+                                 <label ng-bind="c.lang.terms"></label>
+                                 <input class="form-control" type="checkbox" ng-model="c.rights[anagra.id].RESAUT_ACCETTA_TERMINI" ng-init="c.rights[anagra.id].RESAUT_ACCETTA_TERMINI = !!c.rights[anagra.id].RESAUT_ACCETTA_TERMINI" />
+                                 <div ng-if="c.checkInData.venue.PROIMP_DATI_TERZI">
+                                     <label ng-bind="c.lang.terzi"></label>
+                                     <select class="form-control"
+                                             ng-init="c.rights[anagra.id].RESAUT_DATI_TERZI = null"
+                                             ng-model="c.rights[anagra.id].RESAUT_DATI_TERZI"
+                                             ng-options="v.val as v.label for v in c.terziAnswers"></select>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div style="clear: both">
+                         <div style="height: 20px;"></div>
+                         <button class="btn btn-default" ng-bind="c.lang.save"></button>
+                         <div class="btn btn-default" ng-bind="c.lang.back" ng-click="c.resetAction()"></div>
+                         <div style="display: inline-block" ng-bind-html="c.spinner.rights"></div>
+                     </div>
+                 </form>
+            </div>
+        </div>
+    </div>
+
+    <div ng-switch-default>
+        <div class="form-inline">
+            <div class="form-group">
+                <label style="margin-right: 10px;" ng-bind="c.lang.project"></label>
+                <select class="form-control pull-right" ng-change="c.saveProjectInSession()"
+                        ng-model="c.checkInData.project"
+                        ng-options="d.PROGET_ID as d.PROGET_DESCRIZIONE for d in c.projectData | unique: 'PROGET_ID'"></select>
+
+            </div>
+            <div class="form-group">
+                <label style="margin-right: 10px;" ng-bind="c.lang.venue"></label>
+                <select class="form-control pull-right" ng-change="c.saveProjectInSession()"
+                        ng-model="c.checkInData.venue"
+                        ng-options="d as d.ANASED_DESCRIZIONE for d in c.projectData | filter: {PROGET_ID: c.checkInData.project} | unique: 'ANASED_ID' track by d.ANASED_ID"></select>
+            </div>
+            <!--<div class="form-group">
+                <label ng-bind="c.lang.room"></label>
+            </div>
+            <div class="form-group">
+                <select class="form-control" ng-change="c.saveProjectInSession()"
+                        ng-model="c.checkInData.room"
+                        ng-options="d.SPASED_ID as d.SPASED_DESCRIZIONE for d in c.projectData | filter: {ANASED_ID: c.checkInData.venue}">
+                </select>
+            </div>-->
+        </div>
+        <div style="height: 10px;"></div>
+        <div class="form-inline row">
+            <div class="form-group col-md-2">
+                <label ng-bind="c.lang.amountChildren" for="amount-children"></label>
+                <input id="amount-children" min="1" style="max-width: 80px;" ng-change="c.freeCapacity = null" type="number" class="form-control pull-right" ng-model="c.amountChildren" />
+            </div>
+            <div class="form-group col-md-2">
+                <div class="btn btn-default pull-right" ng-click="c.checkAvailability()" ng-bind="c.lang.checkAvailability"></div>
+            </div>
+            <div class="form-group" ng-if="c.freeCapacity">
+                <div ng-switch="c.freeCapacity - c.amountChildren > -1">
+                    <span class="label label-success" ng-switch-when="true">
+                        OK
+                    </span>
+                    <span class="label label-danger" ng-switch-default>
+                        X
+                    </span>
+                </div>
+            </div>
+            <div class="form-group" ng-if="c.freeCapacity">
+                <span ng-bind="c.lang.freeCapacity"></span>: <span ng-bind="c.freeCapacity"></span>
+            </div>
+            <div class="form-group">
+                <span ng-bind="c.lang.totalCapacity"></span>: <span ng-bind="c.checkInData.venue.ANASED_CAPIENZA"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h2 ng-bind="c.lang.searchResults"></h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4 ng-bind="c.lang.children"></h4>
+                    </div>
+                    <div class="col-md-1" ng-bind-html="c.spinner.children">
+                    </div>
+                    <div class="col-md-1">
+                        <button ng-click="c.search('children')"
+                                class="btn btn-primary">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" ng-keyup="c.search('children', $event)" placeholder="{{c.lang.search + ' (' + c.lang.pressEnter + ')'}}" ng-model="c.searchValue.children" />
+                    </div>
+                    <div class="col-md-12" ng-if="c.searchResult.children.length">
+                        <children-table lang="c.lang" select-label="{{c.lang.select}}" data="c.searchResult.children" project="c.getProjectById(c.checkInData.project)" on-select="c.add('children', selectedElement)"></children-table>
+                    </div>
+                </div>
+
+                <div class="row" ng-if="c.responsibleHistory.length">
+                    <div class="col-md-12">
+                        <h4 ng-bind="c.lang.responsibleHistory"></h4>
+                        <responsible-table lang="c.lang" select-label="{{c.lang.select}}" data="c.responsibleHistory" on-select="c.add('responsible', selectedElement)" show-relation="true"></responsible-table>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4 ng-bind="c.lang.responsible"></h4>
+                    </div>
+                    <div class="col-md-1" ng-bind-html="c.spinner.responsible"></div>
+                    <div class="col-md-1">
+                        <button ng-click="c.search('responsible')"
+                                class="btn btn-primary">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" ng-keyup="c.search('responsible', $event)" placeholder="{{c.lang.search + ' (' + c.lang.pressEnter + ')'}}" ng-model="c.searchValue.responsible" />
+                    </div>
+                    <div class="col-md-12" ng-if="c.searchResult.responsible.length">
+                        <responsible-table lang="c.lang" select-label="{{c.lang.select}}" data="c.searchResult.responsible" on-select="c.add('responsible', selectedElement); c.resetAction()"></responsible-table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2 ng-bind="c.lang.checkInData"></h2>
+                <div ng-if="c.prenotations.length">
+                    <h4 ng-bind="c.lang.prenotation"></h4>
+                    <select
+                            ng-options="p.PRENOT_ID as p.PRENOT_DESCR for p in c.prenotations"
+                            ng-model="c.checkInData.prenotatione"></select>
+                </div>
+                <div>
+                    <h4 style="display: inline-block;width: 25%;" ng-bind="c.lang.children"></h4>
+                    <children-table lang="c.lang" ng-if="c.checkInData.children.length" select-label="{{c.lang.remove}}" data="c.checkInData.children" on-select="c.remove('children', selectedElement)" copy="c"></children-table>
+                    <div class="btn btn-default" ng-click="c.addNew('children')" ng-bind="c.lang.addNewChild"></div>
+                </div>
+                <div ng-if="c.checkInData.children.length" style="height: 30px;"></div>
+                <div>
+                    <h4 style="display: inline-block;width: 25%;" ng-bind="c.lang.responsible"></h4>
+                    <responsible-table lang="c.lang" ng-if="c.checkInData.responsible.length" select-label="{{c.lang.remove}}" data="c.checkInData.responsible" on-select="c.remove('responsible', selectedElement)" show-relation="true" copy="c"></responsible-table>
+                    <div class="btn btn-default" ng-click="c.addNew('responsible')" ng-bind="c.lang.addNewResponsible"></div>
+                </div>
+            </div>
+        </div>
+        <div style="height: 30px;"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div ng-if="!c.disableButtons" class="btn btn-default" ng-bind="c.lang.checkIn" ng-click="c.checkIn()"></div>
+                <div class="btn btn-default" ng-bind="c.lang.reset" ng-click="c.resetCheckInData()"></div>
+                <div style="display: inline-block" ng-bind-html="c.spinner.checkRights"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" ng-if="c.message">
+    <div style="height: 20px;"></div>
+    <div class="col-md-12">
+        <div ng-bind="c.message" class="label label-{{c.messageType}}"></div>
+    </div>
+</div>
+<div class="row" ng-if="c.action == 'confirm'">
+    <div style="height: 20px;"></div>
+    <div class="col-md-12">
+        <div ng-bind="c.lang.confirm" class="btn btn-success btn-lg" ng-click="c.confirmCheckIn()"></div>
+    </div>
+    <div style="display: inline-block" ng-bind-html="c.spinner.checkIn"></div>
+</div>
+<div style="height: 30px;"></div>

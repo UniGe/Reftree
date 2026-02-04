@@ -1,0 +1,149 @@
+<div class="panel with-nav-tabs panel-default">
+    <div id="TabList" class="panel-heading">
+        <ul ng-init="" class="nav nav-tabs">
+            <li ng-init="loadContent = {}" class="active">
+                <a href="#tab1default" data-toggle="tab">Dati ordine</a>
+            </li>
+            <li ng-click="loadContent.seg = true">
+                <a href="#tabSeg" data-toggle="tab">Segnalazione</a>
+            </li>
+            <li ng-click="loadContent.stor = true">
+                <a href="#tabStorico" data-toggle="tab">Storico ordine</a>
+            </li>
+            <!-- <li ng-click="loadContent.doc = true"> 
+                <a href="#tab5default" data-toggle="tab">Dati catastali e documenti</a>
+            </li>
+            <li class="pull-right">
+                 <div class="badge badge-info dimen-intestazione">
+                    <div id="intest_diocesi">##Diocesi##</div>
+                    <div id="intest_tipo">##Tipo##</div>
+                </div>
+            </li> -->
+        </ul>
+    </div>
+    <div class="panel-body">
+        <div class="tab-content">
+            <div class="tab-pane fade active in " id="tab1default">
+                <div class="panel-group_r3" id="Group1">
+                    <div class="panel panel-primary_r3" id="primary1">
+                        <div class="panel-heading_r3 clearfix" id="heading1">
+                            <h3 class="panel-title_r3">
+                                <!--<h3 class="panel-title_r3" id="title1">-->
+                                <a data-toggle="collapse" data-parent="#Group1" href="#collapse1">
+                                    <b>Dati generali</b>
+                                </a>
+                            </h3>
+                        </div>
+                        <div id="collapse1" class="panel-collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12 add-to-pdf ">
+                                        <magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true"
+                                            formname="datiGen" hidetabs="true" itemsperrow=2></magic-form-sp>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- caratteristiche -->
+                <div class="panel-group_r3" id="Group2">
+                    <div class="panel panel-primary_r3" id="primary2">
+                        <div class="panel-heading_r3 clearfix" id="heading2">
+                            <h3 class="panel-title_r3">
+                                <!--<h3 class="panel-title_r3" id="title1">-->
+                                <a data-toggle="collapse" data-parent="#Group2" href="#collapse2">
+                                    <b>caratteristiche ordine</b>
+                                </a>
+                            </h3>
+                        </div>
+                        <div id="collapse2" class="panel-collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12 add-to-pdf ">
+                                        <magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true"
+                                            formname="carOrd" hidetabs="true" itemsperrow=2></magic-form-sp>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- caratteristiche -->
+                <div class="panel-group_r3" id="Group3">
+                    <div class="panel panel-primary_r3" id="primary3">
+                        <div class="panel-heading_r3 clearfix" id="heading3">
+                            <h3 class="panel-title_r3">
+                                <!--<h3 class="panel-title_r3" id="title1">-->
+                                <a data-toggle="collapse" data-parent="#Group3" href="#collapse3">
+                                    <b>criteri di addebito</b>
+                                </a>
+                            </h3>
+                        </div>
+                        <div id="collapse3" class="panel-collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12 add-to-pdf ">
+                                        <magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true"
+                                            formname="criAdd" hidetabs="true" itemsperrow=2></magic-form-sp>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Segnalazioni -->
+            <div class="tab-pane fade" id="tabSeg">
+                <div ng-if="loadContent.seg">
+                    <div class="panel-group_r3" id="Group4">
+                        <div class="panel panel-primary_r3" id="primary4">
+                            <div class="panel-heading_r3 clearfix" id="heading4">
+                                <h3 class="panel-title_r3">
+                                    <!--<h3 class="panel-title_r3" id="title1">-->
+                                    <a data-toggle="collapse" data-parent="#Group4" href="#collapse4">
+                                        <b>Segnalazione</b>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse4" class="panel-collapse">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12 add-to-pdf ">
+                                            <magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true"
+                                                formname="Seg" hidetabs="true" itemsperrow=2></magic-form-sp>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Storico -->
+            <div class="tab-pane fade" id="tabStorico">
+                <div ng-if="loadContent.stor">
+                    <div id="collapse5" class="panel-collapse">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12 add-to-pdf ">
+                                    <magic-grid gridname="TKT_VI_WORNOT_L" filterpk="TK_WORNOT_TK_WORORD_ID"></magic-grid>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+</div>

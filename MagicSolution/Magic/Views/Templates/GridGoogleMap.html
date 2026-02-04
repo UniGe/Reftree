@@ -1,0 +1,10 @@
+﻿<style>
+    .ggm-map .gm-style .gm-style-iw {
+        overflow: visible;
+    }
+</style>
+<!--<div class="btn btn-danger pull-right" style="position:absolute; top: 4px; right: 42px; z-index:10" ng-click="ggm.hideMap($event)">X</div>-->
+<div class="btn btn-danger pull-right" style="z-index:10;" ng-click="ggm.hideMap($event)">X</div>
+<br />
+<br />
+<easy-map class="ggm-map" mapOptions="ggm.mapOptions" markers="ggm.markers" on-map-ready="ggm.onMapReady()" on-select="ggm.setGridFilter(event)"></easy-map>

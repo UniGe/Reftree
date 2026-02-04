@@ -1,0 +1,161 @@
+﻿<style>
+    .TelerikModalOverlay {
+        /* Theoretically for IE 8 & 9 (more valid) */
+        /* ...but not required as filter works too */
+        /* should come BEFORE filter */
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+        /* This works in IE 8 & 9 too */
+        /* ... but also 5, 6, 7 */
+        filter: alpha(opacity=90);
+        /* Older than Firefox 0.9 */
+        -moz-opacity: 0.9;
+        /* Safari 1.x (pre WebKit!) */
+        -khtml-opacity: 0.9;
+        /* Modern!
+    /* Firefox 0.9+, Safari 2?, Chrome any?
+    /* Opera 9+, IE 9+ */
+        opacity: 0.9;
+    }
+
+    .mf-change-log-ver {
+        margin-bottom: 40px;
+        border: #888888;
+        border-style: solid;
+        border-width: 1px 1px 1px 1px;
+        border-radius: 2px;
+        box-shadow: 0 7px 19px rgba(88,88,88,.5);
+    }
+
+    /*.mf-change-log-ver h3 {
+            margin-bottom: 20px;
+        }*/
+
+    .mf-change-log-item {
+        margin-bottom: 20px;
+    }
+
+    .panel-title > a {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .panel-group .panel {
+        margin-bottom: 20px;
+    }
+
+    .mf-change-log-item img {
+        border: 1px solid #888888;
+        border-radius: 5px;
+        /*padding: 5px;*/
+        box-shadow: 0 7px 19px rgba(88,88,88,.5);
+    }
+</style>
+
+<div class="" ng-if="mcl.loaded">
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default mf-change-log-ver" ng-repeat="(key, value) in mcl.data | groupBy: '[Version, Date]'">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <a data-toggle="collapse" class="{{($index==0)? '':'collapsed'}}" href="{{'#collapse'+($index + 1)}}">{{ mcl.getVersionLabel(key.split(',')[0]) }} {{ key.split(',')[1]  | date:'shortDate' }}</a>
+                </h3>
+            </div>
+            <div id="{{'collapse'+($index + 1)}}" class="panel-collapse collapse {{($index==0)? 'in':''}}">
+                <div class="panel-body">
+                    <div ng-repeat="vitem in value" class="row mf-change-log-item">
+                        <div ng-if="vitem.image">
+                            <div class="col-sm-3">
+                                <a href="#" ng-click="mcl.showFullImage(vitem)">
+                                    <img src="{{vitem.image}}" style="width:100%;">
+                                </a>
+                            </div>
+                            <div class="col-sm-9">
+                                <h4>{{vitem.Title}}</h4>
+                                <div ng-bind-html="vitem.Description"></div>
+                                <p ng-if="vitem.Link"><a href="{{vitem.Link}}" class="mf-change-log-link" target="_blank">Parti da qui...</a></p>
+                            </div>
+                        </div>
+                        <div ng-if="!vitem.image">
+                            <div class="col-sm-12">
+                                <h4>{{vitem.Title}}</h4>
+                                <div ng-bind-html="vitem.Description"></div>
+                                <p ng-if="vitem.Link"><a href="{{vitem.Link}}" class="mf-change-log-link" target="_blank">Parti da qui...</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default mf-change-log-ver" ng-repeat="year in mcl.years">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <a data-toggle="collapse" class="collapsed" ng-href="{{'#collapseYear'+(year.Anno)}}" ng-click="mcl.getVersionLogForYear(year.Anno)">{{year.Anno}}</a>
+                </h3>
+            </div>
+            <div id="{{'collapseYear'+(year.Anno)}}" class="panel-collapse collapse">
+                <div ng-if="mcl.dataForYear[0].Year == year.Anno">
+                    <div ng-repeat="(key, value) in mcl.dataForYear | groupBy: '[Version, Date]' " style="padding:10px;">
+                        <div class="panel panel-default mf-change-log-ver" style="padding:10px;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <a data-toggle="collapse" class="{{($index==0)? '':'collapsed'}}" ng-href="{{'#collapseYearChild'+($index + 1)}}">Versione {{ key.split(',')[0] }} del {{ key.split(',')[1]  | date:'shortDate' }}</a>
+                                </h3>
+                            </div>
+                            <div id="{{'collapseYearChild'+($index + 1)}}" class="panel-collapse collapse {{($index==0)? 'in':''}}">
+                                <div class="panel-body">
+                                    <div ng-repeat="log in value " class="row mf-change-log-item">
+                                        <div ng-if="log.image">
+                                            <div class="col-sm-3">
+                                                <a href="#" ng-click="mcl.showFullImage(log)">
+                                                    <img src="{{log.image}}" style="width:100%;">
+                                                </a>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <h4>{{log.Title}}</h4>
+                                                <div ng-bind-html="log.Description"></div>
+                                                <p ng-if="log.Link"><a href="{{log.Link}}" class="mf-change-log-link" target="_blank">Parti da qui...</a></p>
+                                            </div>
+                                        </div>
+                                        <div ng-if="!log.image">
+                                            <div class="col-sm-12">
+                                                <h4>{{log.Title}}</h4>
+                                                <div ng-bind-html="log.Description"></div>
+                                                <p ng-if="log.Link"><a href="{{log.Link}}" class="mf-change-log-link" target="_blank">Parti da qui...</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div ng-if="mcl.loaded" class="row">
+    <div ng-repeat="(key, value) in mcl.data | groupBy: '[Version,Date]'" class="col-xs-12 mf-change-log-ver">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Versione {{ key.split(',')[0] }} del {{ key.split(',')[1]  | date:'shortDate' }}</h3>
+            </div>
+        </div>
+        <div ng-repeat="vitem in value" class="row mf-change-log-item">
+            <div class="col-sm-3">
+                <a href="#" ng-if="mcl.getImageUrl(vitem)" ng-click="mcl.showFullImage(vitem)">
+                    <img src="{{mcl.getImageUrl(vitem)}}" style="width:100%">
+                </a>
+            </div>
+            <div class="col-sm-9">
+                <h4>{{vitem.Title}}</h4>
+                <div ng-bind-html="vitem.Description"></div>
+                <p ng-if="vitem.Link"><a href="{{vitem.Link}}" class="mf-change-log-link">Vedi ora...</a></p>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+
+<div kendo-window="mcl.previewWindow" k-visible="false" k-modal="true">
+    <img src="{{mcl.previewImage}}" style="width:100%">
+</div>

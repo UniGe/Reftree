@@ -1,0 +1,76 @@
+﻿<h2 id="readonlyTableTitle">Standard Configuration</h2>
+<div id="readonlyTable" class="table-responsive tableFixHead">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Label</th>
+                <!--<th>Position</th>-->
+                <th>Width</th>
+                <th>Visible</th>
+                <th>Sortable</th>
+                <th>Filterable</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="col in cd.current.grid.StandardConfiguration" ng-show="col.IsMatch">
+                <td>{{col.ColumnName}}</td>
+                <td>
+                    <div class="dropdown hover-dropdown">
+                        <div style="max-width:inherit;">
+                            <input class="text-input" disabled type="text" ng-model="col.Columns_label" />
+                            <i ng-show="!col.HasTranslations" title="Translations" class="dropdown-toggle fa fa-globe" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></i>
+                            <i ng-show="col.HasTranslations" title="Translations" class="dropdown-toggle fa fa-globe globe-painted" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></i>
+                        </div>
+                        <ul class="dropdown-menu click-popup">
+                            <li class="click-popup"><span class="flag-icon flag-icon-it"></span><input class="translation-input" type="text" disabled ng-model="col.Translations['it-IT']" /></li>
+                            <li class="click-popup"><span class="flag-icon flag-icon-de"></span><input class="translation-input" type="text" disabled ng-model="col.Translations['de-DE']" /></li>
+                            <li class="click-popup"><span class="flag-icon flag-icon-gb"></span><input class="translation-input" type="text" disabled ng-model="col.Translations['en-GB']" /></li>
+                            <li ng-repeat="(culture,translation) in col.Translations" ng-if="culture != 'it-IT' && culture != 'de-DE' && culture != 'en-GB'">
+                                <div>
+                                    <span>{{culture}}</span>
+                                    <input class="translation-input" type="text" ng-model="translation" />
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+                <!--<td><input disabled class="number-input" type="number" ng-model="col.Columns_OrdinalPosition" /></td>-->
+                <td><input disabled class="number-input" type="number" ng-model="col.Columns_width" /></td>
+                <td>
+                    <!-- VISIBLE -->
+                    <input disabled class="toggle" type="checkbox" ng-model="col.Columns_visibleingrid">
+                </td>
+                <td>
+                    <!-- SORTABLE -->
+                    <input disabled class="toggle" type="checkbox" ng-model="col.Columns_isSortable">
+                </td>
+                <td>
+                    <!-- FILTERABLE -->
+                    <input disabled class="toggle" type="checkbox" ng-model="col.Columns_isFilterable">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<style>
+    .hover-dropdown:hover .dropdown-menu {
+        display: block;
+    }
+    .click-popup {
+        height:auto;
+        line-height: 40px;
+    }
+    .translation-input {
+      max-width:80%;
+      float:right;
+      font-size: 10px;
+      height:inherit;
+    }
+    .flag-icon {
+        max-width: 20%;
+    }
+    .globe-painted {
+        color:#0090D9;
+    }
+</style>

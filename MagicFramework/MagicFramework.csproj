@@ -1,0 +1,814 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{75AFA561-283C-4719-A09C-EFAEAD3421FD}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MagicFramework</RootNamespace>
+    <AssemblyName>MagicFramework</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="MagicBrokerConnectionString-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=192.168.2.80\sql2008R2%3bInitial Catalog=MagicBroker%3bPersist Security Info=True%3bUser ID=sa%3bPassword=biz#2006" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Release\AutoScripts\MagicBrokerConnectionString-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+    <PublishDatabases>false</PublishDatabases>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AE.Net.Mail, Version=1.7.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AE.Net.Mail.1.7.10.0\lib\net45\AE.Net.Mail.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AngleSharp, Version=0.9.9.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
+      <HintPath>..\packages\AngleSharp.0.9.9\lib\net45\AngleSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AttributeRouting">
+      <HintPath>..\packages\AttributeRouting.Core.3.4.2\lib\net40\AttributeRouting.dll</HintPath>
+    </Reference>
+    <Reference Include="AttributeRouting.Web">
+      <HintPath>..\packages\AttributeRouting.Core.Web.3.4.2\lib\net40\AttributeRouting.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="AttributeRouting.Web.Http">
+      <HintPath>..\packages\AttributeRouting.Core.Http.3.4.2\lib\net40\AttributeRouting.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="AttributeRouting.Web.Http.WebHost">
+      <HintPath>..\packages\AttributeRouting.WebApi.3.4.2\lib\net40\AttributeRouting.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.7.4137.9688, Culture=neutral, PublicKeyToken=a4292a325f69b123, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.1.7.0\lib\Net40-Client\BouncyCastle.Crypto.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>..\packages\Common.Logging.3.0.0\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core">
+      <HintPath>..\packages\Common.Logging.Core.3.0.0\lib\net40\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data">
+      <HintPath>..\packages\dotConnect.Express.for.Oracle.8.3.125\lib\Devart.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data.Oracle">
+      <HintPath>..\packages\dotConnect.Express.for.Oracle.8.3.125\lib\Devart.Data.Oracle.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DevExpress.16.1\DevExpress.Data.v16.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Docs.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DevExpress.16.1\DevExpress.Docs.v16.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Office.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DevExpress.16.1\DevExpress.Office.v16.1.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DevExpress.16.1\DevExpress.Pdf.v16.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DevExpress.16.1\DevExpress.RichEdit.v16.1.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.15.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.15.0\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetZip">
+      <HintPath>..\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamic">
+      <HintPath>..\packages\DynamicQuery.1.0\lib\35\Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlus, Version=7.5.2.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.7.5.2\lib\net462\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=7.5.0.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.Interfaces.7.5.0\lib\net462\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.System.Drawing, Version=7.5.0.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.System.Drawing.7.5.0\lib\net462\EPPlus.System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Evolve, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Evolve.2.4.0\lib\net35\Evolve.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis, Version=1.26.2.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.26.2\lib\net45\Google.Apis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.26.2.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.26.2\lib\net45\Google.Apis.Auth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.26.2.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.26.2\lib\net45\Google.Apis.Auth.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Calendar.v3, Version=1.26.2.866, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Calendar.v3.1.26.2.866\lib\net45\Google.Apis.Calendar.v3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Core, Version=1.26.2.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.26.2\lib\net45\Google.Apis.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices, Version=1.26.2.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.26.2\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlToOpenXml, Version=2.3.0.0, Culture=neutral, PublicKeyToken=6ad79d83e2b60e63, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlToOpenXml.dll.2.3.0\lib\net46\HtmlToOpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="LicenceManager">
+      <HintPath>..\packages\LicenceManager\LicenceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Owin.1.0.0\lib\net45\Microsoft.AspNet.SignalR.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.0\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.3.0.1\lib\netstandard2.0\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.WebForms.10.0.40219.1\lib\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson, Version=2.0.1.27, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\mongocsharpdriver.1.9.2\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=2.0.1.27, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\mongocsharpdriver.1.9.2\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenXmlPowerTools, Version=4.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\OpenXmlPowerTools.4.2\lib\OpenXmlPowerTools.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
+    <Reference Include="PreMailer.Net, Version=1.5.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PreMailer.Net.1.5.5\lib\net45\PreMailer.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="Quartz, Version=2.3.3.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quartz.2.3.3\lib\net40\Quartz.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RazorEngine, Version=3.9.3.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.9.3\lib\net45\RazorEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing.Common, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.8.0.4\lib\net462\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\OpenXMLSDK-MOT.2.6.0.0\lib\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\System.Management.Automation.6.1.7601.17515\lib\net45\System.Management.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.0.0.0\lib\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="Winista.MimeDetect, Version=1.1.0.0, Culture=neutral, PublicKeyToken=76f4f8fa5fedae7a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Winista.MimeDetect.1.1.0\lib\net45\Winista.MimeDetect.dll</HintPath>
+    </Reference>
+    <Reference Include="Zlib.Portable, Version=1.11.0.0, Culture=neutral, PublicKeyToken=431cba815f6a8b5b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zlib.Portable.Signed.1.11.0\lib\portable-net4+sl5+wp8+win8+wpa81+MonoTouch+MonoAndroid\Zlib.Portable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AttributeRoutingHttp.cs" />
+    <Compile Include="Controllers\ActionFilters\Access\AccessFilters.cs" />
+    <Compile Include="Controllers\ActionFilters\Access\ValidToken.cs" />
+    <Compile Include="Controllers\ActionFilters\ExceptionFilter.cs" />
+    <Compile Include="Controllers\ActionFilters\RateLimitationFilter.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\BUILDFUNCTIONTREEController.cs" />
+    <Compile Include="Controllers\ChatDocumentController.cs" />
+    <Compile Include="Controllers\APPInstanceUIController.cs" />
+    <Compile Include="Controllers\GridProxyController.cs" />
+    <Compile Include="Controllers\Magic_ActionsController.cs" />
+    <Compile Include="Controllers\Magic_VersionLogController.cs" />
+    <Compile Include="Controllers\PowerBiController.cs" />
+    <Compile Include="Controllers\UserConfigController.cs" />
+    <Compile Include="Controllers\Constraints\LoggedUserConstraint.cs" />
+    <Compile Include="Controllers\DataAnalysisController.cs" />
+    <Compile Include="Controllers\HelperController.cs" />
+    <Compile Include="Controllers\Magic_DocumentModelController.cs" />
+    <Compile Include="Controllers\DocumentRepositoryController.cs" />
+    <Compile Include="Controllers\EVENTSController.cs" />
+    <Compile Include="Controllers\HelpController.cs" />
+    <Compile Include="Controllers\Magic_DashboardController.cs" />
+    <Compile Include="Controllers\MAGIC_TEMPLATEGRPGRIDRELTYPEController.cs" />
+    <Compile Include="Controllers\MAGIC_TREESController.cs" />
+    <Compile Include="Controllers\MailController.cs" />
+    <Compile Include="Controllers\MAGIC_DEPLOYSController.cs" />
+    <Compile Include="Controllers\MAGIC_MMB_PROFILESGRIDEXCPTNSController.cs" />
+    <Compile Include="Controllers\V_MAGIC_MMB_MODULEMENULABELSController.cs" />
+    <Compile Include="Controllers\MAGIC_PivotController.cs" />
+    <Compile Include="Controllers\WizardController.cs" />
+    <Compile Include="Data\ConfigMFContextExtension.cs" />
+    <Compile Include="Data\Magic_MailAccounts.cs">
+      <DependentUpon>Target.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Magic_MailQueue.cs">
+      <DependentUpon>Target.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Magic_Mmb_PendingRegistrations.cs">
+      <DependentUpon>Target.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Magic_NotificationProviders.cs">
+      <DependentUpon>Target.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Magic_NotificationQueue.cs">
+      <DependentUpon>Target.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Magic_NotificationTypes.cs">
+      <DependentUpon>Target.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Magic_SystemEditedMessages.cs">
+      <DependentUpon>Target.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Magic_SystemMessages.cs">
+      <DependentUpon>Target.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TargetContextExtension.cs" />
+    <Compile Include="Data\Target.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Target.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Target.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Target.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Target.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Target.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\V_Magic_NotificationQueue.cs">
+      <DependentUpon>Target.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ApplicationSettingsManager.cs" />
+    <Compile Include="Helpers\ChatServer.cs" />
+    <Compile Include="Controllers\StaticNotificationsController.cs" />
+    <Compile Include="Controllers\V_MAGIC_SQLDOC_COLUMNSController.cs" />
+    <Compile Include="Controllers\MenuDataController.cs" />
+    <Compile Include="Controllers\GENERICSQLCOMMANDController.cs" />
+    <Compile Include="Controllers\MAGIC_CALENDAR_TASKSTATUSController.cs" />
+    <Compile Include="Controllers\MAGIC_AppClassesReflectorController.cs" />
+    <Compile Include="Controllers\MAGIC_CALENDAR_TASKTYPESController.cs" />
+    <Compile Include="Controllers\MAGIC_FUNCTIONSGRIDSController.cs" />
+    <Compile Include="Controllers\MAGIC_FUNCTIONSLABELSController.cs" />
+    <Compile Include="Controllers\MAGIC_GRIDSCOMMANDSController.cs" />
+    <Compile Include="Controllers\MAGIC_SAVEFILEController.cs" />
+    <Compile Include="Controllers\MAGIC_COLUMNLABELSController.cs" />
+    <Compile Include="Controllers\MAGIC_COLUMNSController.cs" />
+    <Compile Include="Controllers\MAGIC_CULTURESController.cs" />
+    <Compile Include="Controllers\MAGIC_DATASOURCEController.cs" />
+    <Compile Include="Controllers\Magic_ENTITIESController.cs" />
+    <Compile Include="Controllers\MAGIC_MMB_MENULABELSController.cs" />
+    <Compile Include="Controllers\MAGIC_MMB_MODULELABELSController.cs" />
+    <Compile Include="Controllers\MAGIC_TEMPLATEDATAROLESController.cs" />
+    <Compile Include="Controllers\MAGIC_TEMPLATEDETAILSController.cs" />
+    <Compile Include="Controllers\MAGIC_TEMPLATEDETAILSFUNCTIONOVERRIDESController.cs" />
+    <Compile Include="Controllers\MAGIC_TEMPLATEGROUPCONTENTController.cs" />
+    <Compile Include="Controllers\MAGIC_TEMPLATEGROUPLABELSController.cs" />
+    <Compile Include="Controllers\MAGIC_TEMPLATEGROUPSController.cs" />
+    <Compile Include="Controllers\MAGIC_TEMPLATEGROUPSFUNCTIONOVERRIDESController.cs" />
+    <Compile Include="Controllers\ManageFKController.cs" />
+    <Compile Include="Controllers\ObjectGeneratorController.cs" />
+    <Compile Include="Controllers\SchedulerController.cs" />
+    <Compile Include="Controllers\VisibilityController.cs" />
+    <Compile Include="Controllers\V_MAGIC_GRID_NAVIGATIONTABSController.cs" />
+    <Compile Include="Controllers\V_MAGIC_SQLDOCController.cs" />
+    <Compile Include="Controllers\V_MAGIC_TEMPLATEDETAILSController.cs" />
+    <Compile Include="Controllers\V_MAGIC_UICOMPONENTSLABELSController.cs" />
+    <Compile Include="Controllers\V_MAGIC_USERCROSSPROFILESController.cs" />
+    <Compile Include="Controllers\V_MAGIC_USERGROUPVISIBILITYController.cs" />
+    <Compile Include="Data\MagicDB.cs">
+      <DependentUpon>MagicDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MagicDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MagicDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\CacheHandler.cs" />
+    <Compile Include="Helpers\CheckValidity.cs" />
+    <Compile Include="Helpers\CompressImage.cs" />
+    <Compile Include="Helpers\ExcelDocumentComparer.cs" />
+    <Compile Include="Helpers\F2.cs" />
+    <Compile Include="Helpers\Files.cs" />
+    <Compile Include="Helpers\HelpHandler.cs" />
+    <Compile Include="Helpers\HTTP.cs" />
+    <Compile Include="Helpers\NotificationsHandler.cs" />
+    <Compile Include="Helpers\Sql\AltLayersQueries.cs" />
+    <Compile Include="Helpers\Sql\MFAPIGetQueries.cs" />
+    <Compile Include="Helpers\Sql\Migrate.cs" />
+    <Compile Include="Helpers\UserConfigHandler.cs" />
+    <Compile Include="Helpers\PdfHelper.cs" />
+    <Compile Include="Helpers\ResponseHelper.cs" />
+    <Compile Include="Helpers\UserLicense.cs" />
+    <Compile Include="Helpers\Crypto.cs" />
+    <Compile Include="Helpers\DatabaseEntityAutomations.cs" />
+    <Compile Include="Helpers\DBBulkCopyUtils.cs" />
+    <Compile Include="Helpers\DBUtils.cs" />
+    <Compile Include="Helpers\ExcelDocumentFiller.cs" />
+    <Compile Include="Helpers\GetReponseHandler.cs" />
+    <Compile Include="Helpers\GoogleCalendarsSyncher.cs" />
+    <Compile Include="Helpers\GoogleCalendarSyncher.cs" />
+    <Compile Include="Helpers\GridToFileExporter.cs" />
+    <Compile Include="Helpers\FileSystemCreateReport.cs" />
+    <Compile Include="Helpers\DBConnectionManager.cs" />
+    <Compile Include="Helpers\GoogleCalendar.cs" />
+    <Compile Include="Helpers\HttpMultipartParser.cs" />
+    <Compile Include="Helpers\Mailer.cs" />
+    <Compile Include="Helpers\MFConfiguration.cs" />
+    <Compile Include="Helpers\DatabaseCommandUtils.cs" />
+    <Compile Include="Helpers\DocumentTraceManager.cs" />
+    <Compile Include="Helpers\HtmlControlsBuilder.cs" />
+    <Compile Include="Helpers\JsonUtils.cs" />
+    <Compile Include="Helpers\MagicService.asmx.cs">
+      <DependentUpon>MagicService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Helpers\MappingExplorer.cs" />
+    <Compile Include="Helpers\Licence.cs" />
+    <Compile Include="Helpers\MFLog.cs" />
+    <Compile Include="Helpers\MongoConnector.cs" />
+    <Compile Include="Helpers\MongoHandler.cs" />
+    <Compile Include="Helpers\PythonHandler.cs" />
+    <Compile Include="Helpers\ReportServiceWrapper.cs" />
+    <Compile Include="Helpers\Sql\DBProcedure.cs" />
+    <Compile Include="Helpers\Sql\DBQueries.cs" />
+    <Compile Include="Helpers\Sql\DBQuery.cs" />
+    <Compile Include="Helpers\Sql\DBTools.cs" />
+    <Compile Include="Helpers\Sql\DBWriter.cs" />
+    <Compile Include="Helpers\StandardPageGenerator.cs" />
+    <Compile Include="Helpers\ServerClassGenerator.cs" />
+    <Compile Include="Helpers\StringCipher.cs" />
+    <Compile Include="Helpers\TableGenerator.cs" />
+    <Compile Include="Helpers\TemplateContainerBuilder.cs" />
+    <Compile Include="Helpers\TranslateablePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Helpers\WordDocumentFiller.cs" />
+    <Compile Include="Jobs\DatabaseEventsJob.cs" />
+    <Compile Include="Jobs\GoogleCalendarsSyncJob.cs" />
+    <Compile Include="Jobs\NotificationJob.cs" />
+    <Compile Include="Jobs\Resources\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Jobs\SessionCheckJob.cs" />
+    <Compile Include="Jobs\MailJob.cs" />
+    <Compile Include="Jobs\SMSProviders\SMS.cs" />
+    <Compile Include="MagicHub.cs" />
+    <Compile Include="MemberShip\Filters\FKSystemObjectsFilter.cs" />
+    <Compile Include="MemberShip\Filters\GridAutocompletesFilter.cs" />
+    <Compile Include="MemberShip\Filters\GridObjectsFilter.cs" />
+    <Compile Include="MemberShip\Filters\UnmanagedExceptionPostProcess.cs" />
+    <Compile Include="MemberShip\SystemRightsChecker.cs" />
+    <Compile Include="Models\ApplicationLayer.cs" />
+    <Compile Include="Models\ExcelDocument.cs" />
+    <Compile Include="Models\FileUploaded.cs" />
+    <Compile Include="Models\GridModelParser.cs" />
+    <Compile Include="Models\Kendo\Filter.cs" />
+    <Compile Include="Models\Kendo\GridRequest.cs" />
+    <Compile Include="Models\Kendo\Sort.cs" />
+    <Compile Include="Models\Magic_Calendar_TaskStatus.cs" />
+    <Compile Include="Models\Magic_ColumnsTranslations.cs" />
+    <Compile Include="Models\Magic_Dashboard.cs" />
+    <Compile Include="Models\Magic_GridDataSnapShot.cs" />
+    <Compile Include="Models\Magic_GridsCommands.cs" />
+    <Compile Include="Models\Magic_Mmb_ProfilesGridExcptns.cs" />
+    <Compile Include="Models\Magic_Mmb_UserGroupNetwork.cs" />
+    <Compile Include="Models\Magic_BusinessObject.cs" />
+    <Compile Include="Models\Magic_Calendar.cs" />
+    <Compile Include="Models\Magic_Calendar_TaskTypes.cs" />
+    <Compile Include="Models\Magic_FunctionsLabels.cs" />
+    <Compile Include="Models\Magic_ColumnLabels.cs" />
+    <Compile Include="Models\Magic_Columns.cs" />
+    <Compile Include="Controllers\MAGIC_FUNCTIONSController.cs" />
+    <Compile Include="Controllers\MAGIC_FUNCTIONSTEMPLATESController.cs" />
+    <Compile Include="Controllers\MAGIC_GRIDSController.cs" />
+    <Compile Include="Controllers\MAGIC_MMB_FUNCTIONSMENUSController.cs" />
+    <Compile Include="Controllers\MAGIC_MMB_MENUSController.cs" />
+    <Compile Include="Controllers\MAGIC_MMB_MODULESController.cs" />
+    <Compile Include="Controllers\MAGIC_MMB_PROFILESController.cs" />
+    <Compile Include="Controllers\MAGIC_MMB_PROFILESMODULESController.cs" />
+    <Compile Include="Controllers\MAGIC_MMB_USERGROUPVISIBILITYController.cs" />
+    <Compile Include="Controllers\MAGIC_MMB_USERGROUPVISIBILITYUSERSController.cs" />
+    <Compile Include="Controllers\MAGIC_MMB_USERSController.cs" />
+    <Compile Include="Controllers\MAGIC_MMB_USERSFUNCTIONSOVERRIDERIGHTSController.cs" />
+    <Compile Include="Controllers\MAGIC_MMB_USERSPREFERREDFUNCTIONSController.cs" />
+    <Compile Include="Controllers\MAGIC_MMB_USERSPROFILESController.cs" />
+    <Compile Include="Controllers\MAGIC_TEMPLATESController.cs" />
+    <Compile Include="Controllers\V_MAGIC_MMB_MENUFUNCTIONSController.cs" />
+    <Compile Include="Controllers\V_MAGIC_MMB_USERSPROFILESController.cs" />
+    <Compile Include="Controllers\V_MMB_PROFILES_MODULES_VIEWController.cs" />
+    <Compile Include="Helpers\PageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Helpers\RequestParser.cs" />
+    <Compile Include="Helpers\SessionHandler.cs" />
+    <Compile Include="Helpers\Utils.cs" />
+    <Compile Include="MemberShip\EFMembershipProvider.cs" />
+    <Compile Include="MemberShip\MyHttpModule.cs" />
+    <Compile Include="Models\Magic_Cultures.cs" />
+    <Compile Include="Models\Magic_DataSource.cs" />
+    <Compile Include="Models\Magic_Enitities.cs" />
+    <Compile Include="Models\Magic_Functions.cs" />
+    <Compile Include="Models\Magic_FunctionsGrids.cs" />
+    <Compile Include="Models\Magic_FunctionsTemplates.cs" />
+    <Compile Include="Models\Magic_Grids.cs" />
+    <Compile Include="Models\Magic_Mmb_FunctionsMenus.cs" />
+    <Compile Include="Models\Magic_Mmb_MenuLabels.cs" />
+    <Compile Include="Models\Magic_Mmb_Menus.cs" />
+    <Compile Include="Models\Magic_Mmb_ModuleLabels.cs" />
+    <Compile Include="Models\Magic_Mmb_Modules.cs" />
+    <Compile Include="Models\Magic_Mmb_Profiles.cs" />
+    <Compile Include="Models\Magic_Mmb_ProfilesModules.cs" />
+    <Compile Include="Models\Magic_Mmb_UserGroupVisibility.cs" />
+    <Compile Include="Models\Magic_Mmb_UserGroupVisibilityUsers.cs" />
+    <Compile Include="Models\Magic_Mmb_Users.cs" />
+    <Compile Include="Models\Magic_Mmb_UsersExternalApiAuthorizations.cs" />
+    <Compile Include="Models\Magic_Mmb_UsersFunctionsOverrideRights.cs" />
+    <Compile Include="Models\Magic_Mmb_UsersPreferredFunctions.cs" />
+    <Compile Include="Models\Magic_Mmb_UsersProfiles.cs" />
+    <Compile Include="Models\Magic_TemplateDataRoles.cs" />
+    <Compile Include="Models\Magic_TemplateDetails.cs" />
+    <Compile Include="Models\Magic_TemplateDetailsFunctionOverrides.cs" />
+    <Compile Include="Models\Magic_TemplateGroupContent.cs" />
+    <Compile Include="Models\Magic_TemplateGroupLabels.cs" />
+    <Compile Include="Models\Magic_TemplateGroups.cs" />
+    <Compile Include="Models\Magic_TemplateGroupsFunctionOverrides.cs" />
+    <Compile Include="Models\Magic_TemplateGrpGridRelType.cs" />
+    <Compile Include="Models\Magic_TemplateLayouts.cs" />
+    <Compile Include="Controllers\MAGIC_TEMPLATELAYOUTSController.cs" />
+    <Compile Include="Models\Magic_Templates.cs" />
+    <Compile Include="Controllers\MAGIC_TEMPLATETYPESController.cs" />
+    <Compile Include="Models\Magic_TemplateTypes.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\RequestAutocomplete.cs" />
+    <Compile Include="Models\Request.cs" />
+    <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\Tokens.cs" />
+    <Compile Include="Models\TreeModelParser.cs" />
+    <Compile Include="Models\v_Magic_ColumnGridName.cs" />
+    <Compile Include="Models\v_Magic_Grids.cs" />
+    <Compile Include="Models\v_Magic_Grid_NavigationTabs.cs" />
+    <Compile Include="Models\v_Magic_Mmb_MenuFunctions.cs" />
+    <Compile Include="Models\v_Magic_Mmb_UserFunctionRights.cs" />
+    <Compile Include="Models\v_Magic_Mmb_UserPreferredFunctions.cs" />
+    <Compile Include="Models\V_Magic_Mmb_UsersProfiles.cs" />
+    <Compile Include="Models\v_Magic_TemplateDetails.cs" />
+    <Compile Include="Models\v_Magic_UIComponentsLabels.cs" />
+    <Compile Include="Models\v_Magic_UserCrossProfiles.cs" />
+    <Compile Include="Models\v_Magic_UserGroupVisibility.cs" />
+    <Compile Include="Models\WidgetRightsDBChecker.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MemberShip\UserVisibiltyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs" />
+    <Compile Include="Web References\eu.europa.ec\Reference.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\MagicDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>MagicDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\Target.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Target.edmx</DependentUpon>
+      <LastGenOutput>Target.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\Target.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Target.edmx</DependentUpon>
+      <LastGenOutput>Target.cs</LastGenOutput>
+    </Content>
+    <Content Include="Helpers\MagicService.asmx" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\MagicDB.dbml.layout">
+      <DependentUpon>MagicDB.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web References\eu.europa.ec\checkVatService.wsdl" />
+    <Content Include="Web References\eu.europa.ec\matchCode.datasource" />
+    <Content Include="Web References\eu.europa.ec\Reference.map" />
+    <EntityDeploy Include="Data\Target.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Target.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Data\Target.edmx.diagram">
+      <DependentUpon>Target.edmx</DependentUpon>
+    </Content>
+    <None Include="job_scheduling_data_2_0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Controllers\ActionFilters\FilterProviders\" />
+    <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MagicDeployDBManager\MagicDeployDBManager.csproj">
+      <Project>{d392277f-97b8-4405-b8ff-9aa959e7cb6f}</Project>
+      <Name>MagicDeployDBManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MagicEventsManager\MagicEventsManager.csproj">
+      <Project>{8018fe78-a8e8-4bfc-828f-2b7b3d5a0ea6}</Project>
+      <Name>MagicEventsManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Jobs\Resources\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>19677</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

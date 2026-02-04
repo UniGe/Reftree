@@ -1,0 +1,34 @@
+﻿<div class="panel with-nav-tabs panel-default">
+    <div class="panel-heading">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1default" data-toggle="tab">Una griglia...</a></li>
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown">Sintesi <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#tab2default" data-toggle="tab">Chart...</a></li>
+                    <li><a href="#tab3default" data-toggle="tab">Google map e Forms</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="panel-body">
+        <div class="tab-content">
+            <div class="tab-pane fade active in" id="tab1default"><div class="row"><div class="col-md-12"><magic-grid gridname="DO_V_DOCUME" /></div></div></div>
+            <div class="tab-pane fade" id="tab2default"><magic-chart chartid="1" /></div>
+            <div class="tab-pane fade" id="tab3default">
+                <div class="row">
+                    <div class="col-md-6"><magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly=true formname="MY_FORM"></magic-form-sp></div>
+                    <div class="col-md-6" id="thebeautifulmap"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#wndmodalContainer").addClass("modal-wide");
+    var data = $("#appcontainer").data("customItemInfo"); console.log(data);
+    $("#thebeautifulmap").append('<div><iframe width="600" height="150" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCcOKGhVcgm8EIErOotXKvPaI41oHEb2HM&q=' + data.STREET_NAME+','+data.LOCALITY_NAME + '" ></iframe></div>\
+			                        <div><iframe width="600" height="150" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/streetview?key=AIzaSyCcOKGhVcgm8EIErOotXKvPaI41oHEb2HM&location=' + data.LOCATION_LATITUDE + ',' + data.LOCATION_LONGITUDE + '&heading=210&pitch=10&fov=35" ></iframe></div>');
+
+</script>

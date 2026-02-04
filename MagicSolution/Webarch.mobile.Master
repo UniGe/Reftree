@@ -1,0 +1,420 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Webarch.mobile.Master.cs" Inherits="MagicSolution.WebarchMobile" %>
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js application-<% Response.Write(MagicFramework.Helpers.SessionHandler.ApplicationInstanceName); %><% Response.Write(MagicFramework.Helpers.ApplicationSettingsManager.GetMenuOnTop() ? " top-menu" : ""); %>">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head id="Head1" runat="server">
+    <meta charset="utf-8" />
+    <title>Loading...</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+     <script>
+         (function () {
+             XMLHttpRequest.prototype.open = (function (open) {
+                 return function (method, url, async) {
+                     open.apply(this, arguments);
+                     if (window.serviceWorkerUrlPathPrefix) {
+                         this.setRequestHeader('X-MagicSolution-Reftree', 'true');
+                     }
+                 };
+             })(XMLHttpRequest.prototype.open);
+         })();
+     </script>
+    <link href="/Magic/Styles/local_fonts.css" rel="stylesheet" type="text/css" />
+    <link href="/Magic/kendo/2016.1.226/Styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="/Magic/kendo/2016.1.226/styles/kendo.blueopal.min.css" rel="stylesheet" />
+    <link href="/Magic/kendo/2016.1.226/styles/kendo.blueopal.mobile.min.css" rel="stylesheet" />
+    <link href="/Magic/kendo/2016.1.226/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+    <link class="MFessentialTag" href="/Magic/Styles/3rd-party/font-awesome.min.css" rel="stylesheet">
+    <link href="/Magic/Styles/3rd-party/select.css" rel="stylesheet">
+    <link class="MFessentialTag" href="/Magic/Styles/kendo.ilos.css" rel="stylesheet">
+    <link href="/Magic/HtmlTemplates/webarch/assets/plugins/jquery-slider/css/jquery.sidr.light.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/Magic/HtmlTemplates/webarch/assets/plugins/boostrap-checkbox/css/bootstrap-checkbox.css" rel="stylesheet" type="text/css" media="screen" />
+    <link class="MFessentialTag" href="/Magic/HtmlTemplates/webarch/assets/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Magic/HtmlTemplates/webarch/assets/plugins/boostrapv3/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Magic/HtmlTemplates/webarch/assets/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/Magic/HtmlTemplates/webarch/assets/css/animate.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Magic/HtmlTemplates/webarch/assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/Magic/HtmlTemplates/webarch/assets/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="/localstyles/webarch/style/css/custom-icon-set.css" rel="stylesheet" type="text/css" />
+    <link href="/Magic/HtmlTemplates/webarch/assets/css/Webarch-ilos.css" rel="stylesheet" />
+    <link href="/Magic/HtmlTemplates/webarch/Assets/css/custom.css" rel="stylesheet" type="text/css" />
+
+<%--    <script src="/Magic/HtmlTemplates/webarch/assets/plugins/jquery-1.11.0.min.js" type="text/javascript"></script>--%>
+    <script src="/Magic/DevExtreme/Lib/js/jquery-2.2.3.min.js" type="text/javascript"></script>
+    <script class="MFessentialTag" src="/Magic/HtmlTemplates/webarch/assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+    <script class="MFessentialTag" src="/Magic/HtmlTemplates/webarch/assets/plugins/boostrapv3/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/Magic/HtmlTemplates/webarch/assets/plugins/breakpoints.js" type="text/javascript"></script>
+    <script src="/Magic/HtmlTemplates/webarch/assets/plugins/bootstrap-select2/select2.min.js" type="text/javascript"></script>
+    <script src="/Magic/HtmlTemplates/webarch/assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script>
+    <script src="/Magic/HtmlTemplates/webarch/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="/Magic/HtmlTemplates/webarch/assets/plugins/jquery-slider/jquery.sidr.min.js" type="text/javascript"></script>
+    <script src="/Magic/HtmlTemplates/webarch/assets/plugins/jquery-sparkline/jquery-sparkline.js"></script>
+    <script src="/Magic/HtmlTemplates/webarch/assets/plugins/jquery-flot/jquery.flot.animator.min.js"></script>
+    <script src="/Magic/HtmlTemplates/webarch/assets/plugins/skycons/skycons.js"></script>
+    <script src="/Magic/kendo/2016.1.226/js/jszip.min.js" ></script>
+    <script class="MFessentialTag" src="/Magic/kendo/2016.1.226/js/kendo.all.min.js"></script>
+    <%--<script src="/Magic/kendo/2016.1.226/src/js/kendo.all.js"></script>--%>
+    <script src="/Magic/kendo/2016.1.226/js/kendo.timezones.min.js" ></script>
+    <script class="MFessentialTag" src="/Magic/Scripts/console.js"></script>
+    <script src="/Magic/Scripts/MenuDataManager.js"></script>
+    <script src="/Magic/Scripts/WebArch.js"></script>
+    <script class="MFessentialTag" src="/Magic/Scripts/Labels.js"></script>
+    <script class="MFessentialTag" src="/Custom/AppLabels.js"></script>
+    <script class="MFessentialTag" src="/Magic/Scripts/MagicUtils.js"></script>
+    <script src="/Magic/Scripts/BOUsersManager.js"></script>
+    <script src="/Magic/Scripts/MagicScheduler.js"></script>
+    <script class="MFessentialTag" src="/Magic/kendo/2016.1.226/js/cultures/kendo.culture.it-IT.min.js"></script>
+    <script class="MFessentialTag" src="/Magic/kendo/2016.1.226/js/cultures/kendo.culture.de-DE.min.js"></script>
+    <script src="/Magic/Scripts/jquery.fileDownload.js"></script>
+    <script src="/Magic/Scripts/BOSelector.js"></script>
+    <script src="/Magic/Scripts/MagicVisibilityTreeBuilder.js"></script>
+    <script src="/Custom/AdminAreaCustomizations.js"></script>
+    <script src="/Custom/dispatchers.js"></script>
+    <script src="/Custom/pushnotifications.js"></script>
+    <script src="/Magic/Scripts/help.js"></script>
+
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body>
+    <span id="popupNotification"></span>
+    <span id="staticNotification"></span>
+    <div class="header navbar navbar-inverse">
+        <!-- BEGIN TOP NAVIGATION BAR -->
+        <div class="navbar-inner">
+            <ul class="nav pull-left notifcation-center" id="main-menu-toggle-wrapper" style="display: none">
+                <li class="dropdown"><a id="main-menu-toggle" href="#main-menu" class="">
+                    <div class="iconset top-menu-toggle-white"></div>
+                </a></li>
+            </ul>
+            <!-- END RESPONSIVE MENU TOGGLER -->
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <div class="pull-left hidden-sm hidden-xs">
+                <ul class="nav quick-section">
+                    <li class="quicklinks"><a href="javascript:void(0)" class="" id="layout-condensed-toggle" style="margin-right: 10px">
+                        <div class="iconset top-menu-toggle-dark"></div>
+                    </a></li>
+                </ul>
+            </div>
+            <div class="pull-left">
+                <ul class="nav quick-section" style="margin-left:0">
+                    <li class="m-r-10 input-prepend inside search-form no-boarder" id="ricercaTop" style="margin-left: 0px !important">
+                        <span class="add-on"><span class="iconset top-search"></span></span>
+                        <input id="searchedtextautocomplete" type="text" class="no-boarder" placeholder="Search...">
+                        <div class="favorites dropdown pull-right" style="margin-left: 10px;">
+                            <a href="#" onclick="renderFavoriteLinks(this)" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true"><i class="fa-2x fa fa-star"></i></a>
+                            <ul class="dropdown-menu"></ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!--<div class="chat-toggler" ng-controller="NotificationsController as nc">
+                    <a href="javascript:void(0)" class="dropdown-toggle" popover-trigger>
+                        <div class="user-details">
+                            <div class="username">
+                                <span class="badge badge-important" ng-bind="nc.unreadNotifications + nc.mailsCount + nc.events.length"></span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="popover bottom">
+                        <div class="arrow"></div>
+                        <div class="popover-title text-center" style="display: inline-block; width: 100%; margin: 0;">
+                            <span class="btn-group pull-left">
+                                <span style="cursor:pointer;" ng-class="{active: nc.filter == 'info'}" ng-click="nc.filter = nc.filter == 'info' ? false: 'info'" ng-if="nc.notifications.length" class="btn btn-success btn-xs btn-mini">
+                                    <i class="fa fa-info-circle"></i>&nbsp;&nbsp;{{nc.notifications.length}}
+                                </span>
+                                <span style="cursor:pointer;" ng-class="{active: nc.filter == 'error'}" ng-click="nc.filter = nc.filter == 'error' ? false: 'error'" ng-if="nc.errors.length" class="btn btn-danger btn-xs btn-mini">
+                                    <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{nc.errors.length}}
+                                </span>
+                                <span style="cursor:pointer;" ng-class="{active: nc.filter == 'mail'}" ng-click="nc.filter = nc.filter == 'mail' ? false: 'mail'" ng-if="nc.mailsCount" class="btn btn-warning btn-xs btn-mini">
+                                    <i class="fa fa-envelope"></i>&nbsp;&nbsp;{{nc.mailsCount}}
+                                </span>
+                                <span style="cursor:pointer;" ng-class="{active: nc.filter == 'event'}" ng-click="nc.filter = nc.filter == 'event' ? false: 'event'" ng-if="nc.events.length" class="btn btn-primary btn-xs btn-mini"">
+                                    <i class="fa fa-bell"></i>&nbsp;&nbsp;{{nc.events.length}}
+                                </span>
+                            </span>
+                            <i ng-show="nc.loadingNextPage || nc.loadingMails" class="fa fa-spinner fa-spin"></i>
+                            <span ng-show="(nc.notifications.length || nc.errors.length) && (!nc.filter || nc.filter == 'info' || nc.filter == 'error')" ng-click="nc.markAllRead()" ng-bind="'markAllRead'|translate" class="btn btn-xs btn-mini pull-right" style="cursor: pointer;"></span>
+                        </div>
+                        <div class="popover-content" scroll-trigger>
+                            <div style="width: 220px">
+                                <div ng-show="!nc.filter || nc.filter == note.Type" ng-click="nc.clickNote(note, $event)" class="notification-messages" ng-class="{unread: !note.Read, info: note.Type == 'info', danger: note.Type == 'error', warning: note.Type == 'mail', success: note.Type == 'event'}" ng-repeat="note in nc.notifications.concat(nc.errors, nc.mails, nc.events)|orderBy:'-Date' track by $index">
+                                    <span style="cursor: pointer;" ng-if="note.Type == 'error' || note.Type == 'info'" ng-click="nc.deleteNote(note, $event)" class="glyphicon glyphicon-remove pull-right remove-icon"></span>
+                                    <div title="{{note.Text}}" class="message-wrapper">
+                                        <div ng-if="note.Title" class="heading" ng-bind="note.Title"></div>
+                                        <div class="description" ng-bind="note.Text"></div>
+                                        <div class="date pull-left" ng-bind="note.Date|date:nc.dateTimeFormat"></div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+            <!-- MODAL ACTION-->
+            <!-- END MODAL ACTION-->
+            <!-- END TOP NAVIGATION MENU -->
+            <!-- BEGIN CHAT TOGGLER -->
+            <div id="moveToTheLeft2" class="pull-right">
+                <ul id="moveToTheLeft" class="nav quick-section ">
+                    <li class="quicklinks">
+                        <asp:LoginView ID="LoginView1" runat="server">
+                            <LoggedInTemplate>
+                                <a data-toggle="dropdown" class="dropdown-toggle pull-right " href="#" id="user-options" onclick="$(window).trigger('click')">
+                                    <img src="<%= ServiceWorkerUrlPathPrefix %>/Magic/HtmlTemplates/webarch/assets/img/rotella.png" class="rotella">
+                                </a>
+                                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="user-options">
+                                    <li><a id="userprofilelink" href="/app#/profile"><i class="fa fa-user"></i> <span id="personalData">Dati personali</span></a></li>
+                                    <li><a id="schedulerlink" href="/app#/calendar"><i class="fa fa-calendar"></i><span id="Span2" name="mycalendar" style="margin-left:10px;">My Cal</span></a></li>
+                                    <!--<li><a id="maillink" href="/app#/mail"><i class="fa fa-envelope"></i><span id="Span3" name="mymail" style="margin-left:10px;">My Mail</span><span class="badge badge-default pull-right" style="margin-top: 3px" id="msgs-badge">0</span></a></li>-->
+                                    <li class="divider"></li>
+                                    <li id="changeusergroup" runat="server"><a href="javascript:void(0)" id="businessunitdroplabel">Change business unit</a></li>
+                                    <li id="changeappareli" runat="server"><a href="javascript:void(0)" id="areadroplabel">Change application area</a></li>
+                                    <li id="filteroutervisibility" runat="server"><a href="javascript:void(0)" id="filteroutervisibilitylabel">Filter external groups</a></li>
+                                    <li id="areagroupchangedivider" runat="server" class="divider"></li>
+                                    <li><a id="A1" onclick="logout();" href="javascript:void(0);"><i class="icon-key"></i><span id="logout" style="margin-left:10px;">Logout</span></a></li>
+                                </ul>
+                            </LoggedInTemplate>
+                            <AnonymousTemplate>
+                                <h2>Login necessario !! -- Login required !!</h2>
+                            </AnonymousTemplate>
+                        </asp:LoginView>
+                    </li>
+                </ul>
+            </div>
+            <!-- END CHAT TOGGLER -->
+        </div>
+        <!-- END TOP NAVIGATION MENU -->
+    </div>
+    <!-- END TOP NAVIGATION BAR -->
+    <div class="page-container row">
+        <!-- BEGIN SIDEBAR -->
+        <div class="page-sidebar" id="main-menu">
+            <!-- BEGIN MINI-PROFILE -->
+            <div class="user-info-wrapper">
+                <div class="profile-wrapper"  id="userselectedpicprofwrapper" runat="server" style="background-size: cover; background-position: center center;">
+                    <img id="userselectedpicprof" runat="server" onerror="imgError(this);" class="userselectedpic" src="/Views/AccountImages/developer.jpg" alt="" data-src="/Views/AccountImages/developer.jpg" data-src-retina="/Views/AccountImages/developer.jpg" width="69" height="69" />
+                </div>
+               
+                <div class="user-info">
+                    <div class="username">
+                        <asp:LoginName ID="LoginName1" runat="Server"></asp:LoginName>
+                    </div>
+                </div>
+            </div>
+            <!-- END MINI-PROFILE -->
+
+            <!-- BEGIN SIDEBAR MENU -->
+            <p id="mf_moduleDescription" class="menu-title">BROWSE <span class="pull-right"><a href="javascript:;"><i class="fa fa-refresh"></i></a></span></p>
+            <ul id="sidemenu">
+                <li id="InitialLi" runat="server" class="start active"><a id="dshb2" href="/dashboard" runat="server"><i class="icon-custom-home"></i><span class="title">Dashboard</span> <span class="selected"></span><span id="activityCounter" class="badge badge-important pull-right"></span></a></li>
+
+            </ul>
+            <a href="#" class="scrollup">Scroll</a>
+            <div class="clearfix"></div>
+            <!-- END SIDEBAR MENU -->
+        </div>
+        <!-- END SIDEBAR -->
+        <!-- BEGIN PAGE CONTAINER-->
+        <div class="page-content">
+            <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+            <div id="portlet-config" class="modal hide">
+                <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button"></button>
+                    <h3>Widget Settings</h3>
+                </div>
+                <div class="modal-body">Widget settings form goes here </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="content">
+                <ul class="breadcrumb">
+                </ul>
+                <!--<div class="page-title">
+                    <a href="javascript:history.back()"><i class="icon-custom-left"></i></a>
+                    <h3 id="spanbig" style="width: auto;"></h3>
+                    <div id="statisticsRangePicker" style="display: inline-block; float: right;"></div>
+                </div>-->
+                <div id="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                        <div id="routing-content" ng-app="routing" ng-view></div>
+                            <div id="appcontainer">
+                                <div id="templatecontainer" runat="server" enableviewstate="false"></div>
+                                <form id="form1" runat="server">
+                                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                    </asp:ContentPlaceHolder>
+                                </form>
+                            </div>
+                            <div id="wndmodalContainer" class="modal fade">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">...</h4>
+                                        </div>
+                                        <div id="contentofmodal" class="modal-body">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a id="executesave" href="javascript:void(0)" type="button" class="btn btn-primary" aria-label="save">Salva
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="filtersModalContainer" class="modal fade">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">...</h4>
+                                            </div>
+                                            <div id="contentofFiltersmodal" class="modal-body">
+                                            </div>
+                                            <div class="modal-footer">
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div id="magnifyModalContainer" class="modal fade">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <span class="modal-title">...</span>
+                                        </div>
+                                        <div id="magnifyModalContent" class="modal-body">
+                                        </div>
+                                        <div class="modal-footer">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- END PAGE -->
+            </div>
+        </div>
+            <!-- END CONTAINER -->
+            <div id="userlistwnd">
+                <div id="usergridwnd">
+                </div>
+            </div>
+
+            <script>
+                function detectmobile() {
+                    return false;
+                }
+
+                var serviceWorkerUrlPathPrefix = '<%= ConfigurationManager.AppSettings["ServiceWorkerUrlPathPrefix"] %>';
+                function imgError(img) {
+                    if ((!img.complete) || (typeof img.naturalWidth !== "undefined" && img.naturalWidth === 0))
+                        $(img).css("visibility", "visible").attr("src", ((serviceWorkerUrlPathPrefix) ?? '') + "/Views/AccountImages/developer.jpg");
+                }
+
+                function customizeApp() {
+                    if (window.mailActive == true && typeof setUpMailRoutines == 'function') {
+                        setUpMailRoutines();
+                    }
+                }
+
+                function setActionLiText() {
+                    var tag1 = 'changearea';
+                    var tag2 = 'changebusinessunit';
+
+                    if (window.AppAreasOverrideLabelKey != null && window.AppAreasOverrideLabelKey != '')
+                        tag1 = window.AppAreasOverrideLabelKey;
+                    if (window.UserGroupOverrideLabelKey != null && window.UserGroupOverrideLabelKey != '')
+                        tag2 = window.UserGroupOverrideLabelKey;
+
+                    $("#areadroplabel").text(getObjectText(tag1));
+                    $("#businessunitdroplabel").text(getObjectText(tag2));
+                    if ($("#filteroutervisibilitylabel").length > 0)
+                        $("#filteroutervisibilitylabel").text(getObjectText("filterexternalgroups"));
+                }
+                function translate() {
+                    kendo.culture(window.culture);
+
+                    $("#usergridwnd").kendoWindow({
+                        width: "600px",
+                        title: getObjectText('selectuser'),
+                        visible: false,
+                        modal: true
+                    });
+                    //label dello usergroup in alto a dx
+                    $(".spanBusinessUnit").html(window.UserGroupDescription);
+                    //cambio visibility
+                    $("#businessunitdroplabel").bind("click", function () {
+                        generateVisibilityAreasDropDown();
+                    });
+                    //cambio area applicativa
+                    $("#areadroplabel").bind("click", function () {
+                        generateApplicationAreasDropDown(false);
+                    });
+                    if ($("#filteroutervisibilitylabel").length > 0 && typeof openUsGroupsTreeWindow == "function")
+                        $("#filteroutervisibilitylabel").bind("click", openUsGroupsTreeWindow);
+
+                    setActionLiText();
+
+                    $("#actions").text(getObjectText('actions'));
+                    $("#notificLeft").text(getObjectText('youhave'));
+                    $("#notificRight").text(getObjectText('newnotifications'));
+                    $("#personalData").text(getObjectText('personalData'));
+                    $("#changePassword").text(getObjectText('changePassword'));
+                    $("#logout").text(getObjectText('logout'));
+                    $("#colorCustomizer").text(getObjectText('colorCustomizer'));
+                    $("#searchedtextautocomplete").attr("placeholder", getObjectText('placeholderSearch'));
+                    $("[name=mycalendar]").text(getObjectText("mycalendar"));
+                    $("[name=mymail]").text(getObjectText("mymail"));
+                    $(".user-info > .greeting").text(getObjectText("welcome"));
+            
+                    customizeApp();
+                }
+
+                jQuery(document).ready(function () {
+                    initNotificationsTooltip();
+                    generateSideMenu();
+                    SearchAutocomplete();
+                    translate();
+                });
+            </script>
+
+            <script type="text/javascript">
+                var template = 'webarch';
+                var currentgrid = "grid";
+                var elementineditid = -1;
+                var maps = new Array();
+            </script>
+
+            <!-- END JAVASCRIPTS -->
+           <script>
+               var serviceWorkerUrlPathPrefix = '<%= ConfigurationManager.AppSettings["ServiceWorkerUrlPathPrefix"] %>';
+               window.serviceWorkerUrlPathPrefix = serviceWorkerUrlPathPrefix;
+               if (typeof gotRequirejs === 'undefined') {
+                   window.name = "NG_DEFER_BOOTSTRAP!";
+                   let requirePath = (serviceWorkerUrlPathPrefix ?? '') + window.includesVersion + "/Magic/v/" + window.applicationVersion + "/Scripts/require.js"
+                   $.getScript(requirePath)
+                       .done(function () {
+                           gotRequirejs = true;
+                           require([(serviceWorkerUrlPathPrefix ?? '') + window.includesVersion + '/Magic/HtmlTemplates/webarch/assets/js/core.js']);
+                           requireConfig(function () {
+                               require(["main", (serviceWorkerUrlPathPrefix ?? '') + window.includesVersion + '/Custom/' + window.ApplicationCustomFolder + '/Scripts/main.js']);
+                           });
+                           launchEarlyRequires();
+                       });
+               }
+           </script>
+</body>
+</html>

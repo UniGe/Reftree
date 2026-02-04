@@ -1,0 +1,24 @@
+﻿<div kendo-window="gps.portfolioSelectorWnd" k-max-width="'900px'"  k-title="gps.labels.wndtitle" k-visible="'true'" k-modal="'true'"  k-actions="['close']" >
+        <div class="row">
+            <div class="row" >
+                <div class="col-md-6">
+                    <h4>{{ gps.currentgroup + (gps.is_default_usergroup_visibility ? ' (DEFAULT)' : '') }}</h4>
+                </div>
+                <div class="col-md-6">
+                    <label for="is_default_usergroup_visibility">{{ gps.labels.setAsDefaultUserGroupVisibility }}</label>
+                    <input id="is_default_usergroup_visibility" type="checkbox" ng-model="gps.is_default_usergroup_visibility" />
+                </div>
+            </div>
+            <magic-grid gridname="vi_change_portfolio" filter="gps.gridFilter" gridoptionsextension="{selectable:true, change: gps.onGridSelect , dataBound: gps.onDataBound}" />
+            <div  style="margin-top:20px;" class="row">
+                <button class="pull-right" ng-show="gps.changed" kendo-button="gps.applyBtn" id="changeportfolioapply"  k-on-click="gps.applyPortfolioChange(kendoEvent)">{{ gps.labels.confirm }}</button>
+            </div>
+        </div>
+        <style scoped>
+            .row {
+                margin-left: 0px;
+                margin-right: 0px;
+            }
+        </style>
+</div>
+

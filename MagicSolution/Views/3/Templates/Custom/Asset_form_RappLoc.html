@@ -1,0 +1,594 @@
+﻿<div class="panel with-nav-tabs panel-default">
+    <div class="panel-heading">
+        <ul
+            ng-init=""
+            class="nav nav-tabs">
+            <li class="active"><a href="#tab1default" data-toggle="tab">Dati generali</a></li>
+  
+            <li ng-click="loadContent.two = true"><a href="#tab2default" data-toggle="tab">Asset</a></li>  
+			<li ng-click="loadContent.four = true"><a href="#tab4default" data-toggle="tab">Garanzie</a></li>
+			<li ng-click="loadContent.five = true"><a href="#tab5default" data-toggle="tab">Registrazioni fiscali</a></li>
+			<li ng-click="loadContent.six = true"><a href="#tab6default" data-toggle="tab">Workflow</a></li>
+            <!--<li -->
+               <!-- ng-init="loadContent = {}"
+                class="dropdown">
+                <a href="#" data-toggle="dropdown">Dovuti<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu"> -->
+                    <li ng-click="loadContent.seven = true"><a href="#tab7default" data-toggle="tab">Dovuti</a></li>
+                    <!--<li ng-click="loadContent.eight = true"><a href="#tab8default" data-toggle="tab">Dovuti non attivi</a></li> -->
+               <!-- </ul>
+            </li> -->
+			<li 
+                ng-init="loadContent = {}"
+                class="dropdown">
+                <a href="#" data-toggle="dropdown">Contabilità<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+			<li ng-click="loadContent.nine = true"><a href="#tab9default" data-toggle="tab">Documenti emessi</a></li>
+			 </ul>
+			</li> 
+			<li 
+                ng-init="loadContent = {}"
+                class="dropdown">
+                <a href="#" data-toggle="dropdown">Collegamenti<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+					<li ng-click="loadContent.ten = true"><a href="#tab10default" data-toggle="tab">Versioni rapporti per anagrafica</a></li>
+					<li ng-click="loadContent.eleven = true"><a href="#tab11default" data-toggle="tab">Versioni rapporto per rapporto</a></li>
+			   </ul>
+			</li> 
+			<!--<li ng-click="loadContent.twelve = true"><a href="#tab12default" data-toggle="tab">Planimetria</a></li> -->
+        </ul>
+    </div>
+    <div class="panel-body">
+        <div class="tab-content">
+
+            <div class="tab-pane fade active in" id="tab1default">
+				
+				<div class="row" style="height:10px;"></div>
+				
+					<div class="row">
+					  <div class="row" >
+						<div class="col-md-6 add-to-pdf">
+							<div class="row" style="height:10px;"></div>
+							<h1>Dati rapporto di locazione</h1>
+							<magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true" formname="FORM_RAPP_LOC" hidetabs="true" itemsperrow = 1></magic-form-sp>
+						</div>
+						<div class="col-md-6">
+							<h1>Soggetti contrattuali</h1>
+							<magic-grid gridname="LE_VI_VERACT_LE_ACTREF_L" filterpk="LE_ACTREF_LE_VERACT_ID"></magic-grid>
+						</div>
+						</div>
+                    </div>
+				<div class="row" style="height:10px;"></div>
+				
+				<!-- Gauge Charts-->
+				<div class="row">
+					<div class="col-md-6">
+						<div id ="TempChild1" style="width: 50%; margin: 0 auto;">
+					   <magic-chart-gauge chartguid="AACD696A-5DE8-4837-B973-132AAA52A5DB" />
+						<div style="background-color:black;color:white;width:100px;"> % Morosità</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div id ="TempChild2" style="width: 50%; margin: 0 auto;">
+					   <magic-chart-gauge chartguid="4393A046-6596-4D4D-8BFE-DE02D4BFE4EE" /> 
+						<div style="background-color:black;color:white;width:100px;"> % Copertura garanzia</div>
+						</div>
+					</div>
+					
+
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div id ="TempChild7" style="width: 50%; margin: 0 auto;">
+					   <magic-chart-gauge chartguid="44EE6262-5981-4FB7-BE01-60884F764EE8" />
+						<div style="background-color:black;color:white;width:100px;"> % Vita contratto</div>
+						</div>
+					</div>
+				</div>
+
+            </div>
+
+			<div class="tab-pane fade" id="tab2default">
+                <div ng-if="loadContent.two">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <magic-grid gridname="LE_VI_VERACT_LE_ASSUTI_L" filterpk="AS_ASSUTI_LE_VERACT_ID"></magic-grid>
+                        </div>
+					<div class="col-md-6" style="width:10px;">
+                        <div class="col-md-6" id="thebeautifulmap"></div>
+                    </div>
+                    </div>
+						<div class="row">
+					                        <div class="col-md-12">
+											
+												<div  id="contentDiv">
+											</div>
+											</div>
+					</div>
+					<a href="http://ref2space.idearespa.com/wex/index.html?oid=4713544" target="_blank">Bim</a>
+                </div>
+            </div> 
+			
+			
+			<div class="tab-pane fade" id="tab4default">
+                <div ng-if="loadContent.four">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <magic-grid gridname="LE_VI_VERACT_WARRAN_L" filterpk="LE_WARRAN_LE_VERACT_ID"></magic-grid>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+			
+			
+			<div class="tab-pane fade" id="tab5default">
+                <div ng-if="loadContent.five">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <magic-grid gridname="LE_VI_VERACT_LE_REGFIS_L" filterpk="LE_REGFIS_LE_VERACT_ID"></magic-grid>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+			<div class="tab-pane fade" id="tab6default">
+                <div ng-if="loadContent.six">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <magic-grid gridname="LE_VI_VERACT_WORKFLOW_L" filterpk="LE_VERACT_ID"></magic-grid>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+			
+			
+			
+            <div class="tab-pane fade" id="tab7default">
+                <div ng-if="loadContent.seven">
+                    <div class="row">
+                        <div class="col-md-6">
+							<div class="row">
+								<div class="col-md-6">
+									<h1>Dovuti attivi</h1>
+								</div>
+							</div>
+                            <magic-grid gridname="LE_VI_VERACT_REVDUE_L_ACT_GROUP" filterpk="LE_VERACT_ID"></magic-grid>
+                        </div>
+					
+                        <div class="col-md-6">
+                            <magic-chart chartguid="1738F90F-AE9C-4F0F-B2D5-4F3AD97DD76B" /><!--<magic-chart chartid="42" />-->
+                        </div>  
+					</div>
+					<div class="row">
+					     <div class="col-md-6">
+								<div class="row">
+									<div class="col-md-6">
+										<h1>Dovuti non attivi</h1>
+									</div>
+								</div>
+								<magic-grid gridname="LE_VI_VERACT_REVDUE_L_NO_ACT_GROUP" filterpk="LE_VERACT_ID"></magic-grid>
+						</div>
+					</div>	
+                    
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tab8default">
+                <div ng-if="loadContent.eight">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <magic-grid gridname="LE_VI_VERACT_REVDUE_L_NO_ACT" filterpk="AC_REVDUE_LE_VERACT_ID"></magic-grid>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+			
+            <div class="tab-pane fade" id="tab9default">
+                <div ng-if="loadContent.nine">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <magic-grid gridname="AC_VI_TESREV_LIST_SINT_VERACT_AMMACT" filterpk="AC_TESHIS_LE_VERACT_ID"></magic-grid>
+                        </div>
+                        <div class="col-md-6">
+                            <magic-chart chartguid="5AE2B85D-0E1F-4B9D-94CF-41CF769FB415" /><!--<magic-chart chartid="42" />-->
+                        </div>
+                    </div>
+                </div>
+            </div> 
+			
+			
+            <div class="tab-pane fade" id="tab10default">
+                <div ng-if="loadContent.ten">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <magic-grid gridname="LE_VI_VERACT_FOR_REFERE" filterpk="LE_VERACT_ID_TRUE"></magic-grid>
+                        </div>
+                    </div>
+					<div class ="row">
+						<div class="col-md-12 add-to-pdf">
+							<div class="row" style="height:10px;"></div>
+							<h1>Dati rapporto di locazione per anagrafica</h1>
+							<magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true" formname="FORM_RAPP_LOC_ANAGRA" hidetabs="true" itemsperrow = 1></magic-form-sp>
+						</div>	
+					</div>	
+					<div class="row">
+						<div class="col-md-6">
+							<div id ="TempChild5" style="width: 50%; margin: 0 auto;">
+									<magic-chart-gauge chartguid="B5C98423-D251-4FCB-BBDF-5C60C64B1AA1" /> 
+								<div style="background-color:black;color:white;width:100px;"> % Copertura garanzia</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div id ="TempChild6" style="width: 50%; margin: 0 auto;">
+								<magic-chart-gauge chartguid="BFB43AD0-FF37-4E2B-AE66-DCA46E6E57D0" /> 
+							<div style="background-color:black;color:white;width:100px;"> % Morosità</div>
+							</div>
+					</div>
+
+                    </div>  
+                </div>
+            </div> 	
+            <div class="tab-pane fade" id="tab11default">
+                <div ng-if="loadContent.eleven">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <magic-grid gridname="LE_VI_VERACT_FOR_AMMACT" filterpk="LE_VERACT_ID_TRUE"></magic-grid>
+                        </div>
+                    </div> 
+					<div class="row">
+  					<div class="col-md-6">
+						<div id ="TempChild3" style="width: 50%; margin: 0 auto;">
+					   <magic-chart-gauge chartguid="301E7724-3DF2-42EB-A320-6923EF026786" /> 
+						<div style="background-color:black;color:white;width:100px;"> % Copertura garanzia</div>
+						</div>
+					</div>
+  					<div class="col-md-6">
+						<div id ="TempChild4" style="width: 50%; margin: 0 auto;">
+					   <magic-chart-gauge chartguid="FFC867AD-47D7-4EB5-B00A-3B3DA6990A50" /> 
+						<div style="background-color:black;color:white;width:100px;"> % Morosità</div>
+						</div>
+					</div>
+
+                    </div>  
+						<!--<div class="col-md-6">
+                            <magic-chart chartid="52" /><!--<magic-chart chartid="42" />
+                        </div> -->
+					</div>
+                </div>
+		<!--	<div class="tab-pane fade" id="tab12default">	
+				<div ng-if="loadContent.twelve">
+					
+		<div class="row">
+					                        <div class="col-md-12">
+												<div  id="contentDiv">
+												</div>
+											</div>
+					</div>
+				</div>
+            </div> -->
+				
+            </div> 					
+			
+			
+        </div>
+    </div>
+<!--</div>-->
+
+ <style type="text/css">
+
+
+    
+
+        #contentDiv {
+            overflow-x: auto;
+            background-color: white;
+            height: 100vh;
+			width: 71vw;
+        }
+
+
+        
+    </style>
+
+
+ 
+
+<!--  <script src="Views/3/Js/MicrosoftAjax.js"></script>
+  <script src="Views/3/Js/openseadragon.js"></script>
+
+  <script>
+  </script>-->
+   
+
+<script>
+
+ var data = $("#appcontainer").data("customItemInfo");
+
+function openDWG(e){console.log("ciao");}
+
+
+
+var onDomIsRendered = function(domString) {
+
+  return new Promise(function(resolve, reject) {
+
+    function waitUntil() {
+
+      setTimeout(function() {
+
+        if($(domString).length > 0){
+
+          resolve($(domString));
+
+        }else {
+
+          waitUntil();
+
+        }
+
+      }, 100);
+
+    }
+
+    //start the loop
+
+    waitUntil();
+
+  });
+
+};
+
+ 
+
+//then you can use it like
+
+
+    
+			var dwgviewer;
+		  //url servizio dati dwg e vettoriali
+             var serviceUrl = "http://ref2space.idearespa.com/TeighaService5/teighaservice.svc/webhttp/";
+            //nome file di test
+			 var datafordwg = $("#appcontainer").data("customItemInfo");
+			 this.dwgFilename = datafordwg.NOME_FILE; 
+			 
+			 //<!--"634983619070329958_Bari_Putignani_10400+3.dwg";-->
+
+$(document).ready(function () {
+        // $("div li:first-child").addClass("active");
+        //  $("#ContenutoTab").find('div:first').addClass("active in");
+
+		
+		
+		
+		
+		
+onDomIsRendered("#contentDiv").then(function(element){
+
+    $.getScript('Views/3/Js/MicrosoftAjax.js', function () {
+
+        $.getScript('Views/3/Js/openseadragon.js', function () {
+
+    $.getScript('Views/3/Js/openseadragon-svg-overlay.js', function () {
+
+        $.getScript('Views/3/Js/openseadragon-r2sDwgViewer.js', function () {
+
+            $.getScript('Views/3/Js/openseadragon-r2sDwgService.js', function () {
+
+              
+
+              
+$.getScript('http://ref2space.idearespa.com/TeighaService5/teighaservice.svc/webhttp/js', function(){
+
+
+
+
+
+////
+
+
+
+
+
+    dwgviewer = OpenSeadragon({
+                id: "contentDiv",
+                prefixUrl: "Views/3/dwgViewer/r2sdwgviewerimages/",
+                debugMode: false,
+                animationTime: 0,
+                gestureSettingsMouse: { clickToZoom: false }
+            });
+
+            //inizializzo il visualizzatore dwg
+            dwgviewer.r2sDwgViewer({
+
+            });
+            //inizializzo il componente che si occupa delle chiamate al servizio passando l'url del servizio
+            dwgviewer.r2sDwgService({
+                urlService: serviceUrl
+            });
+
+               
+            // creo l'istanza del servizio
+            dwgviewer.r2sDwgServiceInstance.CreateService();
+            //carico il disegno specificando il nome del file
+            dwgviewer.r2sDwgServiceInstance.LoadByDwgFileName(dwgFilename, "", "False");
+
+          
+            // evento che indica che sono stati caricati i dati vettoriali
+            dwgviewer.addHandler('geoDataLoaded', function (event) {
+
+                //json di esempio per l'evidenziazione delle aree
+                var temat = {
+                    "tdata": [
+                { "id": "1", "color": "#009900", "handles": ["ADCB"] }
+                 ]
+                }
+
+                //carico i poligoni 
+                dwgviewer.r2sDwgViewerInstance.LoadVData();
+                //passo i tematismi per l'evidenziazione
+                dwgviewer.r2sDwgViewerInstance.LoadTemat(temat.tdata);
+
+
+            });
+
+
+            // evento su doppio click area - al momento ritorna l'handle della polilinea
+            dwgviewer.addHandler('areaClick', function (event) {
+
+				
+                alert(event);
+
+            });
+
+////
+
+});
+
+});
+
+});
+
+
+
+        });
+
+    });
+            
+        });
+
+    });
+
+
+
+
+		
+		
+		
+		
+		
+		
+		
+		
+     
+        window.setTimeout(function () {
+
+            //console.log("setInterval on");
+
+			var saldo = document.getElementById("SALDO");
+			
+			var valsaldo = $('#SALDO').val();
+
+		if (valsaldo <0)
+		saldo.style.backgroundColor = "rgb(244, 129, 129)";
+		else
+		saldo.style.backgroundColor = "rgb(141, 252, 146)";
+
+        }, 500);
+
+
+       // $("div[sfondo='BodyCol']").css("background-color", "rgba(175, 201, 99, 0.2)");
+
+    });
+
+    $("#wndmodalContainer").addClass("modal-wide");
+
+
+    $("#thebeautifulmap").append('<div><iframe width="600" height="150" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCcOKGhVcgm8EIErOotXKvPaI41oHEb2HM&q=' + data.AS_ASSET_ADDRESS + '" ></iframe></div><div><iframe width="600" height="150" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/streetview?key=AIzaSyCcOKGhVcgm8EIErOotXKvPaI41oHEb2HM&location=' + data.LOCATION_LATITUDE + ',' + data.LOCATION_LONGITUDE + '&heading=210&pitch=10&fov=35" ></iframe></div>');
+    //carosello immagini...
+    var $content = $("#mf_carousel");
+
+
+    ////must be on first tab...
+    //requireConfigAndMore(["MagicSDK"], function (MF) {
+    //    MF.api.get({
+    //        table: "core.AS_V_ASSET_IMG_GALLERY",
+    //        where: "AS_ASSET_ID = " + data.AS_ASSET_ID 
+    //    }).then(function (res1)
+    //    {
+    //        if (res1.length) {
+    //            var docids = [];
+    //            $.each(res1, function (index, value) {
+    //                if (docids.indexOf(value.DO_DOCUME_ID) == -1)
+    //                    docids.push(value.DO_DOCUME_ID)
+    //            });
+    //            $.get("/api/Documentale/GetDocumentPaths?documentIDs=" + docids.join())
+    //                .then(function (res) {
+    //                    if (res) {
+    //                        res = JSON.parse(res);
+    //                        if (res.length) {
+    //                            var imgs = []; 
+    //                            $.each(res1, function (j, v) { 
+    //                                if (j < 10)
+    //                                {
+    //                                    $.each(res, function (k, val) {
+    //                                        if (val.DO_DOCUME_ID == v.DO_DOCUME_ID)
+    //                                            path = val.path;
+    //                                    });
+    //                                    imgs.push({
+    //                                        src: "/api/MAGIC_SAVEFILE/GetFile?path=" + path + "\\" + JSON.parse(v.DO_DOCVER_LINK_FILE)[0].name, height: "350px"
+    //                                    });
+    //                                }
+    //                            });
+    //                            MaterializeAddCarouselTo$el($content, "asset-gallery", imgs);
+    //                        }
+    //                        else
+								
+    //                            $content.html();
+						
+    //                    }
+  
+
+    //                });
+    //            }
+	//			else 
+	//			// remove crousel ...
+	//			$("#mf_carousel").remove();
+    //        });
+        
+    //    });
+		
+//function MaterializeAddCarouselTo$el($el, carouselID, arrayOfImgObjects) {
+//    $el.html(largeSpinnerHTML);
+//    return $.get("/Views/3/Templates/Materialize-carousel.html")
+//        .then(function (HTML) {
+//            HTML = HTML.format(carouselID);
+//            var itemsHTML = "",
+//                indicatorsHTML = "",
+//                style = "";
+//            $.each(arrayOfImgObjects, function (k, v) {
+//                style = "";
+//                if(v.width != undefined){
+//                    style += 'width:' + v.width + ' !important;';
+//                }
+//                if(v.height != undefined){
+//                    style += 'height:' + v.height + ' !important';
+//                }
+//                itemsHTML +=   '<a class="carousel-item" href="'+ v.src +'" target="_blank"><img src="' + v.src + '"></a>'
+//				//itemsHTML +=   '<a class="carousel-item" ><img class="materialboxed" src="' + v.src + '"></a>'
+//            });
+		
+//            var $html = $(HTML);
+        
+//            $el.html($html);
+//			$("#at123").append(itemsHTML);
+			
+
+//   //inizializzo il componente caricando prima il js
+  
+//		$.getScript('Views/3/Js/carousel.js', function()
+//			{   $(document).ready(function(){
+//				$('.carousel').carousel({padding:80,shift:10});				
+//				});
+//			})
+
+
+   
+//        });
+//}
+
+
+
+
+
+
+</script> 
+
+

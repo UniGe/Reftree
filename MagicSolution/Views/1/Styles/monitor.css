@@ -1,0 +1,108 @@
+﻿.monitor-dropdown-popup .k-list > .k-state-selected:not(.k-state-hover){
+    background: none;
+    color: inherit;
+    border-color: transparent;
+}
+
+.monitor-dropdown-popup .k-list > .k-state-selected{
+    box-shadow: none;
+}
+
+.monitor-dropdown-popup .k-list > .k-state-hover{
+    cursor: pointer;
+}
+
+#tabstripcontainer #tabstrip .tab
+{
+    padding-bottom: 20px !important;
+    padding-left: 3px !important;
+}
+
+#tabstripcontainer #tabstrip .subarea
+{
+    margin: 20px 0px 0px 20px;
+    width: 206px;
+    min-height: 196px;
+    background-color: #CFD1CC;
+    padding-bottom: 10px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#tabstripcontainer #tabstrip .spans
+{
+    /*font-weight: bold;*/
+    width: 206px;
+    display: block;
+    background-color: #ffffff;
+    padding-bottom: 3px;
+    color:#ffffff;
+}
+
+#tabstripcontainer #tabstrip .k-dropdown.ng-scope,
+#tabstripcontainer #tabstrip .buttons
+{
+    margin: 10px 10px 10px 10px;
+    width: 186px;
+    /*background-color: #CFD1CC;*/
+    text-align: left;
+}
+
+#tabstripcontainer #tabstrip .buttonsdoc
+{
+      margin: 10px 10px 10px 10px;
+      width: 280px;
+      height: 50px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      background-color: #CFD1CC;
+      text-align: left;
+}
+
+#tabstripcontainer #tabstrip > .k-content{
+    margin: 0;
+}
+
+.gridtitle
+{
+    margin: 10px 10px 10px 10px;
+}
+
+#tabstripcontainer #tabstrip{
+    border: none;
+}
+
+#tabstripcontainer #tabstrip .k-tabstrip-items{
+    padding: 0;
+    background: none;
+}
+
+#tabstrip .k-tabstrip-items .k-state-disabled .k-link,
+#tabstrip .k-tabstrip-items .k-state-default .k-link {
+    color:#333;
+    padding: .5em .71em;
+}
+
+#tabstrip .k-state-active, #tabstrip .k-state-active:hover,
+#tabstrip .k-tabstrip .k-state-active{
+    border-color: #3a84fe;
+}
+
+#gridtotals tr.k-alt{
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+#gridtotals .k-grid-header,
+#gridtotals .k-header{
+    background-color: transparent;
+}
+
+#gridtotals tbody tr td:first-child{
+    padding: 0;
+}
+
+#gridtotals a.k-button{
+    display: block;
+    text-align: left;
+    margin: 1px;
+}

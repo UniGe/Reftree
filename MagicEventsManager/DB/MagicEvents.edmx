@@ -1,0 +1,775 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MagicDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Magic_Eve_ActionType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="6" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Magic_Eve_Event">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventActionID" Type="int" Nullable="false" />
+          <Property Name="EventScriptTypeID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ScriptName" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="SystemMessageID" Type="int" />
+          <Property Name="ChildEventID" Type="int" />
+        </EntityType>
+        <EntityType Name="Magic_Eve_Interval">
+          <Key>
+            <PropertyRef Name="IntervalID" />
+          </Key>
+          <Property Name="IntervalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IntervalinSeconds" Type="int" />
+          <Property Name="DayofWeek" Type="varchar" MaxLength="7" />
+          <Property Name="Month" Type="varchar" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="Magic_Eve_PlannedEvent">
+          <Key>
+            <PropertyRef Name="IDPlannedEvent" />
+          </Key>
+          <Property Name="IDPlannedEvent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventID" Type="int" Nullable="false" />
+          <Property Name="IntervalID" Type="int" />
+          <Property Name="tsStartExecution" Type="datetime" Nullable="false" />
+          <Property Name="tsNextExecution" Type="datetime" />
+          <Property Name="tsLastExecution" Type="datetime" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="LastExecutionMessage" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Magic_Eve_ScriptType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="6" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Magic_Eve_Track">
+          <Key>
+            <PropertyRef Name="TrackID" />
+          </Key>
+          <Property Name="TrackID" Type="int" Nullable="false" />
+          <Property Name="PlannedEventID" Type="int" />
+          <Property Name="tsExecutionStart" Type="datetime" />
+          <Property Name="tsExecutionEnd" Type="datetime" />
+          <Property Name="AlertMessage" Type="nvarchar(max)" />
+          <Property Name="DbMessage" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Magic_FTP_Encryptions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Magic_FTP_Protocols">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Magic_FTP_Servers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Protocol" Type="int" Nullable="false" />
+          <Property Name="Ftp_Encryption" Type="int" />
+          <Property Name="Host_Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Port_Number" Type="int" Nullable="false" />
+          <Property Name="User_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Timeout" Type="int" />
+          <Property Name="Is_Passive" Type="bit" Nullable="false" />
+          <Property Name="Private_Key_Passphrase" Type="nvarchar" MaxLength="100" />
+          <Property Name="Ssh_Host_Key_Fingerprint" Type="nvarchar(max)" />
+          <Property Name="Ssh_Private_Key_Path" Type="nvarchar" MaxLength="100" />
+          <Property Name="Tls_Host_Certificate_Fingerprint" Type="nvarchar(max)" />
+          <Property Name="Tls_Client_Certificate_Path" Type="nvarchar" MaxLength="100" />
+          <Property Name="Webdav_Root" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Magic_FTP_Settings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Server" Type="int" Nullable="false" />
+          <Property Name="Local_Path" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Remote_Path" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Transfer_Type" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="ExtractArchiveFiles" Type="bit" Nullable="false" />
+          <Property Name="DeleteFiles" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Magic_FTP_Transfer_Types">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Is_Upload" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Magic_Eve_Event_Magic_Eve_ActionType">
+          <End Role="Magic_Eve_ActionType" Type="Self.Magic_Eve_ActionType" Multiplicity="1" />
+          <End Role="Magic_Eve_Event" Type="Self.Magic_Eve_Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_Eve_ActionType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Magic_Eve_Event">
+              <PropertyRef Name="EventActionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_Eve_Event_Magic_Eve_Event">
+          <End Role="Magic_Eve_Event" Type="Self.Magic_Eve_Event" Multiplicity="0..1" />
+          <End Role="Magic_Eve_Event1" Type="Self.Magic_Eve_Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_Eve_Event">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="Magic_Eve_Event1">
+              <PropertyRef Name="ChildEventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_Eve_Event_Magic_Eve_ScriptType">
+          <End Role="Magic_Eve_ScriptType" Type="Self.Magic_Eve_ScriptType" Multiplicity="1" />
+          <End Role="Magic_Eve_Event" Type="Self.Magic_Eve_Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_Eve_ScriptType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Magic_Eve_Event">
+              <PropertyRef Name="EventScriptTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_Eve_PlannedEvent_Magic_Eve_Event">
+          <End Role="Magic_Eve_Event" Type="Self.Magic_Eve_Event" Multiplicity="1" />
+          <End Role="Magic_Eve_PlannedEvent" Type="Self.Magic_Eve_PlannedEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_Eve_Event">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="Magic_Eve_PlannedEvent">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_Eve_PlannedEvent_Magic_Eve_Interval">
+          <End Role="Magic_Eve_Interval" Type="Self.Magic_Eve_Interval" Multiplicity="0..1" />
+          <End Role="Magic_Eve_PlannedEvent" Type="Self.Magic_Eve_PlannedEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_Eve_Interval">
+              <PropertyRef Name="IntervalID" />
+            </Principal>
+            <Dependent Role="Magic_Eve_PlannedEvent">
+              <PropertyRef Name="IntervalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_Eve_Track_Magic_Eve_PlannedEvent">
+          <End Role="Magic_Eve_PlannedEvent" Type="Self.Magic_Eve_PlannedEvent" Multiplicity="0..1" />
+          <End Role="Magic_Eve_Track" Type="Self.Magic_Eve_Track" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_Eve_PlannedEvent">
+              <PropertyRef Name="IDPlannedEvent" />
+            </Principal>
+            <Dependent Role="Magic_Eve_Track">
+              <PropertyRef Name="PlannedEventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_FTP_Servers_Magic_FTP_Encryptions">
+          <End Role="Magic_FTP_Encryptions" Type="Self.Magic_FTP_Encryptions" Multiplicity="0..1" />
+          <End Role="Magic_FTP_Servers" Type="Self.Magic_FTP_Servers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_FTP_Encryptions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Magic_FTP_Servers">
+              <PropertyRef Name="Ftp_Encryption" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_FTP_Servers_Magic_FTP_Protocols">
+          <End Role="Magic_FTP_Protocols" Type="Self.Magic_FTP_Protocols" Multiplicity="1" />
+          <End Role="Magic_FTP_Servers" Type="Self.Magic_FTP_Servers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_FTP_Protocols">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Magic_FTP_Servers">
+              <PropertyRef Name="Protocol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_FTP_Settings_Magic_FTP_Servers">
+          <End Role="Magic_FTP_Servers" Type="Self.Magic_FTP_Servers" Multiplicity="1" />
+          <End Role="Magic_FTP_Settings" Type="Self.Magic_FTP_Settings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_FTP_Servers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Magic_FTP_Settings">
+              <PropertyRef Name="Server" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_FTP_Settings_Magic_FTP_Transfer_Types">
+          <End Role="Magic_FTP_Transfer_Types" Type="Self.Magic_FTP_Transfer_Types" Multiplicity="1" />
+          <End Role="Magic_FTP_Settings" Type="Self.Magic_FTP_Settings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_FTP_Transfer_Types">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Magic_FTP_Settings">
+              <PropertyRef Name="Transfer_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MagicDBModelStoreContainer">
+          <EntitySet Name="Magic_Eve_ActionType" EntityType="Self.Magic_Eve_ActionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Magic_Eve_Event" EntityType="Self.Magic_Eve_Event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Magic_Eve_Interval" EntityType="Self.Magic_Eve_Interval" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Magic_Eve_PlannedEvent" EntityType="Self.Magic_Eve_PlannedEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Magic_Eve_ScriptType" EntityType="Self.Magic_Eve_ScriptType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Magic_Eve_Track" EntityType="Self.Magic_Eve_Track" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Magic_FTP_Encryptions" EntityType="Self.Magic_FTP_Encryptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Magic_FTP_Protocols" EntityType="Self.Magic_FTP_Protocols" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Magic_FTP_Servers" EntityType="Self.Magic_FTP_Servers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Magic_FTP_Settings" EntityType="Self.Magic_FTP_Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Magic_FTP_Transfer_Types" EntityType="Self.Magic_FTP_Transfer_Types" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Magic_Eve_Event_Magic_Eve_ActionType" Association="Self.FK_Magic_Eve_Event_Magic_Eve_ActionType">
+            <End Role="Magic_Eve_ActionType" EntitySet="Magic_Eve_ActionType" />
+            <End Role="Magic_Eve_Event" EntitySet="Magic_Eve_Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_Eve_Event_Magic_Eve_Event" Association="Self.FK_Magic_Eve_Event_Magic_Eve_Event">
+            <End Role="Magic_Eve_Event" EntitySet="Magic_Eve_Event" />
+            <End Role="Magic_Eve_Event1" EntitySet="Magic_Eve_Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_Eve_Event_Magic_Eve_ScriptType" Association="Self.FK_Magic_Eve_Event_Magic_Eve_ScriptType">
+            <End Role="Magic_Eve_ScriptType" EntitySet="Magic_Eve_ScriptType" />
+            <End Role="Magic_Eve_Event" EntitySet="Magic_Eve_Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_Eve_PlannedEvent_Magic_Eve_Event" Association="Self.FK_Magic_Eve_PlannedEvent_Magic_Eve_Event">
+            <End Role="Magic_Eve_Event" EntitySet="Magic_Eve_Event" />
+            <End Role="Magic_Eve_PlannedEvent" EntitySet="Magic_Eve_PlannedEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_Eve_PlannedEvent_Magic_Eve_Interval" Association="Self.FK_Magic_Eve_PlannedEvent_Magic_Eve_Interval">
+            <End Role="Magic_Eve_Interval" EntitySet="Magic_Eve_Interval" />
+            <End Role="Magic_Eve_PlannedEvent" EntitySet="Magic_Eve_PlannedEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_Eve_Track_Magic_Eve_PlannedEvent" Association="Self.FK_Magic_Eve_Track_Magic_Eve_PlannedEvent">
+            <End Role="Magic_Eve_PlannedEvent" EntitySet="Magic_Eve_PlannedEvent" />
+            <End Role="Magic_Eve_Track" EntitySet="Magic_Eve_Track" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_FTP_Servers_Magic_FTP_Encryptions" Association="Self.FK_Magic_FTP_Servers_Magic_FTP_Encryptions">
+            <End Role="Magic_FTP_Encryptions" EntitySet="Magic_FTP_Encryptions" />
+            <End Role="Magic_FTP_Servers" EntitySet="Magic_FTP_Servers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_FTP_Servers_Magic_FTP_Protocols" Association="Self.FK_Magic_FTP_Servers_Magic_FTP_Protocols">
+            <End Role="Magic_FTP_Protocols" EntitySet="Magic_FTP_Protocols" />
+            <End Role="Magic_FTP_Servers" EntitySet="Magic_FTP_Servers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_FTP_Settings_Magic_FTP_Servers" Association="Self.FK_Magic_FTP_Settings_Magic_FTP_Servers">
+            <End Role="Magic_FTP_Servers" EntitySet="Magic_FTP_Servers" />
+            <End Role="Magic_FTP_Settings" EntitySet="Magic_FTP_Settings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_FTP_Settings_Magic_FTP_Transfer_Types" Association="Self.FK_Magic_FTP_Settings_Magic_FTP_Transfer_Types">
+            <End Role="Magic_FTP_Transfer_Types" EntitySet="Magic_FTP_Transfer_Types" />
+            <End Role="Magic_FTP_Settings" EntitySet="Magic_FTP_Settings" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MagicDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Magic_Eve_ActionType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Magic_Eve_Event" Relationship="MagicDBModel.FK_Magic_Eve_Event_Magic_Eve_ActionType" FromRole="Magic_Eve_ActionType" ToRole="Magic_Eve_Event" />
+        </EntityType>
+        <EntityType Name="Magic_Eve_Interval">
+          <Key>
+            <PropertyRef Name="IntervalID" />
+          </Key>
+          <Property Name="IntervalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IntervalinSeconds" Type="Int32" />
+          <Property Name="DayofWeek" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Month" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Magic_Eve_PlannedEvent" Relationship="MagicDBModel.FK_Magic_Eve_PlannedEvent_Magic_Eve_Interval" FromRole="Magic_Eve_Interval" ToRole="Magic_Eve_PlannedEvent" />
+        </EntityType>
+        <EntityType Name="Magic_Eve_ScriptType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Magic_Eve_Event" Relationship="MagicDBModel.FK_Magic_Eve_Event_Magic_Eve_ScriptType" FromRole="Magic_Eve_ScriptType" ToRole="Magic_Eve_Event" />
+        </EntityType>
+        <EntityType Name="Magic_Eve_Track">
+          <Key>
+            <PropertyRef Name="TrackID" />
+          </Key>
+          <Property Name="TrackID" Type="Int32" Nullable="false" />
+          <Property Name="PlannedEventID" Type="Int32" />
+          <Property Name="tsExecutionStart" Type="DateTime" Precision="3" />
+          <Property Name="tsExecutionEnd" Type="DateTime" Precision="3" />
+          <Property Name="AlertMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DbMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Magic_Eve_PlannedEvent" Relationship="MagicDBModel.FK_Magic_Eve_Track_Magic_Eve_PlannedEvent" FromRole="Magic_Eve_Track" ToRole="Magic_Eve_PlannedEvent" />
+        </EntityType>
+        <EntityContainer Name="MagicDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Magic_Eve_ActionType" EntityType="Self.Magic_Eve_ActionType" />
+          <EntitySet Name="Magic_Eve_Interval" EntityType="Self.Magic_Eve_Interval" />
+          <EntitySet Name="Magic_Eve_ScriptType" EntityType="Self.Magic_Eve_ScriptType" />
+          <EntitySet Name="Magic_Eve_Track" EntityType="Self.Magic_Eve_Track" />
+          <EntitySet Name="Magic_Eve_PlannedEvent" EntityType="MagicDBModel.Magic_Eve_PlannedEvent" />
+          <AssociationSet Name="FK_Magic_Eve_PlannedEvent_Magic_Eve_Interval" Association="MagicDBModel.FK_Magic_Eve_PlannedEvent_Magic_Eve_Interval">
+            <End Role="Magic_Eve_Interval" EntitySet="Magic_Eve_Interval" />
+            <End Role="Magic_Eve_PlannedEvent" EntitySet="Magic_Eve_PlannedEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_Eve_Track_Magic_Eve_PlannedEvent" Association="MagicDBModel.FK_Magic_Eve_Track_Magic_Eve_PlannedEvent">
+            <End Role="Magic_Eve_PlannedEvent" EntitySet="Magic_Eve_PlannedEvent" />
+            <End Role="Magic_Eve_Track" EntitySet="Magic_Eve_Track" />
+          </AssociationSet>
+          <EntitySet Name="Magic_Eve_Event" EntityType="MagicDBModel.Magic_Eve_Event" />
+          <AssociationSet Name="FK_Magic_Eve_Event_Magic_Eve_ActionType" Association="MagicDBModel.FK_Magic_Eve_Event_Magic_Eve_ActionType">
+            <End Role="Magic_Eve_ActionType" EntitySet="Magic_Eve_ActionType" />
+            <End Role="Magic_Eve_Event" EntitySet="Magic_Eve_Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_Eve_Event_Magic_Eve_Event" Association="MagicDBModel.FK_Magic_Eve_Event_Magic_Eve_Event">
+            <End Role="Magic_Eve_Event" EntitySet="Magic_Eve_Event" />
+            <End Role="Magic_Eve_Event1" EntitySet="Magic_Eve_Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_Eve_Event_Magic_Eve_ScriptType" Association="MagicDBModel.FK_Magic_Eve_Event_Magic_Eve_ScriptType">
+            <End Role="Magic_Eve_ScriptType" EntitySet="Magic_Eve_ScriptType" />
+            <End Role="Magic_Eve_Event" EntitySet="Magic_Eve_Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_Eve_PlannedEvent_Magic_Eve_Event" Association="MagicDBModel.FK_Magic_Eve_PlannedEvent_Magic_Eve_Event">
+            <End Role="Magic_Eve_Event" EntitySet="Magic_Eve_Event" />
+            <End Role="Magic_Eve_PlannedEvent" EntitySet="Magic_Eve_PlannedEvent" />
+          </AssociationSet>
+          <EntitySet Name="Magic_FTP_Protocols" EntityType="MagicDBModel.Magic_FTP_Protocols" />
+          <EntitySet Name="Magic_FTP_Transfer_Types" EntityType="MagicDBModel.Magic_FTP_Transfer_Types" />
+          <EntitySet Name="Magic_FTP_Encryptions" EntityType="MagicDBModel.Magic_FTP_Encryptions" />
+          <EntitySet Name="Magic_FTP_Servers" EntityType="MagicDBModel.Magic_FTP_Servers" />
+          <AssociationSet Name="FK_Magic_FTP_Servers_Magic_FTP_Encryptions" Association="MagicDBModel.FK_Magic_FTP_Servers_Magic_FTP_Encryptions">
+            <End Role="Magic_FTP_Encryptions" EntitySet="Magic_FTP_Encryptions" />
+            <End Role="Magic_FTP_Servers" EntitySet="Magic_FTP_Servers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_FTP_Servers_Magic_FTP_Protocols" Association="MagicDBModel.FK_Magic_FTP_Servers_Magic_FTP_Protocols">
+            <End Role="Magic_FTP_Protocols" EntitySet="Magic_FTP_Protocols" />
+            <End Role="Magic_FTP_Servers" EntitySet="Magic_FTP_Servers" />
+          </AssociationSet>
+          <EntitySet Name="Magic_FTP_Settings" EntityType="MagicDBModel.Magic_FTP_Settings" />
+          <AssociationSet Name="FK_Magic_FTP_Settings_Magic_FTP_Servers" Association="MagicDBModel.FK_Magic_FTP_Settings_Magic_FTP_Servers">
+            <End Role="Magic_FTP_Servers" EntitySet="Magic_FTP_Servers" />
+            <End Role="Magic_FTP_Settings" EntitySet="Magic_FTP_Settings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magic_FTP_Settings_Magic_FTP_Transfer_Types" Association="MagicDBModel.FK_Magic_FTP_Settings_Magic_FTP_Transfer_Types">
+            <End Role="Magic_FTP_Transfer_Types" EntitySet="Magic_FTP_Transfer_Types" />
+            <End Role="Magic_FTP_Settings" EntitySet="Magic_FTP_Settings" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Magic_Eve_PlannedEvent">
+          <Key>
+            <PropertyRef Name="IDPlannedEvent" />
+          </Key>
+          <Property Name="IDPlannedEvent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="Int32" Nullable="false" />
+          <Property Name="IntervalID" Type="Int32" />
+          <Property Name="tsStartExecution" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tsNextExecution" Type="DateTime" Precision="3" />
+          <Property Name="tsLastExecution" Type="DateTime" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="LastExecutionMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Magic_Eve_Interval" Relationship="MagicDBModel.FK_Magic_Eve_PlannedEvent_Magic_Eve_Interval" FromRole="Magic_Eve_PlannedEvent" ToRole="Magic_Eve_Interval" />
+          <NavigationProperty Name="Magic_Eve_Track" Relationship="MagicDBModel.FK_Magic_Eve_Track_Magic_Eve_PlannedEvent" FromRole="Magic_Eve_PlannedEvent" ToRole="Magic_Eve_Track" />
+          <NavigationProperty Name="Magic_Eve_Event" Relationship="MagicDBModel.FK_Magic_Eve_PlannedEvent_Magic_Eve_Event" FromRole="Magic_Eve_PlannedEvent" ToRole="Magic_Eve_Event" />
+        </EntityType>
+        <Association Name="FK_Magic_Eve_PlannedEvent_Magic_Eve_Interval">
+          <End Type="MagicDBModel.Magic_Eve_Interval" Role="Magic_Eve_Interval" Multiplicity="0..1" />
+          <End Type="MagicDBModel.Magic_Eve_PlannedEvent" Role="Magic_Eve_PlannedEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_Eve_Interval">
+              <PropertyRef Name="IntervalID" />
+            </Principal>
+            <Dependent Role="Magic_Eve_PlannedEvent">
+              <PropertyRef Name="IntervalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_Eve_Track_Magic_Eve_PlannedEvent">
+          <End Type="MagicDBModel.Magic_Eve_PlannedEvent" Role="Magic_Eve_PlannedEvent" Multiplicity="0..1" />
+          <End Type="MagicDBModel.Magic_Eve_Track" Role="Magic_Eve_Track" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_Eve_PlannedEvent">
+              <PropertyRef Name="IDPlannedEvent" />
+            </Principal>
+            <Dependent Role="Magic_Eve_Track">
+              <PropertyRef Name="PlannedEventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Magic_Eve_Event">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventActionID" Type="Int32" Nullable="false" />
+          <Property Name="EventScriptTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ScriptName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SystemMessageID" Type="Int32" />
+          <Property Name="ChildEventID" Type="Int32" />
+          <NavigationProperty Name="Magic_Eve_ActionType" Relationship="MagicDBModel.FK_Magic_Eve_Event_Magic_Eve_ActionType" FromRole="Magic_Eve_Event" ToRole="Magic_Eve_ActionType" />
+          <NavigationProperty Name="Magic_Eve_Event1" Relationship="MagicDBModel.FK_Magic_Eve_Event_Magic_Eve_Event" FromRole="Magic_Eve_Event" ToRole="Magic_Eve_Event1" />
+          <NavigationProperty Name="Magic_Eve_Event2" Relationship="MagicDBModel.FK_Magic_Eve_Event_Magic_Eve_Event" FromRole="Magic_Eve_Event1" ToRole="Magic_Eve_Event" />
+          <NavigationProperty Name="Magic_Eve_ScriptType" Relationship="MagicDBModel.FK_Magic_Eve_Event_Magic_Eve_ScriptType" FromRole="Magic_Eve_Event" ToRole="Magic_Eve_ScriptType" />
+          <NavigationProperty Name="Magic_Eve_PlannedEvent" Relationship="MagicDBModel.FK_Magic_Eve_PlannedEvent_Magic_Eve_Event" FromRole="Magic_Eve_Event" ToRole="Magic_Eve_PlannedEvent" />
+        </EntityType>
+        <Association Name="FK_Magic_Eve_Event_Magic_Eve_ActionType">
+          <End Type="MagicDBModel.Magic_Eve_ActionType" Role="Magic_Eve_ActionType" Multiplicity="1" />
+          <End Type="MagicDBModel.Magic_Eve_Event" Role="Magic_Eve_Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_Eve_ActionType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Magic_Eve_Event">
+              <PropertyRef Name="EventActionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_Eve_Event_Magic_Eve_Event">
+          <End Type="MagicDBModel.Magic_Eve_Event" Role="Magic_Eve_Event" Multiplicity="0..1" />
+          <End Type="MagicDBModel.Magic_Eve_Event" Role="Magic_Eve_Event1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_Eve_Event">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="Magic_Eve_Event1">
+              <PropertyRef Name="ChildEventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_Eve_Event_Magic_Eve_ScriptType">
+          <End Type="MagicDBModel.Magic_Eve_ScriptType" Role="Magic_Eve_ScriptType" Multiplicity="1" />
+          <End Type="MagicDBModel.Magic_Eve_Event" Role="Magic_Eve_Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_Eve_ScriptType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Magic_Eve_Event">
+              <PropertyRef Name="EventScriptTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_Eve_PlannedEvent_Magic_Eve_Event">
+          <End Type="MagicDBModel.Magic_Eve_Event" Role="Magic_Eve_Event" Multiplicity="1" />
+          <End Type="MagicDBModel.Magic_Eve_PlannedEvent" Role="Magic_Eve_PlannedEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_Eve_Event">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="Magic_Eve_PlannedEvent">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Magic_FTP_Protocols">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Magic_FTP_Servers" Relationship="MagicDBModel.FK_Magic_FTP_Servers_Magic_FTP_Protocols" FromRole="Magic_FTP_Protocols" ToRole="Magic_FTP_Servers" />
+        </EntityType>
+        <EntityType Name="Magic_FTP_Transfer_Types">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Is_Upload" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Magic_FTP_Settings" Relationship="MagicDBModel.FK_Magic_FTP_Settings_Magic_FTP_Transfer_Types" FromRole="Magic_FTP_Transfer_Types" ToRole="Magic_FTP_Settings" />
+        </EntityType>
+        <EntityType Name="Magic_FTP_Encryptions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Magic_FTP_Servers" Relationship="MagicDBModel.FK_Magic_FTP_Servers_Magic_FTP_Encryptions" FromRole="Magic_FTP_Encryptions" ToRole="Magic_FTP_Servers" />
+        </EntityType>
+        <EntityType Name="Magic_FTP_Servers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Protocol" Type="Int32" Nullable="false" />
+          <Property Name="Ftp_Encryption" Type="Int32" />
+          <Property Name="Host_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Port_Number" Type="Int32" Nullable="false" />
+          <Property Name="User_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Timeout" Type="Int32" />
+          <Property Name="Is_Passive" Type="Boolean" Nullable="false" />
+          <Property Name="Private_Key_Passphrase" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ssh_Host_Key_Fingerprint" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ssh_Private_Key_Path" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Tls_Host_Certificate_Fingerprint" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tls_Client_Certificate_Path" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Webdav_Root" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Magic_FTP_Encryptions" Relationship="MagicDBModel.FK_Magic_FTP_Servers_Magic_FTP_Encryptions" FromRole="Magic_FTP_Servers" ToRole="Magic_FTP_Encryptions" />
+          <NavigationProperty Name="Magic_FTP_Protocols" Relationship="MagicDBModel.FK_Magic_FTP_Servers_Magic_FTP_Protocols" FromRole="Magic_FTP_Servers" ToRole="Magic_FTP_Protocols" />
+          <NavigationProperty Name="Magic_FTP_Settings" Relationship="MagicDBModel.FK_Magic_FTP_Settings_Magic_FTP_Servers" FromRole="Magic_FTP_Servers" ToRole="Magic_FTP_Settings" />
+        </EntityType>
+        <Association Name="FK_Magic_FTP_Servers_Magic_FTP_Encryptions">
+          <End Type="MagicDBModel.Magic_FTP_Encryptions" Role="Magic_FTP_Encryptions" Multiplicity="0..1" />
+          <End Type="MagicDBModel.Magic_FTP_Servers" Role="Magic_FTP_Servers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_FTP_Encryptions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Magic_FTP_Servers">
+              <PropertyRef Name="Ftp_Encryption" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_FTP_Servers_Magic_FTP_Protocols">
+          <End Type="MagicDBModel.Magic_FTP_Protocols" Role="Magic_FTP_Protocols" Multiplicity="1" />
+          <End Type="MagicDBModel.Magic_FTP_Servers" Role="Magic_FTP_Servers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_FTP_Protocols">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Magic_FTP_Servers">
+              <PropertyRef Name="Protocol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Magic_FTP_Settings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Server" Type="Int32" Nullable="false" />
+          <Property Name="Local_Path" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Remote_Path" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Transfer_Type" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExtractArchiveFiles" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Magic_FTP_Servers" Relationship="MagicDBModel.FK_Magic_FTP_Settings_Magic_FTP_Servers" FromRole="Magic_FTP_Settings" ToRole="Magic_FTP_Servers" />
+          <NavigationProperty Name="Magic_FTP_Transfer_Types" Relationship="MagicDBModel.FK_Magic_FTP_Settings_Magic_FTP_Transfer_Types" FromRole="Magic_FTP_Settings" ToRole="Magic_FTP_Transfer_Types" />
+          <Property Name="DeleteFiles" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Magic_FTP_Settings_Magic_FTP_Servers">
+          <End Type="MagicDBModel.Magic_FTP_Servers" Role="Magic_FTP_Servers" Multiplicity="1" />
+          <End Type="MagicDBModel.Magic_FTP_Settings" Role="Magic_FTP_Settings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_FTP_Servers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Magic_FTP_Settings">
+              <PropertyRef Name="Server" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magic_FTP_Settings_Magic_FTP_Transfer_Types">
+          <End Type="MagicDBModel.Magic_FTP_Transfer_Types" Role="Magic_FTP_Transfer_Types" Multiplicity="1" />
+          <End Type="MagicDBModel.Magic_FTP_Settings" Role="Magic_FTP_Settings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magic_FTP_Transfer_Types">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Magic_FTP_Settings">
+              <PropertyRef Name="Transfer_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MagicDBModelStoreContainer" CdmEntityContainer="MagicDBEntities">
+          <EntitySetMapping Name="Magic_Eve_ActionType">
+            <EntityTypeMapping TypeName="MagicDBModel.Magic_Eve_ActionType">
+              <MappingFragment StoreEntitySet="Magic_Eve_ActionType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Magic_Eve_Interval">
+            <EntityTypeMapping TypeName="MagicDBModel.Magic_Eve_Interval">
+              <MappingFragment StoreEntitySet="Magic_Eve_Interval">
+                <ScalarProperty Name="IntervalID" ColumnName="IntervalID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IntervalinSeconds" ColumnName="IntervalinSeconds" />
+                <ScalarProperty Name="DayofWeek" ColumnName="DayofWeek" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Magic_Eve_ScriptType">
+            <EntityTypeMapping TypeName="MagicDBModel.Magic_Eve_ScriptType">
+              <MappingFragment StoreEntitySet="Magic_Eve_ScriptType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Magic_Eve_Track">
+            <EntityTypeMapping TypeName="MagicDBModel.Magic_Eve_Track">
+              <MappingFragment StoreEntitySet="Magic_Eve_Track">
+                <ScalarProperty Name="TrackID" ColumnName="TrackID" />
+                <ScalarProperty Name="PlannedEventID" ColumnName="PlannedEventID" />
+                <ScalarProperty Name="tsExecutionStart" ColumnName="tsExecutionStart" />
+                <ScalarProperty Name="tsExecutionEnd" ColumnName="tsExecutionEnd" />
+                <ScalarProperty Name="AlertMessage" ColumnName="AlertMessage" />
+                <ScalarProperty Name="DbMessage" ColumnName="DbMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Magic_Eve_PlannedEvent">
+            <EntityTypeMapping TypeName="MagicDBModel.Magic_Eve_PlannedEvent">
+              <MappingFragment StoreEntitySet="Magic_Eve_PlannedEvent">
+                <ScalarProperty Name="LastExecutionMessage" ColumnName="LastExecutionMessage" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="tsLastExecution" ColumnName="tsLastExecution" />
+                <ScalarProperty Name="tsNextExecution" ColumnName="tsNextExecution" />
+                <ScalarProperty Name="tsStartExecution" ColumnName="tsStartExecution" />
+                <ScalarProperty Name="IntervalID" ColumnName="IntervalID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="IDPlannedEvent" ColumnName="IDPlannedEvent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Magic_Eve_Event">
+            <EntityTypeMapping TypeName="MagicDBModel.Magic_Eve_Event">
+              <MappingFragment StoreEntitySet="Magic_Eve_Event">
+                <ScalarProperty Name="ChildEventID" ColumnName="ChildEventID" />
+                <ScalarProperty Name="SystemMessageID" ColumnName="SystemMessageID" />
+                <ScalarProperty Name="ScriptName" ColumnName="ScriptName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EventScriptTypeID" ColumnName="EventScriptTypeID" />
+                <ScalarProperty Name="EventActionID" ColumnName="EventActionID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Magic_FTP_Protocols">
+            <EntityTypeMapping TypeName="MagicDBModel.Magic_FTP_Protocols">
+              <MappingFragment StoreEntitySet="Magic_FTP_Protocols">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Magic_FTP_Transfer_Types">
+            <EntityTypeMapping TypeName="MagicDBModel.Magic_FTP_Transfer_Types">
+              <MappingFragment StoreEntitySet="Magic_FTP_Transfer_Types">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Is_Upload" ColumnName="Is_Upload" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Magic_FTP_Encryptions">
+            <EntityTypeMapping TypeName="MagicDBModel.Magic_FTP_Encryptions">
+              <MappingFragment StoreEntitySet="Magic_FTP_Encryptions">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Magic_FTP_Servers">
+            <EntityTypeMapping TypeName="MagicDBModel.Magic_FTP_Servers">
+              <MappingFragment StoreEntitySet="Magic_FTP_Servers">
+                <ScalarProperty Name="Webdav_Root" ColumnName="Webdav_Root" />
+                <ScalarProperty Name="Tls_Client_Certificate_Path" ColumnName="Tls_Client_Certificate_Path" />
+                <ScalarProperty Name="Tls_Host_Certificate_Fingerprint" ColumnName="Tls_Host_Certificate_Fingerprint" />
+                <ScalarProperty Name="Ssh_Private_Key_Path" ColumnName="Ssh_Private_Key_Path" />
+                <ScalarProperty Name="Ssh_Host_Key_Fingerprint" ColumnName="Ssh_Host_Key_Fingerprint" />
+                <ScalarProperty Name="Private_Key_Passphrase" ColumnName="Private_Key_Passphrase" />
+                <ScalarProperty Name="Is_Passive" ColumnName="Is_Passive" />
+                <ScalarProperty Name="Timeout" ColumnName="Timeout" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="Port_Number" ColumnName="Port_Number" />
+                <ScalarProperty Name="Host_Name" ColumnName="Host_Name" />
+                <ScalarProperty Name="Ftp_Encryption" ColumnName="Ftp_Encryption" />
+                <ScalarProperty Name="Protocol" ColumnName="Protocol" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Magic_FTP_Settings">
+            <EntityTypeMapping TypeName="MagicDBModel.Magic_FTP_Settings">
+              <MappingFragment StoreEntitySet="Magic_FTP_Settings">
+                <ScalarProperty Name="DeleteFiles" ColumnName="DeleteFiles" />
+                <ScalarProperty Name="ExtractArchiveFiles" ColumnName="ExtractArchiveFiles" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Transfer_Type" ColumnName="Transfer_Type" />
+                <ScalarProperty Name="Remote_Path" ColumnName="Remote_Path" />
+                <ScalarProperty Name="Local_Path" ColumnName="Local_Path" />
+                <ScalarProperty Name="Server" ColumnName="Server" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

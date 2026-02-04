@@ -1,0 +1,406 @@
+﻿<div class="panel with-nav-tabs panel-default">
+
+    <div id="TabList" class="panel-heading" ng-show="!loadContent.showGrid">
+        <ul ng-init="" class="nav nav-tabs">
+            <li ng-init="loadContent = {}" class="active">
+                <a href="#tab1default" data-toggle="tab">Identificazione e denominazione</a>
+            </li>
+            <li ng-click="loadContent.geo = true">
+                <a href="#tabGeo" data-toggle="tab">Georeferenziazione</a>
+            </li>
+            <li ng-click="loadContent.cata = true">
+                <a href="#tab2default" data-toggle="tab">Proprietari e documenti</a>
+            </li>
+            <li ng-click="loadContent.doc = true">
+                <a href="#tab5default" data-toggle="tab">Dati catastali e documenti</a>
+            </li>
+            <li class="pull-right">
+                <div class="badge badge-info dimen-intestazione">
+                    <div id="intest_diocesi">##Diocesi##</div>
+                    <div id="intest_tipo">##Tipo##</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="panel-body">
+        <div class="tab-content" ng-show="!loadContent.showGrid">
+            <!--  <div align="center">
+                       <h1>
+                          
+                            <div id="intest_tipo">##Tipo##</div>
+                        </h1>
+                    </div> -->
+            <div class="tab-pane fade active in schedaBce-style-holder" id="tab1default">
+                <div class="row">
+                    <div class="col-md-6 add-to-pdf ">
+                        <magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true"
+                            formname="SCHEDA_BCE_1" hidetabs="true" itemsperrow=2></magic-form-sp>
+                        <div style="height:50px;"></div>
+                        <magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true"
+                            formname="BCE_SCHEDA_TAB1_B" hidetabs="true" itemsperrow=2></magic-form-sp>
+                        <magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true"
+                            formname="BCE_SCHEDA_TAB1_C" hidetabs="true" itemsperrow=1></magic-form-sp>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-6" id="thebeautifulmap1"></div>
+                    </div>
+                    </br>
+                    </br>
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6" align="bottom">
+                        <br>
+                        <br>
+                        <span class="col-md-12"
+                            style="vertical-align: bottom; text-align: right;margin-right:5px">Provenienza dei
+                            dati:</span>
+                        <img src="Views\3\Images\ceia.gif" height="10%" width="10%" id="img_ceia">
+                        <span style="vertical-align: bottom; text-align: left" id="provDato"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade schedaBce-style-holder" id="tabGeo">
+                <div ng-if="loadContent.geo">
+                    <div class="row">
+                        <div class="col-md-6 add-to-pdf ">
+                            <magic-form-sp storedprocedure="config.USP_GET_FormData" isreadonly="true"
+                                formname="SCHEDA_BCE_2" hidetabs="true" itemsperrow=1></magic-form-sp>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-6" id="thebeautifulmap"></div>
+                        </div>
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6" align="bottom">
+                            <br>
+                            <br>
+                            <span class="col-md-12"
+                                style="vertical-align: bottom; text-align: right;margin-right:5px">Provenienza dei
+                                dati:</span>
+                            <img src="Views\3\Images\ceia.gif" height="10%" width="10%" id="img_ceia1">
+                            <span style="vertical-align: bottom; text-align: left" id="provDato2"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade schedaBce-style-holder" id="tab2default">
+                <div ng-if="loadContent.cata">
+                    <div class="row">
+                        <h2>Proprietà e titoli</h2>
+                        <div class="col-md-12">
+                            <!--<magic-grid gridname="AS_V_ASSET_idecat_sintesi" filterpk="AS_ASSET_ID"></magic-grid>-->
+                            <magic-grid gridname="CF_VI_BCE_PROPRA" filterpk="BCE_INVASS_ID"></magic-grid>
+                        </div>
+                        <h2>Documenti di titolarità e vincoli</h2>
+                        <div class="col-md-12">
+                            <!-- <magic-grid gridname="CF_VI_BCE_DOCUME_TAB3" filterpk="AS_ASSET_ID">></magic-grid> -->
+                            <magic-grid gridname="BCE_VI_INVASS_DOCUME" filterpk="BCE_INVASS_ID"></magic-grid>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade schedaBce-style-holder" id="tab5default">
+                <div ng-if="loadContent.doc">
+                    <div class="row">
+                        <h2>Fabbricati</h2>
+                        <div class="col-md-12">
+                            <!-- <magic-grid gridname="AS_V_ASSET_IDECAT_F" filterpk="AS_ASSET_ID"></magic-grid> -->
+                            <magic-grid gridname="BCE_VI_INVASS_IDECAT_FAB" filterpk="BCE_INVASS_ID"></magic-grid>
+                        </div>
+                        <h2>Terreni</h2>
+                        <div class="col-md-12">
+                            <!-- <magic-grid gridname="AS_V_ASSET_IDECAT_T" filterpk="AS_ASSET_ID"></magic-grid> -->
+                            <magic-grid gridname="BCE_VI_INVASS_IDECAT_TER" filterpk="BCE_INVASS_ID"></magic-grid>
+                        </div>
+                        <h2>Documenti catastali</h2>
+                        <div class="col-md-12">
+                            <!-- <magic-grid gridname="CF_VI_BCE_DOCUME_TAB4" filterpk="AS_ASSET_ID"></magic-grid> -->
+                            <magic-grid gridname="BCE_VI_INVASS_DOCUME_VISURE" filterpk="BCE_INVASS_ID"></magic-grid>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" ng-if="loadContent.showGrid">
+            <!-- <magic-grid gridname="BCE_VI_RICHIE_INTEGRA" filterpk="AS_ASSET_ID"></magic-grid> -->
+            <magic-grid gridname="BCE_VI_RICHIE_INTEGRA" filter="foc.options.filterNote"></magic-grid>
+        </div>
+    </div>
+    <div class="schedaBce-style-holder">
+        <span id="statoScheda"></span>
+        <div class="btn-group btnClass" role="group" id="btnAction"></div>
+    </div>
+</div>
+<style>
+    /**************************************************************
+    Per gestire gli stili con uno "scope" raccogliere gli elementi
+    in un div con una classe identificativa e definire i selettori
+    degli stili come "Gli elementi discendenti di un certo selettore"
+    Es:
+        .ANCESTOR .SPECIFIC_SELECTOR {
+            Styles...
+        }
+
+    **************************************************************/
+
+    .schedaBce-style-holder #Indirizzo {
+        width: 81% !important;
+
+    }
+
+    .dimen-intestazione {
+        /* padding: .40em 1.5em; */
+        padding: .0em 1.5em;
+        font-size: 125%;
+        line-height: 2;
+        text-align: center;
+        margin-left: 1%;
+    }
+
+    .dimen-intestazione #intest_diocesi {
+        margin-bottom: -2%;
+    }
+
+    .dimen-intestazione #intest_tipo {
+        text-align: left;
+    }
+
+    .dimen {
+        padding: .25em .4em;
+        font-size: 135%;
+        line-height: 2;
+        width: 200px;
+        text-align: center;
+        margin-left: 1%;
+    }
+
+    .schedaBce-style-holder .btnClass {
+        float: right;
+        margin-right: 3%;
+    }
+
+    .schedaBce-style-holder .form-group {
+        margin: 0px;
+    }
+
+    .schedaBce-style-holder .bend label {
+        width: auto;
+    }
+
+    .schedaBce-style-holder label {
+        font-size: 12px;
+        font-weight: normal;
+        line-height: 20px;
+    }
+
+    .schedaBce-style-holder h2 {
+        font-size: 14px;
+
+    }
+</style>
+
+<script id="confirmationTemplate" type="text/x-kendo-template">
+	<div class= "popupMessage" > </div>
+      </br>
+    <hr/>
+    <div class="dialog_buttons">
+        <input type="button" class="confirm_yes k-button" value="Yes" style="width: 70px" />
+        &nbsp;
+        <input type="button" class="confirm_no k-button" value="No" style="width: 70px" />
+      </div>
+    </script>
+
+<script>
+    $("#wndmodalContainer").addClass("modal-wide");
+
+
+    var data = $("#appcontainer").data("customItemInfo");
+    var stato = data.stato_scheda;
+
+    //Dati in toolbar
+    //Dati in toolbar
+    var diocesiName = data.Diocesi;
+    var enteName = (data.Ente !== undefined && data.Ente !== '') ? ' - ' + data.Ente : '';
+    var assetType = (data.AS_TIPSAS_DESCRIPTION !== undefined) ? data.AS_TIPSAS_DESCRIPTION : '';
+    var assetSpec = (data.AS_SASSPE_DESCRIPTION !== undefined
+        && data.AS_SASSPE_DESCRIPTION !== null
+        && data.AS_SASSPE_DESCRIPTION !== '') ? ' - ' + data.AS_SASSPE_DESCRIPTION : '';
+
+    var assetDescr = (data.AS_ASSET_DESCRIZIONE !== undefined
+        && data.AS_ASSET_DESCRIZIONE !== null
+        && data.AS_ASSET_DESCRIZIONE !== '') ? data.AS_ASSET_DESCRIZIONE : '';
+
+    //Imposto valori
+    $('#intest_diocesi').text(diocesiName + enteName);
+    //$('#intest_tipo').text(assetType + assetSpec);        //Come da richiesta Loris Trubian a Luca Angelino del 17/09/2018
+    $('#intest_tipo').text(assetDescr);
+
+    setBadgeStato(stato, data);
+
+    function setBadgeStato(stato, data) {
+        console.log('update color');
+
+        $('#statoScheda').text(stato);
+        switch (stato) {
+
+            case 'In verifica':
+                $('#statoScheda').addClass('badge badge-pill badge-warning dimen');
+                if (data && data.gridName == "BCE_IN_VALID") {
+                    $('#btnAction').append('<button id="actValida" type="button" onclick="validaScheda(this)" class="btn btn-primary" aria-label="Valida">Verifica</button>');
+                    $('#btnAction').append('<button id="actNote" type="button" ng-show="!loadContent.showGrid" ng-click="loadContent.showGrid ? loadContent.showGrid=false: loadContent.showGrid=true" class="btn btn-info" aria-label="Note">Annotazioni</button>');
+                    $('#btnAction').append('<button id="actNote" type="button" ng-show="loadContent.showGrid" ng-click="loadContent.showGrid ? loadContent.showGrid=false: loadContent.showGrid=true" class="btn btn-info" aria-label="Note">Chiudi note</button>');
+                    $('#btnAction').append('<button id="actRichieIntegra" type="button" onclick="validaScheda(this);" class="btn btn-secondary" aria-label="Richiesta integrazione">Richiesta integrazione</button>');
+                }
+
+                break;
+            case 'Verificata':
+                $('#statoScheda').addClass('badge badge-pill badge-success dimen');
+                break;
+            case 'Richiesta integrazione':
+                if (data && data.gridName == "BCE_IN_VERIFICA") {
+                    $('#btnAction').append('<button id="actRichieIntegra" type="button" onclick="richieIntegra(this);" class="btn btn-secondary" aria-label="Richiesta integrazione">Richiesta integrazione</button>');
+                }
+                $('#statoScheda').addClass('badge badge-important dimen');
+                if ($("#actValida").length)
+                    $("#actValida").attr('disabled', 'disabled');
+                break;
+            default:
+                $('#statoScheda').addClass('badge badge-pill badge-warning dimen');
+
+        }
+    }
+
+
+    function validaScheda(e) {
+        console.log('Called validaScheda');
+        var act = e.innerText
+        var storedProcedure = act == "Verifica" ? 'custom.BCE_USP_VALIDA_SCHEDA' : 'custom.BCE_USP_RICHIE_INTEGRA';
+        var msg = act == "Verifica" ? 'Vuoi procedere con la verifica della scheda?' : 'Vuoi procedere con la richiesta di integrazione?';
+        var gridName = 'BCE_IN_VALID';
+
+        $.when(showConfirmationWindow(msg)).then(function (confirmed) {
+
+            if (confirmed) {
+                requireConfigAndMore(["MagicSDK"], function (MF) {
+                    var rowData = data;
+
+                    MF.api.get({ storedProcedureName: storedProcedure, data: $.extend(rowData, { gridName: gridName, }) }).then(function (res) {
+                        console.log(res);
+                        //refresh grid
+                        $("div[gridname='BCE_IN_VALID']").data('kendoGrid').dataSource.read();
+                        //$('#grid').data('kendoGrid').dataSource.read();
+                        $('#wndmodalContainer').modal('hide');
+                        kendoConsole.log("Operazione effettuata con successo", "info");
+                    });
+                });
+            }
+            else {
+                console.log('chiusura');
+            }
+        });
+
+
+    }
+
+    function richieIntegra(e) {
+	
+	console.log('chiusura');
+
+        var gridcode = 'BCE_VI_RICHIE_INTEGRA';
+
+        var jsonpayload = JSON.parse('{ "actiontype": "SHOGD", "actionfilter":{ "logic": "and", "filters" :[ { "field": "BCE_INVASS_ID", "operator": "eq", "value": "' + data.BCE_INVASS_ID + '"}, { "field": "BCE_INVASS_AS_ASSET_ID", "operator": "eq", "value": "' + data.AS_ASSET_ID + '" }]}, "actioncommand": "' + gridcode + '" }');
+
+        jsonpayload.rowData = data;
+        var selector = (e.currentTarget ? e.currentTarget : e);
+        jsonpayload.jqgrid = $(selector).closest(".k-grid");
+        jsonpayload.jrow = $(selector).closest(".k-grid tr");
+
+        if (!jsonpayload.actiontype || !jsonpayload.actioncommand)
+            console.log("actioncommand or actiontype not provided");
+        dispatchAction(e, jsonpayload);
+    }
+
+    if (data.longitude && data.latitude) {
+        $("#thebeautifulmap").append(
+            '<div><iframe width="600" height="200" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCcOKGhVcgm8EIErOotXKvPaI41oHEb2HM&q=' +
+            data.latitude + ',' + data.longitude +
+            '&zoom=18" ></iframe></div><div style="height:30px;"></div><div><iframe width="600" height="200" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/streetview?key=AIzaSyCcOKGhVcgm8EIErOotXKvPaI41oHEb2HM&location=' +
+            data.latitude + ',' + data.longitude + '&heading=200&pitch=0&fov=100" ></iframe></div>');
+            
+            
+
+
+        $("#thebeautifulmap1").append(
+            '<div><iframe width="600" height="200" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCcOKGhVcgm8EIErOotXKvPaI41oHEb2HM&q=' +
+            data.latitude + ',' + data.longitude +
+            '&zoom=18" ></iframe></div><div style="height:30px;"></div><div><iframe width="600" height="200" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/streetview?key=AIzaSyCcOKGhVcgm8EIErOotXKvPaI41oHEb2HM&location=' +
+            data.latitude + ',' + data.longitude + '&heading=200&pitch=0&fov=100" ></iframe></div>');
+    }
+
+    $('#LinkScheda').text(data.Denominazione_principale);
+
+    if (data.livelloAutorevolezza_id === "4") {
+        $("#img_ceia").remove();
+        $("#img_ceia1").remove();
+    }
+
+    var provAsset = data.autorevolezza
+    $('#provDato').text(provAsset);
+    $('#provDato2').text(provAsset);
+    //close all panel (button scheda a)
+    $('.closeall').click(function () {
+        $('.panel-collapse.in').collapse('hide');
+        $('.panel-collapsed.in').collapse('hide');
+
+    });
+
+    // open all panel (scheda a)
+    $('.openall').click(function () {
+        $('.panel-collapse:not(".in")').collapse('show');
+        $('.panel-collapsed:not(".in")').collapse('show');
+    });
+
+
+    function showConfirmationWindow(message) {
+        return showWindow('#confirmationTemplate', message)
+    };
+
+    function showWindow(template, message) {
+
+        var dfd = new jQuery.Deferred();
+        var result = false;
+
+        $("<div id='popupWindow'></div>")
+            .appendTo("body")
+            .kendoWindow({
+                width: "300px",
+                modal: true,
+                title: "",
+                modal: true,
+                visible: false,
+                close: function (e) {
+                    this.destroy();
+                    dfd.resolve(result);
+                }
+            }).data('kendoWindow').content($(template).html()).center().open();
+
+        $('.popupMessage').html(message);
+
+        $('#popupWindow .confirm_yes').val('OK');
+        $('#popupWindow .confirm_no').val('Annulla');
+
+        $('#popupWindow .confirm_no').click(function () {
+            $('#popupWindow').data('kendoWindow').close();
+        });
+
+        $('#popupWindow .confirm_yes').click(function () {
+            result = true;
+            $('#popupWindow').data('kendoWindow').close();
+        });
+
+        return dfd.promise();
+    };
+
+
+
+
+</script>
